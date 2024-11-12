@@ -2,6 +2,7 @@ let binaryNumbers = [];
 let currentIndex = 0;
 let correctCount = 0; // Counter for correct answers
 let incorrectCount = 0; // Counter for incorrect answers
+let binaryVisible = true; // Variable to track visibility of binary numbers
 
 function generateBinaryNumbers() {
     const container = document.getElementById('binary-container');
@@ -11,7 +12,9 @@ function generateBinaryNumbers() {
     correctCount = 0; // Reset correct counter
     incorrectCount = 0; // Reset incorrect counter
 
-    for (let i = 0; i < 104; i++) {
+    const numberOfGroups = parseInt(document.getElementById('number-of-groups').value) || 10; // Get the number of groups from the input field
+
+    for (let i = 0; i < numberOfGroups; i++) {
         let randomBinary = Math.floor(Math.random() * 8).toString(2).padStart(3, '0');
         binaryNumbers.push(randomBinary);
 
@@ -66,4 +69,11 @@ function checkAnswer() {
     } else {
         document.getElementById('result').innerText = 'Finished! Click "Generate" to start again.';
     }
+}
+
+// Function to toggle visibility of binary numbers
+function toggleBinaryVisibility() {
+    const container = document.getElementById('binary-container');
+    binaryVisible = !binaryVisible;
+    container.style.display = binaryVisible ? 'grid' : 'none'; // Show or hide the binary numbers container
 }
