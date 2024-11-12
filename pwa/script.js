@@ -29,11 +29,13 @@ function generateBinaryNumbers() {
     highlightCurrentBinary();
 }
 
-// Add event listener to trigger checkAnswer() on "Enter" key press
-document.getElementById('decimal-input').addEventListener('keydown', function(event) {
-    if (event.key === 'Enter') {
-        checkAnswer();
-    }
+// Add event listener to trigger checkAnswer() on "input" event
+document.getElementById('decimal-input').addEventListener('input', function(event) {
+    checkAnswer();
+});
+
+document.getElementById('decimal-input').addEventListener('change', function(event) {
+    checkAnswer();
 });
 
 function highlightCurrentBinary() {
@@ -63,15 +65,15 @@ function checkAnswer() {
 
         if (currentIndex < binaryNumbers.length) {
             highlightCurrentBinary();
-            resultElement.innerText = `Correct! Enter the decimal value for the next binary number.`;
+            resultElement.innerText = 'Correct! Enter the decimal value for the next binary number.';
         } else {
-            resultElement.innerText = `Congratulations! You've completed the set.`;
+            resultElement.innerText = "Congratulations! You've completed the set.";
         }
-    } else {
+    } else if (userAnswer !== '' && userAnswer !== correctAnswer) {
         currentBinaryElement.style.color = 'red'; // Change to red if incorrect
         incorrectCount++; // Increment the incorrect counter
         document.getElementById('incorrect-count').innerText = `Incorrect: ${incorrectCount}`; // Update incorrect counter display
-        resultElement.innerText = `Incorrect! Try again.`;
+        resultElement.innerText = 'Incorrect! Try again.';
     }
 }
 
