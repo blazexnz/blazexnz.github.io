@@ -3,7 +3,6 @@ let currentIndex = 0;
 let correctCount = 0; // Counter for correct answers
 let incorrectCount = 0; // Counter for incorrect answers
 
-// Function to generate binary numbers and display them
 function generateBinaryNumbers() {
     const container = document.getElementById('binary-container');
     container.innerHTML = ''; // Clear previous numbers
@@ -37,8 +36,8 @@ document.getElementById('decimal-input').addEventListener('keydown', function(ev
     }
 });
 
-// Function to highlight the current binary number for the user
 function highlightCurrentBinary() {
+    // Highlight the current binary number for user reference
     document.querySelectorAll('.binary').forEach((el, index) => {
         if (index === currentIndex) {
             el.style.color = 'blue'; // Highlight current number in blue
@@ -48,7 +47,6 @@ function highlightCurrentBinary() {
     });
 }
 
-// Function to check the user's answer
 function checkAnswer() {
     const userAnswer = parseInt(document.getElementById('decimal-input').value, 10);
     const correctAnswer = parseInt(binaryNumbers[currentIndex], 2);
@@ -77,7 +75,6 @@ function checkAnswer() {
     }
 }
 
-// Function to toggle visibility of the binary numbers
 function toggleBinaryVisibility() {
     const container = document.getElementById('binary-container');
     // Toggle visibility of the binary numbers
@@ -88,27 +85,15 @@ function toggleBinaryVisibility() {
     }
 }
 
-// Add event listener for 'beforeinstallprompt' to show install prompt for PWA
-window.addEventListener('beforeinstallprompt', (event) => {
-    // Prevent the default install prompt
-    event.preventDefault();
-    // Store the event for triggering the prompt later
-    window.deferredPrompt = event;
-    // Optionally, show a custom install button
-    const installButton = document.createElement('button');
-    installButton.innerText = 'Install App';
-    installButton.onclick = () => {
-        // Show the prompt when the user clicks the install button
-        window.deferredPrompt.prompt();
-        window.deferredPrompt.userChoice
-            .then((choiceResult) => {
-                if (choiceResult.outcome === 'accepted') {
-                    console.log('User accepted the install prompt');
-                } else {
-                    console.log('User dismissed the install prompt');
-                }
-                window.deferredPrompt = null;
+// Register Service Worker for PWA
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/service-worker.js')
+            .then((registration) => {
+                console.log('Service Worker registered with scope: ', registration.scope);
+            })
+            .catch((error) => {
+                console.log('Service Worker registration failed: ', error);
             });
-    };
-    document.body.appendChild(installButton);
-});
+    });
+}
