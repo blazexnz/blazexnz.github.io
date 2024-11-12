@@ -4,35 +4,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Binary to Decimal Quiz</title>
+    <title>Binary to Decimal Practice</title>
 
-    <!-- Link to the PWA manifest -->
-    <link rel="manifest" href="manifest.json">
-
-    <!-- Add some basic metadata for the app -->
     <meta name="theme-color" content="#4CAF50">
     <meta name="description" content="A fun app to practice converting binary numbers to decimal.">
 
-    <!-- Add icon links for various screen sizes -->
-    <link rel="icon" href="icons/icon-72x72.png" sizes="72x72">
-    <link rel="icon" href="icons/icon-96x96.png" sizes="96x96">
-    <link rel="icon" href="icons/icon-128x128.png" sizes="128x128">
-    <link rel="icon" href="icons/icon-192x192.png" sizes="192x192">
-    <link rel="icon" href="icons/icon-512x512.png" sizes="512x512">
-    
-    <!-- Include CSS if you have styles -->
-    <link rel="stylesheet" href="style.css">
+    <!-- Link to the manifest file -->
+    <link rel="manifest" href="manifest.json">
 
+    <style>
+        #binary-container {
+            display: grid;
+            grid-template-columns: repeat(20, auto);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .binary {
+            font-weight: bold;
+        }
+    </style>
 </head>
 
 <body>
-    <div>
-        <h1>Binary to Decimal Quiz</h1>
-        <button id="generate-btn">Generate New Set</button>
-        <div id="correct-counter">Correct: 0</div>
-        <div id="incorrect-counter">Incorrect: 0</div>
-        <div id="binary-container"></div>
-    </div>
+    <h1>Binary to Decimal Practice</h1>
+    <button onclick="generateBinaryNumbers()">Generate</button>
+    <div id="binary-container"></div>
+    <input type="number" id="decimal-input" placeholder="Enter decimal" />
+    <div id="correct-count">Correct: 0</div>
+    <div id="incorrect-count">Incorrect: 0</div>
+    <div id="result"></div>
 
     <script src="script.js"></script>
 </body>
