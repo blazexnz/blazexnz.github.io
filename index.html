@@ -2,38 +2,63 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>App Directory</title>
+    <title>Binary-Decimal Practice App</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Optional for custom styling -->
     <style>
-        body {
+        .container {
+            max-width: 600px;
+            margin: auto;
             font-family: Arial, sans-serif;
-            margin: 40px;
         }
-        h1 {
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .number {
+            padding: 10px;
+            border: 1px solid #ccc;
             text-align: center;
+            background-color: #f9f9f9;
+            border-radius: 5px;
         }
-        ul {
-            list-style-type: none;
-            padding: 0;
+        .feedback {
+            font-weight: bold;
+            margin-top: 10px;
         }
-        li {
-            margin: 10px 0;
+        .correct {
+            color: green;
         }
-        a {
-            text-decoration: none;
-            color: #0066cc;
-        }
-        a:hover {
-            text-decoration: underline;
+        .wrong {
+            color: red;
         }
     </style>
 </head>
 <body>
-    <h1>App Directory</h1>
-    <ul>
-        <li><a href="./bin-mem/">Binary Memory Training App - Desktop Version</a></li>
-        <li><a href="./bin-mem-pwa/">Binary Memory Training App - PWA Version</a></li>
-        <!-- Add more links as needed -->
-    </ul>
+    <div class="container">
+        <h2>Binary-Decimal Practice App</h2>
+        <label for="minRange">Minimum range:</label>
+        <input type="number" id="minRange" value="0">
+        <label for="maxRange">Maximum range:</label>
+        <input type="number" id="maxRange" value="7"><br><br>
+
+        <button id="generateBtn">Generate Number</button>
+        <label for="modeToggle">Mode:</label>
+        <select id="modeToggle">
+            <option value="binaryToDecimal">Binary to Decimal</option>
+            <option value="decimalToBinary">Decimal to Binary</option>
+        </select><br><br>
+
+        <div id="numberContainer" class="grid"></div>
+        
+        <label for="answerInput">Your Answer:</label>
+        <input type="text" id="answerInput"><br>
+        <div id="feedback" class="feedback"></div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
