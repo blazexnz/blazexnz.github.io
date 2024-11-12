@@ -2,10 +2,10 @@ const cacheName = 'binary-decimal-cache-v1';
 const filesToCache = [
   '/',
   '/index.html',
-  '/style.css',
-  '/script.js',
-  '/manifest.json',
-  '/icons/icon-192x192.png',
+  '/style.css',  // Ensure this file is available offline
+  '/script.js',  // Ensure your script is cached
+  '/manifest.json',  // Cache manifest
+  '/icons/icon-192x192.png',  // Ensure the icons are available
   '/icons/icon-512x512.png'
 ];
 
@@ -35,7 +35,14 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (event) => {
   event.respondWith(
     caches.match(event.request).then((response) => {
-      return response || fetch(event.request);
+      return response || fetch(event.request).then((fetchResponse) => {
+        return caches.open(cacheName).then((cache) => {
+          cache.put(event.request, fetchResponse.clone());  // Cache the new response
+          return fetchResponse;
+        });
+      });
+    }).catch(() => {
+      return caches.match('/index.html');  // Fallback to index.html for offline usage
     })
   );
 });
