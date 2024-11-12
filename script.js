@@ -29,58 +29,41 @@ function generateBinaryNumbers() {
     highlightCurrentBinary();
 }
 
-// Add event listener to trigger checkAnswer() on "Enter" key press
-document.getElementById('decimal-input').addEventListener('keydown', function(event) {
-    if (event.key === 'Enter') {
-        checkAnswer();
-    }
+// Add event listener to check input automatically as user types
+document.getElementById('decimal-input').addEventListener('input', function() {
+    checkAnswer();
 });
 
 function highlightCurrentBinary() {
-    // Highlight the current binary number for user reference
-    document.querySelectorAll('.binary').forEach((el, index) => {
-        if (index === currentIndex) {
-            el.style.color = 'blue'; // Highlight current number in blue
-        } else if (el.style.color !== 'green') {
-            el.style.color = 'black'; // Reset color for others if not already green
-        }
-    });
-}
-
-function checkAnswer() {
-    const userAnswer = parseInt(document.getElementById('decimal-input').value, 10);
-    const correctAnswer = parseInt(binaryNumbers[currentIndex], 2);
-    const resultElement = document.getElementById('result');
-    const currentBinaryElement = document.getElementById(`binary-${currentIndex}`);
-
-    if (userAnswer === correctAnswer) {
-        currentBinaryElement.style.color = 'green'; // Change to green if correct
-        correctCount++; // Increment the correct counter
-        currentIndex++;
-        document.getElementById('decimal-input').value = ''; // Clear input
-
-        document.getElementById('correct-count').innerText = `Correct: ${correctCount}`; // Update correct counter display
-
-        if (currentIndex < binaryNumbers.length) {
-            highlightCurrentBinary();
-            resultElement.innerText = `Correct! Enter the decimal value for the next binary number.`;
-        } else {
-            resultElement.innerText = `Congratulations! You've completed the set.`;
-        }
-    } else {
-        currentBinaryElement.style.color = 'red'; // Change to red if incorrect
-        incorrectCount++; // Increment the incorrect counter
-        document.getElementById('incorrect-count').innerText = `Incorrect: ${incorrectCount}`; // Update incorrect counter display
-        resultElement.innerText = `Incorrect! Try again.`;
+    if (currentIndex < binaryNumbers.length) {
+        document.getElementById(`binary-${currentIndex}`).style.backgroundColor = 'lightblue';
     }
 }
 
-function toggleBinaryVisibility() {
-    const container = document.getElementById('binary-container');
-    // Toggle visibility of the binary numbers
-    if (container.style.display === 'none') {
-        container.style.display = 'grid'; // Show the binary numbers
+function checkAnswer() {
+    const input = document.getElementById('decimal-input');
+    const currentBinary = binaryNumbers[currentIndex];
+    const decimalValue = parseInt(currentBinary, 2);
+
+    if (input.value !== '' && parseInt(input.value, 10) === decimalValue) {
+        document.getElementById(`binary-${currentIndex}`).style.backgroundColor = 'lightgreen';
+        correctCount++;
+        currentIndex++;
+        input.value = ''; // Clear the input for the next number
+        document.getElementById('correct-count').innerText = `Correct: ${correctCount}`;
+        document.getElementById('result').innerText = 'Correct!';
+    } else if (input.value !== '' && parseInt(input.value, 10) !== decimalValue) {
+        document.getElementById(`binary-${currentIndex}`).style.backgroundColor = 'lightcoral';
+        incorrectCount++;
+        currentIndex++;
+        input.value = ''; // Clear the input for the next number
+        document.getElementById('incorrect-count').innerText = `Incorrect: ${incorrectCount}`;
+        document.getElementById('result').innerText = 'Incorrect!';
+    }
+
+    if (currentIndex < binaryNumbers.length) {
+        highlightCurrentBinary();
     } else {
-        container.style.display = 'none'; // Hide the binary numbers
+        document.getElementById('result').innerText = 'Finished! Click "Generate" to start again.';
     }
 }
