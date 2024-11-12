@@ -27,4 +27,15 @@ A simple app to generate a random set of binary numbers. It displays the numbers
 ## Development notes
 - The app is built using plain HTML, CSS, and JavaScript, ensuring compatibility across modern browsers
 - The binary numbers are randomly generatied using JavaScript's Math.random() function
+- The generated number grid is responsive in layout
 - The app is dsigned to be simple, and easy to use with a focus on functionality
+
+## Progeressive Web App (PWA) additional notes
+
+### Files overview
+- **service-worker.js:** The JavaScript file that runs in the background to manage caching
+- **manifest.json:** The JSON file that provides metadata about the app, and allows it to be installed on a user's home screen, like a native mobile app
+
+### Development notes
+- The number keyboard is automatically forced for iPhone users
+- The input field is checked automatically for iPhone users
