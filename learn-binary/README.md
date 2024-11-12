@@ -7,6 +7,7 @@ This is a simple web app designed to help you practice converting numbers betwee
 - **Conversion modes:** Toggle between **Binary to Decimal**, and **Decimal to Binary** modes
 - **Real time feedback:** Get real time feedback on your answers, colour coding if it's correct (green), or incorrect (red)
 - **Automatic progression:** Correct answers automatically generate the next number (with a short delay)
+- **Fully responsive:** Design is fully responsive, particularly for iPhones
 
 ## How to use
 1. **Set range:** Enter the minimum, and maximum range for the number generation - the default min is 0, and the default max is 7
