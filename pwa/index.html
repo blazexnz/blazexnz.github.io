@@ -1,16 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Binary to Decimal Practice</title>
 
-    <meta name="theme-color" content="#4CAF50">
-    <meta name="description" content="A fun app to practice converting binary numbers to decimal.">
-
-    <!-- Link to the manifest file -->
-    <link rel="manifest" href="manifest.json">
+    <!-- Link to Web App Manifest -->
+    <link rel="manifest" href="manifest.json" />
 
     <style>
         #binary-container {
@@ -19,16 +15,15 @@
             gap: 10px;
             margin-bottom: 20px;
         }
-
         .binary {
             font-weight: bold;
         }
     </style>
 </head>
-
 <body>
     <h1>Binary to Decimal Practice</h1>
     <button onclick="generateBinaryNumbers()">Generate</button>
+    <button onclick="toggleBinaryVisibility()">Hide/Show Binary Numbers</button> <!-- Button to toggle visibility -->
     <div id="binary-container"></div>
     <input type="number" id="decimal-input" placeholder="Enter decimal" />
     <div id="correct-count">Correct: 0</div>
@@ -36,6 +31,20 @@
     <div id="result"></div>
 
     <script src="script.js"></script>
-</body>
 
+    <!-- Register the service worker -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then((registration) => {
+                        console.log('Service Worker registered with scope:', registration.scope);
+                    })
+                    .catch((error) => {
+                        console.log('Service Worker registration failed:', error);
+                    });
+            });
+        }
+    </script>
+</body>
 </html>
