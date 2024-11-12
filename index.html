@@ -1,69 +1,50 @@
-let binaryNumbers = [];
-let currentIndex = 0;
-let correctCount = 0; // Counter for correct answers
-let incorrectCount = 0; // Counter for incorrect answers
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#4CAF50">
+    <link rel="manifest" href="/manifest.json">
+    <title>Binary to Decimal Practice</title>
+    <style>
+        #binary-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .binary {
+            font-weight: bold;
+            text-align: center;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 10px;
+        }
+        button {
+            margin: 10px;
+        }
+        input {
+            margin-top: 10px;
+            padding: 5px;
+            font-size: 16px;
+        }
+        .counter {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Binary to Decimal Practice</h1>
+    <button onclick="generateBinaryNumbers()">Generate</button>
+    <button onclick="toggleBinaryVisibility()">Hide/Show Binary Numbers</button>
+    <div id="binary-container"></div>
+    <input type="tel" id="decimal-input" placeholder="Enter decimal" inputmode="numeric" />
+    <div id="correct-count" class="counter">Correct: 0</div>
+    <div id="incorrect-count" class="counter">Incorrect: 0</div>
+    <div id="result"></div>
 
-function generateBinaryNumbers() {
-    const container = document.getElementById('binary-container');
-    container.innerHTML = ''; // Clear previous numbers
-    binaryNumbers = []; // Reset the array
-    currentIndex = 0; // Reset index
-    correctCount = 0; // Reset correct counter
-    incorrectCount = 0; // Reset incorrect counter
-
-    for (let i = 0; i < 104; i++) {
-        let randomBinary = Math.floor(Math.random() * 8).toString(2).padStart(3, '0');
-        binaryNumbers.push(randomBinary);
-
-        // Create and display binary elements
-        let binaryElement = document.createElement('div');
-        binaryElement.className = 'binary';
-        binaryElement.id = `binary-${i}`;
-        binaryElement.innerText = randomBinary;
-        container.appendChild(binaryElement);
-    }
-
-    document.getElementById('result').innerText = 'Enter the decimal value for the first binary number.';
-    document.getElementById('correct-count').innerText = `Correct: ${correctCount}`;
-    document.getElementById('incorrect-count').innerText = `Incorrect: ${incorrectCount}`;
-    highlightCurrentBinary();
-}
-
-// Add event listener to check input automatically as user types
-document.getElementById('decimal-input').addEventListener('input', function() {
-    checkAnswer();
-});
-
-function highlightCurrentBinary() {
-    if (currentIndex < binaryNumbers.length) {
-        document.getElementById(`binary-${currentIndex}`).style.backgroundColor = 'lightblue';
-    }
-}
-
-function checkAnswer() {
-    const input = document.getElementById('decimal-input');
-    const currentBinary = binaryNumbers[currentIndex];
-    const decimalValue = parseInt(currentBinary, 2);
-
-    if (input.value !== '' && parseInt(input.value, 10) === decimalValue) {
-        document.getElementById(`binary-${currentIndex}`).style.backgroundColor = 'lightgreen';
-        correctCount++;
-        currentIndex++;
-        input.value = ''; // Clear the input for the next number
-        document.getElementById('correct-count').innerText = `Correct: ${correctCount}`;
-        document.getElementById('result').innerText = 'Correct!';
-    } else if (input.value !== '' && parseInt(input.value, 10) !== decimalValue) {
-        document.getElementById(`binary-${currentIndex}`).style.backgroundColor = 'lightcoral';
-        incorrectCount++;
-        currentIndex++;
-        input.value = ''; // Clear the input for the next number
-        document.getElementById('incorrect-count').innerText = `Incorrect: ${incorrectCount}`;
-        document.getElementById('result').innerText = 'Incorrect!';
-    }
-
-    if (currentIndex < binaryNumbers.length) {
-        highlightCurrentBinary();
-    } else {
-        document.getElementById('result').innerText = 'Finished! Click "Generate" to start again.';
-    }
-}
+    <script src="script.js"></script>
+</body>
+</html>
