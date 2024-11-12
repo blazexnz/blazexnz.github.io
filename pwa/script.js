@@ -3,7 +3,7 @@ let currentIndex = 0;
 let correctCount = 0; // Counter for correct answers
 let incorrectCount = 0; // Counter for incorrect answers
 
-// Generate binary numbers and display them
+// Function to generate binary numbers and display them
 function generateBinaryNumbers() {
     const container = document.getElementById('binary-container');
     container.innerHTML = ''; // Clear previous numbers
@@ -15,7 +15,7 @@ function generateBinaryNumbers() {
     for (let i = 0; i < 104; i++) {
         let randomBinary = Math.floor(Math.random() * 8).toString(2).padStart(3, '0');
         binaryNumbers.push(randomBinary);
-        
+
         // Create and display binary elements
         let binaryElement = document.createElement('div');
         binaryElement.className = 'binary';
@@ -30,14 +30,14 @@ function generateBinaryNumbers() {
     highlightCurrentBinary();
 }
 
-// Add event listener to trigger `checkAnswer()` on "Enter" key press
+// Add event listener to trigger checkAnswer() on "Enter" key press
 document.getElementById('decimal-input').addEventListener('keydown', function(event) {
     if (event.key === 'Enter') {
         checkAnswer();
     }
 });
 
-// Highlight the current binary number for user reference
+// Function to highlight the current binary number for the user
 function highlightCurrentBinary() {
     document.querySelectorAll('.binary').forEach((el, index) => {
         if (index === currentIndex) {
@@ -48,7 +48,7 @@ function highlightCurrentBinary() {
     });
 }
 
-// Check if the user's answer is correct
+// Function to check the user's answer
 function checkAnswer() {
     const userAnswer = parseInt(document.getElementById('decimal-input').value, 10);
     const correctAnswer = parseInt(binaryNumbers[currentIndex], 2);
@@ -77,13 +77,38 @@ function checkAnswer() {
     }
 }
 
-// Register the service worker if supported by the browser
-if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('service-worker.js')
-        .then(registration => {
-            console.log('Service Worker registered with scope:', registration.scope);
-        })
-        .catch(error => {
-            console.log('Service Worker registration failed:', error);
-        });
+// Function to toggle visibility of the binary numbers
+function toggleBinaryVisibility() {
+    const container = document.getElementById('binary-container');
+    // Toggle visibility of the binary numbers
+    if (container.style.display === 'none') {
+        container.style.display = 'grid'; // Show the binary numbers
+    } else {
+        container.style.display = 'none'; // Hide the binary numbers
+    }
 }
+
+// Add event listener for 'beforeinstallprompt' to show install prompt for PWA
+window.addEventListener('beforeinstallprompt', (event) => {
+    // Prevent the default install prompt
+    event.preventDefault();
+    // Store the event for triggering the prompt later
+    window.deferredPrompt = event;
+    // Optionally, show a custom install button
+    const installButton = document.createElement('button');
+    installButton.innerText = 'Install App';
+    installButton.onclick = () => {
+        // Show the prompt when the user clicks the install button
+        window.deferredPrompt.prompt();
+        window.deferredPrompt.userChoice
+            .then((choiceResult) => {
+                if (choiceResult.outcome === 'accepted') {
+                    console.log('User accepted the install prompt');
+                } else {
+                    console.log('User dismissed the install prompt');
+                }
+                window.deferredPrompt = null;
+            });
+    };
+    document.body.appendChild(installButton);
+});
