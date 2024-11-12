@@ -1,28 +1,25 @@
-const CACHE_NAME = 'binary-pwa-cache-v1';
+const CACHE_NAME = 'binary-to-decimal-cache';
 const urlsToCache = [
     '/',
     '/index.html',
-    '/style.css',
     '/script.js',
-    '/icons/icon-72x72.png',
-    '/icons/icon-96x96.png',
-    '/icons/icon-128x128.png',
-    '/icons/icon-144x144.png',
-    '/icons/icon-192x192.png',
-    '/icons/icon-512x512.png'
+    '/manifest.json',
+    '/style.css', // Add your CSS file if you have one
+    '/icon.png', // Add your app icon here
 ];
 
-// Install the service worker and cache the assets
+// Install the service worker and cache the files
 self.addEventListener('install', (event) => {
     event.waitUntil(
         caches.open(CACHE_NAME)
             .then((cache) => {
+                console.log('Caching essential files');
                 return cache.addAll(urlsToCache);
             })
     );
 });
 
-// Activate the service worker and clear old caches
+// Activate the service worker
 self.addEventListener('activate', (event) => {
     const cacheWhitelist = [CACHE_NAME];
     event.waitUntil(
@@ -38,15 +35,12 @@ self.addEventListener('activate', (event) => {
     );
 });
 
-// Fetch the assets from the cache or network
+// Fetch the resources from cache or network
 self.addEventListener('fetch', (event) => {
     event.respondWith(
         caches.match(event.request)
-            .then((cachedResponse) => {
-                if (cachedResponse) {
-                    return cachedResponse;
-                }
-                return fetch(event.request);
+            .then((response) => {
+                return response || fetch(event.request);
             })
     );
 });
