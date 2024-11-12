@@ -1,9 +1,9 @@
 # Binary to Decimal Memory Training - web version
-
 A simple app to generate a random set of binary numbers. It displays the numbers in binary on screen, which can then be hidden, and then recalled using decimal format. There are interactive features such as dynamic binary number generation, life feedback, and counters to track performance.
 
 ## Features
 - **Binary number generation:** Generates random 3-bit binary numbers, and displays them for you to convert into decimal - 3-bit binary numbers ensures you only ever get an decimal equivalent of 1-7
+- **Number of groups:** Enter the number of groups you want to generate, where one group is a 3-bit binary number
 - **Input field:** Enter the decimal equivalent of each binary number in the checker field, which will automatically checks your input, and then progresses with a correct answer
 - **Real time feedback:** Provides immediate feedback on your answers, which are colour-coded results (green for correct, red for incorrect)
 - **Progress tracker:** Keep track of where you are with a blue cursor, which moves as you progress
@@ -30,9 +30,11 @@ A simple app to generate a random set of binary numbers. It displays the numbers
 - The generated number grid is responsive in layout
 - The app is dsigned to be simple, and easy to use with a focus on functionality
 
-## Progeressive Web App (PWA) additional notes
+## Desktop version additional notes
+- The number of group feild defaults to 104 which lends itself to placing a PO (person-object) image in a memory palace with 26 locations 
 
-The PWA has been left separate so that we can experiement different development styling for mobile. The key differences in the PWA app is ensuring that number keyboard, and input checker field is specific for iPhone.
+## Progeressive Web App (PWA) additional notes
+The PWA has been left separate so that we can experiement different development styling for mobile.
 
 ### Files overview
 - **service-worker.js:** The JavaScript file that runs in the background to manage caching
@@ -41,3 +43,4 @@ The PWA has been left separate so that we can experiement different development 
 ### Development notes
 - The number keyboard is automatically forced for iPhone users
 - The input field is checked automatically for iPhone users
+- Taking advantage of responsive design, the input field for number of binary numbers to generate defaults to 10
