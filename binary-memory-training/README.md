@@ -32,6 +32,8 @@ A simple app to generate a random set of binary numbers. It displays the numbers
 
 ## Progeressive Web App (PWA) additional notes
 
+The PWA has been left separate so that we can experiement different development styling for mobile. The key differences in the PWA app is ensuring that number keyboard, and input checker field is specific for iPhone.
+
 ### Files overview
 - **service-worker.js:** The JavaScript file that runs in the background to manage caching
 - **manifest.json:** The JSON file that provides metadata about the app, and allows it to be installed on a user's home screen, like a native mobile app
