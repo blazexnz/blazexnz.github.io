@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Binary to Decimal Practice</title>
     <style>
         #binary-container {
@@ -17,8 +19,11 @@
 <body>
     <h1>Binary to Decimal Practice</h1>
     <button onclick="generateBinaryNumbers()">Generate</button>
+    <button onclick="toggleBinaryVisibility()">Hide/Show Binary Numbers</button> <!-- Button to toggle visibility -->
     <div id="binary-container"></div>
     <input type="number" id="decimal-input" placeholder="Enter decimal" />
+    <div id="correct-count">Correct: 0</div>
+    <div id="incorrect-count">Incorrect: 0</div>
     <div id="result"></div>
 
     <script src="script.js"></script>
