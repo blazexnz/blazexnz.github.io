@@ -3,27 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#4CAF50">
+    <link rel="manifest" href="/manifest.json">
     <title>Binary to Decimal Practice</title>
     <style>
         #binary-container {
             display: grid;
-            grid-template-columns: repeat(20, auto);
+            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
             gap: 10px;
             margin-bottom: 20px;
         }
         .binary {
             font-weight: bold;
+            text-align: center;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 10px;
+        }
+        button {
+            margin: 10px;
+        }
+        input {
+            margin-top: 10px;
+            padding: 5px;
+            font-size: 16px;
+        }
+        .counter {
+            margin-top: 10px;
         }
     </style>
 </head>
 <body>
     <h1>Binary to Decimal Practice</h1>
     <button onclick="generateBinaryNumbers()">Generate</button>
-    <button onclick="toggleBinaryVisibility()">Hide/Show Binary Numbers</button> <!-- Button to toggle visibility -->
+    <button onclick="toggleBinaryVisibility()">Hide/Show Binary Numbers</button>
     <div id="binary-container"></div>
-    <input type="number" id="decimal-input" placeholder="Enter decimal" />
-    <div id="correct-count">Correct: 0</div>
-    <div id="incorrect-count">Incorrect: 0</div>
+    <input type="tel" id="decimal-input" placeholder="Enter decimal" inputmode="numeric" />
+    <div id="correct-count" class="counter">Correct: 0</div>
+    <div id="incorrect-count" class="counter">Incorrect: 0</div>
     <div id="result"></div>
 
     <script src="script.js"></script>
