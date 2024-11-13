@@ -7,6 +7,7 @@ This is a simple web app designed to help you practice converting numbers betwee
 - **Conversion modes:** Toggle between **Binary to Decimal**, and **Decimal to Binary** modes
 - **Real time feedback:** Get real time feedback on your answers, colour coding if it's correct (green), or incorrect (red)
 - **Automatic progression:** Correct answers automatically generate the next number (with a short delay)
+- **Progress tracking:** A progress counter will tell you how many answers your have correct
 - **Made for iPhone:** The input field ensures a number keyboard is displayed to iPhone users
 - **Fully responsive:** Design is fully responsive, particularly for iPhones
 
