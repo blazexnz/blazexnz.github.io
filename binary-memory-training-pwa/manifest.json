@@ -1,7 +1,7 @@
 {
-  "name": "Binary to Decimal Practice",
-  "short_name": "Binary Practice",
-  "description": "Practice converting binary numbers to decimal",
+  "name": "Binary Memory Training",
+  "short_name": "Binary Training",
+  "description": "Decode binary numbers to decimal for memory training",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
