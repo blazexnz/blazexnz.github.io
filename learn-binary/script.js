@@ -1,116 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Learn Binary</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Optional for custom styling -->
-    <style>
-        /* Ensure the page is fully responsive */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+document.getElementById('generateBtn').addEventListener('click', generateNumber);
+document.getElementById('answerInput').addEventListener('input', checkAnswer);
 
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.5;
-            padding: 10px;
-        }
+let currentNumber = null;
+let correctAnswer = null;
+let mode = '';
+let correctCount = 0; // Counter for correct answers
 
-        .container {
-            max-width: 100%;
-            margin: auto;
-            padding: 10px;
-            width: 100%;
-        }
+function generateNumber() {
+    const minRange = parseInt(document.getElementById('minRange').value);
+    const maxRange = parseInt(document.getElementById('maxRange').value);
+    mode = document.getElementById('modeToggle').value;
 
-        h2 {
-            text-align: center;
-            font-size: 1.5em;
-            margin-bottom: 20px;
-        }
+    // Generate a random number within the specified range
+    currentNumber = Math.floor(Math.random() * (maxRange - minRange + 1)) + minRange;
 
-        /* Responsive grid for number container */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-            gap: 10px;
-            margin-bottom: 20px;
-        }
+    if (mode === 'binaryToDecimal') {
+        document.getElementById('numberContainer').innerHTML = `<div class="number">${currentNumber.toString(2)}</div>`;
+        correctAnswer = currentNumber; // Decimal is the correct answer
+    } else {
+        document.getElementById('numberContainer').innerHTML = `<div class="number">${currentNumber}</div>`;
+        correctAnswer = currentNumber.toString(2); // Binary is the correct answer
+    }
 
-        .number {
-            padding: 15px;
-            border: 1px solid #ccc;
-            text-align: center;
-            background-color: #f9f9f9;
-            border-radius: 5px;
-        }
+    // Clear input and feedback for the new number
+    document.getElementById('answerInput').value = '';
+    document.getElementById('feedback').textContent = '';
+    document.getElementById('feedback').classList.remove('correct', 'wrong');
+}
 
-        /* Feedback styles */
-        .feedback {
-            font-weight: bold;
-            margin-top: 10px;
-            text-align: center;
-        }
+function checkAnswer() {
+    const userAnswer = document.getElementById('answerInput').value.trim();
+    const feedback = document.getElementById('feedback');
 
-        .correct {
-            color: green;
-        }
+    if (userAnswer === correctAnswer.toString()) {
+        feedback.textContent = 'Correct!';
+        feedback.classList.remove('wrong');
+        feedback.classList.add('correct');
 
-        .wrong {
-            color: red;
-        }
+        // Increment the correct answer counter and update the display
+        correctCount++;
+        document.getElementById('counter').textContent = `Correct Answers: ${correctCount}`;
 
-        /* Input fields */
-        input[type="number"], input[type="text"], select {
-            width: 100%;
-            padding: 10px;
-            margin: 5px 0;
-            font-size: 1rem;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
-
-        button {
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1rem;
-        }
-
-        button:hover {
-            background-color: #0056b3;
-        }
-
-        /* Ensure smaller screen users can interact easily */
-        @media (max-width: 768px) {
-            h2 {
-                font-size: 1.2em;
-            }
-
-            .container {
-                padding: 5px;
-            }
-
-            .grid {
-                grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-            }
-
-            .number {
-                font-size: 1.2em;
-                padding: 10px;
-            }
-
-            button {
-                width: 100%;
-                font-size: 1.2em;
-            }
-
-            input[type="number"], input[type="text"], select {
-                font...
+        // Automatically progress to the next number after a short delay
+        setTimeout(() => {
+            generateNumber();
+        }, 1000);
+    } else {
+        feedback.textContent = 'Incorrect, try again.';
+        feedback.classList.remove('correct');
+        feedback.classList.add('wrong');
+    }
+}
