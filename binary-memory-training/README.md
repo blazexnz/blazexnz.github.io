@@ -31,7 +31,7 @@ A simple app to generate a random set of binary numbers. It displays the numbers
 - The app is dsigned to be simple, and easy to use with a focus on functionality
 
 ## Desktop version additional notes
-- The number of group feild defaults to 104 which lends itself to placing a PO (person-object) image in a memory palace with 26 locations 
+- The number of group field defaults to 104 which lends itself to placing a PO (person-object) image in a memory palace with 26 locations 
 
 ## Progeressive Web App (PWA) additional notes
 The PWA has been left separate so that we can experiement different development styling for mobile.
@@ -43,4 +43,4 @@ The PWA has been left separate so that we can experiement different development 
 ### Development notes
 - The number keyboard is automatically forced for iPhone users
 - The input field is checked automatically for iPhone users
-- Taking advantage of responsive design, the input field for number of binary numbers to generate defaults to 10
+- Taking advantage of responsive design, the input field for number of binary numbers to generate defaults to 20, which lends itself to placing a PO (person-object) image in a memory palace with 5 locations - the optimal balance between screen real estate, and placing images in one section of a memory palace.
