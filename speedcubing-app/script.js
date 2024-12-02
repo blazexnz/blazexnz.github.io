@@ -41,5 +41,6 @@ function createScramble(length) {
 }
 
 function removeScramble(element) {
-  element.remove(); // Remove the clicked scramble from the screen
+  const scrambleContainer = document.getElementById('scrambles');
+  scrambleContainer.removeChild(element); // Remove the clicked scramble
 }
