@@ -7,6 +7,7 @@ This is a simple web app designed to quickly generate scramblers for cube puzzle
 - **Customise number of algorithms:** Choose how many algs you want to display on screen, while 5 is the default so that it's optimised for iPhone
 - **Interactive UI:** Click on a scramble to remove after use
 - **Efficient practice:** Algorithms use minimal moves to save get to a scramble
+- **Cube orientation reminder:** A note to remind you which way to orient the cube while scrambling
 
 
 ## How to use
