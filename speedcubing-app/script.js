@@ -2,15 +2,14 @@ function generateScrambles() {
   const type = document.getElementById('cube-type').value;
   const numberOfAlgorithms = parseInt(document.getElementById('number-of-algorithms').value, 10) || 5;
   const scrambles = [];
-  const moves = {
-    '2x2': 25, // Short scramble for 2x2
-    '3x3': 20, // Standard scramble length for 3x3
-    '4x4': 40, // Longer scramble for 4x4
+  const scrambleLengths = {
+    '2x2': 11, // WCA standard: 9-11 moves for 2x2
+    '3x3': 20, // WCA standard: 18-22 moves for 3x3
+    '4x4': 40, // WCA standard: ~40 moves for 4x4
   };
 
-  // Generate specified number of scrambles
   for (let i = 0; i < numberOfAlgorithms; i++) {
-    scrambles.push(createScramble(moves[type]));
+    scrambles.push(createWCAScramble(scrambleLengths[type]));
   }
 
   // Display scrambles on the page
@@ -20,24 +19,28 @@ function generateScrambles() {
     .join('');
 }
 
-function createScramble(length) {
-  const notations = ['R', 'U', 'L', 'F', 'D', 'B']; // Cube moves
-  const modifiers = ['', "'", '2']; // Move modifiers
+function createWCAScramble(length) {
+  const notations = ['R', 'U', 'L', 'F', 'D', 'B'];
+  const modifiers = ['', "'", '2'];
   let scramble = '';
-  let prev = ''; // Prevent consecutive duplicate moves
+  let previousMove = '';
 
-  // Generate scramble sequence
   for (let i = 0; i < length; i++) {
     let move;
+
+    // Ensure no consecutive duplicate moves
     do {
       move = notations[Math.floor(Math.random() * notations.length)];
-    } while (move === prev); // Avoid repeating the last move
-    prev = move;
+    } while (move === previousMove);
 
+    previousMove = move;
+
+    // Add a random modifier to the move
     const modifier = modifiers[Math.floor(Math.random() * modifiers.length)];
     scramble += `${move}${modifier} `;
   }
-  return scramble.trim(); // Return the scramble string
+
+  return scramble.trim();
 }
 
 function removeScramble(element) {
