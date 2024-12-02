@@ -17,26 +17,33 @@
         body {
             font-family: Arial, sans-serif;
             line-height: 1.5;
-            padding: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            padding: 20px;
+            background-color: #f0f0f0;
         }
 
         .container {
-            max-width: 100%;
-            margin: auto;
-            padding: 10px;
+            max-width: 500px;
             width: 100%;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: center;
         }
 
         h2 {
-            text-align: center;
-            font-size: 1.5em;
+            font-size: 1.8em;
             margin-bottom: 20px;
         }
 
-        /* Responsive grid for number container */
+        /* Adjust the grid for numbers */
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
             gap: 10px;
             margin-bottom: 20px;
         }
@@ -72,6 +79,7 @@
             font-size: 1rem;
             border-radius: 5px;
             border: 1px solid #ccc;
+            box-sizing: border-box;
         }
 
         button {
@@ -91,20 +99,15 @@
         /* Ensure smaller screen users can interact easily */
         @media (max-width: 768px) {
             h2 {
-                font-size: 1.2em;
+                font-size: 1.5em;
             }
 
             .container {
-                padding: 5px;
+                padding: 15px;
             }
 
             .grid {
-                grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-            }
-
-            .number {
-                font-size: 1.2em;
-                padding: 10px;
+                grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
             }
 
             button {
@@ -132,12 +135,13 @@
         <label for="maxRange">Maximum range:</label>
         <input type="number" id="maxRange" value="7"><br><br>
 
-        <button id="generateBtn">Generate Number</button>
         <label for="modeToggle">Mode:</label>
         <select id="modeToggle">
             <option value="binaryToDecimal">Binary to Decimal</option>
             <option value="decimalToBinary">Decimal to Binary</option>
         </select><br><br>
+
+        <button id="generateBtn">Generate Number</button>
 
         <div id="numberContainer" class="grid"></div>
         
