@@ -3,41 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>blazexnz index</title>
+    <meta name="theme-color" content="#4CAF50">
+    <link rel="manifest" href="/manifest.json">
+    <title>Binary Memory Training</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 40px;
+        #binary-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            gap: 10px;
+            margin-bottom: 20px;
         }
-        h1 {
+        .binary {
+            font-weight: bold;
             text-align: center;
         }
-        ul {
-            list-style-type: none;
-            padding: 0;
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 10px;
         }
-        li {
-            margin: 10px 0;
+        button {
+            margin: 10px;
         }
-        a {
-            text-decoration: none;
-            color: #0066cc;
+        input {
+            margin-top: 10px;
+            padding: 5px;
+            font-size: 16px;
         }
-        a:hover {
-            text-decoration: underline;
+        .counter {
+            margin-top: 10px;
         }
     </style>
 </head>
 <body>
-    <h1>blazexnz app directory</h1>
-    <ul>
-        <li><a href="./binary-memory-training/">Binary memory training app</a></li>
-        <li><a href="./binary-memory-training-pwa/">Binary memory training app - PWA version</a></li>
-        <li><a href="./learn-binary/">Learn binary app</a></li>
-        <br>
-        <br>
-        <li><a href="https://github.com/blazexnz/blazexnz.github.io/tree/main">Go to repo</a></li>
-        <!-- Add more links as needed -->
-    </ul>
+    <h1>Binary Memory Training</h1>
+    
+    <!-- Input for number of binary groups -->
+    <input type="number" id="number-of-groups" placeholder="Number of groups" min="1" value="20" />
+    
+    <button onclick="generateBinaryNumbers()">Generate</button>
+    <button onclick="toggleBinaryVisibility()">Hide/Show Binary Numbers</button>
+    <div id="binary-container"></div>
+    <input type="tel" id="decimal-input" placeholder="Enter decimal" inputmode="numeric" />
+    <div id="correct-count" class="counter">Correct: 0</div>
+    <div id="incorrect-count" class="counter">Incorrect: 0</div>
+    <div id="result"></div>
+
+    <script src="script.js"></script>
+    <script>
+      // Register the service worker
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
+          console.log('Service Worker registered with scope:', registration.scope);
+        }).catch(function(error) {
+          console.log('Service Worker registration failed:', error);
+        });
+      }
+    </script>
 </body>
 </html>
