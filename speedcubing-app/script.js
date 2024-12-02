@@ -1,5 +1,6 @@
 function generateScrambles() {
   const type = document.getElementById('cube-type').value;
+  const numberOfAlgorithms = parseInt(document.getElementById('number-of-algorithms').value, 10) || 5;
   const scrambles = [];
   const moves = {
     '2x2': 25, // Short scramble for 2x2
@@ -7,14 +8,15 @@ function generateScrambles() {
     '4x4': 40, // Longer scramble for 4x4
   };
 
-  // Generate 5 scrambles
-  for (let i = 0; i < 5; i++) {
+  // Generate specified number of scrambles
+  for (let i = 0; i < numberOfAlgorithms; i++) {
     scrambles.push(createScramble(moves[type]));
   }
 
   // Display scrambles on the page
-  document.getElementById('scrambles').innerHTML = scrambles
-    .map(scramble => `<p>${scramble}</p>`)
+  const scrambleContainer = document.getElementById('scrambles');
+  scrambleContainer.innerHTML = scrambles
+    .map(scramble => `<p class="scramble" onclick="removeScramble(this)">${scramble}</p>`)
     .join('');
 }
 
@@ -36,4 +38,8 @@ function createScramble(length) {
     scramble += `${move}${modifier} `;
   }
   return scramble.trim(); // Return the scramble string
+}
+
+function removeScramble(element) {
+  element.remove(); // Remove the clicked scramble from the screen
 }
