@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="manifest" href="/manifest.json">
+  <title>Speed Cubing Scrambler</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+    #scrambles {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Speed Cubing Scrambler</h1>
+  <label for="cube-type">Select Cube:</label>
+  <select id="cube-type">
+    <option value="2x2">2x2</option>
+    <option value="3x3" selected>3x3</option>
+    <option value="4x4">4x4</option>
+  </select>
+  <button onclick="generateScrambles()">Generate Scrambles</button>
+  <div id="scrambles"></div>
+
+  <!-- Include the main script -->
+  <script src="script.js"></script>
+
+  <!-- Register the service worker -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('./sw.js').then(() => {
+        console.log('Service Worker registered successfully.');
+      }).catch(error => {
+        console.error('Service Worker registration failed:', error);
+      });
+    }
+  </script>
+</body>
+</html>
