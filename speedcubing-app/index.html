@@ -18,6 +18,11 @@
       cursor: pointer;
       margin: 5px 0;
     }
+    .note {
+      margin-top: 10px;
+      font-size: 0.9em;
+      color: #555;
+    }
   </style>
 </head>
 <body>
@@ -33,6 +38,7 @@
   <input type="number" id="number-of-algorithms" value="5" min="1">
   <br><br>
   <button onclick="generateScrambles()">Generate Scrambles</button>
+  <p class="note">Hold the cube: white on top, green facing you.</p>
   <div id="scrambles"></div>
 
   <script src="script.js"></script>
