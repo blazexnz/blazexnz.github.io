@@ -71,8 +71,10 @@ function updateQuestion() {
 
   if (currentMode === 'base-to-target') {
     numberDisplay.textContent = currentNumber;
+    answerInput.setAttribute('inputmode', 'text'); // Regular input for base-to-target
   } else {
     numberDisplay.textContent = numbers[currentLanguage][range.indexOf(currentNumber)];
+    answerInput.setAttribute('inputmode', 'numeric'); // Numeric input for target-to-base
   }
 }
 
@@ -107,8 +109,7 @@ languageToggle.addEventListener('change', (e) => {
 
 modeToggle.addEventListener('change', (e) => {
   currentMode = e.target.value;
-  answerInput.type = currentMode === 'target-to-base' ? 'number' : 'text';
-  updateQuestion();
+  updateQuestion(); // Automatically update input mode when mode changes
 });
 
 answerInput.addEventListener('input', checkAnswer);
