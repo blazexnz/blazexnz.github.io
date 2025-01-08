@@ -1,127 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Language Practice App</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 20px;
-    }
-    h1 {
-      text-align: center;
-    }
-    .container {
-      max-width: 500px;
-      margin: 0 auto;
-    }
-    .form-group {
-      margin-bottom: 15px;
-    }
-    label {
-      display: block;
-      margin-bottom: 5px;
-    }
-    select, input, button {
-      width: 100%;  /* Ensure full width for inputs, selects, and buttons */
-      padding: 10px;
-      font-size: 16px;
-      box-sizing: border-box;  /* Include padding in the width calculation */
-    }
-    #number-display {
-      font-size: 24px;
-      text-align: center;
-      margin: 20px 0;
-    }
-    #feedback {
-      color: red;
-      text-align: center;
-      margin-top: 10px;
-    }
-    #correct-answer {
-      color: blue;
-      text-align: center;
-      margin-top: 10px;
-    }
-    #score-display {
-      text-align: center;
-      margin-top: 15px;
-    }
-    .form-group {
-      display: block;  /* Make sure inputs are stacked vertically */
-    }
-    .form-group input {
-      width: 100%;
-    }
-    .form-group select {
-      width: 100%;
-    }
-    .inline-inputs {
-      display: flex;
-      justify-content: space-between;
-    }
-    .inline-inputs input {
-      width: 48%;  /* Ensure min and max number inputs are on the same line */
-    }
-  </style>
-</head>
-<body>
-  <h1>Language Practice</h1>
-  <div class="container">
-    <div class="form-group">
-      <label for="language-toggle">Choose Language:</label>
-      <select id="language-toggle">
-        <option value="vietnamese">Vietnamese</option>
-        <option value="tagalog">Tagalog</option>
-      </select>
-    </div>
-
-    <div class="form-group">
-      <label for="mode-toggle">Mode:</label>
-      <select id="mode-toggle">
-        <option value="base-to-target">Base to Target</option>
-        <option value="target-to-base">Target to Base</option>
-      </select>
-    </div>
-
-    <div class="form-group inline-inputs">
-      <div>
-        <label for="min-number">Min Number:</label>
-        <input type="number" id="min-number" value="0" min="0">
-      </div>
-      <div>
-        <label for="max-number">Max Number:</label>
-        <input type="number" id="max-number" value="10" min="0">
-      </div>
-    </div>
-
-    <div class="form-group">
-      <button id="start-over">Start Over</button>
-    </div>
-
-    <div id="number-display"></div>
-
-    <div class="form-group">
-      <label for="answer-input">Your Answer:</label>
-      <input type="text" id="answer-input" placeholder="Enter your answer">
-    </div>
-
-    <div id="feedback"></div>
-    <div id="correct-answer"></div>
-
-    <div id="score-display">Score: 0</div>
-
-    <div class="form-group">
-      <button id="show-answer">Show Answer</button>
-    </div>
-  </div>
-
-  <script src="script.js"></script>
-</body>
-</html>
-
-<script>
 const numbers = {
   vietnamese: ['một', 'hai', 'ba', 'bốn', 'năm', 'sáu', 'bảy', 'tám', 'chín', 'mười',
                'một nghìn', 'mười nghìn', 'một trăm nghìn', 'một triệu', 'mười triệu', 'một trăm triệu', 'một tỷ'],
@@ -198,13 +74,6 @@ function updateQuestion() {
   } else {
     numberDisplay.textContent = numbers[currentLanguage][range.indexOf(currentNumber)];
   }
-
-  // Force number keyboard for target-to-base mode
-  if (currentMode === 'target-to-base') {
-    answerInput.type = 'tel'; // Change input type to 'tel' to trigger numeric keyboard
-  } else {
-    answerInput.type = 'text'; // Revert to text input for other modes
-  }
 }
 
 function checkAnswer() {
@@ -238,6 +107,7 @@ languageToggle.addEventListener('change', (e) => {
 
 modeToggle.addEventListener('change', (e) => {
   currentMode = e.target.value;
+  answerInput.type = currentMode === 'target-to-base' ? 'number' : 'text'; // Dynamically update keyboard type
   updateQuestion();
 });
 
@@ -267,4 +137,3 @@ minNumberInput.addEventListener('input', () => {
 
 // Initialize the first question
 updateQuestion();
-</script>
