@@ -63,7 +63,7 @@ function updateQuestion() {
   correctAnswerDisplay.classList.add('hidden');
   answerInput.value = '';
 
-  const min = Math.max(parseInt(minNumberInput.value, 10), 1); // Ensure min value is 1
+  const min = parseInt(minNumberInput.value, 10);
   const max = parseInt(maxNumberInput.value, 10);
   const range = generateNumberRange(min, max);
 
@@ -71,10 +71,8 @@ function updateQuestion() {
 
   if (currentMode === 'base-to-target') {
     numberDisplay.textContent = currentNumber;
-    answerInput.setAttribute('inputmode', 'text'); // Regular input for base-to-target
   } else {
     numberDisplay.textContent = numbers[currentLanguage][range.indexOf(currentNumber)];
-    answerInput.setAttribute('inputmode', 'numeric'); // Numeric input for target-to-base
   }
 }
 
@@ -109,7 +107,8 @@ languageToggle.addEventListener('change', (e) => {
 
 modeToggle.addEventListener('change', (e) => {
   currentMode = e.target.value;
-  updateQuestion(); // Automatically update input mode when mode changes
+  answerInput.type = currentMode === 'target-to-base' ? 'number' : 'text'; // Dynamically update keyboard type
+  updateQuestion();
 });
 
 answerInput.addEventListener('input', checkAnswer);
@@ -131,6 +130,7 @@ showAnswerButton.addEventListener('click', () => {
 });
 
 // Ensure the minimum number is set to 1 on input
+minNumberInput.value = Math.max(parseInt(minNumberInput.value, 10), 1);
 minNumberInput.addEventListener('input', () => {
   minNumberInput.value = Math.max(parseInt(minNumberInput.value, 10), 1);
 });
