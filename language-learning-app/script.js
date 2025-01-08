@@ -63,7 +63,7 @@ function updateQuestion() {
   correctAnswerDisplay.classList.add('hidden');
   answerInput.value = '';
 
-  const min = parseInt(minNumberInput.value, 10);
+  const min = Math.max(parseInt(minNumberInput.value, 10), 1); // Ensure min value is 1
   const max = parseInt(maxNumberInput.value, 10);
   const range = generateNumberRange(min, max);
 
@@ -107,7 +107,7 @@ languageToggle.addEventListener('change', (e) => {
 
 modeToggle.addEventListener('change', (e) => {
   currentMode = e.target.value;
-  answerInput.type = currentMode === 'target-to-base' ? 'number' : 'text'; // Dynamically update keyboard type
+  answerInput.type = currentMode === 'target-to-base' ? 'number' : 'text';
   updateQuestion();
 });
 
@@ -130,7 +130,6 @@ showAnswerButton.addEventListener('click', () => {
 });
 
 // Ensure the minimum number is set to 1 on input
-minNumberInput.value = Math.max(parseInt(minNumberInput.value, 10), 1);
 minNumberInput.addEventListener('input', () => {
   minNumberInput.value = Math.max(parseInt(minNumberInput.value, 10), 1);
 });
