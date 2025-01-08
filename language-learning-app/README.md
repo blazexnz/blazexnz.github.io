@@ -10,6 +10,7 @@ This is a simple web app designed to help you practice converting numbers betwee
 - **Automatic progression:** Correct answers automatically generate the next number (with a short delay).
 - **Progress tracking:** A score counter keeps track of how many answers you've gotten correct.
 - **Flexible input:** For Vietnamese, you can input the word in either the Vietnamese alphabet (with diacritics) or the English alphabet (without diacritics).
+- **Dynamic input:** If you're in target to base (word to number) the number keyboard will automatically pop up.
 - **Responsive design:** The app layout is fully responsive, ensuring it works well across different screen sizes, particularly on mobile devices.
 
 ## How to use
