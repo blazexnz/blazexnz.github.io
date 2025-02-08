@@ -6,7 +6,6 @@ This is a simple web app designed to generate random words or numbers. You can c
 - **Mode selector:** Choose whether you want to generate random words or numbers
 - **Customise number of items:** Select how many items to generate, with a default of 5
 - **Toggle visibility:** Hide or show the generated list with the click of a button
-- **Reveal list:** You can click anywhere on the screen to reveal the list one by one, this however also applies to the intial list
 - **Words list:** The app now generates random words from a list of 500 common everyday nouns instead of fetching from an API
 
 ## How to use
