@@ -5,8 +5,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const countInput = document.getElementById("count");
     const resultList = document.getElementById("resultList");
     let isHidden = false;
+    let currentIndex = 0; // To keep track of which word/item to show
 
-    // Array of 500 basic everyday nouns
+ // Array of 500 basic everyday nouns
     const words = [
         "apple", "banana", "book", "bottle", "chair", "clock", "cup", "desk", "door", "egg",
         "fan", "flag", "flower", "fork", "glass", "hat", "key", "lamp", "leaf", "letter",
@@ -45,20 +46,32 @@ document.addEventListener("DOMContentLoaded", function () {
         const mode = modeSelect.value;
         const count = Math.max(1, parseInt(countInput.value) || 5);
         resultList.innerHTML = ""; // Clear previous results
+        currentIndex = 0; // Reset the index
 
+        let itemsToShow = [];
         if (mode === "word") {
             const shuffledWords = [...words].sort(() => Math.random() - 0.5).slice(0, count);
-            shuffledWords.forEach(word => {
-                const listItem = document.createElement("li");
-                listItem.textContent = word;
-                resultList.appendChild(listItem);
-            });
+            itemsToShow = shuffledWords;
         } else {
             for (let i = 0; i < count; i++) {
-                const listItem = document.createElement("li");
-                listItem.textContent = Math.floor(Math.random() * 100); // Random number 0-99
-                resultList.appendChild(listItem);
+                itemsToShow.push(Math.floor(Math.random() * 100)); // Random number 0-99
             }
+        }
+
+        // Add all items to the list but keep them hidden initially
+        itemsToShow.forEach(item => {
+            const listItem = document.createElement("li");
+            listItem.textContent = item;
+            listItem.style.display = "none"; // Hide all initially
+            resultList.appendChild(listItem);
+        });
+    });
+
+    document.addEventListener("click", function () {
+        if (currentIndex < resultList.children.length) {
+            // Reveal the next item on the list
+            resultList.children[currentIndex].style.display = "block";
+            currentIndex++;
         }
     });
 
