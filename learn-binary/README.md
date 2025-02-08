@@ -12,7 +12,7 @@ This is a simple web app designed to help you practice converting numbers betwee
 - **Fully responsive:** Design is fully responsive, particularly for iPhones
 
 ## How to use
-1. **Set range:** Enter the minimum, and maximum range for the number generation - the default min is 0, and the default max is 7
+1. **Set range:** Enter the minimum, and maximum range for the number generation - the default min is 0, and the default max is 7 (optimised for memory training)
 2. **Select mode:** Choose your mode from the drop down to convert binary to decimal, or decimal to binary
 3. **Generate number:** To begin, click "Generate Number"
 4. **Enter answer:** Enter your number, and the app will automatically check it, and progress if correct
