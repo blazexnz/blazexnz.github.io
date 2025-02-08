@@ -37,11 +37,10 @@
 <body>
     <h1>Binary Memory Training</h1>
     
-    <!-- Input for number of binary groups -->
     <input type="number" id="number-of-groups" placeholder="Number of groups" min="1" value="20" />
     
-    <button onclick="generateBinaryNumbers()">Generate</button>
-    <button onclick="toggleBinaryVisibility()">Hide/Show Binary Numbers</button>
+    <button id="generate-btn">Generate</button>
+    <button id="toggle-btn">Hide/Show Binary Numbers</button>
     <div id="binary-container"></div>
     <input type="tel" id="decimal-input" placeholder="Enter decimal" inputmode="numeric" />
     <div id="correct-count" class="counter">Correct: 0</div>
