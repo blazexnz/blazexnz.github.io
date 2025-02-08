@@ -9,6 +9,8 @@ A simple app to generate a random set of binary numbers. It displays the numbers
 - **Progress tracker:** Keep track of where you are with a blue cursor, which moves as you progress
 - **Counters:** Keeps track of the number of correct, and incorrect answers
 - **Binary visibility toggle:** You can hide, or show the generated binary numbers during your practice session
+- **Optimised for iPhone:** The number keyboard is forced for iPhone users
+- **Iput field:** The default is 20 (which lends itself to picking a PO (person-object) image in a memory palace with 5 locations. If you want to maximise a memory palace with 26 locations, then input 104 
 
 ## How to use
 1. Open the app in your web browser
@@ -34,13 +36,4 @@ A simple app to generate a random set of binary numbers. It displays the numbers
 - The number of group field defaults to 104 which lends itself to placing a PO (person-object) image in a memory palace with 26 locations 
 
 ## Progeressive Web App (PWA) additional notes
-The PWA has been left separate so that we can experiement different development styling for mobile.
-
-### Files overview
-- **service-worker.js:** The JavaScript file that runs in the background to manage caching
-- **manifest.json:** The JSON file that provides metadata about the app, and allows it to be installed on a user's home screen, like a native mobile app
-
-### Development notes
-- The number keyboard is automatically forced for iPhone users
-- The input field is checked automatically for iPhone users
-- Taking advantage of responsive design, the input field for number of binary numbers to generate defaults to 20, which lends itself to placing a PO (person-object) image in a memory palace with 5 locations - the optimal balance between screen real estate, and placing images in one section of a memory palace.
+Originally had a separate desktop and PWA version, but the caching wasn't working, so the PWA was deleted, and the only change made to the desktop version was to default the input field to 20 rather than 104.  The service-worker.js and manifest.json was deleted.
