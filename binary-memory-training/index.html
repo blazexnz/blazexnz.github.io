@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#4CAF50">
-    <link rel="manifest" href="/manifest.json">
     <title>Binary Memory Training</title>
     <style>
         #binary-container {
@@ -37,7 +36,10 @@
 </head>
 <body>
     <h1>Binary Memory Training</h1>
-    <input type="number" id="group-count" placeholder="Enter number of groups" value="104" />
+    
+    <!-- Input for number of binary groups -->
+    <input type="number" id="number-of-groups" placeholder="Number of groups" min="1" value="20" />
+    
     <button onclick="generateBinaryNumbers()">Generate</button>
     <button onclick="toggleBinaryVisibility()">Hide/Show Binary Numbers</button>
     <div id="binary-container"></div>
