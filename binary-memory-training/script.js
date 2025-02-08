@@ -2,15 +2,9 @@ let binaryNumbers = [];
 let currentIndex = 0;
 let correctCount = 0; // Counter for correct answers
 let incorrectCount = 0; // Counter for incorrect answers
-let binaryVisible = true; // Toggle visibility of binary numbers
+let binaryVisible = true; // Variable to track visibility of binary numbers
 
 function generateBinaryNumbers() {
-    const groupCount = parseInt(document.getElementById('group-count').value);
-    if (isNaN(groupCount) || groupCount <= 0) {
-        alert('Please enter a valid number of groups.');
-        return;
-    }
-
     const container = document.getElementById('binary-container');
     container.innerHTML = ''; // Clear previous numbers
     binaryNumbers = []; // Reset the array
@@ -18,7 +12,9 @@ function generateBinaryNumbers() {
     correctCount = 0; // Reset correct counter
     incorrectCount = 0; // Reset incorrect counter
 
-    for (let i = 0; i < groupCount; i++) {
+    const numberOfGroups = parseInt(document.getElementById('number-of-groups').value) || 10; // Get the number of groups from the input field
+
+    for (let i = 0; i < numberOfGroups; i++) {
         let randomBinary = Math.floor(Math.random() * 8).toString(2).padStart(3, '0');
         binaryNumbers.push(randomBinary);
 
@@ -75,12 +71,9 @@ function checkAnswer() {
     }
 }
 
+// Function to toggle visibility of binary numbers
 function toggleBinaryVisibility() {
     const container = document.getElementById('binary-container');
-    if (binaryVisible) {
-        container.style.display = 'none';
-    } else {
-        container.style.display = 'grid';
-    }
     binaryVisible = !binaryVisible;
+    container.style.display = binaryVisible ? 'grid' : 'none'; // Show or hide the binary numbers container
 }
