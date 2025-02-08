@@ -1,4 +1,4 @@
-# Binary to Decimal Memory Training - web version
+# Binary to Decimal Memory Training
 A simple app to generate a random set of binary numbers. It displays the numbers in binary on screen, which can then be hidden, and then recalled using decimal format. There are interactive features such as dynamic binary number generation, life feedback, and counters to track performance.
 
 ## Features
@@ -6,7 +6,7 @@ A simple app to generate a random set of binary numbers. It displays the numbers
 - **Number of groups:** Enter the number of groups you want to generate, where one group is a 3-bit binary number
 - **Input field:** Enter the decimal equivalent of each binary number in the checker field, which will automatically checks your input, and then progresses with a correct answer
 - **Real time feedback:** Provides immediate feedback on your answers, which are colour-coded results (green for correct, red for incorrect)
-- **Progress tracker:** Keep track of where you are with a blue cursor, which moves as you progress
+- **Progress tracker:** Keep track of where you are with a light blue cursor, which moves as you progress
 - **Counters:** Keeps track of the number of correct, and incorrect answers
 - **Binary visibility toggle:** You can hide, or show the generated binary numbers during your practice session
 - **Optimised for iPhone:** The number keyboard is forced for iPhone users
