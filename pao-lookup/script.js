@@ -107,19 +107,17 @@ document.getElementById("numberInput").addEventListener("input", function () {
 
     if (paoData[num]) {
         const { person, action, object, card } = paoData[num];
-        let cardColor = "black"; // Default to black for spades and clubs
+        let formattedCard = card;
 
-        // Check if card is a heart or diamond and set the color to red
-        if (card.includes("♥") || card.includes("♦")) {
-            cardColor = "red";
-        }
+        // Check if card is a heart or diamond and wrap the symbol in a span
+        formattedCard = formattedCard.replace(/(♥|♦)/g, '<span style="color: red;">$1</span>');
 
-        // Create the result text with the correct card color
+        // Create the result text with the formatted card
         const resultText = `
             <p><strong>Person:</strong> ${person}</p>
             <p><strong>Action:</strong> ${action}</p>
             <p><strong>Object:</strong> ${object}</p>
-            <p><strong>Card:</strong> <span style="color: ${cardColor}">${card}</span></p>
+            <p><strong>Card:</strong> ${formattedCard}</p>
         `;
         
         resultDiv.innerHTML = resultText; // Set the result text in the div
