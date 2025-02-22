@@ -101,25 +101,45 @@ const paoData = {
     "99": { person: "Jay Z (99 Problems)", action: "Rapping 99 problems with NYC cap", object: "NYC cap", card: "" }
 };
 
-document.getElementById("numberInput").addEventListener("input", function () {
-    const num = this.value.padStart(2, "0"); // Ensure two-digit format
+
+let currentIndex = 0; // Initialize to 0 or any starting index
+
+// Function to display PAO data based on the current index
+function displayResult(index) {
+    const num = index.toString().padStart(2, "0"); // Ensure two-digit format
     const resultDiv = document.getElementById("result");
-
-    if (paoData[num]) {
-        const { person, action, object, card } = paoData[num];
-        let formattedCard = card;
-
-        // Check if card is a heart or diamond and wrap the symbol in a span
-        formattedCard = formattedCard.replace(/(♥|♦)/g, '<span style="color: red;">$1</span>');
-
-        // Create the result text with the formatted card
-        const resultText = `
-            <p><strong>Person:</strong> ${person}</p>
-            <p><strong>Action:</strong> ${action}</p>
-            <p><strong>Object:</strong> ${object}</p>
-            <p><strong>Card:</strong> ${formattedCard}</p>
-        `;
+    const paoEntry = paoData[num];
+    if (paoEntry) {
+        // Check for diamonds or hearts in the card and style the symbol in red
+        let cardSymbol = paoEntry.card;
+        if (cardSymbol.includes('♦') || cardSymbol.includes('♥')) {
+            cardSymbol = cardSymbol.replace(/([♦♥])/g, '<span style="color:red;">$1</span>'); // Wrap the symbol in red
+        }
         
-        resultDiv.innerHTML = resultText; // Set the result text in the div
+        resultDiv.innerHTML = `
+            <p><strong>Person:</strong> ${paoEntry.person}</p>
+            <p><strong>Action:</strong> ${paoEntry.action}</p>
+            <p><strong>Object:</strong> ${paoEntry.object}</p>
+            <p><strong>Card:</strong> ${cardSymbol}</p> <!-- Updated card with potential red color for symbols -->
+        `;
+    } else {
+        resultDiv.innerHTML = "<p>No data found for this number.</p>";
+    }
+}
+
+// Event listener for number input
+document.getElementById("numberInput").addEventListener("input", function () {
+    const num = this.value.padStart(2, "0");
+    currentIndex = parseInt(num, 10);
+    displayResult(currentIndex); // Update the result when a number is entered
+});
+
+// Event listener to increment index with a click anywhere on the screen
+document.addEventListener("click", function (event) {
+    // Only increment if the click is not on the input field
+    if (event.target !== document.getElementById("numberInput")) {
+        currentIndex = (currentIndex + 1) % 100; // Increment and loop back after 99
+        document.getElementById("numberInput").value = currentIndex.toString().padStart(2, "0"); // Update input field
+        displayResult(currentIndex); // Update the result based on the new index
     }
 });
