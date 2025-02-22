@@ -27,6 +27,3 @@ For number `10`, the app will display:
 ## Technologies used
 - HTML, CSS, JavaScript
 - Responsive design for mobile devices
-
-## License
-MIT License. Feel free to use and modify this app.
