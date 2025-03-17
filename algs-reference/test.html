@@ -40,23 +40,29 @@
             background-color: #0056b3;
         }
 
+        /* Mobile-specific styles */
         @media screen and (max-width: 768px) {
             table {
                 width: 100%;
                 max-width: none;
-                font-size: 12px;
+                display: block;
+                overflow-x: auto;
+                white-space: nowrap;
             }
             th, td {
-                padding: 2px;
+                font-size: 12px;
+                padding: 3px;
+                white-space: normal;
             }
             img {
-                width: 50px; /* Scale images down for smaller screens */
+                max-width: 100%;
+                height: auto;
             }
         }
     </style>
 </head>
 <body>
-    <h1>Speed Cubing Algorithms</h1>
+    <h1 style="color:red">TEST</h1>
     
     <div class="nav-links">
         <a href="#oll">2-Look OLL</a>
