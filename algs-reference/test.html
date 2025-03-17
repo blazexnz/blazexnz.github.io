@@ -40,26 +40,38 @@
             background-color: #0056b3;
         }
 
-        /* For mobile iPhones and devices with small screens */
-        @media screen and (max-width: 600px) {
+        /* For iPhone */
+        @media only screen and (max-width: 768px) {
             body {
                 margin: 10px;
-            }
-            .nav-links a {
-                padding: 8px 16px;
+                font-size: 14px; /* Adjust font size for smaller screen */
             }
             table {
-                max-width: 100%;
+                max-width: 100%; /* Full width on small devices */
+                margin: 10px auto;
             }
             th, td {
-                font-size: 12px; /* Adjust font size for small screens */
+                padding: 8px; /* Increase padding for better readability */
+            }
+            .nav-links {
+                display: block;
+                text-align: center;
+            }
+            .nav-links a {
+                display: inline-block;
+                margin: 10px;
+                padding: 12px 24px;
+                font-size: 14px;
+            }
+            .footer-link {
+                font-size: 10pt;
             }
         }
 
     </style>
 </head>
 <body>
-    <h1>testing</h1>
+    <h1>another test</h1>
     
     <div class="nav-links">
         <a href="#oll">2-Look OLL</a>
