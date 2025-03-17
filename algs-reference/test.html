@@ -40,29 +40,26 @@
             background-color: #0056b3;
         }
 
-        /* Mobile-specific styles */
-        @media screen and (max-width: 768px) {
+        /* For mobile iPhones and devices with small screens */
+        @media screen and (max-width: 600px) {
+            body {
+                margin: 10px;
+            }
+            .nav-links a {
+                padding: 8px 16px;
+            }
             table {
-                width: 100%;
-                max-width: none;
-                display: block;
-                overflow-x: auto;
-                white-space: nowrap;
+                max-width: 100%;
             }
             th, td {
-                font-size: 12px;
-                padding: 3px;
-                white-space: normal;
-            }
-            img {
-                max-width: 100%;
-                height: auto;
+                font-size: 12px; /* Adjust font size for small screens */
             }
         }
+
     </style>
 </head>
 <body>
-    <h1 style="color:red">TEST</h1>
+    <h1>testing</h1>
     
     <div class="nav-links">
         <a href="#oll">2-Look OLL</a>
