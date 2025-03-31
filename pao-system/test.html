@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PAO System Table</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+        .table-container {
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            min-width: 600px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        .highlight {
+            background-color: lightblue;
+        }
+        .red-suit {
+            color: red;
+        }
+        @media (max-width: 600px) {
+            th, td {
+                padding: 6px;
+                font-size: 14px;
+            }
+        }
+    </style>
+    <script>
+        function jumpToNumber() {
+            var num = document.getElementById("jumpInput").value.padStart(2, '0');
+            var row = document.getElementById("num" + num);
+            if (row) {
+                // Remove any previous highlight
+                var highlightedRow = document.querySelector(".highlight");
+                if (highlightedRow) {
+                    highlightedRow.classList.remove("highlight");
+                }
+                // Highlight the selected row
+                row.classList.add("highlight");
+                row.scrollIntoView({ behavior: "smooth", block: "center" });
+            } else {
+                alert("Number not found in table.");
+            }
+        }
+
+        // Function to handle 'Enter' key press for jumping
+        function handleEnterPress(event) {
+            if (event.key === "Enter") {
+                jumpToNumber();
+            }
+        }
+
+        // Add event listener for 'Enter' key
+        window.onload = function() {
+            document.getElementById("jumpInput").addEventListener("keypress", handleEnterPress);
+        };
+    </script>
+</head>
+<body>
+    <h1>PAO System</h1>
+    <input type="number" id="jumpInput" placeholder="Enter number" min="0" max="99">
+    <button onclick="jumpToNumber()">Jump To</button>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Number</th>
+                    <th>Initials</th>
+                    <th>Person</th>
+                    <th>Image</th>
+                    <th>Action</th>
+                    <th>Object</th>
+                    <th>Cards</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Data Rows -->
+                <tr id="num00"><td>00</td><td>OO</td><td>Ozzy Osbourne</td><td><img src="https://blazexnz.github.io/pao-system/assets/00.png" alt="00" style="width: 200px;"></td><td>Biting head off dove</td><td>Dove</td><td></td></tr>
+
+            </tbody>
+        </table>
+    </div>
+    <script>
+        // Add red color to hearts and diamonds suits
+        document.querySelectorAll('.suit').forEach(function(span) {
+            var suit = span.textContent;
+            if (suit === '♥' || suit === '♦') {
+                span.classList.add('red-suit');
+            }
+        });
+    </script>
+</body>
+</html>
