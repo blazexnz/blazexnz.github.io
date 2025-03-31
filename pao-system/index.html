@@ -57,11 +57,23 @@
                 alert("Number not found in table.");
             }
         }
+
+        // Function to handle 'Enter' key press for jumping
+        function handleEnterPress(event) {
+            if (event.key === "Enter") {
+                jumpToNumber();
+            }
+        }
+
+        // Add event listener for 'Enter' key
+        window.onload = function() {
+            document.getElementById("jumpInput").addEventListener("keypress", handleEnterPress);
+        };
     </script>
 </head>
 <body>
     <h1>PAO System</h1>
-    <input type="number" id="jumpInput" placeholder="Enter number" min="0" max="99">
+    <input type="number" id="jumpInput" placeholder="Enter number" inputmode="numeric">
     <button onclick="jumpToNumber()">Jump To</button>
     <div class="table-container">
         <table>
