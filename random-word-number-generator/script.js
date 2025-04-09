@@ -5,7 +5,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const modeSelect = document.getElementById("mode");
     const countInput = document.getElementById("count");
     const resultList = document.getElementById("resultList");
+    const minusBtn = document.getElementById("minusBtn");
+    const plusBtn = document.getElementById("plusBtn");
+    const counterValue = document.getElementById("counterValue");
+    const resetBtn = document.getElementById("resetBtn");
+    const backToTopBtn = document.getElementById("backToTopBtn");  // Added back to top button reference
     let isHidden = false;
+    let counter = 0;
 
     // Array of 500 basic everyday nouns
     const words = [
@@ -44,8 +50,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     generateBtn.addEventListener("click", function () {
         const mode = modeSelect.value;
-        const count = Math.max(1, parseInt(countInput.value) || 5);
-        resultList.innerHTML = ""; // Clear previous results
+        const count = Math.max(1, parseInt(countInput.value) || 20);
+        resultList.innerHTML = "";
 
         if (mode === "word") {
             const shuffledWords = [...words].sort(() => Math.random() - 0.5).slice(0, count);
@@ -57,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function () {
         } else {
             for (let i = 0; i < count; i++) {
                 const listItem = document.createElement("li");
-                listItem.textContent = Math.floor(Math.random() * 100); // Random number 0-99
+                listItem.textContent = Math.floor(Math.random() * 100);
                 resultList.appendChild(listItem);
             }
         }
@@ -76,4 +82,27 @@ document.addEventListener("DOMContentLoaded", function () {
         const text = Array.from(items).map(item => item.textContent).join("\n");
         navigator.clipboard.writeText(text).catch(err => console.error("Failed to copy:", err));
     });
+
+    minusBtn.addEventListener("click", function () {
+        if (counter > 0) {
+            counter--;
+            counterValue.textContent = counter;
+        }
+    });
+
+    plusBtn.addEventListener("click", function () {
+        counter++;
+        counterValue.textContent = counter;
+    });
+
+    resetBtn.addEventListener("click", function () {
+        counter = 0;
+        counterValue.textContent = counter;
+    });
+
+    // Event listener for "Back to Top" button
+    backToTopBtn.addEventListener("click", function () {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
 });
