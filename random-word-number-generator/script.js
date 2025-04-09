@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     const generateBtn = document.getElementById("generateBtn");
     const toggleBtn = document.getElementById("toggleBtn");
+    const copyBtn = document.getElementById("copyBtn");
     const modeSelect = document.getElementById("mode");
     const countInput = document.getElementById("count");
     const resultList = document.getElementById("resultList");
@@ -66,5 +67,13 @@ document.addEventListener("DOMContentLoaded", function () {
         isHidden = !isHidden;
         resultList.style.display = isHidden ? "none" : "block";
         toggleBtn.textContent = isHidden ? "Show List" : "Hide List";
+    });
+
+    copyBtn.addEventListener("click", function () {
+        const items = resultList.querySelectorAll("li");
+        if (items.length === 0) return;
+
+        const text = Array.from(items).map(item => item.textContent).join("\n");
+        navigator.clipboard.writeText(text).catch(err => console.error("Failed to copy:", err));
     });
 });
