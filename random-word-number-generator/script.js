@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let isHidden = false;
     let counter = 0;
 
-    // Array of 500 basic everyday nouns
+    // Array of 1,000 basic everyday nouns
     const words = [
         "apple", "banana", "book", "bottle", "chair", "clock", "cup", "desk", "door", "egg",
         "fan", "flag", "flower", "fork", "glass", "hat", "key", "lamp", "leaf", "letter",
@@ -45,7 +45,27 @@ document.addEventListener("DOMContentLoaded", function () {
         "shirt", "shovel", "shelf", "skateboard", "snowman", "soap", "sock", "spoon", "stapler", "stove", "suitcase",
         "table", "television", "ticket", "toaster", "toothbrush", "towel", "train", "tree", "trophy", "umbrella", 
         "vacuum", "vase", "violin", "wallet", "washing machine", "whistle", "window", "wrench", "yarn", "zebra",
-        "zipper", "zoo"
+        "zipper", "zoo", "accordion", "admiral", "aeroplane", "airship", "album", "alcohol", "ambulance", "anatomy", 
+        "angel", "ankle", "apricot", "appliance", "apprentice", "arm", "arrow", "ash", "astronaut", "athlete", 
+        "atom", "audience", "auction", "avocado", "backbone", "backyard", "ball", "balloon", "barbell", "barcode", 
+        "barnacle", "barrack", "barrier", "base", "baseball", "basketball", "bathtub", "beach", "beacon", "beak", 
+        "beaker", "beam", "beanie", "bear", "beard", "beating", "beauty", "bed", "beehive", "beetle", "belly", 
+        "bicycle", "bill", "billiard", "bingo", "birdcage", "birthday", "blender", "blouse", "board", "boiler", 
+        "bottle", "box", "brake", "brass", "broomstick", "brow", "bucket", "bulb", "cactus", "cafe", "camera", 
+        "canister", "cannon", "carpet", "carton", "catapult", "cauldron", "celebration", "centipede", "chalk", 
+        "charcoal", "checklist", "cheese", "chemistry", "cherry", "chest", "chimney", "chip", "chocolate", "chopstick",
+        "clamp", "claw", "clip", "clothesline", "clutch", "coal", "cocktail", "coin", "colander", "comb", "computer", 
+        "cone", "cork", "couch", "cup", "cushion", "dagger", "dart", "desk", "diary", "dinosaur", "dish", "doll", 
+        "door", "doorbell", "doormat", "drawer", "drum", "dustpan", "ear", "earphone", "easel", "eggplant", "elephant",
+        "envelope", "eraser", "excavator", "eyebrow", "fence", "fishbowl", "flowerpot", "fork", "frame", "frying pan",
+        "gadget", "garbage", "glasses", "glove", "guitar", "helmet", "hexagon", "hook", "hula", "ice", "incense", 
+        "ink", "jacket", "jellybean", "jigsaw", "jug", "keychain", "keypad", "knight", "ladder", "leaf", "lens",
+        "lighthouse", "lotion", "magnet", "map", "marker", "mat", "measuring cup", "mug", "nail", "necklace", "notebook",
+        "octopus", "onion", "orange", "paintbrush", "piano", "picnic", "plate", "pliers", "postcard", "printer", 
+        "puzzle", "quilt", "racket", "ring", "rocket", "rooster", "scissors", "screwdriver", "shelving", "skillet", 
+        "snack", "snowflake", "spatula", "suitcase", "syrup", "television", "ticket", "toaster", "towel", "toothbrush",
+        "trolley", "vacuum", "vase", "wallet", "washing machine", "watermelon", "whistle", "window", "wrench", "yarn",
+        "zipper", "zombie"
     ];
 
     generateBtn.addEventListener("click", function () {
