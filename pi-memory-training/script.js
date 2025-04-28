@@ -37,7 +37,6 @@ const listData = [
     "881097 HHAONG - hand rail - hulk hogan pulling faces with a meme shirt"
 ];
 
-
 let listItems = [];  // To store the li elements dynamically
 let currentIndex = 0;
 
@@ -70,7 +69,7 @@ function revealNextItem() {
         listItems[currentIndex].style.display = "block"; // Reveal the next item
         currentIndex++;
 
-        // Scroll to the newly revealed item
+        // Scroll to the newly revealed item inside the scrollable list container
         const revealedItem = listItems[currentIndex - 1];
         revealedItem.scrollIntoView({ behavior: "smooth", block: "end" });
     }
