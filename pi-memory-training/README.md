@@ -1,4 +1,4 @@
-# PI Memory Training App
+# Pi Memory Training App
 
 This web app is designed to help you practice and improve your memory using a list of unique and memorable items. The app lets you reveal the items one by one and reset them whenever needed to enhance your recall abilities.
 
