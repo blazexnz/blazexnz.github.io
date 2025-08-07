@@ -5,15 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Rosary Prayer App</title>
   <style>
-    body { 
-      font-family: sans-serif; 
-      padding: 20px; 
-      text-align: center; 
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+      text-align: center;
       background-color: #f0f0f0;
     }
-    select, button { 
-      margin: 10px 0; 
-      padding: 8px 12px; 
+    select, button {
+      margin: 10px 0;
+      padding: 8px 12px;
       font-size: 1rem;
       border-radius: 5px;
       border: 1px solid #ccc;
@@ -76,7 +76,6 @@
     .navigation button:hover {
       background-color: #ddd;
     }
-    /* Visual groups styling */
     .prayer.opening {
       border-color: #7a9cc6;
       background: #e8f0fe;
@@ -92,6 +91,35 @@
     .prayer.mysteries:first-child,
     .prayer.closing:first-child {
       margin-top: 30px;
+    }
+
+    /* New bead container style for right justify */
+    .bead-container {
+      margin-top: 10px;
+    }
+    .bead-container.right-justify {
+      display: flex;
+      justify-content: flex-end;
+      gap: 6px;
+    }
+    
+    .bead {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: #ccc;
+      cursor: pointer;
+      border: 1.5px solid #aaa;
+      transition: background-color 0.3s, border-color 0.3s;
+    }
+    .bead.active {
+      background-color: green;
+      border-color: darkgreen;
+    }
+
+    /* New style to hide beads when .hide-beads class applied */
+    .hide-beads .bead-container {
+      display: none !important;
     }
   </style>
 </head>
@@ -118,11 +146,15 @@
     <option value="Sunday">Sunday</option>
   </select>
 
+  <div style="max-width: 600px; margin: 15px auto; text-align: center;">
+    <button id="decreaseFontBtn">A-</button>
+    <button id="increaseFontBtn">A+</button>
+  </div>
 
-<div style="max-width: 600px; margin: 15px auto; text-align: center;">
-  <button id="decreaseFontBtn">A-</button>
-  <button id="increaseFontBtn">A+</button>
-</div>
+  <!-- New Toggle Button for bead visibility -->
+  <div style="max-width: 600px; margin: 15px auto; text-align: center;">
+    <button id="toggleBeadsBtn">Hide Beads</button>
+  </div>
 
   <div id="prayers"></div>
 
