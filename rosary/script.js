@@ -1,6 +1,6 @@
 const prayers = {
   en: {
-    intro: "In the name of the Father, and of the Son, and of the Holy Spirit. Amen.",
+    signOfTheCross: "In the name of the Father, and of the Son, and of the Holy Spirit. Amen.",
     apostlesCreed: "I believe in God, the Father Almighty... (full text can be expanded)",
     ourFather: "Our Father, who art in heaven... (full text can be expanded)",
     hailMary: "Hail Mary, full of grace... (full text can be expanded)",
@@ -12,7 +12,7 @@ const prayers = {
     signOfTheCross: "In the name of the Father, and of the Son, and of the Holy Spirit. Amen."
   },
   vi: {
-    intro: "Nhân danh Cha và Con và Thánh Thần. Amen.",
+    signOfTheCross: "Nhân danh Cha và Con và Thánh Thần. Amen.",
     apostlesCreed: "Tôi tin kính Đức Chúa Trời là Cha... (full text can be expanded)",
     ourFather: "Lạy Cha chúng con ở trên trời... (full text can be expanded)",
     hailMary: "Kính mừng Maria đầy ơn phúc... (full text can be expanded)",
@@ -24,7 +24,7 @@ const prayers = {
     signOfTheCross: "Nhân danh Cha, và Con, và Thánh Thần. Amen."
   },
   tl: {
-    intro: "Sa ngalan ng Ama, at ng Anak, at ng Espiritu Santo. Amen.",
+    signOfTheCross: "Sa ngalan ng Ama, at ng Anak, at ng Espiritu Santo. Amen.",
     apostlesCreed: "Sumasampalataya ako sa Diyos Amang makapangyarihan sa lahat... (full text can be expanded)",
     ourFather: "Ama namin, sumasalangit Ka... (full text can be expanded)",
     hailMary: "Aba Ginoong Maria, napupuno ka ng grasya... (full text can be expanded)",
@@ -39,7 +39,7 @@ const prayers = {
 
 const titles = {
   en: {
-    intro: "Intro",
+    signOfTheCross: "Sign of the Cross",
     apostlesCreed: "Apostles' Creed",
     ourFather: "Our Father",
     threeHailMarys: "3 Hail Marys",
@@ -53,7 +53,7 @@ const titles = {
     signOfTheCross: "Sign of the Cross"
   },
   vi: {
-    intro: "Mở đầu",
+    signOfTheCross: "Dấu Thánh Giá",
     apostlesCreed: "Kinh Tin Kính",
     ourFather: "Kinh Lạy Cha",
     threeHailMarys: "3 Kinh Kính Mừng",
@@ -67,7 +67,7 @@ const titles = {
     signOfTheCross: "Dấu Thánh Giá"
   },
   tl: {
-    intro: "Panimula",
+    signOfTheCross: "Hudyat ng Krus",
     apostlesCreed: "Paniniwala ng mga Apostol",
     ourFather: "Ama Namin",
     threeHailMarys: "3 Aba Ginoong Maria",
@@ -506,6 +506,7 @@ Sorrowful: [
   }
 };
 
+
 const prayersDiv = document.getElementById("prayers");
 const languageSelect = document.getElementById("languageSelect");
 const daySelect = document.getElementById("daySelect");
@@ -532,7 +533,7 @@ function renderPrayers() {
   let html = "";
 
   // Opening prayers
-  html += `<div class='prayer opening'><strong>${t.intro}:</strong><br>${prayers[lang].intro}</div>`;
+  html += `<div class='prayer opening'><strong>${t.signOfTheCross}:</strong><br>${prayers[lang].signOfTheCross}</div>`;
   html += `<div class='prayer opening'><strong>${t.apostlesCreed}:</strong><br>${prayers[lang].apostlesCreed}</div>`;
   html += `<div class='prayer opening'><strong>${t.ourFather}:</strong><br>${prayers[lang].ourFather}</div>`;
   html += `<div class='prayer opening'><strong>${t.threeHailMarys}:</strong><br>${prayers[lang].hailMary}</div>`;
