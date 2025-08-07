@@ -1,40 +1,175 @@
 const prayers = {
-  en: {
-    signOfTheCross: "In the name of the Father, and of the Son, and of the Holy Spirit. Amen.",
-    apostlesCreed: "I believe in God, the Father Almighty... (full text can be expanded)",
-    ourFather: "Our Father, who art in heaven... (full text can be expanded)",
-    hailMary: "Hail Mary, full of grace... (full text can be expanded)",
-    gloryBe: "Glory be to the Father... (full text can be expanded)",
-    fatima: "O my Jesus, forgive us our sins... (full text can be expanded)",
-    hailHolyQueen: "Hail, holy Queen, Mother of mercy, our life, our sweetness, and our hope. To thee do we cry, poor banished children of Eve; to thee do we send up our sighs, mourning and weeping in this valley of tears. Turn then, most gracious Advocate, thine eyes of mercy toward us; and after this our exile, show unto us the blessed fruit of thy womb, Jesus. O clement, O loving, O sweet Virgin Mary.",
-    closingDialogue: "V. Pray for us, O holy Mother of God. <br>R. That we may be made worthy of the promises of Christ.",
-    closingPrayer: "Let us pray: O God, whose only begotten Son, by His life, death, and resurrection, has purchased for us the rewards of eternal life; grant, we beseech You, that by meditating upon these mysteries of the Most Holy Rosary of the Blessed Virgin Mary, we may imitate what they contain and obtain what they promise, through the same Christ our Lord. Amen.",
-    signOfTheCross: "In the name of the Father, and of the Son, and of the Holy Spirit. Amen."
-  },
-  vi: {
-    signOfTheCross: "Nhân danh Cha và Con và Thánh Thần. Amen.",
-    apostlesCreed: "Tôi tin kính Đức Chúa Trời là Cha... (full text can be expanded)",
-    ourFather: "Lạy Cha chúng con ở trên trời... (full text can be expanded)",
-    hailMary: "Kính mừng Maria đầy ơn phúc... (full text can be expanded)",
-    gloryBe: "Sáng danh Đức Chúa Cha... (full text can be expanded)",
-    fatima: "Lạy Chúa Giêsu, xin tha tội cho chúng con... (full text can be expanded)",
-    hailHolyQueen: "Kính mừng Nữ Vương Thiên Đàng, Mẹ Nhân Lành, đời chúng con, niềm vui, sự cậy trông. Chúng con kêu cầu Mẹ, những kẻ con cái lưu đầy tội lỗi. Chúng con thở than, khóc lóc trong thung lũng đắng cay. Xin Mẹ nhìn đến chúng con với ánh mắt từ bi. Sau cuộc đời lưu đày này, xin dẫn chúng con đến gặp Con Mẹ là Chúa Giêsu, Đấng đầy nhân từ, đầy yêu thương.",
-    closingDialogue: "V. Cầu cho chúng con, Mẹ Thiên Chúa. <br>Đ. Để chúng con được xứng đáng với những lời hứa của Đức Kitô.",
-    closingPrayer: "Lạy Thiên Chúa, Đấng đã ban Con Một duy nhất của Ngài qua cuộc sống, cái chết và sự phục sinh để chuộc tội cho chúng con; xin cho chúng con nhờ suy niệm các mầu nhiệm Mân Côi của Mẹ Maria, bắt chước những gì chúng chứa đựng và được hưởng những lời hứa, nhờ chính Đức Kitô, Chúa chúng con. Amen.",
-    signOfTheCross: "Nhân danh Cha, và Con, và Thánh Thần. Amen."
-  },
-  tl: {
-    signOfTheCross: "Sa ngalan ng Ama, at ng Anak, at ng Espiritu Santo. Amen.",
-    apostlesCreed: "Sumasampalataya ako sa Diyos Amang makapangyarihan sa lahat... (full text can be expanded)",
-    ourFather: "Ama namin, sumasalangit Ka... (full text can be expanded)",
-    hailMary: "Aba Ginoong Maria, napupuno ka ng grasya... (full text can be expanded)",
-    gloryBe: "Luwalhati sa Ama, at sa Anak... (full text can be expanded)",
-    fatima: "O Hesus ko, patawarin Mo kami sa aming mga sala... (full text can be expanded)",
-    hailHolyQueen: "Aba, Reyna ng langit, Ina ng awa, buhay namin, tamis namin at pag-asa. Sa'yo kami ay lumalapit, mga dukhang anak ni Eva. Sa'yo kami ay humihiling ng awa, sa gitna ng mga luha at paghihirap ng buhay. Tingnan mo kami, O mahabagin na Tagapamagitan. Pagkatapos ng aming pagdurusa, ipakita mo sa amin ang biyaya ng iyong Anak, si Hesus na aming Panginoon.",
-    closingDialogue: "V. Ipagdasal mo kami, O banal na Ina ng Diyos. <br>R. Upang kami'y maging karapat-dapat sa mga pangako ni Kristo.",
-    closingPrayer: "Manalangin tayo: O Diyos, na sa buhay, kamatayan, at pagkabuhay na mag-uli ng Iyong Bugtong na Anak ay nagbayad para sa amin ng gantimpala ng buhay na walang hanggan; ipagkaloob mo po sa amin na sa pagninilay sa mga misteryo ng Banal na Rosaryo ni Birheng Maria ay maipagpamalas namin ang mga nilalaman nito at matamo ang mga ipinangako, sa pamamagitan ni Kristo na aming Panginoon. Amen.",
-    signOfTheCross: "Sa ngalan ng Ama, at ng Anak, at ng Espiritu Santo. Amen."
-  }
+en: {
+  signOfTheCross: "In the name of the Father, and of the Son, and of the Holy Spirit. Amen.",
+  apostlesCreed: `I believe in God, the Father Almighty, Creator of heaven and earth;  
+I believe in Jesus Christ, His only Son, our Lord;  
+who was conceived by the Holy Spirit, born of the Virgin Mary,  
+suffered under Pontius Pilate, was crucified, died, and was buried;  
+He descended into hell; on the third day He rose again from the dead;  
+He ascended into heaven, and is seated at the right hand of God the Father Almighty;  
+from there He will come to judge the living and the dead.  
+I believe in the Holy Spirit, the holy Catholic Church,  
+the communion of saints, the forgiveness of sins,  
+the resurrection of the body, and life everlasting. Amen.`,
+  ourFather: `Our Father, who art in heaven,  
+hallowed be Thy name;  
+Thy kingdom come;  
+Thy will be done on earth as it is in heaven.  
+Give us this day our daily bread;  
+and forgive us our trespasses,  
+as we forgive those who trespass against us;  
+and lead us not into temptation,  
+but deliver us from evil. Amen.`,
+  hailMary: `Hail Mary, full of grace,  
+the Lord is with thee;  
+blessed art thou among women,  
+and blessed is the fruit of thy womb, Jesus.  
+Holy Mary, Mother of God,  
+pray for us sinners,  
+now and at the hour of our death. Amen.`,
+  gloryBe: `Glory be to the Father,  
+and to the Son,  
+and to the Holy Spirit,  
+as it was in the beginning, is now, and ever shall be,  
+world without end. Amen.`,
+  fatima: `O my Jesus, forgive us our sins,  
+save us from the fires of hell,  
+lead all souls to Heaven,  
+especially those most in need of Thy mercy. Amen.`,
+  hailHolyQueen: `Hail, holy Queen, Mother of mercy,  
+our life, our sweetness, and our hope.  
+To thee do we cry, poor banished children of Eve;  
+to thee do we send up our sighs, mourning and weeping in this valley of tears.  
+Turn then, most gracious Advocate, thine eyes of mercy toward us;  
+and after this our exile, show unto us the blessed fruit of thy womb, Jesus.  
+O clement, O loving, O sweet Virgin Mary.`,
+  closingDialogue: `V. Pray for us, O holy Mother of God.  
+R. That we may be made worthy of the promises of Christ.`,
+  closingPrayer: `Let us pray:  
+O God, whose only begotten Son, by His life, death, and resurrection,  
+has purchased for us the rewards of eternal life;  
+grant, we beseech You,  
+that by meditating upon these mysteries of the Most Holy Rosary of the Blessed Virgin Mary,  
+we may imitate what they contain and obtain what they promise,  
+through the same Christ our Lord. Amen.`,
+  signOfTheCross: "In the name of the Father, and of the Son, and of the Holy Spirit. Amen."
+},
+
+vi: {
+  signOfTheCross: "Nhân danh Cha, và Con, và Thánh Thần. Amen.",
+  apostlesCreed: `Tôi tin kính Đức Chúa Trời là Cha toàn năng, Đấng dựng nên trời đất;  
+Tôi tin kính Đức Giêsu Kitô, Con Một Đức Chúa Cha, Chúa chúng tôi;  
+Người được sinh bởi quyền phép Đức Chúa Thánh Thần, bởi trinh nữ Maria;  
+Người chịu khổ dưới quyền quan Phongxiô Philatô, bị đóng đinh trên thập giá, chịu chết và mai táng;  
+Người xuống ngục tổ tông;  
+Ngày thứ ba, Người sống lại từ cõi chết;  
+Người lên trời, ngự bên hữu Đức Chúa Cha toàn năng;  
+Từ đó Người sẽ đến phán xét kẻ sống và kẻ chết.  
+Tôi tin Đức Chúa Thánh Thần,  
+Tôi tin Hội Thánh Công Giáo thánh thiện, thông công các thánh,  
+Tôi tin sự tha tội, sự sống lại của xác phàm,  
+và sự sống đời đời. Amen.`,
+  ourFather: `Lạy Cha chúng con ở trên trời,  
+Danh Cha cả sáng,  
+Nước Cha trị đến,  
+Ý Cha thể hiện dưới đất cũng như trên trời.  
+Xin Cha ban cho chúng con hôm nay lương thực hằng ngày,  
+Và tha nợ chúng con như chúng con cũng tha kẻ có nợ chúng con.  
+Xin đừng để chúng con sa chước cám dỗ,  
+Nhưng cứu chúng con khỏi sự dữ. Amen.`,
+  hailMary: `Kính mừng Maria đầy ơn phúc,  
+Đức Chúa Trời ở cùng Bà,  
+Bà có phúc lạ hơn mọi người nữ,  
+và Giêsu Con lòng Bà gồm phúc lạ.  
+Thánh Maria, Đức Mẹ Chúa Trời,  
+Cầu cho chúng con là kẻ có tội,  
+khi nay và trong giờ lâm tử. Amen.`,
+  gloryBe: `Sáng danh Đức Chúa Cha, và Đức Chúa Con, và Đức Chúa Thánh Thần,  
+Như đã có từ thuở ban đầu,  
+Nay và muôn đời muôn kiếp. Amen.`,
+  fatima: `Lạy Chúa Giêsu, xin tha tội cho chúng con,  
+Xin cứu chúng con khỏi hỏa ngục,  
+Xin đưa các linh hồn lên thiên đàng,  
+Nhất là những linh hồn cần đến lòng thương xót Chúa. Amen.`,
+  hailHolyQueen: `Kính mừng Nữ Vương Thiên Đàng, Mẹ Nhân Lành,  
+Đời chúng con, niềm vui, sự cậy trông.  
+Chúng con kêu cầu Mẹ, những kẻ con cái lưu đầy tội lỗi.  
+Chúng con thở than, khóc lóc trong thung lũng đắng cay.  
+Xin Mẹ nhìn đến chúng con với ánh mắt từ bi.  
+Sau cuộc đời lưu đày này, xin dẫn chúng con đến gặp Con Mẹ là Chúa Giêsu,  
+Đấng đầy nhân từ, đầy yêu thương.`,
+  closingDialogue: `V. Cầu cho chúng con, Mẹ Thiên Chúa.  
+Đ. Để chúng con được xứng đáng với những lời hứa của Đức Kitô.`,
+  closingPrayer: `Lạy Thiên Chúa, Đấng đã ban Con Một duy nhất của Ngài  
+Qua cuộc sống, cái chết và sự phục sinh để chuộc tội cho chúng con;  
+Xin cho chúng con nhờ suy niệm các mầu nhiệm Mân Côi của Mẹ Maria,  
+Bắt chước những gì chúng chứa đựng và được hưởng những lời hứa,  
+Nhờ chính Đức Kitô, Chúa chúng con. Amen.`,
+},
+tl: {
+  signOfTheCross: "Sa ngalan ng Ama, at ng Anak, at ng Espiritu Santo. Amen.",
+
+  apostlesCreed: `Sumasampalataya ako sa Diyos Amang makapangyarihan sa lahat, na may gawa ng langit at lupa.  
+At kay Hesukristo, iisang Anak ng Diyos, Panginoon natin.  
+Nagkatawang-tao Siya lalang ng Espiritu Santo, ipinanganak ni Santa Mariang Birhen.  
+Nagpakasakit Siya sa ilalim ni Poncio Pilato, ipinako sa krus, namatay at inilibing.  
+Nan descendió siya sa mga yumao, nang ikatlong araw ay muling nabuhay.  
+Umakyat siya sa langit, naluluklok sa kanan ng Diyos Amang makapangyarihan sa lahat.  
+Mula roo’y paririto Siya’t huhukom sa mga buhay at mga patay.  
+Sumasampalataya ako sa Espiritu Santo, sa banal na Simbahang Katolika,  
+sa kasamahan ng mga banal, sa kapatawaran ng mga kasalanan,  
+sa pagkabuhay na muli ng mga namatay, at sa buhay na walang hanggan. Amen.`,
+
+  ourFather: `Ama namin, sumasalangit Ka,  
+Sambahin ang ngalan Mo.  
+Mapasaamin ang kaharian Mo.  
+Sundin ang loob Mo, dito sa lupa para nang sa langit.  
+Bigyan Mo kami ngayon ng aming kakanin sa araw-araw.  
+At patawarin Mo kami sa aming mga sala,  
+para nang pagpapatawad namin sa mga nagkakasala sa amin.  
+At huwag Mo kaming ipahintulot sa tukso,  
+kundi iligtas Mo kami sa lahat ng masama. Amen.`,
+
+  hailMary: `Aba Ginoong Maria, napupuno ka ng grasya,  
+ang Panginoon ay sumasaiyo;  
+pinagpala ka sa babaeng lahat,  
+at pinagpala naman ang iyong anak na si Hesus.  
+Santa Maria, Ina ng Diyos,  
+ipanalangin mo kaming makasalanan,  
+ngayon at kung kami’y mamamatay. Amen.`,
+
+  gloryBe: `Luwalhati sa Ama, at sa Anak, at sa Espiritu Santo,  
+gaya noong una, ngayon at magpakailanman. Amen.`,
+
+  fatima: `O Hesus ko, patawarin Mo kami sa aming mga sala,  
+iligtas Mo kami sa apoy ng impiyerno,  
+dalhin Mo sa langit ang lahat ng kaluluwa,  
+lalo na ang mga higit na nangangailangan ng Iyong awa. Amen.`,
+
+  hailHolyQueen: `Aba Po, Santa Mariang Hari, Ina ng Awa,  
+buhay, tamis, at pag-asa namin, aba Ginoo.  
+Sa Iyo kami sumisigaw, mga anak ni Eva,  
+Sa Iyo kami dumaraing, humihibik sa gitna ng lupang ito ng pagluha.  
+Ibaling Mo sa amin ang Iyong mga matang maawain,  
+at pagkatapos ng pagkakait sa amin,  
+ipakita Mo sa amin si Hesus, ang mapagpalang bunga ng Iyong sinapupunan.  
+O maawain, o mahinahon, o matamis na Birheng Maria.`,
+
+  closingDialogue: `V. Ipanalangin mo kami, O Banal na Ina ng Diyos.  
+R. Nang kami’y maging karapat-dapat sa mga pangako ni Kristo.`,
+
+  closingPrayer: `Manalangin tayo:  
+O Diyos, na sa pamamagitan ng buhay, pagkamatay, at muling pagkabuhay ng Iyong Bugtong na Anak,  
+ay ipinagkaloob Mo sa amin ang gantimpala ng buhay na walang hanggan;  
+ipagkaloob Mo, isinasamo namin,  
+na sa pagninilay namin sa mga Misteryo ng Banal na Rosaryo  
+ng Mahal na Birheng Maria,  
+ay maisabuhay namin ang mga nilalaman nito  
+at matamo ang mga ipinangako nito.  
+Sa pamamagitan ni Hesukristo, aming Panginoon. Amen.`,
+  signOfTheCross: "Sa ngalan ng Ama, at ng Anak, at ng Espiritu Santo. Amen."
+}
+
 };
 
 const titles = {
@@ -52,34 +187,35 @@ const titles = {
     closingPrayer: "Closing Prayer",
     signOfTheCross: "Sign of the Cross"
   },
-  vi: {
-    signOfTheCross: "Dấu Thánh Giá",
-    apostlesCreed: "Kinh Tin Kính",
-    ourFather: "Kinh Lạy Cha",
-    threeHailMarys: "3 Kinh Kính Mừng",
-    gloryBe: "Kinh Sáng Danh",
-    mystery: "Mầu Nhiệm",
-    tenHailMarys: "10 Kinh Kính Mừng",
-    fatimaPrayer: "Kinh Fatima",
-    hailHolyQueen: "Kinh Kính Mừng Nữ Vương",
-    closingDialogue: "Đoạn Kết",
-    closingPrayer: "Kinh Cầu Kết",
-    signOfTheCross: "Dấu Thánh Giá"
-  },
-  tl: {
-    signOfTheCross: "Hudyat ng Krus",
-    apostlesCreed: "Paniniwala ng mga Apostol",
-    ourFather: "Ama Namin",
-    threeHailMarys: "3 Aba Ginoong Maria",
-    gloryBe: "Luwalhati",
-    mystery: "Misteryo",
-    tenHailMarys: "10 Aba Ginoong Maria",
-    fatimaPrayer: "Panalangin ng Fatima",
-    hailHolyQueen: "Aba, Reyna ng Langit",
-    closingDialogue: "Pangwakas na Diyalogo",
-    closingPrayer: "Panalangin ng Pagsasara",
-    signOfTheCross: "Hudyat ng Krus"
-  }
+vi: {
+  signOfTheCross: "Dấu Thánh Giá",
+  apostlesCreed: "Kinh Tin Kính",
+  ourFather: "Kinh Lạy Cha",
+  threeHailMarys: "3 Kinh Kính Mừng",
+  gloryBe: "Kinh Sáng Danh",
+  mystery: "Mầu Nhiệm",
+  tenHailMarys: "10 Kinh Kính Mừng",
+  fatimaPrayer: "Kinh Fatima",
+  hailHolyQueen: "Kinh Kính Mừng Nữ Vương",
+  closingDialogue: "Đoạn Kết",
+  closingPrayer: "Kinh Cầu Kết",
+  signOfTheCross: "Dấu Thánh Giá"
+},
+tl: {
+  signOfTheCross: "Tanda ng Krus",
+  apostlesCreed: "Sumasampalataya Ako",
+  ourFather: "Ama Namin",
+  threeHailMarys: "Tatlong Aba Ginoong Maria",
+  gloryBe: "Luwalhati sa Ama",
+  mystery: "Misteryo",
+  tenHailMarys: "Sampung Aba Ginoong Maria",
+  fatimaPrayer: "Dasal ng Fatima",
+  hailHolyQueen: "Aba Po, Santa Mariang Hari",
+  closingDialogue: "Panalangin sa Wakas",
+  closingPrayer: "Pangwakas na Panalangin",
+  signOfTheCross: "Tanda ng Krus"
+}
+
 };
 
 const mysteriesByDay = {
@@ -99,18 +235,19 @@ const mysteryCategories = {
     Glorious: "Glorious",
     Luminous: "Luminous"
   },
-  vi: {
-    Joyful: "Mầu Nhiệm Vui",
-    Sorrowful: "Mầu Nhiệm Thương",
-    Glorious: "Mầu Nhiệm Mừng",
-    Luminous: "Mầu Nhiệm Sáng"
-  },
-  tl: {
-    Joyful: "Masayang Misteryo",
-    Sorrowful: "Mapait na Misteryo",
-    Glorious: "Mahalagang Misteryo",
-    Luminous: "Misteryong Liwanag"
-  }
+vi: {
+  Joyful: "Mầu Nhiệm Vui",
+  Sorrowful: "Mầu Nhiệm Thương",
+  Glorious: "Mầu Nhiệm Mừng",
+  Luminous: "Mầu Nhiệm Sáng"
+},
+tl: {
+  Joyful: "Masayang Misteryo",
+  Sorrowful: "Misteryong Malungkot",
+  Glorious: "Misteryong Maluwalhati",
+  Luminous: "Misteryong Liwanag"
+}
+
 };
 
 const mysteryMeditations = {
