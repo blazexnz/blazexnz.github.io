@@ -1,6 +1,7 @@
 const prayers = {
 en: {
   signOfTheCross: "In the name of the Father, and of the Son, and of the Holy Spirit. Amen.",
+
   apostlesCreed: `I believe in God, the Father Almighty, Creator of heaven and earth;  
 I believe in Jesus Christ, His only Son, our Lord;  
 who was conceived by the Holy Spirit, born of the Virgin Mary,  
@@ -11,6 +12,7 @@ from there He will come to judge the living and the dead.
 I believe in the Holy Spirit, the holy Catholic Church,  
 the communion of saints, the forgiveness of sins,  
 the resurrection of the body, and life everlasting. Amen.`,
+
   ourFather: `Our Father, who art in heaven,  
 hallowed be Thy name;  
 Thy kingdom come;  
@@ -20,6 +22,7 @@ and forgive us our trespasses,
 as we forgive those who trespass against us;  
 and lead us not into temptation,  
 but deliver us from evil. Amen.`,
+
   hailMary: `Hail Mary, full of grace,  
 the Lord is with thee;  
 blessed art thou among women,  
@@ -27,15 +30,18 @@ and blessed is the fruit of thy womb, Jesus.
 Holy Mary, Mother of God,  
 pray for us sinners,  
 now and at the hour of our death. Amen.`,
+
   gloryBe: `Glory be to the Father,  
 and to the Son,  
 and to the Holy Spirit,  
 as it was in the beginning, is now, and ever shall be,  
 world without end. Amen.`,
+
   fatima: `O my Jesus, forgive us our sins,  
 save us from the fires of hell,  
 lead all souls to Heaven,  
 especially those most in need of Thy mercy. Amen.`,
+
   hailHolyQueen: `Hail, holy Queen, Mother of mercy,  
 our life, our sweetness, and our hope.  
 To thee do we cry, poor banished children of Eve;  
@@ -43,20 +49,22 @@ to thee do we send up our sighs, mourning and weeping in this valley of tears.
 Turn then, most gracious Advocate, thine eyes of mercy toward us;  
 and after this our exile, show unto us the blessed fruit of thy womb, Jesus.  
 O clement, O loving, O sweet Virgin Mary.`,
+
   closingDialogue: `V. Pray for us, O holy Mother of God.  
 R. That we may be made worthy of the promises of Christ.`,
+
   closingPrayer: `Let us pray:  
 O God, whose only begotten Son, by His life, death, and resurrection,  
 has purchased for us the rewards of eternal life;  
 grant, we beseech You,  
 that by meditating upon these mysteries of the Most Holy Rosary of the Blessed Virgin Mary,  
 we may imitate what they contain and obtain what they promise,  
-through the same Christ our Lord. Amen.`,
-  signOfTheCross: "In the name of the Father, and of the Son, and of the Holy Spirit. Amen."
+through the same Christ our Lord. Amen.`
 },
 
 vi: {
   signOfTheCross: "Nhân danh Cha, và Con, và Thánh Thần. Amen.",
+
   apostlesCreed: `Tôi tin kính Đức Chúa Trời là Cha toàn năng, Đấng dựng nên trời đất;  
 Tôi tin kính Đức Giêsu Kitô, Con Một Đức Chúa Cha, Chúa chúng tôi;  
 Người được sinh bởi quyền phép Đức Chúa Thánh Thần, bởi trinh nữ Maria;  
@@ -69,6 +77,7 @@ Tôi tin Đức Chúa Thánh Thần,
 Tôi tin Hội Thánh Công Giáo thánh thiện, thông công các thánh,  
 Tôi tin sự tha tội, sự sống lại của xác phàm,  
 và sự sống đời đời. Amen.`,
+
   ourFather: `Lạy Cha chúng con ở trên trời,  
 Danh Cha cả sáng,  
 Nước Cha trị đến,  
@@ -77,6 +86,7 @@ Xin Cha ban cho chúng con hôm nay lương thực hằng ngày,
 Và tha nợ chúng con như chúng con cũng tha kẻ có nợ chúng con.  
 Xin đừng để chúng con sa chước cám dỗ,  
 Nhưng cứu chúng con khỏi sự dữ. Amen.`,
+
   hailMary: `Kính mừng Maria đầy ơn phúc,  
 Đức Chúa Trời ở cùng Bà,  
 Bà có phúc lạ hơn mọi người nữ,  
@@ -84,13 +94,16 @@ và Giêsu Con lòng Bà gồm phúc lạ.
 Thánh Maria, Đức Mẹ Chúa Trời,  
 Cầu cho chúng con là kẻ có tội,  
 khi nay và trong giờ lâm tử. Amen.`,
+
   gloryBe: `Sáng danh Đức Chúa Cha, và Đức Chúa Con, và Đức Chúa Thánh Thần,  
 Như đã có từ thuở ban đầu,  
 Nay và muôn đời muôn kiếp. Amen.`,
+
   fatima: `Lạy Chúa Giêsu, xin tha tội cho chúng con,  
 Xin cứu chúng con khỏi hỏa ngục,  
 Xin đưa các linh hồn lên thiên đàng,  
 Nhất là những linh hồn cần đến lòng thương xót Chúa. Amen.`,
+
   hailHolyQueen: `Kính mừng Nữ Vương Thiên Đàng, Mẹ Nhân Lành,  
 Đời chúng con, niềm vui, sự cậy trông.  
 Chúng con kêu cầu Mẹ, những kẻ con cái lưu đầy tội lỗi.  
@@ -98,8 +111,10 @@ Chúng con thở than, khóc lóc trong thung lũng đắng cay.
 Xin Mẹ nhìn đến chúng con với ánh mắt từ bi.  
 Sau cuộc đời lưu đày này, xin dẫn chúng con đến gặp Con Mẹ là Chúa Giêsu,  
 Đấng đầy nhân từ, đầy yêu thương.`,
+
   closingDialogue: `V. Cầu cho chúng con, Mẹ Thiên Chúa.  
 Đ. Để chúng con được xứng đáng với những lời hứa của Đức Kitô.`,
+
   closingPrayer: `Lạy Thiên Chúa, Đấng đã ban Con Một duy nhất của Ngài  
 Qua cuộc sống, cái chết và sự phục sinh để chuộc tội cho chúng con;  
 Xin cho chúng con nhờ suy niệm các mầu nhiệm Mân Côi của Mẹ Maria,  
@@ -166,8 +181,7 @@ na sa pagninilay namin sa mga Misteryo ng Banal na Rosaryo
 ng Mahal na Birheng Maria,  
 ay maisabuhay namin ang mga nilalaman nito  
 at matamo ang mga ipinangako nito.  
-Sa pamamagitan ni Hesukristo, aming Panginoon. Amen.`,
-  signOfTheCross: "Sa ngalan ng Ama, at ng Anak, at ng Espiritu Santo. Amen."
+Sa pamamagitan ni Hesukristo, aming Panginoon. Amen.`
 }
 
 };
