@@ -40,7 +40,7 @@ world without end. Amen.`,
   fatima: `O my Jesus, forgive us our sins,  
 save us from the fires of hell,  
 lead all souls to Heaven,  
-especially those most in need of Thy mercy. Amen.`,
+especially those who are in most need of thy mercy. Amen.`,
 
   hailHolyQueen: `Hail, holy Queen, Mother of mercy,  
 our life, our sweetness, and our hope.  
@@ -982,3 +982,4 @@ toggleBeadsBtn.addEventListener("click", () => {
   const beadsVisible = prayersDiv.classList.toggle("hide-beads");
   toggleBeadsBtn.textContent = beadsVisible ? "Show Beads" : "Hide Beads";
 });
+
