@@ -105,55 +105,68 @@ Xin cho chúng con bắt chước điều mầu nhiệm ấy dạy
 và nhận lãnh điều mầu nhiệm ấy hứa ban.  
 Chúng con cầu xin nhờ Đức Kitô, Chúa chúng con. Amen.`
 }
-  tl: {
-    signOfTheCross: "Sa ngalan ng Ama, at ng Anak, at ng Espiritu Santo. Amen.",
-    apostlesCreed: `Sumasampalataya ako sa Diyos Amang makapangyarihan sa lahat, Tagapaglikha ng langit at lupa;  
-    at kay Hesus Kristo, iisang Anak Niya, Panginoon natin;  
-    na nagkaanak sa pamamagitan ng Espiritu Santo, ipinanganak ng birheng Maria;  
-    nagdusa sa ilalim ni Poncio Pilato; ipinako sa krus, namatay, inilibing;  
-    bumaba sa mga patay; sa ikatlong araw ay nabuhay mula sa mga patay;  
-    umakyat sa langit; umupo sa kanan ng Diyos Amang makapangyarihan sa lahat;  
-    mula doon ay babalik upang hatulan ang mga buhay at mga patay.  
-    Sumasampalataya ako sa Espiritu Santo, sa banal na Simbahang Katolika,  
-    sa pagkakaisa ng mga banal, sa kapatawaran ng mga kasalanan,  
-    sa pagkabuhay na muli ng katawan, at sa buhay na walang hanggan. Amen.`,
-    ourFather: `Ama namin, sumasalangit Ka,  
-    sambahin ang ngalan Mo.  
-    Mapasaamin ang kaharian Mo.  
-    Sundin ang loob Mo, dito sa lupa para nang sa langit.  
-    Bigyan Mo kami ngayon ng aming kakanin sa araw-araw.  
-    At patawarin Mo kami sa aming mga sala,  
-    para nang pagpapatawad namin sa mga nagkakasala sa amin.  
-    At huwag Mo kaming ipahintulot sa tukso,  
-    kundi iligtas Mo kami sa masama. Amen.`,
-    hailMary: `Aba Ginoong Maria, napupuno ka ng grasya,  
-    ang Panginoon ay sumasaiyo;  
-    pinagpala kang babaing lubos,  
-    at pinagpala ang iyong anak na si Hesus.  
-    Santa Maria, Ina ng Diyos,  
-    ipanalangin mo kaming makasalanan,  
-    ngayon at kung kami'y mamamatay. Amen.`,
-    gloryBe: `Luwalhati sa Ama, at sa Anak, at sa Espiritu Santo,  
-    gaya noong pasimula, ngayon, at magpakailanman. Amen.`,
-    fatima: `O Hesus ko, patawarin Mo kami sa aming mga sala,  
-    iligtas Mo kami sa apoy ng impiyerno,  
-    dalhin Mo sa langit ang lahat ng kaluluwa,  
-    lalo na ang mga nangangailangan ng Iyong awa. Amen.`,
-    hailHolyQueen: `Aba, Reyna ng langit, Ina ng awa,  
-    buhay namin, tamis namin at pag-asa.  
-    Sa'yo kami ay lumalapit, mga dukhang anak ni Eva.  
-    Sa'yo kami ay humihiling ng awa, sa gitna ng mga luha at paghihirap ng buhay.  
-    Tingnan mo kami, O mahabagin na Tagapamagitan.  
-    Pagkatapos ng aming pagdurusa, ipakita mo sa amin ang biyaya ng iyong Anak, si Hesus na aming Panginoon.`,
-    closingDialogue: `V. Ipagdasal mo kami, O banal na Ina ng Diyos.  
-    R. Upang kami'y maging karapat-dapat sa mga pangako ni Kristo.`,
-    closingPrayer: `Manalangin tayo:  
-    O Diyos, na sa buhay, kamatayan, at pagkabuhay na mag-uli ng Iyong Bugtong na Anak  
-    ay nagbayad para sa amin ng gantimpala ng buhay na walang hanggan;  
-    ipagkaloob mo po sa amin na sa pagninilay sa mga misteryo ng Banal na Rosaryo ni Birheng Maria  
-    ay maipagpamalas namin ang mga nilalaman nito at matamo ang mga ipinangako,  
-    sa pamamagitan ni Kristo na aming Panginoon. Amen.`
-  }
+tl: {
+  signOfTheCross: "Sa ngalan ng Ama, at ng Anak, at ng Espiritu Santo. Amen.",
+
+  apostlesCreed: `Sumasampalataya ako sa Diyos Amang makapangyarihan sa lahat, na may gawa ng langit at lupa.  
+At kay Hesukristo, iisang Anak ng Diyos, Panginoon natin.  
+Nagkatawang-tao Siya lalang ng Espiritu Santo, ipinanganak ni Santa Mariang Birhen.  
+Nagpakasakit Siya sa ilalim ni Poncio Pilato, ipinako sa krus, namatay at inilibing.  
+Nan descendió siya sa mga yumao, nang ikatlong araw ay muling nabuhay.  
+Umakyat siya sa langit, naluluklok sa kanan ng Diyos Amang makapangyarihan sa lahat.  
+Mula roo’y paririto Siya’t huhukom sa mga buhay at mga patay.  
+Sumasampalataya ako sa Espiritu Santo, sa banal na Simbahang Katolika,  
+sa kasamahan ng mga banal, sa kapatawaran ng mga kasalanan,  
+sa pagkabuhay na muli ng mga namatay, at sa buhay na walang hanggan. Amen.`,
+
+  ourFather: `Ama namin, sumasalangit Ka,  
+Sambahin ang ngalan Mo.  
+Mapasaamin ang kaharian Mo.  
+Sundin ang loob Mo, dito sa lupa para nang sa langit.  
+Bigyan Mo kami ngayon ng aming kakanin sa araw-araw.  
+At patawarin Mo kami sa aming mga sala,  
+para nang pagpapatawad namin sa mga nagkakasala sa amin.  
+At huwag Mo kaming ipahintulot sa tukso,  
+kundi iligtas Mo kami sa lahat ng masama. Amen.`,
+
+  hailMary: `Aba Ginoong Maria, napupuno ka ng grasya,  
+ang Panginoon ay sumasaiyo;  
+pinagpala ka sa babaeng lahat,  
+at pinagpala naman ang iyong anak na si Hesus.  
+Santa Maria, Ina ng Diyos,  
+ipanalangin mo kaming makasalanan,  
+ngayon at kung kami’y mamamatay. Amen.`,
+
+  gloryBe: `Luwalhati sa Ama, at sa Anak, at sa Espiritu Santo,  
+gaya noong una, ngayon at magpakailanman. Amen.`,
+
+  fatima: `O Hesus ko, patawarin Mo kami sa aming mga sala,  
+iligtas Mo kami sa apoy ng impiyerno,  
+dalhin Mo sa langit ang lahat ng kaluluwa,  
+lalo na ang mga higit na nangangailangan ng Iyong awa. Amen.`,
+
+  hailHolyQueen: `Aba Po, Santa Mariang Hari, Ina ng Awa,  
+buhay, tamis, at pag-asa namin, aba Ginoo.  
+Sa Iyo kami sumisigaw, mga anak ni Eva,  
+Sa Iyo kami dumaraing, humihibik sa gitna ng lupang ito ng pagluha.  
+Ibaling Mo sa amin ang Iyong mga matang maawain,  
+at pagkatapos ng pagkakait sa amin,  
+ipakita Mo sa amin si Hesus, ang mapagpalang bunga ng Iyong sinapupunan.  
+O maawain, o mahinahon, o matamis na Birheng Maria.`,
+
+  closingDialogue: `V. Ipanalangin mo kami, O Banal na Ina ng Diyos.  
+R. Nang kami’y maging karapat-dapat sa mga pangako ni Kristo.`,
+
+  closingPrayer: `Manalangin tayo:  
+O Diyos, na sa pamamagitan ng buhay, pagkamatay, at muling pagkabuhay ng Iyong Bugtong na Anak,  
+ay ipinagkaloob Mo sa amin ang gantimpala ng buhay na walang hanggan;  
+ipagkaloob Mo, isinasamo namin,  
+na sa pagninilay namin sa mga Misteryo ng Banal na Rosaryo  
+ng Mahal na Birheng Maria,  
+ay maisabuhay namin ang mga nilalaman nito  
+at matamo ang mga ipinangako nito.  
+Sa pamamagitan ni Hesukristo, aming Panginoon. Amen.`
+}
 };
 
 
@@ -188,20 +201,20 @@ vi: {
   signOfTheCross: "Dấu Thánh Giá",
 },
 
-  tl: {
-    signOfTheCross: "Hudyat ng Krus",
-    apostlesCreed: "Paniniwala ng mga Apostol",
-    ourFather: "Ama Namin",
-    threeHailMarys: "3 Aba Ginoong Maria",
-    gloryBe: "Luwalhati",
-    mystery: "Misteryo",
-    tenHailMarys: "10 Aba Ginoong Maria",
-    fatimaPrayer: "Panalangin ng Fatima",
-    hailHolyQueen: "Aba, Reyna ng Langit",
-    closingDialogue: "Pangwakas na Diyalogo",
-    closingPrayer: "Panalangin ng Pagsasara",
-    signOfTheCross: "Hudyat ng Krus"
-  }
+tl: {
+  signOfTheCross: "Tanda ng Krus",
+  apostlesCreed: "Sumasampalataya Ako",
+  ourFather: "Ama Namin",
+  threeHailMarys: "Tatlong Aba Ginoong Maria",
+  gloryBe: "Luwalhati sa Ama",
+  mystery: "Misteryo",
+  tenHailMarys: "Sampung Aba Ginoong Maria",
+  fatimaPrayer: "Dasal ng Fatima",
+  hailHolyQueen: "Aba Po, Santa Mariang Hari",
+  closingDialogue: "Panalangin sa Wakas",
+  closingPrayer: "Pangwakas na Panalangin"
+}
+
 };
 
 const mysteriesByDay = {
@@ -227,12 +240,12 @@ vi: {
   Glorious: "Mầu Nhiệm Mừng",
   Luminous: "Mầu Nhiệm Sáng"
 },
-  tl: {
-    Joyful: "Masayang Misteryo",
-    Sorrowful: "Mapait na Misteryo",
-    Glorious: "Mahalagang Misteryo",
-    Luminous: "Misteryong Liwanag"
-  }
+tl: {
+  Joyful: "Masayang Misteryo",
+  Sorrowful: "Misteryong Malungkot",
+  Glorious: "Misteryong Maluwalhati",
+  Luminous: "Misteryong Liwanag"
+}
 };
 
 const mysteryMeditations = {
