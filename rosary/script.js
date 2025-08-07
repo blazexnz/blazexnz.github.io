@@ -182,11 +182,8 @@ ng Mahal na Birheng Maria,
 ay maisabuhay namin ang mga nilalaman nito  
 at matamo ang mga ipinangako nito.  
 Sa pamamagitan ni Hesukristo, aming Panginoon. Amen.`
-}
-
+  }
 };
-
-
 
 const titles = {
   en: {
@@ -203,35 +200,34 @@ const titles = {
     closingPrayer: "Closing Prayer",
     signOfTheCross: "Sign of the Cross"
   },
-vi: {
-  signOfTheCross: "Dấu Thánh Giá",
-  apostlesCreed: "Kinh Tin Kính",
-  ourFather: "Kinh Lạy Cha",
-  threeHailMarys: "3 Kinh Kính Mừng (Đức Tin, Đức Cậy, và Đức Mến)",
-  gloryBe: "Kinh Sáng Danh",
-  mystery: "Mầu Nhiệm",
-  tenHailMarys: "10 Kinh Kính Mừng",
-  fatimaPrayer: "Kinh Fatima",
-  hailHolyQueen: "Kinh Kính Mừng Nữ Vương",
-  closingDialogue: "Đoạn Kết",
-  closingPrayer: "Kinh Cầu Kết",
-  signOfTheCross: "Dấu Thánh Giá"
-},
-tl: {
-  signOfTheCross: "Tanda ng Krus",
-  apostlesCreed: "Sumasampalataya Ako",
-  ourFather: "Ama Namin",
-  threeHailMarys: "3 Aba Ginoong Maria (Pananampalataya, Pag-asa, at Pag-ibig)",
-  gloryBe: "Luwalhati sa Ama",
-  mystery: "Misteryo",
-  tenHailMarys: "Sampung Aba Ginoong Maria",
-  fatimaPrayer: "Dasal ng Fatima",
-  hailHolyQueen: "Aba Po, Santa Mariang Hari",
-  closingDialogue: "Panalangin sa Wakas",
-  closingPrayer: "Pangwakas na Panalangin",
-  signOfTheCross: "Tanda ng Krus"
-}
-
+  vi: {
+    signOfTheCross: "Dấu Thánh Giá",
+    apostlesCreed: "Kinh Tin Kính",
+    ourFather: "Kinh Lạy Cha",
+    threeHailMarys: "3 Kinh Kính Mừng (Đức Tin, Đức Cậy, và Đức Mến)",
+    gloryBe: "Kinh Sáng Danh",
+    mystery: "Mầu Nhiệm",
+    tenHailMarys: "10 Kinh Kính Mừng",
+    fatimaPrayer: "Kinh Fatima",
+    hailHolyQueen: "Kinh Kính Mừng Nữ Vương",
+    closingDialogue: "Đoạn Kết",
+    closingPrayer: "Kinh Cầu Kết",
+    signOfTheCross: "Dấu Thánh Giá"
+  },
+  tl: {
+    signOfTheCross: "Tanda ng Krus",
+    apostlesCreed: "Sumasampalataya Ako",
+    ourFather: "Ama Namin",
+    threeHailMarys: "3 Aba Ginoong Maria (Pananampalataya, Pag-asa, at Pag-ibig)",
+    gloryBe: "Luwalhati sa Ama",
+    mystery: "Misteryo",
+    tenHailMarys: "Sampung Aba Ginoong Maria",
+    fatimaPrayer: "Dasal ng Fatima",
+    hailHolyQueen: "Aba Po, Santa Mariang Hari",
+    closingDialogue: "Panalangin sa Wakas",
+    closingPrayer: "Pangwakas na Panalangin",
+    signOfTheCross: "Tanda ng Krus"
+  }
 };
 
 const mysteriesByDay = {
@@ -251,19 +247,18 @@ const mysteryCategories = {
     Glorious: "Glorious",
     Luminous: "Luminous"
   },
-vi: {
-  Joyful: "Mầu Nhiệm Vui",
-  Sorrowful: "Mầu Nhiệm Thương",
-  Glorious: "Mầu Nhiệm Mừng",
-  Luminous: "Mầu Nhiệm Sáng"
-},
-tl: {
-  Joyful: "Masayang Misteryo",
-  Sorrowful: "Misteryong Malungkot",
-  Glorious: "Misteryong Maluwalhati",
-  Luminous: "Misteryong Liwanag"
-}
-
+  vi: {
+    Joyful: "Mầu Nhiệm Vui",
+    Sorrowful: "Mầu Nhiệm Thương",
+    Glorious: "Mầu Nhiệm Mừng",
+    Luminous: "Mầu Nhiệm Sáng"
+  },
+  tl: {
+    Joyful: "Misteryong Masaya",
+    Sorrowful: "Misteryong Malungkot",
+    Glorious: "Misteryong Maluwalhati",
+    Luminous: "Misteryong Liwanag"
+  }
 };
 
 const mysteryMeditations = {
@@ -659,14 +654,11 @@ Sorrowful: [
   }
 };
 
-
-
-let currentFontSize = 16;  // default font size in px
+let currentFontSize = 16;
 
 const prayersDiv = document.getElementById("prayers");
 const languageSelect = document.getElementById("languageSelect");
 const daySelect = document.getElementById("daySelect");
-
 
 let currentDecade = 0;
 
@@ -687,45 +679,56 @@ function renderPrayers() {
   const t = titles[lang];
   const mysteryCategoryName = mysteryCategories[lang][mysteryKey];
 
+  const ordinalMap = {
+    en: ["First", "Second", "Third", "Fourth", "Fifth"],
+    vi: ["Thứ Nhất", "Thứ Hai", "Thứ Ba", "Thứ Tư", "Thứ Năm"],
+    tl: ["Unang", "Ikalawang", "Ikatlong", "Ikaapat", "Ikalimang"]
+  };
+
   let html = "";
 
-  // Opening prayers
   html += `<div class='prayer opening'><strong>${t.signOfTheCross}:</strong><br>${prayers[lang].signOfTheCross}</div>`;
   html += `<div class='prayer opening'><strong>${t.apostlesCreed}:</strong><br>${prayers[lang].apostlesCreed}</div>`;
   html += `<div class='prayer opening'><strong>${t.ourFather}:</strong><br>${prayers[lang].ourFather}</div>`;
   html += `<div class='prayer opening'><strong>${t.threeHailMarys}:</strong><br>${prayers[lang].hailMary}</div>`;
   html += `<div class='prayer opening'><strong>${t.gloryBe}:</strong><br>${prayers[lang].gloryBe}</div>`;
 
-  // Navigation buttons for decades
   html += `
   <div class="navigation">
     <button onclick="prevDecade()" ${currentDecade === 0 ? "disabled" : ""}>Previous Decade</button>
     <button onclick="nextDecade()" ${currentDecade === 4 ? "disabled" : ""}>Next Decade</button>
   </div>`;
 
-  // Combined meditation in one box
   const meditation = mysteryMeditations[lang][mysteryKey][currentDecade];
+  const ordinal = ordinalMap[lang][currentDecade];
+
+  let mysteryTitle;
+  if (lang === "en") {
+    mysteryTitle = `The ${ordinal} ${mysteryCategoryName} Mystery: ${meditation.title}`;
+  } else if (lang === "vi") {
+    mysteryTitle = `${mysteryCategoryName} ${ordinal}: ${meditation.title}`;
+  } else if (lang === "tl") {
+    mysteryTitle = `${ordinal} ${mysteryCategoryName}: ${meditation.title}`;
+  }
+
   html += `<div class='prayer mysteries'>
-    <strong>${mysteryCategoryName} ${t.mystery} ${currentDecade + 1}: ${meditation.title}</strong><br><br>
+    <strong>${mysteryTitle}</strong><br><br>
     <em>${meditation.scripture}</em><br><br>
     ${meditation.reflection}<br><br>
     <strong>${meditation.fruit}</strong>
   </div>`;
 
-  // The decade prayers
   html += `<div class='prayer mysteries'><strong>${t.ourFather}:</strong><br>${prayers[lang].ourFather}</div>`;
   html += `<div class='prayer mysteries'><strong>${t.tenHailMarys}:</strong><br>${prayers[lang].hailMary}</div>`;
   html += `<div class='prayer mysteries'><strong>${t.gloryBe}:</strong><br>${prayers[lang].gloryBe}</div>`;
   html += `<div class='prayer mysteries'><strong>${t.fatimaPrayer}:</strong><br>${prayers[lang].fatima}</div>`;
 
-  // Closing prayers
   html += `<div class='prayer closing'><strong>${t.hailHolyQueen}:</strong><br>${prayers[lang].hailHolyQueen}</div>`;
   html += `<div class='prayer closing'><strong>${t.closingDialogue}:</strong><br>${prayers[lang].closingDialogue}</div>`;
   html += `<div class='prayer closing'><strong>${t.closingPrayer}:</strong><br>${prayers[lang].closingPrayer}</div>`;
   html += `<div class='prayer closing'><strong>${t.signOfTheCross}:</strong><br>${prayers[lang].signOfTheCross}</div>`;
 
-prayersDiv.style.fontSize = currentFontSize + "px";
-
+  prayersDiv.style.fontSize = currentFontSize + "px";
   prayersDiv.innerHTML = html;
 }
 
@@ -749,21 +752,18 @@ function setCurrentDay() {
   daySelect.value = days[today.getDay()];
 }
 
-// Set the day select to the current day on page load
 setCurrentDay();
-
-// Initial render
 renderPrayers();
 
 document.getElementById("increaseFontBtn").addEventListener("click", () => {
-  if (currentFontSize < 30) { // max font size limit
+  if (currentFontSize < 30) {
     currentFontSize += 2;
     renderPrayers();
   }
 });
 
 document.getElementById("decreaseFontBtn").addEventListener("click", () => {
-  if (currentFontSize > 10) { // min font size limit
+  if (currentFontSize > 10) {
     currentFontSize -= 2;
     renderPrayers();
   }
