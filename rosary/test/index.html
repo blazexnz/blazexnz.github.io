@@ -92,21 +92,29 @@
     .prayer.closing:first-child {
       margin-top: 30px;
     }
+
+    /* New bead container style for right justify */
     .bead-container {
       margin-top: 10px;
     }
+    .bead-container.right-justify {
+      display: flex;
+      justify-content: flex-end;
+      gap: 6px;
+    }
+    
     .bead {
-      display: inline-block;
       width: 20px;
       height: 20px;
-      margin: 3px;
       border-radius: 50%;
       background-color: #ccc;
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      border: 1.5px solid #aaa;
+      transition: background-color 0.3s, border-color 0.3s;
     }
     .bead.active {
       background-color: green;
+      border-color: darkgreen;
     }
   </style>
 </head>
