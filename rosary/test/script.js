@@ -185,6 +185,7 @@ Sa pamamagitan ni Hesukristo, aming Panginoon. Amen.`
   }
 };
 
+
 const titles = {
   en: {
     signOfTheCross: "Sign of the Cross",
@@ -654,7 +655,6 @@ Sorrowful: [
   }
 };
 
-
 let currentFontSize = 16;
 
 const prayersDiv = document.getElementById("prayers");
@@ -662,22 +662,57 @@ const languageSelect = document.getElementById("languageSelect");
 const daySelect = document.getElementById("daySelect");
 
 let currentDecade = 0;
-let threeBeadsState = [false, false, false]; // track 3 Hail Mary beads state
+let threeBeadsState = [false, false, false]; // track 3 Hail Mary beads
+let singleOpeningBeadsState = [false, false, false, false]; // track single beads for 4 opening prayers
+
+// single beads states for the green boxes (hailHolyQueen, closingDialogue, closingPrayer, closingSignOfCross)
+let singleGreenBeadsState = {
+  hailHolyQueen: false,
+  closingDialogue: false,
+  closingPrayer: false,
+  closingSignOfCross: false
+};
+
+// Yellow box bead states (mystery, Our Father, Glory Be, Fatima)
+let mysteryBeadsState = [false]; // SINGLE bead for mystery (was 5)
+let ourFatherBeadsState = [false]; // 1 bead for Our Father
+let gloryBeBeadsState = [false]; // 1 bead for Glory Be
+let fatimaBeadsState = [false]; // 1 bead for Fatima Prayer
 
 languageSelect.addEventListener("change", () => {
   currentDecade = 0;
-  resetThreeBeads();
+  resetBeadsOnLangOrDayChange();
   renderPrayers();
 });
 
 daySelect.addEventListener("change", () => {
   currentDecade = 0;
-  resetThreeBeads();
+  resetBeadsOnLangOrDayChange();
   renderPrayers();
 });
 
-function resetThreeBeads() {
+function resetBeadsOnLangOrDayChange() {
+  // Reset ALL beads on language or day change
   threeBeadsState = [false, false, false];
+  singleOpeningBeadsState = [false, false, false, false];
+  singleGreenBeadsState = {
+    hailHolyQueen: false,
+    closingDialogue: false,
+    closingPrayer: false,
+    closingSignOfCross: false
+  };
+  mysteryBeadsState = [false];
+  ourFatherBeadsState = [false];
+  gloryBeBeadsState = [false];
+  fatimaBeadsState = [false];
+}
+
+function resetYellowBeads() {
+  // Reset only yellow box beads on decade change
+  mysteryBeadsState = [false];
+  ourFatherBeadsState = [false];
+  gloryBeBeadsState = [false];
+  fatimaBeadsState = [false];
 }
 
 function renderPrayers() {
@@ -695,29 +730,47 @@ function renderPrayers() {
 
   let html = "";
 
-  html += `<div class='prayer opening'><strong>${t.signOfTheCross}:</strong><br>${prayers[lang].signOfTheCross}</div>`;
-  html += `<div class='prayer opening'><strong>${t.apostlesCreed}:</strong><br>${prayers[lang].apostlesCreed}</div>`;
-  html += `<div class='prayer opening'><strong>${t.ourFather}:</strong><br>${prayers[lang].ourFather}</div>`;
+  // Opening prayers with single beads
+  const openingPrayers = [
+    { title: t.signOfTheCross, content: prayers[lang].signOfTheCross },
+    { title: t.apostlesCreed, content: prayers[lang].apostlesCreed },
+    { title: t.ourFather, content: prayers[lang].ourFather },
+    { title: t.gloryBe, content: prayers[lang].gloryBe }
+  ];
+
+  openingPrayers.forEach((prayer, i) => {
+    const active = singleOpeningBeadsState[i] ? "active" : "";
+    html += `
+      <div class='prayer opening'>
+        <strong>${prayer.title}:</strong><br>${prayer.content}
+        <div class="bead-container right-justify">
+          <div class="bead ${active}" data-type="1" data-index="${i}"></div>
+        </div>
+      </div>`;
+  });
+
+  // Three Hail Marys (3 beads)
   html += `<div class='prayer opening'><strong>${t.threeHailMarys}:</strong><br>${prayers[lang].hailMary}
-    <div class="bead-container" id="threeBeads">
+    <div class="bead-container right-justify" id="threeBeads">
       ${Array.from({ length: 3 }).map((_, i) => {
         const activeClass = threeBeadsState[i] ? "active" : "";
         return `<div class="bead ${activeClass}" data-type="3" data-index="${i}"></div>`;
       }).join("")}
     </div>
   </div>`;
-  html += `<div class='prayer opening'><strong>${t.gloryBe}:</strong><br>${prayers[lang].gloryBe}</div>`;
 
+  // Navigation
   html += `
     <div class="navigation">
       <button onclick="prevDecade()" ${currentDecade === 0 ? "disabled" : ""}>Previous Decade</button>
       <button onclick="nextDecade()" ${currentDecade === 4 ? "disabled" : ""}>Next Decade</button>
     </div>`;
 
+  // Mystery Section with SINGLE bead (updated from 5 beads)
   const meditation = mysteryMeditations[lang][mysteryKey][currentDecade];
   const ordinal = ordinalMap[lang][currentDecade];
-
   let mysteryTitle;
+
   if (lang === "en") {
     mysteryTitle = `The ${ordinal} ${mysteryCategoryName} Mystery: ${meditation.title}`;
   } else if (lang === "vi") {
@@ -731,21 +784,74 @@ function renderPrayers() {
     <em>${meditation.scripture}</em><br><br>
     ${meditation.reflection}<br><br>
     <strong>${meditation.fruit}</strong>
+    <div id="mysteryBeads" class="bead-container right-justify" style="margin-top:10px;">
+      <div class="bead ${mysteryBeadsState[0] ? "active" : ""}" data-type="mystery" data-index="0"></div>
+    </div>
   </div>`;
 
-  html += `<div class='prayer mysteries'><strong>${t.ourFather}:</strong><br>${prayers[lang].ourFather}</div>`;
+  // Our Father with 1 bead
+  html += `<div class='prayer mysteries'><strong>${t.ourFather}:</strong><br>${prayers[lang].ourFather}
+    <div id="ourFatherBeads" class="bead-container right-justify" style="margin-top:10px;">
+      <div class="bead ${ourFatherBeadsState[0] ? "active" : ""}" data-type="ourFather" data-index="0"></div>
+    </div>
+  </div>`;
+
+  // 10 Hail Marys with 10 beads (unchanged)
   html += `<div class='prayer mysteries'><strong>${t.tenHailMarys}:</strong><br>${prayers[lang].hailMary}
-    <div class="bead-container" id="tenBeads">
+    <div id="tenBeads" class="bead-container right-justify" style="margin-top:10px;">
       ${Array.from({ length: 10 }).map((_, i) => `<div class="bead" data-type="10" data-index="${i}"></div>`).join("")}
     </div>
   </div>`;
-  html += `<div class='prayer mysteries'><strong>${t.gloryBe}:</strong><br>${prayers[lang].gloryBe}</div>`;
-  html += `<div class='prayer mysteries'><strong>${t.fatimaPrayer}:</strong><br>${prayers[lang].fatima}</div>`;
 
-  html += `<div class='prayer closing'><strong>${t.hailHolyQueen}:</strong><br>${prayers[lang].hailHolyQueen}</div>`;
-  html += `<div class='prayer closing'><strong>${t.closingDialogue}:</strong><br>${prayers[lang].closingDialogue}</div>`;
-  html += `<div class='prayer closing'><strong>${t.closingPrayer}:</strong><br>${prayers[lang].closingPrayer}</div>`;
-  html += `<div class='prayer closing'><strong>${t.signOfTheCross}:</strong><br>${prayers[lang].signOfTheCross}</div>`;
+  // Glory Be with 1 bead
+  html += `<div class='prayer mysteries'><strong>${t.gloryBe}:</strong><br>${prayers[lang].gloryBe}
+    <div id="gloryBeBeads" class="bead-container right-justify" style="margin-top:10px;">
+      <div class="bead ${gloryBeBeadsState[0] ? "active" : ""}" data-type="gloryBe" data-index="0"></div>
+    </div>
+  </div>`;
+
+  // Fatima Prayer with 1 bead
+  html += `<div class='prayer mysteries'><strong>${t.fatimaPrayer}:</strong><br>${prayers[lang].fatima}
+    <div id="fatimaBeads" class="bead-container right-justify" style="margin-top:10px;">
+      <div class="bead ${fatimaBeadsState[0] ? "active" : ""}" data-type="fatima" data-index="0"></div>
+    </div>
+  </div>`;
+
+  // Hail Holy Queen with single bead
+  const activeHailHolyQueen = singleGreenBeadsState.hailHolyQueen ? "active" : "";
+  html += `<div class='prayer closing'>
+    <strong>${t.hailHolyQueen}:</strong><br>${prayers[lang].hailHolyQueen}
+    <div class="bead-container right-justify">
+      <div class="bead ${activeHailHolyQueen}" data-type="singleGreen" data-name="hailHolyQueen"></div>
+    </div>
+  </div>`;
+
+  // Closing dialogue with single bead
+  const activeClosingDialogue = singleGreenBeadsState.closingDialogue ? "active" : "";
+  html += `<div class='prayer closing'>
+    <strong>${t.closingDialogue}:</strong><br>${prayers[lang].closingDialogue}
+    <div class="bead-container right-justify">
+      <div class="bead ${activeClosingDialogue}" data-type="singleGreen" data-name="closingDialogue"></div>
+    </div>
+  </div>`;
+
+  // Closing prayer with single bead
+  const activeClosingPrayer = singleGreenBeadsState.closingPrayer ? "active" : "";
+  html += `<div class='prayer closing'>
+    <strong>${t.closingPrayer}:</strong><br>${prayers[lang].closingPrayer}
+    <div class="bead-container right-justify">
+      <div class="bead ${activeClosingPrayer}" data-type="singleGreen" data-name="closingPrayer"></div>
+    </div>
+  </div>`;
+
+  // Sign of the Cross (closing) with single bead
+  const activeClosingSignOfCross = singleGreenBeadsState.closingSignOfCross ? "active" : "";
+  html += `<div class='prayer closing'>
+    <strong>${t.signOfTheCross}:</strong><br>${prayers[lang].signOfTheCross}
+    <div class="bead-container right-justify">
+      <div class="bead ${activeClosingSignOfCross}" data-type="singleGreen" data-name="closingSignOfCross"></div>
+    </div>
+  </div>`;
 
   prayersDiv.style.fontSize = currentFontSize + "px";
   prayersDiv.innerHTML = html;
@@ -754,20 +860,69 @@ function renderPrayers() {
 }
 
 function attachBeadListeners() {
-  // For 3 beads — restore and update threeBeadsState on click
+  // 3 beads (3 Hail Marys)
   document.querySelectorAll("#threeBeads .bead").forEach(bead => {
     const index = parseInt(bead.getAttribute("data-index"), 10);
-
     bead.addEventListener("click", () => {
       bead.classList.toggle("active");
       threeBeadsState[index] = bead.classList.contains("active");
     });
   });
 
-  // For 10 beads — always fresh, toggle active on click
+  // 10 beads (10 Hail Marys)
   document.querySelectorAll("#tenBeads .bead").forEach(bead => {
     bead.addEventListener("click", () => {
       bead.classList.toggle("active");
+    });
+  });
+
+  // mystery bead (single bead now)
+  document.querySelectorAll("#mysteryBeads .bead").forEach(bead => {
+    bead.addEventListener("click", () => {
+      bead.classList.toggle("active");
+      mysteryBeadsState[0] = bead.classList.contains("active");
+    });
+  });
+
+  // ourFather bead (single)
+  document.querySelectorAll("#ourFatherBeads .bead").forEach(bead => {
+    bead.addEventListener("click", () => {
+      bead.classList.toggle("active");
+      ourFatherBeadsState[0] = bead.classList.contains("active");
+    });
+  });
+
+  // gloryBe bead (single)
+  document.querySelectorAll("#gloryBeBeads .bead").forEach(bead => {
+    bead.addEventListener("click", () => {
+      bead.classList.toggle("active");
+      gloryBeBeadsState[0] = bead.classList.contains("active");
+    });
+  });
+
+  // fatima bead (single)
+  document.querySelectorAll("#fatimaBeads .bead").forEach(bead => {
+    bead.addEventListener("click", () => {
+      bead.classList.toggle("active");
+      fatimaBeadsState[0] = bead.classList.contains("active");
+    });
+  });
+
+  // single beads (sign of cross, apostles creed, our father, glory be)
+  document.querySelectorAll(".bead[data-type='1']").forEach(bead => {
+    const index = parseInt(bead.getAttribute("data-index"), 10);
+    bead.addEventListener("click", () => {
+      bead.classList.toggle("active");
+      singleOpeningBeadsState[index] = bead.classList.contains("active");
+    });
+  });
+
+  // single green beads (hailHolyQueen, closingDialogue, closingPrayer, closingSignOfCross)
+  document.querySelectorAll(".bead[data-type='singleGreen']").forEach(bead => {
+    const name = bead.getAttribute("data-name");
+    bead.addEventListener("click", () => {
+      bead.classList.toggle("active");
+      singleGreenBeadsState[name] = bead.classList.contains("active");
     });
   });
 }
@@ -775,6 +930,7 @@ function attachBeadListeners() {
 function prevDecade() {
   if (currentDecade > 0) {
     currentDecade--;
+    resetYellowBeads();  // Reset ONLY yellow beads on decade change
     renderPrayers();
   }
 }
@@ -782,6 +938,7 @@ function prevDecade() {
 function nextDecade() {
   if (currentDecade < 4) {
     currentDecade++;
+    resetYellowBeads();  // Reset ONLY yellow beads on decade change
     renderPrayers();
   }
 }
