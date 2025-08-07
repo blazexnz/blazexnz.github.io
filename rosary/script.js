@@ -147,7 +147,102 @@ const mysteryMeditations = {
         fruit: "Fruit of the Mystery: Joy in Finding Jesus"
       }
     ],
-    // Add Sorrowful, Glorious, Luminous similarly if needed
+Sorrowful: [
+      {
+        title: "The Agony in the Garden",
+        scripture: "“He began to be sorrowful and troubled.” — Matthew 26:37-38",
+        reflection: "Jesus accepts God's will in his suffering. We pray for courage in our own trials.",
+        fruit: "Fruit of the Mystery: Contrition"
+      },
+      {
+        title: "The Scourging at the Pillar",
+        scripture: "“Pilate had Jesus flogged.” — John 19:1",
+        reflection: "Jesus endures pain for our sins. We pray for purity and self-control.",
+        fruit: "Fruit of the Mystery: Purity"
+      },
+      {
+        title: "The Crowning with Thorns",
+        scripture: "“They placed a crown of thorns on his head.” — Matthew 27:29",
+        reflection: "Jesus accepts humiliation. We pray for humility and patience.",
+        fruit: "Fruit of the Mystery: Moral Courage"
+      },
+      {
+        title: "The Carrying of the Cross",
+        scripture: "“He carried his cross to the place of crucifixion.” — John 19:17",
+        reflection: "Jesus carries our burdens. We pray for strength to carry our crosses.",
+        fruit: "Fruit of the Mystery: Perseverance"
+      },
+      {
+        title: "The Crucifixion",
+        scripture: "“Jesus died on the cross for us.” — John 19:30",
+        reflection: "Jesus gives his life for salvation. We pray for salvation and love.",
+        fruit: "Fruit of the Mystery: Salvation"
+      }
+    ],
+    Glorious: [
+      {
+        title: "The Resurrection",
+        scripture: "“He is not here; he has risen!” — Luke 24:6",
+        reflection: "Jesus conquers death and opens heaven. We pray for faith and hope.",
+        fruit: "Fruit of the Mystery: Faith"
+      },
+      {
+        title: "The Ascension",
+        scripture: "“Jesus was taken up into heaven.” — Luke 24:51",
+        reflection: "Jesus returns to the Father and prepares for the Spirit. We pray for longing for heaven.",
+        fruit: "Fruit of the Mystery: Hope"
+      },
+      {
+        title: "The Descent of the Holy Spirit",
+        scripture: "“They were all filled with the Holy Spirit.” — Acts 2:4",
+        reflection: "The Spirit empowers the Church. We pray for the gifts of the Holy Spirit.",
+        fruit: "Fruit of the Mystery: Charity"
+      },
+      {
+        title: "The Assumption",
+        scripture: "Mary was taken body and soul into heavenly glory. — Tradition",
+        reflection: "Mary is honored as Queen of Heaven. We pray for grace to follow her example.",
+        fruit: "Fruit of the Mystery: Grace of a Happy Death"
+      },
+      {
+        title: "The Coronation of Mary",
+        scripture: "Mary is crowned Queen of Heaven and Earth. — Tradition",
+        reflection: "Mary is crowned Queen of Heaven and Earth. We pray for devotion to Mary.",
+        fruit: "Fruit of the Mystery: Trust in Mary’s Intercession"
+      }
+    ],
+    Luminous: [
+      {
+        title: "The Baptism of Jesus in the Jordan",
+        scripture: "“As soon as Jesus was baptized, he went up out of the water.” — Matthew 3:16-17",
+        reflection: "Jesus begins his public ministry. We pray for the grace of baptism.",
+        fruit: "Fruit of the Mystery: Openness to the Holy Spirit"
+      },
+      {
+        title: "The Wedding at Cana",
+        scripture: "“Jesus performed his first miracle, turning water into wine.” — John 2:1-11",
+        reflection: "Jesus reveals his glory and compassion. We pray for faith in Jesus’ power.",
+        fruit: "Fruit of the Mystery: To Jesus through Mary"
+      },
+      {
+        title: "Jesus Proclaims the Kingdom of God",
+        scripture: "“Repent, for the kingdom of heaven is at hand.” — Matthew 4:17",
+        reflection: "Jesus calls us to conversion and faith. We pray for conversion of heart.",
+        fruit: "Fruit of the Mystery: Repentance and Trust in God"
+      },
+      {
+        title: "The Transfiguration",
+        scripture: "“His face shone like the sun.” — Matthew 17:2",
+        reflection: "Jesus reveals his divine glory. We pray for courage to witness our faith.",
+        fruit: "Fruit of the Mystery: Desire for Holiness"
+      },
+      {
+        title: "The Institution of the Holy Eucharist",
+        scripture: "“This is my body given for you.” — Luke 22:19-20",
+        reflection: "Jesus gives himself to us in the Eucharist. We pray for love and reverence for the Eucharist.",
+        fruit: "Fruit of the Mystery: Adoration"
+      }
+    ]
   },
   vi: {
     Joyful: [
@@ -180,6 +275,102 @@ const mysteryMeditations = {
         scripture: "“Sau ba ngày, họ tìm thấy Người trong đền thờ, ngồi giữa các thầy dạy, lắng nghe và hỏi họ.” — Luca 2:46",
         reflection: "Chúa Giêsu dù còn nhỏ vẫn ham hiểu biết và thực hiện sứ mệnh. Chúng ta được nhắc phải tìm kiếm Chúa bằng niềm vui và kiên trì, đặc biệt khi ta cảm thấy lạc lối.",
         fruit: "Hoa trái của Mầu Nhiệm: Niềm Vui Tìm Thấy Chúa"
+      }
+    ],
+Sorrowful: [
+      {
+        title: "Đau Khổ Trong Vườn Cây Dầu",
+        scripture: "“Ngài bắt đầu sầu muộn và buồn bã.” — Matthew 26:37-38",
+        reflection: "Chúa Giêsu chấp nhận ý muốn Chúa Cha trong đau khổ. Chúng ta cầu xin lòng can đảm trong thử thách.",
+        fruit: "Hoa trái của Mầu Nhiệm: Ăn Năn Sám Hối"
+      },
+      {
+        title: "Chúa Giêsu Bị Đánh Đòn",
+        scripture: "“Philatô ra lệnh đánh đòn Chúa Giêsu.” — John 19:1",
+        reflection: "Chúa Giêsu chịu đau đớn vì tội lỗi chúng ta. Chúng ta cầu xin sự trong sạch và kiềm chế.",
+        fruit: "Hoa trái của Mầu Nhiệm: Sự Trong Sạch"
+      },
+      {
+        title: "Chúa Giêsu Đội Vương Miện Tội Nhân",
+        scripture: "“Họ đặt lên đầu Ngài một vương miện bằng gai.” — Matthew 27:29",
+        reflection: "Chúa Giêsu chịu sỉ nhục. Chúng ta cầu xin đức khiêm nhường và kiên nhẫn.",
+        fruit: "Hoa trái của Mầu Nhiệm: Lòng Can Đảm Đạo Đức"
+      },
+      {
+        title: "Chúa Giêsu Mang Thập Giá",
+        scripture: "“Ngài mang thập giá đến nơi chịu đóng đinh.” — John 19:17",
+        reflection: "Chúa Giêsu mang gánh nặng cho chúng ta. Chúng ta cầu xin sức mạnh mang thập giá đời mình.",
+        fruit: "Hoa trái của Mầu Nhiệm: Kiên Trì"
+      },
+      {
+        title: "Chúa Giêsu Chịu Đóng Đinh",
+        scripture: "“Chúa Giêsu chết trên thập giá vì chúng ta.” — John 19:30",
+        reflection: "Chúa Giêsu hy sinh mạng sống để cứu độ. Chúng ta cầu xin ơn cứu rỗi và yêu thương.",
+        fruit: "Hoa trái của Mầu Nhiệm: Sự Cứu Rỗi"
+      }
+    ],
+    Glorious: [
+      {
+        title: "Phục Sinh",
+        scripture: "“Ngài không còn ở đây, vì Ngài đã sống lại!” — Luke 24:6",
+        reflection: "Chúa Giêsu chiến thắng tử thần và mở đường lên trời. Chúng ta cầu xin đức tin và hy vọng.",
+        fruit: "Hoa trái của Mầu Nhiệm: Đức Tin"
+      },
+      {
+        title: "Chúa Giêsu Lên Trời",
+        scripture: "“Chúa Giêsu được đưa lên trời.” — Luke 24:51",
+        reflection: "Chúa trở về cùng Cha và chuẩn bị Thánh Thần. Chúng ta cầu xin khao khát thiên đàng.",
+        fruit: "Hoa trái của Mầu Nhiệm: Hy Vọng"
+      },
+      {
+        title: "Chúa Thánh Thần Xuống",
+        scripture: "“Mọi người đều đầy Thánh Thần.” — Acts 2:4",
+        reflection: "Thánh Thần ban sức mạnh cho Hội Thánh. Chúng ta cầu xin ơn Thánh Thần.",
+        fruit: "Hoa trái của Mầu Nhiệm: Đức Ái"
+      },
+      {
+        title: "Mẹ Maria Lên Trời",
+        scripture: "Maria được đưa lên trời cả hồn lẫn xác. — Truyền thống",
+        reflection: "Mẹ Maria được tôn vinh là Nữ Vương trời đất. Chúng ta cầu xin ơn sống thánh thiện theo gương Mẹ.",
+        fruit: "Hoa trái của Mầu Nhiệm: Ơn Chết Lành"
+      },
+      {
+        title: "Mẹ Maria Được Vương Miện",
+        scripture: "Maria được trao vương miện Nữ Vương trời đất. — Truyền thống",
+        reflection: "Mẹ Maria được tôn vinh và là Đấng Bầu Cử cho chúng ta. Chúng ta cầu xin lòng tín thác nơi Mẹ.",
+        fruit: "Hoa trái của Mầu Nhiệm: Tín Thác Vào Mẹ Maria"
+      }
+    ],
+    Luminous: [
+      {
+        title: "Rửa Tội của Chúa Giêsu tại sông Jordan",
+        scripture: "“Ngay khi Chúa Giêsu được rửa tội, Ngài lên khỏi nước.” — Matthew 3:16-17",
+        reflection: "Chúa Giêsu bắt đầu sứ vụ công khai. Chúng ta cầu xin ơn rửa tội và đón nhận Thánh Thần.",
+        fruit: "Hoa trái của Mầu Nhiệm: Sẵn Sàng Đón Nhận Thánh Thần"
+      },
+      {
+        title: "Tiệc Cưới Cana",
+        scripture: "“Chúa Giêsu làm phép lạ đầu tiên, biến nước thành rượu.” — John 2:1-11",
+        reflection: "Chúa Giêsu tỏ mình ra và thương xót. Chúng ta cầu xin đức tin và lòng cậy trông nơi Ngài.",
+        fruit: "Hoa trái của Mầu Nhiệm: Qua Maria đến với Chúa Giêsu"
+      },
+      {
+        title: "Chúa Giêsu Rao Giảng Nước Thiên Chúa",
+        scripture: "“Hãy ăn năn, vì Nước Thiên Chúa đã đến gần.” — Matthew 4:17",
+        reflection: "Chúa kêu gọi sám hối và tin tưởng. Chúng ta cầu xin sự đổi mới trong tâm hồn.",
+        fruit: "Hoa trái của Mầu Nhiệm: Ăn Năn và Tin Tưởng"
+      },
+      {
+        title: "Biến Hình trên núi",
+        scripture: "“Mặt Ngài chói lọi như mặt trời.” — Matthew 17:2",
+        reflection: "Chúa tỏ vẻ huy hoàng. Chúng ta cầu xin dũng khí làm chứng đức tin.",
+        fruit: "Hoa trái của Mầu Nhiệm: Khao Khát Thánh Thiện"
+      },
+      {
+        title: "Thánh Thể được thiết lập",
+        scripture: "“Đây là thân thể Thầy, hiến cho các con.” — Luke 22:19-20",
+        reflection: "Chúa ban chính mình trong Thánh Thể. Chúng ta cầu xin lòng yêu mến và tôn kính Thánh Thể.",
+        fruit: "Hoa trái của Mầu Nhiệm: Lòng Sùng Kính"
       }
     ]
   },
@@ -215,6 +406,102 @@ const mysteryMeditations = {
         reflection: "Kahit bata pa si Jesus, ipinapakita niya ang pagnanais na makilala ang Diyos at tuparin ang kanyang misyon. Pinapaalalahanan tayo na hanapin si Jesus nang may kagalakan at pagtitiyaga sa ating buhay pananampalataya.",
         fruit: "Bunga ng Misteryo: Kagalakan sa Paghahanap kay Jesus"
       }
+    ],
+Sorrowful: [
+      {
+        title: "Ang Pagdurusa sa Hardin ng Getsemani",
+        scripture: "“Siya ay nalungkot at nag-alala.” — Mateo 26:37-38",
+        reflection: "Tinanggap ni Jesus ang kalooban ng Diyos sa kanyang paghihirap. Nagdarasal tayo para sa lakas sa ating mga pagsubok.",
+        fruit: "Bunga ng Misteryo: Pagsisisi"
+      },
+      {
+        title: "Ang Pagpalo kay Jesus",
+        scripture: "“Pinapalo ni Pilato si Jesus.” — Juan 19:1",
+        reflection: "Tinanggap ni Jesus ang sakit para sa ating mga kasalanan. Nagdarasal tayo para sa kadalisayan at pagpipigil sa sarili.",
+        fruit: "Bunga ng Misteryo: Kadalisayan"
+      },
+      {
+        title: "Ang Pagtatali ng Korona ng Tinik kay Jesus",
+        scripture: "“Ipinuwesto nila ang korona ng mga tinik sa kanyang ulo.” — Mateo 27:29",
+        reflection: "Tinanggap ni Jesus ang kahihiyan. Nagdarasal tayo para sa kababaang-loob at pagtitiis.",
+        fruit: "Bunga ng Misteryo: Tapang ng Moralidad"
+      },
+      {
+        title: "Ang Pagdadala ng Krus ni Jesus",
+        scripture: "“Dinala niya ang kanyang krus patungo sa lugar ng pagpapako.” — Juan 19:17",
+        reflection: "Dinala ni Jesus ang ating mga pasanin. Nagdarasal tayo para sa tibay sa pagdadala ng ating mga krus.",
+        fruit: "Bunga ng Misteryo: Pagpupursige"
+      },
+      {
+        title: "Ang Pagpapako kay Jesus sa Krus",
+        scripture: "“Namatay si Jesus sa krus para sa atin.” — Juan 19:30",
+        reflection: "Ibinigay ni Jesus ang kanyang buhay para sa kaligtasan. Nagdarasal tayo para sa kaligtasan at pag-ibig.",
+        fruit: "Bunga ng Misteryo: Kaligtasan"
+      }
+    ],
+    Glorious: [
+      {
+        title: "Ang Muling Pagkabuhay",
+        scripture: "“Hindi Siya narito; Siya ay nabuhay na.” — Lucas 24:6",
+        reflection: "Nawala ang kamatayan ni Jesus at binuksan ang langit. Nagdarasal tayo para sa pananampalataya at pag-asa.",
+        fruit: "Bunga ng Misteryo: Pananampalataya"
+      },
+      {
+        title: "Ang Pag-akyat sa Langit",
+        scripture: "“Inakyat si Jesus sa langit.” — Lucas 24:51",
+        reflection: "Bumalik si Jesus sa Ama at naghanda ng Espiritu Santo. Nagdarasal tayo para sa pagnanais sa langit.",
+        fruit: "Bunga ng Misteryo: Pag-asa"
+      },
+      {
+        title: "Ang Pagbaba ng Espiritu Santo",
+        scripture: "“Puno sila ng Espiritu Santo.” — Mga Gawa 2:4",
+        reflection: "Pinatibay ng Espiritu ang Simbahan. Nagdarasal tayo para sa mga kaloob ng Espiritu Santo.",
+        fruit: "Bunga ng Misteryo: Pagmamahal"
+      },
+      {
+        title: "Ang Pag-akyat ni Maria sa Langit",
+        scripture: "Dinala si Maria ng katawan at kaluluwa sa kaluwalhatian ng langit. — Tradisyon",
+        reflection: "Pinarangalan si Maria bilang Reyna ng Langit. Nagdarasal tayo para sa biyaya na sundin ang halimbawa Niya.",
+        fruit: "Bunga ng Misteryo: Biyaya ng Mapayapang Kamatayan"
+      },
+      {
+        title: "Ang Koronasyon ni Maria",
+        scripture: "Si Maria ay koronahan bilang Reyna ng Langit at Lupa. — Tradisyon",
+        reflection: "Si Maria ay koronahan bilang Reyna ng Langit at Lupa. Nagdarasal tayo para sa debosyon kay Maria.",
+        fruit: "Bunga ng Misteryo: Tiwala sa Pananalangin ni Maria"
+      }
+    ],
+    Luminous: [
+      {
+        title: "Ang Bautismo ni Jesus sa Jordan",
+        scripture: "“Nang mabautismuhan si Jesus, siya ay umakyat mula sa tubig.” — Mateo 3:16-17",
+        reflection: "Sinimulan ni Jesus ang kanyang ministeryo. Nagdarasal tayo para sa biyaya ng bautismo.",
+        fruit: "Bunga ng Misteryo: Bukas sa Espiritu Santo"
+      },
+      {
+        title: "Ang Kasalan sa Cana",
+        scripture: "“Ginawa ni Jesus ang kanyang unang himala, pinalitan ang tubig ng alak.” — Juan 2:1-11",
+        reflection: "Ipinakita ni Jesus ang kanyang kaluwalhatian at awa. Nagdarasal tayo para sa pananampalataya sa kapangyarihan Niya.",
+        fruit: "Bunga ng Misteryo: Sa Jesus sa pamamagitan ni Maria"
+      },
+      {
+        title: "Ipinahayag ni Jesus ang Kaharian ng Diyos",
+        scripture: "“Magsisi kayo, sapagkat malapit na ang kaharian ng langit.” — Mateo 4:17",
+        reflection: "Tinatawag tayo ni Jesus sa pagsisisi at pananampalataya. Nagdarasal tayo para sa pagbabago ng puso.",
+        fruit: "Bunga ng Misteryo: Pagsisisi at Tiwala sa Diyos"
+      },
+      {
+        title: "Ang Pagbabagong-anyo",
+        scripture: "“Ang kanyang mukha ay nagniningning na parang araw.” — Mateo 17:2",
+        reflection: "Ipinakita ni Jesus ang kanyang banal na kaluwalhatian. Nagdarasal tayo para sa tapang na ipahayag ang ating pananampalataya.",
+        fruit: "Bunga ng Misteryo: Hangarin sa kabanalan"
+      },
+      {
+        title: "Ang Institusyon ng Eukaristiya",
+        scripture: "“Ito ang aking katawan na ibinibigay para sa inyo.” — Lucas 22:19-20",
+        reflection: "Ibinigay ni Jesus ang kanyang sarili sa Eukaristiya. Nagdarasal tayo para sa pag-ibig at paggalang sa Eukaristiya.",
+        fruit: "Bunga ng Misteryo: Pagsamba"
+      }
     ]
   }
 };
@@ -224,8 +511,6 @@ const languageSelect = document.getElementById("languageSelect");
 const daySelect = document.getElementById("daySelect");
 
 let currentDecade = 0;
-
-const mysteryDays = Object.keys(mysteriesByDay);
 
 languageSelect.addEventListener("change", () => {
   currentDecade = 0;
@@ -297,6 +582,15 @@ function nextDecade() {
     renderPrayers();
   }
 }
+
+function setCurrentDay() {
+  const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  const today = new Date();
+  daySelect.value = days[today.getDay()];
+}
+
+// Set the day select to the current day on page load
+setCurrentDay();
 
 // Initial render
 renderPrayers();
