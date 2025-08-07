@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>PAO System Table</title>
     <style>
         body {
@@ -42,7 +42,8 @@
     </style>
     <script>
         function jumpToNumber() {
-            var num = document.getElementById("jumpInput").value.padStart(2, '0');
+            var inputField = document.getElementById("jumpInput");
+            var num = inputField.value.padStart(2, '0');
             var row = document.getElementById("num" + num);
             if (row) {
                 // Remove any previous highlight
@@ -53,8 +54,13 @@
                 // Highlight the selected row
                 row.classList.add("highlight");
                 row.scrollIntoView({ behavior: "smooth", block: "center" });
+
+                // Clear the input field after jump
+                inputField.value = "";
             } else {
                 alert("Number not found in table.");
+                // Optional: clear input even if not found
+                // inputField.value = "";
             }
         }
 
@@ -66,14 +72,14 @@
         }
 
         // Add event listener for 'Enter' key
-        window.onload = function() {
+        window.onload = function () {
             document.getElementById("jumpInput").addEventListener("keypress", handleEnterPress);
         };
     </script>
 </head>
 <body>
     <h1>PAO System</h1>
-    <input type="number" id="jumpInput" placeholder="Enter number" inputmode="numeric">
+    <input type="number" id="jumpInput" placeholder="Enter number" inputmode="numeric" />
     <button onclick="jumpToNumber()">Jump To</button>
     <div class="table-container">
         <table>
@@ -197,7 +203,7 @@
     </div>
     <script>
         // Add red color to hearts and diamonds suits
-        document.querySelectorAll('.suit').forEach(function(span) {
+        document.querySelectorAll('.suit').forEach(function (span) {
             var suit = span.textContent;
             if (suit === '♥' || suit === '♦') {
                 span.classList.add('red-suit');
