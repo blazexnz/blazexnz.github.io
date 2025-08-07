@@ -186,6 +186,8 @@ Sa pamamagitan ni Hesukristo, aming Panginoon. Amen.`
 
 };
 
+
+
 const titles = {
   en: {
     signOfTheCross: "Sign of the Cross",
@@ -658,9 +660,13 @@ Sorrowful: [
 };
 
 
+
+let currentFontSize = 16;  // default font size in px
+
 const prayersDiv = document.getElementById("prayers");
 const languageSelect = document.getElementById("languageSelect");
 const daySelect = document.getElementById("daySelect");
+
 
 let currentDecade = 0;
 
@@ -718,6 +724,8 @@ function renderPrayers() {
   html += `<div class='prayer closing'><strong>${t.closingPrayer}:</strong><br>${prayers[lang].closingPrayer}</div>`;
   html += `<div class='prayer closing'><strong>${t.signOfTheCross}:</strong><br>${prayers[lang].signOfTheCross}</div>`;
 
+prayersDiv.style.fontSize = currentFontSize + "px";
+
   prayersDiv.innerHTML = html;
 }
 
@@ -746,3 +754,17 @@ setCurrentDay();
 
 // Initial render
 renderPrayers();
+
+document.getElementById("increaseFontBtn").addEventListener("click", () => {
+  if (currentFontSize < 30) { // max font size limit
+    currentFontSize += 2;
+    renderPrayers();
+  }
+});
+
+document.getElementById("decreaseFontBtn").addEventListener("click", () => {
+  if (currentFontSize > 10) { // min font size limit
+    currentFontSize -= 2;
+    renderPrayers();
+  }
+});
