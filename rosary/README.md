@@ -8,7 +8,9 @@ This is a simple web app to help you pray the Rosary in English, Vietnamese, or 
 - **Step-by-step guidance:** Walks you through each prayer and decade
 - **Scripture and reflections:** Includes Bible verses and meditations for each Mystery
 - **Responsive layout:** Works well on both phones and desktop
-- - **Adjustable font size:** Decrease or increase the prayer text size for easier reading
+- **Adjustable font size:** Decrease or increase the prayer text size for easier reading
+- **Interactive beads:** Tap beads to track progress for each prayer
+- **Bead visibility toggle:** Switch between app-based beads or use your physical rosary
 
 ## How to use
 1. **Open the app:** It will automatically select the correct Mysteries for the day
@@ -16,3 +18,5 @@ This is a simple web app to help you pray the Rosary in English, Vietnamese, or 
 3. **Adjust font size:** Use the **A-** button to decrease and **A+** to increase the text size as needed
 4. **Start praying:** Follow along through the prayers and reflections
 5. **Use navigation buttons:** Tap "Next" or "Previous" to move through the prayers or decades
+6. **Toggle beads on/off:** Click **Hide Beads** to use a physical rosary instead of the app’s bead counters
+
