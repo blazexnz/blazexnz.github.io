@@ -3,7 +3,7 @@ en: {
   signOfTheCross: "In the name of the Father, and of the Son, and of the Holy Spirit. Amen.",
 
   apostlesCreed: `I believe in God, the Father Almighty, Creator of heaven and earth;  
-I believe in Jesus Christ, His only Son, our Lord;  
+and in Jesus Christ, His only Son, our Lord;  
 who was conceived by the Holy Spirit, born of the Virgin Mary,  
 suffered under Pontius Pilate, was crucified, died, and was buried;  
 He descended into hell; on the third day He rose again from the dead;  
@@ -982,4 +982,5 @@ toggleBeadsBtn.addEventListener("click", () => {
   const beadsVisible = prayersDiv.classList.toggle("hide-beads");
   toggleBeadsBtn.textContent = beadsVisible ? "Show Beads" : "Hide Beads";
 });
+
 
