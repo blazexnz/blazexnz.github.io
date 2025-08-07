@@ -965,3 +965,10 @@ document.getElementById("decreaseFontBtn").addEventListener("click", () => {
     renderPrayers();
   }
 });
+
+// NEW: Toggle all beads visibility with a button
+const toggleBeadsBtn = document.getElementById("toggleBeadsBtn");
+toggleBeadsBtn.addEventListener("click", () => {
+  const beadsVisible = prayersDiv.classList.toggle("hide-beads");
+  toggleBeadsBtn.textContent = beadsVisible ? "Show Beads" : "Hide Beads";
+});
