@@ -11,28 +11,33 @@
     x: width / 2,
     y: height - ballRadius - 10,
     vy: 0,
+    vx: 0, // NEW: horizontal velocity
     gravity: 0.6,
     bouncePower: 15,
     onGround: true,
   };
 
-  // Drag state
+  // Drag / hold state
   let dragging = false;
+  let holding = false;
   let dragOffsetX = 0;
   let dragOffsetY = 0;
 
+  // For throw velocity calculation
+  let lastPos = { x: ball.x, y: ball.y };
+  let lastMoveTime = 0;
+
   // Tap timing for progressive bounce
   let lastTapTime = 0;
-  const maxBouncePower = 60;  // maximum bounce power
-  const bounceIncrement = 7;  // bounce power increase per tap
+  const maxBouncePower = 60;
+  const bounceIncrement = 7;
   let currentBouncePower = ball.bouncePower;
 
-  // Helpers
   function drawBall() {
     ctx.beginPath();
-    ctx.fillStyle = '#00c896'; // solid green
-    ctx.shadowColor = 'transparent'; // no glow
-    ctx.shadowBlur = 0; // no blur
+    ctx.fillStyle = '#00c896';
+    ctx.shadowColor = 'transparent';
+    ctx.shadowBlur = 0;
     ctx.arc(ball.x, ball.y, ballRadius, 0, Math.PI * 2);
     ctx.fill();
     ctx.closePath();
@@ -43,27 +48,40 @@
   }
 
   function update() {
-    if (!dragging) {
+    if (!dragging && !holding) {
       ball.vy += ball.gravity;
+      ball.x += ball.vx; // NEW: apply horizontal velocity
       ball.y += ball.vy;
 
-      // Ground collision
+      // Ground bounce
       if (ball.y + ballRadius > height - 10) {
         ball.y = height - 10 - ballRadius;
-        ball.vy = 0;
+        ball.vy *= -0.7; // bounce up with damping
+        if (Math.abs(ball.vy) < 1) ball.vy = 0;
         ball.onGround = true;
-
-        // Reset bounce power on ground contact
         currentBouncePower = ball.bouncePower;
       } else {
         ball.onGround = false;
       }
 
-      // Ceiling collision (prevent ball going off top)
+      // Ceiling collision
       if (ball.y - ballRadius < 0) {
         ball.y = ballRadius;
-        if (ball.vy < 0) ball.vy = 0;
+        if (ball.vy < 0) ball.vy *= -0.7;
       }
+
+      // Wall collisions
+      if (ball.x - ballRadius < 0) {
+        ball.x = ballRadius;
+        ball.vx *= -0.7; // bounce off left wall
+      } else if (ball.x + ballRadius > width) {
+        ball.x = width - ballRadius;
+        ball.vx *= -0.7; // bounce off right wall
+      }
+
+      // Apply horizontal friction
+      ball.vx *= 0.99;
+      if (Math.abs(ball.vx) < 0.05) ball.vx = 0;
     }
   }
 
@@ -74,7 +92,6 @@
     requestAnimationFrame(loop);
   }
 
-  // Input handling
   function getPointerPos(e) {
     let rect = canvas.getBoundingClientRect();
     let x, y;
@@ -88,37 +105,35 @@
     return { x, y };
   }
 
-  // Bounce the ball with progressive height
   function bounce() {
     const now = Date.now();
-
     if (now - lastTapTime < 400) {
       currentBouncePower = Math.min(currentBouncePower + bounceIncrement, maxBouncePower);
     } else {
       currentBouncePower = ball.bouncePower;
     }
-
-    // Increase vy (negative to go up)
     ball.vy = -currentBouncePower;
     ball.onGround = false;
-
     lastTapTime = now;
   }
 
-  // Detect if pointer is inside ball
   function isInBall(x, y) {
     let dx = x - ball.x;
     let dy = y - ball.y;
-    return Math.sqrt(dx*dx + dy*dy) <= ballRadius;
+    return Math.sqrt(dx * dx + dy * dy) <= ballRadius;
   }
 
-  // Event listeners
   canvas.addEventListener('pointerdown', (e) => {
     const pos = getPointerPos(e);
     if (isInBall(pos.x, pos.y)) {
       dragging = true;
+      holding = true;
       dragOffsetX = pos.x - ball.x;
       dragOffsetY = pos.y - ball.y;
+      ball.vx = 0; // stop horizontal motion while dragging
+      ball.vy = 0; // freeze motion instantly
+      lastPos = pos;
+      lastMoveTime = Date.now();
     }
   });
 
@@ -126,14 +141,35 @@
     if (!dragging) return;
     e.preventDefault();
     const pos = getPointerPos(e);
+
+    // if moved significantly, treat as dragging
+    if (Math.abs(pos.x - (ball.x + dragOffsetX)) > 2 ||
+        Math.abs(pos.y - (ball.y + dragOffsetY)) > 2) {
+      holding = false;
+    }
+
     ball.x = Math.min(Math.max(ballRadius, pos.x - dragOffsetX), width - ballRadius);
     ball.y = Math.min(Math.max(ballRadius, pos.y - dragOffsetY), height - ballRadius - 10);
     ball.vy = 0;
+
+    // Track movement for velocity calculation
+    let now = Date.now();
+    let dt = (now - lastMoveTime) / 1000;
+    if (dt > 0) {
+      ball.vx = (pos.x - lastPos.x) / dt / 60; // scaled down
+      ball.vy = (pos.y - lastPos.y) / dt / 60;
+    }
+    lastPos = pos;
+    lastMoveTime = now;
   }, { passive: false });
 
   canvas.addEventListener('pointerup', (e) => {
     if (dragging) {
+      if (holding) {
+        holding = false;
+      }
       dragging = false;
+      // Throw effect: keep the velocity from pointermove
     } else {
       bounce();
     }
