@@ -21,7 +21,7 @@
   // For continuous dropping
   let dropping = false;
   let dropInterval = null;
-  let dropX = width / 2;
+  let dropPos = { x: width / 2, y: 50 };
 
   // Utility to generate pastel colors
   function randomPastelColor() {
@@ -156,25 +156,26 @@
     }
   }, { passive: false });
 
-  // Press & hold + horizontal drag to continuously drop balls
+  // Press & hold + drag to continuously drop balls from exact pointer position
   canvas.addEventListener('pointerdown', (e) => {
     e.preventDefault();
     dropping = true;
-    const pos = getPointerPos(e);
-    dropX = pos.x;
+    dropPos = getPointerPos(e);
 
     if (dropInterval) clearInterval(dropInterval);
     dropInterval = setInterval(() => {
       if (dropping) {
-        createBall(dropX, 50);
+        // Clamp x and y inside canvas bounds with radius margin
+        let x = Math.min(Math.max(dropPos.x, ballRadius), width - ballRadius);
+        let y = Math.min(Math.max(dropPos.y, ballRadius), height - ballRadius - 100); // keep some margin top
+        createBall(x, y);
       }
     }, 100);
   }, { passive: false });
 
   canvas.addEventListener('pointermove', (e) => {
     if (!dropping) return;
-    const pos = getPointerPos(e);
-    dropX = Math.min(Math.max(pos.x, ballRadius), width - ballRadius);
+    dropPos = getPointerPos(e);
   });
 
   function stopDropping() {
