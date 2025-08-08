@@ -7,6 +7,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const gridSizeLabel = document.getElementById("gridSizeLabel");
   const circleSizeLabel = document.getElementById("circleSizeLabel");
 
+  // Position buttons
+  const posTopBtn = document.getElementById("posTop");
+  const posMiddleBtn = document.getElementById("posMiddle");
+  const posBottomBtn = document.getElementById("posBottom");
+
   // Dot size in px (fixed)
   const DOT_SIZE = 25;
   const DOT_BORDER = 2; // border thickness on each side, included in dot size
@@ -58,25 +63,12 @@ document.addEventListener("DOMContentLoaded", () => {
       const centerY = containerSize / 2;
       const maxRadius = containerSize / 2 - DOT_SIZE; // leave margin for dots
 
-      // Calculate dot spacing - closer for fewer rings, more spaced for more rings
-      // The dots are placed on rings evenly spaced by radius
-      // We'll position dots on rings from radius = 0 to maxRadius
-
       let dotsPlaced = 0;
-      // We'll try to place dots on each ring proportionally
-      // Ring 0 = center dot only
 
       for (let ring = 0; ring < rings; ring++) {
-        // radius grows with ring number
-        // To ensure even spacing between rings, radius is proportional to ring number
-        // For 1 ring (ring=0), radius=0 (center dot), for last ring radius=maxRadius
         const radius = (ring / (rings - 1)) * maxRadius;
 
-        // Calculate number of dots on this ring
-        // Dot spacing depends on containerSize and rings to keep proximity dynamic
-        // Approximate circumference / desired spacing:
-        // desired spacing between dots is roughly DOT_SIZE + 4px margin for comfortable click
-        const desiredSpacing = DOT_SIZE + 6; // dot + margin
+        const desiredSpacing = DOT_SIZE + 6;
         const circumference = 2 * Math.PI * radius;
         let approxDotsInRing = 0;
 
@@ -87,7 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         for (let i = 0; i < approxDotsInRing; i++) {
-          if (dotsPlaced >= rings * rings * 3) break; // safety limit to prevent infinite
+          if (dotsPlaced >= rings * rings * 3) break;
 
           const angle = (i / approxDotsInRing) * 2 * Math.PI;
           const x = centerX + radius * Math.cos(angle);
@@ -112,7 +104,6 @@ document.addEventListener("DOMContentLoaded", () => {
   function updateGrid() {
     const shape = shapeTypeSelect.value;
 
-    // Show/hide size selects based on shape
     if (shape === "circle") {
       circleSizeSelect.style.display = "";
       circleSizeLabel.style.display = "";
@@ -132,6 +123,20 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  function setPosition(position) {
+    gridContainer.classList.remove("position-top", "position-middle", "position-bottom");
+    gridContainer.classList.add(`position-${position}`);
+
+    // Update active button styling
+    posTopBtn.classList.toggle("active", position === "top");
+    posMiddleBtn.classList.toggle("active", position === "middle");
+    posBottomBtn.classList.toggle("active", position === "bottom");
+  }
+
+  posTopBtn.addEventListener("click", () => setPosition("top"));
+  posMiddleBtn.addEventListener("click", () => setPosition("middle"));
+  posBottomBtn.addEventListener("click", () => setPosition("bottom"));
+
   shapeTypeSelect.addEventListener("change", updateGrid);
   gridSizeSelect.addEventListener("change", updateGrid);
   circleSizeSelect.addEventListener("change", updateGrid);
@@ -139,4 +144,5 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Initialize
   updateGrid();
+  setPosition("bottom"); // default to bottom
 });
