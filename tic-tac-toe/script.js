@@ -56,6 +56,13 @@ function handleDotClick(e) {
     return;
   }
 
+  // Check for draw (no winner and board full)
+  if (moves.length === BOARD_SIZE * BOARD_SIZE) {
+    showDraw();
+    gameOver = true;
+    return;
+  }
+
   currentPlayer = currentPlayer === 1 ? 2 : 1;
 }
 
@@ -80,17 +87,27 @@ function checkWin(player) {
 
 function showWinner(player) {
   winnerOverlay.textContent = `🎉 Congratulations Player ${player}! 🎉`;
-  winnerOverlay.classList.remove("hidden");
-  winnerOverlay.classList.remove("fade-out");
+  winnerOverlay.classList.remove("hidden", "fade-out");
   startFireworks();
 
-  // Auto-hide after 1 second (shortened delay)
   setTimeout(() => {
     winnerOverlay.classList.add("fade-out");
     setTimeout(() => {
       winnerOverlay.classList.add("hidden");
       stopFireworks();
-    }, 500); // matches CSS transition
+    }, 500);
+  }, 1000);
+}
+
+function showDraw() {
+  winnerOverlay.textContent = "🤝 It's a draw! No winner this time.";
+  winnerOverlay.classList.remove("hidden", "fade-out");
+
+  setTimeout(() => {
+    winnerOverlay.classList.add("fade-out");
+    setTimeout(() => {
+      winnerOverlay.classList.add("hidden");
+    }, 500);
   }, 1000);
 }
 
