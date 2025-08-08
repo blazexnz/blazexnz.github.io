@@ -2,7 +2,12 @@
   const canvas = document.getElementById('gameCanvas');
   const ctx = canvas.getContext('2d');
   const startOverBtn = document.getElementById('startOverBtn');
-  const modeToggleBtn = document.getElementById('modeToggleBtn');
+  const modeSelect = document.getElementById('modeSelect');
+
+  const btnDrop100 = document.getElementById('btnDrop100');
+  const btnLaunchAll = document.getElementById('btnLaunchAll');
+  const btnShuffle = document.getElementById('btnShuffle');
+  const btnColors = document.getElementById('btnColors');
 
   const width = canvas.width;
   const height = canvas.height;
@@ -10,25 +15,38 @@
   const ballRadius = 25;
   const gravity = 0.6;
 
-  let balls = []; // store all balls
+  let balls = []; // all balls
   let mode = 1; // 1 = original, 2 = juggling
 
-  function createBall(x, y) {
+  // For continuous dropping
+  let dropping = false;
+  let dropInterval = null;
+  let dropX = width / 2;
+
+  // Utility to generate pastel colors
+  function randomPastelColor() {
+    const r = Math.round((Math.random() * 127) + 127);
+    const g = Math.round((Math.random() * 127) + 127);
+    const b = Math.round((Math.random() * 127) + 127);
+    return `rgb(${r},${g},${b})`;
+  }
+
+  function createBall(x, y, color = '#00c896') {
     balls.push({
       x,
       y,
       vx: 0,
       vy: 0,
-      bouncePower: 30, // enough to hit roof
+      bouncePower: 30,
       currentBouncePower: 30,
       onGround: false,
-      lastTapTime: 0
+      color,
     });
   }
 
   function drawBall(ball) {
     ctx.beginPath();
-    ctx.fillStyle = '#00c896';
+    ctx.fillStyle = ball.color || '#00c896';
     ctx.arc(ball.x, ball.y, ballRadius, 0, Math.PI * 2);
     ctx.fill();
     ctx.closePath();
@@ -98,8 +116,15 @@
     return { x, y };
   }
 
+  // Mode switching via dropdown select
+  modeSelect.addEventListener('change', () => {
+    mode = parseInt(modeSelect.value, 10);
+    balls = [];
+  });
+
+  // Main canvas pointer down
   canvas.addEventListener('pointerdown', (e) => {
-    e.preventDefault(); // stop iOS zoom on pointer down
+    e.preventDefault();
     const pos = getPointerPos(e);
 
     if (mode === 1) {
@@ -131,30 +156,100 @@
     }
   }, { passive: false });
 
-  // Start Over button handlers (click + touch)
+  // Press & hold + horizontal drag to continuously drop balls
+  canvas.addEventListener('pointerdown', (e) => {
+    e.preventDefault();
+    dropping = true;
+    const pos = getPointerPos(e);
+    dropX = pos.x;
+
+    if (dropInterval) clearInterval(dropInterval);
+    dropInterval = setInterval(() => {
+      if (dropping) {
+        createBall(dropX, 50);
+      }
+    }, 100);
+  }, { passive: false });
+
+  canvas.addEventListener('pointermove', (e) => {
+    if (!dropping) return;
+    const pos = getPointerPos(e);
+    dropX = Math.min(Math.max(pos.x, ballRadius), width - ballRadius);
+  });
+
+  function stopDropping() {
+    dropping = false;
+    if (dropInterval) {
+      clearInterval(dropInterval);
+      dropInterval = null;
+    }
+  }
+
+  canvas.addEventListener('pointerup', (e) => {
+    e.preventDefault();
+    stopDropping();
+  });
+  canvas.addEventListener('pointercancel', (e) => {
+    e.preventDefault();
+    stopDropping();
+  });
+  canvas.addEventListener('pointerout', (e) => {
+    e.preventDefault();
+    stopDropping();
+  });
+  canvas.addEventListener('pointerleave', (e) => {
+    e.preventDefault();
+    stopDropping();
+  });
+
+  // Start Over button
   const restartGame = () => { balls = []; };
   startOverBtn.addEventListener('click', restartGame);
   startOverBtn.addEventListener('touchend', restartGame);
 
-  // Mode Toggle: Fix buggy toggle on iPhone by debouncing and handling touch/click properly
-  let toggleCooldown = false;
-  const toggleMode = () => {
-    if (toggleCooldown) return;
-    toggleCooldown = true;
-    setTimeout(() => toggleCooldown = false, 300);
-    mode = mode === 1 ? 2 : 1;
-    modeToggleBtn.textContent = `Mode: ${mode}`;
-    balls = [];
-  };
-  modeToggleBtn.addEventListener('click', toggleMode);
-  modeToggleBtn.addEventListener('touchend', (e) => {
-    e.preventDefault(); // prevent ghost clicks on iOS
-    toggleMode();
+  // Console buttons logic
+
+  // 💥 Drop 100 balls spaced horizontally with slight intervals (rain effect), add to existing balls
+  btnDrop100.addEventListener('click', () => {
+    const spacing = width / 100;
+    let i = 0;
+
+    function dropOne() {
+      if (i >= 100) return;
+      // Add ball at spaced x, y=50
+      createBall(spacing * i + spacing / 2, 50);
+      i++;
+      // Schedule next drop with slight random interval (20-50ms)
+      setTimeout(dropOne, 20 + Math.random() * 30);
+    }
+    dropOne();
   });
 
-  canvas.addEventListener('contextmenu', e => e.preventDefault());
+  // 🚀 Launch all resting balls on the ground, launching them staggered over ~3s
+  btnLaunchAll.addEventListener('click', () => {
+    const restingBalls = balls.filter(b => b.onGround);
+    restingBalls.forEach((ball, index) => {
+      setTimeout(() => {
+        ball.vy = -ball.currentBouncePower;
+      }, index * 30); // 30ms delay between each launch
+    });
+  });
 
-  // Disable double-tap zoom on iOS
+  // 🔄 Shuffle horizontal velocities randomly (-5 to +5)
+  btnShuffle.addEventListener('click', () => {
+    for (let ball of balls) {
+      ball.vx = (Math.random() - 0.5) * 10;
+    }
+  });
+
+  // 🌈 Change all balls to random pastel colors
+  btnColors.addEventListener('click', () => {
+    for (let ball of balls) {
+      ball.color = randomPastelColor();
+    }
+  });
+
+  // Disable double-tap zoom on iOS globally
   let lastTouchEnd = 0;
   document.addEventListener('touchend', function (event) {
     const now = new Date().getTime();
@@ -163,6 +258,9 @@
     }
     lastTouchEnd = now;
   }, { passive: false });
+
+  // Disable right-click context menu on canvas
+  canvas.addEventListener('contextmenu', e => e.preventDefault());
 
   loop();
 })();
