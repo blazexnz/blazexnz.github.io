@@ -2,6 +2,7 @@
   const canvas = document.getElementById('gameCanvas');
   const ctx = canvas.getContext('2d');
   const startOverBtn = document.getElementById('startOverBtn');
+  const modeToggleBtn = document.getElementById('modeToggleBtn');
 
   const width = canvas.width;
   const height = canvas.height;
@@ -10,6 +11,7 @@
   const gravity = 0.6;
 
   let balls = []; // store all balls
+  let mode = 1; // 1 = original, 2 = juggling
 
   function createBall(x, y) {
     balls.push({
@@ -17,7 +19,7 @@
       y,
       vx: 0,
       vy: 0,
-      bouncePower: 30, // increased so it hits the roof
+      bouncePower: 30, // enough to hit roof
       currentBouncePower: 30,
       onGround: false,
       lastTapTime: 0
@@ -99,29 +101,42 @@
   canvas.addEventListener('pointerdown', (e) => {
     const pos = getPointerPos(e);
 
-    // Check if user tapped a ball that is resting at the bottom
-    let touchedRestingBall = false;
-    for (let ball of balls) {
-      const dx = pos.x - ball.x;
-      const dy = pos.y - ball.y;
-      const dist = Math.sqrt(dx * dx + dy * dy);
-      if (dist <= ballRadius && ball.onGround) {
-        ball.vy = -ball.currentBouncePower; // make it bounce
-        touchedRestingBall = true;
-        break;
+    if (mode === 1) {
+      // Mode 1: Original
+      let touchedRestingBall = false;
+      for (let ball of balls) {
+        const dx = pos.x - ball.x;
+        const dy = pos.y - ball.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist <= ballRadius && ball.onGround) {
+          ball.vy = -ball.currentBouncePower;
+          touchedRestingBall = true;
+          break;
+        }
       }
-    }
-
-    // If no resting ball touched, create a new ball only if click is not near bottom
-    if (!touchedRestingBall) {
-      const bottomSafeZone = height - 80; // 80px from bottom is safe click zone for existing balls
-      if (pos.y < bottomSafeZone) {
-        createBall(pos.x, pos.y);
+      if (!touchedRestingBall) {
+        const bottomSafeZone = height - 80;
+        if (pos.y < bottomSafeZone) {
+          createBall(pos.x, pos.y);
+        }
       }
+    } else if (mode === 2) {
+      // Mode 2: Juggling (Flappy Bird–like)
+      if (balls.length === 0) {
+        createBall(width / 2, height / 2);
+      }
+      const ball = balls[0];
+      ball.vy = -10; // flappy bird–style upward push
     }
   });
 
   startOverBtn.addEventListener('click', () => {
+    balls = [];
+  });
+
+  modeToggleBtn.addEventListener('click', () => {
+    mode = mode === 1 ? 2 : 1;
+    modeToggleBtn.textContent = `Mode: ${mode}`;
     balls = [];
   });
 
