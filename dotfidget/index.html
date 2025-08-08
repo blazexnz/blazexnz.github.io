@@ -51,6 +51,8 @@
       background: white;
       border-radius: 6px;
       transition: background 0.2s, border-color 0.2s;
+      min-width: 60px;
+      min-height: 32px;
     }
 
     .position-controls button.active {
@@ -88,7 +90,7 @@
 
     .position-bottom {
       margin-top: auto;
-      margin-bottom: 20px; /* some bottom padding */
+      margin-bottom: 80px; /* increased bottom padding for mobile UI */
     }
 
     .dot {
@@ -120,7 +122,22 @@
 
     @media (max-width: 600px) {
       body {
-        padding-bottom: 40px;
+        padding-bottom: 100px; /* More padding for mobile bottom bar */
+      }
+
+      /* Make buttons bigger and easier to tap */
+      button,
+      select {
+        font-size: 18px !important;
+        padding: 10px 16px !important;
+        margin-left: 8px !important;
+      }
+
+      .position-controls button {
+        min-width: 80px;
+        min-height: 44px;
+        margin-right: 14px;
+        font-size: 18px;
       }
 
       .grid-container {
