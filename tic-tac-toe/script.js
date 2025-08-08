@@ -7,15 +7,17 @@ const player1ColorPicker = document.getElementById("player1ColorPicker");
 const player2ColorPicker = document.getElementById("player2ColorPicker");
 const saveColorsBtn = document.getElementById("saveColorsBtn");
 const cancelColorsBtn = document.getElementById("cancelColorsBtn");
+const winnerOverlay = document.getElementById("winnerOverlay");
+const fireworksCanvas = document.getElementById("fireworksCanvas");
 
-const BOARD_SIZE = 3; // 3x3 grid
-let currentPlayer = 1; // 1 or 2
-let moves = []; // stack to store moves for undo
+const BOARD_SIZE = 3;
+let currentPlayer = 1;
+let moves = [];
+let gameOver = false;
 
-// Default player colors, use CSS variables
 let playerColors = {
-  1: "#FF4136", // red
-  2: "#0074D9", // blue
+  1: "#FF4136",
+  2: "#0074D9",
 };
 
 function updateCSSVariables() {
@@ -38,37 +40,79 @@ function createBoard() {
 }
 
 function handleDotClick(e) {
+  if (gameOver) return;
+
   const dot = e.target;
   if (dot.classList.contains("player1") || dot.classList.contains("player2")) {
-    // Already taken
     return;
   }
-  // Mark dot with current player's color class
+
   dot.classList.add(`player${currentPlayer}`);
   moves.push({ index: dot.dataset.index, player: currentPlayer });
 
-  // Switch player
+  if (checkWin(currentPlayer)) {
+    showWinner(currentPlayer);
+    gameOver = true;
+    return;
+  }
+
   currentPlayer = currentPlayer === 1 ? 2 : 1;
 }
 
+function checkWin(player) {
+  const winPatterns = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6],
+  ];
+
+  return winPatterns.some(pattern =>
+    pattern.every(index =>
+      board.querySelector(`.dot[data-index='${index}']`).classList.contains(`player${player}`)
+    )
+  );
+}
+
+function showWinner(player) {
+  winnerOverlay.textContent = `🎉 Congratulations Player ${player}! 🎉`;
+  winnerOverlay.classList.remove("hidden");
+  winnerOverlay.classList.remove("fade-out");
+  startFireworks();
+
+  // Auto-hide after 1 second (shortened delay)
+  setTimeout(() => {
+    winnerOverlay.classList.add("fade-out");
+    setTimeout(() => {
+      winnerOverlay.classList.add("hidden");
+      stopFireworks();
+    }, 500); // matches CSS transition
+  }, 1000);
+}
+
 function undoMove() {
-  if (moves.length === 0) return;
+  if (moves.length === 0 || gameOver) return;
 
   const lastMove = moves.pop();
   const dot = board.querySelector(`.dot[data-index='${lastMove.index}']`);
   if (dot) {
     dot.classList.remove("player1", "player2");
   }
-
-  // Undo switches the player back
   currentPlayer = lastMove.player;
 }
 
 function resetBoard() {
   moves = [];
   currentPlayer = 1;
+  gameOver = false;
   const dots = board.querySelectorAll(".dot");
   dots.forEach(dot => dot.classList.remove("player1", "player2"));
+  winnerOverlay.classList.add("hidden");
+  stopFireworks();
 }
 
 function openColorModal() {
@@ -86,6 +130,53 @@ function saveColors() {
   playerColors[2] = player2ColorPicker.value;
   updateCSSVariables();
   closeColorModal();
+}
+
+/* Fireworks Animation */
+let fwCtx = fireworksCanvas.getContext("2d");
+let particles = [];
+function startFireworks() {
+  fireworksCanvas.width = window.innerWidth;
+  fireworksCanvas.height = window.innerHeight;
+  particles = [];
+  createFirework();
+  requestAnimationFrame(updateFireworks);
+}
+
+function stopFireworks() {
+  particles = [];
+  fwCtx.clearRect(0, 0, fireworksCanvas.width, fireworksCanvas.height);
+}
+
+function createFirework() {
+  for (let i = 0; i < 100; i++) {
+    particles.push({
+      x: fireworksCanvas.width / 2,
+      y: fireworksCanvas.height / 2,
+      angle: Math.random() * Math.PI * 2,
+      speed: Math.random() * 5 + 2,
+      radius: Math.random() * 2 + 1,
+      life: 100,
+      color: `hsl(${Math.random() * 360}, 100%, 50%)`
+    });
+  }
+}
+
+function updateFireworks() {
+  fwCtx.clearRect(0, 0, fireworksCanvas.width, fireworksCanvas.height);
+  particles.forEach(p => {
+    p.x += Math.cos(p.angle) * p.speed;
+    p.y += Math.sin(p.angle) * p.speed;
+    p.life--;
+    fwCtx.beginPath();
+    fwCtx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+    fwCtx.fillStyle = p.color;
+    fwCtx.fill();
+  });
+  particles = particles.filter(p => p.life > 0);
+  if (particles.length > 0) {
+    requestAnimationFrame(updateFireworks);
+  }
 }
 
 resetBtn.addEventListener("click", resetBoard);
