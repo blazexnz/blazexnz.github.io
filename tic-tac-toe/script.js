@@ -15,7 +15,8 @@ const player1ScoreEl = document.getElementById("player1Score");
 const player2ScoreEl = document.getElementById("player2Score");
 
 const BOARD_SIZE = 3;
-let currentPlayer = 1;
+let startingPlayer = 1; // Track who starts next game
+let currentPlayer = startingPlayer;
 let moves = [];
 let gameOver = false;
 let scores = { 1: 0, 2: 0 }; // Track wins
@@ -101,6 +102,9 @@ function showWinner(player) {
   winnerOverlay.classList.remove("hidden", "fade-out");
   startFireworks();
 
+  // Alternate starting player for next game
+  startingPlayer = startingPlayer === 1 ? 2 : 1;
+
   setTimeout(() => {
     winnerOverlay.classList.add("fade-out");
     setTimeout(() => {
@@ -113,6 +117,9 @@ function showWinner(player) {
 function showDraw() {
   winnerOverlay.textContent = "🤝 It's a draw! No winner this time.";
   winnerOverlay.classList.remove("hidden", "fade-out");
+
+  // Alternate starting player for next game
+  startingPlayer = startingPlayer === 1 ? 2 : 1;
 
   setTimeout(() => {
     winnerOverlay.classList.add("fade-out");
@@ -135,7 +142,7 @@ function undoMove() {
 
 function resetBoard() {
   moves = [];
-  currentPlayer = 1;
+  currentPlayer = startingPlayer; // Use alternating starter
   gameOver = false;
   const dots = board.querySelectorAll(".dot");
   dots.forEach(dot => dot.classList.remove("player1", "player2"));
