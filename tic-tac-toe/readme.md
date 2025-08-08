@@ -9,6 +9,7 @@ A simple web-based Tic Tac Toe game using clickable dots that change color based
 - **Reset board:** Clear the board and start a new game at any time
 - **Change player colors:** Customize the colors for Player 1 and Player 2 using a color picker modal
 - **Simple UI:** Clean and minimal interface for quick and easy gameplay
+- **Scoreboard:** A scoreboard to track of your scores
 
 ## How to use
 1. **Play:** Click any gray dot to mark it with the current player’s color
