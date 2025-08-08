@@ -31,9 +31,11 @@
 
   #controls {
     margin-bottom: 10px;
+    display: flex;
+    gap: 10px;
   }
 
-  #startOverBtn {
+  #startOverBtn, #modeToggleBtn {
     background: #00c896;
     color: white;
     border: none;
@@ -44,7 +46,7 @@
     font-weight: bold;
     transition: background 0.2s ease;
   }
-  #startOverBtn:hover {
+  #startOverBtn:hover, #modeToggleBtn:hover {
     background: #00a77a;
   }
 
@@ -70,6 +72,7 @@
 <h1>Bouncy Ball Game</h1>
 <div id="controls">
   <button id="startOverBtn">Start Over</button>
+  <button id="modeToggleBtn">Mode: 1</button>
 </div>
 <canvas id="gameCanvas" width="375" height="667"></canvas>
 
