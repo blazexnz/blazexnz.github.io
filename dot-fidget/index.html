@@ -29,13 +29,12 @@
 
     .controls {
       margin-bottom: 15px;
-      /* Added flex and wrap for layout */
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       gap: 10px;
       max-width: 600px;
-      justify-content: flex-start;
+      justify-content: center; /* Changed from flex-start to center */
     }
 
     /* Keep selects and labels on first line */
@@ -62,7 +61,6 @@
       cursor: pointer;
     }
 
-    /* Reset button size remains visually pleasing, not stretched */
     #resetBtn {
       margin-left: 0;
       min-width: 80px;
@@ -76,7 +74,6 @@
       background: #e0e0e0;
     }
 
-    /* Position buttons container */
     .position-controls {
       margin-bottom: 15px;
       user-select: none;
@@ -110,12 +107,9 @@
       width: auto;
       height: auto;
       justify-content: start;
-
-      /* Default position: bottom */
       margin-top: auto;
     }
 
-    /* Position states */
     .position-top {
       margin-top: 0;
       margin-bottom: auto;
@@ -128,17 +122,14 @@
 
     .position-bottom {
       margin-top: auto;
-      /* Increased bottom margin by roughly one dot height + some extra */
-      margin-bottom: 40px; /* previously 80px, reduced because padding-bottom is increased */
+      margin-bottom: 40px;
     }
 
-    /* Added bottom padding to body to help with mobile bottom UI bars */
     @media (max-width: 600px) {
       body {
-        padding-bottom: 70px; /* increased from 100px previously, adjust if needed */
+        padding-bottom: 70px;
       }
 
-      /* Make buttons bigger and easier to tap */
       button,
       select,
       input[type="color"] {
@@ -168,32 +159,23 @@
       cursor: pointer;
       transition: background 0.2s ease;
       box-sizing: border-box;
-      -webkit-tap-highlight-color: transparent; /* iOS remove tap highlight */
+      -webkit-tap-highlight-color: transparent;
     }
 
-    /* Circle shape */
     .dot.circle {
       border-radius: 50%;
       position: absolute;
       transition: background 0.2s ease;
-
-      /* iOS hardware acceleration fix */
       -webkit-transform: translate3d(0, 0, 0);
       will-change: transform;
-
-      /* Ensure width/height explicitly set (redundant but safe) */
       width: 25px;
       height: 25px;
     }
 
-    /* Square shape */
     .dot.square {
       border-radius: 8px;
       position: static;
     }
-
-    /* Remove .active background color - now colored via inline style */
-
   </style>
 </head>
 <body>
@@ -222,7 +204,6 @@
       <option value="15">15 x 15</option>
     </select>
 
-    <!-- Move color picker and reset button inside a new container -->
     <div class="reset-color-container">
       <label for="colorPicker" style="margin: 0;">Color:</label>
       <input type="color" id="colorPicker" value="#008000" title="Select dot color" />
@@ -230,7 +211,6 @@
     </div>
   </div>
 
-  <!-- New position buttons -->
   <div class="position-controls" aria-label="Select grid vertical position">
     <button type="button" id="posTop">Top</button>
     <button type="button" id="posMiddle">Middle</button>
