@@ -10,10 +10,15 @@ const cancelColorsBtn = document.getElementById("cancelColorsBtn");
 const winnerOverlay = document.getElementById("winnerOverlay");
 const fireworksCanvas = document.getElementById("fireworksCanvas");
 
+// Scoreboard elements
+const player1ScoreEl = document.getElementById("player1Score");
+const player2ScoreEl = document.getElementById("player2Score");
+
 const BOARD_SIZE = 3;
 let currentPlayer = 1;
 let moves = [];
 let gameOver = false;
+let scores = { 1: 0, 2: 0 }; // Track wins
 
 let playerColors = {
   1: "#FF4136",
@@ -23,6 +28,11 @@ let playerColors = {
 function updateCSSVariables() {
   document.documentElement.style.setProperty("--player1-color", playerColors[1]);
   document.documentElement.style.setProperty("--player2-color", playerColors[2]);
+}
+
+function updateScoreboard() {
+  player1ScoreEl.textContent = `Player 1: ${scores[1]}`;
+  player2ScoreEl.textContent = `Player 2: ${scores[2]}`;
 }
 
 function createBoard() {
@@ -51,12 +61,13 @@ function handleDotClick(e) {
   moves.push({ index: dot.dataset.index, player: currentPlayer });
 
   if (checkWin(currentPlayer)) {
+    scores[currentPlayer]++; // Update score
+    updateScoreboard();
     showWinner(currentPlayer);
     gameOver = true;
     return;
   }
 
-  // Check for draw (no winner and board full)
   if (moves.length === BOARD_SIZE * BOARD_SIZE) {
     showDraw();
     gameOver = true;
@@ -203,4 +214,5 @@ saveColorsBtn.addEventListener("click", saveColors);
 cancelColorsBtn.addEventListener("click", closeColorModal);
 
 updateCSSVariables();
+updateScoreboard();
 createBoard();
