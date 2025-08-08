@@ -44,16 +44,19 @@
       margin-left: 5px;
     }
 
-    /* Reset button container to force it onto its own line */
-    .reset-container {
+    /* Reset + color picker container on same line */
+    .reset-color-container {
       width: 100%;
       margin-top: 10px;
       display: flex;
-      justify-content: center; /* Changed from flex-start to center */
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
     }
 
     button,
-    select {
+    select,
+    input[type="color"] {
       padding: 5px 10px;
       font-size: 14px;
       cursor: pointer;
@@ -137,7 +140,8 @@
 
       /* Make buttons bigger and easier to tap */
       button,
-      select {
+      select,
+      input[type="color"] {
         font-size: 18px !important;
         padding: 10px 16px !important;
         margin-left: 8px !important;
@@ -188,9 +192,8 @@
       position: static;
     }
 
-    .dot.active {
-      background: green;
-    }
+    /* Remove .active background color - now colored via inline style */
+
   </style>
 </head>
 <body>
@@ -219,8 +222,10 @@
       <option value="15">15 x 15</option>
     </select>
 
-    <!-- Reset button on its own line -->
-    <div class="reset-container">
+    <!-- Move color picker and reset button inside a new container -->
+    <div class="reset-color-container">
+      <label for="colorPicker" style="margin: 0;">Color:</label>
+      <input type="color" id="colorPicker" value="#008000" title="Select dot color" />
       <button id="resetBtn">Reset</button>
     </div>
   </div>
