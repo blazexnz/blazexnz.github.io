@@ -12,6 +12,9 @@ A simple web-based bouncing ball game where you tap to make the ball bounce (hig
 - **Launch all resting balls button:** Launches all resting balls staggered over time for a visually pleasing launch effect  
 - **Shuffle velocities:** Randomizes horizontal velocities of all balls  
 - **Randomize colors:** Changes all balls to random pastel colors  
+- **Gravity Slam button:** Slams all balls forcefully down to the ground once  
+- **Chaos Gravity button:** Puts balls into infinite bounce mode with crazy gravity and random velocities  
+- **Freeze Mode button:** Freezes all balls in place instantly and keeps new balls frozen while active  
 - **Smooth physics:** Gravity and bounce simulate a natural ball movement  
 - **Responsive design:** Canvas scales nicely on different screen sizes  
 - **Modern UI:** Light pastel gradient background with a rounded phone-like frame  
@@ -26,5 +29,8 @@ A simple web-based bouncing ball game where you tap to make the ball bounce (hig
 5. **Launch all balls:** Click the 🚀 button to launch all resting balls on the ground, staggered over ~3 seconds  
 6. **Shuffle velocities:** Click the 🔄 button to randomly change horizontal speeds of all balls  
 7. **Randomize colors:** Click the 🌈 button to assign new random pastel colors to all balls  
-8. **Reset:** Click the "Start Over" button to clear all balls and start fresh  
-9. **Switch modes:** Use the dropdown selector to switch between Mode 1 (original) and Mode 2 (juggling)
+8. **Gravity Slam:** Click the ⬇️ button to slam all balls forcefully to the ground once  
+9. **Chaos Gravity:** Click the 🔥 button to activate infinite bounce mode with crazy gravity and velocity effects  
+10. **Freeze Mode:** Click the ❄️ button to freeze all balls instantly; click again to resume normal physics  
+11. **Reset:** Click the "Start Over" button to clear all balls and start fresh  
+12. **Switch modes:** Use the dropdown selector to switch between Mode 1 (original) and Mode 2 (juggling)  
