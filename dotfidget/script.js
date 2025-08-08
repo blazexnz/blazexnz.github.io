@@ -133,9 +133,18 @@ document.addEventListener("DOMContentLoaded", () => {
     posBottomBtn.classList.toggle("active", position === "bottom");
   }
 
-  posTopBtn.addEventListener("click", () => setPosition("top"));
-  posMiddleBtn.addEventListener("click", () => setPosition("middle"));
-  posBottomBtn.addEventListener("click", () => setPosition("bottom"));
+  // Support both click and touch for mobile fix
+  function addPointerListener(button, position) {
+    button.addEventListener("click", () => setPosition(position));
+    button.addEventListener("touchstart", (e) => {
+      e.preventDefault();
+      setPosition(position);
+    }, {passive: false});
+  }
+
+  addPointerListener(posTopBtn, "top");
+  addPointerListener(posMiddleBtn, "middle");
+  addPointerListener(posBottomBtn, "bottom");
 
   shapeTypeSelect.addEventListener("change", updateGrid);
   gridSizeSelect.addEventListener("change", updateGrid);
