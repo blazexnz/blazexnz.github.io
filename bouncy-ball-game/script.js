@@ -99,7 +99,7 @@
   }
 
   canvas.addEventListener('pointerdown', (e) => {
-    e.preventDefault(); // stop iOS zoom
+    e.preventDefault(); // stop iOS zoom on pointer down
     const pos = getPointerPos(e);
 
     if (mode === 1) {
@@ -131,19 +131,26 @@
     }
   }, { passive: false });
 
-  // Start Over button
+  // Start Over button handlers (click + touch)
   const restartGame = () => { balls = []; };
   startOverBtn.addEventListener('click', restartGame);
   startOverBtn.addEventListener('touchend', restartGame);
 
-  // Mode Toggle button
+  // Mode Toggle: Fix buggy toggle on iPhone by debouncing and handling touch/click properly
+  let toggleCooldown = false;
   const toggleMode = () => {
+    if (toggleCooldown) return;
+    toggleCooldown = true;
+    setTimeout(() => toggleCooldown = false, 300);
     mode = mode === 1 ? 2 : 1;
     modeToggleBtn.textContent = `Mode: ${mode}`;
     balls = [];
   };
   modeToggleBtn.addEventListener('click', toggleMode);
-  modeToggleBtn.addEventListener('touchend', toggleMode);
+  modeToggleBtn.addEventListener('touchend', (e) => {
+    e.preventDefault(); // prevent ghost clicks on iOS
+    toggleMode();
+  });
 
   canvas.addEventListener('contextmenu', e => e.preventDefault());
 
