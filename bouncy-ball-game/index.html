@@ -19,7 +19,7 @@
     justify-content: center;
     align-items: center;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    -webkit-tap-highlight-color: transparent; /* remove highlight on tap */
+    -webkit-tap-highlight-color: transparent;
   }
 
   h1 {
@@ -33,10 +33,11 @@
   #controls {
     margin-bottom: 10px;
     display: flex;
+    align-items: center;
     gap: 10px;
   }
 
-  #startOverBtn, #modeToggleBtn {
+  #startOverBtn {
     background: #00c896;
     color: white;
     border: none;
@@ -46,10 +47,24 @@
     cursor: pointer;
     font-weight: bold;
     transition: background 0.2s ease;
-    touch-action: manipulation; /* prevent delay on iOS */
+    touch-action: manipulation;
   }
-  #startOverBtn:hover, #modeToggleBtn:hover {
+  #startOverBtn:hover {
     background: #00a77a;
+  }
+
+  /* Mode dropdown styling */
+  #modeSelect {
+    font-size: 1rem;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 2px solid #00c896;
+    background: white;
+    color: #008b63;
+    font-weight: bold;
+    cursor: pointer;
+    touch-action: manipulation;
+    user-select: none;
   }
 
   #gameCanvas {
@@ -61,11 +76,43 @@
       0 20px 40px rgba(0,0,0,0.12),
       inset 0 0 15px rgba(0, 200, 150, 0.15);
     touch-action: none;
-    width: 320px; /* smaller frame */
+    width: 320px;
     height: 580px;
     max-width: 90vw;
-    max-height: 80vh; /* avoid Safari bars */
+    max-height: 80vh;
     border: 8px solid #00c896;
+  }
+
+  /* Console container */
+  #console {
+    position: fixed;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 1000;
+  }
+
+  /* Console buttons: squares with rounded corners, about ball size */
+  .console-btn {
+    width: 50px;
+    height: 50px;
+    background: #00c896;
+    border-radius: 12px;
+    color: white;
+    font-size: 28px;
+    line-height: 50px;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+    box-shadow: 0 4px 10px rgba(0,200,150,0.4);
+    transition: background 0.2s ease;
+    touch-action: manipulation;
+  }
+  .console-btn:hover {
+    background: #00a77a;
   }
 </style>
 </head>
@@ -74,9 +121,19 @@
 <h1>Bouncy Ball Game</h1>
 <div id="controls">
   <button id="startOverBtn">Start Over</button>
-  <button id="modeToggleBtn">Mode: 1</button>
+  <select id="modeSelect" title="Select Mode">
+    <option value="1" selected>Mode 1</option>
+    <option value="2">Mode 2</option>
+  </select>
 </div>
 <canvas id="gameCanvas" width="320" height="580"></canvas>
+
+<div id="console">
+  <div class="console-btn" id="btnDrop100" title="Drop 100 balls 💥">💥</div>
+  <div class="console-btn" id="btnLaunchAll" title="Launch all resting balls 🚀">🚀</div>
+  <div class="console-btn" id="btnShuffle" title="Shuffle ball velocities 🔄">🔄</div>
+  <div class="console-btn" id="btnColors" title="Randomize ball colors 🌈">🌈</div>
+</div>
 
 <script src="script.js"></script>
 </body>
