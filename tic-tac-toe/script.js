@@ -25,8 +25,8 @@ function updateCSSVariables() {
 
 function createBoard() {
   board.innerHTML = "";
-  board.style.gridTemplateColumns = `repeat(${BOARD_SIZE}, 50px)`;
-  board.style.gridTemplateRows = `repeat(${BOARD_SIZE}, 50px)`;
+  board.style.gridTemplateColumns = `repeat(${BOARD_SIZE}, 75px)`;
+  board.style.gridTemplateRows = `repeat(${BOARD_SIZE}, 75px)`;
 
   for (let i = 0; i < BOARD_SIZE * BOARD_SIZE; i++) {
     const dot = document.createElement("div");
