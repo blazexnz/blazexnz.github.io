@@ -164,6 +164,7 @@
       cursor: pointer;
       transition: background 0.2s ease;
       box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent; /* iOS remove tap highlight */
     }
 
     /* Circle shape */
@@ -171,6 +172,14 @@
       border-radius: 50%;
       position: absolute;
       transition: background 0.2s ease;
+
+      /* iOS hardware acceleration fix */
+      -webkit-transform: translate3d(0, 0, 0);
+      will-change: transform;
+
+      /* Ensure width/height explicitly set (redundant but safe) */
+      width: 25px;
+      height: 25px;
     }
 
     /* Square shape */
