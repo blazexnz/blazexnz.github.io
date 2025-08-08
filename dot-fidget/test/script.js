@@ -109,10 +109,11 @@ document.addEventListener("DOMContentLoaded", () => {
           dot.style.left = `${x - DOT_SIZE / 2}px`;
           dot.style.top = `${y - DOT_SIZE / 2}px`;
 
-          dot.dataset.index = dotsPlaced;
+          const dotIndex = dotsPlaced; // capture current index for closure
+          dot.dataset.index = dotIndex;
 
           dot.addEventListener("click", () => {
-            toggleDotColor(dotsPlaced);
+            toggleDotColor(dotIndex);
           });
 
           gridContainer.appendChild(dot);
