@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+<title>Bouncy Ball Game</title>
+<style>
+  /* Reset */
+  * {
+    margin: 0; padding: 0; box-sizing: border-box;
+  }
+
+  html, body {
+    height: 100%; width: 100%;
+    overflow: hidden;
+    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+    /* light pastel gradient */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  h1 {
+    margin-bottom: 20px;
+    color: #008b63;
+    font-weight: 700;
+    font-size: 2rem;
+    user-select: none;
+  }
+
+  #gameCanvas {
+    display: block;
+    background: #fff;
+    margin: 0 auto;
+    border-radius: 40px;
+    box-shadow:
+      0 20px 40px rgba(0,0,0,0.12),
+      inset 0 0 15px rgba(0, 200, 150, 0.15);
+    touch-action: none;
+    width: 375px;
+    height: 667px;
+    max-width: 90vw;
+    max-height: 90vh;
+    border: 8px solid #00c896;
+  }
+</style>
+</head>
+<body>
+
+<h1>Bouncy Ball Game</h1>
+<canvas id="gameCanvas" width="375" height="667"></canvas>
+
+<script src="script.js"></script>
+</body>
+</html>
