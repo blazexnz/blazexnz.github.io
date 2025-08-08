@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dot Fidget</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #f0f0f0;
+      padding: 20px;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      color: black;
+      user-select: none;
+    }
+
+    .controls {
+      margin-bottom: 15px;
+    }
+
+    button,
+    select {
+      padding: 5px 10px;
+      margin-left: 5px;
+      font-size: 14px;
+    }
+
+    .grid-container {
+      display: grid;
+      gap: 5px;
+      padding: 15px;
+      background: white;
+      border: 3px solid #ccc;
+      border-radius: 15px;
+      /* Ensure relative positioning for absolute children */
+      position: relative;
+    }
+
+    .dot {
+      width: 25px;
+      height: 25px;
+      background: white;
+      border: 2px solid #ccc;
+      cursor: pointer;
+      transition: background 0.2s ease;
+      box-sizing: border-box;
+    }
+
+    /* Circle shape */
+    .dot.circle {
+      border-radius: 50%;
+      position: absolute; /* absolutely positioned for circle layout */
+      transition: background 0.2s ease;
+    }
+
+    /* Square shape with slightly rounded edges */
+    .dot.square {
+      border-radius: 8px;
+      position: static; /* static positioning for grid layout */
+    }
+
+    .dot.active {
+      background: green;
+    }
+  </style>
+</head>
+<body>
+  <h1>Dot Fidget</h1>
+  <div class="controls">
+    <label for="shapeType">Shape:</label>
+    <select id="shapeType">
+      <option value="square" selected>Square</option>
+      <option value="circle">Circle</option>
+    </select>
+
+    <label for="circleSize" id="circleSizeLabel" style="display:none; margin-left: 10px;">Circle Size:</label>
+    <select id="circleSize" style="display:none; margin-left: 5px;">
+      <option value="3">3 rings (about 30 dots)</option>
+      <option value="5" selected>5 rings (about 75 dots)</option>
+      <option value="8">8 rings (about 150 dots)</option>
+      <option value="10">10 rings (about 200 dots)</option>
+    </select>
+
+    <label for="gridSize" id="gridSizeLabel" style="margin-left: 10px;">Grid Size:</label>
+    <select id="gridSize" style="margin-left: 5px;">
+      <option value="5" selected>5 x 5</option>
+      <option value="8">8 x 8</option>
+      <option value="10">10 x 10</option>
+      <option value="15">15 x 15</option>
+    </select>
+
+    <button id="resetBtn" style="margin-left: 15px;">Reset</button>
+  </div>
+
+  <div id="gridContainer" class="grid-container"></div>
+  
+  <script src="script.js"></script>
+</body>
+</html>
