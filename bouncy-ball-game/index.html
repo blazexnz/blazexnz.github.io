@@ -61,10 +61,10 @@
       0 20px 40px rgba(0,0,0,0.12),
       inset 0 0 15px rgba(0, 200, 150, 0.15);
     touch-action: none;
-    width: 350px; /* slightly smaller for iOS Safari safe space */
-    height: 620px;
+    width: 320px; /* smaller frame */
+    height: 580px;
     max-width: 90vw;
-    max-height: 80vh; /* prevent hiding behind Safari bars */
+    max-height: 80vh; /* avoid Safari bars */
     border: 8px solid #00c896;
   }
 </style>
@@ -76,7 +76,7 @@
   <button id="startOverBtn">Start Over</button>
   <button id="modeToggleBtn">Mode: 1</button>
 </div>
-<canvas id="gameCanvas" width="350" height="620"></canvas>
+<canvas id="gameCanvas" width="320" height="580"></canvas>
 
 <script src="script.js"></script>
 </body>
