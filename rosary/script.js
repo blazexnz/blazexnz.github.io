@@ -2,7 +2,7 @@ const prayers = {
 en: {
   signOfTheCross: "In the name of the Father, and of the Son, and of the Holy Spirit. Amen.",
 
-  apostlesCreed: `I believe in God, the Father Almighty, Creator of heaven and earth;  
+  apostlesCreed: `<strong>V.</strong> I believe in God, the Father Almighty, Creator of heaven and earth;  
 and in Jesus Christ, His only Son, our Lord;  
 who was conceived by the Holy Spirit, born of the Virgin Mary,  
 suffered under Pontius Pilate, was crucified, died, and was buried;  
@@ -13,28 +13,28 @@ I believe in the Holy Spirit, the holy Catholic Church,
 the communion of saints, the forgiveness of sins,  
 the resurrection of the body, and life everlasting. Amen.`,
 
-  ourFather: `Our Father, who art in heaven,  
+  ourFather: `<strong>V.</strong> Our Father, who art in heaven,  
 hallowed be Thy name;  
 Thy kingdom come;  
-Thy will be done on earth as it is in heaven.  
-Give us this day our daily bread;  
+Thy will be done on earth as it is in heaven.<br>
+<strong>R.</strong> Give us this day our daily bread;  
 and forgive us our trespasses,  
 as we forgive those who trespass against us;  
 and lead us not into temptation,  
 but deliver us from evil. Amen.`,
 
-  hailMary: `Hail Mary, full of grace,  
+  hailMary: `<strong>V.</strong> Hail Mary, full of grace,  
 the Lord is with thee;  
 blessed art thou among women,  
-and blessed is the fruit of thy womb, Jesus.  
-Holy Mary, Mother of God,  
+and blessed is the fruit of thy womb, Jesus. <br>
+<strong>R.</strong> Holy Mary, Mother of God,  
 pray for us sinners,  
 now and at the hour of our death. Amen.`,
 
-  gloryBe: `Glory be to the Father,  
+  gloryBe: `<strong>V.</strong> Glory be to the Father,  
 and to the Son,  
-and to the Holy Spirit,  
-as it was in the beginning, is now, and ever shall be,  
+and to the Holy Spirit,<br>
+<strong>R.</strong> as it was in the beginning, is now, and ever shall be,  
 world without end. Amen.`,
 
   fatima: `O my Jesus, forgive us our sins,  
@@ -50,8 +50,8 @@ Turn then, most gracious Advocate, thine eyes of mercy toward us;
 and after this our exile, show unto us the blessed fruit of thy womb, Jesus.  
 O clement, O loving, O sweet Virgin Mary.`,
 
-  closingDialogue: `V. Pray for us, O holy Mother of God.  
-R. That we may be made worthy of the promises of Christ.`,
+  closingDialogue: `<strong>V.</strong> Pray for us, O holy Mother of God.<br>
+<strong>R.</strong> That we may be made worthy of the promises of Christ.`,
 
   closingPrayer: `Let us pray:  
 O God, whose only begotten Son, by His life, death, and resurrection,  
@@ -65,55 +65,26 @@ through the same Christ our Lord. Amen.`
 vi: {
   signOfTheCross: "Nhân danh Cha, và Con, và Thánh Thần. Amen.",
 
-  apostlesCreed: `Tôi tin kính Đức Chúa Trời là Cha toàn năng, Đấng dựng nên trời đất;  
-Tôi tin kính Đức Giêsu Kitô, Con Một Đức Chúa Cha, Chúa chúng tôi;  
-Người được sinh bởi quyền phép Đức Chúa Thánh Thần, bởi trinh nữ Maria;  
-Người chịu khổ dưới quyền quan Phongxiô Philatô, bị đóng đinh trên thập giá, chịu chết và mai táng;  
-Người xuống ngục tổ tông;  
-Ngày thứ ba, Người sống lại từ cõi chết;  
-Người lên trời, ngự bên hữu Đức Chúa Cha toàn năng;  
-Từ đó Người sẽ đến phán xét kẻ sống và kẻ chết.  
-Tôi tin Đức Chúa Thánh Thần,  
-Tôi tin Hội Thánh Công Giáo thánh thiện, thông công các thánh,  
-Tôi tin sự tha tội, sự sống lại của xác phàm,  
-và sự sống đời đời. Amen.`,
+  apostlesCreed: `Tôi tin kính Ðức Chúa Trời là Cha phép tắc vô cùng dựng nên trời đất. Tôi tin kính Ðức Chúa Giêsu Kitô là con một Ðức Chúa Cha cùng là Chúa chúng tôi. Bởi phép Ðức Chúa Thánh Thần mà Người xuống thai sinh bởi Bà Maria Ðồng Trinh; Chịu nạn đời quan Phong-Xi-ô Philatô, chịu đóng đanh trên cây Thánh Giá, chết và táng xác, xuống ngục tổ tông; Ngày thứ ba bởi trong kẻ chết mà sống lại lên Trời ngự bên hữu Ðức Chúa Cha phép tắc vô cùng; Ngày sau bởi trời lại xuống phán xét kẻ sống và kẻ chết.
 
-  ourFather: `Lạy Cha chúng con ở trên trời,  
-Danh Cha cả sáng,  
-Nước Cha trị đến,  
-Ý Cha thể hiện dưới đất cũng như trên trời.  
-Xin Cha ban cho chúng con hôm nay lương thực hằng ngày,  
-Và tha nợ chúng con như chúng con cũng tha kẻ có nợ chúng con.  
-Xin đừng để chúng con sa chước cám dỗ,  
-Nhưng cứu chúng con khỏi sự dữ. Amen.`,
+Tôi tin kính Ðức Chúa Thánh Thần. Tôi tin có hội thánh hằng có ở khắp thế này, các Thánh thông công. Tôi tin phép tha tội. Tôi tin xác loài người ngày sau sống lại. Tôi tin hằng sống vậy. Amen.
+`,
 
-  hailMary: `Kính mừng Maria đầy ơn phúc,  
-Đức Chúa Trời ở cùng Bà,  
-Bà có phúc lạ hơn mọi người nữ,  
-và Giêsu Con lòng Bà gồm phúc lạ.  
-Thánh Maria, Đức Mẹ Chúa Trời,  
-Cầu cho chúng con là kẻ có tội,  
-khi nay và trong giờ lâm tử. Amen.`,
+  ourFather: `<strong>V.</strong> Lạy Cha chúng con ở trên Trời chúng con nguyện danh Cha cả sáng, nước Cha trị đến, ý cha thể hiện dưới đất cũng như trên trời.<br>
+<strong>Đ.</strong> Xin Cha cho chúng con hôm nay lương thực hằng ngày, và tha nợ chúng con, như chúng con cũng tha kẻ có nợ chúng con, xin chớ để chúng con sa chước cám dỗ, nhưng cứu chúng con cho khỏi sự dữ. Amen.`,
 
-  gloryBe: `Sáng danh Đức Chúa Cha, và Đức Chúa Con, và Đức Chúa Thánh Thần,  
-Như đã có từ thuở ban đầu,  
-Nay và muôn đời muôn kiếp. Amen.`,
+  hailMary: `<strong>V.</strong> Kính mừng Maria đầy ơn phước, Ðức Chúa Trời ở cùng Bà, Bà có phúc lạ, hơn mọi người Nữ, và Giêsu con lòng Bà gồm phúc lạ.<br>
+<strong>Đ.</strong> Thánh Maria Ðức Mẹ Chúa Trời cầu cho chúng con là kẻ có tội, khi này và trong giờ lâm tử. Amen.`,
 
-  fatima: `Lạy Chúa Giêsu, xin tha tội cho chúng con,  
-Xin cứu chúng con khỏi hỏa ngục,  
-Xin đưa các linh hồn lên thiên đàng,  
-Nhất là những linh hồn cần đến lòng thương xót Chúa. Amen.`,
+  gloryBe: `<strong>V.</strong> Sáng danh Ðức Chúa Cha và Ðức Chúa Con và Ðức Chúa Thánh Thần,<br>
+<strong>Đ.</strong> như đã có trước vô cùng và bây giờ và hằng có và đời đời chẳng cùng. Amen.`,
 
-  hailHolyQueen: `Kính mừng Nữ Vương Thiên Đàng, Mẹ Nhân Lành,  
-Đời chúng con, niềm vui, sự cậy trông.  
-Chúng con kêu cầu Mẹ, những kẻ con cái lưu đầy tội lỗi.  
-Chúng con thở than, khóc lóc trong thung lũng đắng cay.  
-Xin Mẹ nhìn đến chúng con với ánh mắt từ bi.  
-Sau cuộc đời lưu đày này, xin dẫn chúng con đến gặp Con Mẹ là Chúa Giêsu,  
-Đấng đầy nhân từ, đầy yêu thương.`,
+  fatima: `Lậy Chúa Giêsu, xin tha tội cho chúng con. Xin cứu chúng con khỏi sa hỏa ngục, xin đưa các linh hồn lên Thiên đàng, nhất là những linh hồn cần thêm lòng thương xót Chúa hơn. Amen.`,
 
-  closingDialogue: `V. Cầu cho chúng con, Mẹ Thiên Chúa.  
-Đ. Để chúng con được xứng đáng với những lời hứa của Đức Kitô.`,
+  hailHolyQueen: `Lạy Nữ Vương, Mẹ nhân lành làm cho chúng con được sống, được vui, được cậy, thân lạy Mẹ, chúng con, con cháu Evà, ở chốn khách đầy, kêu khẩn Bà thương. Hỡi ơi! Bà là Chúa bầu chúng con, xin ghé mặt thương xem chúng con. Ðến sau khỏi đầy. Xin cho chúng con được thấy Ðức Chúa Giêsu, con lòng Bà gồm phúc lạ. Ôi khoan thay, nhân thay, dịu thay Thánh Maria trọn đời đồng trinh. Amen.`,
+
+  closingDialogue: `<strong>V.</strong> Cầu cho chúng con, Mẹ Thiên Chúa.<br>
+<strong>Đ.</strong> Để chúng con được xứng đáng với những lời hứa của Đức Kitô.`,
 
   closingPrayer: `Lạy Thiên Chúa, Đấng đã ban Con Một duy nhất của Ngài  
 Qua cuộc sống, cái chết và sự phục sinh để chuộc tội cho chúng con;  
@@ -170,8 +141,8 @@ at pagkatapos ng pagkakait sa amin,
 ipakita Mo sa amin si Hesus, ang mapagpalang bunga ng Iyong sinapupunan.  
 O maawain, o mahinahon, o matamis na Birheng Maria.`,
 
-  closingDialogue: `V. Ipanalangin mo kami, O Banal na Ina ng Diyos.  
-R. Nang kami’y maging karapat-dapat sa mga pangako ni Kristo.`,
+  closingDialogue: `<strong>V.</strong> Ipanalangin mo kami, O Banal na Ina ng Diyos.  
+<strong>R.</strong> Nang kami’y maging karapat-dapat sa mga pangako ni Kristo.`,
 
   closingPrayer: `Manalangin tayo:  
 O Diyos, na sa pamamagitan ng buhay, pagkamatay, at muling pagkabuhay ng Iyong Bugtong na Anak,  
