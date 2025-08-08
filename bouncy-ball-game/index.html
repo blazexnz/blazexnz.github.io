@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 <title>Bouncy Ball Game</title>
 <style>
   /* Reset */
@@ -19,6 +19,7 @@
     justify-content: center;
     align-items: center;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    -webkit-tap-highlight-color: transparent; /* remove highlight on tap */
   }
 
   h1 {
@@ -45,6 +46,7 @@
     cursor: pointer;
     font-weight: bold;
     transition: background 0.2s ease;
+    touch-action: manipulation; /* prevent delay on iOS */
   }
   #startOverBtn:hover, #modeToggleBtn:hover {
     background: #00a77a;
@@ -59,10 +61,10 @@
       0 20px 40px rgba(0,0,0,0.12),
       inset 0 0 15px rgba(0, 200, 150, 0.15);
     touch-action: none;
-    width: 375px;
-    height: 667px;
+    width: 350px; /* slightly smaller for iOS Safari safe space */
+    height: 620px;
     max-width: 90vw;
-    max-height: 90vh;
+    max-height: 80vh; /* prevent hiding behind Safari bars */
     border: 8px solid #00c896;
   }
 </style>
@@ -74,7 +76,7 @@
   <button id="startOverBtn">Start Over</button>
   <button id="modeToggleBtn">Mode: 1</button>
 </div>
-<canvas id="gameCanvas" width="375" height="667"></canvas>
+<canvas id="gameCanvas" width="350" height="620"></canvas>
 
 <script src="script.js"></script>
 </body>
