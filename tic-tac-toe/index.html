@@ -36,6 +36,23 @@
       background-color: #005fa3;
     }
 
+    /* Scoreboard styles */
+    .scoreboard {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-bottom: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .scoreboard span {
+      padding: 8px 16px;
+      background: white;
+      border-radius: 6px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    }
+
     .board {
       display: grid;
       grid-template-columns: repeat(3, 75px);
@@ -165,6 +182,12 @@
     <button id="resetBtn">Reset</button>
     <button id="undoBtn">Undo</button>
     <button id="colorBtn">Colour</button>
+  </div>
+
+  <!-- Scoreboard -->
+  <div class="scoreboard">
+    <span id="player1Score">Player 1: 0</span>
+    <span id="player2Score">Player 2: 0</span>
   </div>
 
   <div id="board" class="board"></div>
