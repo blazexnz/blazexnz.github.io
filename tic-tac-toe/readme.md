@@ -1,4 +1,4 @@
-# Tic Tac Toe Dots
+# Tic Tac Toe
 
 A simple web-based Tic Tac Toe game using clickable dots that change color based on player turns. Includes features like undoing moves, resetting the board, and customizing player colors.
 
