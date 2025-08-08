@@ -28,5 +28,3 @@ A simple web-based bouncing ball game where you tap to make the ball bounce (hig
 7. **Randomize colors:** Click the 🌈 button to assign new random pastel colors to all balls  
 8. **Reset:** Click the "Start Over" button to clear all balls and start fresh  
 9. **Switch modes:** Use the dropdown selector to switch between Mode 1 (original) and Mode 2 (juggling)
-
----
