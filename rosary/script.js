@@ -784,7 +784,7 @@ function renderPrayers() {
   // NAVIGATION BUTTONS moved BELOW the yellow mysteries section
   html += `
     <div class="navigation" style="margin-top: 1rem; text-align:center;">
-      <button onclick="prevDecade()" ${currentDecade === 0 ? "disabled" : ""}>Previous Decade</button>
+      <button onclick="prevDecade()" ${currentDecade === 0 ? "disabled" : ""}>Prev. Decade</button>
       <button onclick="nextDecade()" ${currentDecade === 4 ? "disabled" : ""}>Next Decade</button>
     </div>`;
 
@@ -953,5 +953,6 @@ toggleBeadsBtn.addEventListener("click", () => {
   const beadsVisible = prayersDiv.classList.toggle("hide-beads");
   toggleBeadsBtn.textContent = beadsVisible ? "Show Beads" : "Hide Beads";
 });
+
 
 
