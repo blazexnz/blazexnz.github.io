@@ -29,14 +29,48 @@
 
     .controls {
       margin-bottom: 15px;
+      /* Added flex and wrap for layout */
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      max-width: 600px;
+      justify-content: flex-start;
+    }
+
+    /* Keep selects and labels on first line */
+    .controls > label,
+    .controls > select {
+      margin-left: 5px;
+    }
+
+    /* Reset button container to force it onto its own line and center the button */
+    .reset-container {
+      width: 100%;
+      margin-top: 10px;
+      display: flex;
+      justify-content: center; /* changed from flex-start to center */
     }
 
     button,
     select {
       padding: 5px 10px;
-      margin-left: 5px;
       font-size: 14px;
       cursor: pointer;
+    }
+
+    /* Reset button size remains visually pleasing, not stretched */
+    #resetBtn {
+      margin-left: 0;
+      min-width: 80px;
+      min-height: 32px;
+      border-radius: 6px;
+      border: 2px solid #ccc;
+      background: white;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    #resetBtn:hover {
+      background: #e0e0e0;
     }
 
     /* Position buttons container */
@@ -53,6 +87,7 @@
       transition: background 0.2s, border-color 0.2s;
       min-width: 60px;
       min-height: 32px;
+      cursor: pointer;
     }
 
     .position-controls button.active {
@@ -90,7 +125,35 @@
 
     .position-bottom {
       margin-top: auto;
-      margin-bottom: 80px; /* increased bottom padding for mobile UI */
+      /* Increased bottom margin by roughly one dot height + some extra */
+      margin-bottom: 40px; /* previously 80px, reduced because padding-bottom is increased */
+    }
+
+    /* Added bottom padding to body to help with mobile bottom UI bars */
+    @media (max-width: 600px) {
+      body {
+        padding-bottom: 70px; /* increased from 100px previously, adjust if needed */
+      }
+
+      /* Make buttons bigger and easier to tap */
+      button,
+      select {
+        font-size: 18px !important;
+        padding: 10px 16px !important;
+        margin-left: 8px !important;
+      }
+
+      .position-controls button {
+        min-width: 80px;
+        min-height: 44px;
+        margin-right: 14px;
+        font-size: 18px;
+      }
+
+      .grid-container {
+        width: 90vw;
+        max-width: 400px;
+      }
     }
 
     .dot {
@@ -119,38 +182,12 @@
     .dot.active {
       background: green;
     }
-
-    @media (max-width: 600px) {
-      body {
-        padding-bottom: 100px; /* More padding for mobile bottom bar */
-      }
-
-      /* Make buttons bigger and easier to tap */
-      button,
-      select {
-        font-size: 18px !important;
-        padding: 10px 16px !important;
-        margin-left: 8px !important;
-      }
-
-      .position-controls button {
-        min-width: 80px;
-        min-height: 44px;
-        margin-right: 14px;
-        font-size: 18px;
-      }
-
-      .grid-container {
-        width: 90vw;
-        max-width: 400px;
-      }
-    }
   </style>
 </head>
 <body>
   <h1>Dot Fidget</h1>
 
-  <div class="controls">
+  <div class="controls" aria-label="Controls">
     <label for="shapeType">Shape:</label>
     <select id="shapeType">
       <option value="square" selected>Square</option>
@@ -173,7 +210,10 @@
       <option value="15">15 x 15</option>
     </select>
 
-    <button id="resetBtn" style="margin-left: 15px;">Reset</button>
+    <!-- Reset button on its own line -->
+    <div class="reset-container">
+      <button id="resetBtn">Reset</button>
+    </div>
   </div>
 
   <!-- New position buttons -->
