@@ -87,9 +87,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
           const dot = document.createElement("div");
           dot.classList.add("dot", shape);
+
+          // Explicitly set styles needed for iOS rendering:
           dot.style.position = "absolute";
+          dot.style.width = `${DOT_SIZE}px`;
+          dot.style.height = `${DOT_SIZE}px`;
           dot.style.left = `${x - DOT_SIZE / 2}px`;
           dot.style.top = `${y - DOT_SIZE / 2}px`;
+
           dot.addEventListener("click", () => {
             dot.classList.toggle("active");
           });
