@@ -1,157 +1,230 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const gridContainer = document.getElementById("gridContainer");
-  const gridSizeSelect = document.getElementById("gridSize");
-  const shapeTypeSelect = document.getElementById("shapeType");
-  const resetBtn = document.getElementById("resetBtn");
-  const circleSizeSelect = document.getElementById("circleSize");
-  const gridSizeLabel = document.getElementById("gridSizeLabel");
-  const circleSizeLabel = document.getElementById("circleSizeLabel");
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Dot Fidget</title>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
 
-  // Position buttons
-  const posTopBtn = document.getElementById("posTop");
-  const posMiddleBtn = document.getElementById("posMiddle");
-  const posBottomBtn = document.getElementById("posBottom");
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: #f0f0f0;
+      padding: 20px;
+      min-height: 100vh;
+      box-sizing: border-box;
+    }
 
-  // Dot size in px (fixed)
-  const DOT_SIZE = 25;
-  const DOT_BORDER = 2; // border thickness on each side, included in dot size
+    h1 {
+      margin-bottom: 20px;
+      color: black;
+      user-select: none;
+    }
 
-  function createGrid(size, shape) {
-    gridContainer.innerHTML = "";
+    .controls {
+      margin-bottom: 15px;
+      /* Added flex and wrap for layout */
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      max-width: 600px;
+      justify-content: flex-start;
+    }
 
-    if (shape === "square") {
-      // Grid layout - fixed style
-      gridContainer.style.position = "relative";
-      gridContainer.style.display = "grid";
-      gridContainer.style.gridTemplateColumns = `repeat(${size}, auto)`;
-      gridContainer.style.width = "auto";
-      gridContainer.style.height = "auto";
-      gridContainer.style.justifyContent = "start";
-      gridContainer.style.padding = "15px";
+    /* Keep selects and labels on first line */
+    .controls > label,
+    .controls > select {
+      margin-left: 5px;
+    }
 
-      for (let i = 0; i < size * size; i++) {
-        const dot = document.createElement("div");
-        dot.classList.add("dot", shape);
-        dot.addEventListener("click", () => {
-          dot.classList.toggle("active");
-        });
-        gridContainer.appendChild(dot);
+    /* Reset button container to force it onto its own line and center the button */
+    .reset-container {
+      width: 100%;
+      margin-top: 10px;
+      display: flex;
+      justify-content: center; /* changed from flex-start to center */
+    }
+
+    button,
+    select {
+      padding: 5px 10px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    /* Reset button size remains visually pleasing, not stretched */
+    #resetBtn {
+      margin-left: 0;
+      min-width: 80px;
+      min-height: 32px;
+      border-radius: 6px;
+      border: 2px solid #ccc;
+      background: white;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    #resetBtn:hover {
+      background: #e0e0e0;
+    }
+
+    /* Position buttons container */
+    .position-controls {
+      margin-bottom: 15px;
+      user-select: none;
+    }
+
+    .position-controls button {
+      margin-right: 10px;
+      border: 2px solid #ccc;
+      background: white;
+      border-radius: 6px;
+      transition: background 0.2s, border-color 0.2s;
+      min-width: 60px;
+      min-height: 32px;
+      cursor: pointer;
+    }
+
+    .position-controls button.active {
+      background: #4CAF50;
+      color: white;
+      border-color: #4CAF50;
+    }
+
+    .grid-container {
+      display: grid;
+      gap: 5px;
+      padding: 15px;
+      background: white;
+      border: 3px solid #ccc;
+      border-radius: 15px;
+      position: relative;
+      width: auto;
+      height: auto;
+      justify-content: start;
+
+      /* Default position: bottom */
+      margin-top: auto;
+    }
+
+    /* Position states */
+    .position-top {
+      margin-top: 0;
+      margin-bottom: auto;
+    }
+
+    .position-middle {
+      margin-top: auto;
+      margin-bottom: auto;
+    }
+
+    .position-bottom {
+      margin-top: auto;
+      /* Increased bottom margin by roughly one dot height + some extra */
+      margin-bottom: 40px; /* previously 80px, reduced because padding-bottom is increased */
+    }
+
+    /* Added bottom padding to body to help with mobile bottom UI bars */
+    @media (max-width: 600px) {
+      body {
+        padding-bottom: 70px; /* increased from 100px previously, adjust if needed */
       }
-    } else if (shape === "circle") {
-      // Circle layout
 
-      // Dynamic container size based on rings (circleSize)
-      // Smaller rings => smaller container; bigger rings => bigger container
-      // Define min and max container sizes:
-      const minContainerSize = 200;
-      const maxContainerSize = 600;
-      const rings = size;
+      /* Make buttons bigger and easier to tap */
+      button,
+      select {
+        font-size: 18px !important;
+        padding: 10px 16px !important;
+        margin-left: 8px !important;
+      }
 
-      // Linear interpolation for container size based on rings (3 to 10)
-      const clampedRings = Math.min(Math.max(rings, 3), 10);
-      const containerSize = minContainerSize + ((clampedRings - 3) / (10 - 3)) * (maxContainerSize - minContainerSize);
+      .position-controls button {
+        min-width: 80px;
+        min-height: 44px;
+        margin-right: 14px;
+        font-size: 18px;
+      }
 
-      gridContainer.style.position = "relative";
-      gridContainer.style.display = "block";
-      gridContainer.style.width = `${containerSize}px`;
-      gridContainer.style.height = `${containerSize}px`;
-      gridContainer.style.gridTemplateColumns = "";
-      gridContainer.style.justifyContent = "";
-      gridContainer.style.padding = "0";
-
-      const centerX = containerSize / 2;
-      const centerY = containerSize / 2;
-      const maxRadius = containerSize / 2 - DOT_SIZE; // leave margin for dots
-
-      let dotsPlaced = 0;
-
-      for (let ring = 0; ring < rings; ring++) {
-        const radius = (ring / (rings - 1)) * maxRadius;
-
-        const desiredSpacing = DOT_SIZE + 6;
-        const circumference = 2 * Math.PI * radius;
-        let approxDotsInRing = 0;
-
-        if (ring === 0) {
-          approxDotsInRing = 1; // center dot
-        } else {
-          approxDotsInRing = Math.max(3, Math.round(circumference / desiredSpacing));
-        }
-
-        for (let i = 0; i < approxDotsInRing; i++) {
-          if (dotsPlaced >= rings * rings * 3) break;
-
-          const angle = (i / approxDotsInRing) * 2 * Math.PI;
-          const x = centerX + radius * Math.cos(angle);
-          const y = centerY + radius * Math.sin(angle);
-
-          const dot = document.createElement("div");
-          dot.classList.add("dot", shape);
-          dot.style.position = "absolute";
-          dot.style.left = `${x - DOT_SIZE / 2}px`;
-          dot.style.top = `${y - DOT_SIZE / 2}px`;
-          dot.addEventListener("click", () => {
-            dot.classList.toggle("active");
-          });
-
-          gridContainer.appendChild(dot);
-          dotsPlaced++;
-        }
+      .grid-container {
+        width: 90vw;
+        max-width: 400px;
       }
     }
-  }
 
-  function updateGrid() {
-    const shape = shapeTypeSelect.value;
-
-    if (shape === "circle") {
-      circleSizeSelect.style.display = "";
-      circleSizeLabel.style.display = "";
-      gridSizeSelect.style.display = "none";
-      gridSizeLabel.style.display = "none";
-
-      const rings = parseInt(circleSizeSelect.value);
-      createGrid(rings, shape);
-    } else {
-      circleSizeSelect.style.display = "none";
-      circleSizeLabel.style.display = "none";
-      gridSizeSelect.style.display = "";
-      gridSizeLabel.style.display = "";
-
-      const size = parseInt(gridSizeSelect.value);
-      createGrid(size, shape);
+    .dot {
+      width: 25px;
+      height: 25px;
+      background: white;
+      border: 2px solid #ccc;
+      cursor: pointer;
+      transition: background 0.2s ease;
+      box-sizing: border-box;
     }
-  }
 
-  function setPosition(position) {
-    gridContainer.classList.remove("position-top", "position-middle", "position-bottom");
-    gridContainer.classList.add(`position-${position}`);
+    /* Circle shape */
+    .dot.circle {
+      border-radius: 50%;
+      position: absolute;
+      transition: background 0.2s ease;
+    }
 
-    // Update active button styling
-    posTopBtn.classList.toggle("active", position === "top");
-    posMiddleBtn.classList.toggle("active", position === "middle");
-    posBottomBtn.classList.toggle("active", position === "bottom");
-  }
+    /* Square shape */
+    .dot.square {
+      border-radius: 8px;
+      position: static;
+    }
 
-  // Support both click and touch for mobile fix
-  function addPointerListener(button, position) {
-    button.addEventListener("click", () => setPosition(position));
-    button.addEventListener("touchstart", (e) => {
-      e.preventDefault();
-      setPosition(position);
-    }, {passive: false});
-  }
+    .dot.active {
+      background: green;
+    }
+  </style>
+</head>
+<body>
+  <h1>Dot Fidget</h1>
 
-  addPointerListener(posTopBtn, "top");
-  addPointerListener(posMiddleBtn, "middle");
-  addPointerListener(posBottomBtn, "bottom");
+  <div class="controls" aria-label="Controls">
+    <label for="shapeType">Shape:</label>
+    <select id="shapeType">
+      <option value="square" selected>Square</option>
+      <option value="circle">Circle</option>
+    </select>
 
-  shapeTypeSelect.addEventListener("change", updateGrid);
-  gridSizeSelect.addEventListener("change", updateGrid);
-  circleSizeSelect.addEventListener("change", updateGrid);
-  resetBtn.addEventListener("click", updateGrid);
+    <label for="circleSize" id="circleSizeLabel" style="display:none; margin-left: 10px;">Circle Size:</label>
+    <select id="circleSize" style="display:none; margin-left: 5px;">
+      <option value="3">3 rings (about 30 dots)</option>
+      <option value="5" selected>5 rings (about 75 dots)</option>
+      <option value="8">8 rings (about 150 dots)</option>
+      <option value="10">10 rings (about 200 dots)</option>
+    </select>
 
-  // Initialize
-  updateGrid();
-  setPosition("bottom"); // default to bottom
-});
+    <label for="gridSize" id="gridSizeLabel" style="margin-left: 10px;">Grid Size:</label>
+    <select id="gridSize" style="margin-left: 5px;">
+      <option value="5" selected>5 x 5</option>
+      <option value="8">8 x 8</option>
+      <option value="10">10 x 10</option>
+      <option value="15">15 x 15</option>
+    </select>
+
+    <!-- Reset button on its own line -->
+    <div class="reset-container">
+      <button id="resetBtn">Reset</button>
+    </div>
+  </div>
+
+  <!-- New position buttons -->
+  <div class="position-controls" aria-label="Select grid vertical position">
+    <button type="button" id="posTop">Top</button>
+    <button type="button" id="posMiddle">Middle</button>
+    <button type="button" id="posBottom" class="active">Bottom</button>
+  </div>
+
+  <div id="gridContainer" class="grid-container position-bottom"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
