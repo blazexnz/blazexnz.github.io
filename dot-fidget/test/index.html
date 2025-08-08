@@ -44,12 +44,14 @@
       margin-left: 5px;
     }
 
-    /* Reset button container to force it onto its own line */
-    .reset-container {
+    /* Reset + color picker container on same line */
+    .reset-color-container {
       width: 100%;
       margin-top: 10px;
       display: flex;
-      justify-content: center; /* Changed from flex-start to center */
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
     }
 
     button,
@@ -220,12 +222,10 @@
       <option value="15">15 x 15</option>
     </select>
 
-    <!-- New color picker -->
-    <label for="colorPicker" style="margin-left: 10px;">Color:</label>
-    <input type="color" id="colorPicker" value="#008000" title="Select dot color" />
-
-    <!-- Reset button on its own line -->
-    <div class="reset-container">
+    <!-- Move color picker and reset button inside a new container -->
+    <div class="reset-color-container">
+      <label for="colorPicker" style="margin: 0;">Color:</label>
+      <input type="color" id="colorPicker" value="#008000" title="Select dot color" />
       <button id="resetBtn">Reset</button>
     </div>
   </div>
