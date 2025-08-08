@@ -99,6 +99,7 @@
   }
 
   canvas.addEventListener('pointerdown', (e) => {
+    e.preventDefault(); // stop iOS zoom
     const pos = getPointerPos(e);
 
     if (mode === 1) {
@@ -121,26 +122,40 @@
         }
       }
     } else if (mode === 2) {
-      // Mode 2: Juggling (Flappy Bird–like)
+      // Mode 2: Juggling
       if (balls.length === 0) {
         createBall(width / 2, height / 2);
       }
       const ball = balls[0];
-      ball.vy = -10; // flappy bird–style upward push
+      ball.vy = -10;
     }
-  });
+  }, { passive: false });
 
-  startOverBtn.addEventListener('click', () => {
-    balls = [];
-  });
+  // Start Over button
+  const restartGame = () => { balls = []; };
+  startOverBtn.addEventListener('click', restartGame);
+  startOverBtn.addEventListener('touchend', restartGame);
 
-  modeToggleBtn.addEventListener('click', () => {
+  // Mode Toggle button
+  const toggleMode = () => {
     mode = mode === 1 ? 2 : 1;
     modeToggleBtn.textContent = `Mode: ${mode}`;
     balls = [];
-  });
+  };
+  modeToggleBtn.addEventListener('click', toggleMode);
+  modeToggleBtn.addEventListener('touchend', toggleMode);
 
   canvas.addEventListener('contextmenu', e => e.preventDefault());
+
+  // Disable double-tap zoom on iOS
+  let lastTouchEnd = 0;
+  document.addEventListener('touchend', function (event) {
+    const now = new Date().getTime();
+    if (now - lastTouchEnd <= 300) {
+      event.preventDefault();
+    }
+    lastTouchEnd = now;
+  }, { passive: false });
 
   loop();
 })();
