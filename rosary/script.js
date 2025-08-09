@@ -59,7 +59,152 @@ has purchased for us the rewards of eternal life;
 grant, we beseech You,  
 that by meditating upon these mysteries of the Most Holy Rosary of the Blessed Virgin Mary,  
 we may imitate what they contain and obtain what they promise,  
-through the same Christ our Lord. Amen.`
+through the same Christ our Lord. Amen.`,
+
+//New prayers added for the deceased mode
+  intention: `<strong>V.</strong> Let us offer this Holy Rosary for the eternal rest of (name).<br>
+<strong>R.</strong> Tay the Lord guide our thoughts, bless our words, and fill our hearts.`,
+
+  prayerForTheFaithfulDeparted: `<strong>V.</strong> Eternal rest grant unto (him/her), O Lord.<br>
+<strong>R.</strong> And let perpetual light shine upon (him/her).<br>
+<strong>V.</strong> May (he/she) rest in peace.<br>
+<strong>R.</strong> Amen.`,
+
+  litanyOfTheBlessedVirginMary: `<strong>V.</strong> Lord, have mercy on us.<br>
+<strong>R.</strong> Lord, have mercy on us.<br>
+<strong>V.</strong> Christ, have mercy on us.<br>
+<strong>R.</strong> Christ, have mercy on us.<br>
+<strong>V.</strong> Lord, have mercy on us.<br>
+<strong>R.</strong> Lord, have mercy on us.<br>
+
+<strong>V.</strong> Christ, hear us.<br>
+<strong>R.</strong> Christ, hear us.<br>
+<strong>V.</strong> Christ, graciously hear us.<br>
+<strong>R.</strong> Christ, graciously hear us.<br>
+
+<strong>V.</strong> God the Father of Heaven,<br>
+<strong>R.</strong> Have mercy on us.<br>
+<strong>V.</strong> God the Son, Redeemer of the world,<br>
+<strong>R.</strong> Have mercy on us.<br>
+<strong>V.</strong> God the Holy Ghost,<br>
+<strong>R.</strong> Have mercy on us.<br>
+<strong>V.</strong> Holy Trinity, one God,<br>
+<strong>R.</strong> Have mercy on us.<br>
+
+<strong>V.</strong> Holy Mary,<br>
+<strong>R.</strong> pray for us.<br>
+<strong>V.</strong> Holy Mother of God,<br>
+<strong>R.</strong> pray for us.<br>
+<strong>V.</strong> Holy Virgin of virgins,<br>
+<strong>R.</strong> pray for us.<br>
+<strong>V.</strong> Mother of Christ,<br>
+<strong>R.</strong> pray for us.<br>
+<strong>V.</strong> Mother of divine grace,<br>
+<strong>R.</strong> pray for us.<br>
+<strong>V.</strong> Mother most pure,<br>
+<strong>R.</strong> pray for us.<br>
+<strong>V.</strong> Mother most chaste,<br>
+<strong>R.</strong> pray for us.<br>
+<strong>V.</strong> Mother inviolate,<br>
+<strong>R.</strong> pray for us.<br>
+<strong>V.</strong> Mother undefiled,<br>
+<strong>R.</strong> pray for us.<br>
+<strong>V.</strong> Mother most amiable,<br>
+<strong>R.</strong> pray for us.<br>
+<strong>V.</strong> Mother most admirable,<br>
+<strong>R.</strong> pray for us.<br>
+<strong>V.</strong> Mother of good counsel,<br>
+<strong>R.</strong> pray for us.<br>
+<strong>V.</strong> Mother of our Creator,<br>
+<strong>R.</strong> pray for us.<br>
+<strong>V.</strong> Mother of our Savior,<br>
+<strong>R.</strong> pray for us.<br>
+<strong>V.</strong> Virgin most prudent,<br>
+<strong>R.</strong> pray for us.<br>
+<strong>V.</strong> Virgin most venerable,<br>
+<strong>R.</strong> pray for us.<br>
+<strong>V.</strong> Virgin most renowned,<br>
+<strong>R.</strong> pray for us.<br>
+<strong>V.</strong> Virgin most powerful,<br>
+<strong>R.</strong> pray for us.<br>
+<strong>V.</strong> Virgin most merciful,<br>
+<strong>R.</strong> pray for us.<br>
+<strong>V.</strong> Virgin most faithful,<br>
+<strong>R.</strong> pray for us.<br>
+<strong>V.</strong> Mirror of justice,<br>
+<strong>R.</strong> pray for us.<br>
+<strong>V.</strong> Seat of wisdom,<br>
+<strong>R.</strong> pray for us.<br>
+<strong>V.</strong> Cause of our joy,<br>
+<strong>R.</strong> pray for us.<br>
+<strong>V.</strong> Spiritual vessel,<br>
+<strong>R.</strong> pray for us.<br>
+<strong>V.</strong> Vessel of honor,<br>
+<strong>R.</strong> pray for us.<br>
+<strong>V.</strong> Singular vessel of devotion,<br>
+<strong>R.</strong> pray for us.<br>
+<strong>V.</strong> Mystical rose,<br>
+<strong>R.</strong> pray for us.<br>
+<strong>V.</strong> Tower of David,<br>
+<strong>R.</strong> pray for us.<br>
+<strong>V.</strong> Tower of ivory,<br>
+<strong>R.</strong> pray for us.<br>
+<strong>V.</strong> House of gold,<br>
+<strong>R.</strong> pray for us.<br>
+<strong>V.</strong> Ark of the Covenant,<br>
+<strong>R.</strong> pray for us.<br>
+<strong>V.</strong> Gate of Heaven,<br>
+<strong>R.</strong> pray for us.<br>
+<strong>V.</strong> Morning star,<br>
+<strong>R.</strong> pray for us.<br>
+<strong>V.</strong> Health of the sick,<br>
+<strong>R.</strong> pray for us.<br>
+<strong>V.</strong> Refuge of sinners,<br>
+<strong>R.</strong> pray for us.<br>
+<strong>V.</strong> Comforter of the afflicted,<br>
+<strong>R.</strong> pray for us.<br>
+<strong>V.</strong> Help of Christians,<br>
+<strong>R.</strong> pray for us.<br>
+<strong>V.</strong> Queen of angels,<br>
+<strong>R.</strong> pray for us.<br>
+<strong>V.</strong> Queen of patriarchs,<br>
+<strong>R.</strong> pray for us.<br>
+<strong>V.</strong> Queen of prophets,<br>
+<strong>R.</strong> pray for us.<br>
+<strong>V.</strong> Queen of apostles,<br>
+<strong>R.</strong> pray for us.<br>
+<strong>V.</strong> Queen of martyrs,<br>
+<strong>R.</strong> pray for us.<br>
+<strong>V.</strong> Queen of confessors,<br>
+<strong>R.</strong> pray for us.<br>
+<strong>V.</strong> Queen of virgins,<br>
+<strong>R.</strong> pray for us.<br>
+<strong>V.</strong> Queen of all saints,<br>
+<strong>R.</strong> pray for us.<br>
+<strong>V.</strong> Queen conceived without Original Sin,<br>
+<strong>R.</strong> pray for us.<br>
+<strong>V.</strong> Queen assumed into Heaven,<br>
+<strong>R.</strong> pray for us.<br>
+<strong>V.</strong> Queen of the most holy Rosary,<br>
+<strong>R.</strong> pray for us.<br>
+<strong>V.</strong> Queen of peace,<br>
+<strong>R.</strong> pray for us.<br>
+
+<strong>V.</strong> Lamb of God, who takes away the sins of the world,<br>
+<strong>R.</strong> Spare us, O Lord.<br>
+<strong>V.</strong> Lamb of God, who takes away the sins of the world,<br>
+<strong>R.</strong> Graciously hear us, O Lord.<br>
+<strong>V.</strong> Lamb of God, who takes away the sins of the world,<br>
+<strong>R.</strong> Have mercy on us.<br>
+
+<strong>V.</strong> Pray for us, O Holy Mother of God,<br>
+<strong>R.</strong> That we may be made worthy of the promises of Christ.<br>
+<strong>V.</strong> Grant, we beseech Thee, O Lord God, that we Thy Servants may enjoy perpetual health of mind and body and by the glorious intercession of the Blessed Mary, ever Virgin, be delivered from present sorrow and enjoy eternal happiness.<br>
+<strong>R.</strong> Through Christ Our Lord. Amen.`,
+
+  concludingPrayerForTheDeceased: `Lord, in Your mercy, hear our prayer for the soul of (name). May (he/she) rest in Your peace and rise with You in glory. Amen.`
+
+
 },
 
 vi: {
@@ -170,7 +315,11 @@ const titles = {
     hailHolyQueen: "Hail Holy Queen",
     closingDialogue: "Closing Dialogue",
     closingPrayer: "Closing Prayer",
-    signOfTheCross: "Sign of the Cross"
+    signOfTheCross: "Sign of the Cross",
+    intention: "Intention",
+    prayerForTheFaithfulDeparted: "Prayer For The Faithful Departed",
+    litanyOfTheBlessedVirginMary: "Litany Of The Blessed Virgin Mary",
+    concludingPrayerForTheDeceased: "Litany Of The Blessed Virgin Mary"
   },
   vi: {
     signOfTheCross: "Dấu Thánh Giá",
@@ -631,6 +780,7 @@ let currentFontSize = 16;
 const prayersDiv = document.getElementById("prayers");
 const languageSelect = document.getElementById("languageSelect");
 const daySelect = document.getElementById("daySelect");
+const modeSelect = document.getElementById("modeSelect");
 
 let currentDecade = 0;
 let threeBeadsState = [false, false, false]; // track 3 Hail Mary beads
@@ -650,9 +800,20 @@ let ourFatherBeadsState = [false]; // 1 bead for Our Father
 let gloryBeBeadsState = [false]; // 1 bead for Glory Be
 let fatimaBeadsState = [false]; // 1 bead for Fatima Prayer
 
+// Show mode select only if language is English
+function updateModeSelectVisibility() {
+  if (languageSelect.value === "en") {
+    modeSelect.style.display = "inline-block";
+  } else {
+    modeSelect.style.display = "none";
+    modeSelect.value = "standard"; // reset to standard for other languages
+  }
+}
+
 languageSelect.addEventListener("change", () => {
   currentDecade = 0;
   resetBeadsOnLangOrDayChange();
+  updateModeSelectVisibility();
   renderPrayers();
 });
 
@@ -662,8 +823,14 @@ daySelect.addEventListener("change", () => {
   renderPrayers();
 });
 
+modeSelect.addEventListener("change", () => {
+  currentDecade = 0;
+  resetBeadsOnLangOrDayChange();
+  renderPrayers();
+});
+
 function resetBeadsOnLangOrDayChange() {
-  // Reset ALL beads on language or day change
+  // Reset ALL beads on language, day, or mode change
   threeBeadsState = [false, false, false];
   singleOpeningBeadsState = [false, false, false, false];
   singleGreenBeadsState = {
@@ -689,6 +856,7 @@ function resetYellowBeads() {
 function renderPrayers() {
   const lang = languageSelect.value;
   const day = daySelect.value;
+  const mode = modeSelect.value || "standard";
   const mysteryKey = mysteriesByDay[day];
   const t = titles[lang];
   const mysteryCategoryName = mysteryCategories[lang][mysteryKey];
@@ -701,143 +869,262 @@ function renderPrayers() {
 
   let html = "";
 
-  // Opening prayers with single beads
-  // Changed order here: Sign of the Cross, Apostles Creed, Our Father, (3 Hail Marys inserted below), Glory Be last
-  const openingPrayers = [
-    { title: t.signOfTheCross, content: prayers[lang].signOfTheCross },
-    { title: t.apostlesCreed, content: prayers[lang].apostlesCreed },
-    { title: t.ourFather, content: prayers[lang].ourFather },
-    { title: t.gloryBe, content: prayers[lang].gloryBe } // Moved gloryBe to end, but render after 3 Hail Marys
-  ];
+  if (lang === "en" && mode === "forDeceased") {
+    // PRAYER ORDER FOR DECEASED MODE (based on your new prayers)
+    
+    // Opening prayers with single beads
+    const openingPrayers = [
+      { title: t.signOfTheCross, content: prayers[lang].signOfTheCross },
+      { title: t.apostlesCreed, content: prayers[lang].apostlesCreed },
+      { title: t.intention, content: prayers[lang].intention },
+      { title: t.prayerForTheFaithfulDeparted, content: prayers[lang].prayerForTheFaithfulDeparted },
+      { title: t.ourFather, content: prayers[lang].ourFather },
+      { title: t.threeHailMarys, content: prayers[lang].hailMary },
+      { title: t.gloryBe, content: prayers[lang].gloryBe }
+    ];
 
-  // Render first three opening prayers (Sign of the Cross, Apostles Creed, Our Father)
-  for (let i = 0; i < 3; i++) {
-    const prayer = openingPrayers[i];
-    const active = singleOpeningBeadsState[i] ? "active" : "";
-    html += `
-      <div class='prayer opening'>
-        <strong>${prayer.title}:</strong><br>${prayer.content}
-        <div class="bead-container right-justify">
-          <div class="bead ${active}" data-type="1" data-index="${i}"></div>
-        </div>
-      </div>`;
-  }
+    // Render opening prayers with single beads
+    for (let i = 0; i < openingPrayers.length; i++) {
+      const prayer = openingPrayers[i];
+      // For simplicity, single beads for all except the 3 Hail Marys (which has 3 beads)
+      if (prayer.title === t.threeHailMarys) {
+        html += `<div class='prayer opening'><strong>${prayer.title}:</strong><br>${prayer.content}
+          <div class="bead-container right-justify" id="threeBeads">
+            ${Array.from({ length: 3 }).map((_, i) => {
+              const activeClass = threeBeadsState[i] ? "active" : "";
+              return `<div class="bead ${activeClass}" data-type="3" data-index="${i}"></div>`;
+            }).join("")}
+          </div>
+        </div>`;
+      } else {
+        const active = singleOpeningBeadsState[i] ? "active" : "";
+        html += `
+          <div class='prayer opening'>
+            <strong>${prayer.title}:</strong><br>${prayer.content}
+            <div class="bead-container right-justify">
+              <div class="bead ${active}" data-type="1" data-index="${i}"></div>
+            </div>
+          </div>`;
+      }
+    }
 
-  // Three Hail Marys (3 beads) - must come after Our Father, before Glory Be
-  html += `<div class='prayer opening'><strong>${t.threeHailMarys}:</strong><br>${prayers[lang].hailMary}
-    <div class="bead-container right-justify" id="threeBeads">
-      ${Array.from({ length: 3 }).map((_, i) => {
-        const activeClass = threeBeadsState[i] ? "active" : "";
-        return `<div class="bead ${activeClass}" data-type="3" data-index="${i}"></div>`;
-      }).join("")}
-    </div>
-  </div>`;
+    // Mysteries section with added prayerForTheFaithfulDeparted (after Fatima)
+    const meditation = mysteryMeditations[lang][mysteryKey][currentDecade];
+    const ordinal = ordinalMap[lang][currentDecade];
+    let mysteryTitle;
 
-  // Now render Glory Be as the 4th opening prayer
-  const gloryIndex = 3;
-  const gloryPrayer = openingPrayers[gloryIndex];
-  const gloryActive = singleOpeningBeadsState[gloryIndex] ? "active" : "";
-  html += `
-    <div class='prayer opening'>
-      <strong>${gloryPrayer.title}:</strong><br>${gloryPrayer.content}
-      <div class="bead-container right-justify">
-        <div class="bead ${gloryActive}" data-type="1" data-index="${gloryIndex}"></div>
+    mysteryTitle = `The ${ordinal} ${mysteryCategoryName} Mystery: ${meditation.title}`;
+
+    html += `<div class='prayer mysteries'>
+      <strong>${mysteryTitle}</strong><br><br>
+      <em>${meditation.scripture}</em><br><br>
+      ${meditation.reflection}<br><br>
+      <strong>${meditation.fruit}</strong>
+      <div id="mysteryBeads" class="bead-container right-justify" style="margin-top:10px;">
+        <div class="bead ${mysteryBeadsState[0] ? "active" : ""}" data-type="mystery" data-index="0"></div>
       </div>
     </div>`;
 
-  // Mystery Section with SINGLE bead (updated from 5 beads)
-  const meditation = mysteryMeditations[lang][mysteryKey][currentDecade];
-  const ordinal = ordinalMap[lang][currentDecade];
-  let mysteryTitle;
-
-  if (lang === "en") {
-    mysteryTitle = `The ${ordinal} ${mysteryCategoryName} Mystery: ${meditation.title}`;
-  } else if (lang === "vi") {
-    mysteryTitle = `${mysteryCategoryName} ${ordinal}: ${meditation.title}`;
-  } else if (lang === "tl") {
-    mysteryTitle = `${ordinal} ${mysteryCategoryName}: ${meditation.title}`;
-  }
-
-  html += `<div class='prayer mysteries'>
-    <strong>${mysteryTitle}</strong><br><br>
-    <em>${meditation.scripture}</em><br><br>
-    ${meditation.reflection}<br><br>
-    <strong>${meditation.fruit}</strong>
-    <div id="mysteryBeads" class="bead-container right-justify" style="margin-top:10px;">
-      <div class="bead ${mysteryBeadsState[0] ? "active" : ""}" data-type="mystery" data-index="0"></div>
-    </div>
-  </div>`;
-
-  // Our Father with 1 bead (mysteries section)
-  html += `<div class='prayer mysteries'><strong>${t.ourFather}:</strong><br>${prayers[lang].ourFather}
-    <div id="ourFatherBeads" class="bead-container right-justify" style="margin-top:10px;">
-      <div class="bead ${ourFatherBeadsState[0] ? "active" : ""}" data-type="ourFather" data-index="0"></div>
-    </div>
-  </div>`;
-
-  // 10 Hail Marys with 10 beads (unchanged)
-  html += `<div class='prayer mysteries'><strong>${t.tenHailMarys}:</strong><br>${prayers[lang].hailMary}
-    <div id="tenBeads" class="bead-container right-justify" style="margin-top:10px;">
-      ${Array.from({ length: 10 }).map((_, i) => `<div class="bead" data-type="10" data-index="${i}"></div>`).join("")}
-    </div>
-  </div>`;
-
-  // Glory Be with 1 bead (mysteries section)
-  html += `<div class='prayer mysteries'><strong>${t.gloryBe}:</strong><br>${prayers[lang].gloryBe}
-    <div id="gloryBeBeads" class="bead-container right-justify" style="margin-top:10px;">
-      <div class="bead ${gloryBeBeadsState[0] ? "active" : ""}" data-type="gloryBe" data-index="0"></div>
-    </div>
-  </div>`;
-
-  // Fatima Prayer with 1 bead
-  html += `<div class='prayer mysteries'><strong>${t.fatimaPrayer}:</strong><br>${prayers[lang].fatima}
-    <div id="fatimaBeads" class="bead-container right-justify" style="margin-top:10px;">
-      <div class="bead ${fatimaBeadsState[0] ? "active" : ""}" data-type="fatima" data-index="0"></div>
-    </div>
-  </div>`;
-
-  // NAVIGATION BUTTONS moved BELOW the yellow mysteries section
-  html += `
-    <div class="navigation" style="margin-top: 1rem; text-align:center;">
-      <button onclick="prevDecade()" ${currentDecade === 0 ? "disabled" : ""}>Prev. Decade</button>
-      <button onclick="nextDecade()" ${currentDecade === 4 ? "disabled" : ""}>Next Decade</button>
+    // Our Father
+    html += `<div class='prayer mysteries'><strong>${t.ourFather}:</strong><br>${prayers[lang].ourFather}
+      <div id="ourFatherBeads" class="bead-container right-justify" style="margin-top:10px;">
+        <div class="bead ${ourFatherBeadsState[0] ? "active" : ""}" data-type="ourFather" data-index="0"></div>
+      </div>
     </div>`;
 
-  // Hail Holy Queen with single bead
-  const activeHailHolyQueen = singleGreenBeadsState.hailHolyQueen ? "active" : "";
-  html += `<div class='prayer closing'>
-    <strong>${t.hailHolyQueen}:</strong><br>${prayers[lang].hailHolyQueen}
-    <div class="bead-container right-justify">
-      <div class="bead ${activeHailHolyQueen}" data-type="singleGreen" data-name="hailHolyQueen"></div>
-    </div>
-  </div>`;
+    // 10 Hail Marys
+    html += `<div class='prayer mysteries'><strong>${t.tenHailMarys}:</strong><br>${prayers[lang].hailMary}
+      <div id="tenBeads" class="bead-container right-justify" style="margin-top:10px;">
+        ${Array.from({ length: 10 }).map((_, i) => `<div class="bead" data-type="10" data-index="${i}"></div>`).join("")}
+      </div>
+    </div>`;
 
-  // Closing dialogue with single bead
-  const activeClosingDialogue = singleGreenBeadsState.closingDialogue ? "active" : "";
-  html += `<div class='prayer closing'>
-    <strong>${t.closingDialogue}:</strong><br>${prayers[lang].closingDialogue}
-    <div class="bead-container right-justify">
-      <div class="bead ${activeClosingDialogue}" data-type="singleGreen" data-name="closingDialogue"></div>
-    </div>
-  </div>`;
+    // Glory Be
+    html += `<div class='prayer mysteries'><strong>${t.gloryBe}:</strong><br>${prayers[lang].gloryBe}
+      <div id="gloryBeBeads" class="bead-container right-justify" style="margin-top:10px;">
+        <div class="bead ${gloryBeBeadsState[0] ? "active" : ""}" data-type="gloryBe" data-index="0"></div>
+      </div>
+    </div>`;
 
-  // Closing prayer with single bead
-  const activeClosingPrayer = singleGreenBeadsState.closingPrayer ? "active" : "";
-  html += `<div class='prayer closing'>
-    <strong>${t.closingPrayer}:</strong><br>${prayers[lang].closingPrayer}
-    <div class="bead-container right-justify">
-      <div class="bead ${activeClosingPrayer}" data-type="singleGreen" data-name="closingPrayer"></div>
-    </div>
-  </div>`;
+    // Fatima Prayer
+    html += `<div class='prayer mysteries'><strong>${t.fatimaPrayer}:</strong><br>${prayers[lang].fatima}
+      <div id="fatimaBeads" class="bead-container right-justify" style="margin-top:10px;">
+        <div class="bead ${fatimaBeadsState[0] ? "active" : ""}" data-type="fatima" data-index="0"></div>
+      </div>
+    </div>`;
 
-  // Sign of the Cross (closing) with single bead
-  const activeClosingSignOfCross = singleGreenBeadsState.closingSignOfCross ? "active" : "";
-  html += `<div class='prayer closing'>
-    <strong>${t.signOfTheCross}:</strong><br>${prayers[lang].signOfTheCross}
-    <div class="bead-container right-justify">
-      <div class="bead ${activeClosingSignOfCross}" data-type="singleGreen" data-name="closingSignOfCross"></div>
-    </div>
-  </div>`;
+    // Prayer for the Faithful Departed (new, single bead)
+    html += `<div class='prayer mysteries'><strong>${t.prayerForTheFaithfulDeparted}:</strong><br>${prayers[lang].prayerForTheFaithfulDeparted}
+      <div class="bead-container right-justify" style="margin-top:10px;">
+        <div class="bead" data-type="singleNew" data-name="prayerForTheFaithfulDeparted"></div>
+      </div>
+    </div>`;
+
+    // Navigation buttons
+    html += `
+      <div class="navigation" style="margin-top: 1rem; text-align:center;">
+        <button onclick="prevDecade()" ${currentDecade === 0 ? "disabled" : ""}>Prev. Decade</button>
+        <button onclick="nextDecade()" ${currentDecade === 4 ? "disabled" : ""}>Next Decade</button>
+      </div>`;
+
+    // Closing prayers with single beads including new ones and sign of the cross at end
+    const closingPrayers = [
+      { name: "hailHolyQueen", title: t.hailHolyQueen, content: prayers[lang].hailHolyQueen },
+      { name: "closingDialogue", title: t.closingDialogue, content: prayers[lang].closingDialogue },
+      { name: "closingPrayer", title: t.closingPrayer, content: prayers[lang].closingPrayer },
+      { name: "litanyOfTheBlessedVirginMary", title: t.litanyOfTheBlessedVirginMary, content: prayers[lang].litanyOfTheBlessedVirginMary },
+      { name: "concludingPrayerForTheDeceased", title: t.concludingPrayerForTheDeceased, content: prayers[lang].concludingPrayerForTheDeceased },
+      { name: "closingSignOfCross", title: t.signOfTheCross, content: prayers[lang].signOfTheCross }
+    ];
+
+    closingPrayers.forEach(prayer => {
+      const activeClass = singleGreenBeadsState[prayer.name] ? "active" : "";
+      html += `<div class='prayer closing'>
+        <strong>${prayer.title}:</strong><br>${prayer.content}
+        <div class="bead-container right-justify">
+          <div class="bead ${activeClass}" data-type="singleGreen" data-name="${prayer.name}"></div>
+        </div>
+      </div>`;
+    });
+
+  } else {
+    // STANDARD MODE (unchanged, your original renderPrayers for standard mode)
+    const openingPrayers = [
+      { title: t.signOfTheCross, content: prayers[lang].signOfTheCross },
+      { title: t.apostlesCreed, content: prayers[lang].apostlesCreed },
+      { title: t.ourFather, content: prayers[lang].ourFather },
+      { title: t.gloryBe, content: prayers[lang].gloryBe } // Moved gloryBe to end, but render after 3 Hail Marys
+    ];
+
+    // Render first three opening prayers (Sign of the Cross, Apostles Creed, Our Father)
+    for (let i = 0; i < 3; i++) {
+      const prayer = openingPrayers[i];
+      const active = singleOpeningBeadsState[i] ? "active" : "";
+      html += `
+        <div class='prayer opening'>
+          <strong>${prayer.title}:</strong><br>${prayer.content}
+          <div class="bead-container right-justify">
+            <div class="bead ${active}" data-type="1" data-index="${i}"></div>
+          </div>
+        </div>`;
+    }
+
+    // Three Hail Marys (3 beads) - must come after Our Father, before Glory Be
+    html += `<div class='prayer opening'><strong>${t.threeHailMarys}:</strong><br>${prayers[lang].hailMary}
+      <div class="bead-container right-justify" id="threeBeads">
+        ${Array.from({ length: 3 }).map((_, i) => {
+          const activeClass = threeBeadsState[i] ? "active" : "";
+          return `<div class="bead ${activeClass}" data-type="3" data-index="${i}"></div>`;
+        }).join("")}
+      </div>
+    </div>`;
+
+    // Now render Glory Be as the 4th opening prayer
+    const gloryIndex = 3;
+    const gloryPrayer = openingPrayers[gloryIndex];
+    const gloryActive = singleOpeningBeadsState[gloryIndex] ? "active" : "";
+    html += `
+      <div class='prayer opening'>
+        <strong>${gloryPrayer.title}:</strong><br>${gloryPrayer.content}
+        <div class="bead-container right-justify">
+          <div class="bead ${gloryActive}" data-type="1" data-index="${gloryIndex}"></div>
+        </div>
+      </div>`;
+
+    // Mystery Section with SINGLE bead (updated from 5 beads)
+    const meditation = mysteryMeditations[lang][mysteryKey][currentDecade];
+    const ordinal = ordinalMap[lang][currentDecade];
+    let mysteryTitle;
+
+    if (lang === "en") {
+      mysteryTitle = `The ${ordinal} ${mysteryCategoryName} Mystery: ${meditation.title}`;
+    } else if (lang === "vi") {
+      mysteryTitle = `${mysteryCategoryName} ${ordinal}: ${meditation.title}`;
+    } else if (lang === "tl") {
+      mysteryTitle = `${ordinal} ${mysteryCategoryName}: ${meditation.title}`;
+    }
+
+    html += `<div class='prayer mysteries'>
+      <strong>${mysteryTitle}</strong><br><br>
+      <em>${meditation.scripture}</em><br><br>
+      ${meditation.reflection}<br><br>
+      <strong>${meditation.fruit}</strong>
+      <div id="mysteryBeads" class="bead-container right-justify" style="margin-top:10px;">
+        <div class="bead ${mysteryBeadsState[0] ? "active" : ""}" data-type="mystery" data-index="0"></div>
+      </div>
+    </div>`;
+
+    // Our Father with 1 bead (mysteries section)
+    html += `<div class='prayer mysteries'><strong>${t.ourFather}:</strong><br>${prayers[lang].ourFather}
+      <div id="ourFatherBeads" class="bead-container right-justify" style="margin-top:10px;">
+        <div class="bead ${ourFatherBeadsState[0] ? "active" : ""}" data-type="ourFather" data-index="0"></div>
+      </div>
+    </div>`;
+
+    // 10 Hail Marys with 10 beads (unchanged)
+    html += `<div class='prayer mysteries'><strong>${t.tenHailMarys}:</strong><br>${prayers[lang].hailMary}
+      <div id="tenBeads" class="bead-container right-justify" style="margin-top:10px;">
+        ${Array.from({ length: 10 }).map((_, i) => `<div class="bead" data-type="10" data-index="${i}"></div>`).join("")}
+      </div>
+    </div>`;
+
+    // Glory Be with 1 bead (mysteries section)
+    html += `<div class='prayer mysteries'><strong>${t.gloryBe}:</strong><br>${prayers[lang].gloryBe}
+      <div id="gloryBeBeads" class="bead-container right-justify" style="margin-top:10px;">
+        <div class="bead ${gloryBeBeadsState[0] ? "active" : ""}" data-type="gloryBe" data-index="0"></div>
+      </div>
+    </div>`;
+
+    // Fatima Prayer with 1 bead
+    html += `<div class='prayer mysteries'><strong>${t.fatimaPrayer}:</strong><br>${prayers[lang].fatima}
+      <div id="fatimaBeads" class="bead-container right-justify" style="margin-top:10px;">
+        <div class="bead ${fatimaBeadsState[0] ? "active" : ""}" data-type="fatima" data-index="0"></div>
+      </div>
+    </div>`;
+
+    // NAVIGATION BUTTONS moved BELOW the yellow mysteries section
+    html += `
+      <div class="navigation" style="margin-top: 1rem; text-align:center;">
+        <button onclick="prevDecade()" ${currentDecade === 0 ? "disabled" : ""}>Prev. Decade</button>
+        <button onclick="nextDecade()" ${currentDecade === 4 ? "disabled" : ""}>Next Decade</button>
+      </div>`;
+
+    // Hail Holy Queen with single bead
+    const activeHailHolyQueen = singleGreenBeadsState.hailHolyQueen ? "active" : "";
+    html += `<div class='prayer closing'>
+      <strong>${t.hailHolyQueen}:</strong><br>${prayers[lang].hailHolyQueen}
+      <div class="bead-container right-justify">
+        <div class="bead ${activeHailHolyQueen}" data-type="singleGreen" data-name="hailHolyQueen"></div>
+      </div>
+    </div>`;
+
+    // Closing dialogue with single bead
+    const activeClosingDialogue = singleGreenBeadsState.closingDialogue ? "active" : "";
+    html += `<div class='prayer closing'>
+      <strong>${t.closingDialogue}:</strong><br>${prayers[lang].closingDialogue}
+      <div class="bead-container right-justify">
+        <div class="bead ${activeClosingDialogue}" data-type="singleGreen" data-name="closingDialogue"></div>
+      </div>
+    </div>`;
+
+    // Closing prayer with single bead
+    const activeClosingPrayer = singleGreenBeadsState.closingPrayer ? "active" : "";
+    html += `<div class='prayer closing'>
+      <strong>${t.closingPrayer}:</strong><br>${prayers[lang].closingPrayer}
+      <div class="bead-container right-justify">
+        <div class="bead ${activeClosingPrayer}" data-type="singleGreen" data-name="closingPrayer"></div>
+      </div>
+    </div>`;
+
+    // Sign of the Cross (closing) with single bead
+    const activeClosingSignOfCross = singleGreenBeadsState.closingSignOfCross ? "active" : "";
+    html += `<div class='prayer closing'>
+      <strong>${t.signOfTheCross}:</strong><br>${prayers[lang].signOfTheCross}
+      <div class="bead-container right-justify">
+        <div class="bead ${activeClosingSignOfCross}" data-type="singleGreen" data-name="closingSignOfCross"></div>
+      </div>
+    </div>`;
+  }
 
   prayersDiv.style.fontSize = currentFontSize + "px";
   prayersDiv.innerHTML = html;
@@ -902,7 +1189,7 @@ function attachBeadListeners() {
     });
   });
 
-  // single beads (sign of cross, apostles creed, our father, glory be)
+  // single beads (sign of cross, apostles creed, our father, glory be, intention, prayerForTheFaithfulDeparted in new mode)
   document.querySelectorAll(".bead[data-type='1']").forEach(bead => {
     const index = parseInt(bead.getAttribute("data-index"), 10);
     bead.addEventListener("click", () => {
@@ -911,12 +1198,20 @@ function attachBeadListeners() {
     });
   });
 
-  // single green beads (hailHolyQueen, closingDialogue, closingPrayer, closingSignOfCross)
+  // single green beads (hailHolyQueen, closingDialogue, closingPrayer, closingSignOfCross, litanyOfTheBlessedVirginMary, concludingPrayerForTheDeceased)
   document.querySelectorAll(".bead[data-type='singleGreen']").forEach(bead => {
     const name = bead.getAttribute("data-name");
     bead.addEventListener("click", () => {
       bead.classList.toggle("active");
       singleGreenBeadsState[name] = bead.classList.contains("active");
+    });
+  });
+
+  // single bead for prayerForTheFaithfulDeparted in mysteries section in deceased mode
+  document.querySelectorAll(".bead[data-type='singleNew']").forEach(bead => {
+    bead.addEventListener("click", () => {
+      bead.classList.toggle("active");
+      // You can track this state if needed
     });
   });
 }
@@ -946,6 +1241,7 @@ function setCurrentDay() {
 }
 
 setCurrentDay();
+updateModeSelectVisibility();
 renderPrayers();
 
 document.getElementById("increaseFontBtn").addEventListener("click", () => {
