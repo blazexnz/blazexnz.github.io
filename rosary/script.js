@@ -702,14 +702,17 @@ function renderPrayers() {
   let html = "";
 
   // Opening prayers with single beads
+  // Changed order here: Sign of the Cross, Apostles Creed, Our Father, (3 Hail Marys inserted below), Glory Be last
   const openingPrayers = [
     { title: t.signOfTheCross, content: prayers[lang].signOfTheCross },
     { title: t.apostlesCreed, content: prayers[lang].apostlesCreed },
     { title: t.ourFather, content: prayers[lang].ourFather },
-    { title: t.gloryBe, content: prayers[lang].gloryBe }
+    { title: t.gloryBe, content: prayers[lang].gloryBe } // Moved gloryBe to end, but render after 3 Hail Marys
   ];
 
-  openingPrayers.forEach((prayer, i) => {
+  // Render first three opening prayers (Sign of the Cross, Apostles Creed, Our Father)
+  for (let i = 0; i < 3; i++) {
+    const prayer = openingPrayers[i];
     const active = singleOpeningBeadsState[i] ? "active" : "";
     html += `
       <div class='prayer opening'>
@@ -718,9 +721,9 @@ function renderPrayers() {
           <div class="bead ${active}" data-type="1" data-index="${i}"></div>
         </div>
       </div>`;
-  });
+  }
 
-  // Three Hail Marys (3 beads)
+  // Three Hail Marys (3 beads) - must come after Our Father, before Glory Be
   html += `<div class='prayer opening'><strong>${t.threeHailMarys}:</strong><br>${prayers[lang].hailMary}
     <div class="bead-container right-justify" id="threeBeads">
       ${Array.from({ length: 3 }).map((_, i) => {
@@ -729,6 +732,18 @@ function renderPrayers() {
       }).join("")}
     </div>
   </div>`;
+
+  // Now render Glory Be as the 4th opening prayer
+  const gloryIndex = 3;
+  const gloryPrayer = openingPrayers[gloryIndex];
+  const gloryActive = singleOpeningBeadsState[gloryIndex] ? "active" : "";
+  html += `
+    <div class='prayer opening'>
+      <strong>${gloryPrayer.title}:</strong><br>${gloryPrayer.content}
+      <div class="bead-container right-justify">
+        <div class="bead ${gloryActive}" data-type="1" data-index="${gloryIndex}"></div>
+      </div>
+    </div>`;
 
   // Mystery Section with SINGLE bead (updated from 5 beads)
   const meditation = mysteryMeditations[lang][mysteryKey][currentDecade];
@@ -753,7 +768,7 @@ function renderPrayers() {
     </div>
   </div>`;
 
-  // Our Father with 1 bead
+  // Our Father with 1 bead (mysteries section)
   html += `<div class='prayer mysteries'><strong>${t.ourFather}:</strong><br>${prayers[lang].ourFather}
     <div id="ourFatherBeads" class="bead-container right-justify" style="margin-top:10px;">
       <div class="bead ${ourFatherBeadsState[0] ? "active" : ""}" data-type="ourFather" data-index="0"></div>
@@ -767,7 +782,7 @@ function renderPrayers() {
     </div>
   </div>`;
 
-  // Glory Be with 1 bead
+  // Glory Be with 1 bead (mysteries section)
   html += `<div class='prayer mysteries'><strong>${t.gloryBe}:</strong><br>${prayers[lang].gloryBe}
     <div id="gloryBeBeads" class="bead-container right-justify" style="margin-top:10px;">
       <div class="bead ${gloryBeBeadsState[0] ? "active" : ""}" data-type="gloryBe" data-index="0"></div>
@@ -953,6 +968,3 @@ toggleBeadsBtn.addEventListener("click", () => {
   const beadsVisible = prayersDiv.classList.toggle("hide-beads");
   toggleBeadsBtn.textContent = beadsVisible ? "Show Beads" : "Hide Beads";
 });
-
-
-
