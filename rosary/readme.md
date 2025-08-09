@@ -12,6 +12,7 @@ This is a simple web app to help you pray the Rosary in English, Vietnamese, or 
 - **Interactive beads:** Tap beads to track progress for each prayer
 - **Bead visibility toggle:** Switch between app-based beads or use your physical rosary
 - **Decade navigation with smooth scroll:** "Previous Decade" and "Next Decade" buttons appear below the Mysteries section, and when tapped, the view smoothly scrolls up so the first Mystery box is at the top for easy reading
+- **Toggle Rosary modes:** You can choose between the standard Rosary or one for the deceased
 
 ## How to use
 1. **Open the app:** It will automatically select the correct Mysteries for the day
@@ -20,3 +21,4 @@ This is a simple web app to help you pray the Rosary in English, Vietnamese, or 
 4. **Start praying:** Follow along through the prayers and reflections
 5. **Use navigation buttons:** Tap "Previous Decade" or "Next Decade" below the Mysteries to move through the decades; the app will smoothly scroll the view for convenience
 6. **Toggle beads on/off:** Click **Hide Beads** to use a physical rosary instead of the app’s bead counters
+7. **Toggle Rosary modes:** While in English, use the menu to toggle between Standard Rosary and Rosary For The Deceased
