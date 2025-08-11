@@ -775,7 +775,7 @@ Sorrowful: [
   }
 };
 
-let currentFontSize = 16;
+let currentFontSize = 24; //changed default from 16 to 24
 
 const prayersDiv = document.getElementById("prayers");
 const languageSelect = document.getElementById("languageSelect");
@@ -1245,7 +1245,7 @@ updateModeSelectVisibility();
 renderPrayers();
 
 document.getElementById("increaseFontBtn").addEventListener("click", () => {
-  if (currentFontSize < 30) {
+  if (currentFontSize < 36) { //changed max from 30 to 36
     currentFontSize += 2;
     renderPrayers();
   }
@@ -1264,3 +1264,4 @@ toggleBeadsBtn.addEventListener("click", () => {
   const beadsVisible = prayersDiv.classList.toggle("hide-beads");
   toggleBeadsBtn.textContent = beadsVisible ? "Show Beads" : "Hide Beads";
 });
+
