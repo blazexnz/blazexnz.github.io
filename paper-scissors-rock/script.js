@@ -1,205 +1,198 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Paper Scissors Rock - Two Player</title>
-<style>
-  /* Basic mobile-friendly styling */
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-    margin: 0;
-    padding: 20px;
-    background: #f2f2f7;
-    color: #222;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    min-height: 100vh;
+const player1Section = document.getElementById('player1');
+const player2Section = document.getElementById('player2');
+const resultDiv = document.getElementById('result');
+const resetBtn = document.getElementById('reset-btn');
+const revealBtn = document.getElementById('reveal-btn');
+
+const scoreP1Span = document.getElementById('score-p1');
+const scoreP2Span = document.getElementById('score-p2');
+const scoreTieSpan = document.getElementById('score-tie');
+
+const winnerOverlay = document.getElementById("winnerOverlay");
+const fireworksCanvas = document.getElementById("fireworksCanvas");
+const fwCtx = fireworksCanvas.getContext("2d");
+
+let player1Choice = null;
+let player2Choice = null;
+
+let scoreP1 = 0;
+let scoreP2 = 0;
+let scoreTie = 0;
+
+const choiceButtons = document.querySelectorAll('.choice-btn');
+
+choiceButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    const player = button.getAttribute('data-player');
+    const choice = button.getAttribute('data-choice');
+
+    if (player === '1') {
+      player1Choice = choice;
+      player1Section.style.display = 'none';
+      player2Section.style.display = 'block';
+      resultDiv.textContent = "Player 2, it's your turn!";
+    } else if (player === '2') {
+      player2Choice = choice;
+      player2Section.style.display = 'none';
+      revealBtn.style.display = 'block';
+      resultDiv.textContent = "Both players have chosen. Press Reveal Winner.";
+    }
+  });
+});
+
+revealBtn.addEventListener('click', () => {
+  revealBtn.disabled = true;
+  revealBtn.style.display = 'none';
+
+  const countdownEmojis = [
+    "✋ Paper",
+    "✌️ Scissors",
+    "✊ Rock"
+  ];
+
+  let count = 0;
+  resultDiv.textContent = countdownEmojis[count];
+  const interval = setInterval(() => {
+    count++;
+    if (count < countdownEmojis.length) {
+      resultDiv.textContent = countdownEmojis[count];
+    } else {
+      clearInterval(interval);
+      showResult();
+      revealBtn.disabled = false;
+    }
+  }, 500);  // faster countdown: 500ms per step
+});
+
+resetBtn.addEventListener('click', () => {
+  player1Choice = null;
+  player2Choice = null;
+  resultDiv.textContent = '';
+  resetBtn.style.display = 'none';
+  revealBtn.style.display = 'none';
+  revealBtn.disabled = false;
+  player1Section.style.display = 'block';
+  player2Section.style.display = 'none';
+
+  // If you want to reset scores on reset, uncomment these:
+  // scoreP1 = 0;
+  // scoreP2 = 0;
+  // scoreTie = 0;
+  // updateScoreboard();
+});
+
+// Game logic helpers
+function getWinner(p1, p2) {
+  if (p1 === p2) return 0;
+
+  if (
+    (p1 === 'rock' && p2 === 'scissors') ||
+    (p1 === 'scissors' && p2 === 'paper') ||
+    (p1 === 'paper' && p2 === 'rock')
+  ) {
+    return 1;
+  } else {
+    return 2;
+  }
+}
+
+function choiceToEmoji(choice) {
+  switch(choice) {
+    case 'rock': return '✊ Rock';
+    case 'paper': return '✋ Paper';
+    case 'scissors': return '✌️ Scissors';
+    default: return '';
+  }
+}
+
+// Fireworks animation state
+let particles = [];
+
+function startFireworks() {
+  fireworksCanvas.width = window.innerWidth;
+  fireworksCanvas.height = window.innerHeight;
+  particles = [];
+  createFirework();
+  requestAnimationFrame(updateFireworks);
+}
+
+function stopFireworks() {
+  particles = [];
+  fwCtx.clearRect(0, 0, fireworksCanvas.width, fireworksCanvas.height);
+}
+
+function createFirework() {
+  for (let i = 0; i < 100; i++) {
+    particles.push({
+      x: fireworksCanvas.width / 2,
+      y: fireworksCanvas.height / 2,
+      angle: Math.random() * Math.PI * 2,
+      speed: Math.random() * 5 + 2,
+      radius: Math.random() * 2 + 1,
+      life: 100,
+      color: `hsl(${Math.random() * 360}, 100%, 50%)`
+    });
+  }
+}
+
+function updateFireworks() {
+  fwCtx.clearRect(0, 0, fireworksCanvas.width, fireworksCanvas.height);
+  particles.forEach(p => {
+    p.x += Math.cos(p.angle) * p.speed;
+    p.y += Math.sin(p.angle) * p.speed;
+    p.life--;
+    fwCtx.beginPath();
+    fwCtx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+    fwCtx.fillStyle = p.color;
+    fwCtx.fill();
+  });
+  particles = particles.filter(p => p.life > 0);
+  if (particles.length > 0) {
+    requestAnimationFrame(updateFireworks);
+  }
+}
+
+// Show winner overlay and start fireworks
+function showWinnerOverlay(text) {
+  winnerOverlay.textContent = text;
+  winnerOverlay.classList.remove("hidden", "fade-out");
+  startFireworks();
+
+  setTimeout(() => {
+    winnerOverlay.classList.add("fade-out");
+    setTimeout(() => {
+      winnerOverlay.classList.add("hidden");
+      stopFireworks();
+    }, 500);
+  }, 1500);
+}
+
+// Show game result and trigger overlay if player won
+function showResult() {
+  const winner = getWinner(player1Choice, player2Choice);
+
+  const p1Text = choiceToEmoji(player1Choice);
+  const p2Text = choiceToEmoji(player2Choice);
+
+  if (winner === 0) {
+    resultDiv.textContent = `It's a tie! Both chose ${p1Text}.`;
+    scoreTie++;
+  } else if (winner === 1) {
+    resultDiv.innerHTML = `Player 1 chose ${p1Text}.<br>Player 2 chose ${p2Text}.<br><strong>Player 1 wins!</strong>`;
+    scoreP1++;
+    showWinnerOverlay(`🎉 Congratulations Player 1! 🎉`);
+  } else if (winner === 2) {
+    resultDiv.innerHTML = `Player 1 chose ${p1Text}.<br>Player 2 chose ${p2Text}.<br><strong>Player 2 wins!</strong>`;
+    scoreP2++;
+    showWinnerOverlay(`🎉 Congratulations Player 2! 🎉`);
   }
 
-  h1 {
-    margin-bottom: 10px;
-  }
+  updateScoreboard();
+  resetBtn.style.display = 'block';
+}
 
-  #scoreboard {
-    max-width: 400px;
-    width: 100%;
-    margin: 0 auto 20px;
-    font-size: 18px;
-    text-align: center;
-    font-weight: 600;
-    background: #e6f0ff;
-    border-radius: 12px;
-    padding: 10px 0;
-  }
-
-  #game {
-    background: white;
-    border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
-    width: 100%;
-    max-width: 400px;
-    box-sizing: border-box;
-  }
-
-  .player-section {
-    margin-bottom: 20px;
-  }
-
-  .player-section h2 {
-    margin-bottom: 10px;
-  }
-
-  .choices {
-    display: flex;
-    justify-content: space-around;
-  }
-
-  button.choice-btn {
-    flex: 1;
-    margin: 0 5px;
-    padding: 15px 0;
-    font-size: 18px;
-    border-radius: 10px;
-    border: 2px solid #007aff;
-    background-color: #e6f0ff;
-    color: #007aff;
-    transition: background-color 0.2s ease;
-    user-select: none;
-  }
-
-  button.choice-btn:active {
-    background-color: #007aff;
-    color: white;
-  }
-
-  button.choice-btn[disabled] {
-    opacity: 0.5;
-    pointer-events: none;
-  }
-
-  #result {
-    font-size: 22px;
-    font-weight: 600;
-    text-align: center;
-    margin-bottom: 20px;
-    min-height: 32px;
-  }
-
-  #reveal-btn {
-    display: none;
-    margin-bottom: 15px;
-    width: 100%;
-    padding: 12px 0;
-    font-size: 18px;
-    border-radius: 12px;
-    background-color: #34c759;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
-
-  #reveal-btn:hover {
-    background-color: #28a745;
-  }
-
-  #reset-btn {
-    display: none;
-    background-color: #007aff;
-    color: white;
-    border: none;
-    padding: 12px 0;
-    width: 100%;
-    border-radius: 12px;
-    font-size: 18px;
-    font-weight: 600;
-    cursor: pointer;
-  }
-
-  #reset-btn:hover {
-    background-color: #005bb5;
-  }
-
-  /* Winner overlay */
-  #winnerOverlay {
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0,0,0,0.7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    z-index: 200;
-    color: white;
-    font-size: 2rem;
-    font-weight: bold;
-    text-align: center;
-    opacity: 1;
-    transition: opacity 0.5s ease;
-    pointer-events: none;
-  }
-
-  #winnerOverlay.hidden {
-    display: none;
-  }
-
-  #winnerOverlay.fade-out {
-    opacity: 0;
-  }
-
-  /* Fireworks canvas */
-  #fireworksCanvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 199;
-  }
-</style>
-</head>
-<body>
-
-  <h1>Paper Scissors Rock</h1>
-
-  <div id="scoreboard">
-    <span>Player 1 Wins: <span id="score-p1">0</span></span> &nbsp;|&nbsp;
-    <span>Ties: <span id="score-tie">0</span></span> &nbsp;|&nbsp;
-    <span>Player 2 Wins: <span id="score-p2">0</span></span>
-  </div>
-
-  <div id="game">
-    <div id="result"></div>
-
-    <div id="player1" class="player-section">
-      <h2>Player 1: Choose</h2>
-      <div class="choices">
-        <button class="choice-btn" data-player="1" data-choice="paper">✋</button>
-        <button class="choice-btn" data-player="1" data-choice="scissors">✌️</button>
-        <button class="choice-btn" data-player="1" data-choice="rock">✊</button>
-      </div>
-    </div>
-
-    <div id="player2" class="player-section" style="display:none;">
-      <h2>Player 2: Choose</h2>
-      <div class="choices">
-        <button class="choice-btn" data-player="2" data-choice="paper">✋</button>
-        <button class="choice-btn" data-player="2" data-choice="scissors">✌️</button>
-        <button class="choice-btn" data-player="2" data-choice="rock">✊</button>
-      </div>
-    </div>
-
-    <button id="reveal-btn">Reveal Winner</button>
-    <button id="reset-btn">Play Again</button>
-  </div>
-
-  <canvas id="fireworksCanvas"></canvas>
-  <div id="winnerOverlay" class="hidden"></div>
-
-<script src="script.js"></script>
-</body>
-</html>
+function updateScoreboard() {
+  scoreP1Span.textContent = scoreP1;
+  scoreP2Span.textContent = scoreP2;
+  scoreTieSpan.textContent = scoreTie;
+}
