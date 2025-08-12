@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
 <title>Paper Scissors Rock - Two Player</title>
 <style>
   /* Basic mobile-friendly styling */
@@ -74,6 +74,10 @@
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
+
+    /* Fix for iOS Safari to ensure taps register */
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
   }
 
   button.choice-btn:active {
@@ -165,11 +169,29 @@
     pointer-events: none;
     z-index: 199;
   }
+
+  /* New hammer down animation for countdown */
+  @keyframes hammerDown {
+    0% {
+      transform: scale(1) translateY(0);
+    }
+    50% {
+      transform: scale(0.8) translateY(10px);
+    }
+    100% {
+      transform: scale(1) translateY(0);
+    }
+  }
+
+  .countdown-step.hammer {
+    display: inline-block;
+    animation: hammerDown 400ms ease forwards;
+  }
 </style>
 </head>
 <body>
 
-  <h1>Paper Scissors Rock</h1>
+  <h1>Paper Scissors Rock..test</h1>
 
   <div id="scoreboard">
     <span>Player 1 Wins: <span id="score-p1">0</span></span> &nbsp;|&nbsp;
