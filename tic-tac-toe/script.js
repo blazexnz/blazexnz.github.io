@@ -1,5 +1,5 @@
 const board = document.getElementById("board");
-const resetBtn = document.getElementById("resetBtn");
+// Removed resetBtn since Reset button is removed from HTML
 const undoBtn = document.getElementById("undoBtn");
 const colorBtn = document.getElementById("colorBtn");
 const colorModal = document.getElementById("colorModal");
@@ -9,6 +9,7 @@ const saveColorsBtn = document.getElementById("saveColorsBtn");
 const cancelColorsBtn = document.getElementById("cancelColorsBtn");
 const winnerOverlay = document.getElementById("winnerOverlay");
 const fireworksCanvas = document.getElementById("fireworksCanvas");
+const playAgainBtn = document.getElementById("playAgainBtn");
 
 // Scoreboard elements
 const player1ScoreEl = document.getElementById("player1Score");
@@ -66,12 +67,14 @@ function handleDotClick(e) {
     updateScoreboard();
     showWinner(currentPlayer);
     gameOver = true;
+    revealPlayAgain();
     return;
   }
 
   if (moves.length === BOARD_SIZE * BOARD_SIZE) {
     showDraw();
     gameOver = true;
+    revealPlayAgain();
     return;
   }
 
@@ -148,6 +151,7 @@ function resetBoard() {
   dots.forEach(dot => dot.classList.remove("player1", "player2"));
   winnerOverlay.classList.add("hidden");
   stopFireworks();
+  hidePlayAgain();
 }
 
 function openColorModal() {
@@ -214,12 +218,27 @@ function updateFireworks() {
   }
 }
 
-resetBtn.addEventListener("click", resetBoard);
+// Show the Play Again button when game ends
+function revealPlayAgain() {
+  playAgainBtn.style.display = "inline-block";
+}
+
+// Hide the Play Again button when game starts/reset
+function hidePlayAgain() {
+  playAgainBtn.style.display = "none";
+}
+
+// Event listeners
+// Removed resetBtn listener (button removed)
 undoBtn.addEventListener("click", undoMove);
 colorBtn.addEventListener("click", openColorModal);
 saveColorsBtn.addEventListener("click", saveColors);
 cancelColorsBtn.addEventListener("click", closeColorModal);
+playAgainBtn.addEventListener("click", () => {
+  resetBoard();
+});
 
 updateCSSVariables();
 updateScoreboard();
 createBoard();
+hidePlayAgain();
