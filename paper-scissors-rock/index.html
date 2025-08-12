@@ -69,6 +69,11 @@
     color: #007aff;
     transition: background-color 0.2s ease;
     user-select: none;
+
+    /* Added for iOS Safari touch support */
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
   }
 
   button.choice-btn:active {
@@ -164,7 +169,7 @@
 </head>
 <body>
 
-  <h1>Paper Scissors Rock - updated</h1>
+  <h1>Paper Scissors Rock</h1>
 
   <div id="scoreboard">
     <span>Player 1 Wins: <span id="score-p1">0</span></span> &nbsp;|&nbsp;
@@ -203,4 +208,3 @@
 <script src="script.js"></script>
 </body>
 </html>
-
