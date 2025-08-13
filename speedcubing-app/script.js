@@ -2,14 +2,18 @@ function generateScrambles() {
   const type = document.getElementById('cube-type').value;
   const numberOfAlgorithms = parseInt(document.getElementById('number-of-algorithms').value, 10) || 5;
   const scrambles = [];
-  const scrambleLengths = {
-    '2x2': 11, // WCA standard: 9-11 moves for 2x2
-    '3x3': 20, // WCA standard: 18-22 moves for 3x3
-    '4x4': 40, // WCA standard: ~40 moves for 4x4
+
+  // WCA standard length ranges (inclusive)
+  const scrambleLengthRanges = {
+    '2x2': [9, 11],
+    '3x3': [18, 22],
+    '4x4': [38, 42],
   };
 
   for (let i = 0; i < numberOfAlgorithms; i++) {
-    scrambles.push(createWCAScramble(scrambleLengths[type]));
+    const [minLen, maxLen] = scrambleLengthRanges[type];
+    const randomLength = Math.floor(Math.random() * (maxLen - minLen + 1)) + minLen;
+    scrambles.push(createWCAScramble(randomLength));
   }
 
   // Display scrambles on the page
@@ -22,28 +26,35 @@ function generateScrambles() {
 function createWCAScramble(length) {
   const notations = ['R', 'U', 'L', 'F', 'D', 'B'];
   const modifiers = ['', "'", '2'];
-  let scramble = '';
-  let previousMove = '';
+  const opposite = { U: 'D', D: 'U', L: 'R', R: 'L', F: 'B', B: 'F' };
+
+  const scrambleMoves = [];
+  let prevFace = '';
+  let prevPrevFace = '';
 
   for (let i = 0; i < length; i++) {
-    let move;
+    let face;
 
-    // Ensure no consecutive duplicate moves
     do {
-      move = notations[Math.floor(Math.random() * notations.length)];
-    } while (move === previousMove);
+      face = notations[Math.floor(Math.random() * notations.length)];
+      // Constraint 1: no consecutive duplicate moves
+      if (face === prevFace) continue;
+      // Constraint 2: avoid ABA pattern with opposite faces (e.g., U D U)
+      if (opposite[face] === prevFace && prevPrevFace === face) continue;
+      break;
+    } while (true);
 
-    previousMove = move;
-
-    // Add a random modifier to the move
     const modifier = modifiers[Math.floor(Math.random() * modifiers.length)];
-    scramble += `${move}${modifier} `;
+    scrambleMoves.push(face + modifier);
+
+    prevPrevFace = prevFace;
+    prevFace = face;
   }
 
-  return scramble.trim();
+  return scrambleMoves.join(' ');
 }
 
 function removeScramble(element) {
   const scrambleContainer = document.getElementById('scrambles');
-  scrambleContainer.removeChild(element); // Remove the clicked scramble
+  scrambleContainer.removeChild(element);
 }
