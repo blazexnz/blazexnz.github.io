@@ -9,6 +9,11 @@ This is a simple web app designed to quickly generate scramblers for cube puzzle
 - **Compliant scrambles:** Algorithms follow the World Cubing Association (WCA) rules for scrambles
 - **Cube orientation reminder:** A note to remind you which way to orient the cube while scrambling
 - **Algorithms guide:** A quicklink to a CFOP algorithms guide
+- **WCA compliant ruleset:** Scrambles as close to WCA as possible, following rules such as:
+- - no consecutive moves on the same face
+  - no immediate inverses (U followed by U')
+  - no same-face repetition with different modifiers (U then U2, U then U')
+  - avoid ABA pattern with opposite faces (U D U)
 
 
 ## How to use
