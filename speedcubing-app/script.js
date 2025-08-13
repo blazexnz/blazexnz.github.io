@@ -24,34 +24,56 @@ function generateScrambles() {
 }
 
 function createWCAScramble(length) {
-  const notations = ['R', 'U', 'L', 'F', 'D', 'B'];
+  const faces = ['R', 'U', 'L', 'F', 'D', 'B'];
   const modifiers = ['', "'", '2'];
   const opposite = { U: 'D', D: 'U', L: 'R', R: 'L', F: 'B', B: 'F' };
 
   const scrambleMoves = [];
   let prevFace = '';
   let prevPrevFace = '';
+  let prevMove = '';
 
   for (let i = 0; i < length; i++) {
-    let face;
+    let face, modifier, move;
 
     do {
-      face = notations[Math.floor(Math.random() * notations.length)];
-      // Constraint 1: no consecutive duplicate moves
+      face = faces[Math.floor(Math.random() * faces.length)];
+      modifier = modifiers[Math.floor(Math.random() * modifiers.length)];
+      move = face + modifier;
+
+      // Rule 1: no consecutive moves on the same face
       if (face === prevFace) continue;
-      // Constraint 2: avoid ABA pattern with opposite faces (e.g., U D U)
+
+      // Rule 2: no immediate inverses (U followed by U')
+      if (prevFace && move[0] === prevFace && isInverse(move, prevMove)) continue;
+
+      // Rule 3: no same-face repetition with different modifiers (U then U2, U then U')
+      if (prevFace && move[0] === prevFace) continue;
+
+      // Rule 4: avoid ABA pattern with opposite faces (U D U)
       if (opposite[face] === prevFace && prevPrevFace === face) continue;
+
       break;
     } while (true);
 
-    const modifier = modifiers[Math.floor(Math.random() * modifiers.length)];
-    scrambleMoves.push(face + modifier);
-
+    scrambleMoves.push(move);
     prevPrevFace = prevFace;
     prevFace = face;
+    prevMove = move;
   }
 
   return scrambleMoves.join(' ');
+}
+
+function isInverse(move1, move2) {
+  if (!move1 || !move2) return false;
+  const face1 = move1[0];
+  const face2 = move2[0];
+  if (face1 !== face2) return false;
+
+  // inverse if one is clockwise and other is counterclockwise
+  return (move1.includes("'") && !move2.includes("'") && !move2.includes('2')) ||
+         (!move1.includes("'") && move2.includes("'") && !move1.includes('2'));
 }
 
 function removeScramble(element) {
