@@ -8,6 +8,7 @@ This is a simple web app designed to quickly generate scramblers for cube puzzle
 - **Interactive UI:** Click on a scramble to remove after use
 - **Compliant scrambles:** Algorithms follow the World Cubing Association (WCA) rules for scrambles
 - **Cube orientation reminder:** A note to remind you which way to orient the cube while scrambling
+- **Algorithms guide:** A quicklink to a CFOP algorithms guide
 
 
 ## How to use
