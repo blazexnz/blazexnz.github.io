@@ -33,6 +33,14 @@ function updateCSSVariables() {
 function updateScoreboard() {
   player1ScoreEl.textContent = `Player 1: ${scores[1]}`;
   player2ScoreEl.textContent = `Player 2: ${scores[2]}`;
+  updateScoreboardHighlight();
+}
+
+function updateScoreboardHighlight() {
+  document.querySelectorAll(".scoreboard span").forEach(el => el.classList.remove("active"));
+  const activeEl = currentPlayer === 1 ? player1ScoreEl : player2ScoreEl;
+  document.documentElement.style.setProperty("--active-highlight-color", playerColors[currentPlayer]);
+  activeEl.classList.add("active");
 }
 
 function createBoard() {
@@ -56,7 +64,6 @@ function handleDotClick(e) {
   const index = parseInt(dot.dataset.index);
 
   if (dot.classList.contains("player1") || dot.classList.contains("player2")) {
-    // If this tile is the last move, allow undo by clicking it
     if (moves.length > 0 && moves[moves.length - 1].index == index) {
       undoMove();
     }
@@ -83,6 +90,7 @@ function handleDotClick(e) {
   }
 
   currentPlayer = currentPlayer === 1 ? 2 : 1;
+  updateScoreboardHighlight();
 }
 
 function checkWin(player) {
@@ -140,6 +148,7 @@ function undoMove() {
     dot.classList.remove("player1", "player2");
   }
   currentPlayer = lastMove.player;
+  updateScoreboardHighlight();
 }
 
 function resetBoard() {
@@ -151,6 +160,7 @@ function resetBoard() {
   winnerOverlay.classList.add("hidden");
   stopFireworks();
   hidePlayAgain();
+  updateScoreboardHighlight();
 }
 
 function openColorModal() {
@@ -167,6 +177,7 @@ function saveColors() {
   playerColors[1] = player1ColorPicker.value;
   playerColors[2] = player2ColorPicker.value;
   updateCSSVariables();
+  updateScoreboardHighlight();
   closeColorModal();
 }
 
@@ -236,4 +247,5 @@ playAgainBtn.addEventListener("click", () => {
 updateCSSVariables();
 updateScoreboard();
 createBoard();
+updateScoreboardHighlight();
 hidePlayAgain();
