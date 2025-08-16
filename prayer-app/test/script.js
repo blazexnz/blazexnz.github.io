@@ -55,7 +55,7 @@ function displayPrayer(prayerKey) {
     div.textContent = prayerText;
     container.appendChild(div);
 
-    // Back to Top button
+    // Back to Top button (always appended after prayer)
     const backBtn = document.createElement('button');
     backBtn.id = 'backToTopBtn';
     backBtn.textContent = '⬆️ Back to Top';
