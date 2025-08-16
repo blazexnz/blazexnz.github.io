@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Prayer App</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+      text-align: center;
+      background-color: #f0f0f0;
+    }
+    select, button {
+      margin: 10px 0;
+      padding: 8px 12px;
+      font-size: 1rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    select:hover, button:hover {
+      background-color: #e0e0e0;
+    }
+    .prayer {
+      background-color: white;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      max-width: 600px;
+      margin: 15px auto;
+      padding: 20px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.05);
+      position: relative;
+      overflow: hidden;
+      text-align: left;
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+    .prayer::before {
+      content: '';
+      position: absolute;
+      top: -20px;
+      left: -20px;
+      width: 60px;
+      height: 60px;
+      background: radial-gradient(circle at top left, #ffffffcc, transparent 70%);
+      border-top-left-radius: 12px;
+      pointer-events: none;
+    }
+    .prayer::after {
+      content: '';
+      position: absolute;
+      top: -20px;
+      right: -20px;
+      width: 60px;
+      height: 60px;
+      background: radial-gradient(circle at top right, #ffffffcc, transparent 70%);
+      border-top-right-radius: 12px;
+      pointer-events: none;
+    }
+    #prayers {
+      max-width: 600px;
+      margin: 20px auto;
+    }
+    #increaseFontBtn,
+    #decreaseFontBtn {
+      touch-action: manipulation;
+    }
+  </style>
+</head>
+<body>
+  <h1>Prayer App</h1>
+
+  <!-- Single Prayer Menu -->
+  <select id="prayerSelect">
+    <option value="">Select Prayer</option>
+  </select>
+
+  <div style="max-width: 600px; margin: 15px auto; text-align: center;">
+    <button id="decreaseFontBtn">A-</button>
+    <button id="increaseFontBtn">A+</button>
+  </div>
+
+  <div id="prayers"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
