@@ -1,4 +1,4 @@
-let currentFontSize = 16;
+let currentFontSize = 24;
 
 // Load prayers from JSON
 let prayersData = {};
