@@ -14,7 +14,8 @@ This web app allows you to select and display prayers in multiple languages. It 
 1. **Select Language:** Choose your preferred language from the dropdown.
 2. **Select Prayer:** Pick a prayer from the dynamically populated menu.
 3. **Read Prayer:** The prayer text will appear in a styled card.
-4. **Adjust Font Size:** Use the "A+" and "A-" buttons to increase or decrease the font size.
+4. **Navigation buttons:** Scroll through the previous, or next prayer, or simply return back to the top of the page.
+5. **Adjust Font Size:** Use the "A+" and "A-" buttons to increase or decrease the font size.
 
 ## To update or add prayers
 1. Open `prayers.json`.
