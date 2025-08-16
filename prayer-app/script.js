@@ -1,51 +1,110 @@
 let currentFontSize = 24;
+let prayersData = {};
+let currentPrayerIndex = -1;
+let currentLang = "en";
 
 // Load prayers from JSON
-let prayersData = {};
-
 async function loadPrayers() {
   const res = await fetch('prayers.json');
   prayersData = await res.json();
-  populatePrayerMenu();
+  populatePrayerList();
 }
 
-function populatePrayerMenu() {
-  const prayerSelect = document.getElementById('prayerSelect');
-  const lang = document.getElementById('languageSelect').value;
-  prayerSelect.innerHTML = '<option value="">Select Prayer</option>';
+function populatePrayerList() {
+  const prayerList = document.getElementById('prayerList');
+  currentLang = document.getElementById('languageSelect').value;
+  prayerList.innerHTML = '';
 
-  if (prayersData[lang]) {
-    Object.keys(prayersData[lang]).forEach(prayer => {
-      const opt = document.createElement('option');
-      opt.value = prayer;
-      opt.textContent = prayer;
-      prayerSelect.appendChild(opt);
+  if (prayersData[currentLang]) {
+    let maxWidth = 0;
+    const tempSpan = document.createElement('span');
+    document.body.appendChild(tempSpan);
+    tempSpan.style.visibility = 'hidden';
+    tempSpan.style.position = 'absolute';
+    tempSpan.style.fontSize = '1rem';
+
+    Object.keys(prayersData[currentLang]).forEach(prayer => {
+      tempSpan.textContent = prayer;
+      maxWidth = Math.max(maxWidth, tempSpan.offsetWidth);
+    });
+
+    document.body.removeChild(tempSpan);
+
+    Object.keys(prayersData[currentLang]).forEach((prayer, index) => {
+      const div = document.createElement('div');
+      div.className = 'prayer-item';
+      div.style.width = maxWidth + 40 + 'px';
+      div.textContent = prayer;
+      div.addEventListener('click', () => {
+        currentPrayerIndex = index;
+        displayPrayer(prayer);
+      });
+      prayerList.appendChild(div);
     });
   }
 }
 
 function displayPrayer(prayerKey) {
-  const lang = document.getElementById('languageSelect').value;
   const container = document.getElementById('prayers');
   container.innerHTML = '';
 
-  if (prayersData[lang] && prayersData[lang][prayerKey]) {
-    const prayerText = prayersData[lang][prayerKey];
+  if (prayersData[currentLang] && prayersData[currentLang][prayerKey]) {
+    const prayerText = prayersData[currentLang][prayerKey];
     const div = document.createElement('div');
     div.className = 'prayer';
     div.style.fontSize = currentFontSize + 'px';
     div.textContent = prayerText;
     container.appendChild(div);
+
+    // Navigation buttons
+    const navDiv = document.createElement('div');
+    navDiv.className = 'nav-buttons';
+
+    const prevBtn = document.createElement('button');
+    prevBtn.textContent = '⬅️ Prev';
+    prevBtn.disabled = currentPrayerIndex <= 0;
+    prevBtn.addEventListener('click', () => {
+      if (currentPrayerIndex > 0) {
+        currentPrayerIndex--;
+        const prevKey = Object.keys(prayersData[currentLang])[currentPrayerIndex];
+        displayPrayer(prevKey);
+      }
+    });
+
+    const topBtn = document.createElement('button');
+    topBtn.textContent = '⬆️ Top';
+    topBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    const nextBtn = document.createElement('button');
+    nextBtn.textContent = 'Next ➡️';
+    nextBtn.disabled = currentPrayerIndex >= Object.keys(prayersData[currentLang]).length - 1;
+    nextBtn.addEventListener('click', () => {
+      if (currentPrayerIndex < Object.keys(prayersData[currentLang]).length - 1) {
+        currentPrayerIndex++;
+        const nextKey = Object.keys(prayersData[currentLang])[currentPrayerIndex];
+        displayPrayer(nextKey);
+      }
+    });
+
+    navDiv.appendChild(prevBtn);
+    navDiv.appendChild(topBtn);
+    navDiv.appendChild(nextBtn);
+    container.appendChild(navDiv);
+
+    // Scroll prayer into view with slightly reduced white space
+    requestAnimationFrame(() => {
+      const yOffset = -20;
+      const y = div.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    });
   }
 }
 
 document.getElementById('languageSelect').addEventListener('change', () => {
-  populatePrayerMenu();
+  populatePrayerList();
   document.getElementById('prayers').innerHTML = '';
-});
-
-document.getElementById('prayerSelect').addEventListener('change', e => {
-  displayPrayer(e.target.value);
 });
 
 document.getElementById('increaseFontBtn').addEventListener('click', () => {
