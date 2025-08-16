@@ -94,9 +94,9 @@ function displayPrayer(prayerKey) {
     navDiv.appendChild(nextBtn);
     container.appendChild(navDiv);
 
-    // Scroll prayer into view with extra white space above
+    // Scroll prayer into view with minimal extra space
     requestAnimationFrame(() => {
-      const yOffset = -40; // extra space above
+      const yOffset = -10; // smaller white space above
       const y = div.getBoundingClientRect().top + window.pageYOffset + yOffset;
       window.scrollTo({ top: y, behavior: 'smooth' });
     });
