@@ -13,7 +13,7 @@ A simple web-based Tic Tac Toe game using clickable dots that change color based
 - **Fairplay rules:** After every win or draw, the next game will start with the other player
 
 ## How to use
-1. **Play:** Click any gray dot to mark it with the current player’s color
+1. **Play:** Click any gray dot to mark it with the current player’s color, the scoreboard will glow indicating which players turn it is
 2. **Undo:** Click the Undo button, or click the last dot placed to remove the last move and revert the turn
 3. **Reset:** Click Reset Board to clear all moves and start fresh
 4. **Customize colors:** Click Change Player Colors to open the modal, pick new colors, and save
