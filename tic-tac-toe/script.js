@@ -1,5 +1,4 @@
 const board = document.getElementById("board");
-// Removed resetBtn since Reset button is removed from HTML
 const undoBtn = document.getElementById("undoBtn");
 const colorBtn = document.getElementById("colorBtn");
 const colorModal = document.getElementById("colorModal");
@@ -11,16 +10,15 @@ const winnerOverlay = document.getElementById("winnerOverlay");
 const fireworksCanvas = document.getElementById("fireworksCanvas");
 const playAgainBtn = document.getElementById("playAgainBtn");
 
-// Scoreboard elements
 const player1ScoreEl = document.getElementById("player1Score");
 const player2ScoreEl = document.getElementById("player2Score");
 
 const BOARD_SIZE = 3;
-let startingPlayer = 1; // Track who starts next game
+let startingPlayer = 1;
 let currentPlayer = startingPlayer;
 let moves = [];
 let gameOver = false;
-let scores = { 1: 0, 2: 0 }; // Track wins
+let scores = { 1: 0, 2: 0 };
 
 let playerColors = {
   1: "#FF4136",
@@ -55,15 +53,21 @@ function handleDotClick(e) {
   if (gameOver) return;
 
   const dot = e.target;
+  const index = parseInt(dot.dataset.index);
+
   if (dot.classList.contains("player1") || dot.classList.contains("player2")) {
+    // If this tile is the last move, allow undo by clicking it
+    if (moves.length > 0 && moves[moves.length - 1].index == index) {
+      undoMove();
+    }
     return;
   }
 
   dot.classList.add(`player${currentPlayer}`);
-  moves.push({ index: dot.dataset.index, player: currentPlayer });
+  moves.push({ index: index, player: currentPlayer });
 
   if (checkWin(currentPlayer)) {
-    scores[currentPlayer]++; // Update score
+    scores[currentPlayer]++;
     updateScoreboard();
     showWinner(currentPlayer);
     gameOver = true;
@@ -104,8 +108,6 @@ function showWinner(player) {
   winnerOverlay.textContent = `🎉 Congratulations Player ${player}! 🎉`;
   winnerOverlay.classList.remove("hidden", "fade-out");
   startFireworks();
-
-  // Alternate starting player for next game
   startingPlayer = startingPlayer === 1 ? 2 : 1;
 
   setTimeout(() => {
@@ -120,8 +122,6 @@ function showWinner(player) {
 function showDraw() {
   winnerOverlay.textContent = "🤝 It's a draw! No winner this time.";
   winnerOverlay.classList.remove("hidden", "fade-out");
-
-  // Alternate starting player for next game
   startingPlayer = startingPlayer === 1 ? 2 : 1;
 
   setTimeout(() => {
@@ -134,7 +134,6 @@ function showDraw() {
 
 function undoMove() {
   if (moves.length === 0 || gameOver) return;
-
   const lastMove = moves.pop();
   const dot = board.querySelector(`.dot[data-index='${lastMove.index}']`);
   if (dot) {
@@ -145,7 +144,7 @@ function undoMove() {
 
 function resetBoard() {
   moves = [];
-  currentPlayer = startingPlayer; // Use alternating starter
+  currentPlayer = startingPlayer;
   gameOver = false;
   const dots = board.querySelectorAll(".dot");
   dots.forEach(dot => dot.classList.remove("player1", "player2"));
@@ -218,18 +217,14 @@ function updateFireworks() {
   }
 }
 
-// Show the Play Again button when game ends
 function revealPlayAgain() {
   playAgainBtn.style.display = "inline-block";
 }
 
-// Hide the Play Again button when game starts/reset
 function hidePlayAgain() {
   playAgainBtn.style.display = "none";
 }
 
-// Event listeners
-// Removed resetBtn listener (button removed)
 undoBtn.addEventListener("click", undoMove);
 colorBtn.addEventListener("click", openColorModal);
 saveColorsBtn.addEventListener("click", saveColors);
