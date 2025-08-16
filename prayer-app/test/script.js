@@ -71,10 +71,9 @@ function displayPrayer(prayerKey) {
       }
     });
 
-    const backBtn = document.createElement('button');
-    backBtn.id = 'backToTopBtn';
-    backBtn.textContent = '⬆️ Back to Top';
-    backBtn.addEventListener('click', () => {
+    const topBtn = document.createElement('button');
+    topBtn.textContent = '⬆️ Top';
+    topBtn.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
@@ -90,7 +89,7 @@ function displayPrayer(prayerKey) {
     });
 
     navDiv.appendChild(prevBtn);
-    navDiv.appendChild(backBtn);
+    navDiv.appendChild(topBtn);
     navDiv.appendChild(nextBtn);
     container.appendChild(navDiv);
 
