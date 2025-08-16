@@ -68,6 +68,9 @@
     #increaseFontBtn,
     #decreaseFontBtn {
       touch-action: manipulation;
+      position: relative;
+      top: -50px; /* move out of visible view */
+      opacity: 0; /* invisible but still functional if needed */
     }
     /* Prayer List Styling */
     #prayerList {
@@ -97,7 +100,7 @@
       display: flex;
       justify-content: center;
       gap: 10px;
-      margin: 20px auto 0 auto;
+      margin: 10px auto 0 auto;
     }
   </style>
 </head>
