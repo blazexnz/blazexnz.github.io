@@ -55,8 +55,10 @@ function displayPrayer(prayerKey) {
     div.textContent = prayerText;
     container.appendChild(div);
 
-    // Scroll prayer into view at top
-    div.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    // Scroll prayer into view at very top
+    requestAnimationFrame(() => {
+      div.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
   }
 }
 
