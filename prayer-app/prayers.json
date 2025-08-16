@@ -2,16 +2,31 @@
   "en": {
     "Our Father": "Our Father who art in heaven, hallowed be Thy name...",
     "Hail Mary": "Hail Mary, full of grace, the Lord is with thee...",
-    "Glory Be": "Glory be to the Father, and to the Son, and to the Holy Spirit..."
+    "Glory Be": "Glory be to the Father, and to the Son, and to the Holy Spirit...",
+    "Saint Francis Prayer": "Lord, make me an instrument of your peace. Where there is hatred, let me sow love...",
+    "Act of Contrition": "O my God, I am heartily sorry for having offended Thee, and I detest all my sins...",
+    "Prayer Before Meals": "Bless us, O Lord, and these Thy gifts, which we are about to receive from Thy bounty...",
+    "Guardian Angel Prayer": "Angel of God, my guardian dear, to whom God's love commits me here...",
+    "New Prayer": "Enter the title and text of your new prayer here..."
   },
   "vi": {
     "Lạy Cha": "Lạy Cha chúng con ở trên trời, danh Cha cả sáng...",
     "Kính Mừng Maria": "Kính Mừng Maria, đầy ơn phúc, Chúa ở cùng bà...",
-    "Vinh Danh": "Vinh danh Ba Ngôi Thiên Chúa..."
+    "Vinh Danh": "Vinh danh Ba Ngôi Thiên Chúa...",
+    "Lời Cầu Thánh Phanxicô": "Lạy Chúa, xin cho con trở nên dụng cụ bình an của Ngài...",
+    "Lời Xưng Tội": "Lạy Chúa, con hối hận vì đã phạm tội, con ghét mọi tội lỗi của con...",
+    "Lời Cầu Trước Bữa Ăn": "Chúc lành cho chúng con, Lạy Chúa, và cho những phẩm vật này mà chúng con sắp nhận...",
+    "Lời Cầu Thiên Thần Bản Mệnh": "Thiên thần của Chúa, bảo vệ con thân yêu, đến với con dưới tình thương của Chúa...",
+    "Cầu Nguyện Mới": "Nhập tiêu đề và nội dung cầu nguyện mới ở đây..."
   },
   "tl": {
     "Ama Namin": "Ama namin na sumasalangit ka, sambahin ang ngalan mo...",
     "Aba Ginoong Maria": "Aba Ginoong Maria, napupuno ka ng grasya, ang Panginoon ay sumasaiyo...",
-    "Luwalhati": "Luwalhati sa Ama, at sa Anak, at sa Espiritu Santo..."
+    "Luwalhati": "Luwalhati sa Ama, at sa Anak, at sa Espiritu Santo...",
+    "Panalangin ni San Francisco": "Panginoon, gawin Mo akong instrumento ng iyong kapayapaan...",
+    "Pag-amin ng Kasalanan": "O Diyos ko, taos-puso akong nagsisisi sa aking mga kasalanan...",
+    "Panalangin Bago Kumain": "Pagpalain Mo kami, O Panginoon, at ang mga pagkaing ito na aming tatanggapin...",
+    "Panalangin sa Anghel ng Bantay": "Anghel ng Diyos, aking tagapagbantay, sa Iyo ako iniaatang ng pag-ibig ng Diyos...",
+    "Bagong Panalangin": "Ilagay ang pamagat at teksto ng bagong panalangin dito..."
   }
 }
