@@ -63,14 +63,11 @@
     #prayers {
       max-width: 600px;
       margin: 20px auto;
-      padding-bottom: 100vh; /* ensures enough scroll space */
+      padding-bottom: 100vh;
     }
     #increaseFontBtn,
     #decreaseFontBtn {
       touch-action: manipulation;
-      position: relative;
-      top: -50px; /* move out of visible view */
-      opacity: 0; /* invisible but still functional if needed */
     }
     /* Prayer List Styling */
     #prayerList {
@@ -105,7 +102,7 @@
   </style>
 </head>
 <body>
-  <h1>🙏 Prayer App - test again</h1>
+  <h1>🙏 Prayer App</h1>
 
   <label for="languageSelect">Language:</label>
   <select id="languageSelect">
