@@ -55,6 +55,15 @@ function displayPrayer(prayerKey) {
     div.textContent = prayerText;
     container.appendChild(div);
 
+    // Back to Top button
+    const backBtn = document.createElement('button');
+    backBtn.id = 'backToTopBtn';
+    backBtn.textContent = '⬆️ Back to Top';
+    backBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    container.appendChild(backBtn);
+
     // Scroll prayer into view at very top
     requestAnimationFrame(() => {
       div.scrollIntoView({ behavior: 'smooth', block: 'start' });
