@@ -19,20 +19,19 @@
     .menu {
       margin-bottom: 20px;
       display: flex;
-      gap: 30px; /* same gap as scoreboard */
+      gap: 30px;
     }
 
     .menu button {
       background-color: #0074d9;
       color: white;
       border: none;
-      /* Remove margin-right, use gap in parent instead */
-      padding: 8px 16px; /* same padding as scoreboard spans */
-      border-radius: 6px; /* match scoreboard rounded corners */
+      padding: 8px 16px;
+      border-radius: 6px;
       cursor: pointer;
       font-size: 14px;
       transition: background-color 0.3s ease;
-      min-width: 110px; /* roughly same width as scoreboard spans (to align) */
+      min-width: 110px;
       box-sizing: border-box;
       text-align: center;
     }
@@ -41,7 +40,6 @@
       background-color: #005fa3;
     }
 
-    /* Scoreboard styles */
     .scoreboard {
       display: flex;
       justify-content: center;
@@ -60,6 +58,14 @@
       text-align: center;
       box-sizing: border-box;
       display: inline-block;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    /* Highlight for current player */
+    .scoreboard span.active {
+      background-color: var(--active-highlight-color);
+      box-shadow: 0 0 12px var(--active-highlight-color);
+      color: white;
     }
 
     .board {
@@ -147,7 +153,6 @@
       color: white;
     }
 
-    /* Winner overlay */
     #winnerOverlay {
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
@@ -174,7 +179,6 @@
       opacity: 0;
     }
 
-    /* Fireworks canvas */
     #fireworksCanvas {
       position: fixed;
       top: 0;
@@ -185,7 +189,6 @@
       z-index: 199;
     }
 
-    /* Play Again button styles */
     #playAgainBtn {
       margin-top: 20px;
       padding: 10px 24px;
@@ -195,11 +198,9 @@
       background-color: #2ecc40;
       color: white;
       cursor: pointer;
-      display: none; /* Hidden initially */
+      display: none;
       transition: background-color 0.3s ease;
-
-      /* Make width same as board width */
-      width: calc(3 * 75px + 2 * 20px); /* 3 columns * dot width + 2 gaps */
+      width: calc(3 * 75px + 2 * 20px);
       box-sizing: border-box;
     }
     #playAgainBtn:hover {
