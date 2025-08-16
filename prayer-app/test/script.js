@@ -96,7 +96,7 @@ function displayPrayer(prayerKey) {
 
     // Scroll prayer into view with slightly reduced white space
     requestAnimationFrame(() => {
-      const yOffset = -20; // slightly less space above
+      const yOffset = -20;
       const y = div.getBoundingClientRect().top + window.pageYOffset + yOffset;
       window.scrollTo({ top: y, behavior: 'smooth' });
     });
