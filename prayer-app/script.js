@@ -49,12 +49,23 @@ function displayPrayer(prayerKey) {
   container.innerHTML = '';
 
   if (prayersData[currentLang] && prayersData[currentLang][prayerKey]) {
-    const prayerText = prayersData[currentLang][prayerKey];
+    const prayerText = prayersData[currentLang][prayerKey].text;
+    const explanationText = prayersData[currentLang][prayerKey].explanation;
+
     const div = document.createElement('div');
     div.className = 'prayer';
     div.style.fontSize = currentFontSize + 'px';
     div.textContent = prayerText;
     container.appendChild(div);
+
+    // Explanation box inherits font size
+    if (explanationText) {
+      const explDiv = document.createElement('div');
+      explDiv.className = 'explanation';
+      explDiv.style.fontSize = currentFontSize + 'px';
+      explDiv.textContent = explanationText;
+      container.appendChild(explDiv);
+    }
 
     // Navigation buttons
     const navDiv = document.createElement('div');
@@ -93,7 +104,7 @@ function displayPrayer(prayerKey) {
     navDiv.appendChild(nextBtn);
     container.appendChild(navDiv);
 
-    // Scroll prayer into view with slightly reduced white space
+    // Scroll prayer into view
     requestAnimationFrame(() => {
       const yOffset = -20;
       const y = div.getBoundingClientRect().top + window.pageYOffset + yOffset;
@@ -110,13 +121,17 @@ document.getElementById('languageSelect').addEventListener('change', () => {
 document.getElementById('increaseFontBtn').addEventListener('click', () => {
   currentFontSize += 2;
   const prayerDiv = document.querySelector('.prayer');
+  const explDiv = document.querySelector('.explanation');
   if (prayerDiv) prayerDiv.style.fontSize = currentFontSize + 'px';
+  if (explDiv) explDiv.style.fontSize = currentFontSize + 'px';
 });
 
 document.getElementById('decreaseFontBtn').addEventListener('click', () => {
   currentFontSize = Math.max(12, currentFontSize - 2);
   const prayerDiv = document.querySelector('.prayer');
+  const explDiv = document.querySelector('.explanation');
   if (prayerDiv) prayerDiv.style.fontSize = currentFontSize + 'px';
+  if (explDiv) explDiv.style.fontSize = currentFontSize + 'px';
 });
 
 loadPrayers();
