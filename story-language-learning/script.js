@@ -3,12 +3,12 @@ let currentStoryIndex = 0;
 let currentSentenceIndex = 0;
 let showingEN = false;
 let currentFontSize = 20;
-let firstNextClick = true; // track first next sentence click
+let firstNextClick = true;
 
 const storyContainer = document.getElementById('storyContainer');
 const languageSelect = document.getElementById('languageSelect');
 const storySelect = document.getElementById('storySelect');
-const appTitle = document.getElementById('appTitle');
+const headerSpacer = document.getElementById('headerSpacer');
 
 const prevBtn = document.getElementById('prevBtn');
 const startOverBtn = document.getElementById('startOverBtn');
@@ -40,11 +40,6 @@ function populateStorySelect() {
 function advanceStory() {
   const story = storiesData[currentStoryIndex];
 
-  if (firstNextClick) {
-    appTitle.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    firstNextClick = false;
-  }
-
   if (currentSentenceIndex === 0 && !showingEN && storyContainer.textContent === '') {
     storyContainer.textContent = `🌟 Story ${currentStoryIndex + 1}: ${story.title}\n\n`;
     showingEN = false;
@@ -71,11 +66,23 @@ function advanceStory() {
   }
 }
 
+// Push the story title to top on first next click
+function handleFirstNextClick() {
+  if (firstNextClick) {
+    const headerHeight = document.querySelector('header').offsetHeight;
+    const controlsHeight = document.querySelector('.controls').offsetHeight;
+    headerSpacer.style.height = `${headerHeight + controlsHeight + 20}px`; // padding buffer
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    firstNextClick = false;
+  }
+}
+
 function resetStoryDisplay() {
   currentSentenceIndex = 0;
   showingEN = false;
-  firstNextClick = true;
   storyContainer.textContent = '';
+  firstNextClick = true;
+  headerSpacer.style.height = '0px';
   advanceStory();
 }
 
@@ -98,6 +105,7 @@ document.body.addEventListener('click', (e) => {
 
 // Fixed next sentence button
 nextSentenceBtn.addEventListener('click', () => {
+  handleFirstNextClick();
   advanceStory();
 });
 
@@ -123,6 +131,7 @@ languageSelect.addEventListener('change', () => {
   currentSentenceIndex = 0;
   showingEN = false;
   firstNextClick = true;
+  headerSpacer.style.height = '0px';
   advanceStory();
 });
 
