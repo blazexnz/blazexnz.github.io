@@ -92,8 +92,8 @@ main {
   transition: background-color 0.2s;
   white-space: pre-wrap;
   font-size: 20px;
-  overflow-y: visible; /* removed scrolling */
-  max-height: none;    /* removed height limit */
+  overflow-y: visible;
+  max-height: none;
   text-align: left;
 }
 
@@ -149,16 +149,6 @@ main {
   background-color: #357ab8;
 }
 
-.emoji-title {
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-}
-
-.focus-line {
-  margin-top: 0.5rem;
-  font-style: italic;
-}
-
 @media (max-width: 600px) {
   .story-box {
     padding: 1rem;
@@ -172,7 +162,7 @@ main {
     <div class="dropdowns">
       <select id="languageSelect">
         <option value="vi">Vietnamese</option>
-        <option value="en">English</option>
+        <option value="tl">Tagalog</option>
       </select>
       <select id="storySelect">
         <option value="0">Story 1</option>
@@ -202,4 +192,3 @@ main {
   <script src="script.js"></script>
 </body>
 </html>
-
