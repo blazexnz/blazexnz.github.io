@@ -63,11 +63,15 @@ function advanceStory() {
     storyContainer.textContent += `\n👉 Focus words: ${story.focusWords}\n`;
   }
 
-  // Smooth auto-scroll to keep buttons visible
-  storyContainer.scrollTo({
-    top: storyContainer.scrollHeight,
-    behavior: 'smooth'
-  });
+  // Scroll dynamically based on font size
+  const bottomPadding = Math.max(50, currentFontSize * 2); // ensures enough space even for large fonts
+  const scrollPosition = storyContainer.scrollHeight - storyContainer.clientHeight - bottomPadding;
+  if (storyContainer.scrollTop < scrollPosition) {
+    storyContainer.scrollTo({
+      top: scrollPosition,
+      behavior: 'smooth'
+    });
+  }
 }
 
 function resetStoryDisplay() {
@@ -82,11 +86,22 @@ function resetStoryDisplay() {
 increaseFontBtn.addEventListener('click', () => {
   currentFontSize += 2;
   storyContainer.style.fontSize = currentFontSize + 'px';
+  // adjust scroll after font change
+  const bottomPadding = Math.max(50, currentFontSize * 2);
+  storyContainer.scrollTo({
+    top: storyContainer.scrollHeight - storyContainer.clientHeight - bottomPadding,
+    behavior: 'smooth'
+  });
 });
 
 decreaseFontBtn.addEventListener('click', () => {
   currentFontSize -= 2;
   storyContainer.style.fontSize = currentFontSize + 'px';
+  const bottomPadding = Math.max(50, currentFontSize * 2);
+  storyContainer.scrollTo({
+    top: storyContainer.scrollHeight - storyContainer.clientHeight - bottomPadding,
+    behavior: 'smooth'
+  });
 });
 
 // Click to advance story
@@ -100,6 +115,7 @@ nextSentenceBtn.addEventListener('click', () => {
   advanceStory();
 });
 
+// Story navigation buttons flow naturally with page
 prevBtn.addEventListener('click', () => {
   if (currentStoryIndex > 0) currentStoryIndex--;
   storySelect.value = currentStoryIndex;
