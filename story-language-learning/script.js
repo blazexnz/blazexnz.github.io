@@ -1,6 +1,7 @@
 let storiesData = [];
 let currentStoryIndex = 0;
 let currentSentenceIndex = 0;
+let showingEN = false; // track whether EN is currently displayed
 
 const storyContainer = document.getElementById('storyContainer');
 const languageSelect = document.getElementById('languageSelect');
@@ -30,70 +31,68 @@ function populateStorySelect() {
   });
 }
 
-// Display next part of story
+// Show next part of current sentence
 function advanceStory() {
   const story = storiesData[currentStoryIndex];
   if (currentSentenceIndex >= story.sentences.length) return;
 
   const sentence = story.sentences[currentSentenceIndex];
-  let text = '';
+  let textToAdd = showingEN ? (languageSelect.value === 'vi' ? sentence.en : sentence.vi) 
+                            : (languageSelect.value === 'vi' ? sentence.vi : sentence.en);
 
-  if (languageSelect.value === 'vi') {
-    text = sentence.vi + '\n' + sentence.en;
+  // Add line breaks
+  storyContainer.textContent += (storyContainer.textContent ? '\n' : '') + textToAdd;
+
+  if (showingEN) {
+    // finished this sentence, move to next
+    currentSentenceIndex++;
+    showingEN = false;
+    storyContainer.textContent += '\n'; // extra line break between sentences
   } else {
-    text = sentence.en + '\n' + sentence.vi;
+    showingEN = true;
   }
-
-  // Add to existing content with double line break
-  storyContainer.textContent += (storyContainer.textContent ? '\n\n' : '') + text;
-
-  currentSentenceIndex++;
 }
 
 // Reset story display
 function resetStoryDisplay() {
   currentSentenceIndex = 0;
+  showingEN = false;
   storyContainer.textContent = '';
   advanceStory();
 }
 
 // Click anywhere to advance story
 document.body.addEventListener('click', (e) => {
-  // Prevent double-advance when clicking controls
+  // Prevent advance when clicking controls or selects
   if (e.target.tagName === 'BUTTON' || e.target.tagName === 'SELECT') return;
   advanceStory();
 });
 
-// Buttons
+// Buttons for story navigation
 prevBtn.addEventListener('click', () => {
-  if (currentSentenceIndex > 1) {
-    currentSentenceIndex -= 2;
-    const story = storiesData[currentStoryIndex];
-    storyContainer.textContent = '';
-    for (let i = 0; i < currentSentenceIndex; i++) {
-      const s = story.sentences[i];
-      storyContainer.textContent += (i > 0 ? '\n\n' : '') + (languageSelect.value === 'vi' ? `${s.vi}\n${s.en}` : `${s.en}\n${s.vi}`);
-    }
-    currentSentenceIndex++;
-  }
+  if (currentStoryIndex > 0) currentStoryIndex--;
+  storySelect.value = currentStoryIndex;
+  resetStoryDisplay();
+});
+
+nextBtn.addEventListener('click', () => {
+  if (currentStoryIndex < storiesData.length - 1) currentStoryIndex++;
+  storySelect.value = currentStoryIndex;
+  resetStoryDisplay();
 });
 
 startOverBtn.addEventListener('click', () => {
   resetStoryDisplay();
 });
 
-nextBtn.addEventListener('click', () => {
-  advanceStory();
-});
-
 // Language selection
 languageSelect.addEventListener('change', () => {
   const story = storiesData[currentStoryIndex];
   storyContainer.textContent = '';
-  for (let i = 0; i < currentSentenceIndex; i++) {
-    const s = story.sentences[i];
-    storyContainer.textContent += (i > 0 ? '\n\n' : '') + (languageSelect.value === 'vi' ? `${s.vi}\n${s.en}` : `${s.en}\n${s.vi}`);
-  }
+  // Reset to start
+  currentSentenceIndex = 0;
+  showingEN = false;
+  advanceStory();
 });
 
 // Story selection
