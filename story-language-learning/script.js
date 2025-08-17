@@ -63,8 +63,8 @@ function advanceStory() {
     storyContainer.textContent += `\n👉 Focus words: ${story.focusWords}\n`;
   }
 
-  // Scroll dynamically and start sooner on iPhone/Safari
-  const bottomPadding = Math.max(150, currentFontSize * 2); // bigger padding to start scroll sooner
+  // Scroll dynamically, start much earlier
+  const bottomPadding = Math.max(250, currentFontSize * 2); // bigger padding for earlier scroll
   const scrollPosition = storyContainer.scrollHeight - storyContainer.clientHeight - bottomPadding;
   if (storyContainer.scrollTop < scrollPosition) {
     storyContainer.scrollTo({
@@ -86,7 +86,7 @@ function resetStoryDisplay() {
 increaseFontBtn.addEventListener('click', () => {
   currentFontSize += 2;
   storyContainer.style.fontSize = currentFontSize + 'px';
-  const bottomPadding = Math.max(150, currentFontSize * 2);
+  const bottomPadding = Math.max(250, currentFontSize * 2);
   storyContainer.scrollTo({
     top: storyContainer.scrollHeight - storyContainer.clientHeight - bottomPadding,
     behavior: 'smooth'
@@ -96,7 +96,7 @@ increaseFontBtn.addEventListener('click', () => {
 decreaseFontBtn.addEventListener('click', () => {
   currentFontSize -= 2;
   storyContainer.style.fontSize = currentFontSize + 'px';
-  const bottomPadding = Math.max(150, currentFontSize * 2);
+  const bottomPadding = Math.max(250, currentFontSize * 2);
   storyContainer.scrollTo({
     top: storyContainer.scrollHeight - storyContainer.clientHeight - bottomPadding,
     behavior: 'smooth'
