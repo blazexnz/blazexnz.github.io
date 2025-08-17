@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Language Learning App</title>
+<title>🌏 Language Learning App</title>
 <style>
 /* General page styling */
 body {
@@ -28,14 +28,19 @@ header {
 }
 
 header h1 {
-  margin: 0.2rem 0;
+  margin: 0.2rem 0 0.5rem 0;
 }
 
-header select, #storySelect {
+/* Container for the dropdowns to display inline */
+header .dropdowns {
+  display: flex;
+  gap: 0.5rem;
+}
+
+header select {
   padding: 0.5rem;
   border-radius: 5px;
   border: none;
-  margin-top: 0.5rem;
 }
 
 main {
@@ -95,14 +100,16 @@ main {
 </head>
 <body>
   <header>
-    <h1>Language Learning App</h1>
-    <select id="languageSelect">
-      <option value="vi">Vietnamese</option>
-      <option value="en">English</option>
-    </select>
-    <select id="storySelect">
-      <option value="0">Story 1</option>
-    </select>
+    <h1>🌏 Language Learning App</h1>
+    <div class="dropdowns">
+      <select id="languageSelect">
+        <option value="vi">Vietnamese</option>
+        <option value="en">English</option>
+      </select>
+      <select id="storySelect">
+        <option value="0">Story 1</option>
+      </select>
+    </div>
   </header>
 
   <main>
