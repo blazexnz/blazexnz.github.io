@@ -1,0 +1,15 @@
+{
+  "stories": [
+    {
+      "title": "Đói bụng (Hungry)",
+      "sentences": [
+        {"vi": "Tôi đói.", "en": "I'm hungry."},
+        {"vi": "Tôi muốn ăn.", "en": "I want to eat."},
+        {"vi": "Tôi không có đồ ăn.", "en": "I don't have food."},
+        {"vi": "Bạn tôi cho tôi cơm.", "en": "My friend gives me rice."},
+        {"vi": "Tôi không đói nữa.", "en": "I'm not hungry anymore."}
+      ],
+      "lesson": "tôi, ăn, không, đói. New words in context: cơm (rice), bạn (friend)."
+    }
+  ]
+}

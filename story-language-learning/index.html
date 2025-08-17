@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Language Learning App</title>
+<style>
+/* General page styling */
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+header {
+  width: 100%;
+  padding: 1rem;
+  background-color: #4a90e2;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+header h1 {
+  margin: 0.2rem 0;
+}
+
+header select, #storySelect {
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: none;
+  margin-top: 0.5rem;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 1rem;
+  width: 100%;
+}
+
+.story-box {
+  max-width: 500px;
+  width: 90%;
+  background-color: #ffffff;
+  padding: 1.5rem;
+  margin: 1rem 0;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.story-box:active {
+  background-color: #e0e0eb;
+}
+
+.controls {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.controls button {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 10px;
+  background-color: #4a90e2;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.controls button:hover {
+  background-color: #357ab8;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .story-box {
+    padding: 1rem;
+  }
+}
+</style>
+</head>
+<body>
+  <header>
+    <h1>Language Learning App</h1>
+    <select id="languageSelect">
+      <option value="vi">Vietnamese</option>
+      <option value="en">English</option>
+    </select>
+    <select id="storySelect">
+      <option value="0">Story 1</option>
+    </select>
+  </header>
+
+  <main>
+    <div id="storyContainer" class="story-box">
+      <p id="sentence">Loading story...</p>
+    </div>
+
+    <div class="controls">
+      <button id="prevBtn">Prev</button>
+      <button id="startOverBtn">Start Over</button>
+      <button id="nextBtn">Next</button>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
