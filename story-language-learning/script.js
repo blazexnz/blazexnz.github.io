@@ -11,6 +11,7 @@ const storySelect = document.getElementById('storySelect');
 const prevBtn = document.getElementById('prevBtn');
 const startOverBtn = document.getElementById('startOverBtn');
 const nextBtn = document.getElementById('nextBtn');
+const nextSentenceBtn = document.getElementById('nextSentenceBtn');
 
 const increaseFontBtn = document.getElementById('increaseFont');
 const decreaseFontBtn = document.getElementById('decreaseFont');
@@ -62,11 +63,21 @@ function advanceStory() {
     storyContainer.textContent += `\n👉 Focus words: ${story.focusWords}\n`;
   }
 
-  // Auto-scroll so buttons don't get pushed off-screen
-  const containerHeight = storyContainer.clientHeight;
-  const scrollThreshold = containerHeight * 0.8; // scroll once content passes 80% of container
-  if (storyContainer.scrollHeight - storyContainer.scrollTop > scrollThreshold) {
-    storyContainer.scrollTop = storyContainer.scrollHeight;
+  // Scroll earlier to prevent buttons overlapping
+  const scrollBuffer = 100; // start scrolling sooner
+  storyContainer.scrollTo({
+    top: storyContainer.scrollHeight - scrollBuffer,
+    behavior: 'smooth'
+  });
+
+  // Ensure controls stop at top of next sentence button
+  const nextBtnTop = nextSentenceBtn.getBoundingClientRect().top;
+  const controlsBottom = prevBtn.parentElement.getBoundingClientRect().bottom;
+  if (controlsBottom > nextBtnTop) {
+    const overlap = controlsBottom - nextBtnTop + 10; // 10px margin
+    prevBtn.parentElement.style.transform = `translateY(-${overlap}px)`;
+  } else {
+    prevBtn.parentElement.style.transform = 'translateY(0)';
   }
 }
 
@@ -74,8 +85,9 @@ function resetStoryDisplay() {
   currentSentenceIndex = 0;
   showingEN = false;
   storyContainer.textContent = '';
+  prevBtn.parentElement.style.transform = 'translateY(0)';
   advanceStory();
-  storyContainer.scrollTop = 0; // reset scroll
+  storyContainer.scrollTop = 0;
 }
 
 // Font controls
@@ -89,8 +101,14 @@ decreaseFontBtn.addEventListener('click', () => {
   storyContainer.style.fontSize = currentFontSize + 'px';
 });
 
+// Click to advance story
 document.body.addEventListener('click', (e) => {
   if (e.target.tagName === 'BUTTON' || e.target.tagName === 'SELECT') return;
+  advanceStory();
+});
+
+// Fixed next sentence button
+nextSentenceBtn.addEventListener('click', () => {
   advanceStory();
 });
 
@@ -114,7 +132,7 @@ languageSelect.addEventListener('change', () => {
   storyContainer.textContent = '';
   currentSentenceIndex = 0;
   showingEN = false;
-  advanceStory();
+  resetStoryDisplay();
 });
 
 storySelect.addEventListener('change', (e) => {
