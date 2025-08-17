@@ -80,15 +80,15 @@ main {
   width: 90%;
   background-color: #ffffff;
   padding: 1.5rem;
-  margin: 0.5rem 0 1rem 0;
+  margin: 0.5rem 0 2rem 0; /* more bottom margin to allow natural scrolling */
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   cursor: default;
   transition: background-color 0.2s;
   white-space: pre-wrap;
   font-size: 20px; /* default font size */
-  overflow-y: auto;  /* allow vertical scrolling */
-  max-height: 60vh;  /* restrict height so scroll is needed */
+  overflow-y: auto;
+  max-height: 60vh;
 }
 
 .story-box:active {
@@ -162,7 +162,7 @@ main {
 </head>
 <body>
   <header>
-    <h1>🌏 Language Learning App - auto scroll should be ok, all buttons manipulation</h1>
+    <h1>🌏 Language Learning App</h1>
     <div class="dropdowns">
       <select id="languageSelect">
         <option value="vi">Vietnamese</option>
