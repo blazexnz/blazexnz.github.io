@@ -3,10 +3,12 @@ let currentStoryIndex = 0;
 let currentSentenceIndex = 0;
 let showingEN = false;
 let currentFontSize = 20;
+let firstNextClick = true; // track first next sentence click
 
 const storyContainer = document.getElementById('storyContainer');
 const languageSelect = document.getElementById('languageSelect');
 const storySelect = document.getElementById('storySelect');
+const appTitle = document.getElementById('appTitle');
 
 const prevBtn = document.getElementById('prevBtn');
 const startOverBtn = document.getElementById('startOverBtn');
@@ -38,11 +40,14 @@ function populateStorySelect() {
 function advanceStory() {
   const story = storiesData[currentStoryIndex];
 
+  if (firstNextClick) {
+    appTitle.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    firstNextClick = false;
+  }
+
   if (currentSentenceIndex === 0 && !showingEN && storyContainer.textContent === '') {
     storyContainer.textContent = `🌟 Story ${currentStoryIndex + 1}: ${story.title}\n\n`;
     showingEN = false;
-    // Add bottom whitespace to allow title to scroll to top
-    storyContainer.style.paddingBottom = (window.innerHeight) + 'px';
     return;
   }
 
@@ -69,9 +74,8 @@ function advanceStory() {
 function resetStoryDisplay() {
   currentSentenceIndex = 0;
   showingEN = false;
+  firstNextClick = true;
   storyContainer.textContent = '';
-  // Reset padding bottom for new story
-  storyContainer.style.paddingBottom = (window.innerHeight) + 'px';
   advanceStory();
 }
 
@@ -118,8 +122,7 @@ languageSelect.addEventListener('change', () => {
   storyContainer.textContent = '';
   currentSentenceIndex = 0;
   showingEN = false;
-  // Reset padding bottom
-  storyContainer.style.paddingBottom = (window.innerHeight) + 'px';
+  firstNextClick = true;
   advanceStory();
 });
 
