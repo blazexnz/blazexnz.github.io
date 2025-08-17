@@ -1,0 +1,64 @@
+{
+  "stories": [
+    {
+      "title": "Đói bụng (Hungry)",
+      "theme": "Food",
+      "sentences": [
+        {"vi": "Tôi đói.", "en": "I'm hungry."},
+        {"vi": "Tôi muốn ăn.", "en": "I want to eat."},
+        {"vi": "Tôi không có đồ ăn.", "en": "I don't have food."},
+        {"vi": "Bạn tôi cho tôi cơm.", "en": "My friend gives me rice."},
+        {"vi": "Tôi không đói nữa.", "en": "I'm not hungry anymore."}
+      ],
+      "focusWords": "tôi, ăn, không, đói. New words in context: cơm (rice), bạn (friend)."
+    },
+    {
+      "title": "Trời mưa (It Rains)",
+      "theme": "Weather",
+      "sentences": [
+        {"vi": "Trời mưa.", "en": "It's raining."},
+        {"vi": "Tôi không có dù.", "en": "I don't have an umbrella."},
+        {"vi": "Bạn tôi cho tôi một cái dù.", "en": "My friend gives me an umbrella."},
+        {"vi": "Tôi đi bộ.", "en": "I walk."},
+        {"vi": "Tôi không ướt nữa.", "en": "I'm not wet anymore."}
+      ],
+      "focusWords": "trời, mưa, tôi, không, bạn. New words in context: dù (umbrella), ướt (wet)."
+    },
+    {
+      "title": "Cà phê (Coffee)",
+      "theme": "Drinks",
+      "sentences": [
+        {"vi": "Tôi khát.", "en": "I'm thirsty."},
+        {"vi": "Tôi muốn uống cà phê.", "en": "I want to drink coffee."},
+        {"vi": "Tôi không có tiền.", "en": "I don't have money."},
+        {"vi": "Bạn tôi cho tôi tiền.", "en": "My friend gives me money."},
+        {"vi": "Tôi uống cà phê.", "en": "I drink coffee."}
+      ],
+      "focusWords": "tôi, khát, uống, không, cà phê. New words in context: tiền (money), muốn (want)."
+    },
+    {
+      "title": "Đi học (Going to School)",
+      "theme": "School",
+      "sentences": [
+        {"vi": "Tôi đi học.", "en": "I go to school."},
+        {"vi": "Tôi không có tập.", "en": "I don't have a notebook."},
+        {"vi": "Bạn tôi cho tôi một cuốn tập.", "en": "My friend gives me a notebook."},
+        {"vi": "Tôi học.", "en": "I study."},
+        {"vi": "Tôi vui.", "en": "I'm happy."}
+      ],
+      "focusWords": "tôi, đi, học, không, bạn. New words in context: tập (notebook), vui (happy)."
+    },
+    {
+      "title": "Đi chợ (Going to the Market)",
+      "theme": "Shopping",
+      "sentences": [
+        {"vi": "Tôi đi chợ.", "en": "I go to the market."},
+        {"vi": "Tôi muốn mua rau.", "en": "I want to buy vegetables."},
+        {"vi": "Tôi không có tiền.", "en": "I don't have money."},
+        {"vi": "Bạn tôi cho tôi tiền.", "en": "My friend gives me money."},
+        {"vi": "Tôi mua rau.", "en": "I buy vegetables."}
+      ],
+      "focusWords": "tôi, đi, không, muốn, bạn. New words in context: chợ (market), rau (vegetables)."
+    }
+  ]
+}
