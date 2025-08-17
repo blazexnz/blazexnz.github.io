@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>🌏 Language Learning App</title>
 <style>
 body {
@@ -66,6 +66,7 @@ main {
   font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.2s;
+  touch-action: manipulation;
 }
 
 .font-controls button:hover {
@@ -83,7 +84,9 @@ main {
   cursor: default;
   transition: background-color 0.2s;
   white-space: pre-wrap;
-  font-size: 18px; /* default font size */
+  font-size: 20px; /* default font size */
+  overflow-y: auto;  /* allow vertical scrolling */
+  max-height: 60vh;  /* restrict height so scroll is needed */
 }
 
 .story-box:active {
