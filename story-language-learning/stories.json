@@ -70,5 +70,118 @@
       ],
       "focusWords": "ako, laro, kaibigan, bola. New words in context: labas (outside), masaya (fun)."
     }
+  ],
+"jpStories": [
+    {
+      "title": "Onaka ga suita (Hungry)",
+      "theme": "Food",
+      "sentences": [
+        { "jp": "Onaka ga suita.", "en": "I'm hungry." },
+        { "jp": "Tabetai.", "en": "I want to eat." },
+        { "jp": "Tabemono ga nai.", "en": "I don't have food." },
+        { "jp": "Tomodachi ga gohan o kureta.", "en": "My friend gives me rice." },
+        { "jp": "Mou onaka ga sukunai.", "en": "I'm not hungry anymore." }
+      ],
+      "focusWords": "watashi, taberu, nai, onaka. New words in context: gohan (rice), tomodachi (friend)."
+    },
+    {
+      "title": "Gakkou e iku (Going to School)",
+      "theme": "Education",
+      "sentences": [
+        { "jp": "Watashi wa gakkou e iku.", "en": "I go to school." },
+        { "jp": "Hon o motte iku.", "en": "I bring books." },
+        { "jp": "Watashi wa nihongo o benkyou suru.", "en": "I study Japanese." },
+        { "jp": "Gakkou no ato tomodachi to asobu.", "en": "I play with friends after class." }
+      ],
+      "focusWords": "watashi, benkyou, hon, tomodachi. New words in context: gakkou (school), asobu (play)."
+    },
+    {
+      "title": "Booru asobi (Playing Ball)",
+      "theme": "Sports",
+      "sentences": [
+        { "jp": "Booru asobi ga suki.", "en": "I like playing ball." },
+        { "jp": "Tomodachi ga booru o nage ta.", "en": "My friend throws the ball to me." },
+        { "jp": "Soto de asobu.", "en": "We play outside." },
+        { "jp": "Asobi wa tanoshii.", "en": "The game is very fun." }
+      ],
+      "focusWords": "watashi, asobu, tomodachi, booru. New words in context: soto (outside), tanoshii (fun)."
+    },
+    {
+      "title": "Kaimono (Shopping)",
+      "theme": "Daily Life",
+      "sentences": [
+        { "jp": "Watashi wa ichiba e iku.", "en": "I go to the market." },
+        { "jp": "Yasai to kudamono o kau.", "en": "I buy vegetables and fruits." },
+        { "jp": "Ureta ga aisatsu shita.", "en": "The seller greets me." },
+        { "jp": "Okane o haratte kaeru.", "en": "I pay and go home." }
+      ],
+      "focusWords": "watashi, kau, ureshi, ichiba. New words in context: yasai (vegetables), kudamono (fruits)."
+    },
+    {
+      "title": "Ie de (At Home)",
+      "theme": "Home",
+      "sentences": [
+        { "jp": "Watashi wa ie ni iru.", "en": "I am at home." },
+        { "jp": "Hon o yomu.", "en": "I read a book." },
+        { "jp": "Ryouri suru.", "en": "I cook." },
+        { "jp": "Kazoku to issho ni bangohan o taberu.", "en": "My family eats dinner together." }
+      ],
+      "focusWords": "watashi, ie, taberu, yomu. New words in context: ryouri (cook), kazoku (family)."
+    },
+    {
+      "title": "Sanpo (Going for a Walk)",
+      "theme": "Leisure",
+      "sentences": [
+        { "jp": "Kouen de sanpo suru.", "en": "I go for a walk in the park." },
+        { "jp": "Takusan no hana o miru.", "en": "I see many flowers." },
+        { "jp": "Furui tomodachi ni au.", "en": "I meet an old friend." },
+        { "jp": "Tanoshiku hanasu.", "en": "We talk happily." }
+      ],
+      "focusWords": "watashi, sanpo, tomodachi, miru. New words in context: kouen (park), hana (flower)."
+    },
+    {
+      "title": "Tenki (Weather)",
+      "theme": "Environment",
+      "sentences": [
+        { "jp": "Kyou wa hare.", "en": "Today is sunny." },
+        { "jp": "Totemo atsui.", "en": "It's very hot." },
+        { "jp": "Kasa o motte iku.", "en": "I bring an umbrella." },
+        { "jp": "Ame ga futte iru.", "en": "It is raining now." }
+      ],
+      "focusWords": "kyou, watashi, motsu, ame. New words in context: hare (sunny), kasa (umbrella), atsui (hot)."
+    },
+    {
+      "title": "Basu ni noru (Taking the Bus)",
+      "theme": "Transport",
+      "sentences": [
+        { "jp": "Watashi wa basu de gakkou e iku.", "en": "I take the bus to school." },
+        { "jp": "Kippu o kau.", "en": "I buy a ticket." },
+        { "jp": "Suwatte matte iru.", "en": "I sit and wait." },
+        { "jp": "Saigo no eki de oriru.", "en": "I get off at the last stop." }
+      ],
+      "focusWords": "watashi, noru, kippu, eki. New words in context: basu (bus), oriru (get off)."
+    },
+    {
+      "title": "Neru (Going to Sleep)",
+      "theme": "Daily Routine",
+      "sentences": [
+        { "jp": "Furo ni hairu.", "en": "I take a bath." },
+        { "jp": "Ha o migaku.", "en": "I brush my teeth." },
+        { "jp": "Pajama o kiru.", "en": "I wear pajamas." },
+        { "jp": "Neru.", "en": "I go to sleep." }
+      ],
+      "focusWords": "watashi, neru, furo, kiru. New words in context: migaku (brush teeth), pajama (pajamas)."
+    },
+    {
+      "title": "Petto to asobu (Playing with Pets)",
+      "theme": "Animals",
+      "sentences": [
+        { "jp": "Watashi wa neko o motte iru.", "en": "I have a cat." },
+        { "jp": "Neko ni esa o ageru.", "en": "I feed the cat." },
+        { "jp": "Neko ga watashi to asobu.", "en": "My cat plays with me." },
+        { "jp": "Neko ga daisuki.", "en": "I love my cat." }
+      ],
+      "focusWords": "watashi, neko, ageru, asobu. New words in context: petto (pet), daisuki (love)."
+    }
   ]
 }
