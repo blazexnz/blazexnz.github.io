@@ -2,6 +2,7 @@ let storiesData = [];
 let currentStoryIndex = 0;
 let currentSentenceIndex = 0;
 let showingEN = false;
+let currentFontSize = 20;
 
 const storyContainer = document.getElementById('storyContainer');
 const languageSelect = document.getElementById('languageSelect');
@@ -11,6 +12,10 @@ const prevBtn = document.getElementById('prevBtn');
 const startOverBtn = document.getElementById('startOverBtn');
 const nextBtn = document.getElementById('nextBtn');
 
+const increaseFontBtn = document.getElementById('increaseFont');
+const decreaseFontBtn = document.getElementById('decreaseFont');
+
+// Load stories
 fetch('stories.json')
   .then(response => response.json())
   .then(data => {
@@ -32,7 +37,6 @@ function populateStorySelect() {
 function advanceStory() {
   const story = storiesData[currentStoryIndex];
 
-  // If first click, show title
   if (currentSentenceIndex === 0 && !showingEN && storyContainer.textContent === '') {
     storyContainer.textContent = `🌟 Story ${currentStoryIndex + 1}: ${story.title}\n\n`;
     showingEN = false;
@@ -45,7 +49,6 @@ function advanceStory() {
   let textToAdd = showingEN ? (languageSelect.value === 'vi' ? sentence.en : sentence.vi)
                             : (languageSelect.value === 'vi' ? sentence.vi : sentence.en);
 
-  // Add sentence with arrow if showing EN
   if (!showingEN) {
     storyContainer.textContent += `${currentSentenceIndex + 1}. ${textToAdd}`;
   } else {
@@ -55,7 +58,6 @@ function advanceStory() {
 
   showingEN = !showingEN;
 
-  // After last sentence, show focus words
   if (currentSentenceIndex >= story.sentences.length && !showingEN) {
     storyContainer.textContent += `\n👉 Focus words: ${story.focusWords}\n`;
   }
@@ -67,6 +69,17 @@ function resetStoryDisplay() {
   storyContainer.textContent = '';
   advanceStory();
 }
+
+// Font controls
+increaseFontBtn.addEventListener('click', () => {
+  currentFontSize += 2;
+  storyContainer.style.fontSize = currentFontSize + 'px';
+});
+
+decreaseFontBtn.addEventListener('click', () => {
+  currentFontSize -= 2;
+  storyContainer.style.fontSize = currentFontSize + 'px';
+});
 
 document.body.addEventListener('click', (e) => {
   if (e.target.tagName === 'BUTTON' || e.target.tagName === 'SELECT') return;
@@ -90,7 +103,6 @@ startOverBtn.addEventListener('click', () => {
 });
 
 languageSelect.addEventListener('change', () => {
-  const story = storiesData[currentStoryIndex];
   storyContainer.textContent = '';
   currentSentenceIndex = 0;
   showingEN = false;
