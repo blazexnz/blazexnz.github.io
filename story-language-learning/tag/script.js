@@ -38,6 +38,14 @@ function populateStorySelect() {
 // Advance story by one reveal (original or English)
 function advanceStory() {
   const story = storiesData[currentStoryIndex];
+  
+  // Show title at the very start
+  if (currentSentenceIndex === 0 && !showingEN && storyContainer.textContent === '') {
+    storyContainer.textContent = `🌟 Story ${currentStoryIndex + 1}: ${story.title}\n\n`;
+    showingEN = false;
+    return;
+  }
+
   if (currentSentenceIndex >= story.sentences.length) return;
 
   const sentence = story.sentences[currentSentenceIndex];
