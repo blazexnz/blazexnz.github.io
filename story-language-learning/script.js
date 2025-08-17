@@ -41,6 +41,8 @@ function advanceStory() {
   if (currentSentenceIndex === 0 && !showingEN && storyContainer.textContent === '') {
     storyContainer.textContent = `🌟 Story ${currentStoryIndex + 1}: ${story.title}\n\n`;
     showingEN = false;
+    // Add bottom whitespace to allow title to scroll to top
+    storyContainer.style.paddingBottom = (window.innerHeight) + 'px';
     return;
   }
 
@@ -68,6 +70,8 @@ function resetStoryDisplay() {
   currentSentenceIndex = 0;
   showingEN = false;
   storyContainer.textContent = '';
+  // Reset padding bottom for new story
+  storyContainer.style.paddingBottom = (window.innerHeight) + 'px';
   advanceStory();
 }
 
@@ -114,6 +118,8 @@ languageSelect.addEventListener('change', () => {
   storyContainer.textContent = '';
   currentSentenceIndex = 0;
   showingEN = false;
+  // Reset padding bottom
+  storyContainer.style.paddingBottom = (window.innerHeight) + 'px';
   advanceStory();
 });
 
