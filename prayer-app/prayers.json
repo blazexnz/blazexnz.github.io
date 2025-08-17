@@ -1,5 +1,9 @@
 {
   "en": {
+    "Apostles' Creed": {
+      "text": "I believe in God, the Father Almighty, Creator of heaven and earth; and in Jesus Christ, His only Son, our Lord, who was conceived by the Holy Spirit, born of the Virgin Mary, suffered under Pontius Pilate, was crucified, died, and was buried. He descended into hell; on the third day He rose again from the dead; He ascended into heaven, and is seated at the right hand of God the Father Almighty; from there He will come to judge the living and the dead. I believe in the Holy Spirit, the holy Catholic Church, the communion of saints, the forgiveness of sins, the resurrection of the body, and life everlasting. Amen.",
+  "explanation": "This prayer is a profession of faith, affirming belief in God the Father, Jesus Christ, the Holy Spirit, and the core truths of the Christian faith."
+    },
     "Our Father": {
       "text": "Our Father, who art in heaven, hallowed be Thy name; Thy kingdom come; Thy will be done on earth as it is in heaven. Give us this day our daily bread; and forgive us our trespasses, as we forgive those who trespass against us; and lead us not into temptation, but deliver us from evil. Amen.",
       "explanation": "This prayer teaches us to recognise God's holiness, seek His will, rely on Him for daily needs, and practice forgiveness."
@@ -27,6 +31,18 @@
     "Guardian Angel Prayer": {
       "text": "Angel of God, my guardian dear, to whom God’s love commits me here, ever this day be at my side, to light and guard, to rule and guide. Amen.",
       "explanation": "This prayer seeks protection and guidance from our guardian angels, reminding us of God’s care in our daily lives."
+    },
+    "God gives me strength": {
+      "text": "God, thank You for providing for my every need. At all times, You are my source of strength, hope, and peace, and You have blessed me abundantly. Today, please help me to recognize Your blessings, and share them with others. Help me to love and care for others as You have loved and cared for me. In Jesus' name, Amen.",
+  "explanation": "This prayer expresses gratitude for God's strength and blessings, asking for help to share His love and care with others."
+    },
+    "Another beautiful sunrise": {
+      "text": "Dear Lord, Thank you so much for another day of life on Earth. Thank you for another beautiful sunrise to enjoy. Thank you for the wonderful sounds of nature, from the cool breeze brushing through the trees to the birds singing melodies. You are a wonderful God, full of grace and mercy. I praise you for allowing me another day to spend with my family. I love you Father! Amen.",
+  "explanation": "This prayer thanks God for the gift of life, the beauty of creation, and the blessing of family, filling the heart with gratitude and praise."
+    },
+    "Morning Prayer of St. Francis": {
+      "text": "Lord, help me to live this day, quietly, easily; To lean upon Thy great strength, trustfully, restfully; To wait for the unfolding of Thy will, patiently, serenely; To meet others, peacefully, joyously; To face tomorrow, confidently, courageously. Amen.",
+  "explanation": "This prayer asks God for the grace to live each day with peace, trust, patience, and courage, reflecting His love in all we do."
     }
   },
   "vi": {
