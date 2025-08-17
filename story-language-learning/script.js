@@ -61,6 +61,13 @@ function advanceStory() {
   if (currentSentenceIndex >= story.sentences.length && !showingEN) {
     storyContainer.textContent += `\n👉 Focus words: ${story.focusWords}\n`;
   }
+
+  // Auto-scroll so buttons don't get pushed off-screen
+  const containerHeight = storyContainer.clientHeight;
+  const scrollThreshold = containerHeight * 0.8; // scroll once content passes 80% of container
+  if (storyContainer.scrollHeight - storyContainer.scrollTop > scrollThreshold) {
+    storyContainer.scrollTop = storyContainer.scrollHeight;
+  }
 }
 
 function resetStoryDisplay() {
@@ -68,6 +75,7 @@ function resetStoryDisplay() {
   showingEN = false;
   storyContainer.textContent = '';
   advanceStory();
+  storyContainer.scrollTop = 0; // reset scroll
 }
 
 // Font controls
