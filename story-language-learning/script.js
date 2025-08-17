@@ -1,7 +1,7 @@
 let storiesData = [];
 let currentStoryIndex = 0;
 let currentSentenceIndex = 0;
-let showingEN = false; // Tracks if English version is being shown
+let showingEN = false;
 let currentFontSize = 20;
 
 const storyContainer = document.getElementById('storyContainer');
@@ -21,7 +21,8 @@ function loadStoriesForLanguage(data) {
   const lang = languageSelect.value;
   if (lang === 'vi') storiesData = data.viStories;
   else if (lang === 'tl') storiesData = data.tlStories;
-  else storiesData = data.enStories || data.viStories;
+  else if (lang === 'jp') storiesData = data.jpStories;
+  else storiesData = data.viStories;
 }
 
 // Populate story dropdown
@@ -35,11 +36,10 @@ function populateStorySelect() {
   });
 }
 
-// Advance story by one reveal (original or English)
+// Advance story by one reveal
 function advanceStory() {
   const story = storiesData[currentStoryIndex];
-  
-  // Show title at the very start
+
   if (currentSentenceIndex === 0 && !showingEN && storyContainer.textContent === '') {
     storyContainer.textContent = `🌟 Story ${currentStoryIndex + 1}: ${story.title}\n\n`;
     showingEN = false;
@@ -52,18 +52,20 @@ function advanceStory() {
   const lang = languageSelect.value;
 
   if (!showingEN) {
-    // Show original language first
-    const text = lang === 'vi' ? sentence.vi : sentence.tl;
+    let text;
+    if (lang === 'vi') text = sentence.vi;
+    else if (lang === 'tl') text = sentence.tl;
+    else if (lang === 'jp') text = sentence.jp;
+    else text = sentence.vi;
+
     storyContainer.textContent += `${currentSentenceIndex + 1}. ${text}`;
     showingEN = true;
   } else {
-    // Then show English translation
     storyContainer.textContent += ` → ${sentence.en}\n`;
     showingEN = false;
     currentSentenceIndex++;
   }
 
-  // At end of story, show focus words
   if (currentSentenceIndex >= story.sentences.length && !showingEN && story.focusWords) {
     storyContainer.textContent += `\n👉 Focus words: ${story.focusWords}\n`;
   }
