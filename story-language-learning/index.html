@@ -95,6 +95,10 @@ main {
   overflow-y: visible; /* removed scrolling */
   max-height: none;    /* removed height limit */
   text-align: left;
+  min-height: calc(100vh - 150px); /* ensure enough space for title at top */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 .story-box:active {
@@ -168,7 +172,7 @@ main {
 </head>
 <body>
   <header>
-    <h1>🌏 Language Learning App/</h1>
+    <h1>🌏 Language Learning App///</h1>
     <div class="dropdowns">
       <select id="languageSelect">
         <option value="vi">Vietnamese</option>
@@ -202,4 +206,3 @@ main {
   <script src="script.js"></script>
 </body>
 </html>
-
