@@ -51,17 +51,40 @@ main {
   width: 100%;
 }
 
+.font-controls {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.font-controls button {
+  padding: 0.3rem 0.6rem;
+  border-radius: 8px;
+  border: none;
+  background-color: #4a90e2;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  touch-action: manipulation;
+}
+
+.font-controls button:hover {
+  background-color: #357ab8;
+}
+
 .story-box {
   max-width: 500px;
   width: 90%;
   background-color: #ffffff;
   padding: 1.5rem;
-  margin: 1rem 0;
+  margin: 0.5rem 0 1rem 0;
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   cursor: default;
   transition: background-color 0.2s;
   white-space: pre-wrap;
+  font-size: 20px; /* default font size */
 }
 
 .story-box:active {
@@ -121,6 +144,11 @@ main {
   </header>
 
   <main>
+    <div class="font-controls">
+      <button id="decreaseFont">A-</button>
+      <button id="increaseFont">A+</button>
+    </div>
+
     <div id="storyContainer" class="story-box">
       Loading story...
     </div>
