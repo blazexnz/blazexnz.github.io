@@ -1,10 +1,8 @@
 let storiesData = [];
 let currentStoryIndex = 0;
 let currentSentenceIndex = 0;
-let showEN = false;
 
 const storyContainer = document.getElementById('storyContainer');
-const sentenceElem = document.getElementById('sentence');
 const languageSelect = document.getElementById('languageSelect');
 const storySelect = document.getElementById('storySelect');
 
@@ -18,7 +16,7 @@ fetch('stories.json')
   .then(data => {
     storiesData = data.stories;
     populateStorySelect();
-    displaySentence();
+    resetStoryDisplay();
   });
 
 // Populate story selection dropdown
@@ -32,57 +30,74 @@ function populateStorySelect() {
   });
 }
 
-// Display current sentence
-function displaySentence() {
+// Display next part of story
+function advanceStory() {
   const story = storiesData[currentStoryIndex];
-  const sentence = story.sentences[currentSentenceIndex];
+  if (currentSentenceIndex >= story.sentences.length) return;
 
-  if (showEN) {
-    sentenceElem.textContent = sentence.en;
+  const sentence = story.sentences[currentSentenceIndex];
+  let text = '';
+
+  if (languageSelect.value === 'vi') {
+    text = sentence.vi + '\n' + sentence.en;
   } else {
-    sentenceElem.textContent = sentence.vi;
+    text = sentence.en + '\n' + sentence.vi;
   }
+
+  // Add to existing content with double line break
+  storyContainer.textContent += (storyContainer.textContent ? '\n\n' : '') + text;
+
+  currentSentenceIndex++;
 }
 
-// Toggle sentence on tap/click
-storyContainer.addEventListener('click', () => {
-  showEN = !showEN;
-  displaySentence();
+// Reset story display
+function resetStoryDisplay() {
+  currentSentenceIndex = 0;
+  storyContainer.textContent = '';
+  advanceStory();
+}
+
+// Click anywhere to advance story
+document.body.addEventListener('click', (e) => {
+  // Prevent double-advance when clicking controls
+  if (e.target.tagName === 'BUTTON' || e.target.tagName === 'SELECT') return;
+  advanceStory();
 });
 
 // Buttons
 prevBtn.addEventListener('click', () => {
-  currentSentenceIndex = Math.max(0, currentSentenceIndex - 1);
-  showEN = false;
-  displaySentence();
+  if (currentSentenceIndex > 1) {
+    currentSentenceIndex -= 2;
+    const story = storiesData[currentStoryIndex];
+    storyContainer.textContent = '';
+    for (let i = 0; i < currentSentenceIndex; i++) {
+      const s = story.sentences[i];
+      storyContainer.textContent += (i > 0 ? '\n\n' : '') + (languageSelect.value === 'vi' ? `${s.vi}\n${s.en}` : `${s.en}\n${s.vi}`);
+    }
+    currentSentenceIndex++;
+  }
 });
 
 startOverBtn.addEventListener('click', () => {
-  currentSentenceIndex = 0;
-  showEN = false;
-  displaySentence();
+  resetStoryDisplay();
 });
 
 nextBtn.addEventListener('click', () => {
-  const story = storiesData[currentStoryIndex];
-  if (currentSentenceIndex < story.sentences.length - 1) {
-    currentSentenceIndex++;
-  } else {
-    currentSentenceIndex = 0; // loop back to start
-  }
-  showEN = false;
-  displaySentence();
+  advanceStory();
 });
 
 // Language selection
 languageSelect.addEventListener('change', () => {
-  displaySentence();
+  const story = storiesData[currentStoryIndex];
+  storyContainer.textContent = '';
+  for (let i = 0; i < currentSentenceIndex; i++) {
+    const s = story.sentences[i];
+    storyContainer.textContent += (i > 0 ? '\n\n' : '') + (languageSelect.value === 'vi' ? `${s.vi}\n${s.en}` : `${s.en}\n${s.vi}`);
+  }
 });
 
 // Story selection
 storySelect.addEventListener('change', (e) => {
   currentStoryIndex = parseInt(e.target.value);
-  currentSentenceIndex = 0;
-  showEN = false;
-  displaySentence();
+  resetStoryDisplay();
 });
