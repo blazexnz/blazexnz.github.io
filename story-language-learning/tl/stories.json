@@ -1,0 +1,30 @@
+{
+  "viStories": [
+    {
+      "title": "Đói bụng (Hungry)",
+      "theme": "Food",
+      "sentences": [
+        "Tôi đói.",
+        "Tôi muốn ăn.",
+        "Tôi không có đồ ăn.",
+        "Bạn tôi cho tôi cơm.",
+        "Tôi không đói nữa."
+      ],
+      "focusWords": "tôi, ăn, không, đói. New words in context: cơm (rice), bạn (friend)."
+    }
+  ],
+  "tlStories": [
+    {
+      "title": "Nagugutom (Hungry)",
+      "theme": "Food",
+      "sentences": [
+        "Nagugutom ako.",
+        "Gusto kong kumain.",
+        "Wala akong pagkain.",
+        "Binigyan ako ng kaibigan ko ng kanin.",
+        "Hindi na ako nagugutom."
+      ],
+      "focusWords": "ako, kumain, wala, gutom. New words in context: kanin (rice), kaibigan (friend)."
+    }
+  ]
+}
