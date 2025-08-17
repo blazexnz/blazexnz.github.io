@@ -63,8 +63,8 @@ function advanceStory() {
     storyContainer.textContent += `\n👉 Focus words: ${story.focusWords}\n`;
   }
 
-  // Scroll dynamically based on font size
-  const bottomPadding = Math.max(50, currentFontSize * 2); // ensures enough space even for large fonts
+  // Scroll dynamically and start sooner on iPhone/Safari
+  const bottomPadding = Math.max(150, currentFontSize * 2); // bigger padding to start scroll sooner
   const scrollPosition = storyContainer.scrollHeight - storyContainer.clientHeight - bottomPadding;
   if (storyContainer.scrollTop < scrollPosition) {
     storyContainer.scrollTo({
@@ -86,8 +86,7 @@ function resetStoryDisplay() {
 increaseFontBtn.addEventListener('click', () => {
   currentFontSize += 2;
   storyContainer.style.fontSize = currentFontSize + 'px';
-  // adjust scroll after font change
-  const bottomPadding = Math.max(50, currentFontSize * 2);
+  const bottomPadding = Math.max(150, currentFontSize * 2);
   storyContainer.scrollTo({
     top: storyContainer.scrollHeight - storyContainer.clientHeight - bottomPadding,
     behavior: 'smooth'
@@ -97,7 +96,7 @@ increaseFontBtn.addEventListener('click', () => {
 decreaseFontBtn.addEventListener('click', () => {
   currentFontSize -= 2;
   storyContainer.style.fontSize = currentFontSize + 'px';
-  const bottomPadding = Math.max(50, currentFontSize * 2);
+  const bottomPadding = Math.max(150, currentFontSize * 2);
   storyContainer.scrollTo({
     top: storyContainer.scrollHeight - storyContainer.clientHeight - bottomPadding,
     behavior: 'smooth'
@@ -115,7 +114,7 @@ nextSentenceBtn.addEventListener('click', () => {
   advanceStory();
 });
 
-// Story navigation buttons flow naturally with page
+// Story navigation buttons flow naturally
 prevBtn.addEventListener('click', () => {
   if (currentStoryIndex > 0) currentStoryIndex--;
   storySelect.value = currentStoryIndex;
