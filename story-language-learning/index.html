@@ -47,11 +47,6 @@ header select {
   touch-action: manipulation;
 }
 
-#headerSpacer {
-  height: 0px; /* dynamically updated on first click */
-  transition: height 0.2s;
-}
-
 main {
   flex: 1;
   display: flex;
@@ -86,8 +81,8 @@ main {
 }
 
 .story-box {
+  width: calc(100% - 2rem); /* ensures horizontal centering with small margins */
   max-width: 500px;
-  width: 90%;
   margin: 0.5rem auto 2rem auto;
   background-color: #ffffff;
   padding: 1.5rem;
@@ -100,6 +95,7 @@ main {
   overflow-y: visible;
   max-height: none;
   text-align: left;
+  box-sizing: border-box; /* prevents padding from breaking centering */
 }
 
 .story-box:active {
@@ -166,6 +162,7 @@ main {
 
 @media (max-width: 600px) {
   .story-box {
+    width: calc(100% - 1rem); /* slightly smaller margin for small screens */
     padding: 1rem;
   }
 }
@@ -173,7 +170,7 @@ main {
 </head>
 <body>
   <header>
-    <h1>🌏 Language Learning App</h1>
+    <h1>🌏 Language Learning App - test</h1>
     <div class="dropdowns">
       <select id="languageSelect">
         <option value="vi">Vietnamese</option>
@@ -184,9 +181,6 @@ main {
       </select>
     </div>
   </header>
-
-  <!-- Spacer dynamically adjusts to push story to top -->
-  <div id="headerSpacer"></div>
 
   <main>
     <div class="font-controls">
