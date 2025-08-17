@@ -85,9 +85,9 @@ main {
   cursor: default;
   transition: background-color 0.2s;
   white-space: pre-wrap;
-  font-size: 20px;
-  overflow-y: auto;
-  max-height: 60vh;
+  font-size: 20px; /* default font size */
+  overflow-y: auto;  /* allow vertical scrolling */
+  max-height: 60vh;  /* restrict height so scroll is needed */
 }
 
 .story-box:active {
@@ -99,7 +99,6 @@ main {
   gap: 1rem;
   margin-top: 1rem;
   z-index: 1;
-  transition: transform 0.2s;
 }
 
 .controls button {
@@ -161,7 +160,7 @@ main {
 </head>
 <body>
   <header>
-    <h1>🌏 Language Learning App - testing</h1>
+    <h1>🌏 Language Learning App</h1>
     <div class="dropdowns">
       <select id="languageSelect">
         <option value="vi">Vietnamese</option>
@@ -196,4 +195,3 @@ main {
   <script src="script.js"></script>
 </body>
 </html>
-
