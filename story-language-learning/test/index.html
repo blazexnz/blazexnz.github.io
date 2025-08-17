@@ -15,6 +15,7 @@ body {
   align-items: center;
   min-height: 100vh;
   position: relative;
+  text-align: center;
 }
 
 header {
@@ -25,21 +26,25 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
 header h1 {
   margin: 0.2rem 0 0.5rem 0;
+  text-align: center;
 }
 
 header .dropdowns {
   display: flex;
   gap: 0.5rem;
+  justify-content: center;
 }
 
 header select {
   padding: 0.5rem;
   border-radius: 5px;
   border: none;
+  touch-action: manipulation;
 }
 
 main {
@@ -56,6 +61,7 @@ main {
   display: flex;
   gap: 0.5rem;
   margin-bottom: 0.5rem;
+  justify-content: center;
 }
 
 .font-controls button {
@@ -77,17 +83,18 @@ main {
 .story-box {
   max-width: 500px;
   width: 90%;
+  margin: 0.5rem auto 2rem auto;
   background-color: #ffffff;
   padding: 1.5rem;
-  margin: 0.5rem 0 1rem 0;
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   cursor: default;
   transition: background-color 0.2s;
   white-space: pre-wrap;
-  font-size: 20px; /* default font size */
-  overflow-y: auto;  /* allow vertical scrolling */
-  max-height: 60vh;  /* restrict height so scroll is needed */
+  font-size: 20px;
+  overflow-y: visible; /* removed scrolling */
+  max-height: none;    /* removed height limit */
+  text-align: left;
 }
 
 .story-box:active {
@@ -98,7 +105,7 @@ main {
   display: flex;
   gap: 1rem;
   margin-top: 1rem;
-  z-index: 1;
+  justify-content: center;
 }
 
 .controls button {
@@ -110,6 +117,7 @@ main {
   font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.2s;
+  touch-action: manipulation;
 }
 
 .controls button:hover {
@@ -134,6 +142,7 @@ main {
   cursor: pointer;
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   transition: background-color 0.2s;
+  touch-action: manipulation;
 }
 
 .next-sentence-btn:hover {
@@ -159,7 +168,7 @@ main {
 </head>
 <body>
   <header>
-    <h1>🌏 Language Learning App - improved scroling + new button</h1>
+    <h1>🌏 Language Learning App</h1>
     <div class="dropdowns">
       <select id="languageSelect">
         <option value="vi">Vietnamese</option>
@@ -188,7 +197,6 @@ main {
     </div>
   </main>
 
-  <!-- Fixed next sentence button -->
   <button class="next-sentence-btn" id="nextSentenceBtn">➡️</button>
 
   <script src="script.js"></script>
