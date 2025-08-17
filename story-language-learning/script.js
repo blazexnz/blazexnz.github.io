@@ -62,16 +62,6 @@ function advanceStory() {
   if (currentSentenceIndex >= story.sentences.length && !showingEN) {
     storyContainer.textContent += `\n👉 Focus words: ${story.focusWords}\n`;
   }
-
-  // Scroll dynamically, start much earlier
-  const bottomPadding = Math.max(250, currentFontSize * 2); // bigger padding for earlier scroll
-  const scrollPosition = storyContainer.scrollHeight - storyContainer.clientHeight - bottomPadding;
-  if (storyContainer.scrollTop < scrollPosition) {
-    storyContainer.scrollTo({
-      top: scrollPosition,
-      behavior: 'smooth'
-    });
-  }
 }
 
 function resetStoryDisplay() {
@@ -79,28 +69,17 @@ function resetStoryDisplay() {
   showingEN = false;
   storyContainer.textContent = '';
   advanceStory();
-  storyContainer.scrollTop = 0;
 }
 
 // Font controls
 increaseFontBtn.addEventListener('click', () => {
   currentFontSize += 2;
   storyContainer.style.fontSize = currentFontSize + 'px';
-  const bottomPadding = Math.max(250, currentFontSize * 2);
-  storyContainer.scrollTo({
-    top: storyContainer.scrollHeight - storyContainer.clientHeight - bottomPadding,
-    behavior: 'smooth'
-  });
 });
 
 decreaseFontBtn.addEventListener('click', () => {
   currentFontSize -= 2;
   storyContainer.style.fontSize = currentFontSize + 'px';
-  const bottomPadding = Math.max(250, currentFontSize * 2);
-  storyContainer.scrollTo({
-    top: storyContainer.scrollHeight - storyContainer.clientHeight - bottomPadding,
-    behavior: 'smooth'
-  });
 });
 
 // Click to advance story
@@ -114,7 +93,7 @@ nextSentenceBtn.addEventListener('click', () => {
   advanceStory();
 });
 
-// Story navigation buttons flow naturally
+// Story navigation buttons
 prevBtn.addEventListener('click', () => {
   if (currentStoryIndex > 0) currentStoryIndex--;
   storySelect.value = currentStoryIndex;
