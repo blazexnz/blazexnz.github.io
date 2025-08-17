@@ -47,6 +47,11 @@ header select {
   touch-action: manipulation;
 }
 
+#headerSpacer {
+  height: 0px; /* dynamically updated on first click */
+  transition: height 0.2s;
+}
+
 main {
   flex: 1;
   display: flex;
@@ -168,7 +173,7 @@ main {
 </head>
 <body>
   <header>
-    <h1 id="appTitle">🌏 Language Learning App..//</h1>
+    <h1>🌏 Language Learning App</h1>
     <div class="dropdowns">
       <select id="languageSelect">
         <option value="vi">Vietnamese</option>
@@ -179,6 +184,9 @@ main {
       </select>
     </div>
   </header>
+
+  <!-- Spacer dynamically adjusts to push story to top -->
+  <div id="headerSpacer"></div>
 
   <main>
     <div class="font-controls">
