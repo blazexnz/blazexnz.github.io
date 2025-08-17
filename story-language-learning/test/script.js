@@ -62,12 +62,6 @@ function advanceStory() {
   if (currentSentenceIndex >= story.sentences.length && !showingEN) {
     storyContainer.textContent += `\n👉 Focus words: ${story.focusWords}\n`;
   }
-
-  // Smooth auto-scroll to keep buttons visible
-  storyContainer.scrollTo({
-    top: storyContainer.scrollHeight,
-    behavior: 'smooth'
-  });
 }
 
 function resetStoryDisplay() {
@@ -75,7 +69,6 @@ function resetStoryDisplay() {
   showingEN = false;
   storyContainer.textContent = '';
   advanceStory();
-  storyContainer.scrollTop = 0;
 }
 
 // Font controls
@@ -100,6 +93,7 @@ nextSentenceBtn.addEventListener('click', () => {
   advanceStory();
 });
 
+// Story navigation buttons
 prevBtn.addEventListener('click', () => {
   if (currentStoryIndex > 0) currentStoryIndex--;
   storySelect.value = currentStoryIndex;
