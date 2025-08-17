@@ -92,13 +92,9 @@ main {
   transition: background-color 0.2s;
   white-space: pre-wrap;
   font-size: 20px;
-  overflow-y: visible; /* removed scrolling */
-  max-height: none;    /* removed height limit */
+  overflow-y: visible;
+  max-height: none;
   text-align: left;
-  min-height: calc(100vh - 150px); /* ensure enough space for title at top */
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
 }
 
 .story-box:active {
@@ -172,7 +168,7 @@ main {
 </head>
 <body>
   <header>
-    <h1>🌏 Language Learning App///</h1>
+    <h1 id="appTitle">🌏 Language Learning App..//</h1>
     <div class="dropdowns">
       <select id="languageSelect">
         <option value="vi">Vietnamese</option>
