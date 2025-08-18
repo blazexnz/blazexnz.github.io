@@ -264,6 +264,18 @@
         { "vi": "Tôi trả tiền và về.", "en": "I pay and go home." }
       ],
       "focusWords": "tôi, đi, gọi, uống. New words: quán cà phê (coffee shop), cà phê (coffee)."
+    },
+{
+      "title": "Ăn sáng (Eating Breakfast)",
+      "theme": "Food",
+      "sentences": [
+        { "vi": "Tôi đói buổi sáng.", "en": "I am hungry in the morning." },
+        { "vi": "Tôi làm bánh mì nướng.", "en": "I make toast." },
+        { "vi": "Tôi ăn bánh mì với trứng.", "en": "I eat toast with eggs." },
+        { "vi": "Tôi uống một cốc sữa.", "en": "I drink a glass of milk." },
+        { "vi": "Tôi no rồi.", "en": "I am full now." }
+      ],
+      "focusWords": "tôi, ăn, sáng, no. New words in context: bánh mì (bread), trứng (egg), sữa (milk)."
     }
   ],
   "tlStories": [
@@ -531,6 +543,18 @@
         { "tl": "Nagbayad ako at umuwi.", "en": "I pay and go home." }
       ],
       "focusWords": "ako, pumunta, umorder, uminom. New words: kapehan (coffee shop), kape (coffee)."
+    },
+{
+      "title": "Kumain ng agahan",
+      "theme": "Food",
+      "sentences": [
+        { "tl": "Gutom ako sa umaga.", "en": "I am hungry in the morning." },
+        { "tl": "Gumawa ako ng toast.", "en": "I make toast." },
+        { "tl": "Kumain ako ng toast na may itlog.", "en": "I eat toast with eggs." },
+        { "tl": "Uminom ako ng basong gatas.", "en": "I drink a glass of milk." },
+        { "tl": "Busog na ako.", "en": "I am full now." }
+      ],
+      "focusWords": "ako, kumain, agahan, busog. New words in context: toast (bread), itlog (egg), gatas (milk)."
     }
   ],
   "jpStories": [
@@ -798,6 +822,18 @@
         { "jp": "Shiharai wo shite kaerimasu.", "en": "I pay and go home." }
       ],
       "focusWords": "watashi, iku, chuumon, nomu. New words: kohi shoppu (coffee shop), kohi (coffee)."
+    },
+{
+      "title": "Asagohan o taberu",
+      "theme": "Food",
+      "sentences": [
+        { "jp": "Asa wa onaka ga suita.", "en": "I am hungry in the morning." },
+        { "jp": "Tōsuto o tsukuru.", "en": "I make toast." },
+        { "jp": "Tōsuto to tamago o taberu.", "en": "I eat toast with eggs." },
+        { "jp": "Koppu no gyūnyū o nomu.", "en": "I drink a glass of milk." },
+        { "jp": "Onaka ga ippai da.", "en": "I am full now." }
+      ],
+      "focusWords": "watashi, taberu, asa, ippai. New words in context: tōsuto (toast), tamago (egg), gyūnyū (milk)."
     }
   ]
 }
