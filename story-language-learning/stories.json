@@ -209,6 +209,61 @@
         { "vi": "Tôi mua vài món nhỏ về nhà.", "en": "I buy a few small items." }
       ],
       "focusWords": "tôi, đi, nhìn, thử. New words in context: chợ đêm (night market), món ăn (dish)."
+    },
+{
+      "title": "Đi nhà thuốc (Going to Pharmacy)",
+      "theme": "Health",
+      "sentences": [
+        { "vi": "Tôi bị đau đầu.", "en": "I have a headache." },
+        { "vi": "Tôi đi nhà thuốc.", "en": "I go to the pharmacy." },
+        { "vi": "Tôi mua thuốc.", "en": "I buy medicine." },
+        { "vi": "Tôi uống thuốc.", "en": "I take the medicine." }
+      ],
+      "focusWords": "tôi, đi, mua, uống. New words: nhà thuốc (pharmacy), thuốc (medicine)."
+    },
+    {
+      "title": "Đi sân bay (Going to the Airport)",
+      "theme": "Travel",
+      "sentences": [
+        { "vi": "Tôi đi sân bay.", "en": "I go to the airport." },
+        { "vi": "Tôi làm thủ tục.", "en": "I check in." },
+        { "vi": "Tôi lên máy bay.", "en": "I board the plane." },
+        { "vi": "Chuyến bay cất cánh.", "en": "The plane takes off." }
+      ],
+      "focusWords": "tôi, đi, lên, chuyến bay. New words: sân bay (airport), thủ tục (check-in)."
+    },
+    {
+      "title": "Đi bưu điện (Going to the Post Office)",
+      "theme": "Daily Life",
+      "sentences": [
+        { "vi": "Tôi đi bưu điện.", "en": "I go to the post office." },
+        { "vi": "Tôi gửi bưu phẩm.", "en": "I send a package." },
+        { "vi": "Tôi mua tem.", "en": "I buy stamps." },
+        { "vi": "Tôi nhận hóa đơn.", "en": "I receive the receipt." }
+      ],
+      "focusWords": "tôi, đi, gửi, nhận. New words: bưu điện (post office), bưu phẩm (package)."
+    },
+    {
+      "title": "Đi ngân hàng (Going to the Bank)",
+      "theme": "Daily Life",
+      "sentences": [
+        { "vi": "Tôi đi ngân hàng.", "en": "I go to the bank." },
+        { "vi": "Tôi rút tiền.", "en": "I withdraw money." },
+        { "vi": "Tôi gửi tiền.", "en": "I deposit money." },
+        { "vi": "Tôi nhận biên lai.", "en": "I receive a receipt." }
+      ],
+      "focusWords": "tôi, đi, rút, gửi. New words: ngân hàng (bank), biên lai (receipt)."
+    },
+    {
+      "title": "Đi quán cà phê (Going to a Coffee Shop)",
+      "theme": "Food",
+      "sentences": [
+        { "vi": "Tôi đi quán cà phê.", "en": "I go to a coffee shop." },
+        { "vi": "Tôi gọi cà phê.", "en": "I order coffee." },
+        { "vi": "Tôi uống cà phê.", "en": "I drink coffee." },
+        { "vi": "Tôi trả tiền và về.", "en": "I pay and go home." }
+      ],
+      "focusWords": "tôi, đi, gọi, uống. New words: quán cà phê (coffee shop), cà phê (coffee)."
     }
   ],
   "tlStories": [
@@ -421,6 +476,61 @@
         { "tl": "Bumili ako ng ilang maliit na bagay.", "en": "I buy a few small items." }
       ],
       "focusWords": "ako, pumunta, tingin, subok. New words in context: night market (night market), pagkain (dish)."
+    },
+{
+      "title": "Pumunta sa Botika (Going to Pharmacy)",
+      "theme": "Health",
+      "sentences": [
+        { "tl": "Masakit ang ulo ko.", "en": "I have a headache." },
+        { "tl": "Pumunta ako sa botika.", "en": "I go to the pharmacy." },
+        { "tl": "Bumili ako ng gamot.", "en": "I buy medicine." },
+        { "tl": "Uminom ako ng gamot.", "en": "I take the medicine." }
+      ],
+      "focusWords": "ako, pumunta, bumili, uminom. New words: botika (pharmacy), gamot (medicine)."
+    },
+    {
+      "title": "Pumunta sa Paliparan (Going to the Airport)",
+      "theme": "Travel",
+      "sentences": [
+        { "tl": "Pumunta ako sa paliparan.", "en": "I go to the airport." },
+        { "tl": "Nag-check in ako.", "en": "I check in." },
+        { "tl": "Sumakay ako sa eroplano.", "en": "I board the plane." },
+        { "tl": "Lumipad ang eroplano.", "en": "The plane takes off." }
+      ],
+      "focusWords": "ako, pumunta, sumakay, lumipad. New words: paliparan (airport), check-in (check-in)."
+    },
+    {
+      "title": "Pumunta sa Post Office (Going to the Post Office)",
+      "theme": "Daily Life",
+      "sentences": [
+        { "tl": "Pumunta ako sa post office.", "en": "I go to the post office." },
+        { "tl": "Nagpadala ako ng package.", "en": "I send a package." },
+        { "tl": "Bumili ako ng selyo.", "en": "I buy stamps." },
+        { "tl": "Nakakuha ako ng resibo.", "en": "I receive the receipt." }
+      ],
+      "focusWords": "ako, pumunta, magpadala, makatanggap. New words: post office (post office), package (package)."
+    },
+    {
+      "title": "Pumunta sa Bangko (Going to the Bank)",
+      "theme": "Daily Life",
+      "sentences": [
+        { "tl": "Pumunta ako sa bangko.", "en": "I go to the bank." },
+        { "tl": "Nang-withdraw ako ng pera.", "en": "I withdraw money." },
+        { "tl": "Nagdeposito ako ng pera.", "en": "I deposit money." },
+        { "tl": "Nakakuha ako ng resibo.", "en": "I receive a receipt." }
+      ],
+      "focusWords": "ako, pumunta, withdraw, deposit. New words: bangko (bank), resibo (receipt)."
+    },
+    {
+      "title": "Pumunta sa Kapehan (Going to a Coffee Shop)",
+      "theme": "Food",
+      "sentences": [
+        { "tl": "Pumunta ako sa kapehan.", "en": "I go to a coffee shop." },
+        { "tl": "Umorder ako ng kape.", "en": "I order coffee." },
+        { "tl": "Uminom ako ng kape.", "en": "I drink coffee." },
+        { "tl": "Nagbayad ako at umuwi.", "en": "I pay and go home." }
+      ],
+      "focusWords": "ako, pumunta, umorder, uminom. New words: kapehan (coffee shop), kape (coffee)."
     }
   ],
   "jpStories": [
@@ -633,6 +743,61 @@
         { "jp": "Chotto kaimono shimashita.", "en": "I buy a few small items." }
       ],
       "focusWords": "watashi, iku, miru, tamesu. New words in context: yoru no ichiba (night market), tabemono (dish)."
+    },
+{
+      "title": "Kusuriya e iku (Going to Pharmacy)",
+      "theme": "Health",
+      "sentences": [
+        { "jp": "Atama ga itai desu.", "en": "I have a headache." },
+        { "jp": "Kusuriya e ikimasu.", "en": "I go to the pharmacy." },
+        { "jp": "Kusuri wo kaimasu.", "en": "I buy medicine." },
+        { "jp": "Kusuri wo nomimasu.", "en": "I take the medicine." }
+      ],
+      "focusWords": "watashi, iku, kau, nomu. New words: kusuriya (pharmacy), kusuri (medicine)."
+    },
+    {
+      "title": "Kuko e iku (Going to the Airport)",
+      "theme": "Travel",
+      "sentences": [
+        { "jp": "Kuko e ikimasu.", "en": "I go to the airport." },
+        { "jp": "Chekku in wo shimasu.", "en": "I check in." },
+        { "jp": "Hikouki ni norimasu.", "en": "I board the plane." },
+        { "jp": "Hikouki ga tobiました.", "en": "The plane takes off." }
+      ],
+      "focusWords": "watashi, iku, noru, tobu. New words: kuko (airport), chekku in (check-in)."
+    },
+    {
+      "title": "Yubinkyoku e iku (Going to the Post Office)",
+      "theme": "Daily Life",
+      "sentences": [
+        { "jp": "Yubinkyoku e ikimasu.", "en": "I go to the post office." },
+        { "jp": "Paketto wo okurimasu.", "en": "I send a package." },
+        { "jp": "Kampan wo kaimasu.", "en": "I buy stamps." },
+        { "jp": "Ryoushuusho wo moraimashita.", "en": "I receive a receipt." }
+      ],
+      "focusWords": "watashi, iku, okuru, morau. New words: yubinkyoku (post office), paketto (package)."
+    },
+    {
+      "title": "Ginkou e iku (Going to the Bank)",
+      "theme": "Daily Life",
+      "sentences": [
+        { "jp": "Ginkou e ikimasu.", "en": "I go to the bank." },
+        { "jp": "Okane wo hikuimasu.", "en": "I withdraw money." },
+        { "jp": "Okane wo azukemasu.", "en": "I deposit money." },
+        { "jp": "Ryoushuusho wo moraimashita.", "en": "I receive a receipt." }
+      ],
+      "focusWords": "watashi, iku, hiku, azukeru. New words: ginkou (bank), ryoushuusho (receipt)."
+    },
+    {
+      "title": "Kohi shoppu e iku (Going to a Coffee Shop)",
+      "theme": "Food",
+      "sentences": [
+        { "jp": "Kohi shoppu e ikimasu.", "en": "I go to a coffee shop." },
+        { "jp": "Kohi wo chuumon shimasu.", "en": "I order coffee." },
+        { "jp": "Kohi wo nomimasu.", "en": "I drink coffee." },
+        { "jp": "Shiharai wo shite kaerimasu.", "en": "I pay and go home." }
+      ],
+      "focusWords": "watashi, iku, chuumon, nomu. New words: kohi shoppu (coffee shop), kohi (coffee)."
     }
   ]
 }
