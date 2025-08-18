@@ -206,7 +206,7 @@
         { "vi": "Tôi đi chợ đêm.", "en": "I go to the night market." },
         { "vi": "Tôi nhìn đồ ăn và quà.", "en": "I look at food and souvenirs." },
         { "vi": "Tôi thử món ăn.", "en": "I try some food." },
-        { "vi": "Tôi mua vài món nhỏ về nhà.", "en": "I buy a few small items." }
+        { "vi": "Tôi mua vài món nhỏ về nhà.", "en": "I buy a few small items to bring home." }
       ],
       "focusWords": "tôi, đi, nhìn, thử. New words in context: chợ đêm (night market), món ăn (dish)."
     },
@@ -837,3 +837,4 @@
     }
   ]
 }
+
