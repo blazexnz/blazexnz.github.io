@@ -16,10 +16,10 @@ function generateScrambles() {
     scrambles.push(createWCAScramble(randomLength));
   }
 
-  // Display scrambles on the page
+  // Display scrambles on the page with numbers bolded
   const scrambleContainer = document.getElementById('scrambles');
   scrambleContainer.innerHTML = scrambles
-    .map(scramble => `<p class="scramble" onclick="removeScramble(this)">${scramble}</p>`)
+    .map((scramble, i) => `<p class="scramble" onclick="removeScramble(this)"><strong>${i+1}.</strong> ${scramble}</p>`)
     .join('');
 }
 
