@@ -2,6 +2,10 @@
 
 This page gives you a the structure for each mode.
 
+- [Standard](#standard)
+- [For deceased](#for-deceased)
+- [One decade)[#one-decade]
+
 ## Standard
 ### Opening prayers
 - signOfTheCross
