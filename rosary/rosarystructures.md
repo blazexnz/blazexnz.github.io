@@ -6,7 +6,6 @@ This page gives you a the structure for each mode.
 - [For deceased](#for-deceased)
 - [One decade](#one-decade)
 
-
 ## Standard
 ### Opening prayers
 - signOfTheCross
@@ -27,7 +26,6 @@ This page gives you a the structure for each mode.
 - closingDialogue
 - closingPrayer
 - signOfTheCross
-
 
 ## For deceased
 ### Opening prayers
@@ -54,7 +52,6 @@ This page gives you a the structure for each mode.
 - litanyOfTheBlessedVirginMary
 - concludingPrayerForTheDeceased
 - signOfTheCross
-
 
 ## One decade
 ### Opening prayers
