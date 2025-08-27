@@ -43,7 +43,7 @@
     li {
         display: flex;
         flex-direction: column;
-        align-items: center; /* centers card and text inside the cell */
+        align-items: center;
         text-align: center;
     }
 
@@ -58,7 +58,7 @@
         box-shadow: 0 3px 8px rgba(0,0,0,0.08);
         transition: transform 0.2s, box-shadow 0.2s;
         cursor: pointer;
-        font-size: 2rem; /* emoji size */
+        font-size: 2rem;
         margin-bottom: 6px;
     }
 
@@ -77,19 +77,9 @@
         color: #7f8c8d;
     }
 
-    .footer-links {
-        text-align: center;
-        margin: 50px 0 30px 0;
-    }
-
-    .footer-links a {
-        margin: 0 10px;
-        color: #34495e;
-        font-weight: 500;
-    }
-
-    .footer-links a:hover {
-        color: #1abc9c;
+    /* Section separator */
+    .section {
+        margin-top: 50px;
     }
 </style>
 </head>
@@ -195,12 +185,23 @@
         </li>
     </ul>
 
-    <div class="footer-links">
-        <a href="https://github.com/blazexnz/blazexnz.github.io/tree/main" target="_blank">blazexnz Repo</a> |
-        <a href="https://github.com/codarionis/codarionis.github.io/tree/main" target="_blank">codarionis Repo</a> |
-        <a href="https://codarionis.github.io" target="_blank">codarionis Home</a>
+    <!-- Footer Links as Separate Tile Section -->
+    <div class="section">
+        <ul class="app-list">
+            <li>
+                <div class="app-card" onclick="window.open('https://github.com/blazexnz/blazexnz.github.io/tree/main', '_blank')">📂</div>
+                <div class="app-name">blazexnz Repo</div>
+            </li>
+            <li>
+                <div class="app-card" onclick="window.open('https://github.com/codarionis/codarionis.github.io/tree/main', '_blank')">📂</div>
+                <div class="app-name">codarionis Repo</div>
+            </li>
+            <li>
+                <div class="app-card" onclick="window.open('https://codarionis.github.io', '_blank')">🏠</div>
+                <div class="app-name">codarionis Home</div>
+            </li>
+        </ul>
     </div>
 </div>
 </body>
 </html>
-
