@@ -119,6 +119,11 @@ function checkAnswer() {
       incorrectCountEl.textContent = incorrectCount;
       answerInput.value = "";
       problemText.style.color = "red"; // wrong answer
+
+      // Trigger shake animation
+      problemText.classList.remove("shake"); // reset
+      void problemText.offsetWidth; // force reflow
+      problemText.classList.add("shake");
     }
     answerInput.focus();
   }
