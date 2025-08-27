@@ -1,113 +1,206 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>blazexnz index</title>
-    <meta name="robots" content="noindex, nofollow">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 40px;
-        }
-        h1 {
-            text-align: center;
-        }
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        li {
-            margin: 10px 0;
-        }
-        a {
-            text-decoration: none;
-            color: #0066cc;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        .release-date {
-            font-style: italic;
-            color: #555;
-            margin-left: 10px;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>blazexnz App Directory</title>
+<style>
+    body, ul, li {
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: #f5f7fa;
+        color: #333;
+    }
+
+    h1 {
+        text-align: center;
+        margin: 30px 0;
+        color: #2c3e50;
+        font-size: 2rem;
+    }
+
+    .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 10px;
+    }
+
+    ul.app-list {
+        list-style: none;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+        gap: 20px;
+        justify-items: center;
+        align-items: start;
+        text-align: center;
+    }
+
+    li {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* centers card and text inside the cell */
+        text-align: center;
+    }
+
+    .app-card {
+        width: 60px;
+        height: 60px;
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #fff;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+        transition: transform 0.2s, box-shadow 0.2s;
+        cursor: pointer;
+        font-size: 2rem; /* emoji size */
+        margin-bottom: 6px;
+    }
+
+    .app-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+    }
+
+    .app-name {
+        font-size: 0.8rem;
+        font-weight: 600;
+    }
+
+    .release-date {
+        font-size: 0.65rem;
+        color: #7f8c8d;
+    }
+
+    .footer-links {
+        text-align: center;
+        margin: 50px 0 30px 0;
+    }
+
+    .footer-links a {
+        margin: 0 10px;
+        color: #34495e;
+        font-weight: 500;
+    }
+
+    .footer-links a:hover {
+        color: #1abc9c;
+    }
+</style>
 </head>
 <body>
-    <h1>blazexnz app directory</h1>
-    <ul>
-        <li><a href="./binary-memory-training/" target="_blank">Binary memory training app</a></li>
-        <li><a href="./learn-binary/" target="_blank">Learn binary app</a></li>
-        <li><a href="./speedcubing-app/" target="_blank">Speedcubing scrambler generator</a></li>
-        <li><a href="./language-learning-app/" target="_blank">Learn language numbers</a></li>
-        <li><a href="./random-word-number-generator/" target="_blank">Random word number generator</a></li>
-        <li><a href="./pao-lookup/" target="_blank">PAO system lookup</a></li>
-        <li><a href="./algs-reference/" target="_blank">Speed Cubing Algorithms</a></li>
-        <li><a href="./pao-system/" target="_blank">PAO system</a></li>
-        <li><a href="./pi-memory-training/" target="_blank">Pi Memory Training</a></li>
-        <li><a href="./more-pi/" target="_blank">More than Pi Memory Training</a></li>
-        <li><a href="./rosary/" target="_blank">Rosary</a></li>
-        <li><a href="./dot-fidget/" target="_blank">Dot fidget</a></li>
-        <li><a href="./tic-tac-toe/" target="_blank">Tic tac toe</a></li>
-        <li><a href="./bouncy-ball-game/" target="_blank">Bouncy ball game</a></li>
-        <li><a href="./paper-scissors-rock/" target="_blank">Paper scissors rock</a></li>
-        <li><a href="./prayer-app/" target="_blank">Prayer app</a></li>
-        <li><a href="./story-language-learning/" target="_blank">Language stories</a></li>
-        <li><a href="./pi-recall/" target="_blank">Pi recall app</a></li>
-        <!-- Add more links as needed -->
-        <br>
-        <br>
-        <li><a href="https://github.com/blazexnz/blazexnz.github.io/tree/main">Go to blazexnz repo</a></li>
-        <br>
-        <li><a href="./test/" target="_blank">Test</a></li>
-        <br>
-        <li><a href="https://github.com/codarionis/codarionis.github.io/tree/main">Go to codarionis repo</a> or <a href="https://codarionis.github.io">Go to codarionis home</a></li>
+<h1>blazexnz Apps</h1>
+<div class="container">
+    <ul class="app-list">
+        <li>
+            <div class="app-card" onclick="window.open('./binary-memory-training/', '_blank')">🧠</div>
+            <div class="app-name">Binary Memory</div>
+            <div class="release-date">Nov 2024</div>
+        </li>
+        <li>
+            <div class="app-card" onclick="window.open('./learn-binary/', '_blank')">💻</div>
+            <div class="app-name">Learn Binary</div>
+            <div class="release-date">Nov 2024</div>
+        </li>
+        <li>
+            <div class="app-card" onclick="window.open('./speedcubing-app/', '_blank')">🧩</div>
+            <div class="app-name">Speedcubing</div>
+            <div class="release-date">Dec 2025</div>
+        </li>
+        <li>
+            <div class="app-card" onclick="window.open('./language-learning-app/', '_blank')">🔢</div>
+            <div class="app-name">Learn Numbers</div>
+            <div class="release-date">Jan 2025</div>
+        </li>
+        <li>
+            <div class="app-card" onclick="window.open('./random-word-number-generator/', '_blank')">🎲</div>
+            <div class="app-name">Random Word</div>
+            <div class="release-date">Feb 2025</div>
+        </li>
+        <li>
+            <div class="app-card" onclick="window.open('./pao-lookup/', '_blank')">📖</div>
+            <div class="app-name">PAO Lookup</div>
+            <div class="release-date">Feb 2025</div>
+        </li>
+        <li>
+            <div class="app-card" onclick="window.open('./algs-reference/', '_blank')">♟️</div>
+            <div class="app-name">Cubing Algs</div>
+            <div class="release-date">Mar 2025</div>
+        </li>
+        <li>
+            <div class="app-card" onclick="window.open('./pao-system/', '_blank')">🗂️</div>
+            <div class="app-name">PAO System</div>
+            <div class="release-date">Mar 2025</div>
+        </li>
+        <li>
+            <div class="app-card" onclick="window.open('./pi-memory-training/', '_blank')">π</div>
+            <div class="app-name">Pi Memory</div>
+            <div class="release-date">Apr 2025</div>
+        </li>
+        <li>
+            <div class="app-card" onclick="window.open('./more-pi/', '_blank')">🔢</div>
+            <div class="app-name">More Pi</div>
+            <div class="release-date">Jul 2025</div>
+        </li>
+        <li>
+            <div class="app-card" onclick="window.open('./rosary/', '_blank')">📿</div>
+            <div class="app-name">Rosary</div>
+            <div class="release-date">Aug 2025</div>
+        </li>
+        <li>
+            <div class="app-card" onclick="window.open('./dot-fidget/', '_blank')">🔵</div>
+            <div class="app-name">Dot Fidget</div>
+            <div class="release-date">Aug 2025</div>
+        </li>
+        <li>
+            <div class="app-card" onclick="window.open('./tic-tac-toe/', '_blank')">❌</div>
+            <div class="app-name">Tic Tac Toe</div>
+            <div class="release-date">Aug 2025</div>
+        </li>
+        <li>
+            <div class="app-card" onclick="window.open('./bouncy-ball-game/', '_blank')">⚽</div>
+            <div class="app-name">Bouncy Ball</div>
+            <div class="release-date">Aug 2025</div>
+        </li>
+        <li>
+            <div class="app-card" onclick="window.open('./paper-scissors-rock/', '_blank')">✂️</div>
+            <div class="app-name">Paper Scissors Rock</div>
+            <div class="release-date">Aug 2025</div>
+        </li>
+        <li>
+            <div class="app-card" onclick="window.open('./prayer-app/', '_blank')">🙏</div>
+            <div class="app-name">Prayer App</div>
+            <div class="release-date">Aug 2025</div>
+        </li>
+        <li>
+            <div class="app-card" onclick="window.open('./story-language-learning/', '_blank')">📚</div>
+            <div class="app-name">Language Stories</div>
+            <div class="release-date">Aug 2025</div>
+        </li>
+        <li>
+            <div class="app-card" onclick="window.open('./pi-recall/', '_blank')">🥧</div>
+            <div class="app-name">Pi Recall</div>
+            <div class="release-date">Aug 2025</div>
+        </li>
+        <!-- Add new cards above this. Test card below. -->
+        <li>
+            <div class="app-card" onclick="window.open('./test/', '_blank')">🧪</div>
+            <div class="app-name">Test repo</div>
+            <div class="release-date">Now</div>
+        </li>
     </ul>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <ul>Binary memory training app <span class="release-date">(Released: November 2024)</span></ul>
-    <ul>Learn binary app <span class="release-date">(Released: November 2024)</span></ul>
-    <ul>Speedcubing scrambler generator <span class="release-date">(Released: December 2025)</span></ul>
-    <ul>Learn language numbers <span class="release-date">(Released: January 2025)</span></ul>
-    <ul>Random word number generator <span class="release-date">(Released: February 2025)</span></ul>
-    <ul>PAO system lookup <span class="release-date">(Released: February 2025)</span></ul>
-    <ul>Speed Cubing Algorithms <span class="release-date">(Released: March 2025)</span></ul>
-    <ul>PAO system<span class="release-date">(Released: March 2025)</span></ul>
-    <ul>Pi Memory Training<span class="release-date">(Released: April 2025)</span></ul>
-    <ul>More than Pi Memory Training<span class="release-date">(Released: July 2025)</span></ul>
-    <ul>Rosary<span class="release-date">(Released: August 2025)</span></ul>
-    <ul>Dot Fidget<span class="release-date">(Released: August 2025)</span></ul>
-    <ul>Tic Tac Toe<span class="release-date">(Released: August 2025)</span></ul>
-    <ul>Bouncy Ball Game<span class="release-date">(Released: August 2025)</span></ul>
-    <ul>Paper scissors rock<span class="release-date">(Released: August 2025)</span></ul>
-    <ul>Prayer app<span class="release-date">(Released: August 2025)</span></ul>
-    <ul>Language stories<span class="release-date">(Released: August 2025)</span></ul>
-    <ul>Pi recall<span class="release-date">(Released: August 2025)</span></ul>
-    <!-- Add more as needed -->
+
+    <div class="footer-links">
+        <a href="https://github.com/blazexnz/blazexnz.github.io/tree/main" target="_blank">blazexnz Repo</a> |
+        <a href="./test/" target="_blank">blazexnz Test</a> |
+        <a href="https://github.com/codarionis/codarionis.github.io/tree/main" target="_blank">codarionis Repo</a> |
+        <a href="https://codarionis.github.io" target="_blank">codarionis Home</a>
+    </div>
+</div>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
