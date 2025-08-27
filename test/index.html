@@ -1,207 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="robots" content="noindex, nofollow">
-<title>blazexnz App Directory</title>
-<style>
-    body, ul, li {
-        margin: 0;
-        padding: 0;
-    }
-
+  <meta charset="UTF-8">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pi Recall Trainer</title>
+  <style>
     body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background: #f5f7fa;
-        color: #333;
-    }
-
-    h1 {
-        text-align: center;
-        margin: 30px 0;
-        color: #2c3e50;
-        font-size: 2rem;
+      font-family: sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background: #f5f5f5;
     }
 
     .container {
-        max-width: 900px;
-        margin: 0 auto;
-        padding: 0 10px;
+      text-align: center;
+      max-width: 400px;
+      width: 90%;
+      background: #fff;
+      padding: 20px;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
-    ul.app-list {
-        list-style: none;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
-        gap: 20px;
-        justify-items: center;
-        align-items: start;
-        text-align: center;
+    h1 {
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
     }
 
-    li {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
+    input[type=number] {
+      font-size: 1.5rem;
+      padding: 10px;
+      width: 100%;
+      margin: 10px 0;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      text-align: center;
     }
 
-    .app-card {
-        width: 60px;
-        height: 60px;
-        border-radius: 15px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: #fff;
-        box-shadow: 0 3px 8px rgba(0,0,0,0.08);
-        transition: transform 0.2s, box-shadow 0.2s;
-        cursor: pointer;
-        font-size: 2rem;
-        margin-bottom: 6px;
+    #startIndex {
+      width: 120px;
     }
 
-    .app-card:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+button {
+  font-size: 1rem;
+  padding: 10px 15px;
+  margin: 8px;
+  border: 2px solid transparent; /* reserve space for border */
+  border-radius: 10px;
+  background: #000000;
+  color: #fff;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #ffffff;
+  color: #000000;
+  border-color: #000000; /* changes the transparent border to black */
+}
+
+    #pi-display {
+      margin: 20px 0;
+      font-size: 1.5rem;
+      white-space: nowrap;
+      overflow: hidden;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 8px;
+      display: flex;
+      justify-content: center;
+      position: relative;
     }
 
-    .app-name {
-        font-size: 0.8rem;
-        font-weight: 600;
+    #pi-display-inner {
+      display: inline-block;
+      white-space: nowrap;
+      transition: none;
     }
 
-    .release-date {
-        font-size: 0.65rem;
-        color: #7f8c8d;
+    #counter, #incorrect-counter {
+      font-weight: bold;
+      margin: 10px 0;
     }
 
-    /* Section separator */
-    .section {
-        margin-top: 50px;
+    #timer {
+      margin: 10px 0;
+      color: #000000;
     }
-</style>
+
+    .incorrect {
+      text-decoration: underline;
+      text-decoration-color: red;
+      text-decoration-thickness: 3px;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
 </head>
 <body>
-<h1>blazexnz Apps</h1>
-<div class="container">
-    <ul class="app-list">
-        <li>
-            <div class="app-card" onclick="window.open('./binary-memory-training/', '_blank')">🧠</div>
-            <div class="app-name">Binary Memory</div>
-            <div class="release-date">Nov 2024</div>
-        </li>
-        <li>
-            <div class="app-card" onclick="window.open('./learn-binary/', '_blank')">💻</div>
-            <div class="app-name">Learn Binary</div>
-            <div class="release-date">Nov 2024</div>
-        </li>
-        <li>
-            <div class="app-card" onclick="window.open('./speedcubing-app/', '_blank')">🧩</div>
-            <div class="app-name">Speedcubing</div>
-            <div class="release-date">Dec 2025</div>
-        </li>
-        <li>
-            <div class="app-card" onclick="window.open('./language-learning-app/', '_blank')">🔢</div>
-            <div class="app-name">Learn Numbers</div>
-            <div class="release-date">Jan 2025</div>
-        </li>
-        <li>
-            <div class="app-card" onclick="window.open('./random-word-number-generator/', '_blank')">🎲</div>
-            <div class="app-name">Random Word</div>
-            <div class="release-date">Feb 2025</div>
-        </li>
-        <li>
-            <div class="app-card" onclick="window.open('./pao-lookup/', '_blank')">📖</div>
-            <div class="app-name">PAO Lookup</div>
-            <div class="release-date">Feb 2025</div>
-        </li>
-        <li>
-            <div class="app-card" onclick="window.open('./algs-reference/', '_blank')">♟️</div>
-            <div class="app-name">Cubing Algs</div>
-            <div class="release-date">Mar 2025</div>
-        </li>
-        <li>
-            <div class="app-card" onclick="window.open('./pao-system/', '_blank')">🗂️</div>
-            <div class="app-name">PAO System</div>
-            <div class="release-date">Mar 2025</div>
-        </li>
-        <li>
-            <div class="app-card" onclick="window.open('./pi-memory-training/', '_blank')">π</div>
-            <div class="app-name">Pi Memory</div>
-            <div class="release-date">Apr 2025</div>
-        </li>
-        <li>
-            <div class="app-card" onclick="window.open('./more-pi/', '_blank')">🔢</div>
-            <div class="app-name">More Pi</div>
-            <div class="release-date">Jul 2025</div>
-        </li>
-        <li>
-            <div class="app-card" onclick="window.open('./rosary/', '_blank')">📿</div>
-            <div class="app-name">Rosary</div>
-            <div class="release-date">Aug 2025</div>
-        </li>
-        <li>
-            <div class="app-card" onclick="window.open('./dot-fidget/', '_blank')">🔵</div>
-            <div class="app-name">Dot Fidget</div>
-            <div class="release-date">Aug 2025</div>
-        </li>
-        <li>
-            <div class="app-card" onclick="window.open('./tic-tac-toe/', '_blank')">❌</div>
-            <div class="app-name">Tic Tac Toe</div>
-            <div class="release-date">Aug 2025</div>
-        </li>
-        <li>
-            <div class="app-card" onclick="window.open('./bouncy-ball-game/', '_blank')">⚽</div>
-            <div class="app-name">Bouncy Ball</div>
-            <div class="release-date">Aug 2025</div>
-        </li>
-        <li>
-            <div class="app-card" onclick="window.open('./paper-scissors-rock/', '_blank')">✂️</div>
-            <div class="app-name">Paper Scissors Rock</div>
-            <div class="release-date">Aug 2025</div>
-        </li>
-        <li>
-            <div class="app-card" onclick="window.open('./prayer-app/', '_blank')">🙏</div>
-            <div class="app-name">Prayer App</div>
-            <div class="release-date">Aug 2025</div>
-        </li>
-        <li>
-            <div class="app-card" onclick="window.open('./story-language-learning/', '_blank')">📚</div>
-            <div class="app-name">Language Stories</div>
-            <div class="release-date">Aug 2025</div>
-        </li>
-        <li>
-            <div class="app-card" onclick="window.open('./pi-recall/', '_blank')">🥧</div>
-            <div class="app-name">Pi Recall</div>
-            <div class="release-date">Aug 2025</div>
-        </li>
-        <!-- Add new cards above this. Test card below. -->
-        <li>
-            <div class="app-card" onclick="window.open('./test/', '_blank')">🧪</div>
-            <div class="app-name">Test repo</div>
-            <div class="release-date">Now</div>
-        </li>
-    </ul>
+  <div class="container">
+    <!-- Setup screen -->
+    <div id="setup-screen">
+      <h1>Pi Recall Trainer</h1>
+      <label for="startIndex">Start at digit (after decimal):</label><br>
+      <input type="number" id="startIndex" min="0" value="0"><br><br>
 
-    <!-- Footer Links as Separate Tile Section -->
-    <div class="section">
-        <ul class="app-list">
-            <li>
-                <div class="app-card" onclick="window.open('https://github.com/blazexnz/blazexnz.github.io/tree/main', '_blank')">📂</div>
-                <div class="app-name">blazexnz Repo</div>
-            </li>
-            <li>
-                <div class="app-card" onclick="window.open('https://github.com/codarionis/codarionis.github.io/tree/main', '_blank')">📂</div>
-                <div class="app-name">codarionis Repo</div>
-            </li>
-            <li>
-                <div class="app-card" onclick="window.open('https://codarionis.github.io', '_blank')">🏠</div>
-                <div class="app-name">codarionis Home</div>
-            </li>
-        </ul>
+      <label><input type="radio" name="mode" value="competition" checked> Competition Mode</label><br>
+      <label><input type="radio" name="mode" value="practice"> Practice Mode</label><br><br>
+
+      <button id="beginBtn">Begin</button>
     </div>
-</div>
+
+    <!-- Training screen -->
+    <div id="training-screen" class="hidden">
+      <div id="pi-display">
+        <div id="pi-display-inner">3.</div>
+      </div>
+      <input id="digit-input" type="tel" inputmode="numeric" pattern="[0-9]*" maxlength="1" autofocus>
+      <div id="counter">Correct: 0</div>
+      <div id="incorrect-counter" class="hidden">Incorrect: 0</div>
+      <div id="timer">Time: 0.0s</div>
+      <div>
+        <button id="startOverBtn">Start Over</button>
+        <button id="retryBtn">Retry</button>
+      </div>
+      <div id="message"></div>
+    </div>
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>
