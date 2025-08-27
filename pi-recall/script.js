@@ -100,6 +100,7 @@ beginBtn.addEventListener("click", () => {
   if (mode === "practice") incorrectCounter.classList.remove("hidden");
   else incorrectCounter.classList.add("hidden");
   message.textContent = "";
+  message.style.color = "black"; // reset color
   digitInput.value = "";
   digitInput.focus();
 });
@@ -122,17 +123,21 @@ digitInput.addEventListener("input", () => {
     currentIndex++;
     forgivenessUsed = false;
     message.textContent = "";
+    message.style.color = "black"; // reset color when correct
   } else {
     if (mode === "practice") {
       incorrectCount++;
       incorrectCounter.textContent = `Incorrect: ${incorrectCount}`;
       message.textContent = "Incorrect, try again!";
+      message.style.color = "red";
     } else {
       if (!forgivenessUsed) {
         message.textContent = "Incorrect! One more chance...";
+        message.style.color = "red";
         forgivenessUsed = true;
       } else {
         message.textContent = "Incorrect! Timer stopped.";
+        message.style.color = "red";
         clearInterval(timerInterval);
       }
     }
@@ -156,6 +161,7 @@ retryBtn.addEventListener("click", () => {
   if (mode === "practice") incorrectCounter.classList.remove("hidden");
   else incorrectCounter.classList.add("hidden");
   message.textContent = "";
+  message.style.color = "black"; // reset color
   digitInput.value = "";
   digitInput.focus();
   renderDigits();
