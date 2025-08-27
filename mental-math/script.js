@@ -111,7 +111,6 @@ submitBtn.addEventListener("click", () => {
 // Fullscreen click/touch for Continuous Mode
 document.body.addEventListener("click", (e) => {
   if (mode === "continuous") {
-    // Ignore clicks on input mode elements or control buttons
     if (!inputMode.contains(e.target) && !e.target.closest(".controls")) {
       problemCount++;
       problemCountEl.textContent = problemCount;
