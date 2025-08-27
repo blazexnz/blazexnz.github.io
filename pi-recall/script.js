@@ -22,14 +22,14 @@ const PI_DIGITS = "14159265358979323846264338327950288419716939937510"
 let startIndex = 0;
 let currentIndex = 0;
 let correctCount = 0;
-let incorrectCount = 0;  // New counter for practice mode
+let incorrectCount = 0;
 let forgivenessUsed = false;
 let started = false;
 let startTime = null;
 let timerInterval = null;
 let mode = "competition";
 
-let displayedDigits = ""; // tracks exactly what is shown in the scroll
+let displayedDigits = "";
 
 const setupScreen = document.getElementById("setup-screen");
 const trainingScreen = document.getElementById("training-screen");
@@ -86,7 +86,7 @@ beginBtn.addEventListener("click", () => {
 
   currentIndex = startIndex;
   correctCount = 0;
-  incorrectCount = 0; // Reset incorrect counter
+  incorrectCount = 0;
   forgivenessUsed = false;
   displayedDigits = "3." + PI_DIGITS.slice(0, startIndex);
   resetTimer();
@@ -124,7 +124,7 @@ digitInput.addEventListener("input", () => {
     message.textContent = "";
   } else {
     if (mode === "practice") {
-      incorrectCount++;  // Increment counter for forgiven mistakes
+      incorrectCount++;
       incorrectCounter.textContent = `Incorrect: ${incorrectCount}`;
       message.textContent = "Incorrect, try again!";
     } else {
@@ -146,7 +146,7 @@ digitInput.addEventListener("input", () => {
 retryBtn.addEventListener("click", () => {
   currentIndex = startIndex;
   correctCount = 0;
-  incorrectCount = 0; // Reset incorrect counter
+  incorrectCount = 0;
   forgivenessUsed = false;
   displayedDigits = "3." + PI_DIGITS.slice(0, startIndex);
   resetTimer();
@@ -166,4 +166,3 @@ startOverBtn.addEventListener("click", () => {
   setupScreen.classList.remove("hidden");
   resetTimer();
 });
-
