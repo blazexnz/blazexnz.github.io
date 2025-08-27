@@ -10,7 +10,7 @@ A simple, mobile-friendly web app to practice addition and multiplication proble
   - **Level 2:** Double-digit primary number, second number can be 1–3 digits  
   - **Level 3:** Triple-digit primary number, second number can be 1–3 digits  
 - **Two modes:**  
-  - **Input & Check:** Enter your answer and submit; correct/incorrect counters update in real-time  
+  - **Input & Check:** Enter your answer and submit; correct/incorrect counters update in real-time, instant feedback on wrong answers  
   - **Continuous Tap:** Tap anywhere on the screen to generate new problems; running total and problem count are tracked automatically  
 - **Live countdown timer:** Tracks elapsed time for each session  
 - **Correct & Incorrect counters:** Keep track of performance in Input mode  
