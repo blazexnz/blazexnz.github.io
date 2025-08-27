@@ -91,7 +91,21 @@ startBtn.addEventListener("click", () => {
   if (mode === "input") answerInput.focus();
 });
 
+// Submit handler
 submitBtn.addEventListener("click", () => {
+  checkAnswer();
+});
+
+// **Enter key submission in Input & Check mode**
+answerInput.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    e.preventDefault();
+    checkAnswer();
+  }
+});
+
+// Function to check answer
+function checkAnswer() {
   const userAnswer = parseInt(answerInput.value);
   if (!isNaN(userAnswer)) {
     if (userAnswer === currentProblem.answer) {
@@ -106,7 +120,7 @@ submitBtn.addEventListener("click", () => {
     }
     answerInput.focus();
   }
-});
+}
 
 // Fullscreen click/touch for Continuous Mode
 document.body.addEventListener("click", (e) => {
@@ -130,6 +144,7 @@ resetBtn.addEventListener("click", () => {
   resetGame();
   startTimer();
 });
+
 backBtn.addEventListener("click", () => {
   game.classList.add("hidden");
   menu.classList.remove("hidden");
