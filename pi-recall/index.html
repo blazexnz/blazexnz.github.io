@@ -45,32 +45,32 @@
       width: 120px;
     }
 
-button {
-  font-size: 1rem;
-  padding: 10px 15px;
-  margin: 8px;
-  border: 2px solid transparent; /* reserve space for border */
-  border-radius: 10px;
-  background: #000000;
-  color: #fff;
-  cursor: pointer;
-}
+    button {
+      font-size: 1rem;
+      padding: 10px 15px;
+      margin: 8px;
+      border: 2px solid transparent; /* reserve space for border */
+      border-radius: 10px;
+      background: #000000;
+      color: #fff;
+      cursor: pointer;
+    }
 
-/* Hover effect only on devices that support it */
-@media (hover: hover) and (pointer: fine) {
-  button:hover {
-    background: #ffffff;
-    color: #000000;
-    border-color: #000000;
-  }
-}
+    /* Hover effect only on devices that support it */
+    @media (hover: hover) and (pointer: fine) {
+      button:hover {
+        background: #ffffff;
+        color: #000000;
+        border-color: #000000;
+      }
+    }
 
-/* Active state resets the button immediately on touch */
-button:active {
-  background: #000000;
-  color: #fff;
-  border-color: transparent;
-}
+    /* Active state resets the button immediately on touch */
+    button:active {
+      background: #000000;
+      color: #fff;
+      border-color: transparent;
+    }
 
     #pi-display {
       margin: 20px 0;
@@ -90,9 +90,17 @@ button:active {
       transition: none;
     }
 
+    /* COUNTER STYLING */
+    #counter-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px; /* space between counters */
+      margin: 10px 0;
+    }
+
     #counter, #incorrect-counter {
       font-weight: bold;
-      margin: 10px 0;
+      margin: 0; /* remove extra margin */
     }
 
     #timer {
@@ -131,8 +139,13 @@ button:active {
         <div id="pi-display-inner">3.</div>
       </div>
       <input id="digit-input" type="tel" inputmode="numeric" pattern="[0-9]*" maxlength="1" autofocus>
-      <div id="counter">Correct: 0</div>
-      <div id="incorrect-counter" class="hidden">Incorrect: 0</div>
+
+      <!-- COUNTERS ON SAME LINE -->
+      <div id="counter-container">
+        <div id="counter">Correct: 0</div>
+        <div id="incorrect-counter" class="hidden">Incorrect: 0</div>
+      </div>
+
       <div id="timer">Time: 0.0s</div>
       <div>
         <button id="startOverBtn">Start Over</button>
