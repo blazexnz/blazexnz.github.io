@@ -95,8 +95,8 @@ beginBtn.addEventListener("click", () => {
   trainingScreen.classList.remove("hidden");
 
   renderDigits();
-  counter.textContent = "Correct digits: 0";
-  incorrectCounter.textContent = "Incorrect digits: 0";
+  counter.textContent = "Correct: 0";
+  incorrectCounter.textContent = "Incorrect: 0";
   if (mode === "practice") incorrectCounter.classList.remove("hidden");
   else incorrectCounter.classList.add("hidden");
   message.textContent = "";
@@ -125,7 +125,7 @@ digitInput.addEventListener("input", () => {
   } else {
     if (mode === "practice") {
       incorrectCount++;  // Increment counter for forgiven mistakes
-      incorrectCounter.textContent = `Incorrect digits: ${incorrectCount}`;
+      incorrectCounter.textContent = `Incorrect: ${incorrectCount}`;
       message.textContent = "Incorrect, try again!";
     } else {
       if (!forgivenessUsed) {
@@ -138,7 +138,7 @@ digitInput.addEventListener("input", () => {
     }
   }
 
-  counter.textContent = `Correct digits: ${correctCount}`;
+  counter.textContent = `Correct: ${correctCount}`;
   digitInput.value = "";
   renderDigits();
 });
@@ -151,8 +151,8 @@ retryBtn.addEventListener("click", () => {
   displayedDigits = "3." + PI_DIGITS.slice(0, startIndex);
   resetTimer();
 
-  counter.textContent = "Correct digits: 0";
-  incorrectCounter.textContent = "Incorrect digits: 0";
+  counter.textContent = "Correct: 0";
+  incorrectCounter.textContent = "Incorrect: 0";
   if (mode === "practice") incorrectCounter.classList.remove("hidden");
   else incorrectCounter.classList.add("hidden");
   message.textContent = "";
