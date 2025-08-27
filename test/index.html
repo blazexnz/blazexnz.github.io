@@ -56,10 +56,20 @@ button {
   cursor: pointer;
 }
 
-button:hover {
-  background: #ffffff;
-  color: #000000;
-  border-color: #000000; /* changes the transparent border to black */
+/* Hover effect only on devices that support it */
+@media (hover: hover) and (pointer: fine) {
+  button:hover {
+    background: #ffffff;
+    color: #000000;
+    border-color: #000000;
+  }
+}
+
+/* Active state resets the button immediately on touch */
+button:active {
+  background: #000000;
+  color: #fff;
+  border-color: transparent;
 }
 
     #pi-display {
