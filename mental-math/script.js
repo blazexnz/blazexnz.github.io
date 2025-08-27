@@ -96,7 +96,7 @@ submitBtn.addEventListener("click", () => {
   checkAnswer();
 });
 
-// **Enter key submission in Input & Check mode**
+// Enter key submission in Input & Check mode
 answerInput.addEventListener("keydown", (e) => {
   if (e.key === "Enter") {
     e.preventDefault();
@@ -112,11 +112,13 @@ function checkAnswer() {
       correctCount++;
       correctCountEl.textContent = correctCount;
       answerInput.value = "";
+      problemText.style.color = ""; // reset color
       nextProblem();
     } else {
       incorrectCount++;
       incorrectCountEl.textContent = incorrectCount;
       answerInput.value = "";
+      problemText.style.color = "red"; // wrong answer
     }
     answerInput.focus();
   }
@@ -161,6 +163,7 @@ function resetGame() {
   runningTotalEl.textContent = 0;
   problemCountEl.textContent = 0;
   answerInput.value = "";
+  problemText.style.color = "";
 
   inputMode.classList.toggle("hidden", mode !== "input");
   continuousMode.classList.toggle("hidden", mode !== "continuous");
@@ -171,4 +174,5 @@ function resetGame() {
 function nextProblem() {
   currentProblem = generateProblem();
   problemText.textContent = currentProblem.text;
+  problemText.style.color = ""; // reset color for new problem
 }
