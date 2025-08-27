@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>blazexnz App Directory</title>
+<style>
+    body, ul, li {
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: #f5f7fa;
+        color: #333;
+    }
+
+    h1 {
+        text-align: center;
+        margin: 30px 0;
+        color: #2c3e50;
+        font-size: 2rem;
+    }
+
+    .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 10px;
+    }
+
+    ul.app-list {
+        list-style: none;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+        gap: 20px;
+        justify-items: center;
+    }
+
+    li {
+        text-align: center;
+    }
+
+    .app-card {
+        width: 60px;
+        height: 60px;
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #fff;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+        transition: transform 0.2s, box-shadow 0.2s;
+        cursor: pointer;
+        font-size: 2rem; /* emoji size */
+        margin-bottom: 6px;
+    }
+
+    .app-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+    }
+
+    .app-name {
+        font-size: 0.8rem;
+        font-weight: 600;
+    }
+
+    .release-date {
+        font-size: 0.65rem;
+        color: #7f8c8d;
+    }
+
+    .footer-links {
+        text-align: center;
+        margin: 50px 0 30px 0;
+    }
+
+    .footer-links a {
+        margin: 0 10px;
+        color: #34495e;
+        font-weight: 500;
+    }
+
+    .footer-links a:hover {
+        color: #1abc9c;
+    }
+</style>
+</head>
+<body>
+<h1>blazexnz Apps</h1>
+<div class="container">
+    <ul class="app-list">
+        <li>
+            <div class="app-card" onclick="window.open('./binary-memory-training/', '_blank')">🧠</div>
+            <div class="app-name">Binary Memory</div>
+            <div class="release-date">Nov 2024</div>
+        </li>
+        <li>
+            <div class="app-card" onclick="window.open('./learn-binary/', '_blank')">💻</div>
+            <div class="app-name">Learn Binary</div>
+            <div class="release-date">Nov 2024</div>
+        </li>
+        <li>
+            <div class="app-card" onclick="window.open('./speedcubing-app/', '_blank')">🧩</div>
+            <div class="app-name">Speedcubing</div>
+            <div class="release-date">Dec 2025</div>
+        </li>
+        <li>
+            <div class="app-card" onclick="window.open('./language-learning-app/', '_blank')">🔢</div>
+            <div class="app-name">Learn Numbers</div>
+            <div class="release-date">Jan 2025</div>
+        </li>
+        <li>
+            <div class="app-card" onclick="window.open('./random-word-number-generator/', '_blank')">🎲</div>
+            <div class="app-name">Random Word</div>
+            <div class="release-date">Feb 2025</div>
+        </li>
+        <li>
+            <div class="app-card" onclick="window.open('./pao-lookup/', '_blank')">📖</div>
+            <div class="app-name">PAO Lookup</div>
+            <div class="release-date">Feb 2025</div>
+        </li>
+        <li>
+            <div class="app-card" onclick="window.open('./algs-reference/', '_blank')">♟️</div>
+            <div class="app-name">Cubing Algs</div>
+            <div class="release-date">Mar 2025</div>
+        </li>
+        <li>
+            <div class="app-card" onclick="window.open('./pao-system/', '_blank')">🗂️</div>
+            <div class="app-name">PAO System</div>
+            <div class="release-date">Mar 2025</div>
+        </li>
+        <li>
+            <div class="app-card" onclick="window.open('./pi-memory-training/', '_blank')">π</div>
+            <div class="app-name">Pi Memory</div>
+            <div class="release-date">Apr 2025</div>
+        </li>
+        <li>
+            <div class="app-card" onclick="window.open('./more-pi/', '_blank')">🔢</div>
+            <div class="app-name">More Pi</div>
+            <div class="release-date">Jul 2025</div>
+        </li>
+        <li>
+            <div class="app-card" onclick="window.open('./rosary/', '_blank')">📿</div>
+            <div class="app-name">Rosary</div>
+            <div class="release-date">Aug 2025</div>
+        </li>
+        <li>
+            <div class="app-card" onclick="window.open('./dot-fidget/', '_blank')">🔵</div>
+            <div class="app-name">Dot Fidget</div>
+            <div class="release-date">Aug 2025</div>
+        </li>
+        <li>
+            <div class="app-card" onclick="window.open('./tic-tac-toe/', '_blank')">❌⭕</div>
+            <div class="app-name">Tic Tac Toe</div>
+            <div class="release-date">Aug 2025</div>
+        </li>
+        <li>
+            <div class="app-card" onclick="window.open('./bouncy-ball-game/', '_blank')">⚽</div>
+            <div class="app-name">Bouncy Ball</div>
+            <div class="release-date">Aug 2025</div>
+        </li>
+        <li>
+            <div class="app-card" onclick="window.open('./paper-scissors-rock/', '_blank')">✂️📄🪨</div>
+            <div class="app-name">Paper Scissors Rock</div>
+            <div class="release-date">Aug 2025</div>
+        </li>
+        <li>
+            <div class="app-card" onclick="window.open('./prayer-app/', '_blank')">🙏</div>
+            <div class="app-name">Prayer App</div>
+            <div class="release-date">Aug 2025</div>
+        </li>
+        <li>
+            <div class="app-card" onclick="window.open('./story-language-learning/', '_blank')">📚</div>
+            <div class="app-name">Language Stories</div>
+            <div class="release-date">Aug 2025</div>
+        </li>
+        <li>
+            <div class="app-card" onclick="window.open('./pi-recall/', '_blank')">🥧</div>
+            <div class="app-name">Pi Recall</div>
+            <div class="release-date">Aug 2025</div>
+        </li>
+    </ul>
+
+    <div class="footer-links">
+        <a href="https://github.com/blazexnz/blazexnz.github.io/tree/main">blazexnz Repo</a> |
+        <a href="https://github.com/codarionis/codarionis.github.io/tree/main">codarionis Repo</a> |
+        <a href="https://codarionis.github.io">codarionis Home</a>
+    </div>
+</div>
+</body>
+</html>
