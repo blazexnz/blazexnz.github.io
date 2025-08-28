@@ -6,9 +6,9 @@ A simple, mobile-friendly web app to practice addition and multiplication proble
 
 - **Choose operation:** Practice either **Addition** or **Multiplication**  
 - **Three difficulty levels:**  
-  - **Level 1:** Single-digit primary number, second number can be 1–3 digits  
-  - **Level 2:** Double-digit primary number, second number can be 1–3 digits  
-  - **Level 3:** Triple-digit primary number, second number can be 1–3 digits  
+  - **Level 1:** Single-digit as the main number, second number can be 1–3 digits  
+  - **Level 2:** Double-digit as the main number, second number can be 1–3 digits  
+  - **Level 3:** Triple-digit as the main number, second number can be 1–3 digits  
 - **Two modes:**  
   - **Input & Check:** Enter your answer and submit; correct/incorrect counters update in real-time, instant feedback on wrong answers  
   - **Continuous Tap:** Tap anywhere on the screen to generate new problems; running total and problem count are tracked automatically  
