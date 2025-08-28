@@ -10,11 +10,13 @@
       font-family: Arial, sans-serif;
       background: #fffae3;
       display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
+      flex-direction: column; /* stack items vertically */
+      justify-content: flex-start; /* align to top */
+      align-items: center; /* center horizontally */
+      min-height: 100vh;
       color: #333;
       text-align: center;
+      padding-top: 2rem; /* optional spacing from top */
     }
 
     .hidden { display: none; }
