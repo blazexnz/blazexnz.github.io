@@ -1,0 +1,88 @@
+const grid = document.getElementById('grid');
+const startBtn = document.getElementById('startBtn');
+const levelDisplay = document.getElementById('level');
+const bestDisplay = document.getElementById('best');
+const overlay = document.getElementById('overlay');
+
+let sequence = [];
+let playerSequence = [];
+let level = 0;
+let best = 0;
+let canClick = false;
+
+const gridSize = 4;
+const tiles = [];
+
+// Create tiles
+for (let i = 0; i < gridSize * gridSize; i++) {
+    const tile = document.createElement('div');
+    tile.classList.add('tile');
+    tile.dataset.index = i;
+    tile.addEventListener('click', () => handleTileClick(i));
+    grid.appendChild(tile);
+    tiles.push(tile);
+}
+
+function startGame() {
+    level = 1;
+    sequence = [];
+    nextLevel();
+}
+
+function nextLevel() {
+    levelDisplay.textContent = `Level: ${level}`;
+    playerSequence = [];
+    const nextTile = Math.floor(Math.random() * tiles.length);
+    sequence.push(nextTile);
+    showSequence();
+}
+
+function showSequence() {
+    canClick = false;
+    let i = 0;
+    const interval = setInterval(() => {
+        if (i > 0) tiles[sequence[i - 1]].classList.remove('active');
+        if (i === sequence.length) {
+            clearInterval(interval);
+            canClick = true;
+            return;
+        }
+        tiles[sequence[i]].classList.add('active');
+        i++;
+    }, 600);
+}
+
+function handleTileClick(index) {
+    if (!canClick) return;
+    playerSequence.push(index);
+    tiles[index].classList.add('active');
+    setTimeout(() => tiles[index].classList.remove('active'), 200);
+
+    const currentStep = playerSequence.length - 1;
+    if (playerSequence[currentStep] !== sequence[currentStep]) {
+        gameOver();
+        return;
+    }
+
+    if (playerSequence.length === sequence.length) {
+        level++;
+        setTimeout(nextLevel, 800);
+    }
+}
+
+function gameOver() {
+    if (level > best) {
+        best = level;
+        bestDisplay.textContent = `Best: ${best}`;
+    }
+    overlay.textContent = `Game Over! You reached level ${level}`;
+    overlay.style.display = 'block';
+    setTimeout(() => overlay.style.display = 'none', 2000);
+    level = 0;
+    levelDisplay.textContent = `Level: 0`;
+    sequence = [];
+    playerSequence = [];
+    canClick = false;
+}
+
+startBtn.addEventListener('click', startGame);
