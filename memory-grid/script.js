@@ -3,11 +3,13 @@ const startBtn = document.getElementById('startBtn');
 const levelDisplay = document.getElementById('level');
 const bestDisplay = document.getElementById('best');
 const overlay = document.getElementById('overlay');
+const livesDisplay = document.getElementById('lives');
 
 let sequence = [];
 let playerSequence = [];
 let level = 0;
 let best = 0;
+let lives = 3;
 let canClick = false;
 
 const gridSize = 4;
@@ -25,6 +27,8 @@ for (let i = 0; i < gridSize * gridSize; i++) {
 
 function startGame() {
     level = 1;
+    lives = 3;
+    updateLives();
     sequence = [];
     nextLevel();
 }
@@ -60,13 +64,26 @@ function handleTileClick(index) {
 
     const currentStep = playerSequence.length - 1;
     if (playerSequence[currentStep] !== sequence[currentStep]) {
-        gameOver();
+        loseLife();
         return;
     }
 
     if (playerSequence.length === sequence.length) {
         level++;
         setTimeout(nextLevel, 800);
+    }
+}
+
+function loseLife() {
+    lives--;
+    updateLives();
+    if (lives <= 0) {
+        gameOver();
+    } else {
+        overlay.textContent = `Wrong! You have ${lives} lives left.`;
+        overlay.style.display = 'block';
+        setTimeout(() => overlay.style.display = 'none', 1500);
+        playerSequence = []; // reset input so player can retry sequence
     }
 }
 
@@ -83,6 +100,10 @@ function gameOver() {
     sequence = [];
     playerSequence = [];
     canClick = false;
+}
+
+function updateLives() {
+    livesDisplay.textContent = "❤️".repeat(lives);
 }
 
 startBtn.addEventListener('click', startGame);
