@@ -91,7 +91,7 @@ hintBtn?.addEventListener('click', () => {
 });
 
 function updateScore() {
-  scoreboard.textContent = `Correct: ${correct} Incorrect: ${incorrect}`;
+  scoreboard.innerHTML = `<span class="correct">Correct: ${correct}</span><span class="incorrect">Incorrect: ${incorrect}</span>`;
 }
 
 function startTimer() {
