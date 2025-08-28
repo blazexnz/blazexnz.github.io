@@ -50,16 +50,40 @@ function randomNumber(size) {
 function generateProblem() {
   let fixedSize = difficulty == 1 ? "single" : difficulty == 2 ? "double" : "triple";
   const otherSizes = ["single", "double", "triple"];
-  let a, b;
-  if (Math.random() < 0.5) {
+  let a, b, text, answer;
+
+  if (operation === "add" || operation === "mul") {
+    if (Math.random() < 0.5) {
+      a = randomNumber(fixedSize);
+      b = randomNumber(otherSizes[Math.floor(Math.random() * otherSizes.length)]);
+    } else {
+      b = randomNumber(fixedSize);
+      a = randomNumber(otherSizes[Math.floor(Math.random() * otherSizes.length)]);
+    }
+    if (operation === "add") {
+      text = `${a} + ${b}`;
+      answer = a + b;
+    } else {
+      text = `${a} × ${b}`;
+      answer = a * b;
+    }
+  }
+
+  if (operation === "sub") {
     a = randomNumber(fixedSize);
     b = randomNumber(otherSizes[Math.floor(Math.random() * otherSizes.length)]);
-  } else {
-    b = randomNumber(fixedSize);
-    a = randomNumber(otherSizes[Math.floor(Math.random() * otherSizes.length)]);
+    if (a < b) [a, b] = [b, a]; // ensure non-negative
+    text = `${a} - ${b}`;
+    answer = a - b;
   }
-  let text = `${a} ${operation === "add" ? "+" : "×"} ${b}`;
-  let answer = operation === "add" ? a + b : a * b;
+
+  if (operation === "div") {
+    b = randomNumber("single"); // keep divisor small
+    answer = randomNumber(fixedSize);
+    a = b * answer; // ensures whole number division
+    text = `${a} ÷ ${b}`;
+  }
+
   return { a, b, text, answer };
 }
 
