@@ -16,7 +16,7 @@
       align-items: center;
       padding: 1rem;
       height: 100vh;
-      cursor: pointer; /* Indicate clickable fullscreen */
+      cursor: pointer; 
     }
 
     h1 {
@@ -57,17 +57,15 @@
       font-weight: bold;
       cursor: pointer;
       transition: 0.2s;
-      touch-action: manipulation; /* Prevent double-tap zoom on iPhone */
+      touch-action: manipulation;
     }
 
-    /* ✅ Hover styles only on devices with hover (desktops/laptops) */
     @media (hover: hover) and (pointer: fine) {
       button:hover {
         background: #e36300;
       }
     }
 
-    /* ✅ Active styles for touch devices (iPhone, iPad, Android) */
     @media (hover: none) and (pointer: coarse) {
       button:active {
         background: #e36300;
@@ -86,7 +84,6 @@
       transition: color 0.2s;
     }
 
-    /* Shake animation */
     @keyframes shake {
       0% { transform: translateX(0); }
       20% { transform: translateX(-10px); }
@@ -150,6 +147,60 @@
       border-color: #ff6f00;
     }
 
+    /* Toggle slider style */
+    .toggle-auto-check {
+      display: flex;
+      align-items: center;
+      margin-top: 0.5rem;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 28px;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      transition: 0.4s;
+      border-radius: 28px;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 22px;
+      width: 22px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: 0.4s;
+      border-radius: 50%;
+    }
+
+    .switch input:checked + .slider {
+      background-color: #ff6f00;
+    }
+
+    .switch input:checked + .slider:before {
+      transform: translateX(22px);
+    }
+
     @media (min-width: 600px) {
       h1 { font-size: 2rem; }
       .problem { font-size: 2.5rem; }
@@ -193,6 +244,13 @@
 
     <div id="inputMode" class="hidden">
       <input type="number" inputmode="numeric" id="answerInput" placeholder="Enter answer">
+      <div class="toggle-auto-check">
+        <label for="autoCheckToggle">Auto Check</label>
+        <label class="switch">
+          <input type="checkbox" id="autoCheckToggle">
+          <span class="slider"></span>
+        </label>
+      </div>
       <button id="hintBtnInput">Hint</button>
       <button id="submitBtn">Submit</button>
       <div class="counters-inline">
@@ -219,5 +277,3 @@
   <script src="script.js"></script>
 </body>
 </html>
-
-
