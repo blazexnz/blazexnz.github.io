@@ -12,6 +12,8 @@ const continuousMode = document.getElementById("continuousMode");
 
 const answerInput = document.getElementById("answerInput");
 const submitBtn = document.getElementById("submitBtn");
+const autoCheckToggle = document.getElementById("autoCheckToggle");
+
 const correctCountEl = document.getElementById("correctCount");
 const incorrectCountEl = document.getElementById("incorrectCount");
 
@@ -43,6 +45,9 @@ let showTotal = true;
 
 let timer = 0;
 let timerInterval = null;
+
+// Auto check
+let autoCheckTimer = null;
 
 function randomNumber(size) {
   if (size === "single") return Math.floor(Math.random() * 9) + 1;
@@ -81,15 +86,15 @@ function generateProblem() {
   if (selectedOperation === "sub") {
     a = randomNumber(fixedSize);
     b = randomNumber(otherSizes[Math.floor(Math.random() * otherSizes.length)]);
-    if (a < b) [a, b] = [b, a]; // ensure non-negative
+    if (a < b) [a, b] = [b, a];
     text = `${a} - ${b}`;
     answer = a - b;
   }
 
   if (selectedOperation === "div") {
-    b = randomNumber("single"); // keep divisor small
+    b = randomNumber("single");
     answer = randomNumber(fixedSize);
-    a = b * answer; // ensures whole number division
+    a = b * answer;
     text = `${a} ÷ ${b}`;
   }
 
@@ -129,40 +134,56 @@ submitBtn.addEventListener("click", () => {
   checkAnswer();
 });
 
-// Enter key submission in Input & Check mode
+// Auto Check toggle
+autoCheckToggle.addEventListener("change", () => {
+  submitBtn.style.display = autoCheckToggle.checked ? "none" : "block";
+});
+
+// Enter key submission
 answerInput.addEventListener("keydown", (e) => {
-  if (e.key === "Enter") {
+  if (!autoCheckToggle.checked && e.key === "Enter") {
     e.preventDefault();
     checkAnswer();
   }
 });
 
-// Function to check answer
+// Input event for auto check with shorter dynamic delay
+answerInput.addEventListener("input", () => {
+  if (autoCheckToggle.checked) {
+    clearTimeout(autoCheckTimer);
+
+    let expectedLength = currentProblem.answer.toString().length;
+    let delay = 100 + expectedLength * 150; // much shorter across the board
+
+    autoCheckTimer = setTimeout(() => {
+      checkAnswer();
+    }, delay);
+  }
+});
+
 function checkAnswer() {
   const userAnswer = parseInt(answerInput.value);
-  if (!isNaN(userAnswer)) {
+  if (!isNaN(userAnswer) && answerInput.value !== "") {
     if (userAnswer === currentProblem.answer) {
       correctCount++;
       correctCountEl.textContent = correctCount;
       answerInput.value = "";
-      problemText.style.color = ""; // reset color
+      problemText.style.color = "";
       nextProblem();
     } else {
       incorrectCount++;
       incorrectCountEl.textContent = incorrectCount;
       answerInput.value = "";
-      problemText.style.color = "red"; // wrong answer
+      problemText.style.color = "red";
 
-      // Trigger shake animation
-      problemText.classList.remove("shake"); // reset
-      void problemText.offsetWidth; // force reflow
+      problemText.classList.remove("shake");
+      void problemText.offsetWidth;
       problemText.classList.add("shake");
     }
     answerInput.focus();
   }
 }
 
-// Fullscreen click/touch for Continuous Mode
 document.body.addEventListener("click", (e) => {
   if (mode === "continuous") {
     if (!inputMode.contains(e.target) && !e.target.closest(".controls") && !e.target.closest("#hintBtnContinuous")) {
@@ -191,7 +212,6 @@ backBtn.addEventListener("click", () => {
   clearInterval(timerInterval);
 });
 
-// Hint buttons
 hintBtnInput.addEventListener("click", () => {
   problemText.textContent = `${currentProblem.text} = ${currentProblem.answer}`;
 });
@@ -221,5 +241,5 @@ function resetGame() {
 function nextProblem() {
   currentProblem = generateProblem();
   problemText.textContent = currentProblem.text;
-  problemText.style.color = ""; // reset color for new problem
+  problemText.style.color = "";
 }
