@@ -26,6 +26,9 @@ const startBtn = document.getElementById("startBtn");
 const timerInputEl = document.getElementById("timerInput");
 const timerContinuousEl = document.getElementById("timerContinuous");
 
+const hintBtnInput = document.getElementById("hintBtnInput");
+const hintBtnContinuous = document.getElementById("hintBtnContinuous");
+
 let operation = "add";
 let difficulty = 1;
 let mode = "input";
@@ -162,7 +165,7 @@ function checkAnswer() {
 // Fullscreen click/touch for Continuous Mode
 document.body.addEventListener("click", (e) => {
   if (mode === "continuous") {
-    if (!inputMode.contains(e.target) && !e.target.closest(".controls")) {
+    if (!inputMode.contains(e.target) && !e.target.closest(".controls") && !e.target.closest("#hintBtnContinuous")) {
       problemCount++;
       problemCountEl.textContent = problemCount;
       runningTotal += currentProblem.answer;
@@ -186,6 +189,15 @@ backBtn.addEventListener("click", () => {
   game.classList.add("hidden");
   menu.classList.remove("hidden");
   clearInterval(timerInterval);
+});
+
+// Hint buttons
+hintBtnInput.addEventListener("click", () => {
+  problemText.textContent = `${currentProblem.text} = ${currentProblem.answer}`;
+});
+
+hintBtnContinuous.addEventListener("click", () => {
+  problemText.textContent = `${currentProblem.text} = ${currentProblem.answer}`;
 });
 
 function resetGame() {
