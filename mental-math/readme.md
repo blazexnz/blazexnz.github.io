@@ -10,7 +10,7 @@ A simple, mobile-friendly web app to practice addition and multiplication proble
   - **Level 2:** Double-digit as the main number, second number can be 1–3 digits  
   - **Level 3:** Triple-digit as the main number, second number can be 1–3 digits  
 - **Two modes:**  
-  - **Input & Check:** Enter your answer and submit; correct/incorrect counters update in real-time, instant feedback on wrong answers  
+  - **Input & Check:** Enter your answer and submit; correct/incorrect counters update in real-time; instant feedback on wrong answers; automatically check answers  
   - **Continuous Tap:** Tap anywhere on the screen to generate new problems; running total and problem count are tracked automatically  
 - **Live countdown timer:** Tracks elapsed time for each session  
 - **Correct & Incorrect counters:** Keep track of performance in Input mode  
@@ -27,7 +27,7 @@ A simple, mobile-friendly web app to practice addition and multiplication proble
    - **Level 3:** Triple-digit focus  
 3. Choose mode: **Input & Check** or **Continuous Tap**  
 4. Press **Start** to begin:  
-   - In **Input & Check** mode, type the answer and click **Submit**  
+   - In **Input & Check** mode, type the answer and click **Submit**; toggle auto-check to automatically check answers, or manually submit  
    - In **Continuous Tap** mode, tap anywhere on the screen to generate a new problem  
 5. Watch your progress with live counters and timer  
 6. Use **Reset** to start the session over or **Start Over** to return to setup  
