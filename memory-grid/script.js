@@ -45,13 +45,18 @@ function showSequence() {
     canClick = false;
     let i = 0;
     const interval = setInterval(() => {
-        if (i > 0) tiles[sequence[i - 1]].classList.remove('active');
         if (i === sequence.length) {
             clearInterval(interval);
             canClick = true;
             return;
         }
-        tiles[sequence[i]].classList.add('active');
+
+        const currentTile = tiles[sequence[i]];
+        currentTile.classList.add('pulse');
+
+        // Remove pulse after animation
+        setTimeout(() => currentTile.classList.remove('pulse'), 500);
+
         i++;
     }, 600);
 }
@@ -59,8 +64,10 @@ function showSequence() {
 function handleTileClick(index) {
     if (!canClick) return;
     playerSequence.push(index);
-    tiles[index].classList.add('active');
-    setTimeout(() => tiles[index].classList.remove('active'), 200);
+
+    const tile = tiles[index];
+    tile.classList.add('active');
+    setTimeout(() => tile.classList.remove('active'), 200);
 
     const currentStep = playerSequence.length - 1;
     if (playerSequence[currentStep] !== sequence[currentStep]) {
