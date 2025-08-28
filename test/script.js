@@ -1,225 +1,116 @@
-const menu = document.getElementById("menu");
-const game = document.getElementById("game");
-const problemText = document.getElementById("problemText");
-
-const operationSelect = document.getElementById("operation");
-const difficultySelect = document.getElementById("difficulty");
-const modeRadioInput = document.getElementById("modeInput");
-const modeRadioContinuous = document.getElementById("modeContinuous");
-
-const inputMode = document.getElementById("inputMode");
-const continuousMode = document.getElementById("continuousMode");
-
-const answerInput = document.getElementById("answerInput");
-const submitBtn = document.getElementById("submitBtn");
-const correctCountEl = document.getElementById("correctCount");
-const incorrectCountEl = document.getElementById("incorrectCount");
-
-const problemCountEl = document.getElementById("problemCount");
-const runningTotalEl = document.getElementById("runningTotal");
-const toggleTotalBtn = document.getElementById("toggleTotalBtn");
-
-const resetBtn = document.getElementById("resetBtn");
-const backBtn = document.getElementById("backBtn");
-const startBtn = document.getElementById("startBtn");
-
-const timerInputEl = document.getElementById("timerInput");
-const timerContinuousEl = document.getElementById("timerContinuous");
-
-const hintBtnInput = document.getElementById("hintBtnInput");
-const hintBtnContinuous = document.getElementById("hintBtnContinuous");
-
-let operation = "add";
-let difficulty = 1;
-let mode = "input";
-
-let currentProblem = {};
-let correctCount = 0;
-let incorrectCount = 0;
-
-let runningTotal = 0;
-let problemCount = 0;
-let showTotal = true;
-
+let mode = '';
+let correct = 0;
+let incorrect = 0;
 let timer = 0;
-let timerInterval = null;
+let timerInterval;
+let currentAnswer = 0;
 
-function randomNumber(size) {
-  if (size === "single") return Math.floor(Math.random() * 9) + 1;
-  if (size === "double") return Math.floor(Math.random() * 90) + 10;
-  if (size === "triple") return Math.floor(Math.random() * 900) + 100;
-}
+const modeSelection = document.getElementById('modeSelection');
+const gameArea = document.getElementById('gameArea');
+const modeButtons = document.querySelectorAll('.mode-button');
+const problemText = document.getElementById('problemText');
+const answerInput = document.getElementById('answerInput');
+const submitBtn = document.getElementById('submitBtn');
+const hintBtn = document.getElementById('hintBtn');
+const scoreboard = document.getElementById('scoreboard');
+const timerDisplay = document.getElementById('timer');
+const resetBtn = document.getElementById('resetBtn');
+const startOverBtn = document.getElementById('startOverBtn');
 
-function pickRandomOperation() {
-  const ops = ["add", "sub", "mul", "div"];
-  return ops[Math.floor(Math.random() * ops.length)];
-}
+// Clicking a mode starts the game immediately
+modeButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    mode = btn.dataset.mode;
+    modeButtons.forEach(b => b.style.backgroundColor = '#ff69b4');
+    btn.style.backgroundColor = '#ff4500';
 
-function generateProblem() {
-  let selectedOperation = operation === "mix" ? pickRandomOperation() : operation;
-  let fixedSize = difficulty == 1 ? "single" : difficulty == 2 ? "double" : "triple";
-  const otherSizes = ["single", "double", "triple"];
-  let a, b, text, answer;
-
-  if (selectedOperation === "add" || selectedOperation === "mul") {
-    if (Math.random() < 0.5) {
-      a = randomNumber(fixedSize);
-      b = randomNumber(otherSizes[Math.floor(Math.random() * otherSizes.length)]);
-    } else {
-      b = randomNumber(fixedSize);
-      a = randomNumber(otherSizes[Math.floor(Math.random() * otherSizes.length)]);
-    }
-    if (selectedOperation === "add") {
-      text = `${a} + ${b}`;
-      answer = a + b;
-    } else {
-      text = `${a} × ${b}`;
-      answer = a * b;
-    }
-  }
-
-  if (selectedOperation === "sub") {
-    a = randomNumber(fixedSize);
-    b = randomNumber(otherSizes[Math.floor(Math.random() * otherSizes.length)]);
-    if (a < b) [a, b] = [b, a]; // ensure non-negative
-    text = `${a} - ${b}`;
-    answer = a - b;
-  }
-
-  if (selectedOperation === "div") {
-    b = randomNumber("single"); // keep divisor small
-    answer = randomNumber(fixedSize);
-    a = b * answer; // ensures whole number division
-    text = `${a} ÷ ${b}`;
-  }
-
-  return { a, b, text, answer };
-}
-
-function startTimer() {
-  clearInterval(timerInterval);
-  timer = 0;
-  if (mode === "input") timerInputEl.textContent = "0.0";
-  if (mode === "continuous") timerContinuousEl.textContent = "0.0";
-  timerInterval = setInterval(() => {
-    timer += 0.1;
-    let displayTime = timer.toFixed(1);
-    if (mode === "input") timerInputEl.textContent = displayTime;
-    if (mode === "continuous") timerContinuousEl.textContent = displayTime;
-  }, 100);
-}
-
-startBtn.addEventListener("click", () => {
-  operation = operationSelect.value;
-  difficulty = difficultySelect.value;
-  mode = modeRadioInput.checked ? "input" : "continuous";
-
-  menu.classList.add("hidden");
-  game.classList.remove("hidden");
-
-  resetGame();
-  nextProblem();
-  startTimer();
-
-  if (mode === "input") answerInput.focus();
+    // Start game immediately
+    modeSelection.classList.add('hidden');
+    gameArea.classList.remove('hidden');
+    correct = 0;
+    incorrect = 0;
+    timer = 0;
+    startTimer();
+    nextProblem();
+    updateScore();
+    answerInput.focus();
+  });
 });
 
-// Submit handler
-submitBtn.addEventListener("click", () => {
-  checkAnswer();
-});
+function nextProblem() {
+  const a = getRandomNumber();
+  const b = getRandomNumber();
+  if (mode === 'add') {
+    currentAnswer = a + b;
+    problemText.textContent = `${a} + ${b} = ?`;
+  } else if (mode === 'sub') {
+    currentAnswer = a - b;
+    problemText.textContent = `${a} - ${b} = ?`;
+  }
+  problemText.classList.remove('shake');
+  problemText.style.color = '#333';
+  answerInput.value = '';
+  answerInput.focus();
+}
 
-// Enter key submission in Input & Check mode
-answerInput.addEventListener("keydown", (e) => {
-  if (e.key === "Enter") {
-    e.preventDefault();
+function getRandomNumber() {
+  return Math.floor(Math.random() * 10) + 1;
+}
+
+function checkAnswer() {
+  const answer = parseInt(answerInput.value);
+  if (answer === currentAnswer) {
+    correct++;
+    nextProblem();
+  } else {
+    incorrect++;
+    problemText.classList.add('shake');
+    problemText.style.color = 'red';
+    answerInput.value = '';
+    answerInput.focus();
+  }
+  updateScore();
+}
+
+submitBtn.addEventListener('click', checkAnswer);
+
+// Submit on Enter key press
+answerInput.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') {
     checkAnswer();
   }
 });
 
-// Function to check answer
-function checkAnswer() {
-  const userAnswer = parseInt(answerInput.value);
-  if (!isNaN(userAnswer)) {
-    if (userAnswer === currentProblem.answer) {
-      correctCount++;
-      correctCountEl.textContent = correctCount;
-      answerInput.value = "";
-      problemText.style.color = ""; // reset color
-      nextProblem();
-    } else {
-      incorrectCount++;
-      incorrectCountEl.textContent = incorrectCount;
-      answerInput.value = "";
-      problemText.style.color = "red"; // wrong answer
+// Hint now solves the problem on screen directly
+hintBtn?.addEventListener('click', () => {
+  answerInput.value = currentAnswer;
+});
 
-      // Trigger shake animation
-      problemText.classList.remove("shake"); // reset
-      void problemText.offsetWidth; // force reflow
-      problemText.classList.add("shake");
-    }
-    answerInput.focus();
-  }
+function updateScore() {
+  scoreboard.textContent = `Correct: ${correct} Incorrect: ${incorrect}`;
 }
 
-// Fullscreen click/touch for Continuous Mode
-document.body.addEventListener("click", (e) => {
-  if (mode === "continuous") {
-    if (!inputMode.contains(e.target) && !e.target.closest(".controls") && !e.target.closest("#hintBtnContinuous")) {
-      problemCount++;
-      problemCountEl.textContent = problemCount;
-      runningTotal += currentProblem.answer;
-      if (showTotal) runningTotalEl.textContent = runningTotal;
-      nextProblem();
-    }
-  }
+function startTimer() {
+  clearInterval(timerInterval);
+  timerInterval = setInterval(() => {
+    timer++;
+    timerDisplay.textContent = `Time: ${timer}s`;
+  }, 1000);
+}
+
+resetBtn.addEventListener('click', () => {
+  correct = 0;
+  incorrect = 0;
+  timer = 0;
+  updateScore();
+  timerDisplay.textContent = `Time: 0s`;
+  nextProblem();
 });
 
-toggleTotalBtn.addEventListener("click", () => {
-  showTotal = !showTotal;
-  runningTotalEl.parentElement.style.display = showTotal ? "block" : "none";
-});
-
-resetBtn.addEventListener("click", () => {
-  resetGame();
-  startTimer();
-});
-
-backBtn.addEventListener("click", () => {
-  game.classList.add("hidden");
-  menu.classList.remove("hidden");
+startOverBtn.addEventListener('click', () => {
+  gameArea.classList.add('hidden');
+  modeSelection.classList.remove('hidden');
+  mode = '';
+  modeButtons.forEach(b => b.style.backgroundColor = '#ff69b4');
   clearInterval(timerInterval);
 });
-
-// Hint buttons
-hintBtnInput.addEventListener("click", () => {
-  problemText.textContent = `${currentProblem.text} = ${currentProblem.answer}`;
-});
-
-hintBtnContinuous.addEventListener("click", () => {
-  problemText.textContent = `${currentProblem.text} = ${currentProblem.answer}`;
-});
-
-function resetGame() {
-  correctCount = 0;
-  incorrectCount = 0;
-  runningTotal = 0;
-  problemCount = 0;
-  correctCountEl.textContent = 0;
-  incorrectCountEl.textContent = 0;
-  runningTotalEl.textContent = 0;
-  problemCountEl.textContent = 0;
-  answerInput.value = "";
-  problemText.style.color = "";
-
-  inputMode.classList.toggle("hidden", mode !== "input");
-  continuousMode.classList.toggle("hidden", mode !== "continuous");
-
-  if (mode === "input") answerInput.focus();
-}
-
-function nextProblem() {
-  currentProblem = generateProblem();
-  problemText.textContent = currentProblem.text;
-  problemText.style.color = ""; // reset color for new problem
-}
