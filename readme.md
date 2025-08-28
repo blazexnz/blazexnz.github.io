@@ -18,3 +18,5 @@
 - **Prayer app** (Released: August 2025)  
 - **Language stories** (Released: August 2025)  
 - **Pi recall** (Released: August 2025)  
+- **Mental math** (Released: August 2025)
+- **Kids math** (Released: August 2025)  
