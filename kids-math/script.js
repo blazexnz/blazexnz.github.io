@@ -69,6 +69,9 @@ function checkAnswer() {
     nextProblem();
   } else {
     incorrect++;
+    // re-trigger shake every wrong attempt
+    problemText.classList.remove('shake');
+    void problemText.offsetWidth; // force reflow
     problemText.classList.add('shake');
     problemText.style.color = 'red';
     answerInput.value = '';
