@@ -101,9 +101,9 @@ function updateScore() {
 function startTimer() {
   clearInterval(timerInterval);
   timerInterval = setInterval(() => {
-    timer++;
-    timerDisplay.textContent = `Time: ${timer}s`;
-  }, 1000);
+    timer += 0.1;
+    timerDisplay.textContent = `Time: ${timer.toFixed(1)}s`;
+  }, 100);
 }
 
 resetBtn.addEventListener('click', () => {
@@ -111,7 +111,7 @@ resetBtn.addEventListener('click', () => {
   incorrect = 0;
   timer = 0;
   updateScore();
-  timerDisplay.textContent = `Time: 0s`;
+  timerDisplay.textContent = `Time: 0.0s`;
   nextProblem();
 });
 
