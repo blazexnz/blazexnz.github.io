@@ -38,15 +38,19 @@ modeButtons.forEach(btn => {
 });
 
 function nextProblem() {
-  const a = getRandomNumber();
-  const b = getRandomNumber();
-  if (mode === 'add') {
-    currentAnswer = a + b;
-    problemText.textContent = `${a} + ${b} = ?`;
-  } else if (mode === 'sub') {
+  let a = getRandomNumber();
+  let b = getRandomNumber();
+
+  if (mode === 'sub') {
+    // Ensure subtraction does not go below zero
+    if (b > a) [a, b] = [b, a];
     currentAnswer = a - b;
     problemText.textContent = `${a} - ${b} = ?`;
+  } else if (mode === 'add') {
+    currentAnswer = a + b;
+    problemText.textContent = `${a} + ${b} = ?`;
   }
+
   problemText.classList.remove('shake');
   problemText.style.color = '#333';
   answerInput.value = '';
