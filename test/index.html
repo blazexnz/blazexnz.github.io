@@ -63,6 +63,11 @@
       margin-top: 1rem;
     }
 
+    /* Add spacing between Correct and Incorrect labels */
+    #scoreboard .correct {
+      margin-right: 2rem;
+    }
+
     #timer {
       font-size: 1.2rem;
       margin-top: 0.5rem;
@@ -111,7 +116,7 @@
     <br>
     <button id="submitBtn" class="submit-button">Submit ✅</button>
     <!-- <button id="hintBtn" class="hint-button">Hint 💡</button> -->
-    <div id="scoreboard">Correct: 0 Incorrect: 0</div>
+    <div id="scoreboard"><span class="correct">Correct: 0</span><span class="incorrect">Incorrect: 0</span></div>
     <div id="timer">Time: 0s</div>
     <br>
     <button id="resetBtn" class="reset-button">Reset 🔄</button>
