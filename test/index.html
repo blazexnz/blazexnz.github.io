@@ -2,217 +2,120 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mental Math Trainer</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Kids Math App</title>
   <style>
     body {
       margin: 0;
-      font-family: system-ui, sans-serif;
-      background: #f3f4f6;
-      color: #111;
+      font-family: Arial, sans-serif;
+      background: #fffae3;
       display: flex;
-      flex-direction: column;
+      justify-content: center;
       align-items: center;
-      padding: 1rem;
       height: 100vh;
-      cursor: pointer; /* Indicate clickable fullscreen */
-    }
-
-    h1 {
-      margin-bottom: 1rem;
-      font-size: 1.5rem;
+      color: #333;
       text-align: center;
     }
 
-    .card {
-      background: white;
-      padding: 1.5rem;
-      border-radius: 1rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      width: 100%;
-      max-width: 500px;
-      margin-bottom: 1rem;
-    }
-
-    select, button, input {
-      width: 100%;
-      padding: 0.75rem;
-      margin-top: 0.5rem;
-      border-radius: 0.75rem;
-      border: 1px solid #ccc;
-      font-size: 1rem;
-    }
-
-    #inputMode input {
-      width: 50%;
-      margin: 0 auto;
-      display: block;
-    }
+    .hidden { display: none; }
 
     button {
-      background: #e4004b;
-      color: white;
+      font-size: 1.5rem;
+      padding: 1rem 2rem;
+      margin: 0.5rem;
       border: none;
-      font-weight: bold;
+      border-radius: 15px;
       cursor: pointer;
-      transition: 0.2s;
-      touch-action: manipulation; /* Prevent double-tap zoom on iPhone */
+      touch-action: manipulation; /* prevent double-tap zoom */
+      transition: transform 0.1s;
     }
 
-    /* ✅ Hover styles only on devices with hover (desktops/laptops) */
+    button:active {
+      transform: scale(0.95);
+    }
+
+    /* Hover effects only on devices that support hover */
     @media (hover: hover) and (pointer: fine) {
       button:hover {
-        background: #c70041;
+        opacity: 0.8;
       }
     }
 
-    /* ✅ Active styles for touch devices (iPhone, iPad, Android) */
-    @media (hover: none) and (pointer: coarse) {
-      button:active {
-        background: #c70041;
-      }
-    }
-
-    .hidden {
-      display: none;
-    }
-
-    .problem {
+    #modeSelection button { 
       font-size: 2rem;
-      font-weight: bold;
-      text-align: center;
-      margin: 1rem 0;
-      transition: color 0.2s;
+      width: 120px;
+      height: 120px;
     }
 
-    /* Shake animation */
+    #gameArea input {
+      font-size: 2rem;
+      padding: 0.5rem;
+      width: 100px;
+      text-align: center;
+    }
+
+    #problemText {
+      font-size: 3rem; /* increased font size */
+    }
+
+    #scoreboard {
+      font-size: 1.2rem;
+      margin-top: 1rem;
+    }
+
+    #timer {
+      font-size: 1.2rem;
+      margin-top: 0.5rem;
+    }
+
+    #hint {
+      font-size: 1.5rem;
+      margin: 0.5rem;
+      cursor: pointer;
+    }
+
+    /* Problem text shake animation */
     @keyframes shake {
       0% { transform: translateX(0); }
-      20% { transform: translateX(-10px); }
-      40% { transform: translateX(10px); }
-      60% { transform: translateX(-10px); }
-      80% { transform: translateX(10px); }
+      20% { transform: translateX(-5px); }
+      40% { transform: translateX(5px); }
+      60% { transform: translateX(-5px); }
+      80% { transform: translateX(5px); }
       100% { transform: translateX(0); }
     }
 
     .shake {
       animation: shake 0.3s;
+      color: red;
     }
 
-    .counter {
-      font-size: 1rem;
-      text-align: center;
-      margin-top: 0.5rem;
-      color: #555;
-    }
-
-    .counters-inline {
-      display: flex;
-      justify-content: space-around;
-      gap: 1rem;
-      margin-top: 0.5rem;
-    }
-
-    .controls {
-      display: flex;
-      gap: 0.5rem;
-      margin-top: 1rem;
-    }
-
-    .controls button {
-      flex: 1;
-    }
-
-    .radio-group {
-      display: flex;
-      gap: 1rem;
-      margin-top: 0.5rem;
-    }
-
-    .radio-group label {
-      flex: 1;
-      text-align: center;
-      background: #f9fafb;
-      padding: 0.5rem;
-      border-radius: 0.5rem;
-      border: 1px solid #ccc;
-      cursor: pointer;
-    }
-
-    .radio-group input {
-      display: none;
-    }
-
-    .radio-group input:checked + label {
-      background: #e4004b;
-      color: white;
-      border-color: #e4004b;
-    }
-
-    @media (min-width: 600px) {
-      h1 { font-size: 2rem; }
-      .problem { font-size: 2.5rem; }
-    }
+    .reset-button { background-color: #ff7f50; color: #fff; }
+    .startover-button { background-color: #32cd32; color: #fff; }
+    .submit-button { background-color: #1e90ff; color: #fff; }
+    .hint-button { background-color: #ffd700; color: #333; }
+    .mode-button { background-color: #ff69b4; color: #fff; }
   </style>
 </head>
 <body>
-  <h1>Mental Math Trainer</h1>
-
-  <div id="menu" class="card">
-    <label for="operation">Choose operation:</label>
-    <select id="operation">
-      <option value="add">Addition</option>
-      <option value="sub">Subtraction</option>
-      <option value="mul">Multiplication</option>
-      <option value="div">Division</option>
-      <option value="mix">Mixed</option>
-    </select>
-
-    <label for="difficulty">Choose difficulty:</label>
-    <select id="difficulty">
-      <option value="1">Level 1</option>
-      <option value="2">Level 2</option>
-      <option value="3">Level 3</option>
-    </select>
-
-    <label>Choose mode:</label>
-    <div class="radio-group">
-      <input type="radio" id="modeInput" name="mode" value="input" checked>
-      <label for="modeInput">Input & Check</label>
-
-      <input type="radio" id="modeContinuous" name="mode" value="continuous">
-      <label for="modeContinuous">Continuous Tap</label>
-    </div>
-
-    <button id="startBtn">Start</button>
+  <!-- Mode Selection -->
+  <div id="modeSelection">
+    <h1>Choose Mode 🎨</h1>
+    <button class="mode-button" data-mode="add">➕</button>
+    <button class="mode-button" data-mode="sub">➖</button>
   </div>
 
-  <div id="game" class="card hidden">
-    <div class="problem" id="problemText">Press Start</div>
-
-    <div id="inputMode" class="hidden">
-      <input type="number" inputmode="numeric" id="answerInput" placeholder="Enter answer">
-      <button id="hintBtnInput">Hint</button>
-      <button id="submitBtn">Submit</button>
-      <div class="counters-inline">
-        <div class="counter">Correct: <span id="correctCount">0</span></div>
-        <div class="counter">Incorrect: <span id="incorrectCount">0</span></div>
-      </div>
-      <div class="counter">Time: <span id="timerInput">0.0</span> sec</div>
-    </div>
-
-    <div id="continuousMode" class="hidden">
-      <div class="counter">Problems: <span id="problemCount">0</span></div>
-      <div class="counter">Running Total: <span id="runningTotal">0</span></div>
-      <button id="hintBtnContinuous">Hint</button>
-      <button id="toggleTotalBtn">Hide/Show Total</button>
-      <div class="counter">Time: <span id="timerContinuous">0.0</span> sec</div>
-    </div>
-
-    <div class="controls">
-      <button id="resetBtn">Reset</button>
-      <button id="backBtn">Start Over</button>
-    </div>
+  <!-- Game Area -->
+  <div id="gameArea" class="hidden">
+    <h2 id="problemText">1 + 2 = ?</h2>
+    <input id="answerInput" type="number" inputmode="numeric" pattern="[0-9]*" autofocus>
+    <br>
+    <button id="submitBtn" class="submit-button">Submit ✅</button>
+    <!-- <button id="hintBtn" class="hint-button">Hint 💡</button> -->
+    <div id="scoreboard">Correct: 0 Incorrect: 0</div>
+    <div id="timer">Time: 0s</div>
+    <br>
+    <button id="resetBtn" class="reset-button">Reset 🔄</button>
+    <button id="startOverBtn" class="startover-button">Start Over 🏠</button>
   </div>
 
   <script src="script.js"></script>
