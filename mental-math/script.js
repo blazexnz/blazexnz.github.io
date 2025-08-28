@@ -47,12 +47,18 @@ function randomNumber(size) {
   if (size === "triple") return Math.floor(Math.random() * 900) + 100;
 }
 
+function pickRandomOperation() {
+  const ops = ["add", "sub", "mul", "div"];
+  return ops[Math.floor(Math.random() * ops.length)];
+}
+
 function generateProblem() {
+  let selectedOperation = operation === "mix" ? pickRandomOperation() : operation;
   let fixedSize = difficulty == 1 ? "single" : difficulty == 2 ? "double" : "triple";
   const otherSizes = ["single", "double", "triple"];
   let a, b, text, answer;
 
-  if (operation === "add" || operation === "mul") {
+  if (selectedOperation === "add" || selectedOperation === "mul") {
     if (Math.random() < 0.5) {
       a = randomNumber(fixedSize);
       b = randomNumber(otherSizes[Math.floor(Math.random() * otherSizes.length)]);
@@ -60,7 +66,7 @@ function generateProblem() {
       b = randomNumber(fixedSize);
       a = randomNumber(otherSizes[Math.floor(Math.random() * otherSizes.length)]);
     }
-    if (operation === "add") {
+    if (selectedOperation === "add") {
       text = `${a} + ${b}`;
       answer = a + b;
     } else {
@@ -69,7 +75,7 @@ function generateProblem() {
     }
   }
 
-  if (operation === "sub") {
+  if (selectedOperation === "sub") {
     a = randomNumber(fixedSize);
     b = randomNumber(otherSizes[Math.floor(Math.random() * otherSizes.length)]);
     if (a < b) [a, b] = [b, a]; // ensure non-negative
@@ -77,7 +83,7 @@ function generateProblem() {
     answer = a - b;
   }
 
-  if (operation === "div") {
+  if (selectedOperation === "div") {
     b = randomNumber("single"); // keep divisor small
     answer = randomNumber(fixedSize);
     a = b * answer; // ensures whole number division
