@@ -1,169 +1,225 @@
-const PI_DIGITS = "14159265358979323846264338327950288419716939937510"
-                + "58209749445923078164062862089986280348253421170679"
-                + "82148086513282306647093844609550582231725359408128"
-                + "48111745028410270193852110555964462294895493038196"
-                + "44288109756659334461284756482337867831652712019091"
-                + "45648566923460348610454326648213393607260249141273"
-                + "72458700660631558817488152092096282925409171536436"
-                + "78925903600113305305488204665213841469519415116094"
-                + "33057270365759591953092186117381932611793105118548"
-                + "07446237996274956735188575272489122793818301194912"
-                + "98336733624406566430860213949463952247371907021798"
-                + "60943702770539217176293176752384674818467669405132"
-                + "00056812714526356082778577134275778960917363717872"
-                + "14684409012249534301465495853710507922796892589235"
-                + "42019956112129021960864034418159813629774771309960"
-                + "51870721134999999837297804995105973173281609631859"
-                + "50244594553469083026425223082533446850352619311881"
-                + "71010003137838752886587533208381420617177669147303"
-                + "59825349042875546873115956286388235378759375195778"
-                + "18577805321712268066130019278766111959092164201989";
+const menu = document.getElementById("menu");
+const game = document.getElementById("game");
+const problemText = document.getElementById("problemText");
 
-let startIndex = 0;
-let currentIndex = 0;
+const operationSelect = document.getElementById("operation");
+const difficultySelect = document.getElementById("difficulty");
+const modeRadioInput = document.getElementById("modeInput");
+const modeRadioContinuous = document.getElementById("modeContinuous");
+
+const inputMode = document.getElementById("inputMode");
+const continuousMode = document.getElementById("continuousMode");
+
+const answerInput = document.getElementById("answerInput");
+const submitBtn = document.getElementById("submitBtn");
+const correctCountEl = document.getElementById("correctCount");
+const incorrectCountEl = document.getElementById("incorrectCount");
+
+const problemCountEl = document.getElementById("problemCount");
+const runningTotalEl = document.getElementById("runningTotal");
+const toggleTotalBtn = document.getElementById("toggleTotalBtn");
+
+const resetBtn = document.getElementById("resetBtn");
+const backBtn = document.getElementById("backBtn");
+const startBtn = document.getElementById("startBtn");
+
+const timerInputEl = document.getElementById("timerInput");
+const timerContinuousEl = document.getElementById("timerContinuous");
+
+const hintBtnInput = document.getElementById("hintBtnInput");
+const hintBtnContinuous = document.getElementById("hintBtnContinuous");
+
+let operation = "add";
+let difficulty = 1;
+let mode = "input";
+
+let currentProblem = {};
 let correctCount = 0;
-let incorrectCount = 0;  // New counter for practice mode
-let forgivenessUsed = false;
-let started = false;
-let startTime = null;
+let incorrectCount = 0;
+
+let runningTotal = 0;
+let problemCount = 0;
+let showTotal = true;
+
+let timer = 0;
 let timerInterval = null;
-let mode = "competition";
 
-let displayedDigits = ""; // tracks exactly what is shown in the scroll
-
-const setupScreen = document.getElementById("setup-screen");
-const trainingScreen = document.getElementById("training-screen");
-const beginBtn = document.getElementById("beginBtn");
-const digitInput = document.getElementById("digit-input");
-const piDisplayInner = document.getElementById("pi-display-inner");
-const counter = document.getElementById("counter");
-const incorrectCounter = document.getElementById("incorrect-counter");
-const message = document.getElementById("message");
-const retryBtn = document.getElementById("retryBtn");
-const startOverBtn = document.getElementById("startOverBtn");
-const timer = document.getElementById("timer");
-const piDisplay = document.getElementById("pi-display");
-
-function updateTimer() {
-  if (!started || !startTime) return;
-  const elapsed = (Date.now() - startTime) / 1000;
-  timer.textContent = `Time: ${elapsed.toFixed(1)}s`;
+function randomNumber(size) {
+  if (size === "single") return Math.floor(Math.random() * 9) + 1;
+  if (size === "double") return Math.floor(Math.random() * 90) + 10;
+  if (size === "triple") return Math.floor(Math.random() * 900) + 100;
 }
 
-function resetTimer() {
-  clearInterval(timerInterval);
-  started = false;
-  startTime = null;
-  timer.textContent = "Time: 0.0s";
+function pickRandomOperation() {
+  const ops = ["add", "sub", "mul", "div"];
+  return ops[Math.floor(Math.random() * ops.length)];
 }
 
-function scrollToCenter() {
-  piDisplayInner.style.transform = "translateX(0px)";
-  const displayWidth = piDisplay.offsetWidth;
-  const text = piDisplayInner.textContent;
-  if (!text) return;
+function generateProblem() {
+  let selectedOperation = operation === "mix" ? pickRandomOperation() : operation;
+  let fixedSize = difficulty == 1 ? "single" : difficulty == 2 ? "double" : "triple";
+  const otherSizes = ["single", "double", "triple"];
+  let a, b, text, answer;
 
-  piDisplayInner.innerHTML = text.slice(0, -1) + `<span id="last-char">${text.slice(-1)}</span>`;
-  const lastChar = document.getElementById("last-char");
-  const rect = lastChar.getBoundingClientRect();
-  const parentRect = piDisplay.getBoundingClientRect();
-  const lastCharCenter = rect.left - parentRect.left + rect.width / 2;
-
-  const offset = displayWidth / 2 - lastCharCenter;
-  piDisplayInner.style.transform = `translateX(${offset}px)`;
-
-  piDisplayInner.textContent = text;
-}
-
-function renderDigits() {
-  piDisplayInner.textContent = displayedDigits;
-  scrollToCenter();
-}
-
-beginBtn.addEventListener("click", () => {
-  startIndex = parseInt(document.getElementById("startIndex").value, 10) || 0;
-  mode = document.querySelector('input[name="mode"]:checked').value;
-
-  currentIndex = startIndex;
-  correctCount = 0;
-  incorrectCount = 0; // Reset incorrect counter
-  forgivenessUsed = false;
-  displayedDigits = "3." + PI_DIGITS.slice(0, startIndex);
-  resetTimer();
-
-  setupScreen.classList.add("hidden");
-  trainingScreen.classList.remove("hidden");
-
-  renderDigits();
-  counter.textContent = "Correct: 0";
-  incorrectCounter.textContent = "Incorrect: 0";
-  if (mode === "practice") incorrectCounter.classList.remove("hidden");
-  else incorrectCounter.classList.add("hidden");
-  message.textContent = "";
-  digitInput.value = "";
-  digitInput.focus();
-});
-
-digitInput.addEventListener("input", () => {
-  let val = digitInput.value.replace(/[^0-9]/g, "");
-  if (!val) return;
-
-  if (!started) {
-    started = true;
-    startTime = Date.now();
-    timerInterval = setInterval(updateTimer, 100);
-  }
-
-  const expected = PI_DIGITS[currentIndex];
-
-  if (val === expected) {
-    displayedDigits += val;
-    correctCount++;
-    currentIndex++;
-    forgivenessUsed = false;
-    message.textContent = "";
-  } else {
-    if (mode === "practice") {
-      incorrectCount++;  // Increment counter for forgiven mistakes
-      incorrectCounter.textContent = `Incorrect: ${incorrectCount}`;
-      message.textContent = "Incorrect, try again!";
+  if (selectedOperation === "add" || selectedOperation === "mul") {
+    if (Math.random() < 0.5) {
+      a = randomNumber(fixedSize);
+      b = randomNumber(otherSizes[Math.floor(Math.random() * otherSizes.length)]);
     } else {
-      if (!forgivenessUsed) {
-        message.textContent = "Incorrect! One more chance...";
-        forgivenessUsed = true;
-      } else {
-        message.textContent = "Incorrect! Timer stopped.";
-        clearInterval(timerInterval);
-      }
+      b = randomNumber(fixedSize);
+      a = randomNumber(otherSizes[Math.floor(Math.random() * otherSizes.length)]);
+    }
+    if (selectedOperation === "add") {
+      text = `${a} + ${b}`;
+      answer = a + b;
+    } else {
+      text = `${a} × ${b}`;
+      answer = a * b;
     }
   }
 
-  counter.textContent = `Correct: ${correctCount}`;
-  digitInput.value = "";
-  renderDigits();
+  if (selectedOperation === "sub") {
+    a = randomNumber(fixedSize);
+    b = randomNumber(otherSizes[Math.floor(Math.random() * otherSizes.length)]);
+    if (a < b) [a, b] = [b, a]; // ensure non-negative
+    text = `${a} - ${b}`;
+    answer = a - b;
+  }
+
+  if (selectedOperation === "div") {
+    b = randomNumber("single"); // keep divisor small
+    answer = randomNumber(fixedSize);
+    a = b * answer; // ensures whole number division
+    text = `${a} ÷ ${b}`;
+  }
+
+  return { a, b, text, answer };
+}
+
+function startTimer() {
+  clearInterval(timerInterval);
+  timer = 0;
+  if (mode === "input") timerInputEl.textContent = "0.0";
+  if (mode === "continuous") timerContinuousEl.textContent = "0.0";
+  timerInterval = setInterval(() => {
+    timer += 0.1;
+    let displayTime = timer.toFixed(1);
+    if (mode === "input") timerInputEl.textContent = displayTime;
+    if (mode === "continuous") timerContinuousEl.textContent = displayTime;
+  }, 100);
+}
+
+startBtn.addEventListener("click", () => {
+  operation = operationSelect.value;
+  difficulty = difficultySelect.value;
+  mode = modeRadioInput.checked ? "input" : "continuous";
+
+  menu.classList.add("hidden");
+  game.classList.remove("hidden");
+
+  resetGame();
+  nextProblem();
+  startTimer();
+
+  if (mode === "input") answerInput.focus();
 });
 
-retryBtn.addEventListener("click", () => {
-  currentIndex = startIndex;
+// Submit handler
+submitBtn.addEventListener("click", () => {
+  checkAnswer();
+});
+
+// Enter key submission in Input & Check mode
+answerInput.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    e.preventDefault();
+    checkAnswer();
+  }
+});
+
+// Function to check answer
+function checkAnswer() {
+  const userAnswer = parseInt(answerInput.value);
+  if (!isNaN(userAnswer)) {
+    if (userAnswer === currentProblem.answer) {
+      correctCount++;
+      correctCountEl.textContent = correctCount;
+      answerInput.value = "";
+      problemText.style.color = ""; // reset color
+      nextProblem();
+    } else {
+      incorrectCount++;
+      incorrectCountEl.textContent = incorrectCount;
+      answerInput.value = "";
+      problemText.style.color = "red"; // wrong answer
+
+      // Trigger shake animation
+      problemText.classList.remove("shake"); // reset
+      void problemText.offsetWidth; // force reflow
+      problemText.classList.add("shake");
+    }
+    answerInput.focus();
+  }
+}
+
+// Fullscreen click/touch for Continuous Mode
+document.body.addEventListener("click", (e) => {
+  if (mode === "continuous") {
+    if (!inputMode.contains(e.target) && !e.target.closest(".controls") && !e.target.closest("#hintBtnContinuous")) {
+      problemCount++;
+      problemCountEl.textContent = problemCount;
+      runningTotal += currentProblem.answer;
+      if (showTotal) runningTotalEl.textContent = runningTotal;
+      nextProblem();
+    }
+  }
+});
+
+toggleTotalBtn.addEventListener("click", () => {
+  showTotal = !showTotal;
+  runningTotalEl.parentElement.style.display = showTotal ? "block" : "none";
+});
+
+resetBtn.addEventListener("click", () => {
+  resetGame();
+  startTimer();
+});
+
+backBtn.addEventListener("click", () => {
+  game.classList.add("hidden");
+  menu.classList.remove("hidden");
+  clearInterval(timerInterval);
+});
+
+// Hint buttons
+hintBtnInput.addEventListener("click", () => {
+  problemText.textContent = `${currentProblem.text} = ${currentProblem.answer}`;
+});
+
+hintBtnContinuous.addEventListener("click", () => {
+  problemText.textContent = `${currentProblem.text} = ${currentProblem.answer}`;
+});
+
+function resetGame() {
   correctCount = 0;
-  incorrectCount = 0; // Reset incorrect counter
-  forgivenessUsed = false;
-  displayedDigits = "3." + PI_DIGITS.slice(0, startIndex);
-  resetTimer();
+  incorrectCount = 0;
+  runningTotal = 0;
+  problemCount = 0;
+  correctCountEl.textContent = 0;
+  incorrectCountEl.textContent = 0;
+  runningTotalEl.textContent = 0;
+  problemCountEl.textContent = 0;
+  answerInput.value = "";
+  problemText.style.color = "";
 
-  counter.textContent = "Correct: 0";
-  incorrectCounter.textContent = "Incorrect: 0";
-  if (mode === "practice") incorrectCounter.classList.remove("hidden");
-  else incorrectCounter.classList.add("hidden");
-  message.textContent = "";
-  digitInput.value = "";
-  digitInput.focus();
-  renderDigits();
-});
+  inputMode.classList.toggle("hidden", mode !== "input");
+  continuousMode.classList.toggle("hidden", mode !== "continuous");
 
-startOverBtn.addEventListener("click", () => {
-  trainingScreen.classList.add("hidden");
-  setupScreen.classList.remove("hidden");
-  resetTimer();
-});
+  if (mode === "input") answerInput.focus();
+}
 
+function nextProblem() {
+  currentProblem = generateProblem();
+  problemText.textContent = currentProblem.text;
+  problemText.style.color = ""; // reset color for new problem
+}
