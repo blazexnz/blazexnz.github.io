@@ -2,145 +2,219 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="robots" content="noindex, nofollow">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pi Recall Trainer</title>
+  <title>Mental Math Trainer</title>
   <style>
     body {
-      font-family: sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
       margin: 0;
-      background: #f5f5f5;
-    }
-
-    .container {
-      text-align: center;
-      max-width: 400px;
-      width: 90%;
-      background: #fff;
-      padding: 20px;
-      border-radius: 16px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      font-family: system-ui, sans-serif;
+      background: #f3f4f6;
+      color: #111;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1rem;
+      height: 100vh;
+      cursor: pointer; /* Indicate clickable fullscreen */
     }
 
     h1 {
-      font-size: 1.4rem;
       margin-bottom: 1rem;
-    }
-
-    input[type=number] {
       font-size: 1.5rem;
-      padding: 10px;
-      width: 100%;
-      margin: 10px 0;
-      border: 2px solid #ccc;
-      border-radius: 10px;
       text-align: center;
     }
 
-    #startIndex {
-      width: 120px;
+    .card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 1rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 500px;
+      margin-bottom: 1rem;
     }
 
-button {
-  font-size: 1rem;
-  padding: 10px 15px;
-  margin: 8px;
-  border: 2px solid transparent; /* reserve space for border */
-  border-radius: 10px;
-  background: #000000;
-  color: #fff;
-  cursor: pointer;
-}
-
-/* Hover effect only on devices that support it */
-@media (hover: hover) and (pointer: fine) {
-  button:hover {
-    background: #ffffff;
-    color: #000000;
-    border-color: #000000;
-  }
-}
-
-/* Active state resets the button immediately on touch */
-button:active {
-  background: #000000;
-  color: #fff;
-  border-color: transparent;
-}
-
-    #pi-display {
-      margin: 20px 0;
-      font-size: 1.5rem;
-      white-space: nowrap;
-      overflow: hidden;
-      border-bottom: 2px solid #ddd;
-      padding-bottom: 8px;
-      display: flex;
-      justify-content: center;
-      position: relative;
+    select, button, input {
+      width: 100%;
+      padding: 0.75rem;
+      margin-top: 0.5rem;
+      border-radius: 0.75rem;
+      border: 1px solid #ccc;
+      font-size: 1rem;
     }
 
-    #pi-display-inner {
-      display: inline-block;
-      white-space: nowrap;
-      transition: none;
+    #inputMode input {
+      width: 50%;
+      margin: 0 auto;
+      display: block;
     }
 
-    #counter, #incorrect-counter {
+    button {
+      background: #e4004b;
+      color: white;
+      border: none;
       font-weight: bold;
-      margin: 10px 0;
+      cursor: pointer;
+      transition: 0.2s;
+      touch-action: manipulation; /* Prevent double-tap zoom on iPhone */
     }
 
-    #timer {
-      margin: 10px 0;
-      color: #000000;
+    /* ✅ Hover styles only on devices with hover (desktops/laptops) */
+    @media (hover: hover) and (pointer: fine) {
+      button:hover {
+        background: #c70041;
+      }
     }
 
-    .incorrect {
-      text-decoration: underline;
-      text-decoration-color: red;
-      text-decoration-thickness: 3px;
+    /* ✅ Active styles for touch devices (iPhone, iPad, Android) */
+    @media (hover: none) and (pointer: coarse) {
+      button:active {
+        background: #c70041;
+      }
     }
 
     .hidden {
       display: none;
     }
+
+    .problem {
+      font-size: 2rem;
+      font-weight: bold;
+      text-align: center;
+      margin: 1rem 0;
+      transition: color 0.2s;
+    }
+
+    /* Shake animation */
+    @keyframes shake {
+      0% { transform: translateX(0); }
+      20% { transform: translateX(-10px); }
+      40% { transform: translateX(10px); }
+      60% { transform: translateX(-10px); }
+      80% { transform: translateX(10px); }
+      100% { transform: translateX(0); }
+    }
+
+    .shake {
+      animation: shake 0.3s;
+    }
+
+    .counter {
+      font-size: 1rem;
+      text-align: center;
+      margin-top: 0.5rem;
+      color: #555;
+    }
+
+    .counters-inline {
+      display: flex;
+      justify-content: space-around;
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .controls {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .controls button {
+      flex: 1;
+    }
+
+    .radio-group {
+      display: flex;
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .radio-group label {
+      flex: 1;
+      text-align: center;
+      background: #f9fafb;
+      padding: 0.5rem;
+      border-radius: 0.5rem;
+      border: 1px solid #ccc;
+      cursor: pointer;
+    }
+
+    .radio-group input {
+      display: none;
+    }
+
+    .radio-group input:checked + label {
+      background: #e4004b;
+      color: white;
+      border-color: #e4004b;
+    }
+
+    @media (min-width: 600px) {
+      h1 { font-size: 2rem; }
+      .problem { font-size: 2.5rem; }
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <!-- Setup screen -->
-    <div id="setup-screen">
-      <h1>Pi Recall Trainer</h1>
-      <label for="startIndex">Start at digit (after decimal):</label><br>
-      <input type="number" id="startIndex" min="0" value="0"><br><br>
+  <h1>Mental Math Trainer</h1>
 
-      <label><input type="radio" name="mode" value="competition" checked> Competition Mode</label><br>
-      <label><input type="radio" name="mode" value="practice"> Practice Mode</label><br><br>
+  <div id="menu" class="card">
+    <label for="operation">Choose operation:</label>
+    <select id="operation">
+      <option value="add">Addition</option>
+      <option value="sub">Subtraction</option>
+      <option value="mul">Multiplication</option>
+      <option value="div">Division</option>
+      <option value="mix">Mixed</option>
+    </select>
 
-      <button id="beginBtn">Begin</button>
+    <label for="difficulty">Choose difficulty:</label>
+    <select id="difficulty">
+      <option value="1">Level 1</option>
+      <option value="2">Level 2</option>
+      <option value="3">Level 3</option>
+    </select>
+
+    <label>Choose mode:</label>
+    <div class="radio-group">
+      <input type="radio" id="modeInput" name="mode" value="input" checked>
+      <label for="modeInput">Input & Check</label>
+
+      <input type="radio" id="modeContinuous" name="mode" value="continuous">
+      <label for="modeContinuous">Continuous Tap</label>
     </div>
 
-    <!-- Training screen -->
-    <div id="training-screen" class="hidden">
-      <div id="pi-display">
-        <div id="pi-display-inner">3.</div>
+    <button id="startBtn">Start</button>
+  </div>
+
+  <div id="game" class="card hidden">
+    <div class="problem" id="problemText">Press Start</div>
+
+    <div id="inputMode" class="hidden">
+      <input type="number" inputmode="numeric" id="answerInput" placeholder="Enter answer">
+      <button id="hintBtnInput">Hint</button>
+      <button id="submitBtn">Submit</button>
+      <div class="counters-inline">
+        <div class="counter">Correct: <span id="correctCount">0</span></div>
+        <div class="counter">Incorrect: <span id="incorrectCount">0</span></div>
       </div>
-      <input id="digit-input" type="tel" inputmode="numeric" pattern="[0-9]*" maxlength="1" autofocus>
-      <div id="counter">Correct: 0</div>
-      <div id="incorrect-counter" class="hidden">Incorrect: 0</div>
-      <div id="timer">Time: 0.0s</div>
-      <div>
-        <button id="startOverBtn">Start Over</button>
-        <button id="retryBtn">Retry</button>
-      </div>
-      <div id="message"></div>
+      <div class="counter">Time: <span id="timerInput">0.0</span> sec</div>
+    </div>
+
+    <div id="continuousMode" class="hidden">
+      <div class="counter">Problems: <span id="problemCount">0</span></div>
+      <div class="counter">Running Total: <span id="runningTotal">0</span></div>
+      <button id="hintBtnContinuous">Hint</button>
+      <button id="toggleTotalBtn">Hide/Show Total</button>
+      <div class="counter">Time: <span id="timerContinuous">0.0</span> sec</div>
+    </div>
+
+    <div class="controls">
+      <button id="resetBtn">Reset</button>
+      <button id="backBtn">Start Over</button>
     </div>
   </div>
+
   <script src="script.js"></script>
 </body>
 </html>
