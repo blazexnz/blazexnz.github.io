@@ -59,8 +59,18 @@
       touch-action: manipulation; /* Prevent double-tap zoom on iPhone */
     }
 
-    button:hover {
-      background: #e36300;
+    /* ✅ Hover styles only on devices with hover (desktops/laptops) */
+    @media (hover: hover) and (pointer: fine) {
+      button:hover {
+        background: #e36300;
+      }
+    }
+
+    /* ✅ Active styles for touch devices (iPhone, iPad, Android) */
+    @media (hover: none) and (pointer: coarse) {
+      button:active {
+        background: #e36300;
+      }
     }
 
     .hidden {
