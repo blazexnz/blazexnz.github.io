@@ -1,130 +1,182 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <title>Kids Math App</title>
-  <style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>blazexnz App Directory</title>
+<style>
+    body, ul, li {
+        margin: 0;
+        padding: 0;
+    }
+
     body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #fffae3;
-      display: flex;
-      flex-direction: column; /* stack items vertically */
-      justify-content: flex-start; /* align to top */
-      align-items: center; /* center horizontally */
-      min-height: 100vh;
-      color: #333;
-      text-align: center;
-      padding-top: 2rem; /* optional spacing from top */
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: #f5f7fa;
+        color: #333;
     }
 
-    .hidden { display: none; }
-
-    button {
-      font-size: 1.5rem;
-      padding: 1rem 2rem;
-      margin: 0.5rem;
-      border: none;
-      border-radius: 15px;
-      cursor: pointer;
-      touch-action: manipulation; /* prevent double-tap zoom */
-      transition: transform 0.1s;
+    h1 {
+        text-align: center;
+        margin: 20px 0;
+        color: #2c3e50;
+        font-size: 2rem;
     }
 
-    button:active {
-      transform: scale(0.95);
+    .container {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 10px;
     }
 
-    /* Hover effects only on devices that support hover */
-    @media (hover: hover) and (pointer: fine) {
-      button:hover {
-        opacity: 0.8;
-      }
+    ul.app-list {
+        list-style: none;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        justify-items: center;
+        align-items: start;
+        text-align: center;
     }
 
-    #modeSelection button { 
-      font-size: 2rem;
-      width: 120px;
-      height: 120px;
+    li {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
     }
 
-    #gameArea input {
-      font-size: 2rem;
-      padding: 0.5rem;
-      width: 100px;
-      text-align: center;
+    .app-card {
+        width: 60px;
+        height: 60px;
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #fff;
+        box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+        transition: transform 0.2s, box-shadow 0.2s;
+        cursor: pointer;
+        font-size: 2rem;
+        margin-bottom: 6px;
     }
 
-    #problemText {
-      font-size: 3rem; /* increased font size */
+    .app-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 15px rgba(0,0,0,0.12);
     }
 
-    #scoreboard {
-      font-size: 1.2rem;
-      margin-top: 1rem;
+    .app-name {
+        font-size: 0.8rem;
+        font-weight: 600;
     }
 
-    /* Add spacing between Correct and Incorrect labels */
-    #scoreboard .correct {
-      margin-right: 2rem;
+    .release-date {
+        font-size: 0.65rem;
+        color: #7f8c8d;
     }
 
-    #timer {
-      font-size: 1.2rem;
-      margin-top: 0.5rem;
+    .pagination {
+        text-align: center;
+        margin: 20px 0;
     }
 
-    #hint {
-      font-size: 1.5rem;
-      margin: 0.5rem;
-      cursor: pointer;
+    .pagination button {
+        margin: 0 5px;
+        padding: 6px 12px;
+        border: none;
+        border-radius: 6px;
+        background: #3498db;
+        color: white;
+        font-size: 0.9rem;
+        cursor: pointer;
     }
 
-    /* Problem text shake animation */
-    @keyframes shake {
-      0% { transform: translateX(0); }
-      20% { transform: translateX(-5px); }
-      40% { transform: translateX(5px); }
-      60% { transform: translateX(-5px); }
-      80% { transform: translateX(5px); }
-      100% { transform: translateX(0); }
+    .pagination button:disabled {
+        background: #bdc3c7;
+        cursor: not-allowed;
     }
-
-    .shake {
-      animation: shake 0.3s;
-      color: red;
-    }
-
-    .reset-button { background-color: #ff7f50; color: #fff; }
-    .startover-button { background-color: #32cd32; color: #fff; }
-    .submit-button { background-color: #1e90ff; color: #fff; }
-    .hint-button { background-color: #ffd700; color: #333; }
-    .mode-button { background-color: #ff69b4; color: #fff; }
-  </style>
+</style>
 </head>
 <body>
-  <!-- Mode Selection -->
-  <div id="modeSelection">
-    <h1>Choose Mode 🎨</h1>
-    <button class="mode-button" data-mode="add">➕</button>
-    <button class="mode-button" data-mode="sub">➖</button>
-  </div>
+<h1>blazexnz Apps</h1>
+<div class="container">
+    <ul id="app-list" class="app-list"></ul>
 
-  <!-- Game Area -->
-  <div id="gameArea" class="hidden">
-    <h2 id="problemText">1 + 2 = ?</h2>
-    <input id="answerInput" type="number" inputmode="numeric" pattern="[0-9]*" autofocus>
-    <br>
-    <button id="submitBtn" class="submit-button">Submit ✅</button>
-    <!-- <button id="hintBtn" class="hint-button">Hint 💡</button> -->
-    <div id="scoreboard"><span class="correct">Correct: 0</span><span class="incorrect">Incorrect: 0</span></div>
-    <div id="timer">Time: 0s</div>
-    <br>
-    <button id="resetBtn" class="reset-button">Reset 🔄</button>
-    <button id="startOverBtn" class="startover-button">Start Over 🏠</button>
-  </div>
+    <div class="pagination">
+        <button id="prevBtn">⬅️ Prev</button>
+        <button id="nextBtn">Next ➡️</button>
+    </div>
+</div>
 
-  <script src="script.js"></script>
+<script>
+const apps = [
+    {icon:"🧠", name:"Binary Memory", date:"Nov 2024", link:"./binary-memory-training/", page:1},
+    {icon:"💻", name:"Learn Binary", date:"Nov 2024", link:"./learn-binary/", page:1},
+    {icon:"🧩", name:"Speedcubing", date:"Dec 2025", link:"./speedcubing-app/", page:1},
+    {icon:"🔢", name:"Learn Numbers", date:"Jan 2025", link:"./language-learning-app/", page:1},
+    {icon:"🎲", name:"Random Word", date:"Feb 2025", link:"./random-word-number-generator/", page:1},
+    {icon:"📖", name:"PAO Lookup", date:"Feb 2025", link:"./pao-lookup/", page:1},
+    {icon:"♟️", name:"Cubing Algs", date:"Mar 2025", link:"./algs-reference/", page:1},
+    {icon:"🗂️", name:"PAO System", date:"Mar 2025", link:"./pao-system/", page:1},
+    {icon:"π", name:"Pi Memory", date:"Apr 2025", link:"./pi-memory-training/", page:1},
+    {icon:"🔢", name:"More Pi", date:"Jul 2025", link:"./more-pi/", page:1},
+    {icon:"📿", name:"Rosary", date:"Aug 2025", link:"./rosary/", page:1},
+    {icon:"🔵", name:"Dot Fidget", date:"Aug 2025", link:"./dot-fidget/", page:2},
+    {icon:"❌", name:"Tic Tac Toe", date:"Aug 2025", link:"./tic-tac-toe/", page:3},
+    {icon:"⚽", name:"Bouncy Ball", date:"Aug 2025", link:"./bouncy-ball-game/", page:3},
+    {icon:"✂️", name:"Paper Scissors Rock", date:"Aug 2025", link:"./paper-scissors-rock/", page:3},
+    {icon:"🙏", name:"Prayer App", date:"Aug 2025", link:"./prayer-app/", page:3},
+    {icon:"📚", name:"Language Stories", date:"Aug 2025", link:"./story-language-learning/", page:3},
+    {icon:"🥧", name:"Pi Recall", date:"Aug 2025", link:"./pi-recall/", page:3},
+    {icon:"🧮", name:"Mental Math", date:"Aug 2025", link:"./mental-math/", page:3},
+    {icon:"🧒", name:"Kids Math", date:"Aug 2025", link:"./kids-math/", page:4},
+    {icon:"🗃️", name:"Memory Grid", date:"Aug 2025", link:"./memory-grid/", page:4},
+    {icon:"🧪", name:"Test repo", date:"Now", link:"./test/", page:4}
+];
+
+// Get the total pages automatically
+const totalPages = Math.max(...apps.map(a => a.page));
+let currentPage = 1;
+
+function renderPage(page) {
+    const list = document.getElementById('app-list');
+    list.innerHTML = "";
+
+    const pageApps = apps.filter(a => a.page === page);
+
+    pageApps.forEach(app => {
+        const li = document.createElement('li');
+        li.innerHTML = `
+            <div class="app-card" onclick="window.open('${app.link}', '_blank')">${app.icon}</div>
+            <div class="app-name">${app.name}</div>
+            <div class="release-date">${app.date}</div>
+        `;
+        list.appendChild(li);
+    });
+
+    document.getElementById('prevBtn').disabled = page === 1;
+    document.getElementById('nextBtn').disabled = page === totalPages;
+}
+
+document.getElementById('prevBtn').addEventListener('click', () => {
+    if(currentPage > 1) {
+        currentPage--;
+        renderPage(currentPage);
+    }
+});
+
+document.getElementById('nextBtn').addEventListener('click', () => {
+    if(currentPage < totalPages) {
+        currentPage++;
+        renderPage(currentPage);
+    }
+});
+
+// Initial render
+renderPage(currentPage);
+</script>
+
 </body>
 </html>
