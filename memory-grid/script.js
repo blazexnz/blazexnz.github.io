@@ -30,14 +30,18 @@ function startGame() {
     lives = 3;
     updateLives();
     sequence = [];
-    nextLevel();
+    nextLevel(true); // start new level sequence
 }
 
-function nextLevel() {
+function nextLevel(isNewLevel = false) {
     levelDisplay.textContent = `Level: ${level}`;
     playerSequence = [];
-    const nextTile = Math.floor(Math.random() * tiles.length);
-    sequence.push(nextTile);
+    
+    if (isNewLevel) {
+        const nextTile = Math.floor(Math.random() * tiles.length);
+        sequence.push(nextTile);
+    }
+
     showSequence();
 }
 
@@ -77,7 +81,7 @@ function handleTileClick(index) {
 
     if (playerSequence.length === sequence.length) {
         level++;
-        setTimeout(nextLevel, 800);
+        setTimeout(() => nextLevel(true), 800); // advance to new level
     }
 }
 
@@ -90,7 +94,8 @@ function loseLife() {
         overlay.textContent = `Wrong! You have ${lives} lives left.`;
         overlay.style.display = 'block';
         setTimeout(() => overlay.style.display = 'none', 1500);
-        playerSequence = []; // reset input so player can retry sequence
+        playerSequence = [];
+        showSequence(); // replay the current level sequence
     }
 }
 
