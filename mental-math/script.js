@@ -31,6 +31,8 @@ const timerContinuousEl = document.getElementById("timerContinuous");
 const hintBtnInput = document.getElementById("hintBtnInput");
 const hintBtnContinuous = document.getElementById("hintBtnContinuous");
 
+const fireworksContainer = document.getElementById("fireworks");
+
 let operation = "add";
 let difficulty = 1;
 let mode = "input";
@@ -161,6 +163,37 @@ answerInput.addEventListener("input", () => {
   }
 });
 
+// Fireworks display function (for Input & Check mode only)
+function showFireworks() {
+  if (mode !== "input") return;
+
+  const rect = answerInput.getBoundingClientRect();
+  const centerX = rect.left + rect.width / 2;
+  const centerY = rect.top + rect.height / 2;
+
+  const particlesCount = 20;
+  for (let i = 0; i < particlesCount; i++) {
+    const particle = document.createElement("div");
+    particle.classList.add("particle");
+    const angle = Math.random() * 2 * Math.PI;
+    const distance = Math.random() * 100 + 50;
+    particle.style.setProperty("--x", `${Math.cos(angle) * distance}px`);
+    particle.style.setProperty("--y", `${Math.sin(angle) * distance}px`);
+    particle.style.background = `hsl(${Math.random()*360}, 100%, 50%)`;
+    particle.style.top = `${centerY}px`;
+    particle.style.left = `${centerX}px`;
+    fireworksContainer.appendChild(particle);
+    setTimeout(() => particle.remove(), 700);
+  }
+
+  fireworksContainer.style.display = "block";
+  setTimeout(() => {
+    if (fireworksContainer.children.length === 0) {
+      fireworksContainer.style.display = "none";
+    }
+  }, 700);
+}
+
 function checkAnswer() {
   const userAnswer = parseInt(answerInput.value);
   if (!isNaN(userAnswer) && answerInput.value !== "") {
@@ -169,6 +202,7 @@ function checkAnswer() {
       correctCountEl.textContent = correctCount;
       answerInput.value = "";
       problemText.style.color = "";
+      showFireworks(); // <--- FIREWORKS TRIGGER
       nextProblem();
     } else {
       incorrectCount++;
