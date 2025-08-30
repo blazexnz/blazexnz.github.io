@@ -46,6 +46,26 @@
             background: #e9ecef;
             margin: 5px 0;
             border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: normal; /* removed bold for words/numbers */
+        }
+        .card {
+            display: inline-block;
+            width: 50px;
+            height: 70px;
+            border: 1px solid #333;
+            border-radius: 8px;
+            margin: 3px;
+            text-align: center;
+            line-height: 70px;
+            font-size: 18px;
+            background-color: white;
+            position: relative;
+        }
+        .card.red {
+            color: red;
         }
         .counter-container {
             display: flex;
@@ -105,8 +125,6 @@
         #copyBtn:hover {
             background-color: #138496;
         }
-
-
     </style>
 </head>
 <body>
@@ -118,6 +136,7 @@
         <select id="mode">
             <option value="word">Words</option>
             <option value="number">Numbers</option>
+            <option value="card">Cards</option>
         </select>
 
         <button id="generateBtn">Generate</button>
@@ -141,4 +160,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-
