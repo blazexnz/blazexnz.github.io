@@ -19,9 +19,34 @@
 
     h1 {
         text-align: center;
-        margin: 30px 0;
+        margin: 30px 0 15px;
         color: #2c3e50;
         font-size: 2rem;
+    }
+
+    /* Tag bar */
+    .tag-bar {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+        margin-bottom: 25px;
+    }
+
+    .tag-btn {
+        padding: 6px 14px;
+        border-radius: 20px;
+        border: 1px solid #ccc;
+        background: #fff;
+        cursor: pointer;
+        font-size: 0.85rem;
+        transition: all 0.2s;
+    }
+
+    .tag-btn.active {
+        background: #2c3e50;
+        color: #fff;
+        border-color: #2c3e50;
     }
 
     .container {
@@ -81,119 +106,133 @@
     .section {
         margin-top: 50px;
     }
+
+    .hidden {
+        display: none !important;
+    }
 </style>
 </head>
 <body>
 <h1>blazexnz Apps</h1>
+
+<!-- TAG BAR -->
+<div class="tag-bar">
+    <button class="tag-btn active" data-filter="all">All</button>
+    <button class="tag-btn" data-filter="memory">Memory</button>
+    <button class="tag-btn" data-filter="games">Games</button>
+    <button class="tag-btn" data-filter="faith">Faith</button>
+    <button class="tag-btn" data-filter="learning">Learning</button>
+</div>
+
 <div class="container">
     <ul class="app-list">
-        <li>
+        <li data-tags="memory learning">
             <div class="app-card" onclick="window.open('./binary-memory-training/', '_blank')">🧠</div>
             <div class="app-name">Binary Memory</div>
             <div class="release-date">Nov 2024</div>
         </li>
-        <li>
+        <li data-tags="learning">
             <div class="app-card" onclick="window.open('./learn-binary/', '_blank')">💻</div>
             <div class="app-name">Learn Binary</div>
             <div class="release-date">Nov 2024</div>
         </li>
-        <li>
+        <li data-tags="games">
             <div class="app-card" onclick="window.open('./speedcubing-app/', '_blank')">🧩</div>
             <div class="app-name">Speedcubing</div>
             <div class="release-date">Dec 2025</div>
         </li>
-        <li>
+        <li data-tags="learning">
             <div class="app-card" onclick="window.open('./language-learning-app/', '_blank')">🔢</div>
             <div class="app-name">Learn Numbers</div>
             <div class="release-date">Jan 2025</div>
         </li>
-        <li>
+        <li data-tags="learning">
             <div class="app-card" onclick="window.open('./random-word-number-generator/', '_blank')">🎲</div>
             <div class="app-name">Random Word</div>
             <div class="release-date">Feb 2025</div>
         </li>
-        <li>
+        <li data-tags="memory">
             <div class="app-card" onclick="window.open('./pao-lookup/', '_blank')">📖</div>
             <div class="app-name">PAO Lookup</div>
             <div class="release-date">Feb 2025</div>
         </li>
-        <li>
+        <li data-tags="games">
             <div class="app-card" onclick="window.open('./algs-reference/', '_blank')">♟️</div>
             <div class="app-name">Cubing Algs</div>
             <div class="release-date">Mar 2025</div>
         </li>
-        <li>
+        <li data-tags="memory">
             <div class="app-card" onclick="window.open('./pao-system/', '_blank')">🗂️</div>
             <div class="app-name">PAO System</div>
             <div class="release-date">Mar 2025</div>
         </li>
-        <li>
+        <li data-tags="memory">
             <div class="app-card" onclick="window.open('./pi-memory-training/', '_blank')">π</div>
             <div class="app-name">Pi Memory</div>
             <div class="release-date">Apr 2025</div>
         </li>
-        <li>
+        <li data-tags="memory">
             <div class="app-card" onclick="window.open('./more-pi/', '_blank')">🔢</div>
             <div class="app-name">More Pi</div>
             <div class="release-date">Jul 2025</div>
         </li>
-        <li>
+        <li data-tags="faith">
             <div class="app-card" onclick="window.open('./rosary/', '_blank')">📿</div>
             <div class="app-name">Rosary</div>
             <div class="release-date">Aug 2025</div>
         </li>
-        <li>
+        <li data-tags="games">
             <div class="app-card" onclick="window.open('./dot-fidget/', '_blank')">🔵</div>
             <div class="app-name">Dot Fidget</div>
             <div class="release-date">Aug 2025</div>
         </li>
-        <li>
+        <li data-tags="games">
             <div class="app-card" onclick="window.open('./tic-tac-toe/', '_blank')">❌</div>
             <div class="app-name">Tic Tac Toe</div>
             <div class="release-date">Aug 2025</div>
         </li>
-        <li>
+        <li data-tags="games">
             <div class="app-card" onclick="window.open('./bouncy-ball-game/', '_blank')">⚽</div>
             <div class="app-name">Bouncy Ball</div>
             <div class="release-date">Aug 2025</div>
         </li>
-        <li>
+        <li data-tags="games">
             <div class="app-card" onclick="window.open('./paper-scissors-rock/', '_blank')">✂️</div>
             <div class="app-name">Paper Scissors Rock</div>
             <div class="release-date">Aug 2025</div>
         </li>
-        <li>
+        <li data-tags="faith">
             <div class="app-card" onclick="window.open('./prayer-app/', '_blank')">🙏</div>
             <div class="app-name">Prayer App</div>
             <div class="release-date">Aug 2025</div>
         </li>
-        <li>
+        <li data-tags="learning">
             <div class="app-card" onclick="window.open('./story-language-learning/', '_blank')">📚</div>
             <div class="app-name">Language Stories</div>
             <div class="release-date">Aug 2025</div>
         </li>
-        <li>
+        <li data-tags="memory">
             <div class="app-card" onclick="window.open('./pi-recall/', '_blank')">🥧</div>
             <div class="app-name">Pi Recall</div>
             <div class="release-date">Aug 2025</div>
         </li>
-        <li>
+        <li data-tags="memory learning">
             <div class="app-card" onclick="window.open('./mental-math/', '_blank')">🧮</div>
             <div class="app-name">Mental Math</div>
             <div class="release-date">Aug 2025</div>
         </li>
-        <li>
+        <li data-tags="learning kids">
             <div class="app-card" onclick="window.open('./kids-math/', '_blank')">🧒</div>
             <div class="app-name">Kids Math</div>
             <div class="release-date">Aug 2025</div>
         </li>
-        <li>
+        <li data-tags="memory games">
             <div class="app-card" onclick="window.open('./memory-grid/', '_blank')">🗃️</div>
             <div class="app-name">Memory Grid</div>
             <div class="release-date">Aug 2025</div>
         </li>
         <!-- Add new cards above this. Test card below. -->
-        <li>
+        <li data-tags="test">
             <div class="app-card" onclick="window.open('./test/', '_blank')">🧪</div>
             <div class="app-name">Test repo</div>
             <div class="release-date">Now</div>
@@ -222,12 +261,27 @@
         </ul>
     </div>
 </div>
+
+<script>
+    const buttons = document.querySelectorAll(".tag-btn");
+    const cards = document.querySelectorAll(".app-list li");
+
+    buttons.forEach(btn => {
+        btn.addEventListener("click", () => {
+            buttons.forEach(b => b.classList.remove("active"));
+            btn.classList.add("active");
+
+            const filter = btn.getAttribute("data-filter");
+            
+            cards.forEach(card => {
+                if (filter === "all" || card.dataset.tags.includes(filter)) {
+                    card.classList.remove("hidden");
+                } else {
+                    card.classList.add("hidden");
+                }
+            });
+        });
+    });
+</script>
 </body>
 </html>
-
-
-
-
-
-
-
