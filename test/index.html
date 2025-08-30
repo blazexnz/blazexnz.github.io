@@ -3,97 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="robots" content="noindex, nofollow">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Item Reveal List</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Sevens Brain Trainer</title>
     <style>
+        /* Basic styling */
         body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
             align-items: center;
+            justify-content: center;
             height: 100vh;
-            background-color: #f7f7f7;
-        }
-
-        .container {
-            text-align: center;
+            margin: 0;
+            background-color: #f0f0f0;
         }
 
         h1 {
-            font-size: 36px;
-            margin-top: 20px;
+            margin-bottom: 20px;
+            font-size: 2em;
         }
 
-        .list-container {
-            margin-top: 20px;
-            width: 100%;  /* Set to 100% width */
-            max-width: 1200px;  /* Ensure the width doesn't get too large on big screens */
-            height: 300px;  /* Fixed height to make it scrollable */
-            overflow-y: auto;  /* Enable vertical scrolling */
-            border: 1px solid #ccc;
-            padding: 10px;
-            background-color: white;
+        #counter {
+            font-size: 3em;
+            margin-bottom: 10px;
         }
 
-        #list {
-            display: none;
-            list-style-type: none;
-            padding: 0;
+        #score, #timer {
+            font-size: 1.5em;
+            margin-bottom: 10px;
         }
 
-        #list li {
-            font-size: 18px;
-            padding: 10px;
-            border-bottom: 1px solid #ccc;
+        .buttons-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px; /* space between reset and ±7 buttons */
         }
 
         .button-container {
-            margin-top: 20px;
+            display: flex;
+            gap: 20px;
         }
 
-        .reveal-btn, .reset-btn {
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: #007bff;
-            color: white;
+        button {
+            font-size: 2em;
+            padding: 20px 40px;
             border: none;
+            border-radius: 10px;
+            background-color: #4CAF50;
+            color: white;
             cursor: pointer;
-            border-radius: 5px;
-            margin: 10px 0;
-            width: 200px;
+            user-select: none;
+            touch-action: manipulation; /* Prevent double-tap zoom */
         }
 
-        .reveal-btn:hover, .reset-btn:hover {
-            background-color: #0056b3;
+        button:active {
+            background-color: #45a049;
+        }
+
+        /* Fix for iPhone hover state stuck */
+        @media (hover: none) {
+            button:hover {
+                background-color: #4CAF50;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>More than Pi Memory Training</h1>
+    <h1>Sevens Brain Trainer</h1>
+    <div id="counter">100</div>
+    <div id="score">Score: 0</div>
+    <div id="timer">Time: 0.0s</div>
 
-        <div class="dropdown-container">
-            <label for="configSelect">Choose a list:</label>
-            <select id="configSelect" onchange="loadSelectedConfig()">
-                <option value="config-1.json">Pi</option>
-                <option value="config-2.json">50 states memset</option>
-                <option value="config-3.json">50 states of US</option>
-                <option value="config-4.json">Card tricks memset</option>
-                <option value="config-5.json">PAO system</option>
-                <option value="config-6.json">Backward alphabet</option>
-                <!-- Add more config files as needed -->
-            </select>
-        </div>
-
-        <div class="list-container">
-            <ul id="list"></ul>
-        </div>
+    <!-- Buttons grouped in a vertical wrapper -->
+    <div class="buttons-wrapper">
+        <button id="reset">Reset</button>
         <div class="button-container">
-            <button class="reveal-btn" onclick="showList()">Reveal List</button>
-            <button class="reset-btn" onclick="resetList()">Reset</button>
+            <button id="add">+7</button>
+            <button id="subtract">-7</button>
         </div>
     </div>
 
