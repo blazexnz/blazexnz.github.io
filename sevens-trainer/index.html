@@ -33,13 +33,16 @@
             margin-bottom: 10px;
         }
 
+        .buttons-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px; /* space between reset and ±7 buttons */
+        }
+
         .button-container {
             display: flex;
             gap: 20px;
-        }
-
-        .reset-container {
-            margin-bottom: 20px; /* Space between reset and ±7 buttons */
         }
 
         button {
@@ -72,14 +75,13 @@
     <div id="score">Score: 0</div>
     <div id="timer">Time: 0.0s</div>
 
-    <!-- Reset button above ±7 buttons -->
-    <div class="reset-container">
+    <!-- Buttons grouped in a vertical wrapper -->
+    <div class="buttons-wrapper">
         <button id="reset">Reset</button>
-    </div>
-
-    <div class="button-container">
-        <button id="add">+7</button>
-        <button id="subtract">-7</button>
+        <div class="button-container">
+            <button id="add">+7</button>
+            <button id="subtract">-7</button>
+        </div>
     </div>
 
     <script src="script.js"></script>
