@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const plusBtn = document.getElementById("plusBtn");
     const counterValue = document.getElementById("counterValue");
     const resetBtn = document.getElementById("resetBtn");
-    const backToTopBtn = document.getElementById("backToTopBtn");  // Added back to top button reference
+    const backToTopBtn = document.getElementById("backToTopBtn");
     let isHidden = false;
     let counter = 0;
 
@@ -92,9 +92,18 @@ document.addEventListener("DOMContentLoaded", function () {
         "zeppelin","zigzag","zinnia","zipper","zodiac","zucchini"
     ];
 
+    const suits = ["♠", "♥", "♣", "♦"];
+    const ranks = ["A","2","3","4","5","6","7","8","9","10","J","Q","K"];
+    const deck = [];
+    suits.forEach(suit => {
+        ranks.forEach(rank => {
+            deck.push({suit: suit, rank: rank});
+        });
+    });
+
     generateBtn.addEventListener("click", function () {
         const mode = modeSelect.value;
-        const count = Math.max(1, parseInt(countInput.value) || 20);
+        let count = Math.max(1, parseInt(countInput.value) || 20);
         resultList.innerHTML = "";
 
         if (mode === "word") {
@@ -104,12 +113,27 @@ document.addEventListener("DOMContentLoaded", function () {
                 listItem.textContent = word;
                 resultList.appendChild(listItem);
             });
-        } else {
+        } else if (mode === "number") {
             for (let i = 0; i < count; i++) {
                 const listItem = document.createElement("li");
                 listItem.textContent = Math.floor(Math.random() * 100);
                 resultList.appendChild(listItem);
             }
+        } else if (mode === "card") {
+            count = Math.min(count, 52);
+            const shuffledDeck = [...deck].sort(() => Math.random() - 0.5).slice(0, count);
+            shuffledDeck.forEach(card => {
+                const listItem = document.createElement("li");
+                const cardDiv = document.createElement("div");
+                cardDiv.classList.add("card");
+                if (card.suit === "♥" || card.suit === "♦") cardDiv.classList.add("red");
+
+                // Rank then suit for "6♥" format
+                cardDiv.textContent = card.rank + card.suit;
+
+                listItem.appendChild(cardDiv);
+                resultList.appendChild(listItem);
+            });
         }
     });
 
@@ -144,10 +168,7 @@ document.addEventListener("DOMContentLoaded", function () {
         counterValue.textContent = counter;
     });
 
-    // Event listener for "Back to Top" button
     backToTopBtn.addEventListener("click", function () {
         window.scrollTo({ top: 0, behavior: "smooth" });
     });
-
 });
-
