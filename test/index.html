@@ -1,182 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="robots" content="noindex, nofollow">
-<title>blazexnz App Directory</title>
-<style>
-    body, ul, li {
-        margin: 0;
-        padding: 0;
-    }
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Item Reveal List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            height: 100vh;
+            background-color: #f7f7f7;
+        }
 
-    body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        background: #f5f7fa;
-        color: #333;
-    }
+        .container {
+            text-align: center;
+        }
 
-    h1 {
-        text-align: center;
-        margin: 20px 0;
-        color: #2c3e50;
-        font-size: 2rem;
-    }
+        h1 {
+            font-size: 36px;
+            margin-top: 20px;
+        }
 
-    .container {
-        max-width: 900px;
-        margin: 0 auto;
-        padding: 0 10px;
-    }
+        .list-container {
+            margin-top: 20px;
+            width: 100%;  /* Set to 100% width */
+            max-width: 1200px;  /* Ensure the width doesn't get too large on big screens */
+            height: 300px;  /* Fixed height to make it scrollable */
+            overflow-y: auto;  /* Enable vertical scrolling */
+            border: 1px solid #ccc;
+            padding: 10px;
+            background-color: white;
+        }
 
-    ul.app-list {
-        list-style: none;
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 20px;
-        justify-items: center;
-        align-items: start;
-        text-align: center;
-    }
+        #list {
+            display: none;
+            list-style-type: none;
+            padding: 0;
+        }
 
-    li {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
+        #list li {
+            font-size: 18px;
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+        }
 
-    .app-card {
-        width: 60px;
-        height: 60px;
-        border-radius: 15px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: #fff;
-        box-shadow: 0 3px 8px rgba(0,0,0,0.08);
-        transition: transform 0.2s, box-shadow 0.2s;
-        cursor: pointer;
-        font-size: 2rem;
-        margin-bottom: 6px;
-    }
+        .button-container {
+            margin-top: 20px;
+        }
 
-    .app-card:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 6px 15px rgba(0,0,0,0.12);
-    }
+        .reveal-btn, .reset-btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin: 10px 0;
+            width: 200px;
+        }
 
-    .app-name {
-        font-size: 0.8rem;
-        font-weight: 600;
-    }
-
-    .release-date {
-        font-size: 0.65rem;
-        color: #7f8c8d;
-    }
-
-    .pagination {
-        text-align: center;
-        margin: 20px 0;
-    }
-
-    .pagination button {
-        margin: 0 5px;
-        padding: 6px 12px;
-        border: none;
-        border-radius: 6px;
-        background: #3498db;
-        color: white;
-        font-size: 0.9rem;
-        cursor: pointer;
-    }
-
-    .pagination button:disabled {
-        background: #bdc3c7;
-        cursor: not-allowed;
-    }
-</style>
+        .reveal-btn:hover, .reset-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-<h1>blazexnz Apps</h1>
-<div class="container">
-    <ul id="app-list" class="app-list"></ul>
+    <div class="container">
+        <h1>More than Pi Memory Training</h1>
 
-    <div class="pagination">
-        <button id="prevBtn">⬅️ Prev</button>
-        <button id="nextBtn">Next ➡️</button>
+        <div class="dropdown-container">
+            <label for="configSelect">Choose a list:</label>
+            <select id="configSelect" onchange="loadSelectedConfig()">
+                <option value="config-1.json">Pi</option>
+                <option value="config-2.json">50 states memset</option>
+                <option value="config-3.json">50 states of US</option>
+                <option value="config-4.json">Card tricks memset</option>
+                <option value="config-5.json">PAO system</option>
+                <option value="config-6.json">Backward alphabet</option>
+                <!-- Add more config files as needed -->
+            </select>
+        </div>
+
+        <div class="list-container">
+            <ul id="list"></ul>
+        </div>
+        <div class="button-container">
+            <button class="reveal-btn" onclick="showList()">Reveal List</button>
+            <button class="reset-btn" onclick="resetList()">Reset</button>
+        </div>
     </div>
-</div>
 
-<script>
-const apps = [
-    {icon:"🧠", name:"Binary Memory", date:"Nov 2024", link:"./binary-memory-training/", page:1},
-    {icon:"💻", name:"Learn Binary", date:"Nov 2024", link:"./learn-binary/", page:1},
-    {icon:"🧩", name:"Speedcubing", date:"Dec 2025", link:"./speedcubing-app/", page:1},
-    {icon:"🔢", name:"Learn Numbers", date:"Jan 2025", link:"./language-learning-app/", page:1},
-    {icon:"🎲", name:"Random Word", date:"Feb 2025", link:"./random-word-number-generator/", page:1},
-    {icon:"📖", name:"PAO Lookup", date:"Feb 2025", link:"./pao-lookup/", page:1},
-    {icon:"♟️", name:"Cubing Algs", date:"Mar 2025", link:"./algs-reference/", page:1},
-    {icon:"🗂️", name:"PAO System", date:"Mar 2025", link:"./pao-system/", page:1},
-    {icon:"π", name:"Pi Memory", date:"Apr 2025", link:"./pi-memory-training/", page:1},
-    {icon:"🔢", name:"More Pi", date:"Jul 2025", link:"./more-pi/", page:1},
-    {icon:"📿", name:"Rosary", date:"Aug 2025", link:"./rosary/", page:1},
-    {icon:"🔵", name:"Dot Fidget", date:"Aug 2025", link:"./dot-fidget/", page:2},
-    {icon:"❌", name:"Tic Tac Toe", date:"Aug 2025", link:"./tic-tac-toe/", page:3},
-    {icon:"⚽", name:"Bouncy Ball", date:"Aug 2025", link:"./bouncy-ball-game/", page:3},
-    {icon:"✂️", name:"Paper Scissors Rock", date:"Aug 2025", link:"./paper-scissors-rock/", page:3},
-    {icon:"🙏", name:"Prayer App", date:"Aug 2025", link:"./prayer-app/", page:3},
-    {icon:"📚", name:"Language Stories", date:"Aug 2025", link:"./story-language-learning/", page:3},
-    {icon:"🥧", name:"Pi Recall", date:"Aug 2025", link:"./pi-recall/", page:3},
-    {icon:"🧮", name:"Mental Math", date:"Aug 2025", link:"./mental-math/", page:3},
-    {icon:"🧒", name:"Kids Math", date:"Aug 2025", link:"./kids-math/", page:4},
-    {icon:"🗃️", name:"Memory Grid", date:"Aug 2025", link:"./memory-grid/", page:4},
-    {icon:"🧪", name:"Test repo", date:"Now", link:"./test/", page:4}
-];
-
-// Get the total pages automatically
-const totalPages = Math.max(...apps.map(a => a.page));
-let currentPage = 1;
-
-function renderPage(page) {
-    const list = document.getElementById('app-list');
-    list.innerHTML = "";
-
-    const pageApps = apps.filter(a => a.page === page);
-
-    pageApps.forEach(app => {
-        const li = document.createElement('li');
-        li.innerHTML = `
-            <div class="app-card" onclick="window.open('${app.link}', '_blank')">${app.icon}</div>
-            <div class="app-name">${app.name}</div>
-            <div class="release-date">${app.date}</div>
-        `;
-        list.appendChild(li);
-    });
-
-    document.getElementById('prevBtn').disabled = page === 1;
-    document.getElementById('nextBtn').disabled = page === totalPages;
-}
-
-document.getElementById('prevBtn').addEventListener('click', () => {
-    if(currentPage > 1) {
-        currentPage--;
-        renderPage(currentPage);
-    }
-});
-
-document.getElementById('nextBtn').addEventListener('click', () => {
-    if(currentPage < totalPages) {
-        currentPage++;
-        renderPage(currentPage);
-    }
-});
-
-// Initial render
-renderPage(currentPage);
-</script>
-
+    <script src="script.js"></script>
 </body>
 </html>
