@@ -21,4 +21,4 @@
 - **Mental math** (Released: August 2025)
 - **Kids math** (Released: August 2025)  
 - **Memory grid** (Released: August 2025)
-- **Sevens** (Released: August 2025)  
+- **Sevens trainer** (Released: August 2025)  
