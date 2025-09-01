@@ -47,11 +47,8 @@ function updateDisplay() {
         stepDisplay.textContent = `Step: ${getJuggleStep()}`;
         addBtn.textContent = '🔄'; // refresh
         subtractBtn.textContent = '➡️'; // next
-        if (juggleRounds >= juggleTotalRounds) {
-            subtractBtn.disabled = true;
-        } else {
-            subtractBtn.disabled = false;
-        }
+        // Make next button more obviously disabled
+        subtractBtn.disabled = juggleRounds >= juggleTotalRounds;
         cycleBtn.classList.remove('active');
         randomBtn.classList.remove('active');
         juggleBtn.classList.add('active');
@@ -63,6 +60,7 @@ function updateDisplay() {
         cycleBtn.classList.remove('active');
         randomBtn.classList.add('active');
         juggleBtn.classList.remove('active');
+        subtractBtn.disabled = false;
     } else {
         stepDisplay.style.display = 'none';
         addBtn.textContent = `+${currentStep}`;
@@ -70,6 +68,7 @@ function updateDisplay() {
         randomBtn.classList.remove('active');
         cycleBtn.classList.add('active');
         juggleBtn.classList.remove('active');
+        subtractBtn.disabled = false;
     }
 }
 
@@ -97,6 +96,7 @@ function fullReset() {
     currentStep = stepSizes[currentStepIndex];
     juggleRounds = 0;
     juggleNumber = getRandomThreeDigit();
+    subtractBtn.disabled = false; // re-enable next button
     updateDisplay();
 }
 
@@ -118,6 +118,7 @@ addBtn.addEventListener('click', () => {
         juggleNumber = getRandomThreeDigit();
         juggleRounds = 0;
         counter = juggleNumber;
+        subtractBtn.disabled = false; // re-enable next
     } else {
         const step = getStep();
         counter += step;
@@ -174,6 +175,7 @@ bindButton(juggleBtn, () => {
     juggleRounds = 0;
     juggleNumber = getRandomThreeDigit();
     counter = juggleNumber;
+    subtractBtn.disabled = false; // ensure next enabled initially
     fullReset();
 });
 
