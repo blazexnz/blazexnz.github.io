@@ -45,8 +45,8 @@ function updateScoreboardHighlight() {
 
 function createBoard() {
   board.innerHTML = "";
-  board.style.gridTemplateColumns = `repeat(${COLS}, 60px)`;
-  board.style.gridTemplateRows = `repeat(${ROWS}, 60px)`;
+  board.style.gridTemplateColumns = `repeat(${COLS}, 50px)`;
+  board.style.gridTemplateRows = `repeat(${ROWS}, 50px)`;
 
   for (let r=0;r<ROWS;r++){
     for (let c=0;c<COLS;c++){
@@ -64,7 +64,6 @@ function handleDotClick(e){
   if(gameOver) return;
   const col = parseInt(e.target.dataset.col);
 
-  // Find lowest empty row
   let row = ROWS-1;
   while(row>=0 && grid[row][col]!==0) row--;
   if(row<0) return;
@@ -101,9 +100,7 @@ function checkWin(player,row,col){
     return count;
   }
   const directions=[[0,1],[1,0],[1,1],[1,-1]];
-  return directions.some(([dr,dc])=>{
-    return 1+countDir(dr,dc)+countDir(-dr,-dc)>=4;
-  });
+  return directions.some(([dr,dc])=>1+countDir(dr,dc)+countDir(-dr,-dc)>=4);
 }
 
 function showWinner(player){
@@ -111,20 +108,14 @@ function showWinner(player){
   winnerOverlay.classList.remove("hidden","fade-out");
   startFireworks();
   startingPlayer=startingPlayer===1?2:1;
-  setTimeout(()=>{
-    winnerOverlay.classList.add("fade-out");
-    setTimeout(()=>{winnerOverlay.classList.add("hidden"); stopFireworks();},500);
-  },1000);
+  setTimeout(()=>{ winnerOverlay.classList.add("fade-out"); setTimeout(()=>{winnerOverlay.classList.add("hidden"); stopFireworks();},500); },1000);
 }
 
 function showDraw(){
   winnerOverlay.textContent="🤝 It's a draw!";
   winnerOverlay.classList.remove("hidden","fade-out");
   startingPlayer=startingPlayer===1?2:1;
-  setTimeout(()=>{
-    winnerOverlay.classList.add("fade-out");
-    setTimeout(()=>{winnerOverlay.classList.add("hidden");},500);
-  },1000);
+  setTimeout(()=>{ winnerOverlay.classList.add("fade-out"); setTimeout(()=>{winnerOverlay.classList.add("hidden");},500); },1000);
 }
 
 function undoMove(){
