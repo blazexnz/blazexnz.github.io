@@ -6,7 +6,7 @@ let timerInterval = null;
 let stepSizes = [7, 9, 11];
 let currentStepIndex = 0;
 let currentStep = stepSizes[currentStepIndex];
-let randomMode = false;
+let randomMode = false; // default: cycle mode is active
 
 const counterDisplay = document.getElementById('counter');
 const scoreDisplay = document.getElementById('score');
@@ -85,14 +85,23 @@ resetBtn.addEventListener('click', () => {
     resetTimer();
 });
 
-cycleBtn.addEventListener('click', () => {
+// Support both click and touch for iPhone
+function bindButton(button, handler) {
+    button.addEventListener('click', handler);
+    button.addEventListener('touchstart', (e) => {
+        e.preventDefault(); // prevent ghost clicks
+        handler();
+    }, { passive: false });
+}
+
+bindButton(cycleBtn, () => {
     randomMode = false;
     currentStepIndex = (currentStepIndex + 1) % stepSizes.length;
     currentStep = stepSizes[currentStepIndex];
     updateDisplay();
 });
 
-randomBtn.addEventListener('click', () => {
+bindButton(randomBtn, () => {
     randomMode = !randomMode;
     if (randomMode) {
         currentStep = stepSizes[Math.floor(Math.random() * stepSizes.length)];
