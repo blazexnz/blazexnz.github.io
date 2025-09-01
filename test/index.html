@@ -1,129 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <meta name="robots" content="noindex, nofollow">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>I Spy with My Little Eye</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Kids Math App</title>
   <style>
-    /* Reset */
-    * {
-      box-sizing: border-box;
+    html, body {
       margin: 0;
       padding: 0;
+      height: 100%;
       font-family: Arial, sans-serif;
+      background: #fffae3;
+      color: #333;
+      text-align: center;
     }
 
     body {
-      background: linear-gradient(135deg, #FFDEE9, #B5FFFC);
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
+      flex-direction: column; /* stack items vertically */
+      justify-content: flex-start; /* align to top */
+      align-items: center; /* center horizontally */
       min-height: 100vh;
-      padding: 20px;
-      touch-action: manipulation; /* prevent double tap zoom */
-      position: relative;
-      overflow-x: hidden;
+      padding-top: 2rem; /* optional spacing from top */
     }
 
-    h1 {
-      font-size: 2.5rem;
-      color: #FF4F79;
-      text-align: center;
-      margin-bottom: 20px;
-      text-shadow: 2px 2px #FFF;
-    }
-
-    #game-container {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-      gap: 15px;
+    #gameArea {
+      /* Ensure it stays at top and scrolls if needed */
+      margin-top: 0;
       width: 100%;
       max-width: 500px;
+      box-sizing: border-box;
+      padding: 0 1rem;
     }
 
-    .emoji-btn {
-      font-size: 2rem;
-      padding: 20px;
-      border-radius: 15px;
-      border: none;
-      cursor: pointer;
-      background: #FFD93D;
-      transition: transform 0.1s, background 0.2s;
-      user-select: none;
-    }
+    .hidden { display: none; }
 
-    .emoji-btn:active {
-      transform: scale(0.9);
-      background: #FF6F61;
-    }
-
-    .emoji-btn.disabled {
-      background: #C0C0C0;
-      cursor: not-allowed;
-    }
-
-    @media (hover: hover) and (pointer: fine) {
-      .emoji-btn:hover:not(.disabled) {
-        background: #FF9A76;
-        transform: scale(1.1);
-      }
-    }
-
-    #message {
-      margin-top: 25px;
+    button {
       font-size: 1.5rem;
-      color: #4B0082;
-      text-align: center;
-      min-height: 40px;
-    }
-
-    button#new-round, button#hint-btn {
-      margin-top: 15px;
-      padding: 15px 30px;
-      font-size: 1.2rem;
+      padding: 1rem 2rem;
+      margin: 0.5rem;
       border: none;
-      border-radius: 10px;
-      background: #6A5ACD;
-      color: white;
+      border-radius: 15px;
       cursor: pointer;
-      transition: transform 0.1s, background 0.2s;
+      touch-action: manipulation; /* prevent double-tap zoom */
+      transition: transform 0.1s;
     }
 
-    button#new-round:active, button#hint-btn:active {
+    button:active {
       transform: scale(0.95);
-      background: #483D8B;
     }
 
+    /* Hover effects only on devices that support hover */
     @media (hover: hover) and (pointer: fine) {
-      button#new-round:hover, button#hint-btn:hover {
-        background: #7B68EE;
+      button:hover {
+        opacity: 0.8;
       }
     }
 
-    /* Confetti overlay */
-    #confetti-overlay {
+    #modeSelection button { 
+      font-size: 2rem;
+      width: 120px;
+      height: 120px;
+    }
+
+    #gameArea input {
+      font-size: 2rem;
+      padding: 0.5rem;
+      width: 100px;
+      text-align: center;
+    }
+
+    #problemText {
+      font-size: 3rem; /* increased font size */
+    }
+
+    #scoreboard {
+      font-size: 1.2rem;
+      margin-top: 1rem;
+    }
+
+    /* Add spacing between Correct and Incorrect labels */
+    #scoreboard .correct {
+      margin-right: 2rem;
+    }
+
+    #timer {
+      font-size: 1.2rem;
+      margin-top: 0.5rem;
+    }
+
+    #hint {
+      font-size: 1.5rem;
+      margin: 0.5rem;
+      cursor: pointer;
+    }
+
+    /* Problem text shake animation */
+    @keyframes shake {
+      0% { transform: translateX(0); }
+      20% { transform: translateX(-5px); }
+      40% { transform: translateX(5px); }
+      60% { transform: translateX(-5px); }
+      80% { transform: translateX(5px); }
+      100% { transform: translateX(0); }
+    }
+
+    .shake {
+      animation: shake 0.3s;
+      color: red;
+    }
+
+    .reset-button { background-color: #ff7f50; color: #fff; }
+    .startover-button { background-color: #32cd32; color: #fff; }
+    .submit-button { background-color: #1e90ff; color: #fff; }
+    .hint-button { background-color: #ffd700; color: #333; }
+    .mode-button { background-color: #ff69b4; color: #fff; }
+
+    /* Fireworks overlay */
+    #fireworks {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      pointer-events: none;
+      pointer-events: none; /* allow interactions through overlay */
+      z-index: 1000;
       display: none;
-      z-index: 9999;
+    }
+
+    .particle {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #ff0, #f00);
+      animation: explode 700ms ease-out forwards;
+    }
+
+    @keyframes explode {
+      0% { transform: translate(0, 0) scale(1); opacity: 1; }
+      100% { transform: translate(var(--x), var(--y)) scale(0.5); opacity: 0; }
     }
   </style>
 </head>
 <body>
-  <h1>I Spy with My Little Eye 👀</h1>
+  <!-- Mode Selection -->
+  <div id="modeSelection">
+    <h1>Choose Mode 🎨</h1>
+    <button class="mode-button" data-mode="add">➕</button>
+    <button class="mode-button" data-mode="sub">➖</button>
+  </div>
 
-  <div id="game-container"></div>
-  <div id="message"></div>
-  <button id="hint-btn">Hint 💡</button>
-  <button id="new-round">New Round 🔄</button>
+  <!-- Game Area -->
+  <div id="gameArea" class="hidden">
+    <h2 id="problemText">1 + 2 = ?</h2>
+    <input id="answerInput" type="number" inputmode="numeric" pattern="[0-9]*" autofocus>
+    <br>
+    <button id="submitBtn" class="submit-button">Submit ✅</button>
+    <!-- <button id="hintBtn" class="hint-button">Hint 💡</button> -->
+    <div id="scoreboard"><span class="correct">Correct: 0</span><span class="incorrect">Incorrect: 0</span></div>
+    <div id="timer">Time: 0.0s</div>
+    <br>
+    <button id="resetBtn" class="reset-button">Reset 🔄</button>
+    <button id="startOverBtn" class="startover-button">Start Over 🏠</button>
+  </div>
 
-  <canvas id="confetti-overlay"></canvas>
+  <!-- Fireworks container -->
+  <div id="fireworks"></div>
+
   <script src="script.js"></script>
 </body>
 </html>
