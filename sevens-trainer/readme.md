@@ -18,6 +18,6 @@ A simple, mobile-friendly web app to train your working memory by adding or subt
 2. Choose a mode:  
    - **Cycle (🔄):** Steps rotate between 7, 9, and 11  
    - **Random (🎲):** Each step is random (7, 9, or 11)
-3. Press **+** or **-** to progress while completing your mental math
+3. Press **+** or **-** to progress while completing your mental math, subtract button on the right side (optimised for right handed play on iPhone)
 4. Track your **score** & **time** with each step  
 5. Reset timer, score, and steps by clicking reset, or toggling between modes
