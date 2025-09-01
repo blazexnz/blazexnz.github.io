@@ -59,12 +59,19 @@ function fullReset() {
     counter = 100;
     score = 0;
     resetTimer();
+    // when resetting, also prepare the next step if in random mode
+    if (randomMode) {
+        currentStep = stepSizes[Math.floor(Math.random() * stepSizes.length)];
+    }
     updateDisplay();
 }
 
 function getStep() {
+    // In random mode, return the *next prepared step* and then queue the next one
     if (randomMode) {
+        const step = currentStep;
         currentStep = stepSizes[Math.floor(Math.random() * stepSizes.length)];
+        return step;
     }
     return currentStep;
 }
