@@ -55,10 +55,16 @@
             cursor: pointer;
             user-select: none;
             touch-action: manipulation; /* Prevent double-tap zoom */
+            transition: opacity 0.2s;
         }
 
         button:active {
             background-color: #45a049;
+        }
+
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
         }
 
         /* Fix for iPhone hover state stuck */
