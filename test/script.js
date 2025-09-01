@@ -55,6 +55,13 @@ function resetTimer() {
     timerDisplay.textContent = 'Time: 0.0s';
 }
 
+function fullReset() {
+    counter = 100;
+    score = 0;
+    resetTimer();
+    updateDisplay();
+}
+
 function getStep() {
     if (randomMode) {
         currentStep = stepSizes[Math.floor(Math.random() * stepSizes.length)];
@@ -79,10 +86,7 @@ subtractBtn.addEventListener('click', () => {
 });
 
 resetBtn.addEventListener('click', () => {
-    counter = 100;
-    score = 0;
-    updateDisplay();
-    resetTimer();
+    fullReset();
 });
 
 // Support both click and touch for iPhone
@@ -95,6 +99,10 @@ function bindButton(button, handler) {
 }
 
 bindButton(cycleBtn, () => {
+    if (randomMode) {
+        // switching from random → cycle resets everything
+        fullReset();
+    }
     randomMode = false;
     currentStepIndex = (currentStepIndex + 1) % stepSizes.length;
     currentStep = stepSizes[currentStepIndex];
@@ -102,9 +110,14 @@ bindButton(cycleBtn, () => {
 });
 
 bindButton(randomBtn, () => {
+    const wasRandom = randomMode;
     randomMode = !randomMode;
     if (randomMode) {
         currentStep = stepSizes[Math.floor(Math.random() * stepSizes.length)];
+    }
+    if (wasRandom !== randomMode) {
+        // switching modes resets everything
+        fullReset();
     }
     updateDisplay();
 });
