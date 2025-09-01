@@ -7,6 +7,7 @@ let stepSizes = [7, 9, 11];
 let currentStepIndex = 0;
 let currentStep = stepSizes[currentStepIndex];
 let randomMode = false; // default: cycle mode is active
+let juggleMode = false; // new mode
 
 const counterDisplay = document.getElementById('counter');
 const scoreDisplay = document.getElementById('score');
@@ -18,24 +19,57 @@ const subtractBtn = document.getElementById('subtract');
 const resetBtn = document.getElementById('reset');
 const cycleBtn = document.getElementById('cycle');
 const randomBtn = document.getElementById('random');
+const juggleBtn = document.getElementById('juggle');
+
+let juggleRounds = 0;
+let juggleTotalRounds = 5;
+let juggleNumber = getRandomThreeDigit();
+let juggleStep = 0;
+let juggleOperand = '+';
+let juggleStepSizes = [3, 5, 7, 9, 11];
+
+function getRandomThreeDigit() {
+    return Math.floor(Math.random() * 900) + 100;
+}
+
+function getJuggleStep() {
+    juggleStep = juggleStepSizes[Math.floor(Math.random() * juggleStepSizes.length)];
+    juggleOperand = Math.random() < 0.5 ? '+' : '-';
+    return `${juggleOperand}${juggleStep}`;
+}
 
 function updateDisplay() {
     counterDisplay.textContent = counter;
     scoreDisplay.textContent = `Score: ${score}`;
 
-    if (randomMode) {
+    if (juggleMode) {
+        stepDisplay.style.display = 'block';
+        stepDisplay.textContent = `Step: ${getJuggleStep()}`;
+        addBtn.textContent = '🔄'; // refresh
+        subtractBtn.textContent = '➡️'; // next
+        if (juggleRounds >= juggleTotalRounds) {
+            subtractBtn.disabled = true;
+        } else {
+            subtractBtn.disabled = false;
+        }
+        cycleBtn.classList.remove('active');
+        randomBtn.classList.remove('active');
+        juggleBtn.classList.add('active');
+    } else if (randomMode) {
         stepDisplay.style.display = 'block';
         stepDisplay.textContent = `Step: ${currentStep}`;
         addBtn.textContent = `+`;
         subtractBtn.textContent = `-`;
         cycleBtn.classList.remove('active');
         randomBtn.classList.add('active');
+        juggleBtn.classList.remove('active');
     } else {
         stepDisplay.style.display = 'none';
         addBtn.textContent = `+${currentStep}`;
         subtractBtn.textContent = `-${currentStep}`;
         randomBtn.classList.remove('active');
         cycleBtn.classList.add('active');
+        juggleBtn.classList.remove('active');
     }
 }
 
@@ -59,15 +93,14 @@ function fullReset() {
     counter = 100;
     score = 0;
     resetTimer();
-    // when resetting, also prepare the next step if in random mode
-    if (randomMode) {
-        currentStep = stepSizes[Math.floor(Math.random() * stepSizes.length)];
-    }
+    currentStepIndex = 0;
+    currentStep = stepSizes[currentStepIndex];
+    juggleRounds = 0;
+    juggleNumber = getRandomThreeDigit();
     updateDisplay();
 }
 
 function getStep() {
-    // In random mode, return the *next prepared step* and then queue the next one
     if (randomMode) {
         const step = currentStep;
         currentStep = stepSizes[Math.floor(Math.random() * stepSizes.length)];
@@ -76,57 +109,72 @@ function getStep() {
     return currentStep;
 }
 
+// ----- Button Handlers -----
+
 addBtn.addEventListener('click', () => {
-    const step = getStep();
-    counter += step;
-    score += 1;
-    updateDisplay();
     startTimer();
+    if (juggleMode) {
+        // refresh starting number
+        juggleNumber = getRandomThreeDigit();
+        juggleRounds = 0;
+        counter = juggleNumber;
+    } else {
+        const step = getStep();
+        counter += step;
+        score += 1;
+    }
+    updateDisplay();
 });
 
 subtractBtn.addEventListener('click', () => {
-    const step = getStep();
-    counter -= step;
-    score += 1;
-    updateDisplay();
     startTimer();
+    if (juggleMode) {
+        if (juggleRounds < juggleTotalRounds) {
+            counter = juggleOperand === '+' ? counter + juggleStep : counter - juggleStep;
+            juggleRounds++;
+        }
+    } else {
+        const step = getStep();
+        counter -= step;
+        score += 1;
+    }
+    updateDisplay();
 });
 
 resetBtn.addEventListener('click', () => {
     fullReset();
 });
 
-// Support both click and touch for iPhone
 function bindButton(button, handler) {
     button.addEventListener('click', handler);
     button.addEventListener('touchend', (e) => {
-        e.preventDefault(); // safer than touchstart, avoids hiding issues
+        e.preventDefault();
         handler();
     }, { passive: false });
 }
 
 bindButton(cycleBtn, () => {
-    if (randomMode) {
-        // switching from random → cycle resets everything
-        fullReset();
-    }
     randomMode = false;
+    juggleMode = false;
     currentStepIndex = (currentStepIndex + 1) % stepSizes.length;
     currentStep = stepSizes[currentStepIndex];
-    updateDisplay();
+    fullReset();
 });
 
 bindButton(randomBtn, () => {
-    const wasRandom = randomMode;
-    randomMode = !randomMode;
-    if (randomMode) {
-        currentStep = stepSizes[Math.floor(Math.random() * stepSizes.length)];
-    }
-    if (wasRandom !== randomMode) {
-        // switching modes resets everything
-        fullReset();
-    }
-    updateDisplay();
+    randomMode = true;
+    juggleMode = false;
+    currentStep = stepSizes[Math.floor(Math.random() * stepSizes.length)];
+    fullReset();
+});
+
+bindButton(juggleBtn, () => {
+    juggleMode = true;
+    randomMode = false;
+    juggleRounds = 0;
+    juggleNumber = getRandomThreeDigit();
+    counter = juggleNumber;
+    fullReset();
 });
 
 updateDisplay();
