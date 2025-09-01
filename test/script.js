@@ -1,180 +1,185 @@
-const board = document.getElementById("board");
-const undoBtn = document.getElementById("undoBtn");
-const colorBtn = document.getElementById("colorBtn");
-const colorModal = document.getElementById("colorModal");
-const player1ColorPicker = document.getElementById("player1ColorPicker");
-const player2ColorPicker = document.getElementById("player2ColorPicker");
-const saveColorsBtn = document.getElementById("saveColorsBtn");
-const cancelColorsBtn = document.getElementById("cancelColorsBtn");
-const winnerOverlay = document.getElementById("winnerOverlay");
-const fireworksCanvas = document.getElementById("fireworksCanvas");
-const playAgainBtn = document.getElementById("playAgainBtn");
+const gameContainer = document.getElementById('game-container');
+const messageEl = document.getElementById('message');
+const newRoundBtn = document.getElementById('new-round');
+const hintBtn = document.getElementById('hint-btn');
+const confettiCanvas = document.getElementById('confetti-overlay');
+const ctx = confettiCanvas.getContext('2d');
 
-const player1ScoreEl = document.getElementById("player1Score");
-const player2ScoreEl = document.getElementById("player2Score");
+confettiCanvas.width = window.innerWidth;
+confettiCanvas.height = window.innerHeight;
 
-const ROWS = 6;
-const COLS = 7;
+// 100+ kid-friendly emojis with hints
+const emojiData = [
+  {emoji: "🍎", hints: ["fruit", "red", "apple"]},
+  {emoji: "🍌", hints: ["fruit", "yellow", "banana"]},
+  {emoji: "🍇", hints: ["fruit", "purple", "grapes"]},
+  {emoji: "🍉", hints: ["fruit", "green/red", "watermelon"]},
+  {emoji: "🍓", hints: ["fruit", "red", "strawberry"]},
+  {emoji: "🍒", hints: ["fruit", "red", "cherries"]},
+  {emoji: "🍍", hints: ["fruit", "yellow", "pineapple"]},
+  {emoji: "🥝", hints: ["fruit", "green", "kiwi"]},
+  {emoji: "🥭", hints: ["fruit", "orange", "mango"]},
+  {emoji: "🥑", hints: ["fruit", "green", "avocado"]},
+  {emoji: "🥕", hints: ["vegetable", "orange", "carrot"]},
+  {emoji: "🌽", hints: ["vegetable", "yellow", "corn"]},
+  {emoji: "🥦", hints: ["vegetable", "green", "broccoli"]},
+  {emoji: "🥒", hints: ["vegetable", "green", "cucumber"]},
+  {emoji: "🍅", hints: ["vegetable", "red", "tomato"]},
+  {emoji: "🍄", hints: ["vegetable", "mushroom", "fungus"]},
+  {emoji: "🍕", hints: ["food", "cheese", "pizza"]},
+  {emoji: "🍔", hints: ["food", "burger", "sandwich"]},
+  {emoji: "🍟", hints: ["food", "potato", "fries"]},
+  {emoji: "🌭", hints: ["food", "hotdog", "sausage"]},
+  {emoji: "🥪", hints: ["food", "sandwich", "lunch"]},
+  {emoji: "🥗", hints: ["food", "green", "salad"]},
+  {emoji: "🍩", hints: ["dessert", "sweet", "donut"]},
+  {emoji: "🍪", hints: ["dessert", "sweet", "cookie"]},
+  {emoji: "🍫", hints: ["dessert", "chocolate", "sweet"]},
+  {emoji: "🍬", hints: ["dessert", "candy", "sweet"]},
+  {emoji: "🍭", hints: ["dessert", "lollipop", "sweet"]},
+  {emoji: "🎈", hints: ["party", "balloon", "red"]},
+  {emoji: "🎁", hints: ["present", "gift", "box"]},
+  {emoji: "🎂", hints: ["party", "cake", "birthday"]},
+  {emoji: "🦄", hints: ["mythical", "unicorn", "magical"]},
+  {emoji: "🦁", hints: ["animal", "lion", "wild"]},
+  {emoji: "🐯", hints: ["animal", "tiger", "striped"]},
+  {emoji: "🐸", hints: ["animal", "frog", "green"]},
+  {emoji: "🐼", hints: ["animal", "panda", "black/white"]},
+  {emoji: "🐨", hints: ["animal", "koala", "cute"]},
+  {emoji: "🐰", hints: ["animal", "rabbit", "white"]},
+  {emoji: "🐹", hints: ["animal", "hamster", "small"]},
+  {emoji: "🐤", hints: ["animal", "chick", "yellow"]},
+  {emoji: "🐦", hints: ["animal", "bird", "small"]},
+  {emoji: "🐧", hints: ["animal", "penguin", "black/white"]},
+  {emoji: "🐢", hints: ["animal", "turtle", "green"]},
+  {emoji: "🐍", hints: ["animal", "snake", "green"]},
+  {emoji: "🦖", hints: ["dinosaur", "T-Rex", "prehistoric"]},
+  {emoji: "🦕", hints: ["dinosaur", "long neck", "prehistoric"]},
+  {emoji: "🦋", hints: ["insect", "butterfly", "colorful"]},
+  {emoji: "🐞", hints: ["insect", "ladybug", "red"]},
+  {emoji: "🐝", hints: ["insect", "bee", "yellow/black"]},
+  {emoji: "🦑", hints: ["sea animal", "squid", "tentacles"]},
+  {emoji: "🐙", hints: ["sea animal", "octopus", "tentacles"]},
+  {emoji: "🐠", hints: ["fish", "orange", "small"]},
+  {emoji: "🐟", hints: ["fish", "blue", "small"]},
+  {emoji: "🐡", hints: ["fish", "puffer", "spiky"]},
+  {emoji: "🦀", hints: ["sea animal", "crab", "red"]},
+  {emoji: "🦞", hints: ["sea animal", "lobster", "red"]},
+  {emoji: "🦐", hints: ["sea animal", "shrimp", "small"]},
+  {emoji: "🦢", hints: ["bird", "swan", "white"]},
+  {emoji: "🦩", hints: ["bird", "flamingo", "pink"]}
+];
 
-let startingPlayer = 1;
-let currentPlayer = startingPlayer;
-let moves = [];
-let gameOver = false;
-let scores = {1:0,2:0};
-let grid = Array.from({length: ROWS}, () => Array(COLS).fill(0));
+const NUM_BUTTONS = 10; // updated from 9 to 10
+let targetEmoji = null;
+let revealedHints = 0;
 
-let playerColors = {1:"#FF4136",2:"#0074D9"};
+// Generate a new round
+function newRound() {
+  gameContainer.innerHTML = "";
+  revealedHints = 0;
 
-function updateCSSVariables() {
-  document.documentElement.style.setProperty("--player1-color", playerColors[1]);
-  document.documentElement.style.setProperty("--player2-color", playerColors[2]);
+  // Select random target
+  targetEmoji = emojiData[Math.floor(Math.random() * emojiData.length)];
+
+  // Initial message with first letter
+  const firstLetter = targetEmoji.hints[2][0].toUpperCase();
+  messageEl.textContent = `I spy with my little eye, something beginning with ${firstLetter}...`;
+
+  // Select buttons
+  let buttonEmojis = [targetEmoji.emoji];
+  while (buttonEmojis.length < NUM_BUTTONS) {
+    const e = emojiData[Math.floor(Math.random() * emojiData.length)].emoji;
+    if (!buttonEmojis.includes(e)) buttonEmojis.push(e);
+  }
+
+  // Shuffle
+  buttonEmojis = buttonEmojis.sort(() => Math.random() - 0.5);
+
+  buttonEmojis.forEach(emoji => {
+    const btn = document.createElement('button');
+    btn.textContent = emoji;
+    btn.classList.add('emoji-btn');
+    btn.addEventListener('click', () => handleClick(btn, emoji));
+    gameContainer.appendChild(btn);
+  });
 }
 
-function updateScoreboard() {
-  player1ScoreEl.textContent = `Player 1: ${scores[1]}`;
-  player2ScoreEl.textContent = `Player 2: ${scores[2]}`;
-  updateScoreboardHighlight();
-}
-
-function updateScoreboardHighlight() {
-  document.querySelectorAll(".scoreboard span").forEach(el=>el.classList.remove("active"));
-  const activeEl = currentPlayer===1?player1ScoreEl:player2ScoreEl;
-  document.documentElement.style.setProperty("--active-highlight-color", playerColors[currentPlayer]);
-  activeEl.classList.add("active");
-}
-
-function createBoard() {
-  board.innerHTML = "";
-  board.style.gridTemplateColumns = `repeat(${COLS}, 50px)`;
-  board.style.gridTemplateRows = `repeat(${ROWS}, 50px)`;
-
-  for (let r=0;r<ROWS;r++){
-    for (let c=0;c<COLS;c++){
-      const dot = document.createElement("div");
-      dot.classList.add("dot");
-      dot.dataset.row = r;
-      dot.dataset.col = c;
-      dot.addEventListener("click", handleDotClick);
-      board.appendChild(dot);
-    }
+// Handle click
+function handleClick(btn, emoji) {
+  if (emoji === targetEmoji.emoji) {
+    showConfetti();
+    messageEl.textContent = `🎉 You found it! ${emoji} 🎉`;
+  } else {
+    messageEl.textContent = `❌ Nope! Try again.`;
+    btn.classList.add('disabled');
+    btn.disabled = true;
   }
 }
 
-function handleDotClick(e){
-  if(gameOver) return;
-  const col = parseInt(e.target.dataset.col);
+// Hint button
+hintBtn.addEventListener('click', () => {
+  revealedHints++;
+  if (revealedHints <= targetEmoji.hints.length) {
+    const hint = targetEmoji.hints[revealedHints - 1];
+    messageEl.textContent = `Hint: ${hint}`;
+  } else {
+    messageEl.textContent = `No more hints!`;
+  }
+});
 
-  let row = ROWS-1;
-  while(row>=0 && grid[row][col]!==0) row--;
-  if(row<0) return;
+// New round
+newRoundBtn.addEventListener('click', newRound);
 
-  grid[row][col] = currentPlayer;
-  const dot = board.querySelector(`.dot[data-row='${row}'][data-col='${col}']`);
-  dot.classList.add(`player${currentPlayer}`);
-  moves.push({row,col,player:currentPlayer});
+// Confetti animation
+function showConfetti() {
+  confettiCanvas.style.display = "block";
+  const confetti = [];
+  const confettiCount = 200;
 
-  if(checkWin(currentPlayer,row,col)){
-    scores[currentPlayer]++;
-    updateScoreboard();
-    showWinner(currentPlayer);
-    gameOver=true;
-    revealPlayAgain();
-    return;
+  for (let i = 0; i < confettiCount; i++) {
+    confetti.push({
+      x: Math.random() * confettiCanvas.width,
+      y: Math.random() * confettiCanvas.height - confettiCanvas.height,
+      r: Math.random() * 6 + 4,
+      d: Math.random() * confettiCanvas.height,
+      color: `hsl(${Math.random() * 360}, 100%, 50%)`,
+      tilt: Math.floor(Math.random() * 10) - 10,
+      tiltAngleIncrement: Math.random() * 0.07 + 0.05
+    });
   }
 
-  if(moves.length===ROWS*COLS){
-    showDraw();
-    gameOver=true;
-    revealPlayAgain();
-    return;
+  let angle = 0;
+  function draw() {
+    ctx.clearRect(0, 0, confettiCanvas.width, confettiCanvas.height);
+    confetti.forEach((c, i) => {
+      ctx.beginPath();
+      ctx.lineWidth = c.r / 2;
+      ctx.strokeStyle = c.color;
+      ctx.moveTo(c.x + c.tilt + c.r / 4, c.y);
+      ctx.lineTo(c.x + c.tilt, c.y + c.tilt + c.r / 4);
+      ctx.stroke();
+      c.tilt += c.tiltAngleIncrement;
+      c.y += (Math.cos(angle + c.d) + 3 + c.r / 2) / 2;
+      if (c.y > confettiCanvas.height) {
+        confetti[i] = {
+          x: Math.random() * confettiCanvas.width,
+          y: -10,
+          r: c.r,
+          d: c.d,
+          color: c.color,
+          tilt: Math.floor(Math.random() * 10) - 10,
+          tiltAngleIncrement: c.tiltAngleIncrement
+        };
+      }
+    });
+    angle += 0.01;
+    requestAnimationFrame(draw);
   }
+  draw();
 
-  currentPlayer = currentPlayer===1?2:1;
-  updateScoreboardHighlight();
+  setTimeout(() => { confettiCanvas.style.display = "none"; }, 3000);
 }
 
-function checkWin(player,row,col){
-  function countDir(dr,dc){
-    let r=row+dr,c=col+dc,count=0;
-    while(r>=0 && r<ROWS && c>=0 && c<COLS && grid[r][c]===player){count++;r+=dr;c+=dc;}
-    return count;
-  }
-  const directions=[[0,1],[1,0],[1,1],[1,-1]];
-  return directions.some(([dr,dc])=>1+countDir(dr,dc)+countDir(-dr,-dc)>=4);
-}
-
-function showWinner(player){
-  winnerOverlay.textContent=`🎉 Congratulations Player ${player}! 🎉`;
-  winnerOverlay.classList.remove("hidden","fade-out");
-  startFireworks();
-  startingPlayer=startingPlayer===1?2:1;
-  setTimeout(()=>{ winnerOverlay.classList.add("fade-out"); setTimeout(()=>{winnerOverlay.classList.add("hidden"); stopFireworks();},500); },1000);
-}
-
-function showDraw(){
-  winnerOverlay.textContent="🤝 It's a draw!";
-  winnerOverlay.classList.remove("hidden","fade-out");
-  startingPlayer=startingPlayer===1?2:1;
-  setTimeout(()=>{ winnerOverlay.classList.add("fade-out"); setTimeout(()=>{winnerOverlay.classList.add("hidden");},500); },1000);
-}
-
-function undoMove(){
-  if(moves.length===0 || gameOver) return;
-  const last=moves.pop();
-  grid[last.row][last.col]=0;
-  const dot=board.querySelector(`.dot[data-row='${last.row}'][data-col='${last.col}']`);
-  dot.classList.remove("player1","player2");
-  currentPlayer=last.player;
-  updateScoreboardHighlight();
-}
-
-function resetBoard(){
-  grid=Array.from({length:ROWS},()=>Array(COLS).fill(0));
-  moves=[];
-  currentPlayer=startingPlayer;
-  gameOver=false;
-  document.querySelectorAll(".dot").forEach(d=>d.classList.remove("player1","player2"));
-  winnerOverlay.classList.add("hidden");
-  stopFireworks();
-  hidePlayAgain();
-  updateScoreboardHighlight();
-}
-
-function openColorModal(){
-  player1ColorPicker.value=playerColors[1];
-  player2ColorPicker.value=playerColors[2];
-  colorModal.classList.remove("hidden");
-}
-
-function closeColorModal(){ colorModal.classList.add("hidden"); }
-
-function saveColors(){
-  playerColors[1]=player1ColorPicker.value;
-  playerColors[2]=player2ColorPicker.value;
-  updateCSSVariables();
-  updateScoreboardHighlight();
-  closeColorModal();
-}
-
-/* Fireworks Animation */
-let fwCtx = fireworksCanvas.getContext("2d");
-let particles=[];
-function startFireworks(){ fireworksCanvas.width=window.innerWidth; fireworksCanvas.height=window.innerHeight; particles=[]; createFirework(); requestAnimationFrame(updateFireworks);}
-function stopFireworks(){particles=[]; fwCtx.clearRect(0,0,fireworksCanvas.width,fireworksCanvas.height);}
-function createFirework(){for(let i=0;i<100;i++){particles.push({x:fireworksCanvas.width/2,y:fireworksCanvas.height/2,angle:Math.random()*Math.PI*2,speed:Math.random()*5+2,radius:Math.random()*2+1,life:100,color:`hsl(${Math.random()*360},100%,50%)`})}}
-function updateFireworks(){fwCtx.clearRect(0,0,fireworksCanvas.width,fireworksCanvas.height);particles.forEach(p=>{p.x+=Math.cos(p.angle)*p.speed;p.y+=Math.sin(p.angle)*p.speed;p.life--;fwCtx.beginPath();fwCtx.arc(p.x,p.y,p.radius,0,Math.PI*2);fwCtx.fillStyle=p.color;fwCtx.fill();});particles=particles.filter(p=>p.life>0);if(particles.length>0){requestAnimationFrame(updateFireworks);}}
-
-function revealPlayAgain(){ playAgainBtn.style.display="inline-block"; }
-function hidePlayAgain(){ playAgainBtn.style.display="none"; }
-
-undoBtn.addEventListener("click",undoMove);
-colorBtn.addEventListener("click",openColorModal);
-saveColorsBtn.addEventListener("click",saveColors);
-cancelColorsBtn.addEventListener("click",closeColorModal);
-playAgainBtn.addEventListener("click",()=>{resetBoard();});
-
-updateCSSVariables();
-updateScoreboard();
-createBoard();
-updateScoreboardHighlight();
-hidePlayAgain();
+// Start first round
+newRound();
