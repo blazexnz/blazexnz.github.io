@@ -88,8 +88,8 @@ resetBtn.addEventListener('click', () => {
 // Support both click and touch for iPhone
 function bindButton(button, handler) {
     button.addEventListener('click', handler);
-    button.addEventListener('touchstart', (e) => {
-        e.preventDefault(); // prevent ghost clicks
+    button.addEventListener('touchend', (e) => {
+        e.preventDefault(); // safer than touchstart, avoids hiding issues
         handler();
     }, { passive: false });
 }
