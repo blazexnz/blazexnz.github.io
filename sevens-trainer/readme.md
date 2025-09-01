@@ -1,6 +1,6 @@
 # Sevens Brain Trainer
 
-A simple, mobile-friendly web app to train your working memory by adding or subtracting 7. Optimized for small screens and touch input.
+A simple, mobile-friendly web app to train your working memory by adding or subtracting 7. Optimized for small screens and touch input. Now updated with even more modes!
 
 ## Features
 
