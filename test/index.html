@@ -1,173 +1,237 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="robots" content="noindex, nofollow">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <title>Kids Math App</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Tap Party: Full-Screen Overlays</title>
+
   <style>
+    :root{
+      --bg: #0f1220;
+      --panel: rgba(20,22,35,0.8);
+      --text: #e9ecff;
+      --accent: #7aa2ff;
+      --accent-2: #9e7aff;
+      --btn: #1a1f36;
+      --btn-hover: #232a48;
+      --btn-active: #2b355c;
+      --shadow: 0 10px 30px rgba(0,0,0,0.35);
+      --radius: 18px;
+    }
+
     html, body {
-      margin: 0;
-      padding: 0;
       height: 100%;
-      font-family: Arial, sans-serif;
-      background: #fffae3;
-      color: #333;
+      margin: 0;
+      background: radial-gradient(1200px 800px at 10% 10%, #182035 0%, #0f1220 55%, #0b0e19 100%);
+      color: var(--text);
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    }
+
+    /* Fullscreen canvas for effects */
+    #stage {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      z-index: 0;
+      touch-action: none;
+    }
+
+    /* Top bar with title + settings */
+    .topbar{
+      position: fixed;
+      top: env(safe-area-inset-top, 0);
+      left: 0;
+      right: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px clamp(12px, 3vw, 22px);
+      z-index: 5;
+      pointer-events: none; /* allow canvas touches */
+    }
+
+    .brand{
+      pointer-events: auto;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      font-weight: 800;
+      letter-spacing: 0.3px;
+      font-size: clamp(16px, 3.4vw, 24px);
+      text-shadow: 0 1px 0 rgba(255,255,255,0.06);
+      user-select: none;
+    }
+
+    .settings{
+      pointer-events: auto;
+      background: var(--panel);
+      border: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(10px);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      box-shadow: var(--shadow);
+    }
+
+    .settings label{
+      font-size: 12px;
+      opacity: 0.85;
+      user-select: none;
+    }
+
+    .settings input{
+      appearance: none;
+      outline: none;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: #0f1428;
+      color: var(--text);
+      padding: 6px 10px;
+      border-radius: 10px;
+      width: 64px;
+      font-size: 14px;
       text-align: center;
     }
 
-    body {
-      display: flex;
-      flex-direction: column; /* stack items vertically */
-      justify-content: flex-start; /* align to top */
-      align-items: center; /* center horizontally */
-      min-height: 100vh;
-      padding-top: 2rem; /* optional spacing from top */
+    /* Button panel */
+    .panel{
+      position: fixed;
+      bottom: calc(10px + env(safe-area-inset-bottom, 0));
+      left: 0;
+      right: 0;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      padding: 12px clamp(12px, 3vw, 22px);
+      z-index: 10;
+      pointer-events: none;
     }
 
-    #gameArea {
-      /* Ensure it stays at top and scrolls if needed */
-      margin-top: 0;
-      width: 100%;
-      max-width: 500px;
-      box-sizing: border-box;
-      padding: 0 1rem;
+    .panel-inner{
+      pointer-events: auto;
+      background: var(--panel);
+      border: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(10px);
+      padding: 12px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
     }
 
-    .hidden { display: none; }
-
-    button {
-      font-size: 1.5rem;
-      padding: 1rem 2rem;
-      margin: 0.5rem;
-      border: none;
-      border-radius: 15px;
-      cursor: pointer;
-      touch-action: manipulation; /* prevent double-tap zoom */
-      transition: transform 0.1s;
+    button.control-btn{
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;                 /* Prevent double-tap zoom on iPhone */
+      appearance: none;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: linear-gradient(180deg, var(--btn), #11162a);
+      color: var(--text);
+      border-radius: 14px;
+      font-weight: 700;
+      font-size: clamp(12px, 2.8vw, 15px);
+      padding: 12px 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.04);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      user-select: none;
+      transition: transform 120ms ease, background 160ms ease, border-color 160ms ease;
+      will-change: transform;
     }
 
-    button:active {
-      transform: scale(0.95);
-    }
-
-    /* Hover effects only on devices that support hover */
+    /* Hover only on hover-capable, fine pointer devices (avoids sticky hover on touch) */
     @media (hover: hover) and (pointer: fine) {
-      button:hover {
-        opacity: 0.8;
+      button.control-btn:hover{
+        transform: translateY(-2px);
+        background: linear-gradient(180deg, var(--btn-hover), #151b34);
+        border-color: rgba(255,255,255,0.16);
+      }
+      button.control-btn:active{
+        transform: translateY(0);
+        background: linear-gradient(180deg, var(--btn-active), #121933);
       }
     }
 
-    #modeSelection button { 
-      font-size: 2rem;
-      width: 120px;
-      height: 120px;
+    /* Touch devices get an :active press effect */
+    @media (hover: none) and (pointer: coarse) {
+      button.control-btn:active{
+        transform: scale(0.98);
+        background: linear-gradient(180deg, var(--btn-active), #121933);
+      }
     }
 
-    #gameArea input {
-      font-size: 2rem;
-      padding: 0.5rem;
-      width: 100px;
-      text-align: center;
+    .control-btn .emoji{
+      font-size: 18px;
+      line-height: 1;
     }
 
-    #problemText {
-      font-size: 3rem; /* increased font size */
+    /* small screens stack panel columns if tight */
+    @media (max-width: 380px){
+      .panel-inner{
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+      .settings { display: none; } /* keep it simple on very small phones */
     }
 
-    #scoreboard {
-      font-size: 1.2rem;
-      margin-top: 1rem;
-    }
-
-    /* Add spacing between Correct and Incorrect labels */
-    #scoreboard .correct {
-      margin-right: 2rem;
-    }
-
-    #timer {
-      font-size: 1.2rem;
-      margin-top: 0.5rem;
-    }
-
-    #hint {
-      font-size: 1.5rem;
-      margin: 0.5rem;
-      cursor: pointer;
-    }
-
-    /* Problem text shake animation */
-    @keyframes shake {
-      0% { transform: translateX(0); }
-      20% { transform: translateX(-5px); }
-      40% { transform: translateX(5px); }
-      60% { transform: translateX(-5px); }
-      80% { transform: translateX(5px); }
-      100% { transform: translateX(0); }
-    }
-
-    .shake {
-      animation: shake 0.3s;
-      color: red;
-    }
-
-    .reset-button { background-color: #ff7f50; color: #fff; }
-    .startover-button { background-color: #32cd32; color: #fff; }
-    .submit-button { background-color: #1e90ff; color: #fff; }
-    .hint-button { background-color: #ffd700; color: #333; }
-    .mode-button { background-color: #ff69b4; color: #fff; }
-
-    /* Fireworks overlay */
-    #fireworks {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none; /* allow interactions through overlay */
-      z-index: 1000;
-      display: none;
-    }
-
-    .particle {
-      position: absolute;
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: radial-gradient(circle, #ff0, #f00);
-      animation: explode 700ms ease-out forwards;
-    }
-
-    @keyframes explode {
-      0% { transform: translate(0, 0) scale(1); opacity: 1; }
-      100% { transform: translate(var(--x), var(--y)) scale(0.5); opacity: 0; }
+    /* focus style for accessibility but subtle */
+    button.control-btn:focus-visible{
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
     }
   </style>
 </head>
 <body>
-  <!-- Mode Selection -->
-  <div id="modeSelection">
-    <h1>Choose Mode 🎨</h1>
-    <button class="mode-button" data-mode="add">➕</button>
-    <button class="mode-button" data-mode="sub">➖</button>
+  <canvas id="stage" aria-hidden="true"></canvas>
+
+  <div class="topbar">
+    <div class="brand">Tap Party</div>
+
+    <!-- iPhone number pad appears thanks to inputmode="numeric" -->
+    <div class="settings" role="group" aria-label="Effect settings">
+      <label for="duration">Duration</label>
+      <input id="duration" name="duration" type="text" inputmode="numeric" pattern="[0-9]*" value="6" aria-label="Effect duration (seconds)" />
+    </div>
   </div>
 
-  <!-- Game Area -->
-  <div id="gameArea" class="hidden">
-    <h2 id="problemText">1 + 2 = ?</h2>
-    <input id="answerInput" type="number" inputmode="numeric" pattern="[0-9]*" autofocus>
-    <br>
-    <button id="submitBtn" class="submit-button">Submit ✅</button>
-    <!-- <button id="hintBtn" class="hint-button">Hint 💡</button> -->
-    <div id="scoreboard"><span class="correct">Correct: 0</span><span class="incorrect">Incorrect: 0</span></div>
-    <div id="timer">Time: 0.0s</div>
-    <br>
-    <button id="resetBtn" class="reset-button">Reset 🔄</button>
-    <button id="startOverBtn" class="startover-button">Start Over 🏠</button>
+  <div class="panel">
+    <div class="panel-inner">
+      <button class="control-btn" data-effect="confetti" aria-label="Confetti">
+        <span class="emoji">🎉</span> Confetti
+      </button>
+      <button class="control-btn" data-effect="fireworks" aria-label="Fireworks">
+        <span class="emoji">💥</span> Fireworks
+      </button>
+      <button class="control-btn" data-effect="rain" aria-label="Rain">
+        <span class="emoji">🌧️</span> Rain
+      </button>
+      <button class="control-btn" data-effect="snow" aria-label="Snow">
+        <span class="emoji">❄️</span> Snow
+      </button>
+      <button class="control-btn" data-effect="bubbles" aria-label="Bubbles">
+        <span class="emoji">🫧</span> Bubbles
+      </button>
+      <button class="control-btn" data-effect="balloons" aria-label="Balloons">
+        <span class="emoji">🎈</span> Balloons
+      </button>
+      <button class="control-btn" data-effect="hearts" aria-label="Hearts">
+        <span class="emoji">❤️</span> Hearts
+      </button>
+      <button class="control-btn" data-effect="sparkles" aria-label="Sparkles">
+        <span class="emoji">✨</span> Sparkles
+      </button>
+      <button class="control-btn" data-effect="emoji" aria-label="Emoji Storm">
+        <span class="emoji">🤩</span> Emoji Storm
+      </button>
+    </div>
   </div>
-
-  <!-- Fireworks container -->
-  <div id="fireworks"></div>
 
   <script src="script.js"></script>
 </body>
