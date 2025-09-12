@@ -1,238 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="robots" content="noindex, nofollow" />
-  <title>Tap Party: Full-Screen Overlays</title>
-
-  <style>
-    :root{
-      --bg: #0f1220;
-      --panel: rgba(20,22,35,0.8);
-      --text: #e9ecff;
-      --accent: #7aa2ff;
-      --accent-2: #9e7aff;
-      --btn: #1a1f36;
-      --btn-hover: #232a48;
-      --btn-active: #2b355c;
-      --shadow: 0 10px 30px rgba(0,0,0,0.35);
-      --radius: 18px;
-    }
-
-    html, body {
-      height: 100%;
-      margin: 0;
-      background: radial-gradient(1200px 800px at 10% 10%, #182035 0%, #0f1220 55%, #0b0e19 100%);
-      color: var(--text);
-      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    }
-
-    /* Fullscreen canvas for effects */
-    #stage {
-      position: fixed;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      display: block;
-      z-index: 0;
-      touch-action: none;
-    }
-
-    /* Top bar with title + settings */
-    .topbar{
-      position: fixed;
-      top: env(safe-area-inset-top, 0);
-      left: 0;
-      right: 0;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 12px clamp(12px, 3vw, 22px);
-      z-index: 5;
-      pointer-events: none; /* allow canvas touches */
-    }
-
-    .brand{
-      pointer-events: auto;
-      background: linear-gradient(90deg, var(--accent), var(--accent-2));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      font-weight: 800;
-      letter-spacing: 0.3px;
-      font-size: clamp(16px, 3.4vw, 24px);
-      text-shadow: 0 1px 0 rgba(255,255,255,0.06);
-      user-select: none;
-    }
-
-    .settings{
-      pointer-events: auto;
-      background: var(--panel);
-      border: 1px solid rgba(255,255,255,0.08);
-      backdrop-filter: blur(10px);
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      box-shadow: var(--shadow);
-    }
-
-    .settings label{
-      font-size: 12px;
-      opacity: 0.85;
-      user-select: none;
-    }
-
-    .settings input{
-      appearance: none;
-      outline: none;
-      border: 1px solid rgba(255,255,255,0.12);
-      background: #0f1428;
-      color: var(--text);
-      padding: 6px 10px;
-      border-radius: 10px;
-      width: 64px;
-      font-size: 14px;
-      text-align: center;
-    }
-
-    /* Button panel */
-    .panel{
-      position: fixed;
-      bottom: calc(10px + env(safe-area-inset-bottom, 0));
-      left: 0;
-      right: 0;
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 10px;
-      padding: 12px clamp(12px, 3vw, 22px);
-      z-index: 10;
-      pointer-events: none;
-    }
-
-    .panel-inner{
-      pointer-events: auto;
-      background: var(--panel);
-      border: 1px solid rgba(255,255,255,0.08);
-      backdrop-filter: blur(10px);
-      padding: 12px;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 10px;
-    }
-
-    button.control-btn{
-      -webkit-tap-highlight-color: transparent;
-      touch-action: manipulation;                 /* Prevent double-tap zoom on iPhone */
-      appearance: none;
-      border: 1px solid rgba(255,255,255,0.10);
-      background: linear-gradient(180deg, var(--btn), #11162a);
-      color: var(--text);
-      border-radius: 14px;
-      font-weight: 700;
-      font-size: clamp(12px, 2.8vw, 15px);
-      padding: 12px 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.04);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      user-select: none;
-      transition: transform 120ms ease, background 160ms ease, border-color 160ms ease;
-      will-change: transform;
-    }
-
-    /* Hover only on hover-capable, fine pointer devices (avoids sticky hover on touch) */
-    @media (hover: hover) and (pointer: fine) {
-      button.control-btn:hover{
-        transform: translateY(-2px);
-        background: linear-gradient(180deg, var(--btn-hover), #151b34);
-        border-color: rgba(255,255,255,0.16);
-      }
-      button.control-btn:active{
-        transform: translateY(0);
-        background: linear-gradient(180deg, var(--btn-active), #121933);
-      }
-    }
-
-    /* Touch devices get an :active press effect */
-    @media (hover: none) and (pointer: coarse) {
-      button.control-btn:active{
-        transform: scale(0.98);
-        background: linear-gradient(180deg, var(--btn-active), #121933);
-      }
-    }
-
-    .control-btn .emoji{
-      font-size: 18px;
-      line-height: 1;
-    }
-
-    /* small screens stack panel columns if tight */
-    @media (max-width: 380px){
-      .panel-inner{
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
-      .settings { display: none; } /* keep it simple on very small phones */
-    }
-
-    /* focus style for accessibility but subtle */
-    button.control-btn:focus-visible{
-      outline: 2px solid var(--accent);
-      outline-offset: 2px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            touch-action: manipulation; /* Prevent double-tap zoom on iPhone */
+        }
+        /* Hover styles only for devices that support hover */
+        @media (hover: hover) and (pointer: fine) {
+            button:hover {
+                background-color: #0056b3;
+            }
+            .counter-btn:hover {
+                background-color: #0056b3;
+            }
+            .reset-btn:hover {
+                background-color: #c82333;
+            }
+            #backToTopBtn:hover {
+                background-color: #218838;
+            }
+            #copyBtn:hover {
+                background-color: #138496;
+            }
+        }
+        /* Active state for touch devices */
+        button:active {
+            background-color: #0056b3;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 15px;
+        }
+        li {
+            padding: 8px;
+            background: #e9ecef;
+            margin: 5px 0;
+            border-radius: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: normal; /* removed bold for words/numbers */
+        }
+        .card {
+            display: inline-block;
+            width: 50px;
+            height: 70px;
+            border: 1px solid #333;
+            border-radius: 8px;
+            margin: 3px;
+            text-align: center;
+            line-height: 70px;
+            font-size: 18px;
+            background-color: white;
+            position: relative;
+        }
+        .card.red {
+            color: red;
+        }
+        .counter-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            margin-top: 5px;
+        }
+        .counter-btn {
+            width: 35px;
+            height: 35px;
+            font-size: 18px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            touch-action: manipulation; /* Prevent double-tap zoom */
+        }
+        .counter-value {
+            font-size: 18px;
+            min-width: 40px;
+            text-align: center;
+        }
+        .reset-btn {
+            background-color: #dc3545;
+            width: 120px;
+            margin-top: 5px;
+        }
+        #backToTopBtn {
+            background-color: #28a745;
+            margin-top: 10px;
+        }
+        #copyBtn {
+            background-color: #17a2b8;
+            margin-top: 10px;
+        }
+        .counter-container-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 15px;
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+        }
+    </style>
 </head>
 <body>
-  <canvas id="stage" aria-hidden="true"></canvas>
+    <div class="container">
+        <h1>Random Generator</h1>
+        <label for="mode">Generate</label>
+        <input type="number" id="count" value="20" min="1">
 
-  <div class="topbar">
-    <div class="brand">Tap Party</div>
+        <select id="mode">
+            <option value="word">Words</option>
+            <option value="number">Numbers</option>
+            <option value="card">Cards</option>
+        </select>
 
-    <!-- iPhone number pad appears thanks to inputmode="numeric" -->
-    <div class="settings" role="group" aria-label="Effect settings">
-      <label for="duration">Duration</label>
-      <input id="duration" name="duration" type="text" inputmode="numeric" pattern="[0-9]*" value="6" aria-label="Effect duration (seconds)" />
+        <button id="generateBtn">Generate</button>
+
+        <ul id="resultList"></ul>
+
+        <button id="toggleBtn">Hide List</button>
+        <button id="copyBtn">Copy List</button>
+        <button id="backToTopBtn">Back to Top</button>
+
+        <div class="counter-container-wrapper">
+            <div class="counter-container">
+                <button id="minusBtn" class="counter-btn">-</button>
+                <span id="counterValue" class="counter-value">0</span>
+                <button id="plusBtn" class="counter-btn">+</button>
+            </div>
+            <button id="resetBtn" class="counter-btn reset-btn">Reset</button>
+        </div>
     </div>
-  </div>
 
-  <div class="panel">
-    <div class="panel-inner">
-      <button class="control-btn" data-effect="confetti" aria-label="Confetti">
-        <span class="emoji">🎉</span> Confetti
-      </button>
-      <button class="control-btn" data-effect="fireworks" aria-label="Fireworks">
-        <span class="emoji">💥</span> Fireworks
-      </button>
-      <button class="control-btn" data-effect="rain" aria-label="Rain">
-        <span class="emoji">🌧️</span> Rain
-      </button>
-      <button class="control-btn" data-effect="snow" aria-label="Snow">
-        <span class="emoji">❄️</span> Snow
-      </button>
-      <button class="control-btn" data-effect="bubbles" aria-label="Bubbles">
-        <span class="emoji">🫧</span> Bubbles
-      </button>
-      <button class="control-btn" data-effect="balloons" aria-label="Balloons">
-        <span class="emoji">🎈</span> Balloons
-      </button>
-      <button class="control-btn" data-effect="hearts" aria-label="Hearts">
-        <span class="emoji">❤️</span> Hearts
-      </button>
-      <button class="control-btn" data-effect="sparkles" aria-label="Sparkles">
-        <span class="emoji">✨</span> Sparkles
-      </button>
-      <button class="control-btn" data-effect="emoji" aria-label="Emoji Storm">
-        <span class="emoji">🤩</span> Emoji Storm
-      </button>
-    </div>
-  </div>
-
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
