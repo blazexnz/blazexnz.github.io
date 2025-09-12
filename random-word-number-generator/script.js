@@ -103,7 +103,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const defaultCounts = {
         word: 20,
-        number: 30,
+        number: 15,
         card: 52
     };
 
@@ -182,4 +182,5 @@ document.addEventListener("DOMContentLoaded", function () {
         window.scrollTo({ top: 0, behavior: "smooth" });
     });
 });
+
 
