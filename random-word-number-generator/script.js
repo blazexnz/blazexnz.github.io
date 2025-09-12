@@ -101,18 +101,9 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // Update count input when mode changes
-    modeSelect.addEventListener("change", function() {
-        if (modeSelect.value === "card") {
-            countInput.value = 52;
-        } else {
-            countInput.value = 20;
-        }
-    );
-
     generateBtn.addEventListener("click", function () {
         const mode = modeSelect.value;
-        let count = Math.max(1, parseInt(countInput.value) || (mode === "card" ? 52 : 20));
+        let count = Math.max(1, parseInt(countInput.value) || 20);
         resultList.innerHTML = "";
 
         if (mode === "word") {
@@ -181,4 +172,3 @@ document.addEventListener("DOMContentLoaded", function () {
         window.scrollTo({ top: 0, behavior: "smooth" });
     });
 });
-
