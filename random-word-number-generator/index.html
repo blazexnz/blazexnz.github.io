@@ -32,8 +32,28 @@
             color: white;
             font-size: 16px;
             cursor: pointer;
+            touch-action: manipulation; /* Prevent double-tap zoom on iPhone */
         }
-        button:hover {
+        /* Hover styles only for devices that support hover */
+        @media (hover: hover) and (pointer: fine) {
+            button:hover {
+                background-color: #0056b3;
+            }
+            .counter-btn:hover {
+                background-color: #0056b3;
+            }
+            .reset-btn:hover {
+                background-color: #c82333;
+            }
+            #backToTopBtn:hover {
+                background-color: #218838;
+            }
+            #copyBtn:hover {
+                background-color: #138496;
+            }
+        }
+        /* Active state for touch devices */
+        button:active {
             background-color: #0056b3;
         }
         ul {
@@ -83,9 +103,7 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
-        }
-        .counter-btn:hover {
-            background-color: #0056b3;
+            touch-action: manipulation; /* Prevent double-tap zoom */
         }
         .counter-value {
             font-size: 18px;
@@ -97,8 +115,13 @@
             width: 120px;
             margin-top: 5px;
         }
-        .reset-btn:hover {
-            background-color: #c82333;
+        #backToTopBtn {
+            background-color: #28a745;
+            margin-top: 10px;
+        }
+        #copyBtn {
+            background-color: #17a2b8;
+            margin-top: 10px;
         }
         .counter-container-wrapper {
             display: flex;
@@ -110,20 +133,6 @@
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             max-width: 400px;
-        }
-        #backToTopBtn {
-            background-color: #28a745;
-            margin-top: 10px;
-        }
-        #backToTopBtn:hover {
-            background-color: #218838;
-        }
-        #copyBtn {
-            background-color: #17a2b8;
-            margin-top: 10px;
-        }
-        #copyBtn:hover {
-            background-color: #138496;
         }
     </style>
 </head>
