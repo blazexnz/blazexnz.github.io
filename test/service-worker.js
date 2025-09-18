@@ -3,11 +3,7 @@ const urlsToCache = [
   '/',
   '/index.html',
   '/script.js',
-  '/style.css',        // Optional if you have external CSS
-  '/manifest.json',    // Optional PWA manifest
-  '/config.json',      // Optional config file if you use one
-  '/icon-192.png',     // Optional app icons
-  '/icon-512.png'
+  '/manifest.json'
 ];
 
 self.addEventListener('install', event => {
