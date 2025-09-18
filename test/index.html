@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PAO Lookup</title>
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        input {
+            font-size: 1.5rem;
+            padding: 10px;
+            width: 80%;
+            max-width: 300px;
+            margin-bottom: 20px;
+        }
+        .result {
+            font-size: 1.2rem;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>PAO Lookup</h1>
+    <input type="number" id="numberInput" placeholder="Enter number" inputmode="numeric">
+    <div class="result" id="result"></div>
+
+    <script src="script.js"></script>
+    <script>
+      // Register service worker
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/service-worker.js')
+          .then(() => console.log('Service Worker registered'))
+          .catch(err => console.error('Service Worker registration failed:', err));
+      }
+    </script>
+</body>
+</html>
