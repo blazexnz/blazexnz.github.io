@@ -101,16 +101,18 @@ const paoData = {
     "99": { person: "Jay Z (99 Problems)", action: "Rapping 99 problems with NYC cap", object: "NYC cap", card: "" }
 };
 
+
 const paoData = {
     "00": { person: "Ozzy Osbourne", action: "Biting head off dove", object: "Dove", card: "" },
     "01": { person: "Tiger Woods", action: "Swinging a golf club", object: "Golf club", card: "" },
     "02": { person: "OB-Wan Kenobi", action: "Fighting with light saber", object: "Lightsaber", card: "" },
-    // ... include all 100 PAO entries here
+    // ... keep all other entries exactly as before ...
     "99": { person: "Jay Z (99 Problems)", action: "Rapping 99 problems with NYC cap", object: "NYC cap", card: "" }
 };
 
 let currentIndex = 0;
 
+// Display PAO data
 function displayResult(index) {
     const num = index.toString().padStart(2, "0");
     const resultDiv = document.getElementById("result");
@@ -131,12 +133,14 @@ function displayResult(index) {
     }
 }
 
+// Input event
 document.getElementById("numberInput").addEventListener("input", function () {
     const num = this.value.padStart(2, "0");
     currentIndex = parseInt(num, 10);
     displayResult(currentIndex);
 });
 
+// Click event
 document.addEventListener("click", function (event) {
     if (event.target !== document.getElementById("numberInput")) {
         currentIndex = (currentIndex + 1) % 100;
@@ -144,3 +148,6 @@ document.addEventListener("click", function (event) {
         displayResult(currentIndex);
     }
 });
+
+// Initial display
+displayResult(currentIndex);
