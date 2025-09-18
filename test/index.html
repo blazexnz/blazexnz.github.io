@@ -5,10 +5,8 @@
     <meta name="robots" content="noindex, nofollow">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PAO Lookup</title>
-
-    <!-- PWA Manifest -->
-    <link rel="manifest" href="/manifest.json">
-    
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#ffffff">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -35,12 +33,13 @@
 
     <script src="script.js"></script>
     <script>
-      // Register service worker
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/service-worker.js')
-          .then(() => console.log('Service Worker registered'))
-          .catch(err => console.error('Service Worker registration failed:', err));
-      }
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./service-worker.js')
+                .then(reg => console.log('Service Worker registered:', reg))
+                .catch(err => console.log('Service Worker registration failed:', err));
+            });
+        }
     </script>
 </body>
 </html>
