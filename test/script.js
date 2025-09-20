@@ -27,20 +27,27 @@
     }
   }
 
+  async function resumeAudio() {
+    ensureAudio();
+    if (audioCtx.state === "suspended") {
+      await audioCtx.resume();
+    }
+  }
+
   function playClick(time, strong = false) {
     ensureAudio();
     const ctx = audioCtx;
     const o = ctx.createOscillator();
     const g = ctx.createGain();
     o.type = 'sine';
-    o.frequency.value = strong ? 1000 : 800;
+    o.frequency.value = strong ? 1200 : 880; // higher for clarity
     g.gain.setValueAtTime(0.0001, time || ctx.currentTime);
-    g.gain.exponentialRampToValueAtTime(strong ? 0.25 : 0.14, (time || ctx.currentTime) + 0.001);
-    g.gain.exponentialRampToValueAtTime(0.001, (time || ctx.currentTime) + 0.12);
+    g.gain.exponentialRampToValueAtTime(strong ? 0.35 : 0.25, (time || ctx.currentTime) + 0.001);
+    g.gain.exponentialRampToValueAtTime(0.001, (time || ctx.currentTime) + 0.18);
     o.connect(g);
     g.connect(ctx.destination);
     o.start(time || ctx.currentTime);
-    o.stop((time || ctx.currentTime) + 0.14);
+    o.stop((time || ctx.currentTime) + 0.2);
   }
 
   // Generate a random pattern that sums to 4 beats
@@ -94,7 +101,6 @@
   generateBtn.addEventListener('click', () => {
     currentPattern = generatePattern();
     renderPattern(currentPattern);
-    // ✅ If already playing, keep playback going with new pattern
     if (playing) {
       stopPlaying();
       playSequence();
@@ -181,13 +187,14 @@
     }
   }
 
-  playBtn.addEventListener('click', () => {
+  playBtn.addEventListener('click', async () => {
+    await resumeAudio(); // ✅ ensure audio is unlocked on iOS
     if (!playing) playSequence();
     else stopPlaying();
   });
 
-  randomClapBtn.addEventListener('click', () => {
-    ensureAudio();
+  randomClapBtn.addEventListener('click', async () => {
+    await resumeAudio(); // ✅ ensure audio is unlocked on iOS
     playClick(audioCtx.currentTime, true);
   });
 
