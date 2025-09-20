@@ -18,7 +18,7 @@ A fun, web-based rhythm training app designed for kids and beginners! Generate r
 
 1. Press **New Rhythm** to generate a random 4-beat bar.  
 2. Press **Play** to start the metronome and watch the colored blocks light up.  
-3. Clap along each time a note starts — the note’s emoji and color indicate its type.  
+3. Clap along each time a note starts using the clap button or space bar — the note’s emoji and color indicate its type.  
 4. Adjust the **Tempo** if needed to match your comfort level.  
 5. Press **Pause** to stop playback anytime.  
 6. Start a new rhythm whenever you want with **New Rhythm**.  
