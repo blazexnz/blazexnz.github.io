@@ -1,10 +1,3 @@
-/* script.js
-   Rhythm Playground
-   - Generates a random combination of whole(4), half(2), quarter(1)
-     that fills exactly 4 beats.
-   - Plays a metronome and highlights notes when they start so kids clap.
-*/
-
 (() => {
   const generateBtn = document.getElementById('generateBtn');
   const playBtn = document.getElementById('playBtn');
@@ -48,7 +41,6 @@
     const pattern = [];
     let remaining = 4;
 
-    // Keep picking until filled
     while (remaining > 0) {
       const options = NOTES.filter(n => n.beats <= remaining);
       const weights = options.map(n => {
@@ -90,11 +82,9 @@
   let currentPattern = generatePattern();
   renderPattern(currentPattern);
 
-  // Generate button handler
   generateBtn.addEventListener('click', () => {
     currentPattern = generatePattern();
     renderPattern(currentPattern);
-    // ✅ If already playing, keep playback going with new pattern
     if (playing) {
       stopPlaying();
       playSequence();
@@ -191,10 +181,12 @@
     playClick(audioCtx.currentTime, true);
   });
 
+  // ✅ Space bar now triggers a clap instead of start/stop
   window.addEventListener('keydown', (e) => {
     if (e.code === 'Space') {
       e.preventDefault();
-      if (!playing) playSequence(); else stopPlaying();
+      ensureAudio();
+      playClick(audioCtx.currentTime, true); // clap on space
     }
   });
 
