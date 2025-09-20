@@ -1,45 +1,497 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="robots" content="noindex, nofollow">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PAO Lookup</title>
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#ffffff">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 20px;
-        }
-        input {
-            font-size: 1.5rem;
-            padding: 10px;
-            width: 80%;
-            max-width: 300px;
-            margin-bottom: 20px;
-        }
-        .result {
-            font-size: 1.2rem;
-            margin-top: 20px;
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <meta name="robots" content="noindex, nofollow">
+  <title>8-Bar Rhythm Trainer</title>
+  <style>
+    :root{
+      --bg:#0f1720;
+      --panel:#0b1220;
+      --muted:#99a1b3;
+      --accent:#5eead4;
+      --accent-2:#60a5fa;
+      --bar:#111827;
+      --beat:#1f2937;
+      --highlight: #facc15;
+      --radius:10px;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+
+    html,body{height:100%;margin:0;background:linear-gradient(180deg,var(--bg),#07101a);color:#e6eef6}
+    .app{
+      max-width:1100px;
+      margin:18px auto;
+      padding:14px;
+      box-sizing:border-box;
+    }
+
+    header{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:12px;
+    }
+
+    h1{font-size:16px;margin:0}
+    .controls{
+      display:flex;
+      gap:8px;
+      align-items:center;
+      flex-wrap:wrap;
+    }
+
+    .panel{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+      border:1px solid rgba(255,255,255,0.03);
+      padding:12px;
+      border-radius:var(--radius);
+      box-shadow: 0 6px 18px rgba(2,6,23,0.6);
+    }
+
+    .control-row{display:flex;gap:8px;align-items:center}
+
+    label{font-size:13px;color:var(--muted);margin-right:6px}
+
+    select,input[type="number"]{
+      -webkit-appearance:none;
+      appearance:none;
+      background:transparent;
+      border:1px solid rgba(255,255,255,0.06);
+      color:inherit;
+      padding:8px 10px;
+      border-radius:8px;
+      min-width:64px;
+      font-size:14px;
+    }
+
+    input[type="range"]{
+      accent-color:var(--accent);
+    }
+
+    button{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+      border:1px solid rgba(255,255,255,0.06);
+      color:inherit;
+      padding:10px 14px;
+      border-radius:10px;
+      font-size:14px;
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      cursor:pointer;
+      touch-action: manipulation; /* prevent double tap zoom on many mobile browsers */
+      -webkit-tap-highlight-color: rgba(0,0,0,0);
+    }
+    button:disabled{opacity:0.45;cursor:not-allowed}
+
+    main {display:flex;flex-direction:column;gap:12px}
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:10px;
+    }
+
+    .line{
+      background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
+      border:1px solid rgba(255,255,255,0.03);
+      padding:10px;
+      border-radius:12px;
+      overflow:auto;
+    }
+
+    .bars{
+      display:flex;
+      gap:8px;
+      align-items:stretch;
+      padding:6px;
+    }
+
+    .bar{
+      min-width:56px;
+      flex:1 0 56px;
+      background:var(--bar);
+      border-radius:8px;
+      padding:6px;
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+      justify-content:center;
+      align-items:center;
+    }
+
+    .bar .beats{
+      width:100%;
+      display:flex;
+      gap:4px;
+      justify-content:center;
+      align-items:center;
+    }
+
+    .beat{
+      flex:1 0 auto;
+      min-width:16px;
+      height:32px;
+      background:var(--beat);
+      border-radius:6px;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      font-weight:600;
+      color:var(--muted);
+      user-select:none;
+      box-shadow: inset 0 -2px 0 rgba(0,0,0,0.2);
+      transition:transform 0.08s ease, background 0.08s ease, color 0.08s;
+      font-size:16px;
+    }
+
+    .beat.strong{font-weight:700;color:var(--accent-2)}
+    .beat.current{
+      background:linear-gradient(90deg, rgba(250,204,21,0.12), rgba(96,165,250,0.06));
+      box-shadow: 0 6px 20px rgba(0,0,0,0.45), 0 0 18px rgba(250,204,21,0.06);
+      transform: translateY(-6px) scale(1.04);
+      color:var(--highlight);
+    }
+
+    .row-title{font-size:13px;color:var(--muted);margin-bottom:6px}
+
+    .small{font-size:13px;color:var(--muted)}
+    .top-controls{display:flex;gap:8px;align-items:center}
+
+    footer{display:flex;justify-content:space-between;align-items:center;margin-top:8px;color:var(--muted);font-size:13px}
+
+    /* Hover only on non-touch devices */
+    @media (hover: hover) and (pointer: fine) {
+      button:hover{ transform: translateY(-2px); box-shadow:0 10px 24px rgba(0,0,0,0.45)}
+      .beat:hover{ transform:translateY(-4px); }
+    }
+
+    /* active style for touch */
+    button:active{ transform: translateY(0); box-shadow:none; }
+    .beat:active{ transform: translateY(-2px); }
+
+    /* Responsive layout */
+    @media (min-width:900px){
+      .grid{grid-template-columns: 1fr}
+      .bars{gap:10px}
+      .bar{min-width:70px}
+      .beat{height:40px;font-size:18px}
+    }
+
+    @media (max-width:420px){
+      .bar{min-width:44px;padding:4px}
+      .beat{height:30px;font-size:13px;min-width:12px}
+      header{flex-direction:column;align-items:stretch;gap:8px}
+    }
+
+  </style>
 </head>
 <body>
-    <h1>PAO Lookup - PWA</h1>
-    <input type="number" id="numberInput" placeholder="Enter number" inputmode="numeric">
-    <div class="result" id="result"></div>
+  <div class="app">
+    <header>
+      <div>
+        <h1>8-Bar Rhythm Trainer</h1>
+        <div class="small">Practice with 3/4 or 4/4, one or two lines (hands). Tap Play.</div>
+      </div>
 
-    <script src="script.js"></script>
-    <script>
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('./service-worker.js')
-                .then(reg => console.log('Service Worker registered:', reg))
-                .catch(err => console.log('Service Worker registration failed:', err));
-            });
-        }
-    </script>
+      <div class="controls panel">
+        <div class="control-row">
+          <label for="signature">Signature</label>
+          <select id="signature" aria-label="Time signature">
+            <option value="4">4/4</option>
+            <option value="3">3/4</option>
+          </select>
+
+          <label for="lines">Lines</label>
+          <select id="lines" aria-label="Number of lines">
+            <option value="1">1 line</option>
+            <option value="2">2 lines</option>
+          </select>
+
+          <label for="noteSymbol">Note</label>
+          <select id="noteSymbol" aria-label="Note symbol">
+            <option value="●">Dot (●)</option>
+            <option value="x">Stick (x)</option>
+            <option value="🥁">Drum (🥁)</option>
+            <option value="♩">Quarter (♩)</option>
+            <option value="♬">Note (♬)</option>
+            <option value="•">Small (•)</option>
+          </select>
+
+          <label for="tempo">BPM</label>
+          <input id="tempo" type="number" inputmode="numeric" pattern="[0-9]*" min="30" max="300" value="100" style="width:78px">
+
+          <button id="playBtn" aria-pressed="false" title="Play">▶ Play</button>
+          <button id="stopBtn" disabled title="Stop">■ Stop</button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="grid">
+        <!-- Lines will be injected here -->
+      </div>
+
+      <div class="panel small">
+        Tip: use 3/4 for waltz feel. Switch to 2 lines to practice left & right separately. The UI scales for iPhone and desktop.
+      </div>
+    </main>
+
+    <footer>
+      <div>8 bars × <span id="beatsPerBarLabel">4</span> beats</div>
+      <div class="small">Touch optimized · no zoom on button taps</div>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
+
+// script.js
+(() => {
+  const BAR_COUNT = 8;
+  const app = document.querySelector('.app');
+  const grid = document.querySelector('.grid');
+  const signatureSelect = document.getElementById('signature');
+  const linesSelect = document.getElementById('lines');
+  const noteSelect = document.getElementById('noteSymbol');
+  const tempoInput = document.getElementById('tempo');
+  const playBtn = document.getElementById('playBtn');
+  const stopBtn = document.getElementById('stopBtn');
+  const beatsPerBarLabel = document.getElementById('beatsPerBarLabel');
+
+  // Audio context for click sounds
+  let audioCtx = null;
+  function ensureAudio() {
+    if (!audioCtx) {
+      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    }
+  }
+  function playClick(time, freq = 1000, duration = 0.03, volume = 0.2) {
+    ensureAudio();
+    const o = audioCtx.createOscillator();
+    const g = audioCtx.createGain();
+    o.type = 'sine';
+    o.frequency.value = freq;
+    g.gain.value = volume;
+    o.connect(g);
+    g.connect(audioCtx.destination);
+    o.start(time);
+    g.gain.setValueAtTime(volume, time);
+    g.gain.exponentialRampToValueAtTime(0.001, time + duration);
+    o.stop(time + duration + 0.02);
+  }
+
+  // State
+  let beatsPerBar = parseInt(signatureSelect.value, 10);
+  let lineCount = parseInt(linesSelect.value, 10);
+  let noteSymbol = noteSelect.value;
+  let tempo = parseInt(tempoInput.value, 10) || 100;
+
+  let currentPos = 0; // from 0..(BAR_COUNT*beatsPerBar-1)
+  let timer = null;
+  let isPlaying = false;
+
+  // Build grid UI
+  function buildGrid() {
+    grid.innerHTML = '';
+    beatsPerBar = parseInt(signatureSelect.value, 10);
+    lineCount = parseInt(linesSelect.value, 10);
+    noteSymbol = noteSelect.value;
+    beatsPerBarLabel.textContent = beatsPerBar;
+
+    for (let r = 0; r < lineCount; r++) {
+      const lineWrap = document.createElement('div');
+      lineWrap.className = 'line panel';
+      const title = document.createElement('div');
+      title.className = 'row-title';
+      title.textContent = lineCount === 1 ? 'Single line' : (r === 0 ? 'Line 1 (hand 1)' : 'Line 2 (hand 2)');
+      lineWrap.appendChild(title);
+
+      const bars = document.createElement('div');
+      bars.className = 'bars';
+
+      for (let b = 0; b < BAR_COUNT; b++) {
+        const bar = document.createElement('div');
+        bar.className = 'bar';
+        const beats = document.createElement('div');
+        beats.className = 'beats';
+        // create beat boxes according to signature
+        for (let i = 0; i < beatsPerBar; i++) {
+          const beat = document.createElement('button'); // button makes it tappable
+          beat.type = 'button';
+          beat.className = 'beat';
+          // mark first beat of bar as strong
+          if (i === 0) beat.classList.add('strong');
+          beat.textContent = noteSymbol;
+          // allow toggling: cycle through a few symbols quickly (optional)
+          beat.addEventListener('click', (ev) => {
+            ev.preventDefault();
+            // simple toggle: clear / set
+            if (beat.dataset.off === '1') {
+              beat.dataset.off = '0';
+              beat.textContent = noteSymbol;
+              beat.classList.remove('muted');
+            } else {
+              beat.dataset.off = '0'; // keep default - no mute functionality now
+            }
+          }, {passive:false});
+          beats.appendChild(beat);
+        }
+        bar.appendChild(beats);
+        bars.appendChild(bar);
+      }
+
+      lineWrap.appendChild(bars);
+      grid.appendChild(lineWrap);
+    }
+
+    // reset position highlight
+    highlightCurrent();
+  }
+
+  function highlightCurrent() {
+    // remove existing highlights
+    document.querySelectorAll('.beat.current').forEach(el => el.classList.remove('current'));
+    // compute which beat to highlight
+    const totalBeats = BAR_COUNT * beatsPerBar;
+    const pos = ((currentPos % totalBeats) + totalBeats) % totalBeats;
+    // map pos to bars & beat index per line
+    const barIndex = Math.floor(pos / beatsPerBar);
+    const beatIndex = pos % beatsPerBar;
+    // highlight across lines
+    const lines = document.querySelectorAll('.line');
+    lines.forEach(line => {
+      const bars = line.querySelectorAll('.bar');
+      const bar = bars[barIndex];
+      if (!bar) return;
+      const beat = bar.querySelectorAll('.beat')[beatIndex];
+      if (beat) beat.classList.add('current');
+    });
+  }
+
+  function scheduleNextTick() {
+    const intervalMs = (60_000 / tempo) ; // quarter note interval
+    return intervalMs;
+  }
+
+  function start() {
+    if (isPlaying) return;
+    isPlaying = true;
+    playBtn.disabled = true;
+    stopBtn.disabled = false;
+    playBtn.setAttribute('aria-pressed', 'true');
+
+    // if the sound hasn't been used yet, resume context on first interaction
+    if (audioCtx && audioCtx.state === 'suspended') {
+      audioCtx.resume();
+    }
+
+    // Use precise scheduling with setInterval. Good enough for practice app.
+    const totalBeats = BAR_COUNT * beatsPerBar;
+    const msPerBeat = 60000 / tempo;
+
+    // immediate tick
+    tick();
+
+    timer = setInterval(() => {
+      tick();
+    }, msPerBeat);
+  }
+
+  function tick() {
+    const totalBeats = BAR_COUNT * beatsPerBar;
+    // audio click: accent for downbeat
+    const isDownbeat = (currentPos % beatsPerBar) === 0;
+    // frequency difference: downbeat higher pitch
+    const freq = isDownbeat ? 1200 : 800;
+    try { playClick(audioCtx ? audioCtx.currentTime : 0, freq, 0.03, isDownbeat ? 0.22 : 0.14); } catch (e) { /* ignore if audio not allowed */ }
+
+    highlightCurrent();
+    currentPos = (currentPos + 1) % totalBeats;
+  }
+
+  function stop() {
+    if (!isPlaying) return;
+    isPlaying = false;
+    playBtn.disabled = false;
+    stopBtn.disabled = true;
+    playBtn.setAttribute('aria-pressed', 'false');
+    if (timer) {
+      clearInterval(timer);
+      timer = null;
+    }
+    // clear highlight
+    document.querySelectorAll('.beat.current').forEach(el => el.classList.remove('current'));
+  }
+
+  // Event listeners
+  signatureSelect.addEventListener('change', () => {
+    beatsPerBar = parseInt(signatureSelect.value, 10);
+    beatsPerBarLabel.textContent = beatsPerBar;
+    currentPos = 0;
+    stop();
+    buildGrid();
+  });
+
+  linesSelect.addEventListener('change', () => {
+    lineCount = parseInt(linesSelect.value, 10);
+    currentPos = 0;
+    stop();
+    buildGrid();
+  });
+
+  noteSelect.addEventListener('change', (e) => {
+    noteSymbol = e.target.value;
+    // update visible notes
+    document.querySelectorAll('.beat').forEach(b => {
+      b.textContent = noteSymbol;
+    });
+  });
+
+  tempoInput.addEventListener('change', (e) => {
+    tempo = parseInt(e.target.value, 10) || 100;
+    // if playing, restart with new tempo
+    if (isPlaying) {
+      stop();
+      start();
+    }
+  });
+
+  playBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    // create/resume audio context in user gesture
+    ensureAudio();
+    if (audioCtx && audioCtx.state === 'suspended') {
+      audioCtx.resume();
+    }
+    start();
+  }, {passive:false});
+
+  stopBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    stop();
+  }, {passive:false});
+
+  // Prevent double-tap zoom on iPhones when tapping buttons: already using touch-action: manipulation on button
+  // Additional safety: prevent double-tap zoom pagewide by ignoring fast sequential taps on body (optional)
+  let lastTap = 0;
+  document.addEventListener('touchend', (e) => {
+    const now = Date.now();
+    if (now - lastTap <= 300) {
+      e.preventDefault();
+    }
+    lastTap = now;
+  }, {passive:false});
+
+  // Initialization
+  buildGrid();
+
+  // Expose small debug if needed
+  window._rhythmTrainer = {
+    start, stop, buildGrid, playClick
+  };
+})();
