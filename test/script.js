@@ -1,214 +1,201 @@
-/* script.js
-   Rhythm Playground
-   - Generates a random combination of whole(4), half(2), quarter(1)
-     that fills exactly 4 beats.
-   - Plays a metronome and highlights notes when they start so kids clap.
-*/
-
 (() => {
-  const generateBtn = document.getElementById('generateBtn');
+  const BAR_COUNT = 4;
+  const app = document.querySelector('.app');
+  const grid = document.querySelector('.grid');
+  const signatureSelect = document.getElementById('signature');
+  const linesSelect = document.getElementById('lines');
+  const noteSelect = document.getElementById('noteSymbol');
+  const tempoInput = document.getElementById('tempo');
   const playBtn = document.getElementById('playBtn');
-  const barEl = document.getElementById('bar');
-  const bpmInput = document.getElementById('bpmInput');
-  const randomClapBtn = document.getElementById('randomClapBtn');
+  const stopBtn = document.getElementById('stopBtn');
+  const beatsPerBarLabel = document.getElementById('beatsPerBarLabel');
 
-  // Note definitions
-  const NOTES = [
-    { name: 'whole', beats: 4, label: 'Whole', emoji: '🎵' },
-    { name: 'half',  beats: 2, label: 'Half',  emoji: '🎶' },
-    { name: 'quarter', beats: 1, label: 'Quarter', emoji: '♪' }
-  ];
-
-  // Audio context and click sound
   let audioCtx = null;
   function ensureAudio() {
     if (!audioCtx) {
       audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     }
   }
-
-  async function resumeAudio() {
+  function playClick(time, freq = 1000, duration = 0.03, volume = 0.2) {
     ensureAudio();
-    if (audioCtx.state === "suspended") {
-      await audioCtx.resume();
-    }
-  }
-
-  function playClick(time, strong = false) {
-    ensureAudio();
-    const ctx = audioCtx;
-    const o = ctx.createOscillator();
-    const g = ctx.createGain();
+    const o = audioCtx.createOscillator();
+    const g = audioCtx.createGain();
     o.type = 'sine';
-    o.frequency.value = strong ? 1200 : 880; // higher for clarity
-    g.gain.setValueAtTime(0.0001, time || ctx.currentTime);
-    g.gain.exponentialRampToValueAtTime(strong ? 0.35 : 0.25, (time || ctx.currentTime) + 0.001);
-    g.gain.exponentialRampToValueAtTime(0.001, (time || ctx.currentTime) + 0.18);
+    o.frequency.value = freq;
+    g.gain.value = volume;
     o.connect(g);
-    g.connect(ctx.destination);
-    o.start(time || ctx.currentTime);
-    o.stop((time || ctx.currentTime) + 0.2);
+    g.connect(audioCtx.destination);
+    o.start(time);
+    g.gain.setValueAtTime(volume, time);
+    g.gain.exponentialRampToValueAtTime(0.001, time + duration);
+    o.stop(time + duration + 0.02);
   }
 
-  // Generate a random pattern that sums to 4 beats
-  function generatePattern() {
-    const pattern = [];
-    let remaining = 4;
+  let beatsPerBar = parseInt(signatureSelect.value, 10);
+  let lineCount = parseInt(linesSelect.value, 10);
+  let noteSymbol = noteSelect.value;
+  let tempo = parseInt(tempoInput.value, 10) || 100;
 
-    // Keep picking until filled
-    while (remaining > 0) {
-      const options = NOTES.filter(n => n.beats <= remaining);
-      const weights = options.map(n => {
-        if (n.name === 'quarter') return 3;
-        if (n.name === 'half') return 2;
-        return 1;
-      });
-      const total = weights.reduce((a,b)=>a+b,0);
-      let r = Math.random()*total;
-      let idx = 0;
-      for (let i=0;i<weights.length;i++){
-        r -= weights[i];
-        if (r <= 0) { idx = i; break; }
-      }
-      pattern.push(options[idx]);
-      remaining -= options[idx].beats;
-    }
-    return pattern;
-  }
+  let currentPos = 0;
+  let timer = null;
+  let isPlaying = false;
 
-  function renderPattern(pattern) {
-    barEl.innerHTML = '';
-    barEl.setAttribute('aria-label', 'New rhythm: ' + pattern.map(n => n.label).join(', '));
+  function buildGrid() {
+    grid.innerHTML = '';
+    beatsPerBar = parseInt(signatureSelect.value, 10);
+    lineCount = parseInt(linesSelect.value, 10);
+    noteSymbol = noteSelect.value;
+    beatsPerBarLabel.textContent = beatsPerBar;
 
-    pattern.forEach((note, index) => {
-      const div = document.createElement('div');
-      div.className = 'note ' + note.name;
-      div.style.flex = (note.beats) + ' 0 0';
-      div.innerHTML = `
-        <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
-          <div style="font-size:28px;">${note.emoji}</div>
-          <div class="label">${note.label} • ${note.beats} ${note.beats===1?'beat':'beats'}</div>
-        </div>
-      `;
-      barEl.appendChild(div);
-    });
-  }
+    for (let r = 0; r < lineCount; r++) {
+      const lineWrap = document.createElement('div');
+      lineWrap.className = 'line panel';
+      const title = document.createElement('div');
+      title.className = 'row-title';
+      title.textContent = lineCount === 1 ? 'Single line' : (r === 0 ? 'Line 1 (hand 1)' : 'Line 2 (hand 2)');
+      lineWrap.appendChild(title);
 
-  let currentPattern = generatePattern();
-  renderPattern(currentPattern);
+      const bars = document.createElement('div');
+      bars.className = 'bars';
 
-  // Generate button handler
-  generateBtn.addEventListener('click', () => {
-    currentPattern = generatePattern();
-    renderPattern(currentPattern);
-    if (playing) {
-      stopPlaying();
-      playSequence();
-    }
-  });
-
-  function computeNoteStarts(pattern) {
-    const starts = [];
-    let pos = 0;
-    pattern.forEach((note, i) => {
-      starts.push({ index: i, startBeat: pos, beats: note.beats });
-      pos += note.beats;
-    });
-    return starts;
-  }
-
-  let playing = false;
-  let schedulerId = null;
-  let startTime = 0;
-  let lookahead = 0.1;
-  let scheduleAhead = 0.2;
-  let nextBeatTime = 0;
-  let currentBeat = 0;
-
-  function bpmToSec(bpm) {
-    return 60 / bpm;
-  }
-
-  function playSequence() {
-    if (playing) return;
-    ensureAudio();
-    const ctx = audioCtx;
-    const bpm = Math.max(40, Math.min(220, Number(bpmInput.value || 90)));
-    const beatSec = bpmToSec(bpm);
-
-    const noteStarts = computeNoteStarts(currentPattern);
-
-    startTime = ctx.currentTime + 0.05;
-    nextBeatTime = startTime;
-    currentBeat = 0;
-    playing = true;
-    playBtn.setAttribute('aria-pressed', 'true');
-    playBtn.textContent = '⏸ Pause';
-
-    function scheduler() {
-      if (!playing) return;
-      const now = ctx.currentTime;
-      while (nextBeatTime < now + scheduleAhead) {
-        const isDownbeat = (currentBeat % 4) === 0;
-        playClick(nextBeatTime, isDownbeat);
-
-        noteStarts.forEach(ns => {
-          if (ns.startBeat === (currentBeat % 4)) {
-            const el = barEl.children[ns.index];
-            if (el) {
-              setTimeout(() => {
-                el.classList.add('playing');
-              }, Math.max(0, (nextBeatTime - ctx.currentTime) * 1000));
-              setTimeout(() => {
-                el.classList.remove('playing');
-              }, Math.max(0, (nextBeatTime - ctx.currentTime) * 1000) + (beatSec * 700));
+      for (let b = 0; b < BAR_COUNT; b++) {
+        const bar = document.createElement('div');
+        bar.className = 'bar';
+        const beats = document.createElement('div');
+        beats.className = 'beats';
+        for (let i = 0; i < beatsPerBar; i++) {
+          const beat = document.createElement('button');
+          beat.type = 'button';
+          beat.className = 'beat';
+          if (i === 0) beat.classList.add('strong');
+          beat.textContent = noteSymbol;
+          beat.addEventListener('click', (ev) => {
+            ev.preventDefault();
+            if (beat.dataset.off === '1') {
+              beat.dataset.off = '0';
+              beat.textContent = noteSymbol;
+              beat.classList.remove('muted');
+            } else {
+              beat.dataset.off = '0';
             }
-          }
-        });
-
-        nextBeatTime += beatSec;
-        currentBeat++;
+          }, { passive: false });
+          beats.appendChild(beat);
+        }
+        bar.appendChild(beats);
+        bars.appendChild(bar);
       }
 
-      schedulerId = requestAnimationFrame(scheduler);
+      lineWrap.appendChild(bars);
+      grid.appendChild(lineWrap);
     }
-
-    scheduler();
+    highlightCurrent();
   }
 
-  function stopPlaying() {
-    if (!playing) return;
-    playing = false;
+  function highlightCurrent() {
+    document.querySelectorAll('.beat.current').forEach(el => el.classList.remove('current'));
+    const totalBeats = BAR_COUNT * beatsPerBar;
+    const pos = ((currentPos % totalBeats) + totalBeats) % totalBeats;
+    const barIndex = Math.floor(pos / beatsPerBar);
+    const beatIndex = pos % beatsPerBar;
+    const lines = document.querySelectorAll('.line');
+    lines.forEach(line => {
+      const bars = line.querySelectorAll('.bar');
+      const bar = bars[barIndex];
+      if (!bar) return;
+      const beat = bar.querySelectorAll('.beat')[beatIndex];
+      if (beat) beat.classList.add('current');
+    });
+  }
+
+  function start() {
+    if (isPlaying) return;
+    isPlaying = true;
+    playBtn.disabled = true;
+    stopBtn.disabled = false;
+    playBtn.setAttribute('aria-pressed', 'true');
+
+    const totalBeats = BAR_COUNT * beatsPerBar;
+    const msPerBeat = 60000 / tempo;
+    tick();
+    timer = setInterval(() => {
+      tick();
+    }, msPerBeat);
+  }
+
+  function tick() {
+    const totalBeats = BAR_COUNT * beatsPerBar;
+    const isDownbeat = (currentPos % beatsPerBar) === 0;
+    const freq = isDownbeat ? 1200 : 800;
+    try {
+      playClick(audioCtx ? audioCtx.currentTime : 0, freq, 0.03, isDownbeat ? 0.22 : 0.14);
+    } catch (e) {}
+    highlightCurrent();
+    currentPos = (currentPos + 1) % totalBeats;
+  }
+
+  function stop() {
+    if (!isPlaying) return;
+    isPlaying = false;
+    playBtn.disabled = false;
+    stopBtn.disabled = true;
     playBtn.setAttribute('aria-pressed', 'false');
-    playBtn.textContent = '▶ Play';
-    if (schedulerId) {
-      cancelAnimationFrame(schedulerId);
-      schedulerId = null;
+    if (timer) {
+      clearInterval(timer);
+      timer = null;
     }
+    document.querySelectorAll('.beat.current').forEach(el => el.classList.remove('current'));
   }
 
-  playBtn.addEventListener('click', async () => {
-    await resumeAudio(); // ✅ ensure audio is unlocked on iOS
-    if (!playing) playSequence();
-    else stopPlaying();
+  signatureSelect.addEventListener('change', () => {
+    beatsPerBar = parseInt(signatureSelect.value, 10);
+    beatsPerBarLabel.textContent = beatsPerBar;
+    currentPos = 0;
+    stop();
+    buildGrid();
   });
 
-  randomClapBtn.addEventListener('click', async () => {
-    await resumeAudio(); // ✅ ensure audio is unlocked on iOS
-    playClick(audioCtx.currentTime, true);
+  linesSelect.addEventListener('change', () => {
+    lineCount = parseInt(linesSelect.value, 10);
+    currentPos = 0;
+    stop();
+    buildGrid();
   });
 
-  window.addEventListener('keydown', (e) => {
-    if (e.code === 'Space') {
-      e.preventDefault();
-      if (!playing) playSequence(); else stopPlaying();
+  noteSelect.addEventListener('change', (e) => {
+    noteSymbol = e.target.value;
+    document.querySelectorAll('.beat').forEach(b => {
+      b.textContent = noteSymbol;
+    });
+  });
+
+  tempoInput.addEventListener('change', (e) => {
+    tempo = parseInt(e.target.value, 10) || 100;
+    if (isPlaying) {
+      stop();
+      start();
     }
   });
 
-  generateBtn.addEventListener('keyup', (e) => {
-    if (e.key === 'Enter') generateBtn.click();
-  });
+  playBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    // ✅ ensure audio context in direct user gesture
+    ensureAudio();
+    if (audioCtx && audioCtx.state === 'suspended') {
+      audioCtx.resume();
+    }
+    start();
+  }, { passive: false });
 
-  generateBtn.setAttribute('tabindex', '0');
-  playBtn.setAttribute('tabindex', '0');
+  stopBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    stop();
+  }, { passive: false });
+
+  // ❌ removed global document touchend preventDefault
+
+  buildGrid();
+
+  window._rhythmTrainer = {
+    start, stop, buildGrid, playClick
+  };
 })();
