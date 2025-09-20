@@ -22,4 +22,5 @@
 - **Kids math** (Released: August 2025)  
 - **Memory grid** (Released: August 2025)
 - **Sevens trainer** (Released: August 2025)
-- **Eye spy** (Released: September 2025)  
+- **Eye spy** (Released: September 2025)
+- **Rhythm playground** (Released: September 2025)  
