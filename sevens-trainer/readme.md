@@ -6,7 +6,10 @@ A simple, mobile-friendly web app to train your working memory by adding or subt
 
 - **Start at 100:** Begin every session from 100  
 - **Add or Subtract:** Keep your brain active and sharp
-- **Three play Play Modes:** Cycle mode which cycles through set numbers, Random Mode where each step is randomly picked, and Number Juggle mode where both operation number and operand are randomly picked
+- **Three Play Modes:**
+  - **Cycle Mode:** Steps rotate between 7, 9, 11, while you choose the operand (+ and -)
+  - **Random Mode:** Each step is randomly picked, while you choose the operand (+ and -)
+  - **Number Juggle Mode:** Both operation number and operand are randomly picked, ends after 5 so you're forced to refresh working memory
 - **Score Counter:** Tracks how many steps you’ve completed  
 - **Timer:** Measures how long you’ve been playing  
 - **Reset Button:** Start over anytime  
