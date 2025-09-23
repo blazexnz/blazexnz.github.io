@@ -159,7 +159,12 @@ bindButton(cycleBtn, () => {
     juggleMode = false;
     currentStepIndex = (currentStepIndex + 1) % stepSizes.length;
     currentStep = stepSizes[currentStepIndex];
-    fullReset();
+    
+    // Reset only counter, score, timer, etc. without touching currentStepIndex
+    counter = 100;
+    score = 0;
+    resetTimer();
+    updateDisplay();
 });
 
 bindButton(randomBtn, () => {
