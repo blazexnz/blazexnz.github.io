@@ -114,6 +114,8 @@ function getStep() {
 addBtn.addEventListener('click', () => {
     startTimer();
     if (juggleMode) {
+        // increment score when refresh is clicked
+        score += 1;
         // refresh starting number
         juggleNumber = getRandomThreeDigit();
         juggleRounds = 0;
@@ -126,6 +128,7 @@ addBtn.addEventListener('click', () => {
     }
     updateDisplay();
 });
+
 
 subtractBtn.addEventListener('click', () => {
     startTimer();
