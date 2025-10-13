@@ -24,3 +24,4 @@
 - **Sevens trainer** (Released: August 2025)
 - **Eye spy** (Released: September 2025)
 - **Rhythm playground** (Released: September 2025)  
+- **Cardistry app** (Released: October 2025)
