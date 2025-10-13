@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>🃏 Cardistry App</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+      text-align: center;
+      background-color: #f0f0f0;
+    }
+    button {
+      margin: 5px;
+      padding: 8px 12px;
+      font-size: 1rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      background-color: white;
+      color: black;
+      touch-action: manipulation;
+    }
+    button:hover {
+      background-color: #e0e0e0;
+    }
+    .item {
+      background-color: white;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      max-width: 600px;
+      margin: 15px auto;
+      padding: 20px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.05);
+      position: relative;
+      overflow: hidden;
+      text-align: left;
+    }
+    .item::before {
+      content: '';
+      position: absolute;
+      top: -20px;
+      left: -20px;
+      width: 60px;
+      height: 60px;
+      background: radial-gradient(circle at top left, #ffffffcc, transparent 70%);
+      border-top-left-radius: 12px;
+      pointer-events: none;
+    }
+    .item::after {
+      content: '';
+      position: absolute;
+      top: -20px;
+      right: -20px;
+      width: 60px;
+      height: 60px;
+      background: radial-gradient(circle at top right, #ffffffcc, transparent 70%);
+      border-top-right-radius: 12px;
+      pointer-events: none;
+    }
+    .notes {
+      background-color: #fffbea;
+      border: 1px solid #f0e68c;
+      border-radius: 12px;
+      max-width: 600px;
+      margin: 10px auto 30px auto;
+      padding: 15px 20px;
+      font-style: italic;
+      text-align: left;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+    #filterBar {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 20px auto;
+      flex-wrap: wrap;
+    }
+    #itemList {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-width: 600px;
+      margin: 20px auto;
+      align-items: center;
+    }
+    .item-button {
+      padding: 12px;
+      border-radius: 8px;
+      background-color: white;
+      border: 1px solid #ccc;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      cursor: pointer;
+      transition: background-color 0.2s;
+      text-align: center;
+      min-width: fit-content;
+      touch-action: manipulation;
+    }
+    .item-button:hover {
+      background-color: #f9f9f9;
+    }
+    .nav-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 10px auto 0 auto;
+      flex-wrap: wrap;
+    }
+    .nav-buttons button {
+      flex-shrink: 0;
+      min-width: 90px;
+      touch-action: manipulation;
+    }
+  </style>
+</head>
+<body>
+  <h1>🃏 Cardistry App</h1>
+
+  <div id="filterBar">
+    <button data-filter="all">All</button>
+    <button data-filter="tricks">Tricks</button>
+    <button data-filter="games">Games</button>
+  </div>
+
+  <div style="max-width: 600px; margin: 15px auto; text-align: center;">
+    <button id="decreaseFontBtn">A-</button>
+    <button id="increaseFontBtn">A+</button>
+  </div>
+
+  <div id="itemList"></div>
+  <div id="items"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
