@@ -128,14 +128,14 @@ content: "For same day bake, feed sourdough for 4 hrs. Dough rests for 2 hrs ins
     title: "Method",
     content: `
       <ol>
-        <li>Combine yeast & water.</li>
-        <li>Add flour & salt.</li>
-        <li>Mix until a shaggy dough forms.</li>
-        <li>Rest for 30 mins.</li>
-        <li>Stretch & fold, then shape into a tight ball.</li>
-        <li>Rest for 1 hour.</li>
-        <li>Divide dough and shape into 290g balls.</li>
-        <li>Rest for 1.5 hours.</li>
+        <li>Combine yeast & water</li>
+        <li>Add flour & salt</li>
+        <li>Mix to a shaggy dough</li>
+        <li>Rest for 30 mins</li>
+        <li>Stretch & fold, shape into a tight ball</li>
+        <li>Rest for 1 hour</li>
+        <li>Divide & shape into 290g balls</li>
+        <li>Rest for 1.5 hrs</li>
       </ol>
     `
   },
@@ -147,107 +147,188 @@ content: "For same day bake, feed sourdough for 4 hrs. Dough rests for 2 hrs ins
   },
   tags: ["pizza"]
 },
-  {
-    name: "Streets and Alleys",
-    setup: {
-      title: "Setup",
-      content: `
-        <ul>
-          <li>Deal a column of 4 cards face up, leaving the centre column blank for the foundations.</li>
-          <li>Deal another 4 cards face up on the right. The entire deck is dealt, leaving rows containing 7 cards on the left and 6 on the right.</li>
-          <li>The four aces form the foundations.</li>
-        </ul>
-      `
-    },
-    method: {
-      title: "The Play",
-      content: `
-        <ul>
-          <li>The aces form the foundations. Cards placed on the aces must be of the same suit</li>
-          <li>Cards can be placed on the rows, must be in descending order</li>
-          <li>More than one card can be moved but must be in descending order</li>
-          <li>Suits and colours do not matter on the rows</li>
-          <li>Any card value can be placed in a blank spot in the rows</li>
-        </ul>
-      `
-    },
-    reference: {
-      title: "Reference",
-      content: `
-        <ul>
-          <li><a href="https://bicyclecards.com/how-to-play/streets-and-alleys" target="_blank">Streets and Alleys</a></li>
-          <li><a href="https://www.youtube.com/watch?v=XzSWIKbfBSY" target="_blank">How To Play Streets and Alleys</a></li>
-          <li><a href="https://www.youtube.com/watch?v=Kv1hMZ73OSA" target="_blank">Streets and Alleys Solitaire - How to Play</a></li>
-        </ul>
-      `
-    },
-    players: { title: "Players", content: "1" },
-    deck: { title: "Deck", content: "Single deck" },
-    notes: { title: "Notes", content: "Warning" },
-    test: { title: "test", content: "Single deck" },
-    tags: ["games", "single player"]
+{
+  name: "2 Hour Neapolitan Pizza - FAST",
+  checklist: {
+    title: "Progress tracker",
+    content: `
+      <ul>
+        <li><input type="checkbox"> Combine & knead for 7 mins</li>
+        <li><input type="checkbox"> Rest for 45–60 mins</li>
+        <li><input type="checkbox"> Divide & shape into 290g balls</li>
+        <li><input type="checkbox"> Rest for 30–40 mins</li>
+      </ul>
+    `
   },
-  {
-    name: "Accordion",
-    setup: {
-      title: "Setup",
-      content: `
-        <ul>
-          <li><strong>Compact:</strong> 6 columns dealt left to right (then keep dealing cards to the right)</li>
-          <li><strong>Standard:</strong> deal 52 cards in a straight line</li>
-        </ul>
-      `
-    },
-    tdr: { title: "tl;dr", content: "Stack left 1 or 3 steps, matching rank or suit" },
-    method: {
-      title: "The Play",
-      content: `
-        <ul>
-          <li>Objective is to stack all cards to a single pile to the left (like an accordion)</li>
-          <li>Look 1 step to the left, and 3 steps to the left</li>
-          <li>Stack them if they are matching rank, or matching suit</li>
-          <li>You can move any cards as long as it's legal</li>
-          <li>All cards shift left as you move cards</li>
-        </ul>
-      `
-    },
-    players: { title: "Players", content: "1" },
-    deck: { title: "Deck", content: "Single deck" },
-    reference: {
-      title: "Reference",
-      content: `
-        <ul>
-          <li><a href="https://www.youtube.com/watch?v=9mMP_3e5LaE" target="_blank">Solitaire: Accordion Tutorial</a></li>
-          <li><a href="https://www.youtube.com/watch?v=pXvfi8mf4YE" target="_blank">🪗 How to play Accordion - a Solitaire Tutorial! 🪗</a></li>
-        </ul>
-      `
-    },
-    tags: ["games", "single player"]
+  ingredients: {
+    title: "Ingredients",
+    content: `
+      <ul>
+        <li>375g water</li>
+        <li>500g '00' flour</li>
+        <li>12g salt</li>
+        <li>7g dry yeast</li>
+      </ul>
+    `
   },
-  {
-    name: "4/6/8 Deck Shoe Shuffle",
-    method: {
-      title: "The Method",
-      content: `
-        <ol>
-          <li>Break the decks into 2 equal stacks.</li>
-          <li>Take 1/4 of each stack, then riffle-strip-riffle.</li>
-          <li>Place the working deck in the centre.</li>
-          <li>Take 1/4 from working deck & 1/4 from left stack, riffle-strip-riffle, place on working stack.</li>
-          <li>Take 1/4 from working deck & 1/4 from right stack, riffle-strip-riffle, place on working stack.</li>
-          <li>Repeat until all cards are shuffled.</li>
-          <li>Break working deck into 2 equal stacks.</li>
-          <li>Take 1/4 from each stack, riffle leaving cards laced, roll stack, tidy against shoe.</li>
-          <li>Cuts the cards (in between 1–1.5 decks).</li>
-          <li>Put the bottom cut on top so the cut card is on the bottom.</li>
-          <li>Put another cut card as an indicator for the next shuffle.</li>
-          <li>Place in the shoe and burn the first card (blackjack, baccarat, etc.).</li>
-        </ol>`
-    },
-    notes: { title: "Notes", content: "<p>When cutting a 4, 6, or 8 deck shoe, roll the deck on its side, place it against the shoe, have the player cut between the first and last deck, then return the top portion to the bottom so the cut card is on the bottom. Place a second cut card 1–1.5 decks from the bottom to indicate when to start the next shuffle.</p>" },
-    reference: { title: "Reference", content: '<a href="https://www.example.com/shoe-shuffle" target="_blank">Shoe Shuffle Tutorial</a>' },
-    tags: ["shuffles"]
-  }
+  notes: {
+    title: "Notes",
+    content: `
+      <ul>
+        <li>75% hydration</li>
+        <li>Start 2 hours before bake</li>
+      </ul>
+    `
+  },
+  method: {
+    title: "Method",
+    content: `
+      <ol>
+        <li>Combine water & yeast in a bowl</li>
+        <li>Add flour, then salt</li>
+        <li>Mix, then knead for 7 mins</li>
+        <li>Rest for 45–60 mins</li>
+        <li>Divide into 290g balls</li>
+        <li>Rest for 30–40 mins</li>
+      </ol>
+    `
+  },
+  tags: ["pizza"]
+},
+{
+  name: "Basic Artisan Bread",
+  checklist: {
+    title: "Progress tracker",
+    content: `
+      <ul>
+        <li><input type="checkbox"> Combine & rest 30 mins</li>
+        <li><input type="checkbox"> Stretch & fold #1 then rest 30 mins</li>
+        <li><input type="checkbox"> Stretch & fold #2 then rest 30 mins</li>
+        <li><input type="checkbox"> Stretch & fold #3 then rest 1 hr</li>
+        <li><input type="checkbox"> Preshape then rest 30 mins</li>
+        <li><input type="checkbox"> Final shape then rest 30 mins</li>
+        <li><input type="checkbox"> Preheat oven 220°C</li>
+        <li><input type="checkbox"> Bake 20 mins - lid on</li>
+        <li><input type="checkbox"> Bake 15 mins - lid off</li>
+        <li><input type="checkbox"> Cool for 1 hr</li>
+      </ul>
+    `
+  },
+  ingredients: {
+    title: "Ingredients",
+    content: `
+      <ul>
+        <li>500g flour</li>
+        <li>350g water (lukewarm)</li>
+        <li>8g (1 packet) yeast</li>
+        <li>10g salt</li>
+      </ul>
+    `
+  },
+  notes: {
+    title: "Notes",
+    content: `
+      <ul>
+        <li>3.5 hours ready to bake, 5 hours ready to eat</li>
+      </ul>
+    `
+  },
+  method: {
+    title: "Method",
+    content: `
+      <ol>
+        <li>Mix yeast with water in a bowl</li>
+        <li>Add flour & salt</li>
+        <li>Combine until rough dough forms</li>
+        <li>Rest for 30 min.</li>
+        <li>Stretch & fold #1</li>
+        <li>Rest for 30 mins</li>
+        <li>Stretch & fold #2</li>
+        <li>Rest for 30 mins</li>
+        <li>Stretch & fold #3</li>
+        <li>Rest for 1 hr</li>
+        <li>Preshape by scooping the dough out of the bowl, placing on bench sticky/seam side down.</li>
+        <li>Cup & pull into a smooth ball</li>
+        <li>Rest for 30 mins</li>
+        <li>Prepare basket in rice flour</li>
+        <li>Dust top of dough with rice flour</li>
+        <li>Final shape for basket as a rectangle, place in basket seam side up</li>
+        <li>Preheat oven to 220°C (Dutch oven inside)./li>
+        <li>Rest for 30 mins</li>
+        <li>Transfer dough to baking paper</li>
+        <li>Brush off excess flour</li>
+        <li>Score</li>
+        <li>Transfer to Dutch oven, lifting using the baking paper</li>
+        <li>Bake for 20 mins with lid on</li>
+        <li>Bake for 15–20 mins with lid off</li>
+        <li>Cool for 1 hr before serving</li>
+      </ol>
+    `
+  },
+  tags: ["bread"]
+},
+{
+  name: "Basic Artisan Bread - FAST",
+  checklist: {
+    title: "Progress tracker",
+    content: `
+      <ul>
+        <li><input type="checkbox"> Combine & rest 20 mins</li>
+        <li><input type="checkbox"> Stretch & fold then rest 1 hr</li>
+        <li><input type="checkbox"> Shape then rest 45 mins</li>
+        <li><input type="checkbox"> Preheat oven 220°C</li>
+        <li><input type="checkbox"> Bake 20 mins - lid on</li>
+        <li><input type="checkbox"> Bake 15 mins - lid off</li>
+        <li><input type="checkbox"> Cool for 30 mins</li>
+      </ul>
+    `
+  },
+  ingredients: {
+    title: "Ingredients",
+    content: `
+      <ul>
+        <li>500g flour</li>
+        <li>350g water (lukewarm)</li>
+        <li>8g (1 packet) yeast</li>
+        <li>10g salt</li>
+      </ul>
+    `
+  },
+  notes: {
+    title: "Notes",
+    content: `
+      <ul>
+        <li>2 hours ready to bake, 3 hours ready to eat</li>
+      </ul>
+    `
+  },
+  method: {
+    title: "Method",
+    content: `
+      <ol>
+        <li>Mix yeast with water in a bowl</li>
+        <li>Add flour & salt</li>
+        <li>Combine until rough dough forms</li>
+        <li>Rest for 20 mins</li>
+        <li>Stretch & fold</li>
+        <li>Rest for 1 hr</li>
+        <li>Prepare basket in rice flour</li>
+        <li>Dust top of dough with rice flour</li>
+        <li>Shape for basket as a rectangle, place in basket seam side up</li>
+        <li>Rest for 45 mins</li>
+        <li>Preheat oven to 220°C (Dutch oven inside)</li>
+        <li>Transfer dough to baking paper</li>
+        <li>Brush off excess flour</li>
+        <li>Score</li>
+        <li>Transfer to Dutch oven, lifting using the baking paper</li>
+        <li>Bake for 20 mins with lid on</li>
+        <li>Bake for 15–20 mins with lid off</li>
+        <li>Cool for 30 mins before serving</li>
+      </ol>
+    `
+  },
+  tags: ["bread"]
+}
 ];
 
 // === Filtering ===
