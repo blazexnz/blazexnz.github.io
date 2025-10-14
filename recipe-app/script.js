@@ -253,7 +253,7 @@ content: "For same day bake, feed sourdough for 4 hrs. Dough rests for 2 hrs ins
         <li>Leave on bench, cover with bowl, rest for 30 mins</li>
         <li>Dust basket with rice flour</li>
         <li>Final shape: form a rectangle, place seam side up in basket</li>
-        <li>Preheat oven to 220°C (Dutch oven inside)</li>
+        <li>Preheat oven to 220°C (with Dutch oven inside)</li>
         <li>Cover & rest for 30 mins</li>
         <li>Transfer dough to baking paper</li>
         <li>Brush off excess flour</li>
@@ -317,7 +317,7 @@ content: "For same day bake, feed sourdough for 4 hrs. Dough rests for 2 hrs ins
         <li>Dust basket with rice flour</li>
         <li>Shape: form rectangle, place seam side up in basket</li>
         <li>Cover & rest for 45 mins</li>
-        <li>Preheat oven to 220°C (Dutch oven inside)</li>
+        <li>Preheat oven to 220°C (with Dutch oven inside)</li>
         <li>Transfer dough to baking paper</li>
         <li>Brush off excess flour</li>
         <li>Score the dough</li>
@@ -373,7 +373,7 @@ content: "For same day bake, feed sourdough for 4 hrs. Dough rests for 2 hrs ins
         <li>Add flour & salt</li>
         <li>Combine until rough dough forms</li>
         <li>Cover & rest for 2-3 hrs</li>
-        <li>Preheat oven to 230°C (Dutch oven inside oven)</li>
+        <li>Preheat oven to 230°C (with Dutch oven inside oven)</li>
         <li>Dust basket with rice flour</li>
         <li>Final shape: scoop out of bowl, form a rectangle place, in basket seam side up</li>
         <li>Rest for 15 min</li>
