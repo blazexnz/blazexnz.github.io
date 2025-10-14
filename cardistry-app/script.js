@@ -102,6 +102,8 @@ function displayItem(item, list) {
       sectionDiv.className = 'item';
     } else if (key === 'notes') {
       sectionDiv.className = 'notes';
+    } else if (key === 'reference') {
+      sectionDiv.className = 'reference';
     } else {
       sectionDiv.className = 'item';
     }
