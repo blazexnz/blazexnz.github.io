@@ -7,7 +7,7 @@ const itemsData = [
   {
     name: "Test test test Sourdough Bread",
     checklist: {
-      title: "Prep Steps",
+      title: "Progress tracker",
       content: `
         <ul>
           <li><input type="checkbox"> Preheat oven to 180°C</li>
@@ -94,7 +94,7 @@ content: "For same day bake, feed sourdough for 4 hrs. Dough rests for 2 hrs ins
 {
   name: "3 Hour Neapolitan Pizza",
   checklist: {
-    title: "Prep Steps",
+    title: "Progress tracker",
     content: `
       <ul>
         <li><input type="checkbox">Combine & rest for 30 mins</li>
