@@ -249,7 +249,7 @@ content: "For same day bake, feed sourdough for 4 hrs. Dough rests for 2 hrs ins
         <li>Cover & rest for 30 mins</li>
         <li>Stretch & fold #3</li>
         <li>Cover & rest for 1 hr </li>
-        <li>Pre-shape: scoop the dough out of the bowl, placing on bench sticky/seam side down, cup & pull into a smooth ball</li>
+        <li>Pre-shape: scoop the dough out of the bowl, place on bench sticky/seam side down, cup & pull into a smooth ball</li>
         <li>Leave on bench, cover with bowl, rest for 30 mins</li>
         <li>Dust basket with rice flour</li>
         <li>Final shape: form a rectangle, place seam side up in basket</li>
