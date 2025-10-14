@@ -107,8 +107,8 @@ content: "For same day bake, feed sourdough for 4 hrs. Dough rests for 2 hrs ins
     title: "Ingredients",
     content: `
       <ul>
-        <li>375g water</li>
         <li>500g '00' flour</li>
+        <li>375g water</li>
         <li>2g instant dry yeast</li>
         <li>12g salt</li>
       </ul>
@@ -164,8 +164,8 @@ content: "For same day bake, feed sourdough for 4 hrs. Dough rests for 2 hrs ins
     title: "Ingredients",
     content: `
       <ul>
-        <li>375g water</li>
         <li>500g '00' flour</li>
+        <li>375g water</li>
         <li>7g instant dry yeast</li>
         <li>12g salt</li>
       </ul>
@@ -202,17 +202,16 @@ content: "For same day bake, feed sourdough for 4 hrs. Dough rests for 2 hrs ins
     title: "Progress tracker",
     content: `
       <ul>
-        <li><input type="checkbox"> Combine & rest 30 mins</li>
-        <li><input type="checkbox"> Stretch & fold #1 then rest 30 mins</li>
-        <li><input type="checkbox"> Stretch & fold #2 then rest 30 mins</li>
-        <li><input type="checkbox"> Stretch & fold #3 then rest 1 hr</li>
-        <li><input type="checkbox"> Preshape then rest 30 mins</li>
-        <li><input type="checkbox"> Final shape then rest 30 mins</li>
-        <li><input type="checkbox"> Preheat oven 220°C</li>
-        <li><input type="checkbox"> Score</li>
-        <li><input type="checkbox"> Bake 20 mins - lid on</li>
-        <li><input type="checkbox"> Bake 15 mins - lid off</li>
-        <li><input type="checkbox"> Cool for 1 hr</li>
+        <li><input type="checkbox">Combine & rest 30 mins</li>
+        <li><input type="checkbox">Stretch & fold #1 then rest 30 mins</li>
+        <li><input type="checkbox">Stretch & fold #2 then rest 30 mins</li>
+        <li><input type="checkbox">Stretch & fold #3 then rest 1 hr</li>
+        <li><input type="checkbox">Preshape then rest 30 mins</li>
+        <li><input type="checkbox">Final shape then rest 30 mins, preheat oven 220°C</li>
+        <li><input type="checkbox">Score the dough</li>
+        <li><input type="checkbox">Bake 20 mins - lid on</li>
+        <li><input type="checkbox">Bake 15 mins - lid off</li>
+        <li><input type="checkbox">Cool for 1 hr</li>
       </ul>
     `
   },
@@ -220,8 +219,8 @@ content: "For same day bake, feed sourdough for 4 hrs. Dough rests for 2 hrs ins
     title: "Ingredients",
     content: `
       <ul>
-        <li>350g water (lukewarm)</li>
         <li>500g flour</li>
+        <li>350g water (lukewarm)</li>
         <li>8g instant dry yeast</li>
         <li>10g salt</li>
       </ul>
@@ -243,24 +242,22 @@ content: "For same day bake, feed sourdough for 4 hrs. Dough rests for 2 hrs ins
         <li>Mix yeast with water in a bowl</li>
         <li>Add flour & salt</li>
         <li>Combine until rough dough forms</li>
-        <li>Rest for 30 min.</li>
+        <li>Cover & rest for 30 mins</li>
         <li>Stretch & fold #1</li>
-        <li>Rest for 30 mins</li>
+        <li>Cover & rest for 30 mins</li>
         <li>Stretch & fold #2</li>
-        <li>Rest for 30 mins</li>
+        <li>Cover & rest for 30 mins</li>
         <li>Stretch & fold #3</li>
-        <li>Rest for 1 hr</li>
-        <li>Preshape by scooping the dough out of the bowl, placing on bench sticky/seam side down.</li>
-        <li>Cup & pull into a smooth ball</li>
-        <li>Rest for 30 mins</li>
-        <li>Prepare basket in rice flour</li>
-        <li>Dust top of dough with rice flour</li>
-        <li>Final shape for basket as a rectangle, place in basket seam side up</li>
+        <li>Cover & rest for 1 hr </li>
+        <li>Pre-shape: scoop the dough out of the bowl, placing on bench sticky/seam side down, cup & pull into a smooth ball</li>
+        <li>Leave on bench, cover with bowl, rest for 30 mins</li>
+        <li>Dust basket with rice flour</li>
+        <li>Final shape: form a rectangle, place seam side up in basket</li>
         <li>Preheat oven to 220°C (Dutch oven inside)</li>
-        <li>Rest for 30 mins</li>
+        <li>Cover & rest for 30 mins</li>
         <li>Transfer dough to baking paper</li>
         <li>Brush off excess flour</li>
-        <li>Score</li>
+        <li>Score the dough</li>
         <li>Transfer to Dutch oven, lifting using the baking paper</li>
         <li>Bake for 20 mins with lid on</li>
         <li>Bake for 15–20 mins with lid off</li>
@@ -276,14 +273,14 @@ content: "For same day bake, feed sourdough for 4 hrs. Dough rests for 2 hrs ins
     title: "Progress tracker",
     content: `
       <ul>
-        <li><input type="checkbox"> Combine & rest 20 mins</li>
-        <li><input type="checkbox"> Stretch & fold then rest 1 hr</li>
-        <li><input type="checkbox"> Shape then rest 45 mins</li>
-        <li><input type="checkbox"> Preheat oven 220°C</li>
-        <li><input type="checkbox"> Score</li>
-        <li><input type="checkbox"> Bake 20 mins - lid on</li>
-        <li><input type="checkbox"> Bake 15 mins - lid off</li>
-        <li><input type="checkbox"> Cool for 30 mins</li>
+        <li><input type="checkbox">Combine & rest 20 mins</li>
+        <li><input type="checkbox">Stretch & fold then rest 1 hr</li>
+        <li><input type="checkbox">Shape then rest 45 mins</li>
+        <li><input type="checkbox">Preheat oven 220°C</li>
+        <li><input type="checkbox">Score the dough</li>
+        <li><input type="checkbox">Bake 20 mins - lid on</li>
+        <li><input type="checkbox">Bake 15 mins - lid off</li>
+        <li><input type="checkbox">Cool for 30 mins</li>
       </ul>
     `
   },
@@ -291,8 +288,8 @@ content: "For same day bake, feed sourdough for 4 hrs. Dough rests for 2 hrs ins
     title: "Ingredients",
     content: `
       <ul>
-        <li>350g water (lukewarm)</li>
         <li>500g flour</li>
+        <li>350g water (lukewarm)</li>
         <li>8g instant dry yeast</li>
         <li>10g salt</li>
       </ul>
@@ -314,17 +311,16 @@ content: "For same day bake, feed sourdough for 4 hrs. Dough rests for 2 hrs ins
         <li>Mix yeast with water in a bowl</li>
         <li>Add flour & salt</li>
         <li>Combine until rough dough forms</li>
-        <li>Rest for 20 mins</li>
+        <li>Cover & rest for 20 mins</li>
         <li>Stretch & fold</li>
-        <li>Rest for 1 hr</li>
-        <li>Prepare basket in rice flour</li>
-        <li>Dust top of dough with rice flour</li>
-        <li>Shape for basket as a rectangle, place in basket seam side up</li>
-        <li>Rest for 45 mins</li>
+        <li>Cover & rest for 1 hr</li>
+        <li>Dust basket with rice flour</li>
+        <li>Shape: form rectangle, place seam side up in basket</li>
+        <li>Cover & rest for 45 mins</li>
         <li>Preheat oven to 220°C (Dutch oven inside)</li>
         <li>Transfer dough to baking paper</li>
         <li>Brush off excess flour</li>
-        <li>Score</li>
+        <li>Score the dough</li>
         <li>Transfer to Dutch oven, lifting using the baking paper</li>
         <li>Bake for 20 mins with lid on</li>
         <li>Bake for 15–20 mins with lid off</li>
@@ -340,15 +336,12 @@ content: "For same day bake, feed sourdough for 4 hrs. Dough rests for 2 hrs ins
     title: "Progress tracker",
     content: `
       <ul>
-        <li><input type="checkbox"> Combine & rest 2-3 hrs</li>
-        <li><input type="checkbox"> Preheat oven 230°C</li>
-        <li><input type="checkbox"> Shape dough</li>
-        <li><input type="checkbox"> Rest for 15 mins</li>
-        <li><input type="checkbox"> Preheat oven 220°C fan</li>
-        <li><input type="checkbox"> Score</li>
-        <li><input type="checkbox"> Bake 20 mins - lid on</li>
-        <li><input type="checkbox"> Bake 15 mins - lid off</li>
-        <li><input type="checkbox"> Cool 15 mins</li>
+        <li><input type="checkbox">Combine & rest 2-3 hrs</li>
+        <li><input type="checkbox">Shape then rest for 15 mins, preheat oven 230°C</li>
+        <li><input type="checkbox">Score the dough</li>
+        <li><input type="checkbox">Bake 20 mins - lid on</li>
+        <li><input type="checkbox">Bake 15 mins - lid off</li>
+        <li><input type="checkbox">Cool 15 mins</li>
       </ul>
     `
   },
@@ -356,8 +349,8 @@ content: "For same day bake, feed sourdough for 4 hrs. Dough rests for 2 hrs ins
     title: "Ingredients",
     content: `
       <ul>
-        <li>375g very warm water</li>
         <li>450g flour</li>
+        <li>375g very warm water</li>
         <li>6g instant dry yeast</li>
         <li>10g salt</li>
       </ul>
@@ -379,23 +372,26 @@ content: "For same day bake, feed sourdough for 4 hrs. Dough rests for 2 hrs ins
         <li>Mix yeast with water in a bowl</li>
         <li>Add flour & salt</li>
         <li>Combine until rough dough forms</li>
-        <li>Cover with cling film or a kitchen towel and rest/proof 2-3 hrs until doubled and jiggly</li>
-        <li>Preheat oven to 230°C / 220°C fan with baking tray or Dutch oven inside for 15 mins</li>
-        <li>Flour your surface and transfer dough onto it</li>
-        <li>Lightly flour and shape by twisting and tucking the dough underneath</li>
-        <li>Rest for 15 mins</li>
-        <li>Place dough on baking paper</li>
+        <li>Cover & rest for 2-3 hrs</li>
+        <li>Preheat oven to 230°C (Dutch oven inside oven)</li>
+        <li>Dust basket with rice flour</li>
+        <li>Final shape: scoop out of bowl, form a rectangle place, in basket seam side up</li>
+        <li>Rest for 15 min</li>
+        <li>Transfer dough to baking paper</li>
+        <li>Brush off excess rice flour</li>
         <li>Score</li>
-        <li>Transfer dough into oven using baking paper</li>
-        <li>Bake for 40 mins</li>
-        <li>Remove from oven and cool on a cooling rack for 15 mins before serving</li>
+        <liTransfer to Dutch oven, lifting using the baking paper</li>
+        <li>Bake for 20 mins with lid on</li>
+        <li>Bake for 15 mins with lid off</li>
+        <li>Cool for 15 mins before serving</li>
       </ol>
     `
   },
   reference: {
-    title: "Video Reference",
-    link: "https://www.youtube.com/shorts/z3W9P3Vcu_Q",
-    content: "The Easiest & Laziest Homemade Bread - Perfect EVERY Time"
+    title: "Reference",
+    content: `
+      <a href="https://www.youtube.com/shorts/z3W9P3Vcu_Q" target="_blank">The Easiest & Laziest Homemade Bread - Perfect EVERY Time</a>
+    `
   },
   tags: ["bread"]
 },
