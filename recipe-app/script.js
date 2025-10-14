@@ -443,7 +443,7 @@ content: "For same day bake, feed sourdough for 4 hrs. Dough rests for 2 hrs ins
       </ol>
     `
   },
-  tags: ["ugali", "maize meal", "easy", "quick"]
+  tags: ["meal"]
 }
 
 ];
@@ -657,4 +657,5 @@ document.getElementById('decreaseFontBtn').addEventListener('click', () => {
 });
 
 // === Init ===
+applyFilter("all");== Init ===
 applyFilter("all");
