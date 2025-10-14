@@ -49,7 +49,7 @@
   "explanation": "This prayer thanks God for the gift of food and asks for His blessing that it may nourish and sustain us."
     },
     "Saint Christopher Prayer": {
-      "text": "Saint Christopher, protect us on our journey, guide us safely through all dangers, and bring us safely to our destination. Amen.".
+      "text": "Saint Christopher, protect us on our journey, guide us safely through all dangers, and bring us safely to our destination. Amen.",
       "explanation: "This prayer asks for the intercession of Saint Christopher, the patron saint of travelers, seeking protection, guidance, and safe arrival during journeys."
     }
   },
@@ -114,5 +114,6 @@
     }
   }
 }
+
 
 
