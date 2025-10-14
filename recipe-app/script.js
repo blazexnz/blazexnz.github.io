@@ -443,7 +443,7 @@ content: "For same day bake, feed sourdough for 4 hrs. Dough rests for 2 hrs ins
       </ol>
     `
   },
-  tags: ["meal"]
+  tags: ["meals"]
 }
 
 ];
@@ -659,3 +659,4 @@ document.getElementById('decreaseFontBtn').addEventListener('click', () => {
 // === Init ===
 applyFilter("all");== Init ===
 applyFilter("all");
+
