@@ -118,9 +118,10 @@ content: "For same day bake, feed sourdough for 4 hrs. Dough rests for 2 hrs ins
   notes: {
     title: "Notes",
     content: `
-      Main recipe is 75% hydration (best).<br>
-      For 65% hydration: use 325g or 650g water (good structure, but harder to stretch, tighter crumb base).<br>
-      3–4 hours before bake, or overnight in fridge.
+      <ul>
+        <li>75% hydration</li>
+        <li>Start 3-4 hours before bake, or overnight in fridge.</li>
+      </ul>
     `
   },
   method: {
