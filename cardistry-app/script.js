@@ -3,148 +3,125 @@ let itemsData = [];
 let currentIndex = -1;
 let currentFilter = "all";
 
-// Self-contained items with multiple tags
+// Self-contained items with HTML content and <strong> actors
 itemsData = [
   {
     name: "Charlier Cut",
-    setup: { title: "The Setup", content: "Hold the deck in mechanics grip before starting the cut." },
+    setup: { title: "The Setup", content: "<p>Hold the deck in mechanics grip before starting the cut.</p>" },
     method: {
       title: "The Method",
-      content: [
-        { actor: "Dealer", text: "Shuffles the deck." },
-        { actor: "Spectator", text: "Selects a card." },
-        { actor: "Dealer", text: "Cuts the deck." }
-      ]
+      content: `
+        <ol>
+          <li><strong>Dealer:</strong> Shuffles the deck.</li>
+          <li><strong>Spectator:</strong> Selects a card.</li>
+          <li><strong>Dealer:</strong> Cuts the deck.</li>
+        </ol>`
     },
-    notes: { title: "Notes", content: "This classic cardistry move develops dexterity and finger control. Practice slowly at first." },
-    reference: { title: "Reference", text: "Charlier Cut Video", url: "https://www.example.com/charlier-cut" },
+    notes: { title: "Notes", content: "<p>This classic cardistry move develops dexterity and finger control. Practice slowly at first.</p>" },
+    reference: { title: "Reference", content: '<a href="https://www.example.com/charlier-cut" target="_blank">Charlier Cut Video</a>' },
     tags: ["tricks"]
   },
   {
     name: "Sybil Cut",
-    text: { title: "Text", content: "The Sybil Cut is a complex flourish involving multiple packets of cards being manipulated in the hands." },
-    notes: { title: "Notes", content: "It’s a foundational multi-packet flourish that opens doors to more advanced cardistry." },
-    reference: { title: "Reference", text: "Sybil Cut Video", url: "https://www.example.com/sybil-cut" },
+    text: { title: "Text", content: "<p>The Sybil Cut is a complex flourish involving multiple packets of cards being manipulated in the hands.</p>" },
+    notes: { title: "Notes", content: "<p>It’s a foundational multi-packet flourish that opens doors to more advanced cardistry.</p>" },
+    reference: { title: "Reference", content: '<a href="https://www.example.com/sybil-cut" target="_blank">Sybil Cut Video</a>' },
     tags: ["tricks"]
   },
   {
     name: "Poker",
-    text: { title: "Text", content: "Poker is a family of gambling card games that combines strategy, skill, and luck." },
-    notes: { title: "Notes", content: "Popular variations include Texas Hold'em and Omaha. Understanding hand rankings is key." },
+    text: { title: "Text", content: "<p>Poker is a family of gambling card games that combines strategy, skill, and luck.</p>" },
+    notes: { title: "Notes", content: "<p>Popular variations include Texas Hold'em and Omaha. Understanding hand rankings is key.</p>" },
     tags: ["games"]
   },
   {
     name: "Magic Poker Trick",
-    text: { title: "Text", content: "A simple trick using poker cards to amaze your friends." },
-    notes: { title: "Notes", content: "This trick is both a game and a flourish, demonstrating sleight of hand." },
-    reference: { title: "Reference", text: "Magic Trick Video", url: "https://www.example.com/magic-poker" },
+    text: { title: "Text", content: "<p>A simple trick using poker cards to amaze your friends.</p>" },
+    notes: { title: "Notes", content: "<p>This trick is both a game and a flourish, demonstrating sleight of hand.</p>" },
+    reference: { title: "Reference", content: '<a href="https://www.example.com/magic-poker" target="_blank">Magic Trick Video</a>' },
     tags: ["tricks", "games"]
   },
-{
-    "name": "Single Deck Shuffle - Lite Version",
-    "method": {
-      "title": "The Method",
-      "content": [
-        { "text": "Spread & wash the deck (optional)." },
-        { "text": "Riffle shuffle." },
-        { "text": "Riffle shuffle again." },
-        { "text": "Strip shuffle into 4 strips forming 5 packets." },
-        { "text": "Riffle shuffle." },
-        { "text": "Cut the deck." }
-      ]
+  {
+    name: "Single Deck Shuffle - Lite Version",
+    method: {
+      title: "The Method",
+      content: `
+        <ol>
+          <li>Spread & wash the deck (optional).</li>
+          <li>Riffle shuffle.</li>
+          <li>Riffle shuffle again.</li>
+          <li>Strip shuffle into 4 strips forming 5 packets.</li>
+          <li>Riffle shuffle.</li>
+          <li>Cut the deck.</li>
+        </ol>`
     },
-    "notes": {
-      "title": "Notes",
-      "content": "Cutting a single deck should be between at least 10 cards on the top and 10 on the bottom."
-    },
-    "reference": {
-      "title": "Reference",
-      "text": "Single Deck Shuffle Tutorial",
-      "url": "https://www.example.com/single-deck-lite"
-    },
-    "tags": ["shuffles"]
+    notes: { title: "Notes", content: "<p>Cutting a single deck should be between at least 10 cards on the top and 10 on the bottom.</p>" },
+    reference: { title: "Reference", content: '<a href="https://www.example.com/single-deck-lite" target="_blank">Single Deck Shuffle Tutorial</a>' },
+    tags: ["shuffles"]
   },
   {
-    "name": "Single Deck Shuffle - Full Version",
-    "method": {
-      "title": "The Method",
-      "content": [
-        { "text": "Riffle shuffle." },
-        { "text": "Riffle shuffle again." },
-        { "text": "Strip shuffle into 6 strips forming 5 packets." },
-        { "text": "Box shuffle: take 1/3 of the bottom, rotate 180°, and place on top." },
-        { "text": "Riffle shuffle." },
-        { "text": "Cut the deck (in between 10 cards)." },
-        { "text": "Burn the first card (for blackjack, baccarat, etc.)." }
-      ]
+    name: "Single Deck Shuffle - Full Version",
+    method: {
+      title: "The Method",
+      content: `
+        <ol>
+          <li>Riffle shuffle.</li>
+          <li>Riffle shuffle again.</li>
+          <li>Strip shuffle into 6 strips forming 5 packets.</li>
+          <li>Box shuffle: take 1/3 of the bottom, rotate 180°, and place on top.</li>
+          <li>Riffle shuffle.</li>
+          <li>Cut the deck (in between 10 cards).</li>
+          <li>Burn the first card (for blackjack, baccarat, etc.).</li>
+        </ol>`
     },
-    "notes": {
-      "title": "Notes",
-      "content": "Cutting a single deck should be between at least 10 cards on the top and 10 on the bottom."
-    },
-    "reference": {
-      "title": "Reference",
-      "text": "Single Deck Shuffle Full Version Video",
-      "url": "https://www.example.com/single-deck-full"
-    },
-    "tags": ["shuffles"]
+    notes: { title: "Notes", content: "<p>Cutting a single deck should be between at least 10 cards on the top and 10 on the bottom.</p>" },
+    reference: { title: "Reference", content: '<a href="https://www.example.com/single-deck-full" target="_blank">Single Deck Shuffle Full Version Video</a>' },
+    tags: ["shuffles"]
   },
   {
-    "name": "Double Deck Shuffle",
-    "method": {
-      "title": "The Method",
-      "content": [
-        { "text": "Riffle shuffle." },
-        { "text": "Riffle shuffle again." },
-        { "text": "Strip shuffle into 6 strips forming 5 packets." },
-        { "text": "Box shuffle: move 1/3 from top to bottom." },
-        { "text": "Riffle shuffle." },
-        { "text": "Box shuffle: move 1/3 from bottom to top." },
-        { "text": "Riffle shuffle." },
-        { "text": "Cut the deck (in between 15 cards)." },
-        { "text": "Burn the first card (for blackjack, baccarat, etc.)." }
-      ]
+    name: "Double Deck Shuffle",
+    method: {
+      title: "The Method",
+      content: `
+        <ol>
+          <li>Riffle shuffle.</li>
+          <li>Riffle shuffle again.</li>
+          <li>Strip shuffle into 6 strips forming 5 packets.</li>
+          <li>Box shuffle: move 1/3 from top to bottom.</li>
+          <li>Riffle shuffle.</li>
+          <li>Box shuffle: move 1/3 from bottom to top.</li>
+          <li>Riffle shuffle.</li>
+          <li>Cut the deck (in between 15 cards).</li>
+          <li>Burn the first card (for blackjack, baccarat, etc.).</li>
+        </ol>`
     },
-    "notes": {
-      "title": "Notes",
-      "content": "When cutting a double deck, place the cut card facing down, have them cut between the first 15 and last 15 cards, then place the bottom portion on top so the cut card is now on the bottom."
-    },
-    "reference": {
-      "title": "Reference",
-      "text": "Double Deck Shuffle Video",
-      "url": "https://www.example.com/double-deck"
-    },
-    "tags": ["shuffles"]
+    notes: { title: "Notes", content: "<p>When cutting a double deck, place the cut card facing down, have them cut between the first 15 and last 15 cards, then place the bottom portion on top so the cut card is now on the bottom.</p>" },
+    reference: { title: "Reference", content: '<a href="https://www.example.com/double-deck" target="_blank">Double Deck Shuffle Video</a>' },
+    tags: ["shuffles"]
   },
   {
-    "name": "4/6/8 Deck Shoe Shuffle",
-    "method": {
-      "title": "The Method",
-      "content": [
-        { "text": "Break the decks into 2 equal stacks." },
-        { "text": "Take 1/4 of each stack, then riffle-strip-riffle." },
-        { "text": "Place the working deck in the centre." },
-        { "text": "Take 1/4 from working deck & 1/4 from left stack, riffle-strip-riffle, place on working stack." },
-        { "text": "Take 1/4 from working deck & 1/4 from right stack, riffle-strip-riffle, place on working stack." },
-        { "text": "Repeat until all cards are shuffled." },
-        { "text": "Break working deck into 2 equal stacks." },
-        { "text": "Take 1/4 from each stack, riffle leaving cards laced, roll stack, tidy against shoe." },
-        { "text": "Cuts the cards (in between 1–1.5 decks)." },
-        { "text": "Put the bottom cut on top so the cut card is on the bottom." },
-        { "text": "Put another cut card as an indicator for the next shuffle." },
-        { "text": "Place in the shoe and burn the first card (blackjack, baccarat, etc.)." }
-      ]
+    name: "4/6/8 Deck Shoe Shuffle",
+    method: {
+      title: "The Method",
+      content: `
+        <ol>
+          <li>Break the decks into 2 equal stacks.</li>
+          <li>Take 1/4 of each stack, then riffle-strip-riffle.</li>
+          <li>Place the working deck in the centre.</li>
+          <li>Take 1/4 from working deck & 1/4 from left stack, riffle-strip-riffle, place on working stack.</li>
+          <li>Take 1/4 from working deck & 1/4 from right stack, riffle-strip-riffle, place on working stack.</li>
+          <li>Repeat until all cards are shuffled.</li>
+          <li>Break working deck into 2 equal stacks.</li>
+          <li>Take 1/4 from each stack, riffle leaving cards laced, roll stack, tidy against shoe.</li>
+          <li>Cuts the cards (in between 1–1.5 decks).</li>
+          <li>Put the bottom cut on top so the cut card is on the bottom.</li>
+          <li>Put another cut card as an indicator for the next shuffle.</li>
+          <li>Place in the shoe and burn the first card (blackjack, baccarat, etc.).</li>
+        </ol>`
     },
-    "notes": {
-      "title": "Notes",
-      "content": "When cutting a 4, 6, or 8 deck shoe, roll the deck on its side, place it against the shoe, have the player cut between the first and last deck, then return the top portion to the bottom so the cut card is on the bottom. Place a second cut card 1–1.5 decks from the bottom to indicate when to start the next shuffle."
-    },
-    "reference": {
-      "title": "Reference",
-      "text": "Shoe Shuffle Tutorial",
-      "url": "https://www.example.com/shoe-shuffle"
-    },
-    "tags": ["shuffles"]
+    notes: { title: "Notes", content: "<p>When cutting a 4, 6, or 8 deck shoe, roll the deck on its side, place it against the shoe, have the player cut between the first and last deck, then return the top portion to the bottom so the cut card is on the bottom. Place a second cut card 1–1.5 decks from the bottom to indicate when to start the next shuffle.</p>" },
+    reference: { title: "Reference", content: '<a href="https://www.example.com/shoe-shuffle" target="_blank">Shoe Shuffle Tutorial</a>' },
+    tags: ["shuffles"]
   }
 ];
 
@@ -205,7 +182,7 @@ function displayItem(item, list) {
     if (key === 'name' || key === 'tags') return; // skip non-content fields
 
     const section = item[key];
-    if (!section || (!section.content && !section.url)) return;
+    if (!section || !section.content) return;
 
     const sectionDiv = document.createElement('div');
 
@@ -228,31 +205,10 @@ function displayItem(item, list) {
     subHeading.style.marginBottom = '8px';
     sectionDiv.appendChild(subHeading);
 
-    // ===== Reference as clickable link =====
-    if (key === 'reference' && section.url) {
-      const link = document.createElement('a');
-      link.href = section.url;
-      link.textContent = section.text || section.url;
-      link.target = "_blank";
-      link.style.color = "#1a0dab";
-      sectionDiv.appendChild(link);
-
-    // ===== Method as numbered list =====
-    } else if (key === 'method' && Array.isArray(section.content)) {
-      const ol = document.createElement('ol');
-      section.content.forEach(step => {
-        const li = document.createElement('li');
-        li.textContent = step.actor ? `${step.actor}: ${step.text}` : step.text;
-        ol.appendChild(li);
-      });
-      sectionDiv.appendChild(ol);
-
-    // ===== Regular content =====
-    } else {
-      const content = document.createElement('p');
-      content.textContent = section.content;
-      sectionDiv.appendChild(content);
-    }
+    // ===== Render HTML content directly =====
+    const content = document.createElement('div');
+    content.innerHTML = section.content;
+    sectionDiv.appendChild(content);
 
     container.appendChild(sectionDiv);
   });
