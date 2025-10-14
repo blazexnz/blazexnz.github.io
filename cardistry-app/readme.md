@@ -24,6 +24,11 @@ Each item in `itemsData` can include as many or as few sections as needed. Secti
 - `reference` – links to videos or tutorials  
 - `tags` – array of tags for filtering (`"tricks"`, `"games"`, `"shuffles"`, etc.)
 
+### Styling based on keys ###
+- 'text' the display box will be a standard grey box
+- 'notes' the text box will be yellow in italics
+- 'reference' the text box will be blue
+
 Example of an item with multiple sections:
 
 ```js
