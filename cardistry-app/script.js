@@ -89,6 +89,12 @@ function displayItem(item, list) {
   const container = document.getElementById('items');
   container.innerHTML = '';
 
+  // ===== Heading above content boxes =====
+  const heading = document.createElement('h2');
+  heading.id = "itemTitleHeading";
+  heading.textContent = item.name;
+  container.appendChild(heading);
+
   Object.keys(item).forEach(key => {
     if (key === 'name' || key === 'tags') return; // skip non-content fields
 
@@ -110,11 +116,11 @@ function displayItem(item, list) {
 
     sectionDiv.style.fontSize = currentFontSize + 'px';
 
-    const heading = document.createElement('h3');
-    heading.textContent = section.title || key;
-    heading.style.marginTop = '4px';
-    heading.style.marginBottom = '8px';
-    sectionDiv.appendChild(heading);
+    const subHeading = document.createElement('h3');
+    subHeading.textContent = section.title || key;
+    subHeading.style.marginTop = '4px';
+    subHeading.style.marginBottom = '8px';
+    sectionDiv.appendChild(subHeading);
 
     // ===== Reference as clickable link =====
     if (key === 'reference' && section.url) {
@@ -180,7 +186,7 @@ function displayItem(item, list) {
   navDiv.appendChild(nextBtn);
   container.appendChild(navDiv);
 
-  // Scroll into view
+  // Smooth scroll to content
   requestAnimationFrame(() => {
     const yOffset = -20;
     const y = container.getBoundingClientRect().top + window.pageYOffset + yOffset;
