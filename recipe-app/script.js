@@ -5,7 +5,7 @@ let currentFilter = "all";
 // Self-contained items with HTML content and <strong> actors
 const itemsData = [
   {
-    name: "Sourdough Bread",
+    name: "Test test test Sourdough Bread",
     checklist: {
       title: "Prep Steps",
       content: `
@@ -24,11 +24,17 @@ const itemsData = [
           <li>100g starter</li>
           <li>430g bread flour</li>
           <li>10g sea salt</li>
+          <li>1/4 cup test</li>
+          <li>1/3 tsp test</li>
+          <li>1/4 tbsp test</li>
         </ul>
-        <p><strong>Note:</strong> For same day bake, feed sourdough for 4 hrs. Dough rests for 2 hrs instead of placing in fridge. 
-        Total 12 hrs with starter, or if starter fed yesterday then 8 hrs.</p>
+        <p>Makes 8 bases</p>
       `
     },
+notes: {
+title: "Notes",
+content: "For same day bake, feed sourdough for 4 hrs. Dough rests for 2 hrs instead of placing in fridge. Total 12 hrs with starter, or if starter fed yesterday then 8 hrs.</p>"
+},
     day0: {
       title: "Day 0 – Morning/Night Before",
       content: `
@@ -82,8 +88,64 @@ const itemsData = [
           <li>Cool for at least 1 hour before slicing.</li>
         </ol>
       `
-    }
+    },
+  tags: ["pizza", "vietnamese"]
   },
+{
+  name: "3 Hour Neapolitan Pizza",
+  checklist: {
+    title: "Prep Steps",
+    content: `
+      <ul>
+        <li><input type="checkbox">Combine & rest for 30 mins</li>
+        <li><input type="checkbox">Stretch & fold, shape (tight ball), rest 1 hr</li>
+        <li><input type="checkbox">Divide & shape into 290g balls, rest 1.5 hrs</li>
+      </ul>
+    `
+  },
+  ingredients: {
+    title: "Ingredients",
+    content: `
+      <ul>
+        <li>375g water</li>
+        <li>500g '00' flour</li>
+        <li>12g salt</li>
+        <li>2g dry yeast</li>
+      </ul>
+      <p>Makes 3 bases</p>
+    `
+  },
+  notes: {
+    title: "Notes",
+    content: `
+      Main recipe is 75% hydration (best).<br>
+      For 65% hydration: use 325g or 650g water (good structure, but harder to stretch, tighter crumb base).<br>
+      3–4 hours before bake, or overnight in fridge.
+    `
+  },
+  method: {
+    title: "Method",
+    content: `
+      <ol>
+        <li>Combine yeast & water.</li>
+        <li>Add flour & salt.</li>
+        <li>Mix until a shaggy dough forms.</li>
+        <li>Rest for 30 mins.</li>
+        <li>Stretch & fold, then shape into a tight ball.</li>
+        <li>Rest for 1 hour.</li>
+        <li>Divide dough and shape into 290g balls.</li>
+        <li>Rest for 1.5 hours.</li>
+      </ol>
+    `
+  },
+  reference: {
+    title: "Reference",
+    content: `
+      <a href="https://www.youtube.com/watch?v=7-5eCAiUYPg" target="_blank">3 Hour Neapolitan Pizza! (Easiest Recipe)</a>
+    `
+  },
+  tags: ["pizza"]
+},
   {
     name: "Streets and Alleys",
     setup: {
@@ -228,6 +290,7 @@ function populateItemList(list) {
   });
 }
 
+
 // === Display item ===
 function displayItem(item, list) {
   const container = document.getElementById('items');
@@ -260,6 +323,41 @@ function displayItem(item, list) {
     const content = document.createElement('div');
     content.innerHTML = section.content;
     sectionDiv.appendChild(content);
+
+// --- Ingredients multiplier buttons ---
+if (key === 'ingredients') {
+  const originalContent = content.innerHTML; // store original HTML
+  const buttonContainer = document.createElement('div');
+  buttonContainer.style.margin = '10px 0';
+  buttonContainer.style.display = 'flex';
+  buttonContainer.style.justifyContent = 'center';
+  buttonContainer.style.gap = '10px';
+
+  const halfBtn = document.createElement('button');
+  halfBtn.textContent = '½';
+  halfBtn.addEventListener('click', () => adjustIngredients(content, 0.5));
+
+  const doubleBtn = document.createElement('button');
+  doubleBtn.textContent = '2x';
+  doubleBtn.addEventListener('click', () => adjustIngredients(content, 2));
+
+const tripleBtn = document.createElement('button');
+tripleBtn.textContent = '3x';
+tripleBtn.addEventListener('click', () => adjustIngredients(content, 3));
+
+  const resetBtn = document.createElement('button');
+  resetBtn.textContent = 'Reset';
+  resetBtn.addEventListener('click', () => {
+    content.innerHTML = originalContent;
+  });
+
+  buttonContainer.appendChild(halfBtn);
+  buttonContainer.appendChild(resetBtn);
+  buttonContainer.appendChild(doubleBtn);
+  buttonContainer.appendChild(tripleBtn);
+
+  sectionDiv.appendChild(buttonContainer);
+}
 
     container.appendChild(sectionDiv);
   });
@@ -304,6 +402,49 @@ function displayItem(item, list) {
     const y = container.getBoundingClientRect().top + window.pageYOffset + yOffset;
     window.scrollTo({ top: y, behavior: 'smooth' });
   });
+}
+
+// === Adjust ingredient quantities with readable fractions ===
+function adjustIngredients(contentDiv, factor) {
+  const liElements = contentDiv.querySelectorAll('li');
+  liElements.forEach(li => {
+    li.innerHTML = li.innerHTML.replace(/(\d+\s*\/\s*\d+|\d+(?:\.\d+)?)\s*(g|ml|tsp|tbsp|cup|cups?)/gi, (match, num, unit) => {
+      let value;
+      if (num.includes('/')) {
+        const parts = num.split('/');
+        value = parseFloat(parts[0].trim()) / parseFloat(parts[1].trim());
+      } else {
+        value = parseFloat(num);
+      }
+
+      let newValue = value * factor;
+
+      // Convert back to simplified fraction for values < 1
+      if (newValue < 1) {
+        const maxDenominator = 12; // reasonable fraction denominator
+        let closestNumerator = Math.round(newValue * maxDenominator);
+        if (closestNumerator === 0) closestNumerator = 1; // avoid 0/x
+        const gcd = (a, b) => b === 0 ? a : gcd(b, a % b);
+        const divisor = gcd(closestNumerator, maxDenominator);
+        const numerator = closestNumerator / divisor;
+        const denominator = maxDenominator / divisor;
+        newValue = `${numerator}/${denominator}`;
+      } else {
+        newValue = (newValue % 1 === 0) ? newValue : newValue.toFixed(2);
+      }
+
+      return `${newValue} ${unit}`;
+    });
+  });
+
+  // Also scale "Makes X" if present
+  const makesP = contentDiv.querySelector('p');
+  if (makesP && /makes\s+(\d+)/i.test(makesP.textContent)) {
+    makesP.textContent = makesP.textContent.replace(/makes\s+(\d+)/i, (match, num) => {
+      let newYield = Math.round(parseInt(num) * factor);
+      return `Makes ${newYield}`;
+    });
+  }
 }
 
 // === Font control ===
