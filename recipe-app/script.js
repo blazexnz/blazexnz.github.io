@@ -254,7 +254,7 @@ content: "For same day bake, feed sourdough for 4 hrs. Dough rests for 2 hrs ins
         <li>Prepare basket in rice flour</li>
         <li>Dust top of dough with rice flour</li>
         <li>Final shape for basket as a rectangle, place in basket seam side up</li>
-        <li>Preheat oven to 220°C (Dutch oven inside)./li>
+        <li>Preheat oven to 220°C (Dutch oven inside)</li>
         <li>Rest for 30 mins</li>
         <li>Transfer dough to baking paper</li>
         <li>Brush off excess flour</li>
@@ -657,6 +657,5 @@ document.getElementById('decreaseFontBtn').addEventListener('click', () => {
 });
 
 // === Init ===
-applyFilter("all");== Init ===
 applyFilter("all");
 
