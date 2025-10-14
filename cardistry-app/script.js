@@ -29,7 +29,7 @@ const itemsData = [
     },
     players: { title: "Players", content: "1" },
     deck: { title: "Deck", content: "Single deck" },
-    tags: ["games"]
+    tags: ["games", "single player"]
   },
   {
     name: "Streets and Alleys",
@@ -67,7 +67,7 @@ const itemsData = [
     },
     players: { title: "Players", content: "1" },
     deck: { title: "Deck", content: "Single deck" },
-    tags: ["games"]
+    tags: ["games", "single player"]
   },
   {
     name: "Accordion",
@@ -104,7 +104,7 @@ const itemsData = [
         </ul>
       `
     },
-    tags: ["games"]
+    tags: ["games", "single player"]
   },
   {
     name: "One Handed Solitaire",
@@ -141,7 +141,7 @@ const itemsData = [
     reference: { title: "Reference", content: '<a href="https://www.youtube.com/watch?v=jayssGEYyq4" target="_blank">How To Play One Handed Solitaire</a>' },
     players: { title: "Players", content: "1" },
     deck: { title: "Deck", content: "Single deck" },
-    tags: ["games"]
+    tags: ["games", "single player"]
   },
   {
     name: "Blaze's Blackjack Dealer Rules",
@@ -176,7 +176,7 @@ const itemsData = [
         </ul>
       `
     },
-    tags: ["games", "cards", "blackjack"]
+    tags: ["games", "betting"]
   },
   {
     name: "Red or Black",
@@ -202,7 +202,7 @@ const itemsData = [
     reference: { title: "Reference", content: '<a href="https://bicyclecards.com/how-to-play/red-or-black" target="_blank">Red or Black</a>' },
     players: { title: "Players", content: "2, 3, 4, 5+" },
     deck: { title: "Deck", content: "Single deck" },
-    tags: ["games", "cards"]
+    tags: ["games", "betting"]
   },
   {
     name: "Play or Pay",
@@ -231,7 +231,7 @@ const itemsData = [
     reference: { title: "Reference", content: '<a href="https://bicyclecards.com/how-to-play/play-or-pay" target="_blank">Play or Pay</a>' },
     players: { title: "Players", content: "3, 4, 5+" },
     deck: { title: "Deck", content: "Single deck" },
-    tags: ["games", "cards"]
+    tags: ["games", "betting"]
   },
   {
     name: "Red Dog",
@@ -263,7 +263,7 @@ const itemsData = [
     reference: { title: "Reference", content: '<a href="https://bicyclecards.com/how-to-play/red-dog" target="_blank">Red Dog</a>' },
     players: { title: "Players", content: "2, 3, 4, 5+" },
     deck: { title: "Deck", content: "Single deck" },
-    tags: ["games", "cards"]
+    tags: ["games", "betting"]
   },
   {
     name: "Guts",
@@ -311,7 +311,7 @@ const itemsData = [
     },
     players: { title: "Players", content: "2, 3, 4, 5+" },
     deck: { title: "Deck", content: "Single deck" },
-    tags: ["games", "cards", "poker"]
+    tags: ["games", "betting"]
   },
   {
     name: "Single Deck Shuffle - Lite Version",
@@ -330,7 +330,7 @@ const itemsData = [
     },
     notes: { title: "Notes", content: "<p>Cutting a single deck should be between at least 10 cards on the top and 10 on the bottom.</p>" },
     reference: { title: "Reference", content: '<a href="https://www.example.com/single-deck-lite" target="_blank">Single Deck Shuffle Tutorial</a>' },
-    tags: ["cards", "shuffle"]
+    tags: ["cards", "shuffles"]
   },
   {
     name: "Single Deck Shuffle - Lite Version",
@@ -567,6 +567,7 @@ document.querySelectorAll('#filterBar button').forEach(btn => {
 
 // Initialize app
 applyFilter("all");
+
 
 
 
