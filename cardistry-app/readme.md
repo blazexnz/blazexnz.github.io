@@ -4,7 +4,7 @@ A mobile-friendly web app to explore card tricks and games, with clear instructi
 
 ## Features
 
-- **Filter by Type:** Show all items, tricks, or games  
+- **Filter by Type:** Show all items, tricks, games, or shuffles  
 - **Adjustable Font Size:** Buttons to increase or decrease text size  
 - **Step-by-Step Methods:** Numbered instructions with optional actor labels  
 - **Notes Section:** Extra tips or commentary for each trick/game  
@@ -13,24 +13,33 @@ A mobile-friendly web app to explore card tricks and games, with clear instructi
 
 ## How to Add New Content
 
-### Structure
+### Flexible Structure
 
-Each item should have the following format in `itemsData`:
+Each item in `itemsData` can include as many or as few sections as needed. Sections are rendered dynamically — if a section is missing, it will simply be skipped. Common sections include:
+
+- `text` – general description  
+- `setup` – preparation instructions  
+- `method` – step-by-step numbered instructions, optionally with actors  
+- `notes` – tips, warnings, or extra info  
+- `reference` – links to videos or tutorials  
+- `tags` – array of tags for filtering (`"tricks"`, `"games"`, `"shuffles"`, etc.)
+
+Example of an item with multiple sections:
 
 ```js
 {
-  name: "Item Name",
-  text: { title: "Text", content: "General description of the trick or game." },
-  setup: { title: "The Setup", content: "How to prepare before performing." },  // optional
+  name: "Charlier Cut",
+  setup: { title: "The Setup", content: "<p>Hold the deck in mechanics grip before starting the cut.</p>" },
   method: {
     title: "The Method",
-    content: [
-      { actor: "Dealer", text: "Shuffles the deck." },
-      { actor: "Spectator", text: "Selects a card." },
-      { text: "Cuts the deck." }  // actor is optional
-    ]
+    content: `
+      <ol>
+        <li><strong>Dealer:</strong> Shuffles the deck.</li>
+        <li><strong>Spectator:</strong> Selects a card.</li>
+        <li><strong>Dealer:</strong> Cuts the deck.</li>
+      </ol>`
   },
-  notes: { title: "Notes", content: "Tips, warnings, or extra info." },  // optional
-  reference: { title: "Reference", text: "Video Link", url: "https://..." },  // optional
-  tags: ["tricks", "games"]  // use one or more tags for filtering
+  notes: { title: "Notes", content: "<p>Practice slowly at first to build dexterity.</p>" },
+  reference: { title: "Reference", content: '<a href="https://www.example.com/charlier-cut" target="_blank">Video Tutorial</a>' },
+  tags: ["tricks"]
 }
