@@ -208,6 +208,7 @@ content: "For same day bake, feed sourdough for 4 hrs. Dough rests for 2 hrs ins
         <li><input type="checkbox"> Preshape then rest 30 mins</li>
         <li><input type="checkbox"> Final shape then rest 30 mins</li>
         <li><input type="checkbox"> Preheat oven 220°C</li>
+        <li><input type="checkbox"> Score</li>
         <li><input type="checkbox"> Bake 20 mins - lid on</li>
         <li><input type="checkbox"> Bake 15 mins - lid off</li>
         <li><input type="checkbox"> Cool for 1 hr</li>
@@ -277,6 +278,7 @@ content: "For same day bake, feed sourdough for 4 hrs. Dough rests for 2 hrs ins
         <li><input type="checkbox"> Stretch & fold then rest 1 hr</li>
         <li><input type="checkbox"> Shape then rest 45 mins</li>
         <li><input type="checkbox"> Preheat oven 220°C</li>
+        <li><input type="checkbox"> Score</li>
         <li><input type="checkbox"> Bake 20 mins - lid on</li>
         <li><input type="checkbox"> Bake 15 mins - lid off</li>
         <li><input type="checkbox"> Cool for 30 mins</li>
@@ -328,7 +330,122 @@ content: "For same day bake, feed sourdough for 4 hrs. Dough rests for 2 hrs ins
     `
   },
   tags: ["bread"]
+},
+{
+  name: "Lazy Homemade Bread",
+  checklist: {
+    title: "Progress tracker",
+    content: `
+      <ul>
+        <li><input type="checkbox"> Combine & rest 2-3 hrs</li>
+        <li><input type="checkbox"> Preheat oven 230°C</li>
+        <li><input type="checkbox"> Shape dough</li>
+        <li><input type="checkbox"> Rest for 15 mins</li>
+        <li><input type="checkbox"> Preheat oven 220°C fan</li>
+        <li><input type="checkbox"> Score</li>
+        <li><input type="checkbox"> Bake 20 mins - lid on</li>
+        <li><input type="checkbox"> Bake 15 mins - lid off</li>
+        <li><input type="checkbox"> Cool 15 mins</li>
+      </ul>
+    `
+  },
+  ingredients: {
+    title: "Ingredients",
+    content: `
+      <ul>
+        <li>450g flour</li>
+        <li>375g very warm water</li>
+        <li>6g (1 packet) yeast</li>
+        <li>10g salt</li>
+      </ul>
+    `
+  },
+  notes: {
+    title: "Notes",
+    content: `
+      <ul>
+        <li>2-3 hours ready to bake, 2 hr 15 mins ready to eat</li>
+      </ul>
+    `
+  },
+  method: {
+    title: "Method",
+    content: `
+      <ol>
+        <li>Mix yeast with water in a bowl</li>
+        <li>Add flour & salt</li>
+        <li>Combine until rough dough forms</li>
+        <li>Cover with cling film or a kitchen towel and rest/proof 2-3 hrs until doubled and jiggly</li>
+        <li>Preheat oven to 230°C / 220°C fan with baking tray or Dutch oven inside for 15 mins</li>
+        <li>Flour your surface and transfer dough onto it</li>
+        <li>Lightly flour and shape by twisting and tucking the dough underneath</li>
+        <li>Rest for 15 mins</li>
+        <li>Place dough on baking paper</li>
+        <li>Score</li>
+        <li>Transfer dough into oven using baking paper</li>
+        <li>Bake for 40 mins</li>
+        <li>Remove from oven and cool on a cooling rack for 15 mins before serving</li>
+      </ol>
+    `
+  },
+  reference: {
+    title: "Video Reference",
+    link: "https://www.youtube.com/shorts/z3W9P3Vcu_Q",
+    content: "The Easiest & Laziest Homemade Bread - Perfect EVERY Time"
+  },
+  tags: ["bread"]
+},
+{
+  name: "Ugali",
+  checklist: {
+    title: "Progress tracker",
+    content: `
+      <ul>
+        <li><input type="checkbox"> Boil 1 cup of water</li>
+        <li><input type="checkbox"> Slowly 2/3 maize meal while stirring</li>
+        <li><input type="checkbox"> Stir 1–2 mins until thick on medium heat</li>
+        <li><input type="checkbox"> Add the remaining maize meal while stirring</li>
+        <li><input type="checkbox"> Stir until firm</li>
+        <li><input type="checkbox"> Cover and steam on low heat for 2–3 mins</li>
+      </ul>
+    `
+  },
+  ingredients: {
+    title: "Ingredients",
+    content: `
+      <ul>
+        <li>1/2 cup Star Super Maize Meal</li>
+        <li>1 cup water</li>
+        <li>A pinch of salt</li>
+      </ul>
+      <p>Makes 1 serving</p>
+    `
+  },
+  notes: {
+    title: "Notes",
+    content: `
+      <ul>
+        <li>270 cals per serving</li>
+      </ul>
+    `
+  },
+  method: {
+    title: "Method",
+    content: `
+      <ol>
+        <li>Bring 1 cup of water to a boil in a small pot</li>
+        <li>Lower the heat to medium. Slowly stir in about 2/3 of the maize meal to make a smooth mixture</li>
+        <li>Stir for 1–2 minutes until it starts to thicken</li>
+        <li>Add the remaining 1/3 of the maize meal gradually, stirring continuously</li>
+        <li>Keep stirring until the ugali is thick and pulls away from the sides of the pot</li>
+        <li>Lower heat, cover the pot, and let it steam for 2–3 minutes</li>
+        <li>Scoop the ugali onto a plate or bowl, shape it into a mound, and serve hot</li>
+      </ol>
+    `
+  },
+  tags: ["ugali", "maize meal", "easy", "quick"]
 }
+
 ];
 
 // === Filtering ===
