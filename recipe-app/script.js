@@ -109,8 +109,8 @@ content: "For same day bake, feed sourdough for 4 hrs. Dough rests for 2 hrs ins
       <ul>
         <li>375g water</li>
         <li>500g '00' flour</li>
-        <li>12g salt</li>
         <li>2g instant dry yeast</li>
+        <li>12g salt</li>
       </ul>
       <p>Makes 3 bases</p>
     `
@@ -166,8 +166,8 @@ content: "For same day bake, feed sourdough for 4 hrs. Dough rests for 2 hrs ins
       <ul>
         <li>375g water</li>
         <li>500g '00' flour</li>
-        <li>12g salt</li>
         <li>7g instant dry yeast</li>
+        <li>12g salt</li>
       </ul>
        <p>Makes 3 bases</p>
     `
@@ -220,8 +220,8 @@ content: "For same day bake, feed sourdough for 4 hrs. Dough rests for 2 hrs ins
     title: "Ingredients",
     content: `
       <ul>
-        <li>500g flour</li>
         <li>350g water (lukewarm)</li>
+        <li>500g flour</li>
         <li>8g instant dry yeast</li>
         <li>10g salt</li>
       </ul>
@@ -291,8 +291,8 @@ content: "For same day bake, feed sourdough for 4 hrs. Dough rests for 2 hrs ins
     title: "Ingredients",
     content: `
       <ul>
-        <li>500g flour</li>
         <li>350g water (lukewarm)</li>
+        <li>500g flour</li>
         <li>8g instant dry yeast</li>
         <li>10g salt</li>
       </ul>
@@ -356,8 +356,8 @@ content: "For same day bake, feed sourdough for 4 hrs. Dough rests for 2 hrs ins
     title: "Ingredients",
     content: `
       <ul>
-        <li>450g flour</li>
         <li>375g very warm water</li>
+        <li>450g flour</li>
         <li>6g instant dry yeast</li>
         <li>10g salt</li>
       </ul>
