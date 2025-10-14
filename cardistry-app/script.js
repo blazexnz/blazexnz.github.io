@@ -319,16 +319,15 @@ const itemsData = [
       title: "The Method",
       content: `
         <ol>
-          <li>Spread & wash the deck (optional).</li>
-          <li>Riffle shuffle.</li>
-          <li>Riffle shuffle again.</li>
-          <li>Strip shuffle into 4 strips forming 5 packets.</li>
-          <li>Riffle shuffle.</li>
-          <li>Cut the deck.</li>
+          <li>Spread & wash the deck (optional)</li>
+          <li>Riffle shuffle twice</li>
+          <li>Strip the deck 4 times (forming 5 packets)</li>
+          <li>Riffle shuffle</li>
+          <li>Cut the deck</li>
         </ol>`
     },
     notes: { title: "Notes", content: "<p>Cutting a single deck should be between at least 10 cards on the top and 10 on the bottom.</p>" },
-    reference: { title: "Reference", content: '<a href="https://www.example.com/single-deck-lite" target="_blank">Single Deck Shuffle Tutorial</a>' },
+    reference: { title: "Reference", content: '<a href="https://www.youtube.com/watch?v=svi7Jry-KQI" target="_blank">How To Shuffle Cards Profesionally</a>' },
     tags: ["shuffles"]
   },
   {
@@ -337,17 +336,17 @@ const itemsData = [
       title: "The Method",
       content: `
         <ol>
-          <li>Riffle shuffle.</li>
-          <li>Riffle shuffle again.</li>
-          <li>Strip shuffle into 6 strips forming 5 packets.</li>
-          <li>Box shuffle: take 1/3 of the bottom, rotate 180°, and place on top.</li>
-          <li>Riffle shuffle.</li>
-          <li>Cut the deck (in between 10 cards).</li>
-          <li>Burn the first card (for blackjack, baccarat, etc.).</li>
+          <li>Spread and wash the deck
+          <li>Riffle shuffle twice
+          <li>Strip the deck 6 times (forming 7 packets)</li>
+          <li>Box shuffle: take 1/3 of the bottom, rotate 180°, and place on top</li>
+          <li>Riffle shuffle</li>
+          <li>Cut the deck (in between 10 cards)</li>
+          <li>Burn the first card (for blackjack, baccarat, etc.)</li>
         </ol>`
     },
     notes: { title: "Notes", content: "<p>Cutting a single deck should be between at least 10 cards on the top and 10 on the bottom.</p>" },
-    reference: { title: "Reference", content: '<a href="https://www.example.com/single-deck-full" target="_blank">Single Deck Shuffle Full Version Video</a>' },
+    reference: { title: "Reference", content: '<a href="https://www.youtube.com/watch?v=svi7Jry-KQI" target="_blank">How To Shuffle Cards Profesionally</a>' },
     tags: ["shuffles"]
   },
   {
@@ -356,19 +355,19 @@ const itemsData = [
       title: "The Method",
       content: `
         <ol>
-          <li>Riffle shuffle.</li>
-          <li>Riffle shuffle again.</li>
-          <li>Strip shuffle into 6 strips forming 5 packets.</li>
-          <li>Box shuffle: move 1/3 from top to bottom.</li>
-          <li>Riffle shuffle.</li>
-          <li>Box shuffle: move 1/3 from bottom to top.</li>
-          <li>Riffle shuffle.</li>
-          <li>Cut the deck (in between 15 cards).</li>
-          <li>Burn the first card (for blackjack, baccarat, etc.).</li>
+          <li>Spread & wash the deck
+          <li>Riffle shuffle twice
+          <li>Strip the deck 6 times (forming 7 packets)</li>
+          <li>Box shuffle: move 1/3 from top to bottom</li>
+          <li>Riffle shuffle</li>
+          <li>Box shuffle: move 1/3 from bottom to top</li>
+          <li>Riffle shuffle</li>
+          <li>Cut the deck (in between 15 cards)</li>
+          <li>Burn the first card (for blackjack, baccarat, etc.)</li>
         </ol>`
     },
     notes: { title: "Notes", content: "<p>When cutting a double deck, place the cut card facing down, have them cut between the first 15 and last 15 cards, then place the bottom portion on top so the cut card is now on the bottom.</p>" },
-    reference: { title: "Reference", content: '<a href="https://www.example.com/double-deck" target="_blank">Double Deck Shuffle Video</a>' },
+    reference: { title: "Reference", content: '<a href="https://www.youtube.com/watch?v=kmM3CjMPuz8" target="_blank">Blackjack Dealer Training: From Beginner to Pro in One Masterclass</a>' },
     tags: ["shuffles"]
   },
   {
@@ -377,22 +376,22 @@ const itemsData = [
       title: "The Method",
       content: `
         <ol>
-          <li>Break the decks into 2 equal stacks.</li>
-          <li>Take 1/4 of each stack, then riffle-strip-riffle.</li>
-          <li>Place the working deck in the centre.</li>
-          <li>Take 1/4 from working deck & 1/4 from left stack, riffle-strip-riffle, place on working stack.</li>
-          <li>Take 1/4 from working deck & 1/4 from right stack, riffle-strip-riffle, place on working stack.</li>
-          <li>Repeat until all cards are shuffled.</li>
-          <li>Break working deck into 2 equal stacks.</li>
-          <li>Take 1/4 from each stack, riffle leaving cards laced, roll stack, tidy against shoe.</li>
-          <li>Cuts the cards (in between 1–1.5 decks).</li>
-          <li>Put the bottom cut on top so the cut card is on the bottom.</li>
-          <li>Put another cut card as an indicator for the next shuffle.</li>
-          <li>Place in the shoe and burn the first card (blackjack, baccarat, etc.).</li>
+          <li>Break the decks into 2 equal stacks</li>
+          <li>Take 1/4 of each stack, then riffle-strip-riffle</li>
+          <li>Place the working deck in the centre</li>
+          <li>Take 1/4 from working deck & 1/4 from left stack, riffle-strip-riffle, place on working stack</li>
+          <li>Take 1/4 from working deck & 1/4 from right stack, riffle-strip-riffle, place on working stack</li>
+          <li>Repeat until all cards are shuffled</li>
+          <li>Break working deck into 2 equal stacks</li>
+          <li>Take 1/4 from each stack, riffle leaving cards laced, roll stack, tidy against shoe</li>
+          <li>Cuts the cards (in between 1–1.5 decks)</li>
+          <li>Put the bottom cut on top so the cut card is on the bottom</li>
+          <li>Put another cut card as an indicator for the next shuffle</li>
+          <li>Place in the shoe and burn the first card (blackjack, baccarat, etc.)</li>
         </ol>`
     },
     notes: { title: "Notes", content: "<p>When cutting a 4, 6, or 8 deck shoe, roll the deck on its side, place it against the shoe, have the player cut between the first and last deck, then return the top portion to the bottom so the cut card is on the bottom. Place a second cut card 1–1.5 decks from the bottom to indicate when to start the next shuffle.</p>" },
-    reference: { title: "Reference", content: '<a href="https://www.example.com/shoe-shuffle" target="_blank">Shoe Shuffle Tutorial</a>' },
+    reference: { title: "Reference", content: '<a href="https://www.youtube.com/watch?v=kmM3CjMPuz8" target="_blank">Blackjack Dealer Training: From Beginner to Pro in One Masterclass</a>' },
     tags: ["shuffles"]
   }
 ];
@@ -558,7 +557,6 @@ document.querySelector('#filterBar button[data-filter="all"]').classList.add('ac
 
 // Initialize app
 applyFilter("all");
-
 
 
 
