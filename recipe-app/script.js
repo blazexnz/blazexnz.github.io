@@ -110,7 +110,7 @@ content: "For same day bake, feed sourdough for 4 hrs. Dough rests for 2 hrs ins
         <li>375g water</li>
         <li>500g '00' flour</li>
         <li>12g salt</li>
-        <li>2g dry yeast</li>
+        <li>2g instant dry yeast</li>
       </ul>
       <p>Makes 3 bases</p>
     `
@@ -167,7 +167,7 @@ content: "For same day bake, feed sourdough for 4 hrs. Dough rests for 2 hrs ins
         <li>375g water</li>
         <li>500g '00' flour</li>
         <li>12g salt</li>
-        <li>7g dry yeast</li>
+        <li>7g instant dry yeast</li>
       </ul>
     `
   },
@@ -221,7 +221,7 @@ content: "For same day bake, feed sourdough for 4 hrs. Dough rests for 2 hrs ins
       <ul>
         <li>500g flour</li>
         <li>350g water (lukewarm)</li>
-        <li>8g (1 packet) yeast</li>
+        <li>8g instant dry yeast</li>
         <li>10g salt</li>
       </ul>
     `
@@ -231,6 +231,7 @@ content: "For same day bake, feed sourdough for 4 hrs. Dough rests for 2 hrs ins
     content: `
       <ul>
         <li>3.5 hours ready to bake, 5 hours ready to eat</li>
+        <li>8g is 1 packet Edmonds Instant Dry Yeast</li>
       </ul>
     `
   },
@@ -291,7 +292,7 @@ content: "For same day bake, feed sourdough for 4 hrs. Dough rests for 2 hrs ins
       <ul>
         <li>500g flour</li>
         <li>350g water (lukewarm)</li>
-        <li>8g (1 packet) yeast</li>
+        <li>8g instant dry yeast</li>
         <li>10g salt</li>
       </ul>
     `
@@ -301,6 +302,7 @@ content: "For same day bake, feed sourdough for 4 hrs. Dough rests for 2 hrs ins
     content: `
       <ul>
         <li>2 hours ready to bake, 3 hours ready to eat</li>
+        <li>8g is 1 packet Edmonds Instant Dry Yeast</li>
       </ul>
     `
   },
@@ -355,7 +357,7 @@ content: "For same day bake, feed sourdough for 4 hrs. Dough rests for 2 hrs ins
       <ul>
         <li>450g flour</li>
         <li>375g very warm water</li>
-        <li>6g (1 packet) yeast</li>
+        <li>6g instant dry yeast</li>
         <li>10g salt</li>
       </ul>
     `
@@ -365,6 +367,7 @@ content: "For same day bake, feed sourdough for 4 hrs. Dough rests for 2 hrs ins
     content: `
       <ul>
         <li>2-3 hours ready to bake, 2 hr 15 mins ready to eat</li>
+        <li>8g is 1 packet Edmonds Instant Dry Yeast</li>
       </ul>
     `
   },
