@@ -15,7 +15,7 @@ A mobile-friendly web app to explore card tricks and games, with clear instructi
 
 ### Flexible Structure
 
-Each item in `itemsData` can include as many or as few sections as needed. Sections are rendered dynamically — if a section is missing, it will simply be skipped. Common sections include:
+Each item in `itemsData` can include as many or as few sections as needed. Sections are rendered dynamically — if a section is missing, it will simply be skipped, or you can add as many new ones as you like. Common sections include:
 
 - `text` – general description  
 - `setup` – preparation instructions  
