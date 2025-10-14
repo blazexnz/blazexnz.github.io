@@ -330,7 +330,7 @@ const itemsData = [
     },
     notes: { title: "Notes", content: "<p>Cutting a single deck should be between at least 10 cards on the top and 10 on the bottom.</p>" },
     reference: { title: "Reference", content: '<a href="https://www.example.com/single-deck-lite" target="_blank">Single Deck Shuffle Tutorial</a>' },
-    tags: ["cards", "shuffles"]
+    tags: ["cards", "shuffle"]
   },
   {
     name: "Single Deck Shuffle - Lite Version",
@@ -558,12 +558,22 @@ document.getElementById('decreaseFontBtn').addEventListener('click', () => {
   document.querySelectorAll('.item, .notes').forEach(div => div.style.fontSize = currentFontSize + 'px');
 });
 
-// Filter buttons
-document.querySelectorAll('#filterBar button').forEach(btn => {
+// ===== Updated Filter buttons to highlight active filter =====
+const filterButtons = document.querySelectorAll('#filterBar button');
+filterButtons.forEach(btn => {
   btn.addEventListener('click', () => {
     applyFilter(btn.dataset.filter);
+
+    // Remove active class from all buttons
+    filterButtons.forEach(b => b.classList.remove('active-filter'));
+    // Add active class to clicked button
+    btn.classList.add('active-filter');
   });
 });
+
+// Highlight "all" by default on page load
+document.querySelector('#filterBar button[data-filter="all"]').classList.add('active-filter');
+
 
 // Initialize app
 applyFilter("all");
