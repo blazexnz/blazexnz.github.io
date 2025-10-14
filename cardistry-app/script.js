@@ -39,6 +39,112 @@ itemsData = [
     notes: { title: "Notes", content: "This trick is both a game and a flourish, demonstrating sleight of hand." },
     reference: { title: "Reference", text: "Magic Trick Video", url: "https://www.example.com/magic-poker" },
     tags: ["tricks", "games"]
+  },
+{
+    "name": "Single Deck Shuffle - Lite Version",
+    "method": {
+      "title": "The Method",
+      "content": [
+        { "text": "Spread & wash the deck (optional)." },
+        { "text": "Riffle shuffle." },
+        { "text": "Riffle shuffle again." },
+        { "text": "Strip shuffle into 4 strips forming 5 packets." },
+        { "text": "Riffle shuffle." },
+        { "text": "Cut the deck." }
+      ]
+    },
+    "notes": {
+      "title": "Notes",
+      "content": "Cutting a single deck should be between at least 10 cards on the top and 10 on the bottom."
+    },
+    "reference": {
+      "title": "Reference",
+      "text": "Single Deck Shuffle Tutorial",
+      "url": "https://www.example.com/single-deck-lite"
+    },
+    "tags": ["shuffles"]
+  },
+  {
+    "name": "Single Deck Shuffle - Full Version",
+    "method": {
+      "title": "The Method",
+      "content": [
+        { "text": "Riffle shuffle." },
+        { "text": "Riffle shuffle again." },
+        { "text": "Strip shuffle into 6 strips forming 5 packets." },
+        { "text": "Box shuffle: take 1/3 of the bottom, rotate 180°, and place on top." },
+        { "text": "Riffle shuffle." },
+        { "text": "Cut the deck (in between 10 cards)." },
+        { "text": "Burn the first card (for blackjack, baccarat, etc.)." }
+      ]
+    },
+    "notes": {
+      "title": "Notes",
+      "content": "Cutting a single deck should be between at least 10 cards on the top and 10 on the bottom."
+    },
+    "reference": {
+      "title": "Reference",
+      "text": "Single Deck Shuffle Full Version Video",
+      "url": "https://www.example.com/single-deck-full"
+    },
+    "tags": ["shuffles"]
+  },
+  {
+    "name": "Double Deck Shuffle",
+    "method": {
+      "title": "The Method",
+      "content": [
+        { "text": "Riffle shuffle." },
+        { "text": "Riffle shuffle again." },
+        { "text": "Strip shuffle into 6 strips forming 5 packets." },
+        { "text": "Box shuffle: move 1/3 from top to bottom." },
+        { "text": "Riffle shuffle." },
+        { "text": "Box shuffle: move 1/3 from bottom to top." },
+        { "text": "Riffle shuffle." },
+        { "text": "Cut the deck (in between 15 cards)." },
+        { "text": "Burn the first card (for blackjack, baccarat, etc.)." }
+      ]
+    },
+    "notes": {
+      "title": "Notes",
+      "content": "When cutting a double deck, place the cut card facing down, have them cut between the first 15 and last 15 cards, then place the bottom portion on top so the cut card is now on the bottom."
+    },
+    "reference": {
+      "title": "Reference",
+      "text": "Double Deck Shuffle Video",
+      "url": "https://www.example.com/double-deck"
+    },
+    "tags": ["shuffles"]
+  },
+  {
+    "name": "4/6/8 Deck Shoe Shuffle",
+    "method": {
+      "title": "The Method",
+      "content": [
+        { "text": "Break the decks into 2 equal stacks." },
+        { "text": "Take 1/4 of each stack, then riffle-strip-riffle." },
+        { "text": "Place the working deck in the centre." },
+        { "text": "Take 1/4 from working deck & 1/4 from left stack, riffle-strip-riffle, place on working stack." },
+        { "text": "Take 1/4 from working deck & 1/4 from right stack, riffle-strip-riffle, place on working stack." },
+        { "text": "Repeat until all cards are shuffled." },
+        { "text": "Break working deck into 2 equal stacks." },
+        { "text": "Take 1/4 from each stack, riffle leaving cards laced, roll stack, tidy against shoe." },
+        { "text": "Cuts the cards (in between 1–1.5 decks)." },
+        { "text": "Put the bottom cut on top so the cut card is on the bottom." },
+        { "text": "Put another cut card as an indicator for the next shuffle." },
+        { "text": "Place in the shoe and burn the first card (blackjack, baccarat, etc.)." }
+      ]
+    },
+    "notes": {
+      "title": "Notes",
+      "content": "When cutting a 4, 6, or 8 deck shoe, roll the deck on its side, place it against the shoe, have the player cut between the first and last deck, then return the top portion to the bottom so the cut card is on the bottom. Place a second cut card 1–1.5 decks from the bottom to indicate when to start the next shuffle."
+    },
+    "reference": {
+      "title": "Reference",
+      "text": "Shoe Shuffle Tutorial",
+      "url": "https://www.example.com/shoe-shuffle"
+    },
+    "tags": ["shuffles"]
   }
 ];
 
