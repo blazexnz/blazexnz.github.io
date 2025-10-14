@@ -34,19 +34,23 @@
     },
     "God gives me strength": {
       "text": "God, thank You for providing for my every need. At all times, You are my source of strength, hope, and peace, and You have blessed me abundantly. Today, please help me to recognize Your blessings, and share them with others. Help me to love and care for others as You have loved and cared for me. In Jesus' name, Amen.",
-  "explanation": "This prayer expresses gratitude for God's strength and blessings, asking for help to share His love and care with others."
+      "explanation": "This prayer expresses gratitude for God's strength and blessings, asking for help to share His love and care with others."
     },
     "Another beautiful sunrise": {
       "text": "Dear Lord, Thank you so much for another day of life on Earth. Thank you for another beautiful sunrise to enjoy. Thank you for the wonderful sounds of nature, from the cool breeze brushing through the trees to the birds singing melodies. You are a wonderful God, full of grace and mercy. I praise you for allowing me another day to spend with my family. I love you Father! Amen.",
-  "explanation": "This prayer thanks God for the gift of life, the beauty of creation, and the blessing of family, filling the heart with gratitude and praise."
+      "explanation": "This prayer thanks God for the gift of life, the beauty of creation, and the blessing of family, filling the heart with gratitude and praise."
     },
     "Morning Prayer of St. Francis": {
       "text": "Lord, help me to live this day, quietly, easily; To lean upon Thy great strength, trustfully, restfully; To wait for the unfolding of Thy will, patiently, serenely; To meet others, peacefully, joyously; To face tomorrow, confidently, courageously. Amen.",
-  "explanation": "This prayer asks God for the grace to live each day with peace, trust, patience, and courage, reflecting His love in all we do."
+      "explanation": "This prayer asks God for the grace to live each day with peace, trust, patience, and courage, reflecting His love in all we do."
     },
     "Karakia": {
       "text": "E te Atua, whakapaingia ēnei kai. Hei oranga mō ō matou tinana. Āmine. Thank you God for giving us food. Amen.",
   "explanation": "This prayer thanks God for the gift of food and asks for His blessing that it may nourish and sustain us."
+    },
+    "Saint Christopher Prayer": {
+      "text": "Saint Christopher, protect us on our journey, guide us safely through all dangers, and bring us safely to our destination. Amen.".
+      "explanation: "This prayer asks for the intercession of Saint Christopher, the patron saint of travelers, seeking protection, guidance, and safe arrival during journeys."
     }
   },
   "vi": {
@@ -110,4 +114,5 @@
     }
   }
 }
+
 
