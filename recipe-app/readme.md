@@ -1,4 +1,4 @@
-# 🍳 Recipe App
+# 📝 Recipe App
 
 A mobile-friendly web app to explore recipes with clear instructions, ingredients, and step-by-step checklists. Designed for easy browsing, filtering, and reading on small screens.
 
