@@ -23,5 +23,6 @@
 - **Memory grid** (Released: August 2025)
 - **Sevens trainer** (Released: August 2025)
 - **Eye spy** (Released: September 2025)
-- **Rhythm playground** (Released: September 2025)  
+- **Rhythm playground** (Released: September 2025)
 - **Cardistry app** (Released: October 2025)
+- **Recipe app** (Released: October 2025)
