@@ -219,7 +219,7 @@ content: "For same day bake, feed sourdough for 4 hrs. Dough rests for 2 hrs ins
     title: "Ingredients",
     content: `
       <ul>
-        <li>500g flour</li>
+        <li>500g bakers flour</li>
         <li>350g water (lukewarm)</li>
         <li>8g instant dry yeast</li>
         <li>10g salt</li>
@@ -288,7 +288,7 @@ content: "For same day bake, feed sourdough for 4 hrs. Dough rests for 2 hrs ins
     title: "Ingredients",
     content: `
       <ul>
-        <li>500g flour</li>
+        <li>500g bakers flour</li>
         <li>350g water (lukewarm)</li>
         <li>8g instant dry yeast</li>
         <li>10g salt</li>
@@ -349,7 +349,7 @@ content: "For same day bake, feed sourdough for 4 hrs. Dough rests for 2 hrs ins
     title: "Ingredients",
     content: `
       <ul>
-        <li>450g flour</li>
+        <li>450g bakers flour</li>
         <li>375g very warm water</li>
         <li>6g instant dry yeast</li>
         <li>10g salt</li>
