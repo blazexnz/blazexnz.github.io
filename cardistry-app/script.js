@@ -319,25 +319,6 @@ const itemsData = [
       title: "The Method",
       content: `
         <ol>
-          <li>Spread & wash the deck (optional)</li>
-          <li>Riffle shuffle</li>
-          <li>Riffle shuffle again</li>
-          <li>Strip shuffle into 4 strips forming 5 packets</li>
-          <li>Riffle shuffle</li>
-          <li>Cut the deck</li>
-        </ol>
-      `
-    },
-    notes: { title: "Notes", content: "<p>Cutting a single deck should be between at least 10 cards on the top and 10 on the bottom.</p>" },
-    reference: { title: "Reference", content: '<a href="https://www.example.com/single-deck-lite" target="_blank">Single Deck Shuffle Tutorial</a>' },
-    tags: ["cards", "shuffle"]
-  },
-  {
-    name: "Single Deck Shuffle - Lite Version",
-    method: {
-      title: "The Method",
-      content: `
-        <ol>
           <li>Spread & wash the deck (optional).</li>
           <li>Riffle shuffle.</li>
           <li>Riffle shuffle again.</li>
@@ -577,6 +558,7 @@ document.querySelector('#filterBar button[data-filter="all"]').classList.add('ac
 
 // Initialize app
 applyFilter("all");
+
 
 
 
