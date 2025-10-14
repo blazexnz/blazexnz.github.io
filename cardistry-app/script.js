@@ -8,11 +8,19 @@ const itemsData = [
     "name": "Solitaire",
     "setup": {
       "title": "Setup",
-      "content": "<p>Tableau - deal seven piles, left to right, starting with the one card in the first column face up</p><p>Foundations - the aces form the foundation piles - hearts, diamonds, spades, clubs ♥ ♦ ♠ ♣</p><p>Draw pile - remaining cards after deal, you can go through this pile as many times as you like, drawing 1 or 3 cards, do not shuffle</p><p>Waste pile - laid face up in the stock pile, do not shuffle</p>"
+      "content": "<ul><li>Tableau - deal seven piles, left to right, starting with the one card in the first column face up</li><li>Foundations - the aces form the foundation piles - hearts, diamonds, spades, clubs ♥ ♦ ♠ ♣</li><li>Draw pile - remaining cards after deal, you can go through this pile as many times as you like, drawing 1 or 3 cards, do not shuffle</li><li>Waste pile - laid face up in the stock pile, do not shuffle</li></ul>"
     },
     "method": {
       "title": "The Play",
       "content": "<ul><li>Create a sequence among the seven piles in descending order (K, Q, J, 10, 9, 8...)</li><li>Alternating colours - red/black</li><li>Only a King can move to a blank space</li></ul>"
+    },
+    "players": {
+      "title": "Players",
+      "content": "1"
+    },
+    "deck": {
+      "title": "Deck",
+      "content": "Single deck"
     },
     "tags": ["games"]
   },
@@ -28,7 +36,21 @@ const itemsData = [
     },
     "reference": {
       "title": "Reference",
-      "content": "<a href=\"#\" target=\"_blank\">Streets and alleys - found out about it here with more rules here (for the rule on stacks becoming empty and any card can be placed there) & here & here</a>"
+      "content": `
+    <ul>
+      <li><a href="https://bicyclecards.com/how-to-play/streets-and-alleys" target="_blank">Streets and Alleys</a></li>
+      <li><a href="https://www.youtube.com/watch?v=XzSWIKbfBSY" target="_blank">How To Play Streets and Alleys</a></li>
+      <li><a href="https://www.youtube.com/watch?v=Kv1hMZ73OSA" target="_blank">Streets and Alleys Solitaire - How to Play</a></li>
+    </ul>
+  `
+    },
+    "players": {
+      "title": "Players",
+      "content": "1"
+    },
+    "deck": {
+      "title": "Deck",
+      "content": "Single deck"
     },
     "tags": ["games"]
   },
@@ -42,9 +64,22 @@ const itemsData = [
       "title": "The Play",
       "content": "<ul><li>tl;dr -> stack left 1 or 3 steps, matching rank or suit</li><li>Objective is to stack all cards to a single pile to the left (like an accordion)</li><li>Look 1 step to the left, and 3 steps to the left</li><li>Stack them if they are matching rank, or matching suit</li><li>You can move any cards as long as it's legal</li><li>All cards shift left as you move cards</li></ul>"
     },
+    "players": {
+      "title": "Players",
+      "content": "1"
+    },
+    "deck": {
+      "title": "Deck",
+      "content": "Single deck"
+    },
     "reference": {
       "title": "Reference",
-      "content": "<p>Suggested by ChatGPT</p><ul><li>Solitaire: Accordion Tutorial</li><li>🪗 How to play Accordion - a Solitaire Tutorial! 🪗</li></ul>"
+      "content": `
+    <ul>
+      <li><a href="https://www.youtube.com/watch?v=9mMP_3e5LaE" target="_blank">Solitaire: Accordion Tutorial</a></li>
+      <li><a href="https://www.youtube.com/watch?v=pXvfi8mf4YE" target="_blank">🪗 How to play Accordion - a Solitaire Tutorial! 🪗</a></li>
+    </ul>
+  `
     },
     "tags": ["games"]
   },
@@ -60,23 +95,31 @@ const itemsData = [
     },
     "reference": {
       "title": "Reference",
-      "content": "<p>Suggested by ChatGPT</p><ul><li>How To Play One Handed Solitaire</li></ul>"
+      "content": '<a href="https://www.youtube.com/watch?v=jayssGEYyq4" target=\"_blank\">How To Play One Handed Solitaire</a>'
+    },
+    "players": {
+      "title": "Players",
+      "content": "1"
+    },
+    "deck": {
+      "title": "Deck",
+      "content": "Single deck"
     },
     "tags": ["games"]
   },
   {
     "name": "Blaze's Blackjack Dealer Rules",
     "method": {
-      "title": "Dealer Rules",
+      "title": "Dealer Procedure",
       "content": "<ol><li>Shuffle the cards, burn one card</li><li>Deal cards clockwise to the players</li><li>Deal two cards each (lay down anti clockwise so that both pips are visible)</li><li>Deal the dealer 1 card</li><li>Double down - deal the card perpendicular to the cards</li></ol>"
     },
-    "setup": {
-      "title": "Betting",
-      "content": "<ul><li>Blackjack - pays 2:1</li><li>If you split Aces, then the payout is 1:1 (because it's 21 NOT blackjack)</li></ul>"
+    "betting": {
+      "title": "Betting rules",
+      "content": "<ul><li>Double down - deal one card only</li><li>Splitting - deal one card, finish dealing the first hand before moving onto the second split card</li><li>Splitting aces - deal only one card</li></ul>"
     },
     "notes": {
-      "title": "Rules",
-      "content": "<ul><li>Double down - deal one card only</li><li>Splitting - deal one card, finish dealing the first hand before moving onto the second split card</li><li>Splitting aces - deal only one card</li></ul>"
+      "title": "Notes",
+      "content": "<ul><li>Blackjack - pays 2:1</li><li>If you split Aces, then the payout is 1:1 (because it's 21 NOT blackjack)</li></ul>"
     },
     "tags": ["games", "cards", "blackjack"]
   },
@@ -90,18 +133,26 @@ const itemsData = [
       "title": "The Play",
       "content": "<ul><li>If three, or more of the colour named, the dealer pays the bet</li><li>If three, or more are of the opposite colour, the dealer collects the bet</li><li>If all five cards are the same colour, double the bet is paid, or collected</li></ul>"
     },
-    "setup_extra": {
-      "title": "Players & Deck",
-      "content": "<p>Players: 2, 3, 4, 5+</p><p>Deck: Single deck</p>"
-    },
     "reference": {
       "title": "Reference",
-      "content": "<a href=\"#\" target=\"_blank\">Found out about it here</a>"
+      "content": '<a href="https://bicyclecards.com/how-to-play/red-or-black" target=\"_blank\">Red or Black</a>'
+    },
+    "players": {
+      "title": "Players",
+      "content": "2, 3, 4, 5+"
+    },
+    "deck": {
+      "title": "Deck",
+      "content": "Single deck"
     },
     "tags": ["games", "cards"]
   },
   {
     "name": "Play or Pay",
+    "objective": {
+      "title": "Objective",
+      "content": "<p>Be the first player to get rid of all their cards</p>"
+    },
     "setup": {
       "title": "The Deal",
       "content": "<ul><li>Deal the cards one at a time, face down. All cards are dealt, some players will receive fewer cards.</li><li>Each player with fewer cards ante one additional chip</li></ul>"
@@ -110,22 +161,27 @@ const itemsData = [
       "title": "The Play",
       "content": "<ul><li>Each person must play a card if possible, clockwise. If the player is unable to play in turn, they put one chip in the pot</li><li>All cards played remain face up on the table, arranged in four rows of the four suits.</li><li>The first play may play any card</li><li>The sequence in the suit must be built up until all thirteen cards are played, and the sequence in suit is continuous, e.g., J Q K A 2</li><li>The player who plays the thirteenth card of a suit may choose any card from their hand to begin the next series</li></ul>"
     },
-    "setup_extra": {
-      "title": "Players & Deck",
-      "content": "<p>Players: 3, 4, 5+</p><p>Deck: Single deck</p>"
-    },
-    "notes": {
-      "title": "Objective",
-      "content": "<p>Be the first player to get rid of all their cards</p>"
-    },
+
     "reference": {
       "title": "Reference",
-      "content": "<a href=\"#\" target=\"_blank\">Found out about it here</a>"
+      "content": '<a href="https://bicyclecards.com/how-to-play/play-or-pay" target=\"_blank\">Play or Pay</a>'
+    },
+    "players": {
+      "title": "Players",
+      "content": "3, 4, 5+"
+    },
+    "deck": {
+      "title": "Deck",
+      "content": "Single deck"
     },
     "tags": ["games", "cards"]
   },
   {
     "name": "Red Dog",
+    "objective": {
+      "title": "Objective",
+      "content": "<p>Be the player with the most chips at the end</p>"
+    },
     "setup": {
       "title": "Setup",
       "content": "<ul><li>Each player pays the ante</li><li>Player to the dealer's right cuts the cards</li><li>Deal five cards to each player, one at a time (4 cards if more than 8 players)</li></ul>"
@@ -134,17 +190,17 @@ const itemsData = [
       "title": "Betting",
       "content": "<ul><li>After checking your cards, player to the dealer's left may open the bets with any number of chips, into the pot. A player who does not wish to bet forfeits one chip to the pot</li><li>No bet may exceed the number of chips already in the pot</li><li>When the player has placed a bet, the dealer turns up the top card from the remainder of the pack. If the player who bet has a card of the same suit and of higher rank, they show the card and take back the amount of their bet, plus an equivalent amount from the pot</li><li>If the player has no card that beats the card shown, they must show their entire hand, and the amount of the bet is added to the pot</li><li>The next player in turn places a bet, another card is turned, and the same procedure is followed until all players, including the dealer have bet</li><li>If at any time the pot has no more chips in it (because a player has bet the pot and won), each player puts in one chip to restore the pot</li><li>When every player has had a chance to bet, the turn to deal passes to the dealer's left</li></ul>"
     },
-    "setup_extra": {
-      "title": "Players & Deck",
-      "content": "<p>Players: 2, 3, 4, 5+</p><p>Deck: Single deck</p>"
-    },
-    "notes": {
-      "title": "Objective",
-      "content": "<p>Be the player with the most chips at the end</p>"
-    },
     "reference": {
       "title": "Reference",
-      "content": "<a href=\"#\" target=\"_blank\">Found out about it here</a>"
+      "content": '<a href="https://bicyclecards.com/how-to-play/red-dog" target=\"_blank\">Red Dog</a>'
+    },
+    "players": {
+      "title": "Players",
+      "content": "2, 3, 4, 5+"
+    },
+    "deck": {
+      "title": "Deck",
+      "content": "Single deck"
     },
     "tags": ["games", "cards"]
   },
@@ -158,17 +214,28 @@ const itemsData = [
       "title": "Rules",
       "content": "<ul><li>Each round starts with an ante</li><li>Each player in turn says \"in\" or \"out\"</li><li>Players who are out, forfeits their ante, but will not lose any further chips</li><li>Players with the highest ranking hand wins the pot</li><li>Players who are in, but don't have the highest ranking hand, pay the amount of the pot. This becomes the pot for the next round</li><li>If more than one player says \"in\", all those who are in reveal cards, player with the best cards wins the pot</li><li>If all players announce out, except for one player, they win the pot, the pot is empty so the next round begins with an ante</li><li>To prevent exponentially growing pots, cap the growing pot to 50x or 100x the ante. If the on the round that meets the cap, then the remaining pot becomes the ante for the next round</li><li>Shuffle the cards after each round (or blaze’s rule is to alternatively play a shoe of cards like blackjack)</li></ul>"
     },
-    "notes": {
+    "scoring": {
       "title": "Scoring",
       "content": "<ul><li>Aces are high</li><li>Any pair of equal cards beats any two unequal cards</li><li>A higher pair beats a lower pair</li><li>Between two non-pair hands, the hand with the highest cards wins</li><li>If two hands have equal high cards, the hand whose other card is higher wins</li><li>No straights, no flushes</li><li>If two or more players tie for the best ranking hand, the pot is split. If there are no losing players, the pot is empty so the next round begins with an ante</li></ul>"
     },
-    "setup_extra": {
-      "title": "Players & Deck",
-      "content": "<p>Players: 2, 3, 4, 5+</p><p>Deck: Single deck</p>"
-    },
     "reference": {
       "title": "Reference",
-      "content": "<a href=\"#\" target=\"_blank\">Found out about it: Googled 'high card betting game'. Reference here & here & here (for the rule on capping the pot) & here (for selecting a dealer - lowest card becomes dealer)</a>"
+      "content": `
+    <ul>
+      <li><a href="https://bicyclecards.com/how-to-play/guts" target="_blank">Guts</a></li>
+      <li><a href="https://www.youtube.com/watch?v=aZcwG3B5upM" target="_blank">How To Play Guts</a></li>
+      <li><a href="https://en.wikipedia.org/wiki/Guts_(card_game)" target="_blank">Guts (card game)</a></li>
+      <li><a href="https://playingcarddecks.com/blogs/how-to-play/guts-game-rules" target="_blank">Guts Game Rules</a></li>
+    </ul>
+  `
+    },
+    "players": {
+      "title": "Players",
+      "content": "2, 3, 4, 5+"
+    },
+    "deck": {
+      "title": "Deck",
+      "content": "Single deck"
     },
     "tags": ["games", "cards", "poker"]
   },
@@ -407,3 +474,4 @@ document.querySelectorAll('#filterBar button').forEach(btn => {
 
 // Initialize app
 applyFilter("all");
+
