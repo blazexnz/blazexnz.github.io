@@ -162,7 +162,7 @@ const itemsData = [
         <ul>
           <li>12.5 hrs hours ready to bake, 13.5 hrs ready to eat</li>
           <li>If starter fed yesterday, then 8.5 hrs ready to bake, 9.5 hrs ready to eat</li>
-          <li>The difference between this one and the regular recipe is that this rests for 2 hrs, instead of 1 hr + overnight inthe fridge</li>
+          <li>The difference between this one and the regular recipe is that this rests for 2 hrs, instead of 1 hr + overnight in the fridge</li>
         </ul>
       `
     },
