@@ -377,7 +377,7 @@ content: "Notes go here</p>"
         <li>Cover & rest for 2-3 hrs</li>
         <li>Preheat oven to 230°C (with Dutch oven inside oven)</li>
         <li>Dust basket with rice flour</li>
-        <li>Final shape: scoop out of bowl, form a rectangle place, in basket seam side up</li>
+        <li>Final shape: scoop out of bowl, form a rectangle, place in basket seam side up, dust dough with rice flour</li>
         <li>Rest for 15 min</li>
         <li>Transfer dough to baking paper</li>
         <li>Brush off excess rice flour</li>
@@ -660,5 +660,6 @@ document.getElementById('decreaseFontBtn').addEventListener('click', () => {
 
 // === Init ===
 applyFilter("all");
+
 
 
