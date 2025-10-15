@@ -4,8 +4,8 @@ let currentFilter = "all";
 
 // Self-contained items with HTML content and <strong> actors
 const itemsData = [
-  {
-    name: "Test test test Sourdough Bread",
+{
+    name: "Blaze’s sourdough bread",
     checklist: {
       title: "Progress tracker",
       content: `
@@ -20,76 +20,78 @@ const itemsData = [
       title: "Ingredients",
       content: `
         <ul>
-          <li>300g water (warm water for same day)</li>
+          <li>430g bakers flour</li>
           <li>100g starter</li>
           <li>430g bread flour</li>
-          <li>10g sea salt</li>
-          <li>1/4 cup test</li>
-          <li>1/3 tsp test</li>
-          <li>1/4 tbsp test</li>
+          <li>10g salt</li>
         </ul>
-        <p>Makes 8 bases</p>
       `
     },
 notes: {
 title: "Notes",
-content: "For same day bake, feed sourdough for 4 hrs. Dough rests for 2 hrs instead of placing in fridge. Total 12 hrs with starter, or if starter fed yesterday then 8 hrs.</p>"
+content: "Notes go here</p>"
 },
     day0: {
-      title: "Day 0 – Morning/Night Before",
+      title: "Day 0 – morning/night before",
       content: `
         <ul>
-          <li>Take starter out of fridge.</li>
-          <li>If it's been in the fridge a while, feed in the morning and again before bed.</li>
-          <li>If it's been used regularly, one feed before bed is enough.</li>
-          <li>Feed ratio: 50g cold or room temperature water, 50g flour.</li>
-          <li>Leave on bench overnight, ready for use tomorrow.</li>
+          <li>Take starter out of fridge</li>
+          <li>If it's been in the fridge a while, feed in the morning and again before bed</li>
+          <li>If it's been used regularly, one feed before bed is enough</li>
+          <li>Feed ratio: 50g cold or room temperature water, 50g flour</li>
+          <li>Leave on bench overnight, ready for use tomorrow</li>
         </ul>
       `
     },
     day1: {
-      title: "Day 1 – Dough & Bulk Fermentation",
+      title: "Day 1 – dough & bulk fermentation",
       content: `
         <ol>
-          <li>Mix all ingredients (water, starter, flour, salt) until no dry bits remain. Use a spoon and scraper for clean hands.</li>
-          <li>Cover & rest for 30 mins.</li>
+          <li>Mix starter with water in a bowl</li>
+          <li>Add flour & salt</li>
+          <li>Combine until rough dough forms</li>
+          <li>Cover & rest for 30 mins</li>
           <li><strong>Meanwhile:</strong>
             <ul>
               <li>Set a timer (e.g. 'Sourdough' Apple Shortcut).</li>
-              <li>Starter: if prepping another loaf, leave on bench during the day and feed before bed; otherwise, feed 30g water + 30g flour and refrigerate before bed.</li>
+              <li>Starter: if prepping another loaf, leave on bench during the day, and feed before bed, otherwise, maintenance feed immediately (feed ratio: 30g water/30g flour), place in fridge before bed</li>
             </ul>
           </li>
           <li>Stretch & Fold #1 – twice around the bowl.</li>
-          <li>Rest 30 mins.</li>
+          <li>Cover & rest 30 mins</li>
           <li>Stretch & Fold #2 – once around the bowl (gently).</li>
-          <li>Rest 30 mins.</li>
-          <li>Stretch & Fold #3 – once around the bowl (gently). Optional: cup & pull into a smooth ball, place back in bowl seam side down.</li>
-          <li>Rest for 3.5 hrs.</li>
-          <li>Preshape: scoop dough out, place on bench seam side down, cup & pull into a smooth ball. Rest 30 mins.</li>
-          <li>Prepare basket with rice flour.</li>
-          <li>Dust top of dough with rice flour.</li>
-          <li>Final shape: form rectangle, place seam side up in basket.</li>
-          <li>Rest 1 hour, then refrigerate (or rest 2 hrs for same-day bake).</li>
-          <li>Proof overnight in fridge (uncovered).</li>
+          <li>Cover & rest 30 mins</li>
+          <li>Stretch & Fold #3 – once around the bowl (gently)</li>
+            <ul>
+              <li><strong>Optional:</strong> cup & pull into a smooth ball, place back in bowl seam side down</li>
+            </ul>
+          <li>Cover & rest for 3.5 hrs</li>
+          <li>Pre-shape: scoop the dough out of the bowl, place on bench sticky/seam side down, cup & pull into a smooth ball</li>
+          <liCover & Rest for 30 mins</li>
+          <li>Dust basket with rice flour</li>
+          <li>Final shape: form a rectangle, place seam side up in basket</li>
+          <li>Cover with Ziploc bag, rest for 1 hour, then place in fridge</li>
+          <li>Proof overnight in fridge</li>
         </ol>
       `
     },
     day2: {
-      title: "Day 2 – Bake Day",
+      title: "Day 2 – bake day",
       content: `
         <ol>
-          <li>Preheat oven to 260°C for 30 mins with Dutch oven inside.</li>
-          <li>Remove dough from fridge.</li>
-          <li>Transfer dough to baking paper and brush off excess flour.</li>
-          <li>Score the dough.</li>
-          <li>Transfer to Dutch oven (using baking paper as a sling).</li>
-          <li>Bake 20 mins with lid on.</li>
-          <li>Bake 15–20 mins with lid off.</li>
-          <li>Cool for at least 1 hour before slicing.</li>
+          <li>Preheat oven 30 mins 260°C (with Dutch oven inside)</li>
+          <liOnce preheated, remove from fridge</li>
+          <li>Transfer dough to baking paper</li>
+          <li>Brush off excess flour</li>
+          <li>Score the dough</li>
+          <li>Transfer to Dutch oven, lifting using the baking paper</li>
+          <li>Bake for 20 mins with lid on</li>
+          <li>Bake for 15-20 mins with lid off</li>
+          <li>Rest for 1 hour before serving</li>
         </ol>
       `
     },
-  tags: ["pizza", "vietnamese"]
+  tags: ["bread"]
   },
 {
   name: "3 Hour Neapolitan Pizza",
