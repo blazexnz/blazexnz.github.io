@@ -67,11 +67,11 @@ const itemsData = [
               <li>Starter: if prepping another loaf, leave on bench during the day, and feed before bed, otherwise, maintenance feed immediately (feed ratio: 30g water/30g flour), place in fridge before bed</li>
             </ul>
           </li>
-          <li>Stretch & Fold #1 – twice around the bowl.</li>
+          <li>Stretch & fold #1 – twice around the bowl.</li>
           <li>Cover & rest 30 mins</li>
-          <li>Stretch & Fold #2 – once around the bowl (gently).</li>
+          <li>Stretch & fold #2 – once around the bowl (gently).</li>
           <li>Cover & rest 30 mins</li>
-          <li>Stretch & Fold #3 – once around the bowl (gently)</li>
+          <li>Stretch & fold #3 – once around the bowl (gently)</li>
             <ul>
               <li><strong>Optional:</strong> cup & pull into a smooth ball, place back in bowl seam side down</li>
             </ul>
@@ -162,11 +162,11 @@ const itemsData = [
               <li>Starter: if prepping another loaf, leave on bench during the day, and feed before bed, otherwise, maintenance feed immediately (feed ratio: 30g water/30g flour), place in fridge before bed</li>
             </ul>
           </li>
-          <li>Stretch & Fold #1 – twice around the bowl.</li>
+          <li>Stretch & fold #1 – twice around the bowl.</li>
           <li>Cover & rest 30 mins</li>
-          <li>Stretch & Fold #2 – once around the bowl (gently).</li>
+          <li>Stretch & fold #2 – once around the bowl (gently).</li>
           <li>Cover & rest 30 mins</li>
-          <li>Stretch & Fold #3 – once around the bowl (gently)</li>
+          <li>Stretch & fold #3 – once around the bowl (gently)</li>
             <ul>
               <li><strong>Optional:</strong> cup & pull into a smooth ball, place back in bowl seam side down</li>
             </ul>
