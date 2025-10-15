@@ -21,16 +21,26 @@ const itemsData = [
       content: `
         <ul>
           <li>430g bakers flour</li>
+          <li>300g water (lukewarm)</li>
           <li>100g starter</li>
-          <li>430g bread flour</li>
           <li>10g salt</li>
+        </ul>
+        <p><strong>Starter feed ratio:</strong></p>
+        <ul>
+          <li>50g cold or room temperature water</li>
+          <li>50g bakers flour</li>
         </ul>
       `
     },
-notes: {
-title: "Notes",
-content: "Notes go here</p>"
-},
+    notes: {
+      title: "Notes",
+      content: `
+        <ul>
+          <li>Day 1 – Mix & Bulk Ferment = 6.5 hrs</li>
+          <li>Day 2 – Bake Day = 1.5 hrs ready to eat</li>
+        </ul>
+      `
+    },
     day0: {
       title: "Day 0 – morning/night before - feed the starter",
       content: `
@@ -79,8 +89,101 @@ content: "Notes go here</p>"
       title: "Day 2 – bake day",
       content: `
         <ol>
-          <li>Preheat oven 30 mins 260°C (with Dutch oven inside)</li>
+          <li>30 mins before baking, preheat oven to 260°C (with Dutch oven inside)</li>
           <liOnce preheated, remove from fridge</li>
+          <li>Transfer dough to baking paper</li>
+          <li>Brush off excess flour</li>
+          <li>Score the dough</li>
+          <li>Transfer to Dutch oven, lifting using the baking paper</li>
+          <li>Bake for 20 mins with lid on</li>
+          <li>Bake for 15-20 mins with lid off</li>
+          <li>Rest for 1 hour before serving</li>
+        </ol>
+      `
+    },
+  tags: ["bread"]
+  },
+{
+    name: "Blaze’s sourdough bread - SAME DAY",
+    checklist: {
+      title: "Progress tracker",
+      content: `
+        <ul>
+          <li><input type="checkbox"> Preheat oven to 180°C</li>
+          <li><input type="checkbox"> Grease baking pan</li>
+          <li><input type="checkbox"> Mix dry ingredients</li>
+        </ul>
+      `
+    },
+    ingredients: {
+      title: "Ingredients",
+      content: `
+        <ul>
+          <li>430g bakers flour</li>
+          <li>300g water (lukewarm)</li>
+          <li>100g starter</li>
+          <li>10g salt</li>
+        </ul>
+        <p><strong>Starter feed ratio:</strong></p>
+        <ul>
+          <li>50g cold or room temperature water</li>
+          <li>50g bakers flour</li>
+        </ul>
+      `
+    },
+    notes: {
+      title: "Notes",
+      content: `
+        <ul>
+          <li>Notes: 12.5 hrs hours ready to bake, 13.5 hrs ready to eat</li>
+        </ul>
+      `
+    },
+    day0: {
+      title: "Feed the starter",
+      content: `
+        <ul>
+          <li>Out of the fridge: Feed starter for 4 hrs</li>
+          <li>If fed last night, then it's ready to use</li>
+        </ul>
+      `
+    },
+    day1: {
+      title: "Dough & bulk fermentation",
+      content: `
+        <ol>
+          <li>Mix starter with water in a bowl</li>
+          <li>Add flour & salt</li>
+          <li>Combine until rough dough forms</li>
+          <li>Cover & rest for 30 mins</li>
+          <li><strong>Meanwhile:</strong>
+            <ul>
+              <li>Set a timer</li>
+              <li>Starter: if prepping another loaf, leave on bench during the day, and feed before bed, otherwise, maintenance feed immediately (feed ratio: 30g water/30g flour), place in fridge before bed</li>
+            </ul>
+          </li>
+          <li>Stretch & Fold #1 – twice around the bowl.</li>
+          <li>Cover & rest 30 mins</li>
+          <li>Stretch & Fold #2 – once around the bowl (gently).</li>
+          <li>Cover & rest 30 mins</li>
+          <li>Stretch & Fold #3 – once around the bowl (gently)</li>
+            <ul>
+              <li><strong>Optional:</strong> cup & pull into a smooth ball, place back in bowl seam side down</li>
+            </ul>
+          <li>Cover & rest for 3.5 hrs</li>
+          <li>Pre-shape: scoop the dough out of the bowl, place on bench sticky/seam side down, cup & pull into a smooth ball</li>
+          <liCover & Rest for 30 mins</li>
+          <li>Dust basket with rice flour</li>
+          <li>Final shape: form a rectangle, place seam side up in basket</li>
+          <li>Cover & rest for 2 hrs</li>
+        </ol>
+      `
+    },
+    day2: {
+      title: "Ready to bake",
+      content: `
+        <ol>
+          <li>Preheat oven 30 mins 260°C (with Dutch oven inside)</li>
           <li>Transfer dough to baking paper</li>
           <li>Brush off excess flour</li>
           <li>Score the dough</li>
@@ -660,7 +763,6 @@ document.getElementById('decreaseFontBtn').addEventListener('click', () => {
 
 // === Init ===
 applyFilter("all");
-
 
 
 
