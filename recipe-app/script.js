@@ -53,7 +53,7 @@ content: "Notes go here</p>"
           <li>Cover & rest for 30 mins</li>
           <li><strong>Meanwhile:</strong>
             <ul>
-              <li>Set a timer (e.g. 'Sourdough' Apple Shortcut).</li>
+              <li>Set a timer</li>
               <li>Starter: if prepping another loaf, leave on bench during the day, and feed before bed, otherwise, maintenance feed immediately (feed ratio: 30g water/30g flour), place in fridge before bed</li>
             </ul>
           </li>
@@ -660,4 +660,5 @@ document.getElementById('decreaseFontBtn').addEventListener('click', () => {
 
 // === Init ===
 applyFilter("all");
+
 
