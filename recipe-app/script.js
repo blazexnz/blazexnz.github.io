@@ -32,7 +32,7 @@ title: "Notes",
 content: "Notes go here</p>"
 },
     day0: {
-      title: "Day 0 – morning/night before",
+      title: "Day 0 – morning/night before - feed the starter",
       content: `
         <ul>
           <li>Take starter out of fridge</li>
@@ -660,6 +660,7 @@ document.getElementById('decreaseFontBtn').addEventListener('click', () => {
 
 // === Init ===
 applyFilter("all");
+
 
 
 
