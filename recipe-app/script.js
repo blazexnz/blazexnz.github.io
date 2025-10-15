@@ -77,7 +77,7 @@ const itemsData = [
             </ul>
           <li>Cover & rest for 3.5 hrs</li>
           <li>Pre-shape: scoop the dough out of the bowl, place on bench sticky/seam side down, cup & pull into a smooth ball</li>
-          <liCover & rest for 30 mins</li>
+          <li>Cover & rest for 30 mins</li>
           <li>Dust basket with rice flour</li>
           <li>Final shape: form a rectangle, place seam side up in basket</li>
           <li>Cover with Ziploc bag, rest for 1 hour, then place in fridge</li>
@@ -172,7 +172,7 @@ const itemsData = [
             </ul>
           <li>Cover & rest for 3.5 hrs</li>
           <li>Pre-shape: scoop the dough out of the bowl, place on bench sticky/seam side down, cup & pull into a smooth ball</li>
-          <liCover & Rest for 30 mins</li>
+          <li>Cover & rest for 30 mins</li>
           <li>Dust basket with rice flour</li>
           <li>Final shape: form a rectangle, place seam side up in basket</li>
           <li>Cover & rest for 2 hrs</li>
