@@ -143,7 +143,7 @@ const itemsData = [
       title: "Feed the starter",
       content: `
         <ul>
-          <li>Out of the fridge: Feed starter for 4 hrs</li>
+          <li>Out of the fridge: feed starter for 4 hrs</li>
           <li>If fed last night, then it's ready to use</li>
         </ul>
       `
