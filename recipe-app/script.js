@@ -97,7 +97,7 @@ const itemsData = [
           <li>Transfer to Dutch oven, lifting using the baking paper</li>
           <li>Bake for 20 mins with lid on</li>
           <li>Bake for 15-20 mins with lid off</li>
-          <li>Rest for 1 hour before serving</li>
+          <li>Cool for 1 hour before serving</li>
         </ol>
       `
     },
@@ -183,14 +183,14 @@ const itemsData = [
       title: "Ready to bake",
       content: `
         <ol>
-          <li>Preheat oven 30 mins 260°C (with Dutch oven inside)</li>
+          <li>30 mins before baking, preheat oven to 260°C (with Dutch oven inside)</li>
           <li>Transfer dough to baking paper</li>
           <li>Brush off excess flour</li>
           <li>Score the dough</li>
           <li>Transfer to Dutch oven, lifting using the baking paper</li>
           <li>Bake for 20 mins with lid on</li>
           <li>Bake for 15-20 mins with lid off</li>
-          <li>Rest for 1 hour before serving</li>
+          <li>Cool for 1 hour before serving</li>
         </ol>
       `
     },
