@@ -232,7 +232,7 @@ const itemsData = [
   tags: ["bread"]
   },
 {
-    name: "Blaze’s lazy sourdough bread - SAME DAY",
+    name: "Blaze’s (lazy) sourdough bread - SAME DAY",
     checklist: {
       title: "Progress tracker",
       content: `
