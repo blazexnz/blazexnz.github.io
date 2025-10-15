@@ -9,10 +9,22 @@ const itemsData = [
     checklist: {
       title: "Progress tracker",
       content: `
+        <p><strong>Dough & bulk fermentation</strong></p>
         <ul>
-          <li><input type="checkbox"> Preheat oven to 180°C</li>
-          <li><input type="checkbox"> Grease baking pan</li>
-          <li><input type="checkbox"> Mix dry ingredients</li>
+          <li><input type="checkbox">Combine & rest for 30 mins</li>
+          <li><input type="checkbox">Stretch & fold #1 then rest for 30 mins</li>
+          <li><input type="checkbox">Stretch & fold #2 then  rest for 30 mins</li>
+          <li><input type="checkbox">Stretch & fold #3 then  & rest for 3.5 hrs</li>
+          <li><input type="checkbox">Pre-shape then rest on the bench for 30 mins</li>
+          <li><input type="checkbox">Final shape then rest for 1 hr then in the fridge overnight</li>
+        </ul>
+        <p><strong>Ready to bake</strong></p>
+        <ul>
+          <li><input type="checkbox">Preheat oven 260°C</li>
+          <li><input type="checkbox">Score the dough</li>
+          <li><input type="checkbox">Bake 20 mins - lid on</li>
+          <li><input type="checkbox">Bake 15-20 mins - lid off</li>
+          <li><input type="checkbox">Cool for 1 hour</li>
         </ul>
       `
     },
@@ -108,10 +120,23 @@ const itemsData = [
     checklist: {
       title: "Progress tracker",
       content: `
+        <p><strong>Dough & bulk fermentation</strong></p>
         <ul>
-          <li><input type="checkbox"> Preheat oven to 180°C</li>
-          <li><input type="checkbox"> Grease baking pan</li>
-          <li><input type="checkbox"> Mix dry ingredients</li>
+          <li><input type="checkbox">Feed the starter for 4 hrs</li>
+          <li><input type="checkbox">Combine & rest for 30 mins</li>
+          <li><input type="checkbox">Stretch & fold #1 then rest for 30 mins</li>
+          <li><input type="checkbox">Stretch & fold #2 then  rest for 30 mins</li>
+          <li><input type="checkbox">Stretch & fold #3 then  & rest for 3.5 hrs</li>
+          <li><input type="checkbox">Pre-shape then rest on the bench for 30 mins</li>
+          <li><input type="checkbox">Final shape then rest for 2 hrs</li>
+        </ul>
+        <p><strong>Ready to bake</strong></p>
+        <ul>
+          <li><input type="checkbox">Preheat oven 260°C</li>
+          <li><input type="checkbox">Score the dough</li>
+          <li><input type="checkbox">Bake 20 mins - lid on</li>
+          <li><input type="checkbox">Bake 15-20 mins - lid off</li>
+          <li><input type="checkbox">Cool for 1 hour</li>
         </ul>
       `
     },
@@ -135,7 +160,9 @@ const itemsData = [
       title: "Notes",
       content: `
         <ul>
-          <li>Notes: 12.5 hrs hours ready to bake, 13.5 hrs ready to eat</li>
+          <li>12.5 hrs hours ready to bake, 13.5 hrs ready to eat</li>
+          <li>If starter fed yesterday, then 8.5 hrs ready to bake, 9.5 hrs ready to eat</li>
+          <li>The difference between this one and the regular recipe is that this rests for 2 hrs, instead of 1 hr + overnight inthe fridge</li>
         </ul>
       `
     },
