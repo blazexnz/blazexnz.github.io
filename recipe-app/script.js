@@ -239,19 +239,16 @@ const itemsData = [
         <p><strong>Dough & bulk fermentation</strong></p>
         <ul>
           <li><input type="checkbox">Feed the starter for 4 hrs</li>
-          <li><input type="checkbox">Combine & rest for 30 mins</li>
-          <li><input type="checkbox">Stretch & fold #1 then rest for 30 mins</li>
-          <li><input type="checkbox">Stretch & fold #2 then  rest for 30 mins</li>
-          <li><input type="checkbox">Stretch & fold #3 then  & rest for 3.5 hrs</li>
-          <li><input type="checkbox">Pre-shape then rest on the bench for 30 mins</li>
-          <li><input type="checkbox">Final shape then rest for 2 hrs</li>
+          <li><input type="checkbox">Combine & rest for 45 mins</li>
+          <li><input type="checkbox">Stretch & fold then rest for 4 hrs</li>
+          <li><input type="checkbox">Shape then rest for 1-2 hrs</li>
         </ul>
         <p><strong>Ready to bake</strong></p>
         <ul>
           <li><input type="checkbox">30 mins before baking, preheat oven 260°C</li>
           <li><input type="checkbox">Score the dough</li>
           <li><input type="checkbox">Bake 20 mins - lid on</li>
-          <li><input type="checkbox">Bake 15-20 mins - lid off</li>
+          <li><input type="checkbox">Bake 20 mins - lid off</li>
           <li><input type="checkbox">Cool for 1 hour</li>
         </ul>
       `
@@ -298,7 +295,7 @@ const itemsData = [
           <li>Add flour & salt</li>
           <li>Combine until rough dough forms</li>
           <li>Cover & rest for 45 mins</li>
-          <li>Stretch & fold #1 - twice around the bowl</li>
+          <li>Stretch & fold - twice around the bowl</li>
           <li>Cover & rest for 4 hrs</li>
           <li>Dust basket with rice flour</li>
           <li>Shape: form a rectangle, place seam side up in basket</li>
