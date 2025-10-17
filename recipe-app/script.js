@@ -13,8 +13,8 @@ const itemsData = [
         <ul>
           <li><input type="checkbox">Combine & rest for 30 mins</li>
           <li><input type="checkbox">Stretch & fold #1 then rest for 30 mins</li>
-          <li><input type="checkbox">Stretch & fold #2 then  rest for 30 mins</li>
-          <li><input type="checkbox">Stretch & fold #3 then  & rest for 3.5 hrs</li>
+          <li><input type="checkbox">Stretch & fold #2 then rest for 30 mins</li>
+          <li><input type="checkbox">Stretch & fold #3 then & rest for 3.5 hrs</li>
           <li><input type="checkbox">Pre-shape then rest on the bench for 30 mins</li>
           <li><input type="checkbox">Final shape then rest for 1 hr then in the fridge overnight</li>
         </ul>
@@ -129,8 +129,8 @@ const itemsData = [
           <li><input type="checkbox">Feed the starter for 4 hrs</li>
           <li><input type="checkbox">Combine & rest for 30 mins</li>
           <li><input type="checkbox">Stretch & fold #1 then rest for 30 mins</li>
-          <li><input type="checkbox">Stretch & fold #2 then  rest for 30 mins</li>
-          <li><input type="checkbox">Stretch & fold #3 then  & rest for 3.5 hrs</li>
+          <li><input type="checkbox">Stretch & fold #2 then rest for 30 mins</li>
+          <li><input type="checkbox">Stretch & fold #3 then & rest for 3.5 hrs</li>
           <li><input type="checkbox">Pre-shape then rest on the bench for 30 mins</li>
           <li><input type="checkbox">Final shape then rest for 2 hrs</li>
         </ul>
