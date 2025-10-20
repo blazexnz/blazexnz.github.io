@@ -638,7 +638,7 @@ const itemsData = [
   }
 },
 {
-  name: "Tong-its",
+  name: "Tongits",
   objective: { 
     title: "Objective", 
     content: "<p>Be the last player with cards or have the lowest points when the game ends</p>" 
@@ -676,7 +676,7 @@ const itemsData = [
         <li>Players may draw from the stock or take the top card from the discard pile</li>
         <li>Players aim to form sets or runs in their hand</li>
         <li>Players may also lay down combinations to reduce their hand points</li>
-        <li>A player may call “Tong-its” if they have no more cards or cannot improve their hand to force an end</li>
+        <li>A player may call “Tongits” if they have no more cards or cannot improve their hand to force an end</li>
         <li>If the draw pile runs out, the game ends and points are counted</li>
       </ul>
     `
@@ -685,7 +685,7 @@ const itemsData = [
     title: "Winning",
     content: `
       <ul>
-        <li>The player who calls Tong-its with no remaining cards wins automatically</li>
+        <li>The player who calls Tongits with no remaining cards wins automatically</li>
         <li>If the game ends by exhausting the draw pile, the player with the lowest total points in hand wins</li>
         <li>Points are counted by face value: numbered cards are worth their number, face cards are worth 10, Ace is 1</li>
       </ul>
@@ -703,11 +703,7 @@ const itemsData = [
   },
   players: { title: "Players", content: "3 (commonly)" },
   deck: { title: "Deck", content: "Standard 52-card deck" },
-  tags: ["games", "multi player"],
-  reference: { 
-    title: "Reference", 
-    content: '<a href="https://en.wikipedia.org/wiki/Tong-its" target="_blank">Tong-its - Wikipedia</a>' 
-  }
+  tags: ["games", "multi player"]
 }
 ];
 
