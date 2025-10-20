@@ -28,7 +28,7 @@ const itemsData = [
       `
     },
     players: { title: "Players", content: "1" },
-    deck: { title: "Deck", content: "Single deck" },
+    deck: { title: "Deck", content: "Single standard 52-card deck" },
     tags: ["games", "single player"]
   },
   {
@@ -66,7 +66,7 @@ const itemsData = [
       `
     },
     players: { title: "Players", content: "1" },
-    deck: { title: "Deck", content: "Single deck" },
+    deck: { title: "Deck", content: "Single standard 52-card deck" },
     tags: ["games", "single player"]
   },
   {
@@ -94,7 +94,7 @@ const itemsData = [
       `
     },
     players: { title: "Players", content: "1" },
-    deck: { title: "Deck", content: "Single deck" },
+    deck: { title: "Deck", content: "Single standard 52-card deck" },
     reference: {
       title: "Reference",
       content: `
@@ -140,7 +140,7 @@ const itemsData = [
     },
     reference: { title: "Reference", content: '<a href="https://www.youtube.com/watch?v=jayssGEYyq4" target="_blank">How To Play One Handed Solitaire</a>' },
     players: { title: "Players", content: "1" },
-    deck: { title: "Deck", content: "Single deck" },
+    deck: { title: "Deck", content: "Single standard 52-card deck" },
     tags: ["games", "single player"]
   },
   {
@@ -201,7 +201,7 @@ const itemsData = [
     },
     reference: { title: "Reference", content: '<a href="https://bicyclecards.com/how-to-play/red-or-black" target="_blank">Red or Black</a>' },
     players: { title: "Players", content: "2, 3, 4, 5+" },
-    deck: { title: "Deck", content: "Single deck" },
+    deck: { title: "Deck", content: "Single standard 52-card deck" },
     tags: ["games", "betting"]
   },
   {
@@ -230,7 +230,7 @@ const itemsData = [
     },
     reference: { title: "Reference", content: '<a href="https://bicyclecards.com/how-to-play/play-or-pay" target="_blank">Play or Pay</a>' },
     players: { title: "Players", content: "3, 4, 5+" },
-    deck: { title: "Deck", content: "Single deck" },
+    deck: { title: "Deck", content: "Single standard 52-card deck" },
     tags: ["games", "betting"]
   },
   {
@@ -262,7 +262,7 @@ const itemsData = [
     },
     reference: { title: "Reference", content: '<a href="https://bicyclecards.com/how-to-play/red-dog" target="_blank">Red Dog</a>' },
     players: { title: "Players", content: "2, 3, 4, 5+" },
-    deck: { title: "Deck", content: "Single deck" },
+    deck: { title: "Deck", content: "Single standard 52-card deck" },
     tags: ["games", "betting"]
   },
   {
@@ -310,7 +310,7 @@ const itemsData = [
       `
     },
     players: { title: "Players", content: "2, 3, 4, 5+" },
-    deck: { title: "Deck", content: "Single deck" },
+    deck: { title: "Deck", content: "Single standard 52-card deck" },
     tags: ["games", "betting"]
   },
   {
@@ -393,7 +393,248 @@ const itemsData = [
     notes: { title: "Notes", content: "<p>When cutting a 4, 6, or 8 deck shoe, roll the deck on its side, place it against the shoe, have the player cut between the first and last deck, then return the top portion to the bottom so the cut card is on the bottom. Place a second cut card 1–1.5 decks from the bottom to indicate when to start the next shuffle.</p>" },
     reference: { title: "Reference", content: '<a href="https://www.youtube.com/watch?v=kmM3CjMPuz8" target="_blank">Blackjack Dealer Training: From Beginner to Pro in One Masterclass</a>' },
     tags: ["shuffles"]
+  },
+{
+  name: "Presidents (Scum)",
+  objective: { 
+    title: "Objective", 
+    content: "<p>Be the first to get rid of all your cards to become President, while avoiding being the last player out (scum/asshole).</p>" 
+  },
+  setup: {
+    title: "The Deal",
+    content: `
+      <ul>
+        <li>Starting to the dealer's left, deal one card at a time until all cards are dealt.</li>
+      </ul>
+    `
+  },
+  method: {
+    title: "The Play",
+    content: `
+      <ul>
+        <li>The player to the dealer's left starts by playing any single card or set of equal cards (e.g., three fives).</li>
+        <li>Each player in turn must either pass or play a higher card/set of equal size to beat the previous play.</li>
+        <li>Passing is always allowed and does not prevent playing in later turns.</li>
+        <li>The play continues until all other players pass. The last player to play starts the next round.</li>
+        <li>The first player to run out of cards becomes President, and the last player remaining is the Scum.</li>
+      </ul>
+    `
+  },
+  reference: { 
+    title: "Reference", 
+    content: '<a href="https://bicyclecards.com/how-to-play/presidents" target="_blank">Presidents</a>' 
+  },
+  players: { 
+    title: "Players", 
+    content: "4 to 7 players (best with 5+)" 
+  },
+  deck: { 
+    title: "Deck", 
+    content: "Single standard 52-card deck" 
+  },
+  tags: ["games"]
+},
+{
+  name: "Jim Rummy",
+  objective: { 
+    title: "Objective", 
+    content: "<p>Be the first to lay down all your cards by forming sets (three or four of a kind) or runs (three or more consecutive cards of the same suit).</p>" 
+  },
+  setup: {
+    title: "The Deal",
+    content: `
+      <ul>
+        <li>Shuffle and deal a set number of cards to each player (commonly 7 to 10 cards, depending on number of players).</li>
+        <li>Place the remaining deck face down as the stockpile. Turn the top card face up to start the discard pile.</li>
+      </ul>
+    `
+  },
+  method: {
+    title: "The Play",
+    content: `
+      <ul>
+        <li>On their turn, a player draws one card from either the stockpile or discard pile.</li>
+        <li>Players may then lay down valid sets (three or four cards of the same rank) or runs (three or more consecutive cards of the same suit).</li>
+        <li>Players may also add cards to existing sets or runs on the table.</li>
+        <li>At the end of the turn, the player discards one card onto the discard pile.</li>
+        <li>The round ends when a player has no cards left in hand, and scoring may occur based on remaining cards in opponents' hands.</li>
+      </ul>
+    `
+  },
+    notes: { title: "Notes", content: "<p>Jokers may be included as wild cards depending on house rules.</p>" },
+  reference: { 
+    title: "Reference", 
+    content: '<a href="https://www.pagat.com/rummy/rummy.html" target="_blank">Jim Rummy Rules</a>' 
+  },
+  players: { 
+    title: "Players", 
+    content: "2 to 6 players" 
+  },
+  deck: { 
+    title: "Deck", 
+    content: "Single standard 52-card deck (Jokers optional)" 
+  },
+  tags: ["games"]
+},
+{
+  name: "Cắt tê (Catte)",
+  objective: { 
+    title: "Objective", 
+    content: "<p>Be the last remaining player by winning at least one trick in each round and ultimately win the final trick.</p>" 
+  },
+  setup: {
+    title: "Setup & Deal",
+    content: `
+      <ul>
+        <li>Each player antes the agreed amount into the pot (optional betting rule)</li>
+        <li>Deal 6 cards to each player, one at a time</li>
+        <li>The player with the highest Spade begins the first trick (or dealer’s left in casual play)</li>
+      </ul>
+    `
+  },
+  cardRanking: {
+    title: "Card Ranking",
+    content: `
+      <ul>
+        <li>Card ranks (low to high):</li>
+          <ul>
+            <li>2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q, K, A</li>
+          </ul>
+        <li>Suit priority (low to high):</li>
+          <ul>
+            <li> ♣ Clubs, ♦ Diamonds, ♥ Hearts, ♠ Spades</li>
+          </ul>
+        <li>When cards of the same rank are played, the suit determines the winner</li>
+      </ul>
+    `
+  },
+  method: {
+    title: "Gameplay",
+    content: `
+      <ul>
+        <li>The first player leads with any card</li>
+        <li>Play proceeds clockwise</li>
+        <li>Players must follow the same suit if they can</li>
+        <li>If a player cannot follow suit, they may play any card but cannot win the trick</li>
+        <li>The highest card of the leading suit wins the trick</li>
+        <li>The winner of the trick leads the next round</li>
+      </ul>
+    `
+  },
+  elimination: {
+    title: "Elimination Rules",
+    content: `
+      <ul>
+        <li>If a player fails to win any tricks during the first four rounds, they are eliminated from the game</li>
+        <li>Only players who have won a trick continue into the final rounds</li>
+      </ul>
+    `
+  },
+  finalRound: {
+    title: "Final Round",
+    content: `
+      <ul>
+        <li>Once only two or fewer players remain, they continue playing tricks</li>
+        <li>The winner of the final trick wins the game and the pot</li>
+      </ul>
+    `
+  },
+  scoring: {
+    title: "Scoring & Betting (Optional)",
+    content: `
+      <ul>
+        <li>The final winner takes the pot</li>
+        <li>In some variations, eliminated players must pay additional chips or penalties based on the number of tricks lost</li>
+      </ul>
+    `
+  },
+  players: { title: "Players", content: "2–6 (best with 4–6)" },
+  deck: { title: "Deck", content: "Standard 52-card deck" },
+  tags: ["games", "betting"]
+},
+{
+  name: "Tiến lên (Thirteen)",
+  objective: { 
+    title: "Objective", 
+    content: "<p>Be the first player to get rid of all your cards.</p>" 
+  },
+  setup: {
+    title: "Setup & Deal",
+    content: `
+      <ul>
+        <li>Deal all cards evenly amoung players</li>
+        <li>Random dealer for the first hand, subsequent hands, the loser deals</li>
+        <li>The player with the lowest card begins, usually 3♠</li>
+      </ul>
+    `
+  },
+  cardRanking: {
+    title: "Card Ranking",
+    content: `
+      <ul>
+        <li>Card ranks (low to high):</li>
+          <ul>
+            <li> 3, 4, 5, 6, 7, 8, 9, 10, J, Q, K, A, 2</li>
+          </ul>
+        <li>Suit priority (low to high):</li>
+          <ul>
+            <li>♠ Spades, ♣ Clubs, ♦ Diamonds, ♥ Hearts</li>
+          </ul>
+        <li>2 is the highest card</li>
+        <li>Valid cards or combinations:</li>
+          <ul>
+            <li><strong>Single</strong> – a single card</li>
+            <li><strong>Pair</strong> – two cards of the same rank, like 4♠ 4♥</li>             <li><strong>Triple</strong> – three cards of the same rank, like 9♦ 9♣ 9♠</li>             <li><strong>Straight</strong> – a sequence of 3 or more cards, regardless of suit, like 9♣ 10♦ J♣</li>
+            <li><strong>Consecutive pairs</strong> – a sequence of 3 or more pairs, like 5♣ 5♠ 6♥ 6♦ 7♣ 7♦</li>
+            <li><strong>Four-of-a-kind (Tứ quý)</strong> – four cards of the same rank, like A♥ A♦ A♣ A♠</li>
+          </ul>
+      </ul>
+    `
+  },
+  method: {
+    title: "Gameplay",
+    content: `
+      <ul>
+        <li>The player with the 3♠ (or chosen first player) leads the first turn</li>
+        <li>Play proceeds clockwise</li>
+        <li>Players can play:</li>
+          <ul>
+            <li>A single card higher than the previous single</li>
+            <li>A pair higher than the previous pair</li>
+            <li>Triple or higher combinations according to rules</li>
+          </ul>
+        <li>If a player cannot or does not want to beat the current combination, they pass</li>
+        <li>The last player to play a combination wins the trick and leads the next turn</li>
+      </ul>
+    `
+  },
+  winning: {
+    title: "Winning",
+    content: `
+      <ul>
+        <li>The first player to play all their cards wins</li>
+        <li>Other players continue to determine 2nd, 3rd, etc. places</li>
+      </ul>
+    `
+  },
+  optionalRules: {
+    title: "Optional / Regional Variations",
+    content: `
+      <ul>
+        <li>“Bombs”: Four-of-a-kind or consecutive pairs can beat any other combination</li>
+        <li>Special scoring or penalties for players left with high cards like 2s or multiple cards</li>
+        <li>Some variants restrict the first move to the 3♣ only</li>
+      </ul>
+    `
+  },
+  players: { title: "Players", content: "2–4 (commonly 4)" },
+  deck: { title: "Deck", content: "Standard 52-card deck" },
+  tags: ["games"],
+  reference: { 
+    title: "Reference", 
+    content: '<a href="https://en.wikipedia.org/wiki/Ti%E1%BA%BFn_l%C3%AAn" target="_blank">Tiến lên - Wikipedia</a>' 
   }
+}
 ];
 
 // Apply filter based on tags
