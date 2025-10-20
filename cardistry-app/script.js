@@ -177,7 +177,7 @@ const itemsData = [
         </ul>
       `
     },
-    tags: ["games", "betting"]
+    tags: ["games", "multi-player", "betting"]
   },
   {
     name: "Red or Black",
@@ -203,7 +203,7 @@ const itemsData = [
     reference: { title: "Reference", content: '<a href="https://bicyclecards.com/how-to-play/red-or-black" target="_blank">Red or Black</a>' },
     players: { title: "Players", content: "2, 3, 4, 5+" },
     deck: { title: "Deck", content: "Single standard 52-card deck" },
-    tags: ["games", "betting"]
+    tags: ["games",  "multi-player", "betting"]
   },
   {
     name: "Play or Pay",
@@ -233,7 +233,7 @@ const itemsData = [
     reference: { title: "Reference", content: '<a href="https://bicyclecards.com/how-to-play/play-or-pay" target="_blank">Play or Pay</a>' },
     players: { title: "Players", content: "3, 4, 5+" },
     deck: { title: "Deck", content: "Single standard 52-card deck" },
-    tags: ["games", "betting"]
+    tags: ["games",  "multi-player", "betting"]
   },
   {
     name: "Red Dog",
@@ -265,7 +265,7 @@ const itemsData = [
     reference: { title: "Reference", content: '<a href="https://bicyclecards.com/how-to-play/red-dog" target="_blank">Red Dog</a>' },
     players: { title: "Players", content: "2, 3, 4, 5+" },
     deck: { title: "Deck", content: "Single standard 52-card deck" },
-    tags: ["games", "betting"]
+    tags: ["games",  "multi-player", "betting"]
   },
   {
     name: "Guts",
@@ -313,7 +313,7 @@ const itemsData = [
     },
     players: { title: "Players", content: "2, 3, 4, 5+" },
     deck: { title: "Deck", content: "Single standard 52-card deck" },
-    tags: ["games", "betting"]
+    tags: ["games",  "multi-player", "betting"]
   },
   {
     name: "Single Deck Shuffle - Lite Version",
@@ -434,7 +434,7 @@ const itemsData = [
     title: "Deck", 
     content: "Single standard 52-card deck" 
   },
-  tags: ["games"]
+  tags: ["games", "multi-player"]
 },
 {
   name: "Jim Rummy",
@@ -476,7 +476,7 @@ const itemsData = [
     title: "Deck", 
     content: "Single standard 52-card deck (Jokers optional)" 
   },
-  tags: ["games"]
+  tags: ["games", "multi-player"]
 },
 {
   name: "Cắt tê (Catte)",
@@ -552,7 +552,7 @@ const itemsData = [
   },
   players: { title: "Players", content: "2–6 (best with 4–6)" },
   deck: { title: "Deck", content: "Standard 52-card deck" },
-  tags: ["games", "betting"]
+  tags: ["games", "multi-player", "betting"]
 },
 {
   name: "Tiến lên (Thirteen)",
@@ -631,7 +631,7 @@ const itemsData = [
   },
   players: { title: "Players", content: "2–4 (commonly 4)" },
   deck: { title: "Deck", content: "Standard 52-card deck" },
-  tags: ["games"],
+  tags: ["games", "multi-player"],
   reference: { 
     title: "Reference", 
     content: '<a href="https://en.wikipedia.org/wiki/Ti%E1%BA%BFn_l%C3%AAn" target="_blank">Tiến lên - Wikipedia</a>' 
