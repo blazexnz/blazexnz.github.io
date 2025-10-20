@@ -427,10 +427,10 @@
       "title": "Kumain sa Labas (Eating Out)",
       "theme": "Food",
       "sentences": [
-        { "tl": "Pumunta ako sa restaurant.", "en": "I go to a restaurant." },
-        { "tl": "Uminom ako at umorder ng pagkain.", "en": "I order food." },
-        { "tl": "Kumain ako ng kanin kasama ang kaibigan.", "en": "I eat rice with friends." },
-        { "tl": "Nagbayad ako at umalis.", "en": "I pay and leave." }
+        { "tl": "Pumunta ako sa restaurant.", "en": "I went to a restaurant." },
+        { "tl": "Uminom ako at umorder ng pagkain.", "en": "I drank and ordered food." },
+        { "tl": "Kumain ako ng kanin kasama ang kaibigan.", "en": "I ate rice with a friend." },
+        { "tl": "Nagbayad ako at umalis.", "en": "I paid and left." }
       ],
       "focusWords": "ako, pumunta, order, kain. New words in context: restaurant (restaurant), pagkain (dish)."
     },
