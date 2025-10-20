@@ -37,9 +37,10 @@ const itemsData = [
       title: "Setup",
       content: `
         <ul>
-          <li>Deal a column of 4 cards face up, leaving the centre column blank for the foundations.</li>
-          <li>Deal another 4 cards face up on the right. The entire deck is dealt, leaving rows containing 7 cards on the left and 6 on the right.</li>
-          <li>The four aces form the foundations.</li>
+          <li>Deal a column of 4 cards face up, leaving the centre column blank for the foundations</li>
+          <li>Deal another 4 cards face up on the right</li>
+          <li>The entire deck is dealt, leaving rows containing 7 cards on the left and 6 on the right</li>
+          <li>The four aces form the foundations</li>
         </ul>
       `
     },
@@ -47,7 +48,7 @@ const itemsData = [
       title: "The Play",
       content: `
         <ul>
-          <li>The aces form the foundations. Cards placed on the aces must be of the same suit</li>
+          <li>The aces form the foundations and cards placed on the aces must be of the same suit</li>
           <li>Cards can be placed on the rows, must be in descending order</li>
           <li>More than one card can be moved but must be in descending order</li>
           <li>Suits and colours do not matter on the rows</li>
@@ -211,7 +212,8 @@ const itemsData = [
       title: "The Deal",
       content: `
         <ul>
-          <li>Deal the cards one at a time, face down. All cards are dealt; some players will receive fewer cards.</li>
+          <li>Deal the cards one at a time, face down
+          <li>All cards are dealt; some players will receive fewer cards</li>
           <li>Each player with fewer cards ante one additional chip</li>
         </ul>
       `
@@ -398,7 +400,7 @@ const itemsData = [
   name: "Presidents (Scum)",
   objective: { 
     title: "Objective", 
-    content: "<p>Be the first to get rid of all your cards to become President, while avoiding being the last player out (scum/asshole).</p>" 
+    content: "<p>Be the first to get rid of all your cards to become President, while avoiding being the last player out (scum/asshole)</p>" 
   },
   setup: {
     title: "The Deal",
@@ -412,11 +414,11 @@ const itemsData = [
     title: "The Play",
     content: `
       <ul>
-        <li>The player to the dealer's left starts by playing any single card or set of equal cards (e.g., three fives).</li>
-        <li>Each player in turn must either pass or play a higher card/set of equal size to beat the previous play.</li>
-        <li>Passing is always allowed and does not prevent playing in later turns.</li>
-        <li>The play continues until all other players pass. The last player to play starts the next round.</li>
-        <li>The first player to run out of cards becomes President, and the last player remaining is the Scum.</li>
+        <li>The player to the dealer's left starts by playing any single card or set of equal cards (e.g., three fives)</li>
+        <li>Each player in turn must either pass or play a higher card/set of equal size to beat the previous play</li>
+        <li>Passing is always allowed and does not prevent playing in later turns</li>
+        <li>The play continues until all other players pass. The last player to play starts the next round</li>
+        <li>The first player to run out of cards becomes President, and the last player remaining is the Scum</li>
       </ul>
     `
   },
@@ -438,14 +440,14 @@ const itemsData = [
   name: "Jim Rummy",
   objective: { 
     title: "Objective", 
-    content: "<p>Be the first to lay down all your cards by forming sets (three or four of a kind) or runs (three or more consecutive cards of the same suit).</p>" 
+    content: "<p>Be the first to lay down all your cards by forming sets (three or four of a kind) or runs (three or more consecutive cards of the same suit)</p>" 
   },
   setup: {
     title: "The Deal",
     content: `
       <ul>
-        <li>Shuffle and deal a set number of cards to each player (commonly 7 to 10 cards, depending on number of players).</li>
-        <li>Place the remaining deck face down as the stockpile. Turn the top card face up to start the discard pile.</li>
+        <li>Shuffle and deal a set number of cards to each player (commonly 7 to 10 cards, depending on number of players)</li>
+        <li>Place the remaining deck face down as the stockpile and turn the top card face up to start the discard pile</li>
       </ul>
     `
   },
@@ -453,11 +455,11 @@ const itemsData = [
     title: "The Play",
     content: `
       <ul>
-        <li>On their turn, a player draws one card from either the stockpile or discard pile.</li>
-        <li>Players may then lay down valid sets (three or four cards of the same rank) or runs (three or more consecutive cards of the same suit).</li>
-        <li>Players may also add cards to existing sets or runs on the table.</li>
-        <li>At the end of the turn, the player discards one card onto the discard pile.</li>
-        <li>The round ends when a player has no cards left in hand, and scoring may occur based on remaining cards in opponents' hands.</li>
+        <li>On their turn, a player draws one card from either the stockpile or discard pile</li>
+        <li>Players may then lay down valid sets (three or four cards of the same rank) or runs (three or more consecutive cards of the same suit)</li>
+        <li>Players may also add cards to existing sets or runs on the table</li>
+        <li>At the end of the turn, the player discards one card onto the discard pile</li>
+        <li>The round ends when a player has no cards left in hand, and scoring may occur based on remaining cards in opponents' hands</li>
       </ul>
     `
   },
@@ -480,7 +482,7 @@ const itemsData = [
   name: "Cắt tê (Catte)",
   objective: { 
     title: "Objective", 
-    content: "<p>Be the last remaining player by winning at least one trick in each round and ultimately win the final trick.</p>" 
+    content: "<p>Be the last remaining player by winning at least one trick in each round and ultimately win the final trick</p>" 
   },
   setup: {
     title: "Setup & Deal",
@@ -556,7 +558,7 @@ const itemsData = [
   name: "Tiến lên (Thirteen)",
   objective: { 
     title: "Objective", 
-    content: "<p>Be the first player to get rid of all your cards.</p>" 
+    content: "<p>Be the first player to get rid of all your cards</p>" 
   },
   setup: {
     title: "Setup & Deal",
@@ -623,7 +625,7 @@ const itemsData = [
       <ul>
         <li>“Bombs”: Four-of-a-kind or consecutive pairs can beat any other combination</li>
         <li>Special scoring or penalties for players left with high cards like 2s or multiple cards</li>
-        <li>Some variants restrict the first move to the 3♣ only</li>
+        <li>Some variants restrict the first move to the 3♠ only</li>
       </ul>
     `
   },
