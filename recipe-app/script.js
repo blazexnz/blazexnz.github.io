@@ -597,7 +597,7 @@ const itemsData = [
     title: "Notes",
     content: `
       <ul>
-        <li>2-3 hours ready to bake, 2 hr 15 mins ready to eat</li>
+        <li>2-3 hours ready to bake, 4 hr 15 mins ready to eat</li>
         <li>8g is 1 packet Edmonds Instant Dry Yeast</li>
       </ul>
     `
