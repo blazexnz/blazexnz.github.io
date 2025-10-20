@@ -437,7 +437,7 @@ const itemsData = [
   tags: ["games", "multi player"]
 },
 {
-  name: "Jim Rummy",
+  name: "Gin Rummy",
   objective: { 
     title: "Objective", 
     content: "<p>Be the first to lay down all your cards by forming sets (three or four of a kind) or runs (three or more consecutive cards of the same suit)</p>" 
@@ -463,10 +463,10 @@ const itemsData = [
       </ul>
     `
   },
-    notes: { title: "Notes", content: "<p>Jokers may be included as wild cards depending on house rules.</p>" },
+    notes: { title: "Notes", content: "<p>Jokers may be included as wild cards</p>" },
   reference: { 
     title: "Reference", 
-    content: '<a href="https://www.pagat.com/rummy/rummy.html" target="_blank">Jim Rummy Rules</a>' 
+    content: '<a href="https://bicyclecards.com/how-to-play/gin-rummy" target="_blank">Gin Rummy Rules</a>' 
   },
   players: { 
     title: "Players", 
@@ -635,6 +635,78 @@ const itemsData = [
   reference: { 
     title: "Reference", 
     content: '<a href="https://en.wikipedia.org/wiki/Ti%E1%BA%BFn_l%C3%AAn" target="_blank">Tiến lên - Wikipedia</a>' 
+  }
+},
+{
+  name: "Tong-its",
+  objective: { 
+    title: "Objective", 
+    content: "<p>Be the last player with cards or have the lowest points when the game ends</p>" 
+  },
+  setup: {
+    title: "Setup & Deal",
+    content: `
+      <ul>
+        <li>3 players use a standard 52-card deck</li>
+        <li>Deal 12 cards to each player</li>
+        <li>The remaining deck is placed face down as the draw pile</li>
+        <li>Randomly choose the first dealer; the dealer shuffles and deals clockwise</li>
+      </ul>
+    `
+  },
+  cardRanking: {
+    title: "Card Ranking",
+    content: `
+      <ul>
+        <li>Cards rank from 2 (lowest) to Ace (highest)</li>
+        <li>Suit has no effect on ranking</li>
+        <li>Valid combinations:</li>
+          <ul>
+            <li><strong>Set/Triplet</strong> – three or four cards of the same rank, e.g., 7♠ 7♦ 7♣</li>
+            <li><strong>Run/Sequence</strong> – three or more consecutive cards of the same suit, e.g., 5♠ 6♠ 7♠</li>
+            <li>Individual cards not in a set or run are considered single cards</li>
+          </ul>
+      </ul>
+    `
+  },
+  method: {
+    title: "Gameplay",
+    content: `
+      <ul>
+        <li>Players may draw from the stock or take the top card from the discard pile</li>
+        <li>Players aim to form sets or runs in their hand</li>
+        <li>Players may also lay down combinations to reduce their hand points</li>
+        <li>A player may call “Tong-its” if they have no more cards or cannot improve their hand to force an end</li>
+        <li>If the draw pile runs out, the game ends and points are counted</li>
+      </ul>
+    `
+  },
+  winning: {
+    title: "Winning",
+    content: `
+      <ul>
+        <li>The player who calls Tong-its with no remaining cards wins automatically</li>
+        <li>If the game ends by exhausting the draw pile, the player with the lowest total points in hand wins</li>
+        <li>Points are counted by face value: numbered cards are worth their number, face cards are worth 10, Ace is 1</li>
+      </ul>
+    `
+  },
+  optionalRules: {
+    title: "Optional / Regional Variations",
+    content: `
+      <ul>
+        <li>Some variants allow a player to discard a single card if it doesn’t form part of a set or run</li>
+        <li>Players may agree on a scoring system for multiple rounds</li>
+        <li>Some variations allow three-of-a-kind to beat a run in special situations</li>
+      </ul>
+    `
+  },
+  players: { title: "Players", content: "3 (commonly)" },
+  deck: { title: "Deck", content: "Standard 52-card deck" },
+  tags: ["games", "multi player"],
+  reference: { 
+    title: "Reference", 
+    content: '<a href="https://en.wikipedia.org/wiki/Tong-its" target="_blank">Tong-its - Wikipedia</a>' 
   }
 }
 ];
