@@ -10,7 +10,7 @@ const itemsData = [
       title: "Setup",
       content: `
         <ul>
-          <li>Tableau - deal seven piles, left to right, starting with the one card in the first column face up</li>
+          <li>Tableau - deal seven piles, left to right, face up, starting with the one card in the first column</li>
           <li>Foundations - the aces form the foundation piles - hearts, diamonds, spades, clubs ♥ ♦ ♠ ♣</li>
           <li>Draw pile - remaining cards after deal, you can go through this pile as many times as you like, drawing 1 or 3 cards, do not shuffle</li>
           <li>Waste pile - laid face up in the stock pile, do not shuffle</li>
