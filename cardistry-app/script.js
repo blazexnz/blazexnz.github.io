@@ -71,42 +71,42 @@ const itemsData = [
     tags: ["games", "single player"]
   },
   {
-    name: "Accordion",
-    setup: {
-      title: "Setup",
-      content: `
-        <ul>
-          <li><strong>Compact:</strong> 6 columns dealt left to right, face up (then keep dealing cards to the right)</li>
-          <li><strong>Standard:</strong> deal 52 cards in a straight line</li>
-        </ul>
-      `
-    },
-    tdr: { title: "tl;dr", content: "Stack left 1 or 3 steps, matching rank or suit" },
-    method: {
-      title: "The Play",
-      content: `
-        <ul>
-          <li>Objective is to stack all cards to a single pile to the left (like an accordion)</li>
-          <li>Look 1 step to the left, and 3 steps to the left</li>
-          <li>Stack them if they are matching rank, or matching suit</li>
-          <li>You can move any cards as long as it's legal</li>
-          <li>All cards shift left as you move cards</li>
-        </ul>
-      `
-    },
-    players: { title: "Players", content: "1" },
-    deck: { title: "Deck", content: "Single standard 52-card deck" },
-    reference: {
-      title: "Reference",
-      content: `
-        <ul>
-          <li><a href="https://www.youtube.com/watch?v=9mMP_3e5LaE" target="_blank">Solitaire: Accordion Tutorial</a></li>
-          <li><a href="https://www.youtube.com/watch?v=pXvfi8mf4YE" target="_blank">🪗 How to play Accordion - a Solitaire Tutorial! 🪗</a></li>
-        </ul>
-      `
-    },
-    tags: ["games", "single player"]
+  name: "Accordion",
+  setup: {
+    title: "Setup",
+    content: `
+      <ul>
+        <li><strong>Compact:</strong> Start with 6 piles dealt left to right, face up, then continue dealing cards to the right as gameplay progresses</li>
+        <li><strong>Standard:</strong> Deal all 52 cards in a single row, left to right</li>
+      </ul>
+    `
   },
+  tdr: { title: "tl;dr", content: "Stack piles to the left (1 or 3 spaces) if the top cards match in rank or suit" },
+  method: {
+    title: "The Play",
+    content: `
+      <ul>
+        <li>Objective: compress all piles into one by stacking cards to the left</li>
+        <li>You may move a pile onto the pile 1 space to the left, or 3 spaces to the left</li>
+        <li>Moves are legal if the top cards match in <strong>rank</strong> or <strong>suit</strong></li>
+        <li>When you move a pile, all piles to the right shift left to close the gap</li>
+        <li>You can move any pile at any time, as long as the move is legal</li>
+        <li>Piles stack as a unit – once cards are stacked, they move together</li>
+      </ul>
+    `
+  },
+  players: { title: "Players", content: "1" },
+  deck: { title: "Deck", content: "Standard 52-card deck" },
+  reference: {
+    title: "Reference",
+    content: `
+      <ul>
+        <li><a href="https://www.youtube.com/watch?v=9mMP_3e5LaE" target="_blank">Solitaire: Accordion Tutorial</a></li>
+        <li><a href="https://www.youtube.com/watch?v=pXvfi8mf4YE" target="_blank">🪗 How to play Accordion - a Solitaire Tutorial! 🪗</a></li>
+      </ul>
+    `
+  }
+},
   {
     name: "One Handed Solitaire",
     setup: { title: "Setup", content: "Hold the deck in your hand face down" },
