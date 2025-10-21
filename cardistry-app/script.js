@@ -76,7 +76,7 @@ const itemsData = [
       title: "Setup",
       content: `
         <ul>
-          <li><strong>Compact:</strong> 6 columns dealt left to right (then keep dealing cards to the right)</li>
+          <li><strong>Compact:</strong> 6 columns dealt left to right, face up (then keep dealing cards to the right)</li>
           <li><strong>Standard:</strong> deal 52 cards in a straight line</li>
         </ul>
       `
