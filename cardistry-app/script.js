@@ -17,6 +17,7 @@ const itemsData = [
         </ul>
       `
     },
+    tldr: { title: "tl;dr", content: "7 piles, face up, alternating colours" },
     method: {
       title: "The Play",
       content: `
@@ -81,7 +82,7 @@ const itemsData = [
         </ul>
       `
     },
-    tdr: { title: "tl;dr", content: "Stack piles to the left (1 or 3 spaces) if the top cards match in rank or suit" },
+    tldr: { title: "tl;dr", content: "Stack piles to the left (1 or 3 spaces) if the top cards match in rank or suit" },
     objective: { title: "Objective", content: "Stack all cards to a single pile to the left (like an accordion)" },
     method: {
       title: "The Play",
