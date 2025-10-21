@@ -71,42 +71,43 @@ const itemsData = [
     tags: ["games", "single player"]
   },
   {
-  name: "Accordion",
-  setup: {
-    title: "Setup",
-    content: `
-      <ul>
-        <li><strong>Compact:</strong> Start with 6 piles dealt left to right, face up, then continue dealing cards to the right as gameplay progresses</li>
-        <li><strong>Standard:</strong> Deal all 52 cards in a single row, left to right</li>
-      </ul>
-    `
+    name: "Accordion",
+    setup: {
+      title: "Setup",
+      content: `
+        <ul>
+           <li><strong>Compact:</strong>6 piles dealt left to right, face up, then continue dealing cards to the right as gameplay progresses</li>
+          <li><strong>Standard:</strong> Deal all 52 cards in a single row, left to right</li>
+        </ul>
+      `
+    },
+    tdr: { title: "tl;dr", content: "Stack piles to the left (1 or 3 spaces) if the top cards match in rank or suit" },
+    objective: { title: "Objective", content: "Stack all cards to a single pile to the left (like an accordion)" },
+    method: {
+      title: "The Play",
+      content: `
+        <ul>
+          <li>Look left, you may move a pile either 1 space to the left, or 3 spaces to the left</li>
+          <li>Moves are legal if the top cards match in <strong>rank</strong> or <strong>suit</strong></li>
+          <li>When you move a pile, all piles to the right shift left to close the gap</li>
+          <li>You can move any pile at any time, as long as the move is legal</li>
+          <li>Piles stack as a unit – once cards are stacked, they move together</li>
+        </ul>
+      `
+    },
+    players: { title: "Players", content: "1" },
+    deck: { title: "Deck", content: "Single standard 52-card deck" },
+    reference: {
+      title: "Reference",
+      content: `
+        <ul>
+          <li><a href="https://www.youtube.com/watch?v=9mMP_3e5LaE" target="_blank">Solitaire: Accordion Tutorial</a></li>
+          <li><a href="https://www.youtube.com/watch?v=pXvfi8mf4YE" target="_blank">🪗 How to play Accordion - a Solitaire Tutorial! 🪗</a></li>
+        </ul>
+      `
+    },
+    tags: ["games", "single player"]
   },
-  tdr: { title: "tl;dr", content: "Stack piles to the left (1 or 3 spaces) if the top cards match in rank or suit" },
-  method: {
-    title: "The Play",
-    content: `
-      <ul>
-        <li>Objective: compress all piles into one by stacking cards to the left</li>
-        <li>You may move a pile onto the pile 1 space to the left, or 3 spaces to the left</li>
-        <li>Moves are legal if the top cards match in <strong>rank</strong> or <strong>suit</strong></li>
-        <li>When you move a pile, all piles to the right shift left to close the gap</li>
-        <li>You can move any pile at any time, as long as the move is legal</li>
-        <li>Piles stack as a unit – once cards are stacked, they move together</li>
-      </ul>
-    `
-  },
-  players: { title: "Players", content: "1" },
-  deck: { title: "Deck", content: "Standard 52-card deck" },
-  reference: {
-    title: "Reference",
-    content: `
-      <ul>
-        <li><a href="https://www.youtube.com/watch?v=9mMP_3e5LaE" target="_blank">Solitaire: Accordion Tutorial</a></li>
-        <li><a href="https://www.youtube.com/watch?v=pXvfi8mf4YE" target="_blank">🪗 How to play Accordion - a Solitaire Tutorial! 🪗</a></li>
-      </ul>
-    `
-  }
-},
   {
     name: "One Handed Solitaire",
     setup: { title: "Setup", content: "Hold the deck in your hand face down" },
@@ -207,7 +208,7 @@ const itemsData = [
   },
   {
     name: "Play or Pay",
-    objective: { title: "Objective", content: "<p>Be the first player to get rid of all their cards</p>" },
+    objective: { title: "Objective", content: "Be the first player to get rid of all their cards" },
     setup: {
       title: "The Deal",
       content: `
@@ -237,7 +238,7 @@ const itemsData = [
   },
   {
     name: "Red Dog",
-    objective: { title: "Objective", content: "<p>Be the player with the most chips at the end</p>" },
+    objective: { title: "Objective", content: "Be the player with the most chips at the end" },
     setup: {
       title: "Setup",
       content: `
@@ -400,7 +401,7 @@ const itemsData = [
   name: "Presidents (Scum)",
   objective: { 
     title: "Objective", 
-    content: "<p>Be the first to get rid of all your cards to become President, while avoiding being the last player out (scum/asshole)</p>" 
+    content: "Be the first to get rid of all your cards to become President, while avoiding being the last player out (scum/asshole)" 
   },
   setup: {
     title: "The Deal",
@@ -440,7 +441,7 @@ const itemsData = [
   name: "Gin Rummy",
   objective: { 
     title: "Objective", 
-    content: "<p>Be the first to lay down all your cards by forming sets (three or four of a kind) or runs (three or more consecutive cards of the same suit)</p>" 
+    content: "Be the first to lay down all your cards by forming sets (three or four of a kind) or runs (three or more consecutive cards of the same suit)" 
   },
   setup: {
     title: "The Deal",
@@ -482,7 +483,7 @@ const itemsData = [
   name: "Cắt tê (Catte)",
   objective: { 
     title: "Objective", 
-    content: "<p>Be the last remaining player by winning at least one trick in each round and ultimately win the final trick</p>" 
+    content: "Be the last remaining player by winning at least one trick in each round and ultimately win the final trick" 
   },
   setup: {
     title: "Setup & Deal",
@@ -558,7 +559,7 @@ const itemsData = [
   name: "Tiến lên (Thirteen)",
   objective: { 
     title: "Objective", 
-    content: "<p>Be the first player to get rid of all your cards</p>" 
+    content: "Be the first player to get rid of all your cards" 
   },
   setup: {
     title: "Setup & Deal",
@@ -641,7 +642,7 @@ const itemsData = [
   name: "Tongits",
   objective: { 
     title: "Objective", 
-    content: "<p>Be the last player with cards or have the lowest points when the game ends</p>" 
+    content: "Be the last player with cards or have the lowest points when the game ends" 
   },
   setup: {
     title: "Setup & Deal",
@@ -868,7 +869,6 @@ document.querySelector('#filterBar button[data-filter="all"]').classList.add('ac
 
 // Initialize app
 applyFilter("all");
-
 
 
 
