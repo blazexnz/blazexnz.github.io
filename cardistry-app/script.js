@@ -76,7 +76,7 @@ const itemsData = [
       title: "Setup",
       content: `
         <ul>
-           <li><strong>Compact:</strong>6 piles dealt left to right, face up, then continue dealing cards to the right as gameplay progresses</li>
+           <li><strong>Compact:</strong> 6 piles dealt left to right, face up, then continue dealing cards to the right as gameplay progresses</li>
           <li><strong>Standard:</strong> Deal all 52 cards in a single row, left to right</li>
         </ul>
       `
@@ -869,6 +869,7 @@ document.querySelector('#filterBar button[data-filter="all"]').classList.add('ac
 
 // Initialize app
 applyFilter("all");
+
 
 
 
