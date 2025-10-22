@@ -747,6 +747,46 @@ const itemsData = [
     title: "Reference", 
     content: '<a href="https://www.youtube.com/watch?v=Aw7vIwqhDTc" target="_blank">How To Play Clock Solitaire</a>' 
   }
+},
+{
+  name: "FreeCell",
+  setup: {
+    title: "Setup",
+    content: `
+      <ul>
+        <li>Deal all 52 cards face up into 8 tableau columns</li>
+        <li>Columns 1–4 have 7 cards each, columns 5–8 have 6 cards each</li>
+        <li>4 FreeCells (open slots) at the top left are used for temporary storage</li>
+        <li>4 Foundation piles (one per suit) at the top right are built from Ace to King</li>
+      </ul>
+    `
+  },
+  tldr: { 
+    title: "tl;dr", 
+    content: "Deal all cards in 8 columns, build foundation piles (A→K by suit), piles on the tableau must be in descending order, alternating colours, use 4 free cells to hold cards" 
+  },
+  method: {
+    title: "The Play",
+    content: `
+      <ul>
+        <li>Build tableau piles in descending order <strong>by one rank lower</strong> and <strong>alternating colours</strong> (e.g., place 9♠ on 10♥)</li>
+        <li>Only one card can be moved at a time (unless using free cells and empty columns to move sequences)</li>
+        <li>You may move a card to a FreeCell and back to the tableau</li>
+        <li>Foundations are built up by suit from Ace to King</li>
+        <li>Cards cannot be moved back from foundation to the tableau</li>
+        <li>Any single card can be placed into an empty tableau column</li>
+        <li>Strategic use of FreeCells allows you to access and move buried cards</li>
+      </ul>
+    `
+  },
+  objective: { title: "Objective", content: "Move all cards to the foundation piles in ascending order by suit from Ace to King" },
+  players: { title: "Players", content: "1" },
+  deck: { title: "Deck", content: "Single standard 52-card deck" },
+  tags: ["games", "single player"],
+  reference: { 
+    title: "Reference", 
+    content: '<a href="https://www.youtube.com/watch?v=vZWvggL7IuU" target="_blank">How To Play FreeCell</a>' 
+  }
 }
 ];
 
