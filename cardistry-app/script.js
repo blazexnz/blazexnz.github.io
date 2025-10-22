@@ -706,6 +706,47 @@ const itemsData = [
   players: { title: "Players", content: "3 (commonly)" },
   deck: { title: "Deck", content: "Standard 52-card deck" },
   tags: ["games", "multi player"]
+},
+{
+  name: "Clock Solitaire",
+  setup: {
+    title: "Setup",
+    content: `
+      <ul>
+        <li>Deal 13 piles of 4 cards each, face down, arranged in a clock formation</li>
+        <li>Piles 1–12 represent the hours on a clock (1 = Ace, 11 = Jack, 12 = Queen)</li>
+        <li>The 13th pile goes in the centre, and represents the Kings</li>
+      </ul>
+    `
+  },
+  tldr: { title: "tl;dr", content: "Deal 13 piles in a clock, one pile in the centre, flip cards according to rank, you win only if the final card turned over is the fourth King" },
+  method: {
+    title: "The Play",
+    content: `
+      <ul>
+        <li>Start by flipping the top card of the centre pile (Kings)</li>
+        <li>Place the flipped card face up under the pile that matches it's rank:</li>
+          <ul>
+            <li>Pile 1 = Ace</li>
+            <li>Pile 2 = 2</li>
+            <li>and so on until</li>
+            <li>Pile 12 = Queen</li>
+            <li>Centre pile = King</li>
+          </ul>
+        <li>Then flip the top card from that corresponding pile</li>
+        <li>Continue flipping and placing cards according to their rank</li>
+        <li>The game ends when all cards are face up or when the fourth King is placed</li>
+      </ul>
+    `
+  },
+  objective: { title: "Objective", content: "Reveal all cards and have the final card be the fourth King to win" },
+  players: { title: "Players", content: "1" },
+  deck: { title: "Deck", content: "Single standard 52-card deck" },
+  tags: ["games", "single player"],
+  reference: { 
+    title: "Reference", 
+    content: '<a href="https://www.youtube.com/watch?v=Aw7vIwqhDTc" target="_blank">How To Play Clock Solitaire</a>' 
+  }
 }
 ];
 
