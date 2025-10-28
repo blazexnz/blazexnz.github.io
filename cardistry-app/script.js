@@ -787,6 +787,316 @@ const itemsData = [
     title: "Reference", 
     content: '<a href="https://www.youtube.com/watch?v=vZWvggL7IuU" target="_blank">How To Play FreeCell</a>' 
   }
+},
+{
+  name: "Card force",
+  method: {
+    title: "The Method",
+    content: `
+      <ol>
+        <li><strong>Spectator:</strong> shuffle the cards</li>
+        <li><strong>Dealer:</strong> hold deck facing dealer, ask them to stop on any card (except the bottom card which is the force card):</li>
+          <ul>
+            <li><strong>Dealer:</strong> slide down the bottom card so that you can do a second deal</li>
+          </ul>
+        <li><strong>Dealer:</strong> when they ask you to stop, the next card (bottom card) is the one you told them not to stop on</li>
+      </ol>
+    `
+  },
+  type: { title: "Trick Type", content: "Card force" },
+  deck: { title: "Deck", content: "Single standard 52-card deck" },
+  tags: ["tricks"],
+  reference: { 
+    title: "Reference", 
+    content: '<a href="https://www.youtube.com/shorts/Jl7kMruw7PI?si=b9uTrPQ1TYIgFMA4" target="_blank">Card Force</a>' 
+  }
+},
+{
+  name: "Aces find the aces",
+  setup: {
+    title: "Setup",
+    content: `
+      <ul>
+        <li>Set up 1 black ace on top, 1 black ace on bottom</li>
+      <ul>
+    `
+  },
+  method: {
+    title: "The Method",
+    content: `
+      <ol>
+        <li><strong>Dealer:</strong> hand spectator 2 x red aces</li>
+        <li><strong>Dealer:</strong> deal from the top of the deck, ask the spectator when to stop, place 1 red ace face up, place rest of deck on top</li>
+        <li><strong>Dealer:</strong> deal again from the top of the deck, ask the spectator when to stop, place 1 red ace face up, place the rest of deck on top</li>
+        <li><strong>Dealer:</strong> spread the deck, the card to the right of the red aces will be the black aces</li>
+      <ol>
+    `
+  },
+    notes: {
+      title: "Notes",
+      content: `
+        <ul>
+          <li>Cut the deck to make it more convincing (before spreading the deck in step 5)</li>
+          <li>You could also pull out the aces, face them down, then turn over all 4 cards at once (revealing 4 aces at once), asking "what's better than two aces? four aces" then reveal</li>
+        </ul>
+      `
+    },
+  type: { title: "Trick Type", content: "Set up" },
+  deck: { title: "Deck", content: "Single standard 52-card deck" },
+  tags: ["tricks"],
+  reference: { 
+    title: "Reference", 
+    content: '<a href="https://www.youtube.com/shorts/8ZMiG7IkjBA" target="_blank">Aces find the aces trick</a>' 
+  }
+},
+{
+  name: "Believe in magic",
+  method: {
+    title: "Method",
+    content: `
+      <ol>
+        <li><strong>Spectator:</strong> shuffle the deck</li>
+        <li><strong>Spectator:</strong> deal any number of cards face up on the table
+        <li><strong>Dealer:</strong> ask them to stop anytime, when stopped, the next card (in the clean pile) is their card
+        <li><strong>Spectator:</strong> Look at the next card, memorise it, then set it aside (face down)</li>
+        <li><strong>Dealer:</strong> <i><strong>IMPORTANT</strong></i> Remember the first face up card in the discard pile</li>
+        <li><strong>Dealer:</strong> put face up cards on top of the main deck, then put their card on top</li>
+        <li><strong>Dealer:</strong> cut the deck</li>
+        <li><strong>Dealer:</strong> find their card - it will be to the left of your card</li>
+      <ol>
+    `
+  },
+    notes: {
+      title: "Notes",
+      content: `
+        <ul>
+          <li>You can spread the cards instead of riffle in step 1</li>
+          <li>In step 7, the reveal, Instead of just revealing, just say something like "think of your card" "think of the colour" etc.</li>
+          <li>Or you can ask them to say "left or right" then keep splitting the deck</li>
+        </ul>
+      `
+    },
+  type: { title: "Trick Type", content: "Key card" },
+  deck: { title: "Deck", content: "Single standard 52-card deck" },
+  tags: ["tricks"],
+  reference: { 
+    title: "Reference", 
+    content: '<a href="https://www.youtube.com/shorts/_w3Utwz906o" target="_blank">This will make people believe in magic!</a>' 
+  }
+},
+{
+  name: "Key card",
+  method: {
+    title: "Method",
+    content: `
+      <ol>
+        <li><strong>Dealer:</strong> riffle the cards, tell me when to stop</li>
+        <li><strong>Spectator:</strong> take the card, remember it</li>
+        <li><strong>Dealer:</strong> swing cut, <i><strong>IMPORTANT</strong></i> peek the bottom card (in the pile in your right hand) while pointing to left pile asking them to place the card (left hand pile)</li>
+        <li><strong>Spectator:</strong> place card on top of left pile</li>
+        <li><strong>Dealer:</strong> place rest of cards on top</li>
+        <li><strong>Spectator:</strong> cut the cards</li>
+        <li><strong>Dealer:</strong> fan through cards, their card will be to the right of your key card</li>
+      <ol>
+    `
+  },
+    notes: {
+      title: "Notes",
+      content: `
+        <ul>
+          <li>You can spread the cards instead of riffle in step 1</li>
+          <li>In step 6 (the reveal), instead of just revealing, just say something like "think of your card" "think of the colour" etc.</li>
+          <li>Or you can ask them to say "left or right" then keep splitting the deck</li>
+        </ul>
+      `
+    },
+  type: { title: "Trick Type", content: "Key card" },
+  deck: { title: "Deck", content: "Single standard 52-card deck" },
+  tags: ["tricks"],
+  reference: { 
+    title: "Reference", 
+    content: '<a href="https://www.youtube.com/watch?v=jZ1hvOXr3pI" target="_blank">Learn the EASIEST CARD TRICK! (The Key Card Trick)</a>' 
+  }
+},
+{
+  name: "Clock work card",
+  method: {
+    title: "Method",
+    content: `
+      <ol>
+        <li><strong>Spectator:</strong> shuffle the deck</li>
+        <li><strong>Dealer:</strong> deal out 13 cards</li>
+        <li><strong>Spectator:</strong> shuffle those 13 cards</li>
+        <li><strong>Spectator:</strong> pick a card, remember it, place on main deck</li>
+        <li><strong>Spectator:</strong> break the small deck, keep them</li>
+        <li><strong>Dealer:</strong> place rest of cards on main deck</li>
+        <li><strong>Dealer:</strong> deal a clock of cards, from 12 to 1</li>
+        <li><strong>Spectator:</strong> count how many cards they kept when they broke off</li>
+        <li><strong>Dealer:</strong> choose that number of cards on the clock (that number is their card)</li>
+        <li><strong>Dealer:</strong> Reveal their card</li>
+      <ol>
+    `
+  },
+  type: { title: "Trick Type", content: "Self working" },
+  deck: { title: "Deck", content: "Single standard 52-card deck" },
+  tags: ["tricks"],
+  reference: { 
+    title: "Reference", 
+    content: '<a href="https://www.youtube.com/shorts/_8zFfnRLdRA" target="_blank">This trick works EVERY TIME!</a>' 
+  }
+},
+{
+  name: "Trick of fives",
+  method: {
+    title: "Method",
+    content: `
+      <ol>
+        <li><strong>Spectator:</strong> shuffle the cards</li>
+        <li><strong>Spectator:</strong> create 5 packets of 5 cards, face down</li>
+        <li><strong>Spectator:</strong> pick one packet and memorise one card, shuffle</li>
+        <li><strong>Spectator:</strong> put that packet on one of the other piles</li>
+        <li><strong>Spectator:</strong> pick up 2 of the other piles and put on top, put the last pile on the bottom</li>
+        <li><strong>Dealer:</strong> deal 5 piles, 1 card per pile at a time, ask the spectator to remember which pile their card is in</li>
+        <li><strong>Spectator:</strong> flip over the pile that has your card</li>
+        <li><strong>Dealer:</strong> remove the top 2 cards, bottom 2 cards, their card is in the middle</li>
+      <ol>
+    `
+  },
+    notes: {
+      title: "Notes",
+      content: `
+        <ul>
+          <li>The first 5 piles can be dealt face up and ask them just to think of the card</li>
+          <li>On step 8 (the reveal), instead of just removing top and bottom 2 cards, you can ask them to pick a number </li>
+          <li>between 1-5 then keep eliminating, number between 1-4, 1-3, 1-2 and with the last one being theirs</li>
+        </ul>
+      `
+    },
+  type: { title: "Trick Type", content: "Self working" },
+  deck: { title: "Deck", content: "Single standard 52-card deck" },
+  tags: ["tricks"],
+  reference: { 
+    title: "Reference", 
+    content: '<a href="https://www.youtube.com/shorts/UuGovhy2JDs" target="_blank">Try out THIS Card Trick!</a>' 
+  }
+},
+{
+  name: "The four jacks",
+  method: {
+    title: "Method",
+    content: `
+      <ol>
+        <li><strong>Dealer:</strong> find 4 jacks and give them to the spectator</li>
+        <li><strong>Dealer:</strong></i> <strong>IMPORTANT</strong></i> While they're inspecting the jacks, to a pinky break with 3 cards</li>
+        <li><strong>Dealer:</strong> place the 4 jacks (face up) on the top of the deck (on top of the pinky break), then put main deck on table</li>
+        <li><strong>Dealer:</strong> take the pile (pinky break cards and jacks) and one by one, put each jack face down on top of the deck, the last jack face up, but hiding the 3 misc cards beneath</li>
+        <li><strong>Dealer:</strong> put the top jack on the table, and the three 3 robbers from the top of the deck randomly in the deck</li>
+        <li><strong>Dealer:</strong> the single jack recalls the other 3 jacks, but they couldn't possibly be at the top of the deck now?</li>
+      <ol>
+    `
+  },
+  type: { title: "Trick Type", content: "Control (pinky break)" },
+  deck: { title: "Deck", content: "Single standard 52-card deck" },
+  tags: ["tricks"],
+  reference: { 
+    title: "Reference", 
+    content: '<a href="https://www.youtube.com/watch?v=XTHnra7nDS8" target="_blank">The Four Jacks | Magic Tricks and Tutorials | WillDoesMagic</a>' 
+  }
+},
+{
+  name: "4 cards face up (Jeremy Tan edition)",
+  method: {
+    title: "Method",
+    content: `
+      <ol>
+        <li><strong>Spectator:</strong> pick 4 cards (easier to pick 4 of a kind, eg. aces)</li>
+        <li><strong>Dealer:</strong> count off 12 cards, put rest of deck aside, spread the 12 cards</li>
+        <li><strong>Spectator:</strong> insert (face up) in any order they like</li>
+        <li><strong>Spectator:</strong> shuffle the cards - making sure only the aces are the ones that are face up</li>
+        <li><strong>Dealer:</strong> deal cards one by one, first card face down, face up, face down, face up etc. - "to create more chaos"</li>
+        <li><strong>Dealer:</strong> deal two cards at a time - ask if they want to deal (deal the two cards as they are) or flip (flip the two cards over)</li>
+        <li><strong>Spectator:</strong> chooses deal, or flip</li>
+        <li><strong>Dealer:</strong> spread cards to see how mixed up the cards are</li>
+        <li><strong>Dealer:</strong> deal 4 cards top left to right, then under right to left, then under left to right, then under right to left</li>
+        <li><strong>Dealer:</strong> on the last fold onto each other, square the cards</li>
+          <ul>
+            <li>If the last fold is left to right, their chosen cards will be face up</li>
+            <li>If the last fold is right to left, then their chosen cards will be face down, so you'll need to flip</li>
+          </ul>
+      <ol>
+    `
+  },
+    notes: {
+      title: "Notes",
+      content: `
+        <ul>
+          <li>I think it's better on step 9 to have their chosen cards face down, remove all the rest, then reveal theirs</li>
+        </ul>
+      `
+    },
+  type: { title: "Trick Type", content: "Self working" },
+  deck: { title: "Deck", content: "Single standard 52-card deck" },
+  tags: ["tricks"],
+  reference: { 
+    title: "Reference", 
+    content: '<a href="https://www.youtube.com/watch?v=KwQLDWhga3o" target="_blank">Learn THE BEST Self-Working Card Trick in the World! (Magic Tutorial)</a>' 
+  }
+},
+{
+  name: "Kings and Queens",
+  setup: {
+    title: "Setup",
+    content: `
+      <ul>
+        <li>Arrange 8 cards in this order:</li>
+          <ol>
+            <li>K♣ clubs</li>
+            <li>K♥ hearts</li>
+            <li>K♠ spades</li>
+            <li>K♦ diamonds</li>
+            <li>Q♣ clubs</li>
+            <li>Q♥ hearts</li>
+            <li>Q♠ spades</li>
+            <li>Q♦ diamonds</li>
+          </ol>
+      <ul>
+    `
+  },
+  method: {
+    title: "Method",
+    content: `
+      <ol>
+        <li><strong>Spectator:</strong> pick a card and remember it</li>
+        <li><strong>Dealer:</strong> stagger each alternate card (starting with the second card), take the top portion, ask if their card is in there</li>
+        <li><strong>Dealer:</strong> put the pile of cards (that has their card) on the top</li>
+        <li><strong>Dealer:</strong> stagger each alternate card (starting with the second card), take the top portion, ask if their card is in there</li>
+        <li><strong>Dealer:</strong> put the pile of cards (that has their card) on the bottom</li>
+        <li><strong>Dealer:</strong> stagger each alternate card (starting with the second card), take the top portion, ask if their card is in there</li>
+        <li><strong>Dealer:</strong> put the pile of cards (that has their card) on the top</li>
+        <li><strong>Dealer:</strong> deal two piles (from left to right)</li>
+        <li><strong>Dealer:</strong> take the left pile, deal two piles (from left to right)</li>
+        <li><strong>Dealer:</strong> take the top card on the left pile, and push it forward</li>
+        <li><strong>Dealer:</strong> flip over each pile - card on your right is their face card, middle card is their colour, card on your left is their suit</li>
+      <ol>
+    `
+  },
+    notes: {
+      title: "Notes",
+      content: `
+        <ul>
+          <li>Vary the way you deal the piles - stagger, or deal from the bottom to two piles</li>
+          <li>Let them choose which pile, and if it's not the one you need, you just choose the other</li>
+          <li>Their card is on the left, and to remember that: you read left to right</li>
+        </ul>
+      `
+    },
+  type: { title: "Trick Type", content: "Self working" },
+  deck: { title: "Deck", content: "Single standard 52-card deck" },
+  tags: ["tricks"],
+  reference: { 
+    title: "Reference", 
+    content: '<a href="https://www.youtube.com/shorts/soMEvbG0gCQ" target="_blank">Beginner Card Trick you can do IMMEDIATELY!</a>' 
+  }
 }
 ];
 
