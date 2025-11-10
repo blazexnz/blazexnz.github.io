@@ -41,16 +41,9 @@ function createWCAScramble(length) {
       modifier = modifiers[Math.floor(Math.random() * modifiers.length)];
       move = face + modifier;
 
-      // Rule 1: no consecutive moves on the same face
       if (face === prevFace) continue;
-
-      // Rule 2: no immediate inverses (U followed by U')
       if (prevFace && move[0] === prevFace && isInverse(move, prevMove)) continue;
-
-      // Rule 3: no same-face repetition with different modifiers (U then U2, U then U')
       if (prevFace && move[0] === prevFace) continue;
-
-      // Rule 4: avoid ABA pattern with opposite faces (U D U)
       if (opposite[face] === prevFace && prevPrevFace === face) continue;
 
       break;
@@ -70,8 +63,6 @@ function isInverse(move1, move2) {
   const face1 = move1[0];
   const face2 = move2[0];
   if (face1 !== face2) return false;
-
-  // inverse if one is clockwise and other is counterclockwise
   return (move1.includes("'") && !move2.includes("'") && !move2.includes('2')) ||
          (!move1.includes("'") && move2.includes("'") && !move1.includes('2'));
 }
@@ -80,3 +71,8 @@ function removeScramble(element) {
   const scrambleContainer = document.getElementById('scrambles');
   scrambleContainer.removeChild(element);
 }
+
+// Generate 5 scrambles on initial page load
+window.addEventListener('DOMContentLoaded', () => {
+  generateScrambles();
+});
