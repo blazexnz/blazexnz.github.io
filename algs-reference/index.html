@@ -10,6 +10,7 @@
             font-family: Arial, sans-serif;
             text-align: center;
             margin: 20px;
+            cursor: pointer; /* optional: indicates page is clickable */
         }
         table {
             width: 100%;
@@ -153,5 +154,19 @@
     <div class="nav-links">
         <a href="#oll">2-Look OLL</a>
     </div>
+
+    <script>
+        document.body.addEventListener('click', () => {
+            const scrollTop = window.scrollY || document.documentElement.scrollTop;
+            const scrollHeight = document.body.scrollHeight || document.documentElement.scrollHeight;
+            const windowHeight = window.innerHeight;
+
+            if (scrollTop + windowHeight >= scrollHeight - 5) { 
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else { 
+                window.scrollTo({ top: scrollHeight, behavior: 'smooth' });
+            }
+        });
+    </script>
 </body>
 </html>
