@@ -1,277 +1,126 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="robots" content="noindex, nofollow">
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Rhythm Playground 🥁🎵</title>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>🎙️ My Podcast App</title>
   <style>
-    :root{
-      --bg: #fff6f3;
-      --card: #ffffff;
-      --accent: #ff6b6b;
-      --accent-2: #ffd93d;
-      --muted: #6b6b6b;
-      --glass: rgba(255,255,255,0.6);
-      --shadow: 0 8px 24px rgba(0,0,0,0.08);
-      --radius: 18px;
-      --beat-color: #9be7ff;
-      --half-color: #ffd29d;
-      --whole-color: #d6f5a9;
-      --quarter-color: #ff9bb3;
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    body {
+      font-family: system-ui, sans-serif;
+      background: linear-gradient(135deg, #141e30, #243b55);
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
     }
 
-    html,body{
-      height:100%;
-      margin:0;
-      background: linear-gradient(180deg, #fff6f3 0%, #f7fbff 100%);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
+    h1 {
+      margin-top: 1.5rem;
+      font-size: 1.8rem;
+      text-align: center;
     }
 
-    .app {
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:28px;
-      box-sizing:border-box;
+    #player-container {
+      margin-top: 2rem;
+      width: 90%;
+      max-width: 500px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 1.5rem;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+      padding: 1rem 1.5rem 1.5rem;
     }
 
-    .card {
-      width:100%;
-      max-width:940px;
-      background:var(--card);
-      border-radius:26px;
-      padding:22px;
-      box-shadow:var(--shadow);
-      display:grid;
-      grid-template-columns: 1fr 340px;
-      gap:18px;
-      align-items:start;
+    #playlist {
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0;
+      max-height: 250px;
+      overflow-y: auto;
     }
 
-    /* Responsive stack */
-    @media (max-width:900px){
-      .card { grid-template-columns: 1fr; padding:18px; }
+    #playlist li {
+      padding: 0.6rem 1rem;
+      margin-bottom: 0.4rem;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 0.75rem;
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.2s ease;
+      touch-action: manipulation;
     }
 
-    header h1 {
-      margin:0 0 6px 0;
-      font-size:28px;
-      letter-spacing:-0.5px;
-      display:flex;
-      align-items:center;
-      gap:12px;
-    }
-    header p { margin:0 0 12px 0; color:var(--muted); }
-
-    .play-area {
-      background: linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.9));
-      border-radius:16px;
-      padding:16px;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+    @media (hover: hover) and (pointer: fine) {
+      #playlist li:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
     }
 
-    /* 4-beat bar */
-    .bar {
-      display:flex;
-      gap:8px;
-      height:120px;
-      align-items:center;
-      justify-content:flex-start;
-      margin-bottom:14px;
-    }
-
-    .note {
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      border-radius:12px;
-      font-weight:700;
-      color:#111;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.06);
-      padding:8px;
-      text-align:center;
-      user-select:none;
-      -webkit-user-select:none;
-      -webkit-touch-callout:none;
-      transition: transform 180ms ease, box-shadow 180ms ease;
-    }
-
-    .note:active { transform: translateY(2px) scale(0.995); }
-
-    .note.quarter { background:var(--quarter-color); width:calc((100% - 24px) * 0.25); min-width:64px; }
-    .note.half    { background:var(--half-color);  width:calc((100% - 24px) * 0.5);  min-width:110px; }
-    .note.whole   { background:var(--whole-color); width:calc((100% - 24px) * 1);    min-width:220px; }
-
-    /* small label below */
-    .note .label { font-size:13px; margin-top:6px; color:#222; opacity:0.9; }
-
-    .controls {
-      display:flex;
-      gap:10px;
-      align-items:center;
-      margin-top:6px;
-      flex-wrap:wrap;
-    }
-
-    .side {
-      padding:10px;
-      border-radius:14px;
-      display:flex;
-      flex-direction:column;
-      gap:10px;
-      align-items:stretch;
-    }
-
-    .panel {
-      background: linear-gradient(180deg,#fff 0%, #fffbf6 100%);
-      border-radius:12px;
-      padding:12px;
-      box-shadow: var(--shadow);
-    }
-
-    .big-btn {
-      font-size:18px;
-      padding:12px 16px;
-      border-radius:12px;
-      border:0;
-      cursor:pointer;
-      font-weight:700;
-      box-shadow: 0 8px 18px rgba(0,0,0,0.08);
-      -webkit-tap-highlight-color: transparent;
-      touch-action: manipulation; /* prevent double-tap zoom on buttons */
-      background: linear-gradient(180deg, var(--accent) 0%, #ff8a8a 100%);
+    #playlist li.active {
+      background: #1db954;
       color: #fff;
     }
 
-    .secondary-btn {
-      background: transparent;
-      border:2px solid rgba(0,0,0,0.06);
-      padding:10px 12px;
-      border-radius:10px;
-      cursor:pointer;
-      font-weight:700;
+    #controls {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      margin-top: 1.2rem;
+    }
+
+    button {
+      background: #1db954;
+      border: none;
+      border-radius: 50%;
+      color: #fff;
+      width: 60px;
+      height: 60px;
+      font-size: 1.4rem;
+      cursor: pointer;
       touch-action: manipulation;
-      -webkit-tap-highlight-color: transparent;
+      transition: transform 0.1s ease;
     }
 
-    /* pressed state for touch devices */
-    button:active { transform: translateY(2px) scale(.995); }
-
-    /* Hover rules only on devices that support hover (prevents stuck :hover on touch) */
-    @media (hover: hover) and (pointer: fine) {
-      .big-btn:hover { transform: translateY(-4px); box-shadow: 0 14px 30px rgba(0,0,0,0.12); }
-      .note:hover { transform: translateY(-6px); box-shadow: 0 12px 28px rgba(0,0,0,0.08); }
+    button:active {
+      transform: scale(0.95);
+      background: #17a447;
     }
 
-    .bpm {
-      display:flex;
-      gap:8px;
-      align-items:center;
+    audio {
+      width: 100%;
+      margin-top: 1rem;
     }
 
-    input[type="number"]{
-      -moz-appearance:textfield;
-      appearance:textfield;
-      border-radius:8px;
-      padding:8px 10px;
-      border:2px solid rgba(0,0,0,0.06);
-      width:100px;
-      text-align:center;
-      font-weight:700;
-    }
-
-    /* Hide number arrows on Chrome */
-    input[type=number]::-webkit-inner-spin-button, 
-    input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
-
-    .note.playing {
-      box-shadow: 0 18px 36px rgba(0,0,0,0.16);
-      transform: translateY(-6px) scale(1.02);
-      outline: 4px solid rgba(255,255,255,0.4);
-    }
-
-    .legend {
-      font-size:13px;
-      color:var(--muted);
-    }
-
-    footer {
-      margin-top:10px;
-      font-size:13px;
-      color:var(--muted);
-      display:flex;
-      gap:8px;
-      align-items:center;
-    }
-
-    /* small screens */
-    @media (max-width:480px){
-      .bar { height:96px; gap:6px; }
-      .note { font-size:14px; }
-      header h1 { font-size:22px; }
+    @media (max-width: 600px) {
+      button {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="app">
-    <main class="card" role="application" aria-label="Rhythm Playground">
-      <section>
-        <header>
-          <h1>Rhythm Playground 🎶 <span style="font-size:14px; opacity:0.85">— clap the pattern!</span></h1>
-          <p>Practice rhythm — the app generates a 4-beat bar with whole, half or quarter notes. Clap when a note starts. Kid friendly, bright, and simple.</p>
-        </header>
+  <h1>🎙️ My Podcast App</h1>
+  <div id="player-container">
+    <ul id="playlist"></ul>
 
-        <div class="play-area panel" id="playArea">
-          <div class="bar" id="bar" aria-live="polite" aria-atomic="true">
-            <!-- notes rendered here -->
-          </div>
+    <div id="controls">
+      <button id="prev">⏮</button>
+      <button id="play">▶️</button>
+      <button id="next">⏭</button>
+    </div>
 
-          <div class="controls">
-            <button class="big-btn" id="generateBtn" aria-label="Generate new rhythm">🎲 New Rhythm</button>
-            <button class="secondary-btn" id="playBtn" aria-pressed="false">▶ Play</button>
+    <audio id="audio" controls></audio>
 
-            <div class="bpm" style="margin-left:auto;">
-              <label for="bpmInput" style="font-weight:700;">Tempo</label>
-              <!-- force numeric keypad on iPhone: inputmode + pattern + type=number -->
-              <input id="bpmInput" type="number" inputmode="numeric" pattern="[0-9]*" min="40" max="220" value="90" aria-label="Beats per minute">
-            </div>
-          </div>
-
-          <footer>
-            <div class="legend">Whole = 4 beats · Half = 2 beats · Quarter = 1 beat</div>
-            <div style="margin-left:auto; color:var(--muted)">Tip: Clap on the colored blocks' start 💥</div>
-          </footer>
-        </div>
-      </section>
-
-      <aside class="side">
-        <div class="panel">
-          <h3 style="margin:0 0 8px 0;">How to play 👇</h3>
-          <ol style="margin:0 0 6px 18px; color:var(--muted);">
-            <li>Press <strong>New Rhythm</strong> to generate a 4-beat bar.</li>
-            <li>Press <strong>Play</strong> to hear the metronome and watch highlights.</li>
-            <li>Clap each time a colored block starts — that's the note attack!</li>
-          </ol>
-          <p style="margin:6px 0 0 0; color:var(--muted)">Adjust tempo if you need more time. Designed for kids — big buttons, bright colors, fun emoji.</p>
-        </div>
-
-        <div class="panel" style="display:flex; justify-content:space-between; gap:8px; align-items:center;">
-          <div>
-            <div style="font-size:12px; color:var(--muted)">Made with ❤️</div>
-            <div style="font-weight:800; font-size:16px;">Steve-style simplicity ✨</div>
-          </div>
-
-          <div>
-            <button class="secondary-btn" id="randomClapBtn" title="Try a practice clap">👏 Try Clap</button>
-          </div>
-        </div>
-      </aside>
-    </main>
+    <div style="margin-top:1rem; text-align:center;">
+      <input type="file" id="filePicker" accept="audio/mpeg" multiple />
+      <p style="font-size:0.9rem; opacity:0.8;">Or drag & drop podcast episodes here</p>
+    </div>
   </div>
 
   <script src="script.js"></script>
