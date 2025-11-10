@@ -3,7 +3,7 @@
 // ================================
 
 // 🎵 Define your local audio folder and file list here
-const audioFolder = "audio-assets/"; // folder next to index.html
+const audioFolder = "./audio-assets/"; // folder next to index.html
 let tracks = [
   { name: "Master Small Talk - The Cheat Sheet", url: audioFolder + "Master Small Talk - The Cheat Sheet.m4a" },
   { name: "Moira and Zen Gold-Plat to Masters Guide", url: audioFolder + "Moira and Zen Gold-Plat to Masters Guide.m4a" },
@@ -119,3 +119,4 @@ window.addEventListener("DOMContentLoaded", () => {
     loadTrack(0, false); // load but do NOT autoplay
   }
 });
+
