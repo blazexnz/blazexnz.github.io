@@ -1,207 +1,121 @@
-/* script.js
-   Rhythm Playground
-   - Generates a random combination of whole(4), half(2), quarter(1)
-     that fills exactly 4 beats.
-   - Plays a metronome and highlights notes when they start so kids clap.
-*/
+// ================================
+// Podcast App Script
+// ================================
 
-(() => {
-  const generateBtn = document.getElementById('generateBtn');
-  const playBtn = document.getElementById('playBtn');
-  const barEl = document.getElementById('bar');
-  const bpmInput = document.getElementById('bpmInput');
-  const randomClapBtn = document.getElementById('randomClapBtn');
+// 🎵 Define your local audio folder and file list here
+const audioFolder = "./audio-assets/"; // folder next to index.html
+let tracks = [
+  { name: "Master Small Talk - The Cheat Sheet", url: audioFolder + "Master Small Talk - The Cheat Sheet.m4a" },
+  { name: "Moira and Zen Gold-Plat to Masters Guide", url: audioFolder + "Moira and Zen Gold-Plat to Masters Guide.m4a" },
+  { name: "Moira climb to masters", url: audioFolder + "Moira climb to masters.m4a" },
+  { name: "Overwatch 2 - Blaze's Notes", url: audioFolder + "Overwatch 2 - Blaze's Notes.m4a" },
+  { name: "Overwatch 2 Playbook - Damage Version", url: audioFolder + "Overwatch 2 Playbook - Damage Version.m4a" },
+  { name: "Overwatch 2 Playbook - Pregame", url: audioFolder + "Overwatch 2 Playbook - Pregame.m4a" },
+  { name: "Overwatch 2 Playbook - Standard", url: audioFolder + "Overwatch 2 Playbook - Standard.m4a" },
+  { name: "Overwatch 2 Playbook - Support Version", url: audioFolder + "Overwatch 2 Playbook - Support Version.m4a" },
+  { name: "The Golfers Playbook - long", url: audioFolder + "The Golfers Playbook - long.m4a" },
+  { name: "The Golfers Playbook - normal", url: audioFolder + "The Golfers Playbook - normal.m4a" },
+  { name: "The Golfers Playbook - short", url: audioFolder + "The Golfers Playbook - short.m4a" },
+  { name: "Zen climb to masters", url: audioFolder + "Zen climb to masters.m4a" }
+];
 
-  // Note definitions
-  const NOTES = [
-    { name: 'whole', beats: 4, label: 'Whole', emoji: '🎵' },
-    { name: 'half',  beats: 2, label: 'Half',  emoji: '🎶' },
-    { name: 'quarter', beats: 1, label: 'Quarter', emoji: '♪' }
-  ];
+// Player State
+let currentIndex = 0;
+const audio = document.getElementById("audio");
+const playlistEl = document.getElementById("playlist");
+const playBtn = document.getElementById("play");
+const nextBtn = document.getElementById("next");
+const prevBtn = document.getElementById("prev");
+const filePicker = document.getElementById("filePicker");
 
-  // Audio context and click sound
-  let audioCtx = null;
-  function ensureAudio() {
-    if (!audioCtx) {
-      audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    }
-  }
-
-  function playClick(time, strong = false) {
-    ensureAudio();
-    const ctx = audioCtx;
-    const o = ctx.createOscillator();
-    const g = ctx.createGain();
-    o.type = 'sine';
-    o.frequency.value = strong ? 1000 : 800;
-    g.gain.setValueAtTime(0.0001, time || ctx.currentTime);
-    g.gain.exponentialRampToValueAtTime(strong ? 0.25 : 0.14, (time || ctx.currentTime) + 0.001);
-    g.gain.exponentialRampToValueAtTime(0.001, (time || ctx.currentTime) + 0.12);
-    o.connect(g);
-    g.connect(ctx.destination);
-    o.start(time || ctx.currentTime);
-    o.stop((time || ctx.currentTime) + 0.14);
-  }
-
-  // Generate a random pattern that sums to 4 beats
-  function generatePattern() {
-    const pattern = [];
-    let remaining = 4;
-
-    // Keep picking until filled
-    while (remaining > 0) {
-      const options = NOTES.filter(n => n.beats <= remaining);
-      const weights = options.map(n => {
-        if (n.name === 'quarter') return 3;
-        if (n.name === 'half') return 2;
-        return 1;
-      });
-      const total = weights.reduce((a,b)=>a+b,0);
-      let r = Math.random()*total;
-      let idx = 0;
-      for (let i=0;i<weights.length;i++){
-        r -= weights[i];
-        if (r <= 0) { idx = i; break; }
-      }
-      pattern.push(options[idx]);
-      remaining -= options[idx].beats;
-    }
-    return pattern;
-  }
-
-  function renderPattern(pattern) {
-    barEl.innerHTML = '';
-    barEl.setAttribute('aria-label', 'New rhythm: ' + pattern.map(n => n.label).join(', '));
-
-    pattern.forEach((note, index) => {
-      const div = document.createElement('div');
-      div.className = 'note ' + note.name;
-      div.style.flex = (note.beats) + ' 0 0';
-      div.innerHTML = `
-        <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
-          <div style="font-size:28px;">${note.emoji}</div>
-          <div class="label">${note.label} • ${note.beats} ${note.beats===1?'beat':'beats'}</div>
-        </div>
-      `;
-      barEl.appendChild(div);
-    });
-  }
-
-  let currentPattern = generatePattern();
-  renderPattern(currentPattern);
-
-  // Generate button handler
-  generateBtn.addEventListener('click', () => {
-    currentPattern = generatePattern();
-    renderPattern(currentPattern);
-    // ✅ If already playing, keep playback going with new pattern
-    if (playing) {
-      stopPlaying();
-      playSequence();
-    }
+// ================================
+// BUILD PLAYLIST UI
+// ================================
+function rebuildPlaylist() {
+  playlistEl.innerHTML = "";
+  tracks.forEach((track, index) => {
+    const li = document.createElement("li");
+    li.textContent = track.name;
+    li.addEventListener("click", () => loadTrack(index, true));
+    playlistEl.appendChild(li);
   });
+  highlightActiveTrack();
+}
 
-  function computeNoteStarts(pattern) {
-    const starts = [];
-    let pos = 0;
-    pattern.forEach((note, i) => {
-      starts.push({ index: i, startBeat: pos, beats: note.beats });
-      pos += note.beats;
-    });
-    return starts;
+function highlightActiveTrack() {
+  const items = playlistEl.querySelectorAll("li");
+  items.forEach((li, i) => li.classList.toggle("active", i === currentIndex));
+}
+
+function loadTrack(index, playImmediately = false) {
+  if (index < 0 || index >= tracks.length) return;
+  currentIndex = index;
+  audio.src = tracks[index].url;
+  highlightActiveTrack();
+  if (playImmediately) {
+    audio.play();
+    playBtn.textContent = "⏸";
+  } else {
+    playBtn.textContent = "▶️";
   }
+}
 
-  let playing = false;
-  let schedulerId = null;
-  let startTime = 0;
-  let lookahead = 0.1;
-  let scheduleAhead = 0.2;
-  let nextBeatTime = 0;
-  let currentBeat = 0;
-
-  function bpmToSec(bpm) {
-    return 60 / bpm;
+// ================================
+// CONTROLS
+// ================================
+playBtn.addEventListener("click", () => {
+  if (audio.paused) {
+    audio.play();
+    playBtn.textContent = "⏸";
+  } else {
+    audio.pause();
+    playBtn.textContent = "▶️";
   }
+});
 
-  function playSequence() {
-    if (playing) return;
-    ensureAudio();
-    const ctx = audioCtx;
-    const bpm = Math.max(40, Math.min(220, Number(bpmInput.value || 90)));
-    const beatSec = bpmToSec(bpm);
+nextBtn.addEventListener("click", () => {
+  currentIndex = (currentIndex + 1) % tracks.length;
+  loadTrack(currentIndex, true);
+});
 
-    const noteStarts = computeNoteStarts(currentPattern);
+prevBtn.addEventListener("click", () => {
+  currentIndex = (currentIndex - 1 + tracks.length) % tracks.length;
+  loadTrack(currentIndex, true);
+});
 
-    startTime = ctx.currentTime + 0.05;
-    nextBeatTime = startTime;
-    currentBeat = 0;
-    playing = true;
-    playBtn.setAttribute('aria-pressed', 'true');
-    playBtn.textContent = '⏸ Pause';
+audio.addEventListener("ended", () => {
+  currentIndex = (currentIndex + 1) % tracks.length;
+  loadTrack(currentIndex, true);
+});
 
-    function scheduler() {
-      if (!playing) return;
-      const now = ctx.currentTime;
-      while (nextBeatTime < now + scheduleAhead) {
-        const isDownbeat = (currentBeat % 4) === 0;
-        playClick(nextBeatTime, isDownbeat);
+// ================================
+// LOCAL FILE PICKER + DRAG/DROP SUPPORT
+// ================================
+filePicker.addEventListener("change", (e) => {
+  const files = Array.from(e.target.files).filter(f => f.type.startsWith("audio/"));
+  const localTracks = files.map(f => ({ name: f.name, url: URL.createObjectURL(f) }));
+  tracks = localTracks;
+  rebuildPlaylist();
+  loadTrack(0, true);
+});
 
-        noteStarts.forEach(ns => {
-          if (ns.startBeat === (currentBeat % 4)) {
-            const el = barEl.children[ns.index];
-            if (el) {
-              setTimeout(() => {
-                el.classList.add('playing');
-              }, Math.max(0, (nextBeatTime - ctx.currentTime) * 1000));
-              setTimeout(() => {
-                el.classList.remove('playing');
-              }, Math.max(0, (nextBeatTime - ctx.currentTime) * 1000) + (beatSec * 700));
-            }
-          }
-        });
+document.body.addEventListener("dragover", e => e.preventDefault());
+document.body.addEventListener("drop", e => {
+  e.preventDefault();
+  const files = Array.from(e.dataTransfer.files).filter(f => f.type.startsWith("audio/"));
+  if (!files.length) return;
+  const localTracks = files.map(f => ({ name: f.name, url: URL.createObjectURL(f) }));
+  tracks = localTracks;
+  rebuildPlaylist();
+  loadTrack(0, true);
+});
 
-        nextBeatTime += beatSec;
-        currentBeat++;
-      }
-
-      schedulerId = requestAnimationFrame(scheduler);
-    }
-
-    scheduler();
+// ================================
+// INIT
+// ================================
+window.addEventListener("DOMContentLoaded", () => {
+  rebuildPlaylist();
+  if (tracks.length > 0) {
+    loadTrack(0, false); // load but do NOT autoplay
   }
-
-  function stopPlaying() {
-    if (!playing) return;
-    playing = false;
-    playBtn.setAttribute('aria-pressed', 'false');
-    playBtn.textContent = '▶ Play';
-    if (schedulerId) {
-      cancelAnimationFrame(schedulerId);
-      schedulerId = null;
-    }
-  }
-
-  playBtn.addEventListener('click', () => {
-    if (!playing) playSequence();
-    else stopPlaying();
-  });
-
-  randomClapBtn.addEventListener('click', () => {
-    ensureAudio();
-    playClick(audioCtx.currentTime, true);
-  });
-
-  window.addEventListener('keydown', (e) => {
-    if (e.code === 'Space') {
-      e.preventDefault();
-      if (!playing) playSequence(); else stopPlaying();
-    }
-  });
-
-  generateBtn.addEventListener('keyup', (e) => {
-    if (e.key === 'Enter') generateBtn.click();
-  });
-
-  generateBtn.setAttribute('tabindex', '0');
-  playBtn.setAttribute('tabindex', '0');
-})();
+});
