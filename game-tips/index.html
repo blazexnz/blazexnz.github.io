@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Game Tips</title>
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+        background-color: #111;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        padding: 20px;
+    }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+        font-weight: 400;
+        font-size: 2em;
+    }
+
+    .filters {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-bottom: 30px;
+    }
+
+    .filters button {
+        background: #222;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background 0.2s;
+        font-size: 1em;
+    }
+
+    .filters button:hover, .filters button.active {
+        background: #444;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Always 2 columns */
+        gap: 20px;
+    }
+
+    .tile {
+        background: #1a1a1a;
+        border-radius: 20px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .tile:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(255,255,255,0.1);
+    }
+
+    .hero-name {
+        font-size: 1.6em;
+        font-weight: 600;
+        margin-bottom: 10px;
+        color: #ffcc00;
+    }
+
+    .tile-content {
+        font-size: 1em;
+        line-height: 1.4;
+        white-space: pre-line;
+    }
+
+    .tile-content p {
+        margin-bottom: 5px;
+    }
+
+    .highlight {
+        background-color: #222;
+        border-left: 4px solid #ffcc00;
+        padding: 4px 8px;
+        border-radius: 10px;
+        margin-bottom: 10px;
+        font-weight: 500;
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    .highlight p {
+        margin: 0;
+        line-height: 1.2;
+    }
+</style>
+</head>
+<body>
+
+<h1>Game Tips</h1>
+
+<div class="filters">
+    <button class="filter-btn active" tag="all">All</button>
+    <button class="filter-btn" tag="tank">Tank</button>
+    <button class="filter-btn" tag="support">Support</button>
+</div>
+
+<div class="grid">
+
+    <div class="tile" tag="tank">
+        <div class="hero-name">Orisa</div>
+        <div class="tile-content">
+            <div class="highlight">
+                <p>Peek, bait, retreat</p>
+                <p>Fortify -> spin -> fire -> throw -> reset</p>
+            </div>
+            Role identity: You’re the anchor. You own the frontline and deny enemy space by forcing bad angles and absorbing key cooldowns.
+            Trade Fortify for one enemy cooldown
+            Use corners - peek, bait, retreat
+            Push in waves — 2–3 seconds of pressure, then reset behind cover.
+            Your gun isn’t poke — it’s pressure. Don’t spray all game.
+            Always anchor between your supports and DPS, not far ahead.
+            Core rhythm: Fortify → Spin (as Fortify ends) → pressure fire → Javelin Throw → WAIT → repeat
+        </div>
+    </div>
+
+    <div class="tile" tag="tank">
+        <div class="hero-name">Junker Queen</div>
+        <div class="tile-content">
+            <div class="highlight">
+                <p>Push, pause, punish, retreat</p>
+                <p>Shout -> swing wide of corner -> knife -> axe -> shotgun -> reset</p>
+            </div>
+            Role identity: You’re pressure + sustain
+            Landing your Jagged Blade pull defines your tempo
+            Wait for cooldowns → dive → hit all → back out
+            Shout → swing around cover → secure knife → then push in
+            Core rhythm: Shout → Swing out from cover → Knife / Knife Pull → Axe → Shotgun finish. Reset behind cover
+        </div>
+    </div>
+
+    <div class="tile" tag="support">
+        <div class="hero-name">Moira</div>
+        <div class="tile-content">
+            <div class="highlight">
+                <p>Fade for escape only</p>
+                <p>Stay within 2 seconds of cover</p>
+            </div>
+            Focus the same target as the one who you're healing is targeting
+            Look past the tank and do damage on support, then dps, then tank
+            Your value comes from sustain + consistent DPS, not flashy kills
+            
+
+        </div>
+    </div>
+
+    <div class="tile" tag="support">
+        <div class="hero-name">Zenyatta</div>
+        <div class="tile-content">
+            <div class="highlight">
+                <p>Keep heal orb on your tank, and discord orb on enemy tank (otherwise discord who you're shooting)</p>
+                <p>Cover > charge right click > peek & volley damage > hide back behind cover</p>
+            </div>
+            Your job is to apply pressure, try and get picks
+        </div>
+    </div>
+
+    <div class="tile" tag="all">
+        <div class="hero-name">All heros</div>
+        <div class="tile-content">
+            <div class="highlight">
+                <p>“I’m not trying to kill — I’m trying to control.”</p>
+                <p>“Peek → bait something → hide → peek during their downtime.” You fight in bursts, not continuous exposure.</p>
+            </div>
+            Don’t dive or push alone — push with purpose and support line-of-sight
+            If your supports can’t see you, you’re not creating space — you’re feeding.
+            Think of yourself as the engine of the team: start, stop, and pace the fight.
+        </div>
+    </div>
+
+    <!-- 
+    <div class="tile" tag="All">
+        <div class="hero-name">All heros</div>
+        <div class="tile-content">
+            <div class="highlight">
+                <p></p>
+                <p></p>
+            </div>
+            <p></p>
+            <p></p>
+            <p></p>
+        </div>
+    </div>
+     -->
+     
+
+    <!-- Add more tiles below; they automatically follow the 2-column layout -->
+</div>
+
+<script>
+    const buttons = document.querySelectorAll('.filter-btn');
+    const tiles = document.querySelectorAll('.tile');
+
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            const hero = button.getAttribute('tag');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+            tiles.forEach(tile => {
+                tile.style.display = (hero === 'all' || tile.getAttribute('tag') === hero) ? 'flex' : 'none';
+            });
+        });
+    });
+</script>
+
+</body>
+</html>
