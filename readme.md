@@ -26,3 +26,4 @@
 - **Rhythm playground** (Released: September 2025)
 - **Cardistry app** (Released: October 2025)
 - **Recipe app** (Released: October 2025)
+- **Game tips page** (Released: November 2025)
