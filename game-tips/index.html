@@ -24,7 +24,7 @@
 
     h1 {
         text-align: center;
-        margin-bottom: 20px;
+        margin-bottom: 15px;
         font-weight: 400;
         font-size: 2em;
     }
@@ -32,19 +32,19 @@
     .filters {
         display: flex;
         justify-content: center;
-        gap: 15px;
-        margin-bottom: 30px;
+        gap: 12px;
+        margin-bottom: 20px;
     }
 
     .filters button {
         background: #222;
         color: #fff;
         border: none;
-        padding: 10px 20px;
+        padding: 4px 8px;
         border-radius: 10px;
         cursor: pointer;
         transition: background 0.2s;
-        font-size: 1em;
+        font-size: 0.95em;
     }
 
     .filters button:hover, .filters button.active {
@@ -53,56 +53,67 @@
 
     .grid {
         display: grid;
-        grid-template-columns: 1fr 1fr; /* Always 2 columns */
-        gap: 20px;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
     }
 
     .tile {
         background: #1a1a1a;
         border-radius: 20px;
-        padding: 20px;
+        padding: 16px;
         display: flex;
         flex-direction: column;
         transition: transform 0.2s, box-shadow 0.2s;
     }
 
     .tile:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 25px rgba(255,255,255,0.1);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(255,255,255,0.1);
     }
 
     .hero-name {
-        font-size: 1.6em;
+        font-size: 1.5em;
         font-weight: 600;
-        margin-bottom: 10px;
+        margin-bottom: 6px;
         color: #ffcc00;
     }
 
     .tile-content {
-        font-size: 1em;
-        line-height: 1.4;
+        font-size: 0.95em;
+        line-height: 1.1; /* very tight */
         white-space: pre-line;
     }
 
     .tile-content p {
-        margin-bottom: 5px;
+        margin-bottom: 2px; /* ultra-tight spacing */
+    }
+
+    .tile-content ol,
+    .tile-content ul {
+        margin: 0 0 2px 18px;
+        padding: 0;
+    }
+
+    .tile-content li {
+        margin-bottom: 0;
+        line-height: 1.1; /* tight */
     }
 
     .highlight {
         background-color: #222;
         border-left: 4px solid #ffcc00;
-        padding: 4px 8px;
+        padding: 6px 10px;
         border-radius: 10px;
-        margin-bottom: 10px;
+        margin-bottom: 6px;
         font-weight: 500;
         display: flex;
         flex-direction: column;
-        gap: 2px;
+        gap: 1px; /* tight gap */
     }
 
     .highlight p {
         margin: 0;
-        line-height: 1.2;
+        line-height: 1.1; /* tight */
     }
 
     @media (max-width: 700px) {
@@ -117,6 +128,7 @@
         }
     }
 </style>
+
 </head>
 <body>
 
@@ -126,6 +138,7 @@
     <button class="filter-btn active" tag="all">All</button>
     <button class="filter-btn" tag="tank">Tank</button>
     <button class="filter-btn" tag="support">Support</button>
+    <button class="filter-btn" tag="warmup">Warm up</button>
 </div>
 
 <div class="grid">
@@ -135,15 +148,15 @@
         <div class="tile-content">
             <div class="highlight">
                 <p>Peek, bait, retreat</p>
-                <p>Fortify -> spin -> fire -> throw -> reset</p>
+                <p>Fortify → Spin → Fire → Throw → Reset</p>
             </div>
-            Role identity: You’re the anchor. You own the frontline and deny enemy space by forcing bad angles and absorbing key cooldowns.
-            Trade Fortify for one enemy cooldown
-            Use corners - peek, bait, retreat
-            Push in waves — 2–3 seconds of pressure, then reset behind cover.
-            Your gun isn’t poke — it’s pressure. Don’t spray all game.
-            Always anchor between your supports and DPS, not far ahead.
-            Core rhythm: Fortify → Spin (as Fortify ends) → pressure fire → Javelin Throw → WAIT → repeat
+            <p>Role identity: You’re the anchor. You own the frontline and deny enemy space by forcing bad angles and absorbing key cooldowns.</p>
+            <p>Trade Fortify for one enemy cooldown.</p>
+            <p>Use corners – peek, bait, retreat.</p>
+            <p>Push in waves — 2–3 seconds of pressure, then reset behind cover.</p>
+            <p>Your gun isn’t poke — it’s pressure. Don’t spray all game.</p>
+            <p>Always anchor between your supports and DPS, not far ahead.</p>
+            <p>Core rhythm: Fortify → Spin (as Fortify ends) → Pressure Fire → Javelin Throw → WAIT → Repeat.</p>
         </div>
     </div>
 
@@ -152,13 +165,13 @@
         <div class="tile-content">
             <div class="highlight">
                 <p>Push, pause, punish, retreat</p>
-                <p>Shout -> swing wide of corner -> knife -> axe -> shotgun -> reset</p>
+                <p>Shout → Swing wide of corner → Knife → Axe → Shotgun → Reset</p>
             </div>
-            Role identity: You’re pressure + sustain
-            Landing your Jagged Blade pull defines your tempo
-            Wait for cooldowns → dive → hit all → back out
-            Shout → swing around cover → secure knife → then push in
-            Core rhythm: Shout → Swing out from cover → Knife / Knife Pull → Axe → Shotgun finish. Reset behind cover
+            <p>Role identity: You’re pressure + sustain.</p>
+            <p>Landing your Jagged Blade pull defines your tempo.</p>
+            <p>Wait for cooldowns → dive → hit all → back out.</p>
+            <p>Shout → Swing around cover → Secure knife → Then push in.</p>
+            <p>Core rhythm: Shout → Swing out from cover → Knife / Knife Pull → Axe → Shotgun finish. Reset behind cover.</p>
         </div>
     </div>
 
@@ -166,16 +179,18 @@
         <div class="hero-name">Winston</div>
         <div class="tile-content">
             <div class="highlight">
-                <p>Dive in, force cooldowns, disengage safely, and re-engage with purpose</p>
+                <p>Dive in, force cooldowns, disengage safely, and re-engage with purpose.</p>
                 <p>Jump in → Bubble → Zap → Jump out → Reset → Repeat</p>
             </div>
-            Role identity: You're the fight starter. Dive, create chaos, break setups, open space for DPS to follow through
-            Always ensure:
-            >> You’re in healer LOS
-            >> You have bubble ready
-            >> You know your exit
-            >> Your team can follow up
-            Core rhythm: Jump in → Bubble → Zap → Jump out → Reset → Repeat
+            <p>Role identity: You're the fight starter. Dive, create chaos, break setups, open space for DPS to follow through.</p>
+            <p>Always ensure:</p>
+            <ul>
+                <li>You’re in healer LOS</li>
+                <li>You have bubble ready</li>
+                <li>You know your exit</li>
+                <li>Your team can follow up</li>
+            </ul>
+            <p>Core rhythm: Jump in → Bubble → Zap → Jump out → Reset → Repeat.</p>
         </div>
     </div>
 
@@ -186,9 +201,9 @@
                 <p>“I’m not trying to kill — I’m trying to control.”</p>
                 <p>“Peek → bait something → hide → peek during their downtime.” You fight in bursts, not continuous exposure.</p>
             </div>
-            Don’t dive or push alone — push with purpose and support line-of-sight
-            If your supports can’t see you, you’re not creating space — you’re feeding.
-            Think of yourself as the engine of the team: start, stop, and pace the fight.
+            <p>Don’t dive or push alone — push with purpose and support line-of-sight.</p>
+            <p>If your supports can’t see you, you’re not creating space — you’re feeding.</p>
+            <p>Think of yourself as the engine of the team: start, stop, and pace the fight.</p>
         </div>
     </div>
 
@@ -198,19 +213,20 @@
             <div class="highlight">
                 <p>Fade for escape only</p>
                 <p>Use cover (mid-range) heal → poke → retreat → repeat.</p>
-                <p>Off angles<p>
+                <p>Off angles</p>
             </div>
-            Role Identity: Sustain + damage support.
-            Main Tempo: Mid-range → heal → poke → retreat → repeat.
-            If in doubt: Stay at mid-range and heal priority targets; don’t overcommit.
-            Other Key Ideas: Fade = survival/escape, not panic. Damage beam = charge + pressure. Coalescence = fight-decider.
-           If in doubt: Stay at mid-range and heal priority targets; don’t overcommit.
-           Most Important:
-           >> Heal efficiently, prioritise survival.
-           >> Use Fade wisely.
-            Focus the same target as the one who you're healing is targeting
-            Look past the tank and do damage on support, then dps, then tank
-            Your value comes from sustain + consistent DPS, not flashy kills
+            <p>Role Identity: Sustain + damage support.</p>
+            <p>Main Tempo: Mid-range → heal → poke → retreat → repeat.</p>
+            <p>If in doubt: Stay at mid-range and heal priority targets; don’t overcommit.</p>
+            <p>Other Key Ideas: Fade = survival/escape, not panic. Damage beam = charge + pressure. Coalescence = fight-decider.</p>
+            <p>Most Important:</p>
+            <ul>
+                <li>Heal efficiently, prioritise survival.</li>
+                <li>Use Fade wisely.</li>
+            </ul>
+            <p>Focus the same target as the one your heal target is focusing.</p>
+            <p>Look past the tank and do damage on support, then DPS, then tank.</p>
+            <p>Your value comes from sustain + consistent DPS, not flashy kills.</p>
         </div>
     </div>
 
@@ -218,16 +234,17 @@
         <div class="hero-name">Zenyatta</div>
         <div class="tile-content">
             <div class="highlight">
-                <p>Keep heal orb on your tank, and discord orb on enemy tank (otherwise discord who you're shooting)</p>
-                <p>Cover > charge right click > peek & volley damage > hide back behind cover</p>
+                <p>Keep heal orb on your tank, and discord orb on enemy tank (otherwise discord who you're shooting).</p>
+                <p>Cover → Charge right click → Peek & volley damage → Hide back behind cover</p>
             </div>
-            Role Identity: High-value poke healer. Deny healing, apply Discord, sustain with Harmony.
-            Main Tempo: Poke → Discord → reposition → repeat.
-            Other Key Ideas: Discord = fight-decider. Harmony = pre-emptive sustain. Stay safe; Zen dies quickly.
-            If in doubt: Stay at range behind cover and apply Harmony/Discord safely.
-            Most Important:
-            >> Keep Discord on high-value targets.
-            >> Stay safe while healing.
+            <p>Role Identity: High-value poke healer. Deny healing, apply Discord, sustain with Harmony.</p>
+            <p>Main Tempo: Poke → Discord → Reposition → Repeat.</p>
+            <p>Other Key Ideas: Discord = fight-decider. Harmony = pre-emptive sustain. Stay safe; Zen dies quickly.</p>
+            <p>If in doubt: Stay at range behind cover and apply Harmony/Discord safely.</p>
+            <ul>
+                <li>Keep Discord on high-value targets.</li>
+                <li>Stay safe while healing.</li>
+            </ul>
         </div>
     </div>
 
@@ -238,13 +255,14 @@
                 <p>TP to safety early</p>
                 <p>Hold Suzu for the BIGGEST THREAT, not random poke</p>
             </div>
-            Role Identity: Mobility + poke healer. Keep allies alive and pressure flankers.
-            Main Tempo: Heal → teleport → Kunai poke → Protection Suzu → repeat.
-            Other Key Ideas: Teleport = reposition/save. Suzu = reactive save. Track ally positions.
-            If in doubt: Heal and stay mobile; save Suzu for high-value ally.
-            Most Important:
-            >> Hold Suzu for the BIGGEST THREAT, not random poke
-            >> TP to safety early
+            <p>Role Identity: Mobility + poke healer. Keep allies alive and pressure flankers.</p>
+            <p>Main Tempo: Heal → Teleport → Kunai poke → Protection Suzu → Repeat.</p>
+            <p>Other Key Ideas: Teleport = reposition/save. Suzu = reactive save. Track ally positions.</p>
+            <p>If in doubt: Heal and stay mobile; save Suzu for high-value ally.</p>
+            <ul>
+                <li>Hold Suzu for the BIGGEST THREAT, not random poke.</li>
+                <li>TP to safety early.</li>
+            </ul>
         </div>
     </div>
 
@@ -255,27 +273,30 @@
                 <p>Survival</p>
                 <p>Don't be greedy for kills</p>
             </div>
-            Use off angles
+            <p>Use off angles.</p>
         </div>
     </div>
 
-    <!-- 
-    <div class="tile" tag="all">
-        <div class="hero-name">All heros</div>
+    <div class="tile" tag="warmup, tank, support">
+        <div class="hero-name">Warm up</div>
         <div class="tile-content">
             <div class="highlight">
-                <p></p>
-                <p></p>
+                <p>Be deliberate</p>
             </div>
-            <p></p>
-            <p></p>
-            <p></p>
+            <p>texta</p>
+            <ol>
+                <li>Tracking the target without shooting</li>
+                <li>Deliberate shots – aim for 100% accuracy, use a metronome</li>
+                <li>180 flicks to target acquisition</li>
+                <li>Always intend for head shots</li>
+                <li>Focus on the target not just look at it (eg. blade on fan, not fan itself)</li>
+                <li>Hero specific cooldown aim training (eg. Ana sleep dart, Orisa jav, Junker Queen jagged blade)</li>
+                <li>50–100 kills</li>
+            </ol>
+            <p>textb</p>
         </div>
     </div>
-     -->
-     
 
-    <!-- Add more tiles below; they automatically follow the 2-column layout -->
 </div>
 
 <script>
@@ -288,7 +309,8 @@
             buttons.forEach(btn => btn.classList.remove('active'));
             button.classList.add('active');
             tiles.forEach(tile => {
-                tile.style.display = (hero === 'all' || tile.getAttribute('tag') === hero) ? 'flex' : 'none';
+                const tileTags = tile.getAttribute('tag').split(',').map(t => t.trim());
+                tile.style.display = (hero === 'all' || tileTags.includes(hero)) ? 'flex' : 'none';
             });
         });
     });
