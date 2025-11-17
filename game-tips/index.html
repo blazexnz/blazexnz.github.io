@@ -131,6 +131,30 @@
                 padding: 10px;
             }
         }
+
+        .key-banner {
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            background-color: #555;
+            border-left: 4px solid #33caff;
+            border-right: 4px solid #33caff;
+            padding: 10px 14px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-size: 0.95em;
+            line-height: 1.1;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .key-banner p {
+                margin: 0;
+                line-height: 1.1;
+        }
+
+
     </style>
 </head>
 
@@ -143,6 +167,10 @@
         <button class="filter-btn" tag="tank">Tank</button>
         <button class="filter-btn" tag="support">Support</button>
         <button class="filter-btn" tag="warmup">Warm up</button>
+    </div>
+
+    <div class="key-banner">
+        <p>Tank: I'm not trying to kill, I'm trying to control</p>
     </div>
 
     <div class="grid">
