@@ -27,3 +27,4 @@
 - **Cardistry app** (Released: October 2025)
 - **Recipe app** (Released: October 2025)
 - **Game tips page** (Released: November 2025)
+- **Speedcubing alg trainer** (Released: November 2025)
