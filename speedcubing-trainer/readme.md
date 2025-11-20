@@ -19,4 +19,4 @@ A lightweight web app to quickly generate scrambles for cube puzzles. You can ch
 1. **Select Your Puzzle:** Choose between 2x2, 3x3, or 4x4. 3x3 is the default.  
 2. **Set Number of Algorithms:** Enter how many scrambles you want to display.  
 3. **Generate Scrambles:** Click the "Generate" button to create your scrambles.  
-4. **Click a Scramble to Remove:** Remove scrambles from the screen after use by clicking on them.  
+4. **Click a Scramble to Remove:** Remove scrambles from the screen after use by clicking on them, pressing space, or pressing enter  
