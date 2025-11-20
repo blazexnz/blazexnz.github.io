@@ -79,13 +79,16 @@ function renderCurrent() {
 }
 
 function advanceScramble() {
-  if (!scrambles.length) return;
+  if (!scrambles.length) {
+    generateScrambles();
+    return;
+  }
 
   if (index < scrambles.length - 1) {
     index++;
     renderCurrent();
-  } else {
-    // When at the last scramble, show thumbs up in currentBox and alg main
+  } else if (index === scrambles.length - 1) {
+    // At the last scramble, show completion message
     const completionMessage = 'Done';
     currentBox.innerHTML = `<div style="line-height:1.25; font-size:1.5em; text-align:center">${completionMessage}</div>`;
     if (currentAlgMain) currentAlgMain.textContent = completionMessage;
@@ -94,13 +97,20 @@ function advanceScramble() {
     progressText.textContent = `${scrambles.length} / ${scrambles.length}`;
     remainingText.textContent = 'Finished';
 
-    // Optional: small animation to indicate the end
+    // Small animation to indicate the end
     currentBox.animate(
       [{ transform: 'scale(1)' }, { transform: 'scale(0.98)' }, { transform: 'scale(1)' }],
       { duration: 160 }
     );
+
+    // Advance again next time will generate new scrambles
+    index++; // move index beyond end to flag that next advance triggers generation
+  } else {
+    // Already past the end, auto-generate new scrambles
+    generateScrambles();
   }
 }
+
 
 
 function resetAll() {
