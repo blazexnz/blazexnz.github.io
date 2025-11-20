@@ -22,14 +22,12 @@
       color:var(--accent);
     }
 
-    /* Flex container ensures sidebar & main match heights */
     .app {
       display:flex;
       min-height:100vh;
       gap:20px;
       padding:20px;
       box-sizing:border-box;
-      align-items:stretch;
     }
 
     .sidebar{
@@ -43,8 +41,6 @@
       gap:12px;
       align-items:stretch;
       flex-shrink:0;
-      /* Fill container height */
-      height:100%;
     }
 
     .brand{
@@ -187,7 +183,6 @@
       white-space:normal;
     }
 
-    /* Tablet/mobile responsiveness */
     @media (max-width:980px){
       .app{flex-direction:column;padding:12px}
       .sidebar{width:100%}
@@ -195,29 +190,22 @@
       .algs-tables table{width:100%}
       td:nth-child(3), th:nth-child(3) { font-size:14px; width:100%; white-space:normal; }
       td img{width:48px;}
-      /* ensure sidebar height adjusts to content */
-      .sidebar{height:auto;}
     }
 
-    @media (max-width:480px){
-      .sidebar {
-        padding:12px;
-      }
-      .brand h1{ font-size:14px; }
-      .small{ font-size:11px; }
-      select,input[type="number"]{ padding:6px 8px; font-size:13px; }
-      .btn{ font-size:13px; padding:8px 10px; }
-      .current{ font-size:16px; padding:10px; min-height:60px; }
-      #currentAlgMain { font-size:36px; }
-      td:nth-child(3), th:nth-child(3){ font-size:16px; }
-      td img{ width:36px; }
+    #reset {
+      display: none;
+      width: 100%;
     }
 
-    #reset { display: none; width: 100%; }
-    #regen { width: 100%; }
+    #regen {
+      width: 100%;
+    }
 
     .sidebar #currentScramble,
-    .sidebar #currentScramble * { font-weight: normal; }
+    .sidebar #currentScramble * {
+      font-weight: normal;
+    }
+
   </style>
 </head>
 <body>
@@ -259,7 +247,7 @@
 
     <main class="content" role="main">
       <div id="currentAlgMain" class="current" style="margin-bottom:12px; min-height:auto; font-size:50px; text-align:left;">
-        — Current Algorithm —
+    — Current Algorithm —
       </div>
       <section class="algs-panel" aria-label="Algorithms reference (OLL and PLL)">
         <div class="algs-tables">
