@@ -80,15 +80,28 @@ function renderCurrent() {
 
 function advanceScramble() {
   if (!scrambles.length) return;
+
   if (index < scrambles.length - 1) {
     index++;
     renderCurrent();
   } else {
-    index = scrambles.length - 1;
-    currentBox.animate([{ transform: 'scale(1)' }, { transform: 'scale(0.98)' }, { transform: 'scale(1)' }], { duration: 160 });
+    // When at the last scramble, show thumbs up in currentBox and alg main
+    const completionMessage = 'Done';
+    currentBox.innerHTML = `<div style="line-height:1.25; font-size:1.5em; text-align:center">${completionMessage}</div>`;
+    if (currentAlgMain) currentAlgMain.textContent = completionMessage;
+
+    // Keep progressText showing Finished
+    progressText.textContent = `${scrambles.length} / ${scrambles.length}`;
     remainingText.textContent = 'Finished';
+
+    // Optional: small animation to indicate the end
+    currentBox.animate(
+      [{ transform: 'scale(1)' }, { transform: 'scale(0.98)' }, { transform: 'scale(1)' }],
+      { duration: 160 }
+    );
   }
 }
+
 
 function resetAll() {
   scrambles = [];
