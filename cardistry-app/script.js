@@ -1097,7 +1097,44 @@ const itemsData = [
     title: "Reference", 
     content: '<a href="https://www.youtube.com/shorts/soMEvbG0gCQ" target="_blank">Beginner Card Trick you can do IMMEDIATELY!</a>' 
   }
-}
+},
+  {
+    name: "Mnemonica memdeck",
+    setup: {
+      title: "Setup",
+      content: `
+        Start with the deck in this order:
+        <ul>
+          <li>A♠->K♠</li>
+          <li>A♥->K♥</li>
+          <li>K♦->A♦</li>
+          <li>K♣->A♣</li>
+        </ul>
+      `
+    },
+    method: {
+      title: "The Method",
+      content: `
+        <ul>
+          <li>Deal cards in a 4x4 grid, from left to right, top to bottom</li>
+          <li>Pick up each pile in this sequence (if we index the rows 1-4, and columns A-C), then:
+            <ul>
+              <li>Pick up B4, C3, D2, and place packet on A1</li>
+              <li>Pick up C4, D3, A2, B1, and place packet on A1</li>
+              <li>Pick up D4, A3, B2, C1, and place packet on A1</li>
+              <li>Pick up A4, B3, C2, D1, and place packet on A1</li>
+            </ul>
+          <li>Cut between 9♣ and 9♠, holding cards face down, put the bottom pack on the table, then deal 8 cards from top of the top pile to top of discard pile</li>
+          <li>Cut between 2♣ and 3♥, holding cards face down, put the small pile on the table cards (face down), then do the klondike shuffle with the big packet (ie. pull top and bottom card off together) then place on the smaller discard pile</li>
+          <li>Cut between 9♦ and 4♣, holding cards face up, put the bottom pile on top</li>
+        </ul>
+      `
+    },
+    notes: { title: "Notes", content: "<p>4♣, 2♥, 7♦, 3♣, 4♥, 6♦, A♠, 5♥, 9♠, 2♠, Q♥, 3♦, Q♣, 8♥, 6♠, 5♠, 9♥, K♣, 2♦, J♥, 3♠, 8♠, 6♥, 10♣, 5♦, K♦, 2♣, 3♥, 8♦, 5♣, K♠, J♦, 8♣, 10♠, K♥, J♣, 7♠, 10♥, A♦, 4♠, 7♥, 4♦, A♣, 9♣, J♠, Q♦, 7♣, Q♠, 10♦, 6♣, A♥, 9♦.</p>" },
+    deck: { title: "Deck", content: "Single standard 52-card deck" },
+    reference: { title: "Reference", content: '<a href="https://www.youtube.com/watch?v=ZjAMeoC2nUE" target="_blank">Mnemonica Stack | Greatest Card Stack of All Time?!</a>' },
+    tags: ["tricks", "shuffles"]
+  }
 ];
 
 // Apply filter based on tags
