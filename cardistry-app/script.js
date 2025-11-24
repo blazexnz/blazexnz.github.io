@@ -1124,7 +1124,7 @@ const itemsData = [
               <li>Pick up D4, A3, B2, C1, and place packet on A1</li>
               <li>Pick up A4, B3, C2, D1, and place packet on A1</li>
             </ul>
-          <li>Cut between 9♣ and 9♠, holding cards face down, put the bottom pack on the table, then deal 8 cards from top of the top pile to top of discard pile</li>
+          <li>Cut between 9♣ and 9♠, holding cards face down, put the bottom pack on the table, then deal 8 cards from top of the top pile to top of discard pile, then the rest of the pack on top</li>
           <li>Cut between 2♣ and 3♥, holding cards face down, put the small pile on the table cards (face down), then do the klondike shuffle with the big packet (ie. pull top and bottom card off together) then place on the smaller discard pile</li>
           <li>Cut between 9♦ and 4♣, holding cards face up, put the bottom pile on top</li>
         </ul>
