@@ -22,6 +22,14 @@ window.onload = function () {
     loadSelectedConfig();
 };
 
+function colorizeSuits(text) {
+    return text
+        .replace(/♠/g, '<span style="color:black;">♠</span>')
+        .replace(/♣/g, '<span style="color:black;">♣</span>')
+        .replace(/♥/g, '<span style="color:red;">♥</span>')
+        .replace(/♦/g, '<span style="color:red;">♦</span>');
+}
+
 function showList() {
     const listElement = document.getElementById("list");
 
@@ -31,7 +39,7 @@ function showList() {
 
     listData.forEach((item) => {
         const li = document.createElement("li");
-        li.textContent = item;
+        li.innerHTML = colorizeSuits(item);
         li.style.display = "none";
         listElement.appendChild(li);
         listItems.push(li);
