@@ -1220,6 +1220,11 @@ function displayItem(item, list) {
     // ===== Render HTML content directly =====
     const content = document.createElement('div');
     content.innerHTML = section.content;
+    content.innerHTML = content.innerHTML
+      .replace(/♠/g, '<span class="suit-black">♠</span>')
+      .replace(/♣/g, '<span class="suit-black">♣</span>')
+      .replace(/♥/g, '<span class="suit-red">♥</span>')
+      .replace(/♦/g, '<span class="suit-red">♦</span>');
     sectionDiv.appendChild(content);
 
     container.appendChild(sectionDiv);
