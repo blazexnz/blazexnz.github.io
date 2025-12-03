@@ -29,10 +29,10 @@
 
         .list-container {
             margin-top: 20px;
-            width: 100%;  /* Set to 100% width */
-            max-width: 1200px;  /* Ensure the width doesn't get too large on big screens */
-            height: 300px;  /* Fixed height to make it scrollable */
-            overflow-y: auto;  /* Enable vertical scrolling */
+            width: 100%;
+            max-width: 1200px;
+            height: 300px;
+            overflow-y: auto;
             border: 1px solid #ccc;
             padding: 10px;
             background-color: white;
@@ -48,6 +48,17 @@
             font-size: 18px;
             padding: 10px;
             border-bottom: 1px solid #ccc;
+        }
+
+        /* ⭐ CARD MODE — Applied automatically when the dataset contains card symbols */
+        .card-mode li {
+            font-size: 28px !important;
+            border: 2px solid #444 !important;
+            border-radius: 8px;
+            padding: 12px !important;
+            margin: 8px 0;
+            background: #fafafa;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
 
         .button-container {
@@ -85,7 +96,6 @@
                 <option value="config-5.json">PAO system</option>
                 <option value="config-6.json">Backwards alphabet</option>
                 <option value="config-7.json">Mnemonica memdeck</option>
-                <!-- Add more config files as needed -->
             </select>
         </div>
 
