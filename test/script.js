@@ -1,6 +1,7 @@
 let listData = [];
 let listItems = [];
 let currentIndex = 0;
+let isCardSet = false; // ⭐ NEW — tracks if list contains playing cards
 
 function loadSelectedConfig() {
     const selectedFile = document.getElementById("configSelect").value;
@@ -9,7 +10,11 @@ function loadSelectedConfig() {
         .then(response => response.json())
         .then(data => {
             listData = data;
-            resetList(); // reset view if new config loaded
+
+            // ⭐ Detect if the dataset contains card symbols
+            isCardSet = listData.some(item => /[♠♣♥♦]/.test(item));
+
+            resetList();
         })
         .catch(error => {
             console.error('Error loading config:', error);
@@ -36,6 +41,13 @@ function showList() {
     listElement.innerHTML = '';
     listItems = [];
     currentIndex = 0;
+
+    // ⭐ Apply or remove card style class
+    if (isCardSet) {
+        listElement.classList.add("card-mode");
+    } else {
+        listElement.classList.remove("card-mode");
+    }
 
     listData.forEach((item) => {
         const li = document.createElement("li");
