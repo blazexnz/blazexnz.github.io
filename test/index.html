@@ -50,20 +50,24 @@
             border-bottom: 1px solid #ccc;
         }
 
-        /* ⭐ UPDATED CARD STYLE — slightly smaller, centered text precisely */
+        /* ⭐ UPDATED — true optical centering like a real card pip */
         .card-mode li {
-            width: 100px;              /* Reduced from 120px */
-            height: 150px;             /* Reduced from 180px */
+            width: 100px;
+            height: 150px;
             border-radius: 10px;
             border: 2px solid #222;
             background: white;
-            font-size: 36px !important; /* Centered large value */
-            display: flex;
-            justify-content: center;
-            align-items: center;
+
+            /* Center pip perfectly like printed cards */
+            font-size: 40px !important;
+            line-height: 150px;       /* EXACT card height */
+            text-align: center;       /* horizontal centering */
+            
             margin: 10px auto;
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
             padding: 0 !important;
+
+            display: block;           /* Removes flex alignment */
         }
 
         .button-container {
