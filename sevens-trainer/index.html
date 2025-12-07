@@ -103,6 +103,20 @@
         .overlay-buttons button.active {
             background-color: #FF9800;
         }
+
+
+        /* ---- Mode Explainer ---- */
+        .mode-explainer {
+            position: fixed;
+            bottom: 10px;
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+            font-size: 0.95em;
+            color: #333;
+            line-height: 1.4;
+            opacity: 0.9;
+        }
     </style>
 </head>
 <body>
@@ -127,6 +141,13 @@
         <button id="random">🎲</button>
         <button id="juggle">🤹</button>
     </div>
+
+    <div class="mode-explainer">
+        <strong>Cycle (🔄):</strong> Steps rotate between 7, 9, and 11<br>
+        <strong>Random (🎲):</strong> Each step is random (7, 9, or 11)<br>
+        <strong>Number Juggle (🤹):</strong> Each step is random (3, 5, 7, 9, 11) and so is the operand (+ or -)
+    </div>
+
 
     <script src="script.js"></script>
 </body>
