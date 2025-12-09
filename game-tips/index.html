@@ -1,1 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Game Tips</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #111;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 15px;
+            font-weight: 400;
+            font-size: 2em;
+        }
+
+        .filters {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .filters button {
+            background: #222;
+            color: #fff;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.2s;
+            font-size: 0.95em;
+        }
+
+        .filters button:hover,
+        .filters button.active {
+            background: #444;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .tile {
+            background: #1a1a1a;
+            border-radius: 20px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .tile:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 255, 255, 0.1);
+        }
+
+        .hero-name {
+            font-size: 1.5em;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: #ffcc00;
+        }
+
+        .tile-content {
+            font-size: 0.95em;
+            line-height: 1.1;
+            white-space: pre-line;
+        }
+
+        .tile-content p {
+            margin-bottom: 2px;
+        }
+
+        .tile-content ol,
+        .tile-content ul {
+            margin: 0 0 2px 18px;
+            padding: 0;
+        }
+
+        .tile-content li {
+            margin-bottom: 0;
+            line-height: 1.1;
+        }
+
+        .highlight {
+            background-color: #222;
+            border-left: 4px solid #ffcc00;
+            padding: 6px 10px;
+            border-radius: 10px;
+            margin-bottom: 6px;
+            font-weight: 500;
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+        }
+
+        .highlight p {
+            margin: 0;
+            line-height: 1.1;
+        }
+
+        @media (max-width: 700px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tile {
+                width: 100%;
+            }
+
+            body {
+                padding: 10px;
+            }
+        }
+
+        .key-banner {
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            background-color: #555;
+            border-left: 4px solid #33caff;
+            border-right: 4px solid #33caff;
+            padding: 10px 14px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-size: 0.95em;
+            line-height: 1.1;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .key-banner p {
+                margin: 0;
+                line-height: 1.1;
+        }
+
+
+    </style>
+</head>
+
+<body>
+
+    <h1>Game Tips</h1>
+
+    <div class="filters">
+        <button class="filter-btn active" tag="all">All</button>
+        <button class="filter-btn" tag="tank">Tank</button>
+        <button class="filter-btn" tag="dps">Damage</button>
+        <button class="filter-btn" tag="support">Support</button>
+        <button class="filter-btn" tag="warmup">Warm up</button>
+    </div>
+
+    <div class="key-banner">
+        <p>Tank: I'm not trying to kill, I'm trying to control</p>
+    </div>
+
+    <div class="grid">
+
+        <div class="tile" tag="tank">
+            <div class="hero-name">Orisa</div>
+            <div class="tile-content">
+                <div class="highlight">
+                    <p>Push in waves - peek, bait, retreat</p>
+                    <p>Fortify -> Spin -> Fire -> Jav -> Reset</p>
+                </div>
+                <p><strong>Role Identity:</strong> You’re the anchor. You control space and protect your team by absorbing key cooldowns.</p>
+                <p><strong>Main Tempo:</strong> Push in waves — 2–3 seconds of pressure, then reset behind cover. Don’t overextend.</p>
+                <p><strong>Other Notes:</strong>
+                <ul>
+                    <li>Use corners – peek, bait, retreat.</li>
+                    <li>Your gun isn’t poke — it’s pressure.</li>
+                    <li>Don’t spray all game.</li>
+                </ul>
+                </p>
+                <p><strong>Core Cooldown Rhythm:</strong> Fortify → Spin (as Fortify ends) → Pressure fire → Javelin → WAIT → repeat.</p>
+                <p><strong>Most Important Notes:</strong>
+                <ul>
+                    <li>Trade Fortify for one enemy cooldown to gain an advantage.</li>
+                    <li>Anchor between your supports and DPS, not far ahead.</li>
+                </ul>
+                </p>
+            </div>
+        </div>
+
+        <div class="tile" tag="tank">
+            <div class="hero-name">Junker Queen</div>
+            <div class="tile-content">
+                <div class="highlight">
+                    <p>Push, pause, punish, retreat</p>
+                    <p>Shout -> Swing wide out from cover -> Knife -> Axe -> Shotgun -> Reset</p>
+                </div>
+                <p><strong>Role Identity:</strong> You’re pressure + sustain. Win fights through anti-heals, bleeds, and careful trades. You’re strongest when controlling small angles or chokes.</p>
+                <p><strong>Main Tempo:</strong> Push → Pause → Punish → Retreat. Don’t overcommit; fight in rhythm.</p>
+                <p><strong>Other Notes:</strong> Corner fighting only; avoid open fields. Start axe before knife pull.</p>
+                <p><strong>Core Cooldown Rhythm:</strong> Shout → Swing wide out from cover → Knife / Knife Pull → Axe → Shotgun/melee finish. Reset behind cover.</p>
+                <p><strong>Most Important Notes:</strong>
+                <ul>
+                    <li>Never push without Shout.</li>
+                    <li>Win fights with tempo, not raw brawl.</li>
+                </ul>
+                </p>
+            </div>
+        </div>
+
+        <div class="tile" tag="tank">
+            <div class="hero-name">Winston</div>
+            <div class="tile-content">
+                <div class="highlight">
+                    <p>Jump in -> Bubble -> Zap -> Jump Out -> Reset -> Repeat.</p>
+                    <p>Second dive only after cooldown</p>
+                </div>
+                <p><strong>Role Identity:</strong> You're the fight starter. Dive, create chaos, break setups, open space for DPS to follow through.</p>
+                <p><strong>Main Tempo:</strong> Tag a target → leave → re-dive.</p>
+                <p><strong>Other Notes:</strong>
+                <ul>
+                    <li>Mark one high-value target per fight.</li>
+                    <li>Always ensure: 1) You're in healer LOS, 2) You have bubble ready, 3) Know your exit, 4) Your team can follow up.</li>
+                </ul>
+                </p>
+                <p><strong>Core Cooldown Rhythm:</strong> Jump in -> Bubble -> Zap -> Jump Out -> Reset -> Repeat. Second dive occurs after Jump cooldown resets.</p>
+                <p><strong>Most Important Notes:</strong>
+                <ul>
+                    <li>Commit only if jump hits.</li>
+                    <li>Use Bubble to separate enemies.</li>
+                </ul>
+                </p>
+            </div>
+        </div>
+
+        <div class="tile" tag="tank">
+            <div class="hero-name">D.Va</div>
+            <div class="tile-content">
+                <div class="highlight">
+                    <p>Short dive → peel → reposition</p>
+                    <p>Boosters In → Microburst → Melee → Defense Matrix → Boosters Out → repeat.</p>
+                </div>
+                <p><strong>Role Identity:</strong> Flex diver and peel machine. Deny key abilities, chase isolated targets, and protect supports.</p>
+                <p><strong>Main Tempo:</strong> Short dive → peel → reposition. Constant mobility is key.</p>
+                <p><strong>Other Notes:</strong> Stagger enemies to deny resets and peel efficiently.</p>
+                <p><strong>Core Cooldown Rhythm:</strong> Boosters In → Microburst → Melee → Defense Matrix → Boosters Out → repeat.</p>
+                <p><strong>Most Important Notes:</strong>
+                <ul>
+                    <li>Use Matrix to deny high-value cooldowns.</li>
+                    <li>Reposition constantly; angles &gt; HP.</li>
+                </ul>
+                </p>
+            </div>
+        </div>
+
+        <div class="tile" tag="tank">
+            <div class="hero-name">Roadhog</div>
+            <div class="tile-content">
+                <div class="highlight">
+                    <p>Hook -> pressure -> reset</p>
+                    <p>Hook → Shotgun → Melee → Follow-up → Hide → repeat</p>
+                </div>
+                <p><strong>Role Identity:</strong> Pick tank / off-angle anchor. Off angle tank, not a main choke brawler. Your goal is one elimination per cycle, turning 5v5 into 5v4.</p>
+                <p><strong>Main Tempo:</strong> Hook -> pressure -> reset</p>
+                <p><strong>Other Notes:</strong> If you're in open space you're feed, if you're in a choke or behind a corner, you're a threat. Ultimate for picks or zoning, not random spray. Always step behind cover when breathing.</p>
+                <p><strong>Core Cooldown Rhythm:</strong> Hook → Shotgun → Melee → Follow-up → Hide → repeat.</p>
+                <p><strong>Most Important Notes:</strong>
+                <ul>
+                    <li>Hook first, then commit.</li>
+                    <li>Play safe if hook is down.</li>
+                </ul>
+                </p>
+            </div>
+        </div>
+
+        <div class="tile" tag="tank">
+            <div class="hero-name">Mauga</div>
+            <div class="tile-content">
+                <div class="highlight">
+                    <p>Walk until it’s time to kill — then dash</p>
+                    <p>Overrun In → Burn (Crit Rage) → Cardio sustain → Back off → repeat</p>
+                </div>
+                <p><strong>Role Identity:</strong> Juggernaut brawler. Win fights by taking space, burning targets, and using Overrun + Cardio to dominate.</p>
+                <p><strong>Main Tempo:</strong> Walk forward → force cooldowns → Overrun engage → back off when Cardio ends.</p>
+                <p><strong>Other Notes:</strong> Focus squishies or low-mobility tanks. Walk until it’s time to kill — then dash.</p>
+                <p><strong>Core Cooldown Rhythm:</strong> Overrun In → Burn (Crit Rage) → Cardio sustain → Back off → repeat.</p>
+                <p><strong>Most Important Notes:</strong>
+                <ul>
+                    <li>Use Overrun to punish and force cooldowns.</li>
+                    <li>Always corner yourself; open ground = death.</li>
+                </ul>
+                </p>
+            </div>
+        </div>
+
+        <div class="tile" tag="tank">
+            <div class="hero-name">Zarya</div>
+            <div class="tile-content">
+                <div class="highlight">
+                    <p>Use your bubble proactively</p>
+                    <p>Self Bubble → push → Projected Bubble → beam burn → WAIT → repeat</p>
+                </div>
+                <p><strong>Role Identity:</strong> Frontline bully. Win slow brawls by trading bubbles effectively and building high charge.</p>
+                <p><strong>Main Tempo:</strong> Bubble → push → reset → repeat.</p>
+                <p><strong>Other Notes:</strong> High charge (70+) = dictate fights. Use your bubble proactively, just as the enemy commits.</p>
+                <p><strong>Core Cooldown Rhythm:</strong> Self Bubble → push → Projected Bubble → beam burn → WAIT → repeat.</p>
+                <p><strong>Most Important Notes:</strong>
+                <ul>
+                    <li>Trade bubbles for maximum value.</li>
+                    <li>High charge = control fight tempo.</li>
+                </ul>
+                </p>
+            </div>
+        </div>
+
+        <div class="tile" tag="support">
+            <div class="hero-name">Moira</div>
+            <div class="tile-content">
+                <div class="highlight">
+                    <p>Fade for escape or reposition only</p>
+                    <p>Survivability > greedy plays</p>
+                </div>
+                <p><strong>Role Identity:</strong> Sustain + damage support. Your value comes from sustain + consistent DPS, not flashy kills. Heal allies while dealing damage to charge Fade/Coalescence.</p>
+                <p><strong>Main Tempo:</strong> Mid-range → heal → poke → retreat → repeat.</p>
+                <p><strong>Other Notes:</strong>
+                <ul>
+                    <li>Fade for survival/escape/rotations only - NOT panic.</li>
+                    <li>Damage to charge and pressure.</li>
+                    <li>Use Fade to escape or reposition, never offensively unless safe.</li>
+                    <li>Focus the same target as the one your heal target is focusing.</li>
+                    <li>Look past the tank and do damage on support, then DPS, then tank.</li>
+                </ul>
+                </p>
+                <p><strong>Core Cooldown Rhythm:</strong> Heal → Damage orb/beam → Fade → Coalescence → repeat.</p>
+                <p><strong>Most Important Notes:</strong>
+                <ul>
+                    <li>Heal efficiently, prioritize survival over greedy plays.</li>
+                    <li>Use Fade wisely</li>
+                </ul>
+                </p>
+            </div>
+        </div>
+
+        <div class="tile" tag="support">
+            <div class="hero-name">Zenyatta</div>
+            <div class="tile-content">
+                <div class="highlight">
+                    <p>Cover -> Charge right click -> Peek & volley damage -> Hide back behind cover</p>
+                </div>
+                <p><strong>Role Identity:</strong> High-value poke healer. Deny healing, apply Discord, sustain with Harmony.</p>
+                <p><strong>Main Tempo:</strong> Poke → Discord → reposition → repeat.</p>
+                <p><strong>Other Notes:</strong> Discord = fight-decider. Harmony = pre-emptive sustain. Stay safe; Zen dies quickly. If in doubt, heal orb on tank, discord on tank.</p>
+                <p><strong>Core Cooldown Rhythm:</strong> Harmony → Discord → Orb poke → Transcendence → repeat.</p>
+                <p><strong>Most Important Notes:</strong>
+                <ul>
+                    <li>Keep Discord on high-value targets</li>
+                    <li>Stay safe while healing</li>
+                </ul>
+                </p>
+            </div>
+        </div>
+
+        <div class="tile" tag="support">
+            <div class="hero-name">Kiriko</div>
+            <div class="tile-content">
+                <div class="highlight">
+                    <p>Heal → Kitsune → Kunai → Suzu → repeat.</p>
+                </div>
+                <p><strong>Role Identity:</strong> Mobility + poke healer. Keep allies alive and pressure flankers.</p>
+                <p><strong>Main Tempo:</strong> Heal → teleport → Kunai poke → Protection Suzu → repeat.</p>
+                <p><strong>Other Notes:</strong> Teleport = reposition/save. Suzu = reactive save. Track ally positions.</p>
+                <p><strong>Core Cooldown Rhythm:</strong> Heal → Kitsune → Kunai → Suzu → repeat.</p>
+                <p><strong>Most Important Notes:</strong>
+                <ul>
+                    <li>Use Suzu to save key allies</li>
+                    <li>Teleport to high-impact positions/saves</li>
+                </ul>
+                </p>
+            </div>
+        </div>
+
+        <div class="tile" tag="support">
+            <div class="hero-name">Ana</div>
+            <div class="tile-content">
+                <div class="highlight">
+                    <p>Heal → Biotic Grenade → Sleep Dart → Nano / poke → reset → repeat.</p>
+                </div>
+                <p><strong>Role Identity:</strong> Long-range poke healer. Heal allies, deny enemy abilities, swing fights with utility.</p>
+                <p><strong>Main Tempo:</strong> Hold angle → heal → poke → anti-heal → retreat → repeat.</p>
+                <p><strong>Other Notes:</strong> Sleep = pick tool. Biotic = deny healing/secure kills. Nano = fight-winning combo. Position for line-of-sight.</p>
+                <p><strong>Core Cooldown Rhythm:</strong> Heal → Biotic Grenade → Sleep Dart → Nano / poke → reset → repeat.</p>
+                <p><strong>Most Important Notes:</strong>
+                <ul>
+                    <li>Sleep/biotic on key threats</li>
+                    <li>Stay alive in safe angles</li>
+                </ul>
+                </p>
+            </div>
+        </div>
+
+        <div class="tile" tag="support">
+            <div class="hero-name">Mercy</div>
+            <div class="tile-content">
+                <div class="highlight">
+                    <p>Heal → Damage Boost → Guardian Angel → Resurrect → Valkyrie → repeat.</p>
+                </div>
+                <p><strong>Role Identity:</strong> Primary sustain + clutch healer. Keep key allies alive and enable dives.</p>
+                <p><strong>Main Tempo:</strong> Heal priority ally → damage boost → Guardian Angel reposition → repeat.</p>
+                <p><strong>Other Notes:</strong> Prioritize high-impact allies. Resurrect = fight-turner. Guardian Angel = reposition/escape. Valkyrie = mobility + enhanced healing.</p>
+                <p><strong>Core Cooldown Rhythm:</strong> Heal → Damage Boost → Guardian Angel → Resurrect → Valkyrie → repeat.</p>
+                <p><strong>Most Important Notes:</strong>
+                <ul>
+                    <li>Keep priority allies alive</li>
+                    <li>Use Guardian Angel to stay mobile and safe</li>
+                </ul>
+                </p>
+            </div>
+        </div>
+
+        <div class="tile" tag="tank">
+            <div class="hero-name">General tank</div>
+            <div class="tile-content">
+                <div class="highlight">
+                    <p>“I’m not trying to kill — I’m trying to control.”</p>
+                    <p>“Peek → bait something → hide → peek during their downtime.” You fight in bursts, not continuous exposure.</p>
+                </div>
+                <p>Don’t dive or push alone — push with purpose and support line-of-sight.</p>
+                <p>If your supports can’t see you, you’re not creating space — you’re feeding.</p>
+                <p>Think of yourself as the engine of the team: start, stop, and pace the fight.</p>
+                <p>If in doub't, slow down.</p>
+            </div>
+        </div>
+
+        <div class="tile" tag="support">
+            <div class="hero-name">General support</div>
+            <div class="tile-content">
+                <div class="highlight">
+                    <p>Survival</p>
+                    <p>Don't be greedy for kills</p>
+                </div>
+                <p>Use off angles.</p>
+            </div>
+        </div>
+
+        <div class="tile" tag="warmup">
+            <div class="hero-name">Warm up</div>
+            <div class="tile-content">
+                <div class="highlight">
+                    <p>Be deliberate</p>
+                    <p>Use bottom half of crosshair</p>
+                    <p>Focus on the target - like the blade of a fan</p>
+                </div>
+                <ol>
+                    <li>Tracking the target without shooting</li>
+                    <li>Deliberate shots – aim for 100% accuracy, use a metronome</li>
+                    <li>180 flicks to target acquisition</li>
+                    <li>Always intend for head shots</li>
+                    <li>Focus on the target not just look at it (eg. blade on fan, not fan itself)</li>
+                    <li>Hero specific aim training (eg. Ana sleep dart, Orisa jav, Junker Queen jagged blade)</li>
+                    <li>Hero specific cooldown combo training (eg. Junker Queen: Shout → Swing wide out from cover → Knife / Knife Pull → Axe → Shotgun/melee finish)</li>
+                    <li>50–100 kills</li>
+                    <li>A-D strafe aiming, crosshair at head height, no mouse movement</li>
+                </ol>
+            </div>
+        </div>
+
+<div class="tile" tag="dps">
+    <div class="hero-name">Cassidy</div>
+    <div class="tile-content">
+        <div class="highlight">
+            <p>Hold angle → poke → punish → rotate → repeat.</p>
+            <p>Take safe angles for 2-taps.</p>
+        </div>
+        <p><strong>Role Identity:</strong> Mid-range duelist + pick maker. Secure kills with stickies, 2-taps, and Fan.</p>
+        <p><strong>Main Tempo:</strong> Hold angle → poke → punish → rotate → repeat.</p>
+        <p><strong>Other Notes:</strong> Play mid-range. Sticky = punish commit. Roll → reload → Fan = burst damage. Use off-angles.</p>
+        <p><strong>Core Cooldown Rhythm:</strong> Take angle → poke → Sticky on commit → Fan + roll cancel → reset.</p>
+        <p><strong>Most Important Notes:</strong>
+        <ul>
+            <li>Take safe angles for 2-taps</li>
+            <li>Sticky only on committed targets</li>
+        </ul>
+        </p>
+    </div>
+</div>
+
+<div class="tile" tag="dps">
+    <div class="hero-name">Ashe</div>
+    <div class="tile-content">
+        <div class="highlight">
+            <p>Hold angle → poke → dynamite → punish → reposition → repeat.</p>
+            <p>Stay high ground and rotate often.</p>
+        </div>
+        <p><strong>Role Identity:</strong> Mid–long-range pressure and pick DPS. Control space with dynamite and punish overextensions.</p>
+        <p><strong>Main Tempo:</strong> Hold angle → poke → dynamite → punish → reposition → repeat.</p>
+        <p><strong>Other Notes:</strong> Dynamite softens teams. Coach Gun = spacing + escape. High ground = safety + value. B.O.B. controls space.</p>
+        <p><strong>Core Cooldown Rhythm:</strong> Scoped shots → Dynamite → Unscoped shots → Coach Gun → reset → repeat.</p>
+        <p><strong>Most Important Notes:</strong>
+        <ul>
+            <li>Dynamite pressure wins fights early</li>
+            <li>Stay high ground and rotate often</li>
+        </ul>
+        </p>
+    </div>
+</div>
+
+<div class="tile" tag="dps">
+    <div class="hero-name">Reaper</div>
+    <div class="tile-content">
+        <div class="highlight">
+            <p>TP → Walk → Burst → Wraith → Reset.</p>
+            <p>Use Wraith to survive.</p>
+        </div>
+        <p><strong>Role Identity:</strong> Close-range assassin. Delete tanks, supports, isolated targets with flanks.</p>
+        <p><strong>Main Tempo:</strong> Flank → burst → Wraith out → repeat.</p>
+        <p><strong>Other Notes:</strong> Don’t fight main lines. Wraith = survival + reload. Coordinate with team.</p>
+        <p><strong>Core Cooldown Rhythm:</strong> TP → Walk → Burst → Wraith → Reset.</p>
+        <p><strong>Most Important Notes:</strong>
+        <ul>
+            <li>Always flank; avoid main sightlines</li>
+            <li>Use Wraith to survive</li>
+        </ul>
+        </p>
+    </div>
+</div>
+
+<div class="tile" tag="dps">
+    <div class="hero-name">Symmetra</div>
+    <div class="tile-content">
+        <div class="highlight">
+            <p>Set up → hold close angle → punish entries → push when charged.</p>
+            <p>Fight in tight spaces</p>
+        </div>
+        <p><strong>Role Identity:</strong> Area control + brawl DPS. Hold chokes, force enemies through turrets + beam.</p>
+        <p><strong>Main Tempo:</strong> Set up → hold close angle → punish entries → push when charged.</p>
+        <p><strong>Other Notes:</strong> Turrets = zone, protect supports. Teleporter = mobility/escape. Fight in tight spaces.</p>
+        <p><strong>Core Cooldown Rhythm:</strong> Turrets → Beam poke → Orb pressure → Push while charged.</p>
+        <p><strong>Most Important Notes:</strong>
+        <ul>
+            <li>Fight in tight spaces</li>
+            <li>Place turrets before engagement</li>
+        </ul>
+        </p>
+    </div>
+</div>
+
+<div class="tile" tag="dps">
+    <div class="hero-name">Bastion</div>
+    <div class="tile-content">
+        <div class="highlight">
+            <p>Recon poke → Turret mode burst → Roll to new cover → AOE/nade → reset.</p>
+            <p>Turret only from safe cover.</p>
+        </div>
+        <p><strong>Role Identity:</strong> Siege DPS + mid-range punisher. Burst enemies from cover.</p>
+        <p><strong>Main Tempo:</strong> Hold angle → turret burst → reposition → repeat.</p>
+        <p><strong>Other Notes:</strong> Turret only behind cover. Burst windows = main damage. Coordinate with tank.</p>
+        <p><strong>Core Cooldown Rhythm:</strong> Recon poke → Turret mode burst → Roll to new cover → AOE/nade → reset.</p>
+        <p><strong>Most Important Notes:</strong>
+        <ul>
+            <li>Turret only from safe cover</li>
+            <li>Burst → reposition → repeat</li>
+        </ul>
+        </p>
+    </div>
+</div>
+
+<div class="tile" tag="dps">
+    <div class="hero-name">Soldier: 76</div>
+    <div class="tile-content">
+        <div class="highlight">
+            <p>Hold high ground → poke → punish → reposition.</p>
+            <p>Helix = kill confirm.</p>
+        </div>
+        <p><strong>Role Identity:</strong> Consistent poke + mobility DPS. Long-range sustained damage.</p>
+        <p><strong>Main Tempo:</strong> Hold high ground → poke → punish → reposition.</p>
+        <p><strong>Other Notes:</strong> Helix = burst finish. Biotic = sustain. High ground = key advantage.</p>
+        <p><strong>Core Cooldown Rhythm:</strong> Poke → Helix on cooldown → Sprint → Biotic → repeat.</p>
+        <p><strong>Most Important Notes:</strong>
+        <ul>
+            <li>Stay on high ground</li>
+            <li>Helix = kill confirm</li>
+        </ul>
+        </p>
+    </div>
+</div>
+
+<div class="tile" tag="dps">
+    <div class="hero-name">Sombra</div>
+    <div class="tile-content">
+        <div class="highlight">
+            <p>Scout → hack → burst → translocate → repeat.</p>
+            <p>Never fight without translocator.</p>
+        </div>
+        <p><strong>Role Identity:</strong> Disruptor + pick enabler. Isolate targets, force cooldowns.</p>
+        <p><strong>Main Tempo:</strong> Scout → hack → burst → translocate → repeat.</p>
+        <p><strong>Other Notes:</strong> Pressure > kills. Hack supports to break healing. EMP = fight-winning combo.</p>
+        <p><strong>Core Cooldown Rhythm:</strong> Stealth → Identify target → Hack → Short burst → Translocate out → repeat.</p>
+        <p><strong>Most Important Notes:</strong>
+        <ul>
+            <li>Hack priority targets</li>
+            <li>Never fight without translocator</li>
+        </ul>
+        </p>
+    </div>
+</div>
+
+<div class="tile" tag="dps">
+    <div class="hero-name">Tracer</div>
+    <div class="tile-content">
+        <div class="highlight">
+            <p>Always keep a guaranteed escape (Blink or Recall).</p>
+            <p>Save a Blink, don’t overstay.</p>
+        </div>
+        <p><strong>Role Identity:</strong> Assassin + disruptor. Pressure backlines, force cooldowns, finish low targets.</p>
+        <p><strong>Main Tempo:</strong> Poke → force cooldowns → burst → Recall out → rotate → repeat.</p>
+        <p><strong>Other Notes:</strong> Commit only with an exit. Save a Blink, don’t overstay. Pulse targets with no mobility. Play off-angles.</p>
+        <p><strong>Core Cooldown Rhythm:</strong> Blink → burst → Blink/strafe → Recall → reposition → repeat.</p>
+        <p><strong>Most Important Notes:</strong>
+        <ul>
+            <li>Always keep a guaranteed escape (Blink or Recall)</li>
+            <li>Constant pressure on supports wins fights</li>
+        </ul>
+        </p>
+    </div>
+</div>
+
+        <div class="tile" tag="dps">
+            <div class="hero-name">General damage</div>
+            <div class="tile-content">
+                <div class="highlight">
+                    <p>Three must haves: off angle, tight against cover, heal</p>
+                    <p>Shoot them when they're not looking at you.</p>
+                </div>
+                <p>Take off angles, divide their attention, wait for team to engage first</p>
+                <p>A-D strafe & micro adjustments</p>
+                <p>Positioning - off angles & high ground</p>
+                <p>Play tight to cover & isolate your angles, create hallways</p>
+                <p>Use a frame of reference and square your body to it</p>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const buttons = document.querySelectorAll('.filter-btn');
+        const tiles = document.querySelectorAll('.tile');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                const hero = button.getAttribute('tag');
+                buttons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                tiles.forEach(tile => {
+                    const tileTags = tile.getAttribute('tag').split(',').map(t => t.trim());
+                    tile.style.display = (hero === 'all' || tileTags.includes(hero)) ? 'flex' : 'none';
+                });
+            });
+        });
+        const banner = document.querySelector('.key-banner');
+        banner.addEventListener('click', () => {
+                banner.style.display = 'none';
+});
+    </script>
+
+</body>
+
+</html>
