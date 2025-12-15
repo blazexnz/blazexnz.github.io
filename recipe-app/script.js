@@ -681,6 +681,70 @@ const itemsData = [
     `
   },
   tags: ["meals"]
+},
+
+{
+  name: "Coconut Rought Slice",
+  checklist: {
+    title: "Progress tracker",
+    content: `
+      <ul>
+        <li><input type="checkbox"> Preheat oven 180°C</li>
+        <li><input type="checkbox"> Grease and line slice tin</li>
+        <li><input type="checkbox"> Add mixure and bake</li>
+        <li><input type="checkbox"> Make the icing & ice while still warm</li>
+      </ul>
+    `
+  },
+  ingredients: {
+    title: "Ingredients",
+    content: `
+      <p>Base:</p>
+      <ul>
+        <li>1 1/2 cups self raising flour (225g)</li>
+        <li>1 cup white sugar (225g)</li>
+        <li>1 1/2 cups desiccated coconut (150g)</li>
+        <li>3 tbsp cocoa powder</li>
+        <li>200g butter, melted</li>
+      </ul>
+      <p>Chocolate icing</p>
+      <ul>
+        <li>1 1/3 cups icing sugar (200g)</li>
+        <li>1 1/2 tbsp cocoa powder</li>
+        <li>1 knob of softened butter</li>
+        <li>2-3 tbsp hot water</li>
+        <li>2 tbsp desiccated coconut</li>
+      </ul>
+      <p>Makes 18 servings</p>
+    `
+  },
+  notes: {
+    title: "Notes",
+    content: `
+      <ul>
+        <li>Spread icing while still warm</li>
+      </ul>
+    `
+  },
+  method: {
+    title: "Method",
+    content: `
+      <p>Base</p>
+      <ol>
+        <li>Preheat oven 180°C</li>
+        <li>Grease slice tin & line with baking paper</li>
+        <li>Place all base ingredients in a large bowl & mix until well combined</li>
+        <li>Press into tin and bake for 20 mins. Cool in the tin while you make the icing</li>
+      </ol>
+      <p>Icing</p>
+      <ol>
+        <li>Sift icing sugar & cocoa powder in a bowl. Add butter and enough hot water to form a smooth, spreadable icing</li>
+        <li>Spread over the base while still warm in the tin</li>
+        <li>Sprinkle coconut over the top & cut into squares. Leave to cool in the tin</li>
+      </ol>
+    `
+  },
+  tags: ["other"]
 }
 
 ];
