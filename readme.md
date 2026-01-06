@@ -28,3 +28,4 @@
 - **Recipe app** (Released: October 2025)
 - **Game tips page** (Released: November 2025)
 - **Speedcubing alg trainer** (Released: November 2025)
+- **Golf club distances** (Released: January 2026)
