@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Golf Club Distances</title>
+
+  <!-- iPhone optimisation -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <meta name="robots" content="noindex, nofollow">
+
+  <style>
+    :root {
+      --bg: #f8fafc;          /* light grey background */
+      --card: #ffffff;       /* white cards */
+      --text: #0f172a;       /* near-black text */
+      --muted: #64748b;      /* slate */
+      --accent: #2563eb;     /* clean blue accent */
+      --border: #e2e8f0;     /* soft border */
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", Inter, system-ui, sans-serif;
+      display: flex;
+      justify-content: center;
+    }
+
+    .app {
+      width: 100%;
+      max-width: 480px;
+      padding: 16px;
+    }
+
+    h1 {
+      font-size: 1.4rem;
+      text-align: center;
+      margin-bottom: 12px;
+      letter-spacing: 0.3px;
+    }
+
+    .clubs {
+      display: grid;
+      gap: 8px;
+    }
+
+    .club {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px 16px;
+    }
+
+    .club-name {
+      font-size: 1.05rem;
+      font-weight: 500;
+    }
+
+    .distance {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 56px;
+      text-align: right;
+    }
+
+    .unit {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-left: 4px;
+      font-weight: 500;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 14px;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    /* Prevent double tap zoom */
+    .club {
+      touch-action: manipulation;
+    }
+
+    /* Hover styles ONLY for real hover devices */
+    @media (hover: hover) and (pointer: fine) {
+      .club:hover {
+        border-color: var(--accent);
+      }
+    }
+
+    /* Active state for touch devices */
+    .club:active {
+      transform: scale(0.985);
+    }
+
+    @media (min-width: 768px) {
+      .app {
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="app">
+    <h1>Golf Club Distances</h1>
+
+    <div class="clubs" id="clubs"></div>
+
+    <div class="footer">
+      Total distance (including carry)
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
