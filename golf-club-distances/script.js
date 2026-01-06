@@ -2,20 +2,21 @@
 // Change numbers only – layout auto-updates
 
 const CLUB_YARDAGES = [
-  { club: "Driver", distance: 245 },
-  { club: "3 Wood", distance: 225 },
-  { club: "5 Wood", distance: 210 },
-  { club: "Hybrid", distance: 195 },
-  { club: "4 Iron", distance: 185 },
-  { club: "5 Iron", distance: 175 },
-  { club: "6 Iron", distance: 165 },
-  { club: "7 Iron", distance: 155 },
-  { club: "8 Iron", distance: 145 },
-  { club: "9 Iron", distance: 135 },
-  { club: "Pitching Wedge", distance: 125 },
-  { club: "Gap Wedge", distance: 110 },
-  { club: "Sand Wedge", distance: 95 },
-  { club: "Lob Wedge", distance: 80 }
+  { club: "Driver", distance: 0 },
+  { club: "3 Wood", distance: 0 },
+  { club: "5 Wood", distance: 0 },
+  { club: "4 hybrid", distance: 0 },
+  { club: "7 hybrid", distance: 170 },
+  { club: "4 Iron", distance: 170 },
+  { club: "5 Iron", distance: 160 },
+  { club: "6 Iron", distance: 150 },
+  { club: "7 Iron", distance: 140 },
+  { club: "8 Iron", distance: 130 },
+  { club: "9 Iron", distance: 120 },
+  { club: "48° Pitching Wedge", distance: 110 },
+  { club: "52° Gap Wedge", distance: 100 },
+  { club: "56° Sand Wedge", distance: 90 },
+  { club: "60° Lob Wedge", distance: 80 }
 ];
 
 // CHANGE UNIT IF NEEDED ("yds" or "m")
