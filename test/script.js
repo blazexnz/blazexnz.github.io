@@ -1,77 +1,41 @@
-let listData = [];
-let listItems = [];
-let currentIndex = 0;
-let isCardSet = false; // tracks if list contains playing cards
+// DEFINE YOUR YARDAGES HERE
+// Change numbers only – layout auto-updates
 
-function loadSelectedConfig() {
-    const selectedFile = document.getElementById("configSelect").value;
-    
-    fetch(selectedFile)
-        .then(response => response.json())
-        .then(data => {
-            listData = data;
+const CLUB_YARDAGES = [
+  { club: "Driver", distance: 245 },
+  { club: "3 Wood", distance: 225 },
+  { club: "5 Wood", distance: 210 },
+  { club: "Hybrid", distance: 195 },
+  { club: "4 Iron", distance: 185 },
+  { club: "5 Iron", distance: 175 },
+  { club: "6 Iron", distance: 165 },
+  { club: "7 Iron", distance: 155 },
+  { club: "8 Iron", distance: 145 },
+  { club: "9 Iron", distance: 135 },
+  { club: "Pitching Wedge", distance: 125 },
+  { club: "Gap Wedge", distance: 110 },
+  { club: "Sand Wedge", distance: 95 },
+  { club: "Lob Wedge", distance: 80 }
+];
 
-            // Detect if dataset contains card symbols
-            isCardSet = listData.some(item => /[♠♣♥♦]/.test(item));
+// CHANGE UNIT IF NEEDED ("yds" or "m")
+const UNIT = "m";
 
-            resetList();
-        })
-        .catch(error => {
-            console.error('Error loading config:', error);
-            alert('Failed to load the selected memory list.');
-        });
-}
+const container = document.getElementById("clubs");
 
-// Load default on startup
-window.onload = function () {
-    loadSelectedConfig();
-};
+CLUB_YARDAGES.forEach(item => {
+  const row = document.createElement("div");
+  row.className = "club";
 
-function colorizeSuits(text) {
-    return text
-        .replace(/♠/g, '<span style="color:black;">♠</span>')
-        .replace(/♣/g, '<span style="color:black;">♣</span>')
-        .replace(/♥/g, '<span style="color:red;">♥</span>')
-        .replace(/♦/g, '<span style="color:red;">♦</span>');
-}
+  const name = document.createElement("div");
+  name.className = "club-name";
+  name.textContent = item.club;
 
-function showList() {
-    const listElement = document.getElementById("list");
+  const distance = document.createElement("div");
+  distance.className = "distance";
+  distance.innerHTML = `${item.distance}<span class="unit">${UNIT}</span>`;
 
-    listElement.innerHTML = '';
-    listItems = [];
-    currentIndex = 0;
-
-    // Apply or remove card style class
-    if (isCardSet) {
-        listElement.classList.add("card-mode");
-    } else {
-        listElement.classList.remove("card-mode");
-    }
-
-    listData.forEach((item) => {
-        const li = document.createElement("li");
-        li.innerHTML = colorizeSuits(item);
-        li.style.display = "none";
-        listElement.appendChild(li);
-        listItems.push(li);
-    });
-
-    listElement.style.display = "block";
-    document.body.addEventListener('click', revealNextItem);
-}
-
-function revealNextItem() {
-    if (currentIndex < listItems.length) {
-        listItems[currentIndex].style.display = "block";
-        listItems[currentIndex].scrollIntoView({ behavior: "smooth", block: "end" });
-        currentIndex++;
-    }
-}
-
-function resetList() {
-    const listElement = document.getElementById("list");
-    listElement.style.display = "none";
-    listItems.forEach(item => item.style.display = "none");
-    currentIndex = 0;
-}
+  row.appendChild(name);
+  row.appendChild(distance);
+  container.appendChild(row);
+});
