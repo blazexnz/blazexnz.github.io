@@ -4,18 +4,17 @@
   <meta charset="UTF-8" />
   <title>Golf Club Distances</title>
 
-  <!-- iPhone optimisation -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
   <meta name="robots" content="noindex, nofollow">
 
   <style>
     :root {
-      --bg: #f8fafc;          /* light grey background */
-      --card: #ffffff;       /* white cards */
-      --text: #0f172a;       /* near-black text */
-      --muted: #64748b;      /* slate */
-      --accent: #2563eb;     /* clean blue accent */
-      --border: #e2e8f0;     /* soft border */
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --text: #0f172a;
+      --muted: #64748b;
+      --accent: #2563eb;
+      --border: #e2e8f0;
     }
 
     * {
@@ -58,6 +57,12 @@
       border: 1px solid var(--border);
       border-radius: 14px;
       padding: 14px 16px;
+      cursor: grab;
+      touch-action: manipulation;
+    }
+
+    .club.dragging {
+      opacity: 0.5;
     }
 
     .club-name {
@@ -87,19 +92,12 @@
       color: var(--muted);
     }
 
-    /* Prevent double tap zoom */
-    .club {
-      touch-action: manipulation;
-    }
-
-    /* Hover styles ONLY for real hover devices */
     @media (hover: hover) and (pointer: fine) {
       .club:hover {
         border-color: var(--accent);
       }
     }
 
-    /* Active state for touch devices */
     .club:active {
       transform: scale(0.985);
     }
@@ -119,7 +117,7 @@
     <div class="clubs" id="clubs"></div>
 
     <div class="footer">
-      Carry distances
+      Drag to reorder your clubs
     </div>
   </div>
 
