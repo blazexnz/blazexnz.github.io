@@ -1,7 +1,5 @@
 // DEFINE YOUR YARDAGES HERE
-// Change numbers only – layout auto-updates
-
-const CLUB_YARDAGES = [
+const DEFAULT_CLUBS = [
   { club: "Driver", distance: 245 },
   { club: "3 Wood", distance: 225 },
   { club: "5 Wood", distance: 210 },
@@ -18,24 +16,61 @@ const CLUB_YARDAGES = [
   { club: "Lob Wedge", distance: 80 }
 ];
 
-// CHANGE UNIT IF NEEDED ("yds" or "m")
-const UNIT = "m";
+const UNIT = "yds";
+const STORAGE_KEY = "golfClubOrder";
+
+let clubs = JSON.parse(localStorage.getItem(STORAGE_KEY)) || DEFAULT_CLUBS.slice();
 
 const container = document.getElementById("clubs");
 
-CLUB_YARDAGES.forEach(item => {
-  const row = document.createElement("div");
-  row.className = "club";
+function renderClubs() {
+  container.innerHTML = "";
+  clubs.forEach((item, index) => {
+    const row = document.createElement("div");
+    row.className = "club";
+    row.draggable = true;
+    row.dataset.index = index;
 
-  const name = document.createElement("div");
-  name.className = "club-name";
-  name.textContent = item.club;
+    const name = document.createElement("div");
+    name.className = "club-name";
+    name.textContent = item.club;
 
-  const distance = document.createElement("div");
-  distance.className = "distance";
-  distance.innerHTML = `${item.distance}<span class="unit">${UNIT}</span>`;
+    const distance = document.createElement("div");
+    distance.className = "distance";
+    distance.innerHTML = `${item.distance}<span class="unit">${UNIT}</span>`;
 
-  row.appendChild(name);
-  row.appendChild(distance);
-  container.appendChild(row);
-});
+    row.appendChild(name);
+    row.appendChild(distance);
+    container.appendChild(row);
+
+    // Drag events
+    row.addEventListener("dragstart", (e) => {
+      row.classList.add("dragging");
+      e.dataTransfer.effectAllowed = "move";
+      e.dataTransfer.setData("text/plain", index);
+    });
+
+    row.addEventListener("dragend", () => {
+      row.classList.remove("dragging");
+    });
+
+    row.addEventListener("dragover", (e) => e.preventDefault());
+
+    row.addEventListener("drop", (e) => {
+      e.preventDefault();
+      const fromIndex = parseInt(e.dataTransfer.getData("text/plain"));
+      const toIndex = index;
+      if (fromIndex === toIndex) return;
+
+      // Reorder array
+      const moved = clubs.splice(fromIndex, 1)[0];
+      clubs.splice(toIndex, 0, moved);
+
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(clubs));
+      renderClubs();
+    });
+  });
+}
+
+// Initial render
+renderClubs();
