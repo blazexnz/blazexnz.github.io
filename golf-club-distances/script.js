@@ -13,10 +13,10 @@ const CLUB_YARDAGES = [
   { club: "7 Iron", distance: 140 },
   { club: "8 Iron", distance: 130 },
   { club: "9 Iron", distance: 120 },
-  { club: "48° Pitching Wedge", distance: 110 },
-  { club: "52° Gap Wedge", distance: 100 },
-  { club: "56° Sand Wedge", distance: 90 },
-  { club: "60° Lob Wedge", distance: 80 }
+  { club: "48°", distance: 110 },
+  { club: "52°", distance: 100 },
+  { club: "56°", distance: 90 },
+  { club: "60°", distance: 80 }
 ];
 
 // CHANGE UNIT IF NEEDED ("yds" or "m")
@@ -45,3 +45,4 @@ CLUB_YARDAGES.forEach(item => {
     row.remove();
   });
 });
+
