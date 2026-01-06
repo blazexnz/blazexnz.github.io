@@ -1,122 +1,128 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="robots" content="noindex, nofollow">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Item Reveal List</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            height: 100vh;
-            background-color: #f7f7f7;
-        }
+  <meta charset="UTF-8" />
+  <title>Golf Club Distances</title>
 
-        .container {
-            text-align: center;
-        }
+  <!-- iPhone optimisation -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <meta name="robots" content="noindex, nofollow">
 
-        h1 {
-            font-size: 36px;
-            margin-top: 20px;
-        }
+  <style>
+    :root {
+      --bg: #f8fafc;          /* light grey background */
+      --card: #ffffff;       /* white cards */
+      --text: #0f172a;       /* near-black text */
+      --muted: #64748b;      /* slate */
+      --accent: #2563eb;     /* clean blue accent */
+      --border: #e2e8f0;     /* soft border */
+    }
 
-        .list-container {
-            margin-top: 20px;
-            width: 100%;
-            max-width: 1200px;
-            height: 300px;
-            overflow-y: auto;
-            border: 1px solid #ccc;
-            padding: 10px;
-            background-color: white;
-        }
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
 
-        #list {
-            display: none;
-            list-style-type: none;
-            padding: 0;
-        }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", Inter, system-ui, sans-serif;
+      display: flex;
+      justify-content: center;
+    }
 
-        #list li {
-            font-size: 18px;
-            padding: 10px;
-            border-bottom: 1px solid #ccc;
-        }
+    .app {
+      width: 100%;
+      max-width: 480px;
+      padding: 16px;
+    }
 
-        /* ⭐ UPDATED — true optical centering like a real card pip */
-        .card-mode li {
-            width: 100px;
-            height: 150px;
-            border-radius: 10px;
-            border: 2px solid #222;
-            background: white;
+    h1 {
+      font-size: 1.4rem;
+      text-align: center;
+      margin-bottom: 12px;
+      letter-spacing: 0.3px;
+    }
 
-            /* Center pip perfectly like printed cards */
-            font-size: 40px !important;
-            line-height: 150px;       /* EXACT card height */
-            text-align: center;       /* horizontal centering */
-            
-            margin: 10px auto;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            padding: 0 !important;
+    .clubs {
+      display: grid;
+      gap: 8px;
+    }
 
-            display: block;           /* Removes flex alignment */
-        }
+    .club {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px 16px;
+    }
 
-        .button-container {
-            margin-top: 20px;
-        }
+    .club-name {
+      font-size: 1.05rem;
+      font-weight: 500;
+    }
 
-        .reveal-btn, .reset-btn {
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: #007bff;
-            color: white;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-            margin: 10px 0;
-            width: 200px;
-        }
+    .distance {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--accent);
+      min-width: 56px;
+      text-align: right;
+    }
 
-        .reveal-btn:hover, .reset-btn:hover {
-            background-color: #0056b3;
-        }
-    </style>
+    .unit {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-left: 4px;
+      font-weight: 500;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 14px;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    /* Prevent double tap zoom */
+    .club {
+      touch-action: manipulation;
+    }
+
+    /* Hover styles ONLY for real hover devices */
+    @media (hover: hover) and (pointer: fine) {
+      .club:hover {
+        border-color: var(--accent);
+      }
+    }
+
+    /* Active state for touch devices */
+    .club:active {
+      transform: scale(0.985);
+    }
+
+    @media (min-width: 768px) {
+      .app {
+        padding: 24px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>More than Pi Memory Training</h1>
 
-        <div class="dropdown-container">
-            <label for="configSelect">Choose a list:</label>
-            <select id="configSelect" onchange="loadSelectedConfig()">
-                <option value="config-1.json">Pi</option>
-                <option value="config-2.json">50 states memset</option>
-                <option value="config-3.json">50 states of US</option>
-                <option value="config-4.json">Card tricks memset</option>
-                <option value="config-5.json">PAO system</option>
-                <option value="config-6.json">Backwards alphabet</option>
-                <option value="config-7.json">Mnemonica memdeck</option>
-            </select>
-        </div>
+  <div class="app">
+    <h1>Golf Club Distances</h1>
 
-        <div class="list-container">
-            <ul id="list"></ul>
-        </div>
-        <div class="button-container">
-            <button class="reveal-btn" onclick="showList()">Reveal List</button>
-            <button class="reset-btn" onclick="resetList()">Reset</button>
-        </div>
+    <div class="clubs" id="clubs"></div>
+
+    <div class="footer">
+      Carry distances
     </div>
+  </div>
 
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
