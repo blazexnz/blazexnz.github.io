@@ -136,12 +136,7 @@ function renderThoughts() {
     t.className = "thought-text";
     t.textContent = text;
 
-    const pill = document.createElement("div");
-    pill.className = "pill";
-    pill.textContent = "Tap to delete";
-
     row.appendChild(t);
-    row.appendChild(pill);
     thoughtsList.appendChild(row);
 
     row.addEventListener("click", () => {
