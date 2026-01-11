@@ -38,3 +38,15 @@ const CLUB_YARDAGES = [
 
 // Change units to "yds" or "m"
 const UNIT = "m";
+
+const DEFAULT_THOUGHTS = [
+  "Body -> arms -> body -> arms",
+  "80% tempo",
+  "Irons - strike down and through",
+  "Make your next shot easy",
+  "GIOTG",
+  "Chipping - keep it low get the dirty hoes",
+  "Putting - distance over line, 87→88"
+];
+
+
