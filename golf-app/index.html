@@ -18,6 +18,9 @@
       --accent: #2563eb;     /* clean blue accent */
       --border: #e2e8f0;     /* soft border */
       --danger: #dc2626;
+      --tab-bg-inactive: #ecfdf5;  /* very light green */
+      --tab-bg-active:   #bbf7d0;  /* soft green */
+      --tab-border-hover: #15803d; /* dark green */
     }
 
     * {
@@ -58,8 +61,8 @@
     .tab {
       appearance: none;
       border: 1px solid var(--border);
-      background: var(--card);
-      color: var(--text);
+      background: var(--tab-bg-inactive); /* 🔹 light green */
+      color: var(--text);                 /* 🔹 default text */
       border-radius: 14px;
       padding: 10px 12px;
       font-size: 1rem;
@@ -68,8 +71,8 @@
     }
 
     .tab.active {
-      border-color: var(--accent);
-      color: var(--accent);
+      background: var(--tab-bg-active);
+      border-color: var(--tab-bg-active);
     }
 
     .hidden {
@@ -195,12 +198,14 @@
       color: var(--muted);
     }
 
-    /* Hover styles ONLY for real hover devices */
     @media (hover: hover) and (pointer: fine) {
       .club:hover,
-      .thought:hover,
-      .tab:hover {
+      .thought:hover {
         border-color: var(--accent);
+      }
+
+      .tab:hover {
+        border-color: var(--tab-border-hover);
       }
     }
 
