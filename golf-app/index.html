@@ -1,3 +1,4 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,6 +17,7 @@
       --muted: #64748b;      /* slate */
       --accent: #2563eb;     /* clean blue accent */
       --border: #e2e8f0;     /* soft border */
+      --danger: #dc2626;
     }
 
     * {
@@ -45,6 +47,34 @@
       letter-spacing: 0.3px;
     }
 
+    .tabs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .tab {
+      appearance: none;
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--text);
+      border-radius: 14px;
+      padding: 10px 12px;
+      font-size: 1rem;
+      font-weight: 600;
+      touch-action: manipulation;
+    }
+
+    .tab.active {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .hidden {
+      display: none;
+    }
+
     .clubs {
       display: grid;
       gap: 8px;
@@ -58,6 +88,7 @@
       border: 1px solid var(--border);
       border-radius: 14px;
       padding: 14px 16px;
+      touch-action: manipulation; /* Prevent double tap zoom */
     }
 
     .club-name {
@@ -80,6 +111,82 @@
       font-weight: 500;
     }
 
+    .thoughts {
+      display: grid;
+      gap: 8px;
+    }
+
+    .thought {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px 16px;
+      touch-action: manipulation;
+    }
+
+    .thought-text {
+      font-size: 1.05rem;
+      font-weight: 500;
+      line-height: 1.25;
+    }
+
+    .pill {
+      font-size: 0.8rem;
+      color: var(--muted);
+      font-weight: 600;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 6px 10px;
+      background: var(--card);
+      margin-left: 12px;
+      white-space: nowrap;
+    }
+
+    .add-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .input {
+      width: 100%;
+      border: 1px solid var(--border);
+      background: var(--card);
+      border-radius: 14px;
+      padding: 12px 14px;
+      font-size: 1rem;
+      outline: none;
+    }
+
+    .input:focus {
+      border-color: var(--accent);
+    }
+
+    .btn {
+      appearance: none;
+      border: 1px solid var(--accent);
+      background: var(--accent);
+      color: #fff;
+      border-radius: 14px;
+      padding: 12px 14px;
+      font-size: 1rem;
+      font-weight: 700;
+      touch-action: manipulation;
+    }
+
+    /* NEW: reset button */
+    .btn-reset {
+      margin-top: 10px;
+      width: 100%;
+      background: transparent;
+      color: var(--danger);
+      border: 1px solid var(--danger);
+    }
+
     .footer {
       text-align: center;
       margin-top: 14px;
@@ -87,20 +194,20 @@
       color: var(--muted);
     }
 
-    /* Prevent double tap zoom */
-    .club {
-      touch-action: manipulation;
-    }
-
     /* Hover styles ONLY for real hover devices */
     @media (hover: hover) and (pointer: fine) {
-      .club:hover {
+      .club:hover,
+      .thought:hover,
+      .tab:hover {
         border-color: var(--accent);
       }
     }
 
     /* Active state for touch devices */
-    .club:active {
+    .club:active,
+    .thought:active,
+    .tab:active,
+    .btn:active {
       transform: scale(0.985);
     }
 
@@ -114,12 +221,39 @@
 <body>
 
   <div class="app">
-    <h1>Golf Club Distances</h1>
+    <h1>Golf</h1>
 
-    <div class="clubs" id="clubs"></div>
+    <div class="tabs">
+      <button class="tab active" id="tabDistances" data-page="distances">Distances</button>
+      <button class="tab" id="tabThoughts" data-page="thoughts">Swing Thoughts</button>
+    </div>
 
-    <div class="footer">
-      Total distance (including carry)
+    <!-- Distances Page -->
+    <div id="pageDistances">
+      <div class="clubs" id="clubs"></div>
+
+      <div class="footer" id="footerDistances">
+        Total distance (including carry)
+      </div>
+    </div>
+
+    <!-- Swing Thoughts Page -->
+    <div id="pageThoughts" class="hidden">
+      <div class="add-row">
+        <input class="input" id="thoughtInput" type="text" placeholder="Add a swing thought…" autocomplete="off" />
+        <button class="btn" id="addThought">Add</button>
+      </div>
+
+      <div class="thoughts" id="thoughtsList"></div>
+
+      <!-- NEW RESET BUTTON -->
+      <button class="btn btn-reset" id="resetThoughts">
+        Reset to default swing thoughts
+      </button>
+
+      <div class="footer" id="footerThoughts">
+        Tap a thought to remove it
+      </div>
     </div>
   </div>
 
