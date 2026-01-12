@@ -86,7 +86,6 @@ function advanceStory() {
 // Reset story display
 function resetStoryDisplay() {
   currentSentenceIndex = 0;
-  showingEN = false;
   storyContainer.textContent = '';
   advanceStory();
 }
@@ -125,8 +124,13 @@ languageSelect.addEventListener('change', () => {
       loadStoriesForLanguage(data);
       populateStorySelect();
       resetStoryDisplay();
+    })
+    .catch(err => {
+      storyContainer.textContent = '❌ Failed to load stories';
+      console.error('Story load error:', err);
     });
 });
+
 
 storySelect.addEventListener('change', (e) => {
   currentStoryIndex = parseInt(e.target.value);
@@ -140,4 +144,8 @@ fetch('stories.json')
     loadStoriesForLanguage(data);
     populateStorySelect();
     resetStoryDisplay();
+  })
+  .catch(err => {
+    storyContainer.textContent = '❌ Failed to load stories';
+    console.error('Story load error:', err);
   });
