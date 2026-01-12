@@ -1,0 +1,840 @@
+{
+  "viStories": [
+    {
+      "title": "Đói bụng (Hungry)",
+      "theme": "Food",
+      "sentences": [
+        { "vi": "Tôi đói.", "en": "I'm hungry." },
+        { "vi": "Tôi muốn ăn.", "en": "I want to eat." },
+        { "vi": "Tôi không có đồ ăn.", "en": "I don't have food." },
+        { "vi": "Bạn tôi cho tôi cơm.", "en": "My friend gives me rice." },
+        { "vi": "Tôi không đói nữa.", "en": "I'm not hungry anymore." }
+      ],
+      "focusWords": "tôi, ăn, không, đói. New words in context: cơm (rice), bạn (friend)."
+    },
+    {
+      "title": "Đi học (Going to School)",
+      "theme": "Education",
+      "sentences": [
+        { "vi": "Tôi đi học.", "en": "I go to school." },
+        { "vi": "Tôi mang sách vở.", "en": "I bring books." },
+        { "vi": "Tôi học tiếng Việt.", "en": "I study Vietnamese." },
+        { "vi": "Tôi chơi với bạn sau giờ học.", "en": "I play with friends after class." }
+      ],
+      "focusWords": "tôi, học, sách, bạn. New words in context: giờ học (class), chơi (play)."
+    },
+    {
+      "title": "Chơi bóng (Playing Ball)",
+      "theme": "Sports",
+      "sentences": [
+        { "vi": "Tôi thích chơi bóng.", "en": "I like playing ball." },
+        { "vi": "Bạn tôi ném bóng cho tôi.", "en": "My friend throws the ball to me." },
+        { "vi": "Chúng tôi chơi ngoài sân.", "en": "We play outside." },
+        { "vi": "Trò chơi rất vui.", "en": "The game is very fun." }
+      ],
+      "focusWords": "tôi, chơi, bạn, bóng. New words in context: sân (yard), vui (fun)."
+    },
+    {
+      "title": "Đi chợ (Shopping)",
+      "theme": "Daily Life",
+      "sentences": [
+        { "vi": "Tôi đi chợ.", "en": "I go to the market." },
+        { "vi": "Tôi mua rau và trái cây.", "en": "I buy vegetables and fruits." },
+        { "vi": "Người bán chào tôi.", "en": "The seller greets me." },
+        { "vi": "Tôi trả tiền và về nhà.", "en": "I pay and go home." }
+      ],
+      "focusWords": "tôi, mua, chợ, trả tiền. New words in context: rau (vegetables), trái cây (fruits)."
+    },
+    {
+      "title": "Ở nhà (At Home)",
+      "theme": "Home",
+      "sentences": [
+        { "vi": "Tôi ở nhà.", "en": "I am at home." },
+        { "vi": "Tôi đọc sách.", "en": "I read a book." },
+        { "vi": "Tôi nấu ăn.", "en": "I cook." },
+        { "vi": "Gia đình tôi ăn tối cùng nhau.", "en": "My family eats dinner together." }
+      ],
+      "focusWords": "tôi, nhà, đọc, ăn. New words in context: nấu ăn (cook), gia đình (family)."
+    },
+    {
+      "title": "Đi dạo (Going for a Walk)",
+      "theme": "Leisure",
+      "sentences": [
+        { "vi": "Tôi đi dạo trong công viên.", "en": "I go for a walk in the park." },
+        { "vi": "Tôi thấy nhiều hoa.", "en": "I see many flowers." },
+        { "vi": "Tôi gặp bạn cũ.", "en": "I meet an old friend." },
+        { "vi": "Chúng tôi nói chuyện vui vẻ.", "en": "We talk happily." }
+      ],
+      "focusWords": "tôi, dạo, bạn, thấy. New words in context: công viên (park), hoa (flower)."
+    },
+    {
+      "title": "Thời tiết (Weather)",
+      "theme": "Environment",
+      "sentences": [
+        { "vi": "Hôm nay trời nắng.", "en": "Today is sunny." },
+        { "vi": "Rất nóng.", "en": "It's very hot." },
+        { "vi": "Tôi mang ô.", "en": "I bring an umbrella." },
+        { "vi": "Trời đang mưa.", "en": "It is raining now." }
+      ],
+      "focusWords": "hôm nay, nóng, mang, trời. New words in context: nắng (sunny), ô (umbrella)."
+    },
+    {
+      "title": "Đi xe buýt (Taking the Bus)",
+      "theme": "Transport",
+      "sentences": [
+        { "vi": "Tôi đi học bằng xe buýt.", "en": "I take the bus to school." },
+        { "vi": "Tôi mua vé.", "en": "I buy a ticket." },
+        { "vi": "Tôi ngồi chờ.", "en": "I sit and wait." },
+        { "vi": "Tôi xuống trạm cuối.", "en": "I get off at the last stop." }
+      ],
+      "focusWords": "tôi, xe buýt, mua, xuống. New words in context: trạm (stop), vé (ticket)."
+    },
+    {
+      "title": "Đi ngủ (Going to Sleep)",
+      "theme": "Daily Routine",
+      "sentences": [
+        { "vi": "Tôi tắm.", "en": "I take a bath." },
+        { "vi": "Tôi đánh răng.", "en": "I brush my teeth." },
+        { "vi": "Tôi mặc pijama.", "en": "I wear pajamas." },
+        { "vi": "Tôi đi ngủ.", "en": "I go to sleep." }
+      ],
+      "focusWords": "tôi, ngủ, tắm, mặc. New words in context: đánh răng (brush teeth), pijama (pajamas)."
+    },
+    {
+      "title": "Chơi với thú cưng (Playing with Pets)",
+      "theme": "Animals",
+      "sentences": [
+        { "vi": "Tôi có một con mèo.", "en": "I have a cat." },
+        { "vi": "Tôi cho mèo ăn.", "en": "I feed the cat." },
+        { "vi": "Mèo chơi với tôi.", "en": "My cat plays with me." },
+        { "vi": "Tôi rất thích mèo.", "en": "I love my cat." }
+      ],
+      "focusWords": "tôi, mèo, cho, chơi. New words in context: thú cưng (pet), thích (love)."
+    },
+    {
+      "title": "Đặt phòng khách sạn (Booking a Hotel Room)",
+      "theme": "Travel",
+      "sentences": [
+        { "vi": "Tôi muốn đặt phòng.", "en": "I want to book a room." },
+        { "vi": "Tôi có đặt trước không?", "en": "Do I have a reservation?" },
+        { "vi": "Phòng có bao nhiêu giường?", "en": "How many beds are in the room?" },
+        { "vi": "Tôi trả tiền và nhận chìa khóa.", "en": "I pay and get the key." }
+      ],
+      "focusWords": "tôi, phòng, đặt, trả tiền. New words in context: khách sạn (hotel), giường (bed)."
+    },
+    {
+      "title": "Đi taxi (Taking a Taxi)",
+      "theme": "Transport",
+      "sentences": [
+        { "vi": "Tôi gọi taxi.", "en": "I call a taxi." },
+        { "vi": "Tôi nói địa chỉ.", "en": "I tell the address." },
+        { "vi": "Tôi lên xe.", "en": "I get in the car." },
+        { "vi": "Tôi trả tiền khi đến nơi.", "en": "I pay when I arrive." }
+      ],
+      "focusWords": "tôi, taxi, lên, trả tiền. New words in context: địa chỉ (address), đến nơi (arrive)."
+    },
+    {
+      "title": "Mua đồ lưu niệm (Buying Souvenirs)",
+      "theme": "Shopping",
+      "sentences": [
+        { "vi": "Tôi thích mua quà.", "en": "I like buying gifts." },
+        { "vi": "Tôi chọn một món quà.", "en": "I choose a gift." },
+        { "vi": "Người bán hàng tính tiền.", "en": "The seller counts the money." },
+        { "vi": "Tôi mang quà về nhà.", "en": "I take the gift home." }
+      ],
+      "focusWords": "tôi, mua, chọn, mang. New words in context: quà (gift), tính tiền (count/pay)."
+    },
+    {
+      "title": "Ăn ngoài (Eating Out)",
+      "theme": "Food",
+      "sentences": [
+        { "vi": "Tôi đi nhà hàng.", "en": "I go to a restaurant." },
+        { "vi": "Tôi gọi món.", "en": "I order food." },
+        { "vi": "Tôi ăn cơm với bạn.", "en": "I eat rice with friends." },
+        { "vi": "Tôi trả tiền và ra về.", "en": "I pay and leave." }
+      ],
+      "focusWords": "tôi, đi, gọi, ăn. New words in context: nhà hàng (restaurant), món (dish)."
+    },
+    {
+      "title": "Đi mua vé xem phim (Buying Movie Tickets)",
+      "theme": "Entertainment",
+      "sentences": [
+        { "vi": "Tôi muốn xem phim.", "en": "I want to watch a movie." },
+        { "vi": "Tôi mua vé tại quầy.", "en": "I buy tickets at the counter." },
+        { "vi": "Tôi chọn chỗ ngồi.", "en": "I choose a seat." },
+        { "vi": "Phim bắt đầu.", "en": "The movie starts." }
+      ],
+      "focusWords": "tôi, mua, chọn, xem. New words in context: phim (movie), quầy (counter)."
+    },
+    {
+      "title": "Đi bãi biển (Going to the Beach)",
+      "theme": "Leisure",
+      "sentences": [
+        { "vi": "Tôi đi bãi biển.", "en": "I go to the beach." },
+        { "vi": "Tôi tắm biển.", "en": "I swim in the sea." },
+        { "vi": "Tôi chơi cát.", "en": "I play with sand." },
+        { "vi": "Tôi về nhà khi trời tối.", "en": "I go home when it gets dark." }
+      ],
+      "focusWords": "tôi, đi, chơi, về. New words in context: bãi biển (beach), tắm biển (swim)."
+    },
+    {
+      "title": "Đi thăm bảo tàng (Visiting a Museum)",
+      "theme": "Culture",
+      "sentences": [
+        { "vi": "Tôi đi thăm bảo tàng.", "en": "I visit a museum." },
+        { "vi": "Tôi xem tranh và hiện vật.", "en": "I look at paintings and artifacts." },
+        { "vi": "Tôi chụp hình.", "en": "I take pictures." },
+        { "vi": "Tôi học nhiều điều mới.", "en": "I learn many new things." }
+      ],
+      "focusWords": "tôi, đi, xem, học. New words in context: bảo tàng (museum), hiện vật (artifact)."
+    },
+    {
+      "title": "Đi hỏi đường (Asking for Directions)",
+      "theme": "Travel",
+      "sentences": [
+        { "vi": "Tôi không biết đường.", "en": "I don't know the way." },
+        { "vi": "Tôi hỏi người đi đường.", "en": "I ask a passerby." },
+        { "vi": "Người ta chỉ tôi đi thẳng.", "en": "They tell me to go straight." },
+        { "vi": "Tôi đến nơi an toàn.", "en": "I arrive safely." }
+      ],
+      "focusWords": "tôi, hỏi, đường, đến. New words in context: người đi đường (passerby), thẳng (straight)."
+    },
+    {
+      "title": "Đi chơi chợ đêm (Visiting Night Market)",
+      "theme": "Leisure",
+      "sentences": [
+        { "vi": "Tôi đi chợ đêm.", "en": "I go to the night market." },
+        { "vi": "Tôi nhìn đồ ăn và quà.", "en": "I look at food and souvenirs." },
+        { "vi": "Tôi thử món ăn.", "en": "I try some food." },
+        { "vi": "Tôi mua vài món nhỏ về nhà.", "en": "I buy a few small items to bring home." }
+      ],
+      "focusWords": "tôi, đi, nhìn, thử. New words in context: chợ đêm (night market), món ăn (dish)."
+    },
+{
+      "title": "Đi nhà thuốc (Going to Pharmacy)",
+      "theme": "Health",
+      "sentences": [
+        { "vi": "Tôi bị đau đầu.", "en": "I have a headache." },
+        { "vi": "Tôi đi nhà thuốc.", "en": "I go to the pharmacy." },
+        { "vi": "Tôi mua thuốc.", "en": "I buy medicine." },
+        { "vi": "Tôi uống thuốc.", "en": "I take the medicine." }
+      ],
+      "focusWords": "tôi, đi, mua, uống. New words: nhà thuốc (pharmacy), thuốc (medicine)."
+    },
+    {
+      "title": "Đi sân bay (Going to the Airport)",
+      "theme": "Travel",
+      "sentences": [
+        { "vi": "Tôi đi sân bay.", "en": "I go to the airport." },
+        { "vi": "Tôi làm thủ tục.", "en": "I check in." },
+        { "vi": "Tôi lên máy bay.", "en": "I board the plane." },
+        { "vi": "Chuyến bay cất cánh.", "en": "The plane takes off." }
+      ],
+      "focusWords": "tôi, đi, lên, chuyến bay. New words: sân bay (airport), thủ tục (check-in)."
+    },
+    {
+      "title": "Đi bưu điện (Going to the Post Office)",
+      "theme": "Daily Life",
+      "sentences": [
+        { "vi": "Tôi đi bưu điện.", "en": "I go to the post office." },
+        { "vi": "Tôi gửi bưu phẩm.", "en": "I send a package." },
+        { "vi": "Tôi mua tem.", "en": "I buy stamps." },
+        { "vi": "Tôi nhận hóa đơn.", "en": "I receive the receipt." }
+      ],
+      "focusWords": "tôi, đi, gửi, nhận. New words: bưu điện (post office), bưu phẩm (package)."
+    },
+    {
+      "title": "Đi ngân hàng (Going to the Bank)",
+      "theme": "Daily Life",
+      "sentences": [
+        { "vi": "Tôi đi ngân hàng.", "en": "I go to the bank." },
+        { "vi": "Tôi rút tiền.", "en": "I withdraw money." },
+        { "vi": "Tôi gửi tiền.", "en": "I deposit money." },
+        { "vi": "Tôi nhận biên lai.", "en": "I receive a receipt." }
+      ],
+      "focusWords": "tôi, đi, rút, gửi. New words: ngân hàng (bank), biên lai (receipt)."
+    },
+    {
+      "title": "Đi quán cà phê (Going to a Coffee Shop)",
+      "theme": "Food",
+      "sentences": [
+        { "vi": "Tôi đi quán cà phê.", "en": "I go to a coffee shop." },
+        { "vi": "Tôi gọi cà phê.", "en": "I order coffee." },
+        { "vi": "Tôi uống cà phê.", "en": "I drink coffee." },
+        { "vi": "Tôi trả tiền và về.", "en": "I pay and go home." }
+      ],
+      "focusWords": "tôi, đi, gọi, uống. New words: quán cà phê (coffee shop), cà phê (coffee)."
+    },
+{
+      "title": "Ăn sáng (Eating Breakfast)",
+      "theme": "Food",
+      "sentences": [
+        { "vi": "Tôi đói buổi sáng.", "en": "I am hungry in the morning." },
+        { "vi": "Tôi làm bánh mì nướng.", "en": "I make toast." },
+        { "vi": "Tôi ăn bánh mì với trứng.", "en": "I eat toast with eggs." },
+        { "vi": "Tôi uống một cốc sữa.", "en": "I drink a glass of milk." },
+        { "vi": "Tôi no rồi.", "en": "I am full now." }
+      ],
+      "focusWords": "tôi, ăn, sáng, no. New words in context: bánh mì (bread), trứng (egg), sữa (milk)."
+    }
+  ],
+  "tlStories": [
+    {
+      "title": "Nagugutom (Hungry)",
+      "theme": "Food",
+      "sentences": [
+        { "tl": "Nagugutom ako.", "en": "I'm hungry." },
+        { "tl": "Gusto kong kumain.", "en": "I want to eat." },
+        { "tl": "Wala akong pagkain.", "en": "I don't have food." },
+        { "tl": "Binigyan ako ng kaibigan ko ng kanin.", "en": "My friend gives me rice." },
+        { "tl": "Hindi na ako nagugutom.", "en": "I'm not hungry anymore." }
+      ],
+      "focusWords": "ako, kumain, wala, gutom. New words in context: kanin (rice), kaibigan (friend)."
+    },
+    {
+      "title": "Pumunta sa Paaralan (Going to School)",
+      "theme": "Education",
+      "sentences": [
+        { "tl": "Pumunta ako sa paaralan.", "en": "I go to school." },
+        { "tl": "Dala ko ang mga libro.", "en": "I bring books." },
+        { "tl": "Nag-aaral ako ng Filipino.", "en": "I study Filipino." },
+        { "tl": "Naglaro kami ng mga kaibigan pagkatapos ng klase.", "en": "I play with friends after class." }
+      ],
+      "focusWords": "ako, aral, libro, kaibigan. New words in context: klase (class), laro (play)."
+    },
+    {
+      "title": "Naglaro ng Bola (Playing Ball)",
+      "theme": "Sports",
+      "sentences": [
+        { "tl": "Gusto kong maglaro ng bola.", "en": "I like playing ball." },
+        { "tl": "Hinagis ng kaibigan ko ang bola sa akin.", "en": "My friend throws the ball to me." },
+        { "tl": "Naglaro kami sa labas.", "en": "We play outside." },
+        { "tl": "Masaya ang laro.", "en": "The game is very fun." }
+      ],
+      "focusWords": "ako, laro, kaibigan, bola. New words in context: labas (outside), masaya (fun)."
+    },
+    {
+      "title": "Pumunta sa Palengke (Shopping)",
+      "theme": "Daily Life",
+      "sentences": [
+        { "tl": "Pumunta ako sa palengke.", "en": "I go to the market." },
+        { "tl": "Bumili ako ng gulay at prutas.", "en": "I buy vegetables and fruits." },
+        { "tl": "Bumati sa akin ang tindera.", "en": "The seller greets me." },
+        { "tl": "Nagbayad ako at umuwi.", "en": "I pay and go home." }
+      ],
+      "focusWords": "ako, bumili, palengke, bayad. New words in context: gulay (vegetables), prutas (fruits)."
+    },
+    {
+      "title": "Nasa Bahay (At Home)",
+      "theme": "Home",
+      "sentences": [
+        { "tl": "Nasa bahay ako.", "en": "I am at home." },
+        { "tl": "Nagbabasa ako ng libro.", "en": "I read a book." },
+        { "tl": "Nagluluto ako.", "en": "I cook." },
+        { "tl": "Kumakain ang pamilya ko ng hapunan kasama-sama.", "en": "My family eats dinner together." }
+      ],
+      "focusWords": "ako, bahay, basa, kain. New words in context: magluto (cook), pamilya (family)."
+    },
+    {
+      "title": "Naglakad-lakad (Going for a Walk)",
+      "theme": "Leisure",
+      "sentences": [
+        { "tl": "Naglakad ako sa parke.", "en": "I go for a walk in the park." },
+        { "tl": "Nakakita ako ng maraming bulaklak.", "en": "I see many flowers." },
+        { "tl": "Nakita ko ang isang lumang kaibigan.", "en": "I meet an old friend." },
+        { "tl": "Masayang nag-usap kami.", "en": "We talk happily." }
+      ],
+      "focusWords": "ako, lakad, kaibigan, nakita. New words in context: parke (park), bulaklak (flower)."
+    },
+    {
+      "title": "Panahon (Weather)",
+      "theme": "Environment",
+      "sentences": [
+        { "tl": "Maaraw ngayon.", "en": "Today is sunny." },
+        { "tl": "Masyadong mainit.", "en": "It's very hot." },
+        { "tl": "Dala ko ang payong.", "en": "I bring an umbrella." },
+        { "tl": "Umuulan ngayon.", "en": "It is raining now." }
+      ],
+      "focusWords": "ngayon, mainit, dala, ulan. New words in context: araw (sunny), payong (umbrella)."
+    },
+    {
+      "title": "Sakay sa Bus (Taking the Bus)",
+      "theme": "Transport",
+      "sentences": [
+        { "tl": "Sumasakay ako sa bus papunta sa paaralan.", "en": "I take the bus to school." },
+        { "tl": "Bumili ako ng tiket.", "en": "I buy a ticket." },
+        { "tl": "Umupo ako at naghintay.", "en": "I sit and wait." },
+        { "tl": "Bumaba ako sa huling hintuan.", "en": "I get off at the last stop." }
+      ],
+      "focusWords": "ako, bus, bumili, bumaba. New words in context: hintuan (stop), tiket (ticket)."
+    },
+    {
+      "title": "Matulog (Going to Sleep)",
+      "theme": "Daily Routine",
+      "sentences": [
+        { "tl": "Naliligo ako.", "en": "I take a bath." },
+        { "tl": "Nag-toothbrush ako.", "en": "I brush my teeth." },
+        { "tl": "Nagsusuot ako ng pajamas.", "en": "I wear pajamas." },
+        { "tl": "Matulog ako.", "en": "I go to sleep." }
+      ],
+      "focusWords": "ako, tulog, ligo, suot. New words in context: mag-toothbrush (brush teeth), pajamas (pajamas)."
+    },
+    {
+      "title": "Naglaro sa Alagang Hayop (Playing with Pets)",
+      "theme": "Animals",
+      "sentences": [
+        { "tl": "Mayroon akong pusa.", "en": "I have a cat." },
+        { "tl": "Pinakain ko ang pusa.", "en": "I feed the cat." },
+        { "tl": "Naglaro ang pusa sa akin.", "en": "My cat plays with me." },
+        { "tl": "Gusto ko ang pusa.", "en": "I love my cat." }
+      ],
+      "focusWords": "ako, pusa, pakain, laro. New words in context: alagang hayop (pet), gusto (love)."
+    },
+    {
+      "title": "Mag-book ng Hotel (Booking a Hotel Room)",
+      "theme": "Travel",
+      "sentences": [
+        { "tl": "Gusto kong mag-book ng kwarto.", "en": "I want to book a room." },
+        { "tl": "May reservation ba ako?", "en": "Do I have a reservation?" },
+        { "tl": "Ilang kama ang nasa kwarto?", "en": "How many beds are in the room?" },
+        { "tl": "Nagbayad ako at kinuha ang susi.", "en": "I pay and get the key." }
+      ],
+      "focusWords": "ako, kwarto, book, bayad. New words in context: hotel (hotel), kama (bed)."
+    },
+    {
+      "title": "Sumakay ng Taxi (Taking a Taxi)",
+      "theme": "Transport",
+      "sentences": [
+        { "tl": "Tumawag ako ng taxi.", "en": "I call a taxi." },
+        { "tl": "Sinabi ko ang address.", "en": "I tell the address." },
+        { "tl": "Sumakay ako sa kotse.", "en": "I get in the car." },
+        { "tl": "Nagbayad ako pagdating.", "en": "I pay when I arrive." }
+      ],
+      "focusWords": "ako, taxi, sumakay, bayad. New words in context: address (address), pagdating (arrive)."
+    },
+    {
+      "title": "Bumili ng Souvenir (Buying Souvenirs)",
+      "theme": "Shopping",
+      "sentences": [
+        { "tl": "Gusto kong bumili ng regalo.", "en": "I like buying gifts." },
+        { "tl": "Pinili ko ang isang regalo.", "en": "I choose a gift." },
+        { "tl": "Binilang ng tindera ang pera.", "en": "The seller counts the money." },
+        { "tl": "Dinala ko ang regalo sa bahay.", "en": "I take the gift home." }
+      ],
+      "focusWords": "ako, bumili, pili, dala. New words in context: regalo (gift), bilang (count/pay)."
+    },
+    {
+      "title": "Kumain sa Labas (Eating Out)",
+      "theme": "Food",
+      "sentences": [
+        { "tl": "Pumunta ako sa restaurant.", "en": "I went to a restaurant." },
+        { "tl": "Uminom ako at umorder ng pagkain.", "en": "I drank and ordered food." },
+        { "tl": "Kumain ako ng kanin kasama ang kaibigan.", "en": "I ate rice with a friend." },
+        { "tl": "Nagbayad ako at umalis.", "en": "I paid and left." }
+      ],
+      "focusWords": "ako, pumunta, order, kain. New words in context: restaurant (restaurant), pagkain (dish)."
+    },
+    {
+      "title": "Bumili ng Ticket sa Sinehan (Buying Movie Tickets)",
+      "theme": "Entertainment",
+      "sentences": [
+        { "tl": "Gusto kong manood ng sine.", "en": "I want to watch a movie." },
+        { "tl": "Bumili ako ng ticket sa counter.", "en": "I buy tickets at the counter." },
+        { "tl": "Pinili ko ang upuan.", "en": "I choose a seat." },
+        { "tl": "Nagsimula ang pelikula.", "en": "The movie starts." }
+      ],
+      "focusWords": "ako, bumili, pili, manood. New words in context: sine (movie), counter (counter)."
+    },
+    {
+      "title": "Pumunta sa Beach (Going to the Beach)",
+      "theme": "Leisure",
+      "sentences": [
+        { "tl": "Pumunta ako sa beach.", "en": "I go to the beach." },
+        { "tl": "Naligo ako sa dagat.", "en": "I swim in the sea." },
+        { "tl": "Naglaro ako sa buhangin.", "en": "I play with sand." },
+        { "tl": "Umuwi ako pagdilim.", "en": "I go home when it gets dark." }
+      ],
+      "focusWords": "ako, pumunta, laro, umuwi. New words in context: beach (beach), dagat (sea)."
+    },
+    {
+      "title": "Bumisita sa Museo (Visiting a Museum)",
+      "theme": "Culture",
+      "sentences": [
+        { "tl": "Pumunta ako sa museo.", "en": "I visit a museum." },
+        { "tl": "Tumingin ako ng mga painting at artifacts.", "en": "I look at paintings and artifacts." },
+        { "tl": "Naglitrato ako.", "en": "I take pictures." },
+        { "tl": "Maraming bagong natutunan.", "en": "I learn many new things." }
+      ],
+      "focusWords": "ako, pumunta, tingin, learn. New words in context: museo (museum), artifacts (artifact)."
+    },
+    {
+      "title": "Nagtanong ng Direksyon (Asking for Directions)",
+      "theme": "Travel",
+      "sentences": [
+        { "tl": "Hindi ko alam ang daan.", "en": "I don't know the way." },
+        { "tl": "Nagtanong ako sa mga tao.", "en": "I ask a passerby." },
+        { "tl": "Sinabi nila na diretso lang.", "en": "They tell me to go straight." },
+        { "tl": "Dumating ako ng ligtas.", "en": "I arrive safely." }
+      ],
+      "focusWords": "ako, tanong, daan, dumating. New words in context: tao (passerby), diretso (straight)."
+    },
+    {
+      "title": "Pumunta sa Night Market (Visiting Night Market)",
+      "theme": "Leisure",
+      "sentences": [
+        { "tl": "Pumunta ako sa night market.", "en": "I go to the night market." },
+        { "tl": "Tiningnan ko ang pagkain at souvenirs.", "en": "I look at food and souvenirs." },
+        { "tl": "Sinubukan ko ang pagkain.", "en": "I try some food." },
+        { "tl": "Bumili ako ng ilang maliit na bagay.", "en": "I buy a few small items." }
+      ],
+      "focusWords": "ako, pumunta, tingin, subok. New words in context: night market (night market), pagkain (dish)."
+    },
+{
+      "title": "Pumunta sa Botika (Going to Pharmacy)",
+      "theme": "Health",
+      "sentences": [
+        { "tl": "Masakit ang ulo ko.", "en": "I have a headache." },
+        { "tl": "Pumunta ako sa botika.", "en": "I go to the pharmacy." },
+        { "tl": "Bumili ako ng gamot.", "en": "I buy medicine." },
+        { "tl": "Uminom ako ng gamot.", "en": "I take the medicine." }
+      ],
+      "focusWords": "ako, pumunta, bumili, uminom. New words: botika (pharmacy), gamot (medicine)."
+    },
+    {
+      "title": "Pumunta sa Paliparan (Going to the Airport)",
+      "theme": "Travel",
+      "sentences": [
+        { "tl": "Pumunta ako sa paliparan.", "en": "I go to the airport." },
+        { "tl": "Nag-check in ako.", "en": "I check in." },
+        { "tl": "Sumakay ako sa eroplano.", "en": "I board the plane." },
+        { "tl": "Lumipad ang eroplano.", "en": "The plane takes off." }
+      ],
+      "focusWords": "ako, pumunta, sumakay, lumipad. New words: paliparan (airport), check-in (check-in)."
+    },
+    {
+      "title": "Pumunta sa Post Office (Going to the Post Office)",
+      "theme": "Daily Life",
+      "sentences": [
+        { "tl": "Pumunta ako sa post office.", "en": "I go to the post office." },
+        { "tl": "Nagpadala ako ng package.", "en": "I send a package." },
+        { "tl": "Bumili ako ng selyo.", "en": "I buy stamps." },
+        { "tl": "Nakakuha ako ng resibo.", "en": "I receive the receipt." }
+      ],
+      "focusWords": "ako, pumunta, magpadala, makatanggap. New words: post office (post office), package (package)."
+    },
+    {
+      "title": "Pumunta sa Bangko (Going to the Bank)",
+      "theme": "Daily Life",
+      "sentences": [
+        { "tl": "Pumunta ako sa bangko.", "en": "I go to the bank." },
+        { "tl": "Nang-withdraw ako ng pera.", "en": "I withdraw money." },
+        { "tl": "Nagdeposito ako ng pera.", "en": "I deposit money." },
+        { "tl": "Nakakuha ako ng resibo.", "en": "I receive a receipt." }
+      ],
+      "focusWords": "ako, pumunta, withdraw, deposit. New words: bangko (bank), resibo (receipt)."
+    },
+    {
+      "title": "Pumunta sa Kapehan (Going to a Coffee Shop)",
+      "theme": "Food",
+      "sentences": [
+        { "tl": "Pumunta ako sa kapehan.", "en": "I go to a coffee shop." },
+        { "tl": "Umorder ako ng kape.", "en": "I order coffee." },
+        { "tl": "Uminom ako ng kape.", "en": "I drink coffee." },
+        { "tl": "Nagbayad ako at umuwi.", "en": "I pay and go home." }
+      ],
+      "focusWords": "ako, pumunta, umorder, uminom. New words: kapehan (coffee shop), kape (coffee)."
+    },
+{
+      "title": "Kumain ng agahan (Eating Breakfast)",
+      "theme": "Food",
+      "sentences": [
+        { "tl": "Gutom ako sa umaga.", "en": "I am hungry in the morning." },
+        { "tl": "Gumawa ako ng toast.", "en": "I make toast." },
+        { "tl": "Kumain ako ng toast na may itlog.", "en": "I eat toast with eggs." },
+        { "tl": "Uminom ako ng basong gatas.", "en": "I drink a glass of milk." },
+        { "tl": "Busog na ako.", "en": "I am full now." }
+      ],
+      "focusWords": "ako, kumain, agahan, busog. New words in context: toast (bread), itlog (egg), gatas (milk)."
+    }
+  ],
+  "jpStories": [
+    {
+      "title": "Onaka ga suita (Hungry)",
+      "theme": "Food",
+      "sentences": [
+        { "jp": "Onaka ga suita.", "en": "I'm hungry." },
+        { "jp": "Tabetai desu.", "en": "I want to eat." },
+        { "jp": "Tabemono ga nai.", "en": "I don't have food." },
+        { "jp": "Tomodachi ga gohan wo kureta.", "en": "My friend gives me rice." },
+        { "jp": "Mou onaka ga suikanai.", "en": "I'm not hungry anymore." }
+      ],
+      "focusWords": "watashi, taberu, nai, onaka. New words in context: gohan (rice), tomodachi (friend)."
+    },
+    {
+      "title": "Gakkou e iku (Going to School)",
+      "theme": "Education",
+      "sentences": [
+        { "jp": "Gakkou e ikimasu.", "en": "I go to school." },
+        { "jp": "Hon wo mochimasu.", "en": "I bring books." },
+        { "jp": "Nihongo wo benkyou shimasu.", "en": "I study Japanese." },
+        { "jp": "Jugyou no ato tomodachi to asobimasu.", "en": "I play with friends after class." }
+      ],
+      "focusWords": "watashi, benkyou, hon, tomodachi. New words in context: jugyou (class), asobu (play)."
+    },
+    {
+      "title": "Booru wo asobu (Playing Ball)",
+      "theme": "Sports",
+      "sentences": [
+        { "jp": "Booru wo asobu no ga suki desu.", "en": "I like playing ball." },
+        { "jp": "Tomodachi ga booru wo nageta.", "en": "My friend throws the ball to me." },
+        { "jp": "Watashitachi wa soto de asobimasu.", "en": "We play outside." },
+        { "jp": "Geemu wa totemo tanoshii desu.", "en": "The game is very fun." }
+      ],
+      "focusWords": "watashi, asobu, tomodachi, booru. New words in context: soto (outside), tanoshii (fun)."
+    },
+    {
+      "title": "Ichiba e iku (Shopping)",
+      "theme": "Daily Life",
+      "sentences": [
+        { "jp": "Ichiba e ikimasu.", "en": "I go to the market." },
+        { "jp": "Yasai to kudamono wo kaimasu.", "en": "I buy vegetables and fruits." },
+        { "jp": "Uriba no hito ga aisatsu shimashita.", "en": "The seller greets me." },
+        { "jp": "Okanjou shite kaerimasu.", "en": "I pay and go home." }
+      ],
+      "focusWords": "watashi, kau, ichiba, harau. New words in context: yasai (vegetables), kudamono (fruits)."
+    },
+    {
+      "title": "Uchi ni iru (At Home)",
+      "theme": "Home",
+      "sentences": [
+        { "jp": "Uchi ni imasu.", "en": "I am at home." },
+        { "jp": "Hon wo yomimasu.", "en": "I read a book." },
+        { "jp": "Ryouri shimasu.", "en": "I cook." },
+        { "jp": "Kazoku to issho ni bangohan wo tabemasu.", "en": "My family eats dinner together." }
+      ],
+      "focusWords": "watashi, ie, yomu, taberu. New words in context: ryouri (cook), kazoku (family)."
+    },
+    {
+      "title": "Sanpo suru (Going for a Walk)",
+      "theme": "Leisure",
+      "sentences": [
+        { "jp": "Kouen de sanpo shimasu.", "en": "I go for a walk in the park." },
+        { "jp": "Takusan no hana wo mimasu.", "en": "I see many flowers." },
+        { "jp": "Furui tomodachi ni aimasu.", "en": "I meet an old friend." },
+        { "jp": "Tanoshiku hanashimasu.", "en": "We talk happily." }
+      ],
+      "focusWords": "watashi, sanpo, tomodachi, miru. New words in context: kouen (park), hana (flower)."
+    },
+    {
+      "title": "Tenki (Weather)",
+      "theme": "Environment",
+      "sentences": [
+        { "jp": "Kyou wa hare desu.", "en": "Today is sunny." },
+        { "jp": "Totemo atsui desu.", "en": "It's very hot." },
+        { "jp": "Kasa wo mochimasu.", "en": "I bring an umbrella." },
+        { "jp": "Ima ame ga futteimasu.", "en": "It is raining now." }
+      ],
+      "focusWords": "kyou, atsui, motsu, ame. New words in context: hare (sunny), kasa (umbrella)."
+    },
+    {
+      "title": "Basu ni noru (Taking the Bus)",
+      "theme": "Transport",
+      "sentences": [
+        { "jp": "Gakkou e basu de ikimasu.", "en": "I take the bus to school." },
+        { "jp": "Kippu wo kaimasu.", "en": "I buy a ticket." },
+        { "jp": "Suwatte matteimasu.", "en": "I sit and wait." },
+        { "jp": "Saigo no teishi-jo de orimasu.", "en": "I get off at the last stop." }
+      ],
+      "focusWords": "watashi, basu, kau, oriru. New words in context: teishi-jo (stop), kippu (ticket)."
+    },
+    {
+      "title": "Nemuru (Going to Sleep)",
+      "theme": "Daily Routine",
+      "sentences": [
+        { "jp": "Ofuro ni hairimasu.", "en": "I take a bath." },
+        { "jp": "Ha wo migakimasu.", "en": "I brush my teeth." },
+        { "jp": "Pajama wo kimasu.", "en": "I wear pajamas." },
+        { "jp": "Nemasu.", "en": "I go to sleep." }
+      ],
+      "focusWords": "watashi, nemuru, ofuro, kiru. New words in context: ha wo migaku (brush teeth), pajama (pajamas)."
+    },
+    {
+      "title": "Petto to asobu (Playing with Pets)",
+      "theme": "Animals",
+      "sentences": [
+        { "jp": "Neko ga imasu.", "en": "I have a cat." },
+        { "jp": "Neko ni esa wo agemasu.", "en": "I feed the cat." },
+        { "jp": "Neko ga asondeimasu.", "en": "My cat plays with me." },
+        { "jp": "Neko ga daisuki desu.", "en": "I love my cat." }
+      ],
+      "focusWords": "watashi, neko, ageru, asobu. New words in context: petto (pet), daisuki (love)."
+    },
+    {
+      "title": "Hoteru wo yoyaku suru (Booking a Hotel Room)",
+      "theme": "Travel",
+      "sentences": [
+        { "jp": "Hoteru wo yoyaku shitai desu.", "en": "I want to book a room." },
+        { "jp": "Yoyaku ga arimasu ka?", "en": "Do I have a reservation?" },
+        { "jp": "Heya ni beddo wa ikutsu arimasu ka?", "en": "How many beds are in the room?" },
+        { "jp": "Okanjou shite kagi wo moraimashita.", "en": "I pay and get the key." }
+      ],
+      "focusWords": "watashi, heya, yoyaku, harau. New words in context: hoteru (hotel), beddo (bed)."
+    },
+    {
+      "title": "Takushii ni noru (Taking a Taxi)",
+      "theme": "Transport",
+      "sentences": [
+        { "jp": "Takushii wo yondeimasu.", "en": "I call a taxi." },
+        { "jp": "Juusho wo iimashita.", "en": "I tell the address." },
+        { "jp": "Kuruma ni norimasu.", "en": "I get in the car." },
+        { "jp": "Tsuita toki ni harai mashita.", "en": "I pay when I arrive." }
+      ],
+      "focusWords": "watashi, takushii, noru, harau. New words in context: juusho (address), tsuku (arrive)."
+    },
+    {
+      "title": "Omiyage wo kau (Buying Souvenirs)",
+      "theme": "Shopping",
+      "sentences": [
+        { "jp": "Omiyage wo kaitai desu.", "en": "I like buying gifts." },
+        { "jp": "Hitotsu erabimashita.", "en": "I choose a gift." },
+        { "jp": "Uriba no hito ga kane wo kazoemashita.", "en": "The seller counts the money." },
+        { "jp": "Omiyage wo uchi ni motte kaerimashita.", "en": "I take the gift home." }
+      ],
+      "focusWords": "watashi, kau, erabu, motsu. New words in context: omiyage (gift), kazoeru (count/pay)."
+    },
+    {
+      "title": "Soto de taberu (Eating Out)",
+      "theme": "Food",
+      "sentences": [
+        { "jp": "Resutoran ni ikimasu.", "en": "I go to a restaurant." },
+        { "jp": "Nomimono to tabemono wo chuumon shimasu.", "en": "I order food." },
+        { "jp": "Tomodachi to issho ni gohan wo tabemasu.", "en": "I eat rice with friends." },
+        { "jp": "Okanjou shite deteikimasu.", "en": "I pay and leave." }
+      ],
+      "focusWords": "watashi, iku, chuumon, taberu. New words in context: resutoran (restaurant), tabemono (dish)."
+    },
+    {
+      "title": "Eigakan de kippu wo kau (Buying Movie Tickets)",
+      "theme": "Entertainment",
+      "sentences": [
+        { "jp": "Eiga wo mitai desu.", "en": "I want to watch a movie." },
+        { "jp": "Kaunta de kippu wo kaimashita.", "en": "I buy tickets at the counter." },
+        { "jp": "Suwa wo erabimashita.", "en": "I choose a seat." },
+        { "jp": "Eiga ga hajimarimashita.", "en": "The movie starts." }
+      ],
+      "focusWords": "watashi, kau, erabu, miru. New words in context: eiga (movie), kaunta (counter)."
+    },
+    {
+      "title": "Umi e iku (Going to the Beach)",
+      "theme": "Leisure",
+      "sentences": [
+        { "jp": "Umi e ikimasu.", "en": "I go to the beach." },
+        { "jp": "Umi de oyoぎmasu.", "en": "I swim in the sea." },
+        { "jp": "Suna de asobimasu.", "en": "I play with sand." },
+        { "jp": "Kurayami ni natta toki ni kaerimasu.", "en": "I go home when it gets dark." }
+      ],
+      "focusWords": "watashi, iku, asobu, kaeru. New words in context: umi (sea/beach), suna (sand)."
+    },
+    {
+      "title": "Bijutsukan ni iku (Visiting a Museum)",
+      "theme": "Culture",
+      "sentences": [
+        { "jp": "Bijutsukan e ikimasu.", "en": "I visit a museum." },
+        { "jp": "E to kōkōhin wo mimasu.", "en": "I look at paintings and artifacts." },
+        { "jp": "Shashin wo torimashita.", "en": "I take pictures." },
+        { "jp": "Takusan no atarashii koto wo manabimashita.", "en": "I learn many new things." }
+      ],
+      "focusWords": "watashi, iku, miru, manabu. New words in context: bijutsukan (museum), kōkōhin (artifact)."
+    },
+    {
+      "title": "Michijun wo tazuneru (Asking for Directions)",
+      "theme": "Travel",
+      "sentences": [
+        { "jp": "Michijun ga wakarimasen.", "en": "I don't know the way." },
+        { "jp": "Hito ni tazunemashita.", "en": "I ask a passerby." },
+        { "jp": "Massugu iku to iimashita.", "en": "They tell me to go straight." },
+        { "jp": "Anzen ni tsukimashita.", "en": "I arrive safely." }
+      ],
+      "focusWords": "watashi, tazuneru, michi, tsuku. New words in context: hito (person/passerby), massugu (straight)."
+    },
+    {
+      "title": "Yoru no ichiba ni iku (Visiting Night Market)",
+      "theme": "Leisure",
+      "sentences": [
+        { "jp": "Yoru no ichiba ni ikimasu.", "en": "I go to the night market." },
+        { "jp": "Tabemono to omiyage wo mimashita.", "en": "I look at food and souvenirs." },
+        { "jp": "Tabemono wo tameshite mimashita.", "en": "I try some food." },
+        { "jp": "Chotto kaimono shimashita.", "en": "I buy a few small items." }
+      ],
+      "focusWords": "watashi, iku, miru, tamesu. New words in context: yoru no ichiba (night market), tabemono (dish)."
+    },
+{
+      "title": "Kusuriya e iku (Going to Pharmacy)",
+      "theme": "Health",
+      "sentences": [
+        { "jp": "Atama ga itai desu.", "en": "I have a headache." },
+        { "jp": "Kusuriya e ikimasu.", "en": "I go to the pharmacy." },
+        { "jp": "Kusuri wo kaimasu.", "en": "I buy medicine." },
+        { "jp": "Kusuri wo nomimasu.", "en": "I take the medicine." }
+      ],
+      "focusWords": "watashi, iku, kau, nomu. New words: kusuriya (pharmacy), kusuri (medicine)."
+    },
+    {
+      "title": "Kuko e iku (Going to the Airport)",
+      "theme": "Travel",
+      "sentences": [
+        { "jp": "Kuko e ikimasu.", "en": "I go to the airport." },
+        { "jp": "Chekku in wo shimasu.", "en": "I check in." },
+        { "jp": "Hikouki ni norimasu.", "en": "I board the plane." },
+        { "jp": "Hikouki ga tobiました.", "en": "The plane takes off." }
+      ],
+      "focusWords": "watashi, iku, noru, tobu. New words: kuko (airport), chekku in (check-in)."
+    },
+    {
+      "title": "Yubinkyoku e iku (Going to the Post Office)",
+      "theme": "Daily Life",
+      "sentences": [
+        { "jp": "Yubinkyoku e ikimasu.", "en": "I go to the post office." },
+        { "jp": "Paketto wo okurimasu.", "en": "I send a package." },
+        { "jp": "Kampan wo kaimasu.", "en": "I buy stamps." },
+        { "jp": "Ryoushuusho wo moraimashita.", "en": "I receive a receipt." }
+      ],
+      "focusWords": "watashi, iku, okuru, morau. New words: yubinkyoku (post office), paketto (package)."
+    },
+    {
+      "title": "Ginkou e iku (Going to the Bank)",
+      "theme": "Daily Life",
+      "sentences": [
+        { "jp": "Ginkou e ikimasu.", "en": "I go to the bank." },
+        { "jp": "Okane wo hikuimasu.", "en": "I withdraw money." },
+        { "jp": "Okane wo azukemasu.", "en": "I deposit money." },
+        { "jp": "Ryoushuusho wo moraimashita.", "en": "I receive a receipt." }
+      ],
+      "focusWords": "watashi, iku, hiku, azukeru. New words: ginkou (bank), ryoushuusho (receipt)."
+    },
+    {
+      "title": "Kohi shoppu e iku (Going to a Coffee Shop)",
+      "theme": "Food",
+      "sentences": [
+        { "jp": "Kohi shoppu e ikimasu.", "en": "I go to a coffee shop." },
+        { "jp": "Kohi wo chuumon shimasu.", "en": "I order coffee." },
+        { "jp": "Kohi wo nomimasu.", "en": "I drink coffee." },
+        { "jp": "Shiharai wo shite kaerimasu.", "en": "I pay and go home." }
+      ],
+      "focusWords": "watashi, iku, chuumon, nomu. New words: kohi shoppu (coffee shop), kohi (coffee)."
+    },
+{
+      "title": "Asagohan o taberu (Eating Breakfast)",
+      "theme": "Food",
+      "sentences": [
+        { "jp": "Asa wa onaka ga suita.", "en": "I am hungry in the morning." },
+        { "jp": "Tōsuto o tsukuru.", "en": "I make toast." },
+        { "jp": "Tōsuto to tamago o taberu.", "en": "I eat toast with eggs." },
+        { "jp": "Koppu no gyūnyū o nomu.", "en": "I drink a glass of milk." },
+        { "jp": "Onaka ga ippai da.", "en": "I am full now." }
+      ],
+      "focusWords": "watashi, taberu, asa, ippai. New words in context: tōsuto (toast), tamago (egg), gyūnyū (milk)."
+    }
+  ]
+}
+
