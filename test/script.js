@@ -1,76 +1,143 @@
-// DEFINE YOUR YARDAGES HERE
-const DEFAULT_CLUBS = [
-  { club: "Driver", distance: 245 },
-  { club: "3 Wood", distance: 225 },
-  { club: "5 Wood", distance: 210 },
-  { club: "Hybrid", distance: 195 },
-  { club: "4 Iron", distance: 185 },
-  { club: "5 Iron", distance: 175 },
-  { club: "6 Iron", distance: 165 },
-  { club: "7 Iron", distance: 155 },
-  { club: "8 Iron", distance: 145 },
-  { club: "9 Iron", distance: 135 },
-  { club: "Pitching Wedge", distance: 125 },
-  { club: "Gap Wedge", distance: 110 },
-  { club: "Sand Wedge", distance: 95 },
-  { club: "Lob Wedge", distance: 80 }
-];
+let storiesData = [];
+let currentStoryIndex = 0;
+let currentSentenceIndex = 0;
+let currentFontSize = 20;
 
-const UNIT = "yds";
-const STORAGE_KEY = "golfClubOrder";
+let pureCI = true;          // ✅ Pure CI ON by default
+let showPreload = true;     // ✅ show English preload once per story
 
-let clubs = JSON.parse(localStorage.getItem(STORAGE_KEY)) || DEFAULT_CLUBS.slice();
 
-const container = document.getElementById("clubs");
+const storyContainer = document.getElementById('storyContainer');
+const languageSelect = document.getElementById('languageSelect');
+const storySelect = document.getElementById('storySelect');
 
-function renderClubs() {
-  container.innerHTML = "";
-  clubs.forEach((item, index) => {
-    const row = document.createElement("div");
-    row.className = "club";
-    row.draggable = true;
-    row.dataset.index = index;
+const prevBtn = document.getElementById('prevBtn');
+const startOverBtn = document.getElementById('startOverBtn');
+const nextBtn = document.getElementById('nextBtn');
+const nextSentenceBtn = document.getElementById('nextSentenceBtn');
 
-    const name = document.createElement("div");
-    name.className = "club-name";
-    name.textContent = item.club;
+const increaseFontBtn = document.getElementById('increaseFont');
+const decreaseFontBtn = document.getElementById('decreaseFont');
 
-    const distance = document.createElement("div");
-    distance.className = "distance";
-    distance.innerHTML = `${item.distance}<span class="unit">${UNIT}</span>`;
+// Load stories for the selected language
+function loadStoriesForLanguage(data) {
+  const lang = languageSelect.value;
+  if (lang === 'vi') storiesData = data.viStories;
+  else if (lang === 'tl') storiesData = data.tlStories;
+  else if (lang === 'jp') storiesData = data.jpStories;
+  else storiesData = data.viStories;
+}
 
-    row.appendChild(name);
-    row.appendChild(distance);
-    container.appendChild(row);
-
-    // Drag events
-    row.addEventListener("dragstart", (e) => {
-      row.classList.add("dragging");
-      e.dataTransfer.effectAllowed = "move";
-      e.dataTransfer.setData("text/plain", index);
-    });
-
-    row.addEventListener("dragend", () => {
-      row.classList.remove("dragging");
-    });
-
-    row.addEventListener("dragover", (e) => e.preventDefault());
-
-    row.addEventListener("drop", (e) => {
-      e.preventDefault();
-      const fromIndex = parseInt(e.dataTransfer.getData("text/plain"));
-      const toIndex = index;
-      if (fromIndex === toIndex) return;
-
-      // Reorder array
-      const moved = clubs.splice(fromIndex, 1)[0];
-      clubs.splice(toIndex, 0, moved);
-
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(clubs));
-      renderClubs();
-    });
+// Populate story dropdown
+function populateStorySelect() {
+  storySelect.innerHTML = '';
+  storiesData.forEach((story, index) => {
+    const option = document.createElement('option');
+    option.value = index;
+    option.textContent = `${index + 1}: ${story.title}`;
+    storySelect.appendChild(option);
   });
 }
 
-// Initial render
-renderClubs();
+function advanceStory() {
+  const story = storiesData[currentStoryIndex];
+  const lang = languageSelect.value;
+
+  // Title
+  if (currentSentenceIndex === 0 && storyContainer.textContent === '') {
+    storyContainer.textContent = `🌟 Story ${currentStoryIndex + 1}: ${story.title}\n\n`;
+
+    // Optional preload (English shown ONCE, not line-by-line)
+    if (pureCI && showPreload && story.preload && story.preload.length) {
+      storyContainer.textContent += `🧠 Meaning preload (read once):\n`;
+      story.preload.forEach(item => {
+        storyContainer.textContent += `- ${item.vi} = ${item.en}\n`;
+      });
+      storyContainer.textContent += `\n📖 Story (Vietnamese only):\n`;
+    }
+    return;
+  }
+
+  if (currentSentenceIndex >= story.sentences.length) {
+    if (story.focusWords) storyContainer.textContent += `\n👉 Focus: ${story.focusWords}\n`;
+    return;
+  }
+
+  const sentence = story.sentences[currentSentenceIndex];
+
+  // Pick correct language field
+  let text = sentence.vi;
+  if (lang === 'tl') text = sentence.tl;
+  if (lang === 'jp') text = sentence.jp;
+
+  // ✅ Pure CI: show only the target language line
+  if (pureCI) {
+    storyContainer.textContent += `${currentSentenceIndex + 1}. ${text}\n`;
+    currentSentenceIndex++;
+    return;
+  }
+
+  // (Optional) Old behavior fallback: VN then EN
+  storyContainer.textContent += `${currentSentenceIndex + 1}. ${text} → ${sentence.en}\n`;
+  currentSentenceIndex++;
+}
+
+
+// Reset story display
+function resetStoryDisplay() {
+  currentSentenceIndex = 0;
+  showingEN = false;
+  storyContainer.textContent = '';
+  advanceStory();
+}
+
+// Font controls
+increaseFontBtn.addEventListener('click', () => {
+  currentFontSize += 2;
+  storyContainer.style.fontSize = currentFontSize + 'px';
+});
+decreaseFontBtn.addEventListener('click', () => {
+  currentFontSize -= 2;
+  storyContainer.style.fontSize = currentFontSize + 'px';
+});
+
+// Navigation & next sentence
+nextSentenceBtn.addEventListener('click', advanceStory);
+document.body.addEventListener('click', (e) => {
+  if (!['BUTTON','SELECT'].includes(e.target.tagName)) advanceStory();
+});
+prevBtn.addEventListener('click', () => { 
+  if (currentStoryIndex > 0) currentStoryIndex--; 
+  storySelect.value = currentStoryIndex;
+  resetStoryDisplay(); 
+});
+nextBtn.addEventListener('click', () => { 
+  if (currentStoryIndex < storiesData.length - 1) currentStoryIndex++; 
+  storySelect.value = currentStoryIndex;
+  resetStoryDisplay(); 
+});
+startOverBtn.addEventListener('click', resetStoryDisplay);
+
+languageSelect.addEventListener('change', () => {
+  fetch('stories.json')
+    .then(res => res.json())
+    .then(data => {
+      loadStoriesForLanguage(data);
+      populateStorySelect();
+      resetStoryDisplay();
+    });
+});
+
+storySelect.addEventListener('change', (e) => {
+  currentStoryIndex = parseInt(e.target.value);
+  resetStoryDisplay();
+});
+
+// Initial fetch
+fetch('stories.json')
+  .then(res => res.json())
+  .then(data => {
+    loadStoriesForLanguage(data);
+    populateStorySelect();
+    resetStoryDisplay();
+  });
