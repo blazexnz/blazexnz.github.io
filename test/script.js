@@ -3,6 +3,13 @@ let currentStoryIndex = 0;
 let currentSentenceIndex = 0;
 let currentFontSize = 20;
 
+// Reveal state:
+// 0 = title
+// 1 = target language (vi/tl/jp) sentences
+// 2 = english sentences
+// 3 = focus words
+let revealPhase = 0;
+
 const storyContainer = document.getElementById('storyContainer');
 const languageSelect = document.getElementById('languageSelect');
 const storySelect = document.getElementById('storySelect');
@@ -35,44 +42,73 @@ function populateStorySelect() {
   });
 }
 
-// Advance story (now renders ALL target language first, then English)
+// Advance story by one reveal (all target language first, then all English)
 function advanceStory() {
   const story = storiesData[currentStoryIndex];
   const lang = languageSelect.value;
 
-  // Only render once per story
-  if (storyContainer.textContent !== '') return;
+  // Phase 0: Title
+  if (revealPhase === 0) {
+    // Only print title once
+    if (storyContainer.textContent === '') {
+      storyContainer.textContent = `🌟 Story ${currentStoryIndex + 1}: ${story.title}\n\n`;
+    }
+    revealPhase = 1;
+    currentSentenceIndex = 0;
+    return;
+  }
 
-  // Title
-  storyContainer.textContent = `🌟 Story ${currentStoryIndex + 1}: ${story.title}\n\n`;
+  // Phase 1: Target language sentences (one-by-one)
+  if (revealPhase === 1) {
+    if (currentSentenceIndex >= story.sentences.length) {
+      storyContainer.textContent += `\n`;
+      revealPhase = 2;
+      currentSentenceIndex = 0;
+      return;
+    }
 
-  // Target language block
-  story.sentences.forEach((sentence, index) => {
+    const sentence = story.sentences[currentSentenceIndex];
     let text;
     if (lang === 'vi') text = sentence.vi;
     else if (lang === 'tl') text = sentence.tl;
     else if (lang === 'jp') text = sentence.jp;
     else text = sentence.vi;
 
-    storyContainer.textContent += `${index + 1}. ${text}\n`;
-  });
+    storyContainer.textContent += `${currentSentenceIndex + 1}. ${text}\n`;
+    currentSentenceIndex++;
+    return;
+  }
 
-  // Spacer
-  storyContainer.textContent += `\n`;
+  // Phase 2: English sentences (one-by-one)
+  if (revealPhase === 2) {
+    if (currentSentenceIndex >= story.sentences.length) {
+      revealPhase = 3;
+      return;
+    }
 
-  // English block
-  story.sentences.forEach((sentence, index) => {
-    storyContainer.textContent += `${index + 1}. ${sentence.en}\n`;
-  });
+    const sentence = story.sentences[currentSentenceIndex];
+    storyContainer.textContent += `${currentSentenceIndex + 1}. ${sentence.en}\n`;
+    currentSentenceIndex++;
+    return;
+  }
 
-  // Focus words
-  if (story.focusWords) {
-    storyContainer.textContent += `\n👉 Focus words: ${story.focusWords}\n`;
+  // Phase 3: Focus words (once)
+  if (revealPhase === 3) {
+    if (story.focusWords) {
+      // Only add once
+      if (!storyContainer.textContent.includes('\n👉 Focus words:')) {
+        storyContainer.textContent += `\n👉 Focus words: ${story.focusWords}\n`;
+      }
+    }
+    revealPhase = 4; // done
+    return;
   }
 }
 
 // Reset story display
 function resetStoryDisplay() {
+  currentSentenceIndex = 0;
+  revealPhase = 0;
   storyContainer.textContent = '';
   advanceStory();
 }
@@ -82,31 +118,26 @@ increaseFontBtn.addEventListener('click', () => {
   currentFontSize += 2;
   storyContainer.style.fontSize = currentFontSize + 'px';
 });
-
 decreaseFontBtn.addEventListener('click', () => {
   currentFontSize -= 2;
   storyContainer.style.fontSize = currentFontSize + 'px';
 });
 
-// Navigation
+// Navigation & next sentence
 nextSentenceBtn.addEventListener('click', advanceStory);
-
 document.body.addEventListener('click', (e) => {
-  if (!['BUTTON', 'SELECT'].includes(e.target.tagName)) advanceStory();
+  if (!['BUTTON','SELECT'].includes(e.target.tagName)) advanceStory();
 });
-
 prevBtn.addEventListener('click', () => { 
   if (currentStoryIndex > 0) currentStoryIndex--; 
   storySelect.value = currentStoryIndex;
   resetStoryDisplay(); 
 });
-
 nextBtn.addEventListener('click', () => { 
   if (currentStoryIndex < storiesData.length - 1) currentStoryIndex++; 
   storySelect.value = currentStoryIndex;
   resetStoryDisplay(); 
 });
-
 startOverBtn.addEventListener('click', resetStoryDisplay);
 
 languageSelect.addEventListener('change', () => {
