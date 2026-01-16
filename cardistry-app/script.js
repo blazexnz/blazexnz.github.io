@@ -789,6 +789,152 @@ const itemsData = [
   }
 },
 {
+  name: "Euchre",
+  objective: {
+    title: "Objective",
+    content: "Win tricks by selecting a trump suit and taking at least 3 of the 5 tricks with your partner"
+  },
+  players: {
+    title: "Players",
+    content: "4 players (2 teams of 2, fixed partnerships)"
+  },
+  deck: {
+    title: "Deck",
+    content: "24-card deck (9 through Ace in each suit)"
+  },
+  setup: {
+    title: "The Deal",
+    content: `
+      <ul>
+        <li>Players sit opposite their partner</li>
+        <li>Deal 5 cards to each player</li>
+        <li>Turn the next card face up as the upcard</li>
+      </ul>
+    `
+  },
+  method: {
+    title: "The Play",
+    content: `
+      <ul>
+        <li>Starting left of the dealer, players may order up the upcard’s suit as trump</li>
+        <li>If ordered up, the dealer picks up the upcard and discards one card</li>
+        <li>If all pass, players may name a different suit as trump</li>
+        <li>If no suit is chosen, the hand is redealt</li>
+        <li>The player left of the dealer leads the first trick</li>
+        <li>Players must follow suit if able</li>
+        <li>Highest card wins the trick</li>
+      </ul>
+    `
+  },
+  trump: {
+    title: "Trump Rules",
+    content: `
+      <ul>
+        <li>Right Bower: Jack of trump suit (highest card)</li>
+        <li>Left Bower: Jack of the same-colour suit as trump</li>
+        <li>Left Bower is considered trump, not its printed suit</li>
+      </ul>
+    `
+  },
+  scoring: {
+    title: "Scoring",
+    content: `
+      <ul>
+        <li>3–4 tricks: 1 point</li>
+        <li>5 tricks: 2 points</li>
+        <li>Failing after calling trump (euchred): opponents score 2 points</li>
+      </ul>
+    `
+  },
+  winning: {
+    title: "Winning",
+    content: "First team to 10 points wins"
+  },
+  tags: ["games", "multi player"],
+},
+{
+  name: "Bridge (Contract Bridge)",
+  objective: {
+    title: "Objective",
+    content: "With your partner, win enough tricks to fulfill your contract (a promised number of tricks in a chosen trump suit or no-trump)"
+  },
+  players: {
+    title: "Players",
+    content: "4 players (2 teams of 2, fixed partnerships)"
+  },
+  deck: {
+    title: "Deck",
+    content: "Single standard 52-card deck"
+  },
+  setup: {
+    title: "Setup",
+    content: `
+      <ul>
+        <li>Partners sit opposite each other</li>
+        <li>Deal all cards: 13 each</li>
+        <li>Dealer starts the auction (dealer rotates each hand)</li>
+      </ul>
+    `
+  },
+  auction: {
+    title: "The Auction (Bidding)",
+    content: `
+      <ul>
+        <li>Players bid clockwise starting with the dealer</li>
+        <li>A bid = level (1–7) + strain (♣ ♦ ♥ ♠ or NT)</li>
+        <li>Level indicates tricks above 6 (e.g., 1♥ means 7 tricks with Hearts trump)</li>
+        <li>Each bid must be higher than the previous bid</li>
+        <li>Players may Pass, Double, or Redouble</li>
+        <li>Auction ends after 3 consecutive Passes following a bid</li>
+        <li>The final bid becomes the contract</li>
+      </ul>
+    `
+  },
+  roles: {
+    title: "Declarer & Dummy",
+    content: `
+      <ul>
+        <li>Declarer: first player on the winning side who bid the final strain</li>
+        <li>Dummy: declarer’s partner; lays hand face-up after opening lead</li>
+        <li>Declarer plays both their own hand and the dummy hand</li>
+      </ul>
+    `
+  },
+  method: {
+    title: "Trick Play",
+    content: `
+      <ul>
+        <li>Opening lead is made by the player to declarer’s left</li>
+        <li>Players must follow suit if able</li>
+        <li>Trick is won by highest trump (if trumps played), otherwise highest card of the suit led</li>
+        <li>Winner of each trick leads the next</li>
+        <li>After 13 tricks, compare tricks won to the contract</li>
+      </ul>
+    `
+  },
+  scoring: {
+    title: "Scoring (High Level)",
+    content: `
+      <ul>
+        <li>Making the contract scores contract points plus possible bonuses</li>
+        <li>Failing the contract (“down”) gives penalty points to opponents</li>
+        <li>Vulnerability changes bonuses and penalties</li>
+        <li>Scoring and win conditions depend on format (rubber vs duplicate)</li>
+      </ul>
+    `
+  },
+  notes: {
+    title: "Notes",
+    content: `
+      <ul>
+        <li>Common formats: Rubber Bridge (games/rubbers) and Duplicate Bridge (matchpoints/IMPs)</li>
+        <li>Bridge has detailed scoring; many casual groups use a score sheet or app</li>
+      </ul>
+    `
+  },
+  tags: ["games", "multi player"],
+},
+{
   name: "Card force",
   method: {
     title: "The Method",
@@ -1303,7 +1449,6 @@ document.querySelector('#filterBar button[data-filter="all"]').classList.add('ac
 
 // Initialize app
 applyFilter("all");
-
 
 
 
