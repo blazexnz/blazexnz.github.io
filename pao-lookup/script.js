@@ -84,7 +84,7 @@ const paoData = {
     "82": { person: "Halle Berry", action: "Whipping catwoman whip", object: "Catwoman whip", card: "" },
     "83": { person: "Hillary Clinton", action: "Debating with Trump at the lectern", object: "Lectern", card: "" },
     "84": { person: "Humpty Dumpty", action: "Cracking egg", object: "Egg", card: "" },
-    "85": { person: "Man", action: "Stabbing with sword", object: "Sword", card: "" },
+    "85": { person: "(HE) Man", action: "Stabbing with sword", object: "Sword", card: "" },
     "86": { person: "Harvey Specter", action: "Smashing whiskey glass", object: "Whiskey glass", card: "" },
     "87": { person: "Hugh Grant", action: "Hiding Paddington book", object: "Paddington book", card: "" },
     "88": { person: "Hulk Hogan", action: "Ripping singlet", object: "Singlet", card: "" },
@@ -143,3 +143,4 @@ document.addEventListener("click", function (event) {
         displayResult(currentIndex); // Update the result based on the new index
     }
 });
+
