@@ -35,6 +35,7 @@
             justify-content: center;
             gap: 12px;
             margin-bottom: 20px;
+            flex-wrap: wrap;
         }
 
         .filters button {
@@ -51,6 +52,16 @@
         .filters button:hover,
         .filters button.active {
             background: #444;
+        }
+
+        .rank-select {
+            background: #222;
+            color: #fff;
+            border: none;
+            padding: 6px 10px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 0.95em;
         }
 
         .grid {
@@ -169,6 +180,12 @@
         <button class="filter-btn" tag="support">Support</button>
         <button class="filter-btn" tag="general">General</button>
         <button class="filter-btn" tag="warmup">Warm up</button>
+        <select id="rankSelect" class="rank-select">
+            <option value="all" selected>All ranks</option>
+            <option value="bronze">Bronze</option>
+            <option value="gold">Gold</option>
+            <option value="gold-masters">Gold to Masters</option>
+        </select>
     </div>
 
     <div class="key-banner">
@@ -177,8 +194,8 @@
 
     <div class="grid">
 
-<div class="tile" tag="tank">
-    <div class="hero-name">Orisa (Bronze-Silver)</div>
+<div class="tile" tag="tank" data-ranks="bronze">
+    <div class="hero-name">Orisa</div>
     <div class="tile-content">
         <div class="highlight">
             <p>Walk forward. Force attention. Kill supports.</p>
@@ -203,8 +220,8 @@
     </div>
 </div>
 
-        <div class="tile" tag="tank">
-            <div class="hero-name">Orisa (Gold-Masters)</div>
+        <div class="tile" tag="tank" data-ranks="gold-masters">
+            <div class="hero-name">Orisa</div>
             <div class="tile-content">
                 <div class="highlight">
                     <p>Push in waves - peek, bait, retreat</p>
@@ -229,7 +246,7 @@
             </div>
         </div>
 
-        <div class="tile" tag="tank">
+        <div class="tile" tag="tank" data-ranks="gold-masters">
             <div class="hero-name">Junker Queen</div>
             <div class="tile-content">
                 <div class="highlight">
@@ -249,7 +266,7 @@
             </div>
         </div>
 
-        <div class="tile" tag="tank">
+        <div class="tile" tag="tank" data-ranks="gold-masters">
             <div class="hero-name">Winston</div>
             <div class="tile-content">
                 <div class="highlight">
@@ -274,7 +291,7 @@
             </div>
         </div>
 
-        <div class="tile" tag="tank">
+        <div class="tile" tag="tank" data-ranks="gold-masters">
             <div class="hero-name">D.Va</div>
             <div class="tile-content">
                 <div class="highlight">
@@ -294,7 +311,7 @@
             </div>
         </div>
 
-        <div class="tile" tag="tank">
+        <div class="tile" tag="tank" data-ranks="gold-masters">
             <div class="hero-name">Roadhog</div>
             <div class="tile-content">
                 <div class="highlight">
@@ -314,7 +331,7 @@
             </div>
         </div>
 
-        <div class="tile" tag="tank">
+        <div class="tile" tag="tank" data-ranks="gold-masters">
             <div class="hero-name">Mauga</div>
             <div class="tile-content">
                 <div class="highlight">
@@ -334,7 +351,7 @@
             </div>
         </div>
 
-        <div class="tile" tag="tank">
+        <div class="tile" tag="tank" data-ranks="gold-masters">
             <div class="hero-name">Zarya</div>
             <div class="tile-content">
                 <div class="highlight">
@@ -354,7 +371,7 @@
             </div>
         </div>
 
-        <div class="tile" tag="support">
+        <div class="tile" tag="support" data-ranks="gold-masters">
             <div class="hero-name">Moira</div>
             <div class="tile-content">
                 <div class="highlight">
@@ -382,7 +399,7 @@
             </div>
         </div>
 
-        <div class="tile" tag="support">
+        <div class="tile" tag="support" data-ranks="gold-masters">
             <div class="hero-name">Zenyatta</div>
             <div class="tile-content">
                 <div class="highlight">
@@ -401,7 +418,7 @@
             </div>
         </div>
 
-        <div class="tile" tag="support">
+        <div class="tile" tag="support" data-ranks="gold-masters">
             <div class="hero-name">Kiriko</div>
             <div class="tile-content">
                 <div class="highlight">
@@ -420,8 +437,8 @@
             </div>
         </div>
 
-        <div class="tile" tag="support">
-            <div class="hero-name">Ana (Gold)</div>
+        <div class="tile" tag="support" data-ranks="gold">
+            <div class="hero-name">Ana</div>
             <div class="tile-content">
                 <div class="highlight">
                     <p>Heal tank → Anti-nade tank → Heal → Nano early → HOLD COVER</p>
@@ -440,8 +457,8 @@
             </div>
         </div>
 
-        <div class="tile" tag="support">
-            <div class="hero-name">Ana (Gold-Masters)</div>
+        <div class="tile" tag="support" data-ranks="gold-masters">
+            <div class="hero-name">Ana</div>
             <div class="tile-content">
                 <div class="highlight">
                     <p>Heal → Biotic Grenade → Sleep Dart → Nano / poke → reset → repeat.</p>
@@ -459,7 +476,7 @@
             </div>
         </div>
 
-        <div class="tile" tag="support">
+        <div class="tile" tag="support" data-ranks="gold-masters">
             <div class="hero-name">Mercy</div>
             <div class="tile-content">
                 <div class="highlight">
@@ -478,7 +495,7 @@
             </div>
         </div>
 
-<div class="tile" tag="support">
+<div class="tile" tag="support" data-ranks="gold-masters">
     <div class="hero-name">Juno</div>
     <div class="tile-content">
         <div class="highlight">
@@ -548,7 +565,7 @@
             </div>
         </div>
 
-<div class="tile" tag="dps">
+<div class="tile" tag="dps" data-ranks="gold-masters">
     <div class="hero-name">Cassidy</div>
     <div class="tile-content">
         <div class="highlight">
@@ -568,7 +585,7 @@
     </div>
 </div>
 
-<div class="tile" tag="dps">
+<div class="tile" tag="dps" data-ranks="gold-masters">
     <div class="hero-name">Ashe</div>
     <div class="tile-content">
         <div class="highlight">
@@ -588,7 +605,7 @@
     </div>
 </div>
 
-<div class="tile" tag="dps">
+<div class="tile" tag="dps" data-ranks="gold-masters">
     <div class="hero-name">Reaper</div>
     <div class="tile-content">
         <div class="highlight">
@@ -608,7 +625,7 @@
     </div>
 </div>
 
-<div class="tile" tag="dps">
+<div class="tile" tag="dps" data-ranks="gold-masters">
     <div class="hero-name">Symmetra</div>
     <div class="tile-content">
         <div class="highlight">
@@ -628,7 +645,7 @@
     </div>
 </div>
 
-<div class="tile" tag="dps">
+<div class="tile" tag="dps" data-ranks="gold-masters">
     <div class="hero-name">Bastion</div>
     <div class="tile-content">
         <div class="highlight">
@@ -648,7 +665,7 @@
     </div>
 </div>
 
-<div class="tile" tag="dps">
+<div class="tile" tag="dps" data-ranks="gold-masters">
     <div class="hero-name">Soldier: 76</div>
     <div class="tile-content">
         <div class="highlight">
@@ -668,7 +685,7 @@
     </div>
 </div>
 
-<div class="tile" tag="dps">
+<div class="tile" tag="dps" data-ranks="gold-masters">
     <div class="hero-name">Sombra</div>
     <div class="tile-content">
         <div class="highlight">
@@ -688,7 +705,7 @@
     </div>
 </div>
 
-<div class="tile" tag="dps">
+<div class="tile" tag="dps" data-ranks="gold-masters">
     <div class="hero-name">Tracer</div>
     <div class="tile-content">
         <div class="highlight">
@@ -728,20 +745,75 @@
     </div>
 
     <script>
-        const buttons = document.querySelectorAll('.filter-btn');
-        const tiles = document.querySelectorAll('.tile');
+const buttons = document.querySelectorAll('.filter-btn');
+const tiles = document.querySelectorAll('.tile');
+const rankSelect = document.getElementById('rankSelect');
 
-        buttons.forEach(button => {
-            button.addEventListener('click', () => {
-                const hero = button.getAttribute('tag');
-                buttons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
-                tiles.forEach(tile => {
-                    const tileTags = tile.getAttribute('tag').split(',').map(t => t.trim());
-                    tile.style.display = (hero === 'all' || tileTags.includes(hero)) ? 'flex' : 'none';
-                });
-            });
-        });
+let activeRole = 'all';
+
+const defaultRankByRole = {
+  tank: 'bronze',
+  dps: 'gold-masters',
+  support: 'gold'
+};
+
+
+function passesRole(tile) {
+  if (activeRole === 'all') return true;
+  const tileTags = tile.getAttribute('tag').split(',').map(t => t.trim());
+  return tileTags.includes(activeRole);
+}
+
+function passesRank(tile) {
+  const selectedRank = rankSelect.value; // 'all' or 'gold' etc.
+  const ranksAttr = tile.getAttribute('data-ranks');
+
+  // If no data-ranks, it applies to all ranks
+  if (!ranksAttr || ranksAttr.trim() === '') return true;
+  if (selectedRank === 'all') return true;
+
+  const allowed = ranksAttr.split(',').map(r => r.trim());
+  return allowed.includes(selectedRank);
+}
+
+function applyFilters() {
+  tiles.forEach(tile => {
+    tile.style.display = (passesRole(tile) && passesRank(tile)) ? 'flex' : 'none';
+  });
+}
+
+buttons.forEach(button => {
+  button.addEventListener('click', () => {
+    activeRole = button.getAttribute('tag');
+
+    // set default rank based on role (if defined)
+    if (defaultRankByRole[activeRole]) {
+      rankSelect.value = defaultRankByRole[activeRole];
+    }
+
+    // optional: if you click "All", reset rank to All ranks
+    if (activeRole === 'all') {
+      rankSelect.value = 'all';
+    }
+
+    buttons.forEach(btn => btn.classList.remove('active'));
+    button.classList.add('active');
+    applyFilters();
+  });
+});
+
+
+rankSelect.addEventListener('change', applyFilters);
+
+applyFilters();
+
+
+
+
+
+
+
+
         const banner = document.querySelector('.key-banner');
         banner.addEventListener('click', () => {
                 banner.style.display = 'none';
