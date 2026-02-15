@@ -53,6 +53,10 @@ const WISH_PLACES = [
 
 const STORAGE_KEY = "bucket_list_mode"; // "been" | "wish"
 
+// NEW: per-mode sort order (persisted). true = newest first, false = oldest first
+const SORT_KEY_BEEN = "bucket_list_sort_been";
+const SORT_KEY_WISH = "bucket_list_sort_wish";
+
 const els = {
   btnBeen: document.getElementById("btnBeen"),
   btnWish: document.getElementById("btnWish"),
@@ -82,6 +86,110 @@ function escapeHtml(str) {
     .replaceAll("'", "&#039;");
 }
 
+/**
+ * NEW: Parse "YYYY Mon" (e.g., "2023 Dec") to a sortable number.
+ * Returns -Infinity if date missing/invalid (so those drift to the end).
+ */
+function parseYearMonth(dateStr) {
+  if (!dateStr) return Number.NEGATIVE_INFINITY;
+
+  const parts = String(dateStr).trim().split(/\s+/);
+  if (parts.length < 2) return Number.NEGATIVE_INFINITY;
+
+  const year = parseInt(parts[0], 10);
+  const mon = parts[1].toLowerCase();
+
+  const months = {
+    jan: 1, january: 1,
+    feb: 2, february: 2,
+    mar: 3, march: 3,
+    apr: 4, april: 4,
+    may: 5,
+    jun: 6, june: 6,
+    jul: 7, july: 7,
+    aug: 8, august: 8,
+    sep: 9, sept: 9, september: 9,
+    oct: 10, october: 10,
+    nov: 11, november: 11,
+    dec: 12, december: 12
+  };
+
+  const monthNum = months[mon];
+  if (!Number.isFinite(year) || !monthNum) return Number.NEGATIVE_INFINITY;
+
+  // 2023-12 => 202312 (sortable as number)
+  return year * 100 + monthNum;
+}
+
+// NEW: read/write sort flag
+function getSortNewestFirst(mode) {
+  const key = mode === "been" ? SORT_KEY_BEEN : SORT_KEY_WISH;
+  const saved = localStorage.getItem(key);
+  // default: BEEN newest-first, WISH as-entered (oldest-first)
+  if (saved === null) return mode === "been";
+  return saved === "true";
+}
+
+function setSortNewestFirst(mode, value) {
+  const key = mode === "been" ? SORT_KEY_BEEN : SORT_KEY_WISH;
+  localStorage.setItem(key, String(value));
+}
+
+// NEW: ensure a simple sort toggle exists in the header pill row (no HTML edits needed)
+function ensureSortButton() {
+  if (document.getElementById("sortToggle")) return;
+
+  const metaRow = document.querySelector(".metaRow");
+  if (!metaRow) return;
+
+  const btn = document.createElement("button");
+  btn.id = "sortToggle";
+  btn.type = "button";
+  btn.style.appearance = "none";
+  btn.style.border = "1px solid var(--line)";
+  btn.style.background = "rgba(255,255,255,0.70)";
+  btn.style.borderRadius = "999px";
+  btn.style.padding = "8px 10px";
+  btn.style.boxShadow = "0 6px 16px rgba(20, 33, 61, 0.06)";
+  btn.style.backdropFilter = "blur(10px)";
+  btn.style.webkitBackdropFilter = "blur(10px)";
+  btn.style.color = "var(--muted)";
+  btn.style.fontWeight = "650";
+  btn.style.fontSize = "13px";
+  btn.style.cursor = "pointer";
+  btn.style.touchAction = "manipulation"; // iPhone: prevent double tap zoom
+  btn.style.webkitTapHighlightColor = "transparent";
+  btn.style.userSelect = "none";
+
+  // Hover only for mouse/trackpad (avoid sticky hover on iPhone)
+  btn.addEventListener("touchstart", () => {}, { passive: true });
+
+  btn.addEventListener("click", () => {
+    const mode = getInitialMode();
+    const current = getSortNewestFirst(mode);
+    setSortNewestFirst(mode, !current);
+    render(mode);
+  });
+
+  metaRow.appendChild(btn);
+}
+
+function updateSortButton(mode) {
+  const btn = document.getElementById("sortToggle");
+  if (!btn) return;
+
+  const newestFirst = getSortNewestFirst(mode);
+
+  // Simple label:
+  // BEEN: "Newest first" <-> "Oldest first"
+  // WISH: "Reverse" <-> "Normal" (since many wish items won't have dates)
+  if (mode === "been") {
+    btn.textContent = newestFirst ? "↕️ Newest first" : "↕️ Oldest first";
+  } else {
+    btn.textContent = newestFirst ? "↕️ Reverse" : "↕️ Normal";
+  }
+}
+
 function buildCardBeen(item, index) {
   const date = item.date ? escapeHtml(item.date) : "";
   const country = item.countryEmoji ? escapeHtml(item.countryEmoji) : "";
@@ -101,12 +209,12 @@ function buildCardBeen(item, index) {
 
   let subParts = [];
 
-  if (who) {
-    subParts.push(`<span class="tag">With</span> ${who}`);
-  }
-
   if (note) {
     subParts.push(`<span class="tag">Memory</span> ${note}`);
+  }
+
+  if (who) {
+    subParts.push(`<span class="tag">With</span> ${who}`);
   }
 
   if (!who && !note) {
@@ -161,8 +269,27 @@ function buildCardWish(item, index) {
 }
 
 function render(mode) {
+  ensureSortButton();
+  updateSortButton(mode);
+
   const isBeen = mode === "been";
-  const data = isBeen ? BEEN_PLACES : WISH_PLACES;
+  const source = isBeen ? BEEN_PLACES : WISH_PLACES;
+
+  // Copy array so we don't mutate your original ordering
+  let data = source.slice();
+
+  // NEW: sorting / reversing
+  const newestFirst = getSortNewestFirst(mode);
+
+  if (isBeen) {
+    // Sort by parsed year+month, then reverse if needed
+    data.sort((a, b) => parseYearMonth(a.date) - parseYearMonth(b.date));
+    if (newestFirst) data.reverse();
+  } else {
+    // Wish list might not have dates — by default it's "as entered"
+    // Toggle simply reverses the list order
+    if (newestFirst) data.reverse();
+  }
 
   els.btnBeen.setAttribute("aria-pressed", String(isBeen));
   els.btnWish.setAttribute("aria-pressed", String(!isBeen));
