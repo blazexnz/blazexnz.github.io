@@ -1,202 +1,373 @@
-// Bucket List App
-// Edit the two arrays below. No in-browser adding needed.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bucket List</title>
 
-// 1) PLACES YOU'VE BEEN
-// Example format desired: 📍2023 Dec - 🇦🇺 ✈️ Gold Coast
-const BEEN_PLACES = [
-  {
-    // display line: 📍2023 Dec - 🇦🇺 ✈️ Gold Coast
-    date: "2023 Dec",
-    countryEmoji: "🇦🇺",
-    place: "Gold Coast",
-    icon: "✈️",        // optional: ✈️ 🚗 🛳️ 🏕️ etc.
-    note: "Sun, beaches, and that first holiday buzz." // optional
-  },
-  {
-    date: "2024 Apr",
-    countryEmoji: "🇯🇵",
-    place: "Tokyo",
-    icon: "🚇",
-    note: "Late-night ramen + endless neon."
-  },
-  {
-    date: "2025 Sep",
-    countryEmoji: "🇻🇳",
-    place: "Hội An",
-    icon: "🏮",
-    note: "Lanterns, riverside walks, and coffee."
-  }
-];
+  <style>
+    :root{
+      --bg1:#f7fbff;
+      --bg2:#fff8fb;
+      --card:#ffffffcc;
+      --cardSolid:#ffffff;
+      --text:#1b2330;
+      --muted:#5b677a;
+      --line:#e7edf6;
+      --accent:#5b8cff;
+      --accent2:#ff7db4;
+      --shadow: 0 10px 30px rgba(20, 33, 61, 0.08);
+      --shadow2: 0 6px 18px rgba(20, 33, 61, 0.10);
+      --radius: 18px;
+    }
 
-// 2) WISH LIST (BUCKET LIST) PLACES TO VISIT
-const WISH_PLACES = [
-  {
-    countryEmoji: "🇮🇹",
-    place: "Rome",
-    icon: "🏛️",
-    note: "History, pasta, and long evening strolls."
-  },
-  {
-    countryEmoji: "🇺🇸",
-    place: "Yosemite",
-    icon: "🏞️",
-    note: "Big views, bigger hikes."
-  },
-  {
-    countryEmoji: "🇮🇸",
-    place: "Iceland Road Trip",
-    icon: "🚗",
-    note: "Waterfalls + hot springs."
-  }
-];
+    *{ box-sizing:border-box; }
+    html, body{ height:100%; }
 
-const STORAGE_KEY = "bucket_list_mode"; // "been" | "wish"
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color: var(--text);
+      background:
+        radial-gradient(1200px 700px at 20% 10%, rgba(91,140,255,0.16), transparent 60%),
+        radial-gradient(900px 600px at 90% 0%, rgba(255,125,180,0.16), transparent 55%),
+        linear-gradient(180deg, var(--bg1), var(--bg2));
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
 
-const els = {
-  btnBeen: document.getElementById("btnBeen"),
-  btnWish: document.getElementById("btnWish"),
-  list: document.getElementById("list"),
-  empty: document.getElementById("empty"),
-  summaryText: document.getElementById("summaryText"),
-  footerMode: document.getElementById("footerMode"),
-  secondaryText: document.getElementById("secondaryText")
-};
+    .app{
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 18px 16px 28px;
+      padding-bottom: calc(28px + env(safe-area-inset-bottom));
+    }
 
-function getInitialMode() {
-  const saved = localStorage.getItem(STORAGE_KEY);
-  return saved === "wish" ? "wish" : "been";
-}
+    header{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap: 16px;
+      margin-bottom: 14px;
+      padding-top: calc(10px + env(safe-area-inset-top));
+    }
 
-function setMode(mode) {
-  localStorage.setItem(STORAGE_KEY, mode);
-  render(mode);
-}
+    .titleBlock{
+      display:flex;
+      flex-direction:column;
+      gap: 6px;
+      min-width: 200px;
+    }
 
-function escapeHtml(str) {
-  return String(str)
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#039;");
-}
+    h1{
+      font-size: clamp(22px, 2.8vw, 30px);
+      line-height: 1.1;
+      margin:0;
+      letter-spacing:-0.02em;
+    }
 
-function buildCardBeen(item, index) {
-  const date = item.date ? escapeHtml(item.date) : "";
-  const country = item.countryEmoji ? escapeHtml(item.countryEmoji) : "";
-  const place = item.place ? escapeHtml(item.place) : "";
-  const icon = item.icon ? escapeHtml(item.icon) : "📍";
-  const note = item.note ? escapeHtml(item.note) : "";
+    .subtitle{
+      margin:0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.4;
+    }
 
-  // Visual line: 📍2023 Dec - 🇦🇺 ✈️ Gold Coast
-  const lineTop = `
-    <div class="line1">
-      <span class="when"><span class="pin" aria-hidden="true">📍</span>${date}</span>
-      <span class="tag" aria-hidden="true">-</span>
-      <span class="emoji" aria-hidden="true">${country}</span>
-      <span class="emoji" aria-hidden="true">${icon}</span>
-      <p class="place" title="${place}">${place}</p>
+    .segmented{
+      display:inline-flex;
+      align-items:center;
+      background: rgba(255,255,255,0.65);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 6px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      flex-shrink:0;
+    }
+
+    .segmented button{
+      appearance:none;
+      border:0;
+      background: transparent;
+      color: var(--muted);
+      font-weight: 650;
+      font-size: 14px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      touch-action: manipulation; /* prevent double tap zoom on iPhone */
+      -webkit-tap-highlight-color: transparent;
+      transition: transform .08s ease, background .2s ease, color .2s ease, box-shadow .2s ease;
+      user-select:none;
+      white-space: nowrap;
+      min-width: 0;
+    }
+
+    .segmented button[aria-pressed="true"]{
+      background: linear-gradient(135deg, rgba(91,140,255,0.18), rgba(255,125,180,0.16));
+      color: var(--text);
+      box-shadow: inset 0 0 0 1px rgba(91,140,255,0.20);
+    }
+
+    /* Hover styles only for mouse/trackpad so iPhone doesn't "stick" */
+    @media (hover: hover) and (pointer: fine) {
+      .segmented button:hover{
+        color: var(--text);
+        background: rgba(255,255,255,0.75);
+      }
+      .card:hover{
+        transform: translateY(-2px);
+        box-shadow: var(--shadow2);
+      }
+    }
+
+    /* Touch feedback for touch devices */
+    .segmented button:active{
+      transform: scale(0.98);
+    }
+
+    .metaRow{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+      margin: 10px 2px 14px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.70);
+      border: 1px solid var(--line);
+      box-shadow: 0 6px 16px rgba(20, 33, 61, 0.06);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      white-space:nowrap;
+    }
+
+    .dot{
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      box-shadow: 0 0 0 4px rgba(91,140,255,0.10);
+      flex: 0 0 auto;
+    }
+
+    .list{
+      display:flex;
+      flex-direction:column;
+      gap: 10px;
+    }
+
+    .card{
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 14px 14px;
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap: 12px;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transition: transform .16s ease, box-shadow .16s ease;
+    }
+
+    .left{
+      display:flex;
+      flex-direction:column;
+      gap: 6px;
+      min-width: 0;
+      flex: 1;
+    }
+
+    .line1{
+      display:flex;
+      align-items:center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .when{
+      font-weight: 700;
+      letter-spacing:-0.01em;
+      color: var(--text);
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+    }
+
+    .when .pin{
+      filter: saturate(1.1);
+    }
+
+    .place{
+      font-size: 16px;
+      font-weight: 750;
+      letter-spacing:-0.015em;
+      margin: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .sub{
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.35;
+      display:flex;
+      align-items:center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      gap: 6px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.75);
+      border: 1px solid var(--line);
+      color: var(--muted);
+      font-weight: 650;
+      font-size: 12px;
+    }
+
+    .emoji{
+      font-size: 18px;
+      line-height: 1;
+      flex: 0 0 auto;
+      padding-top: 2px;
+    }
+
+    .right{
+      display:flex;
+      align-items:center;
+      justify-content:flex-end;
+      gap: 8px;
+      flex: 0 0 auto;
+      padding-top: 2px;
+    }
+
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: var(--cardSolid);
+      box-shadow: 0 6px 14px rgba(20, 33, 61, 0.06);
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .empty{
+      margin-top: 18px;
+      padding: 18px;
+      border-radius: var(--radius);
+      border: 1px dashed rgba(91,140,255,0.35);
+      background: rgba(255,255,255,0.55);
+      color: var(--muted);
+      box-shadow: 0 6px 18px rgba(20, 33, 61, 0.06);
+    }
+
+    footer{
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 12px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 10px;
+      padding: 0 2px;
+    }
+
+    .hint{
+      opacity: 0.9;
+    }
+
+    /* Small screens */
+    @media (max-width: 520px){
+      .app{ padding: 14px 12px 22px; }
+
+      /* FIX: prevent toggle truncation on iPhone */
+      header{
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .segmented{
+        width: 100%;
+      }
+      .segmented button{
+        flex: 1;
+        text-align: center;
+        padding: 10px 12px;
+      }
+
+      .card{ padding: 13px 12px; }
+      .place{ font-size: 15px; }
+      .badge{ display:none; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="app">
+    <header>
+      <div class="titleBlock">
+        <h1>My Places</h1>
+        <p class="subtitle">A simple, beautiful list of where you’ve been — and where you’re going next.</p>
+      </div>
+
+      <div class="segmented" role="group" aria-label="Toggle list">
+        <button id="btnBeen" type="button" aria-pressed="true">✅ Been</button>
+        <button id="btnWish" type="button" aria-pressed="false">✨ Wish</button>
+      </div>
+    </header>
+
+    <div class="metaRow">
+      <div class="pill" id="summaryPill">
+        <span class="dot" aria-hidden="true"></span>
+        <span id="summaryText">0 places</span>
+      </div>
+
+      <div class="pill">
+        <span aria-hidden="true">🗺️</span>
+        <span id="secondaryText">Scroll for that achievement feeling</span>
+      </div>
     </div>
-  `;
 
-  const sub = note
-    ? `<p class="sub"><span class="tag">Memory</span> ${note}</p>`
-    : `<p class="sub"><span class="tag">Visited</span> Added in code</p>`;
+    <main>
+      <div class="list" id="list"></div>
+      <div class="empty" id="empty" style="display:none;"></div>
+    </main>
 
-  return `
-    <article class="card" data-index="${index}">
-      <div class="left">
-        ${lineTop}
-        ${sub}
-      </div>
-      <div class="right">
-        <div class="badge">#${index + 1}</div>
-      </div>
-    </article>
-  `;
-}
+    <footer>
+      <div class="hint">Tip: edit the arrays in <strong>script.js</strong> to add places.</div>
+      <div id="footerMode">Mode: Been</div>
+    </footer>
 
-function buildCardWish(item, index) {
-  const country = item.countryEmoji ? escapeHtml(item.countryEmoji) : "🌍";
-  const place = item.place ? escapeHtml(item.place) : "";
-  const icon = item.icon ? escapeHtml(item.icon) : "✨";
-  const note = item.note ? escapeHtml(item.note) : "";
+    <!--
+      NOTE (re: “Force number pad on iPhone”):
+      This app doesn’t need any inputs, but if you ever add a number field later,
+      use: <input type="number" inputmode="numeric" pattern="[0-9]*">
+    -->
+  </div>
 
-  const lineTop = `
-    <div class="line1">
-      <span class="when"><span class="pin" aria-hidden="true">✨</span>Bucket</span>
-      <span class="tag" aria-hidden="true">-</span>
-      <span class="emoji" aria-hidden="true">${country}</span>
-      <span class="emoji" aria-hidden="true">${icon}</span>
-      <p class="place" title="${place}">${place}</p>
-    </div>
-  `;
-
-  const sub = note
-    ? `<p class="sub"><span class="tag">Why</span> ${note}</p>`
-    : `<p class="sub"><span class="tag">Next</span> Added in code</p>`;
-
-  return `
-    <article class="card" data-index="${index}">
-      <div class="left">
-        ${lineTop}
-        ${sub}
-      </div>
-      <div class="right">
-        <div class="badge">#${index + 1}</div>
-      </div>
-    </article>
-  `;
-}
-
-function render(mode) {
-  const isBeen = mode === "been";
-  const data = isBeen ? BEEN_PLACES : WISH_PLACES;
-
-  // Toggle button states
-  els.btnBeen.setAttribute("aria-pressed", String(isBeen));
-  els.btnWish.setAttribute("aria-pressed", String(!isBeen));
-
-  // Header/labels
-  els.footerMode.textContent = `Mode: ${isBeen ? "Been" : "Wish"}`;
-  els.secondaryText.textContent = isBeen
-    ? "Scroll for that achievement feeling"
-    : "A gentle nudge toward your next adventure";
-
-  // Summary
-  const count = data.length;
-  els.summaryText.textContent = `${count} place${count === 1 ? "" : "s"}`;
-
-  // List
-  if (!data || data.length === 0) {
-    els.list.innerHTML = "";
-    els.empty.style.display = "block";
-    els.empty.textContent = isBeen
-      ? "No visited places yet. Add some entries to BEEN_PLACES in script.js."
-      : "No wish list places yet. Add some entries to WISH_PLACES in script.js.";
-    return;
-  }
-
-  els.empty.style.display = "none";
-  els.list.innerHTML = data
-    .map((item, idx) => (isBeen ? buildCardBeen(item, idx) : buildCardWish(item, idx)))
-    .join("");
-}
-
-function wireEvents() {
-  // Click + touch (buttons already have touch-action: manipulation in CSS)
-  els.btnBeen.addEventListener("click", () => setMode("been"));
-  els.btnWish.addEventListener("click", () => setMode("wish"));
-
-  // Keyboard accessibility
-  els.btnBeen.addEventListener("keydown", (e) => {
-    if (e.key === "Enter" || e.key === " ") setMode("been");
-  });
-  els.btnWish.addEventListener("keydown", (e) => {
-    if (e.key === "Enter" || e.key === " ") setMode("wish");
-  });
-}
-
-// Init
-wireEvents();
-render(getInitialMode());
+  <script src="script.js"></script>
+</body>
+</html>
