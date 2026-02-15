@@ -647,7 +647,7 @@ const itemsData = [
       </ol>
     `
   },
-  tags: ["other"]
+  tags: ["baking"]
 }
 
 ];
@@ -862,6 +862,7 @@ document.getElementById('decreaseFontBtn').addEventListener('click', () => {
 
 // === Init ===
 applyFilter("all");
+
 
 
 
