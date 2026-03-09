@@ -45,9 +45,9 @@ revealBtn.addEventListener('click', () => {
   revealBtn.style.display = 'none';
 
   const countdownEmojis = [
-    "✊ Rock",
     "✋ Paper",
-    "✌️ Scissors"
+    "✌️ Scissors",
+    "✊ Rock"
   ];
 
   let count = 0;
@@ -203,3 +203,4 @@ function updateScoreboard() {
   scoreP2Span.textContent = scoreP2;
   scoreTieSpan.textContent = scoreTie;
 }
+
