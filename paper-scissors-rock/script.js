@@ -203,4 +203,3 @@ function updateScoreboard() {
   scoreP2Span.textContent = scoreP2;
   scoreTieSpan.textContent = scoreTie;
 }
-
