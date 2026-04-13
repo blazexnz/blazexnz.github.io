@@ -1,373 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bucket List</title>
+  <title>Overwatch Thought Tracker</title>
 
   <style>
-    :root{
-      --bg1:#f7fbff;
-      --bg2:#fff8fb;
-      --card:#ffffffcc;
-      --cardSolid:#ffffff;
-      --text:#1b2330;
-      --muted:#5b677a;
-      --line:#e7edf6;
-      --accent:#5b8cff;
-      --accent2:#ff7db4;
-      --shadow: 0 10px 30px rgba(20, 33, 61, 0.08);
-      --shadow2: 0 6px 18px rgba(20, 33, 61, 0.10);
-      --radius: 18px;
-    }
-
-    *{ box-sizing:border-box; }
-    html, body{ height:100%; }
-
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      color: var(--text);
-      background:
-        radial-gradient(1200px 700px at 20% 10%, rgba(91,140,255,0.16), transparent 60%),
-        radial-gradient(900px 600px at 90% 0%, rgba(255,125,180,0.16), transparent 55%),
-        linear-gradient(180deg, var(--bg1), var(--bg2));
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-
-    .app{
-      max-width: 980px;
-      margin: 0 auto;
-      padding: 18px 16px 28px;
-      padding-bottom: calc(28px + env(safe-area-inset-bottom));
-    }
-
-    header{
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap: 16px;
-      margin-bottom: 14px;
-      padding-top: calc(10px + env(safe-area-inset-top));
-    }
-
-    .titleBlock{
-      display:flex;
-      flex-direction:column;
-      gap: 6px;
-      min-width: 200px;
-    }
-
-    h1{
-      font-size: clamp(22px, 2.8vw, 30px);
-      line-height: 1.1;
-      margin:0;
-      letter-spacing:-0.02em;
-    }
-
-    .subtitle{
-      margin:0;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.4;
-    }
-
-    .segmented{
-      display:inline-flex;
-      align-items:center;
-      background: rgba(255,255,255,0.65);
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      padding: 6px;
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      flex-shrink:0;
-    }
-
-    .segmented button{
-      appearance:none;
-      border:0;
-      background: transparent;
-      color: var(--muted);
-      font-weight: 650;
-      font-size: 14px;
-      padding: 10px 14px;
-      border-radius: 999px;
-      cursor: pointer;
-      touch-action: manipulation; /* prevent double tap zoom on iPhone */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
       -webkit-tap-highlight-color: transparent;
-      transition: transform .08s ease, background .2s ease, color .2s ease, box-shadow .2s ease;
-      user-select:none;
-      white-space: nowrap;
-      min-width: 0;
     }
 
-    .segmented button[aria-pressed="true"]{
-      background: linear-gradient(135deg, rgba(91,140,255,0.18), rgba(255,125,180,0.16));
-      color: var(--text);
-      box-shadow: inset 0 0 0 1px rgba(91,140,255,0.20);
+    body {
+      background: #111827;
+      color: white;
+      padding: 20px;
+      min-height: 100vh;
     }
 
-    /* Hover styles only for mouse/trackpad so iPhone doesn't "stick" */
-    @media (hover: hover) and (pointer: fine) {
-      .segmented button:hover{
-        color: var(--text);
-        background: rgba(255,255,255,0.75);
-      }
-      .card:hover{
-        transform: translateY(-2px);
-        box-shadow: var(--shadow2);
-      }
+    .app {
+      max-width: 700px;
+      margin: auto;
     }
 
-    /* Touch feedback for touch devices */
-    .segmented button:active{
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 28px;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .tab-btn {
+      flex: 1;
+      padding: 14px;
+      border: none;
+      border-radius: 10px;
+      background: #1f2937;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      touch-action: manipulation;
+      transition: background 0.2s ease;
+    }
+
+    .tab-btn.active {
+      background: #2563eb;
+    }
+
+    .panel {
+      display: none;
+    }
+
+    .panel.active {
+      display: block;
+    }
+
+    .input-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    input {
+      flex: 1;
+      padding: 14px;
+      border-radius: 10px;
+      border: none;
+      font-size: 16px;
+    }
+
+    button.add-btn,
+    button.reset-btn {
+      padding: 14px 20px;
+      border: none;
+      border-radius: 10px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      touch-action: manipulation;
+    }
+
+    button.add-btn {
+      background: #10b981;
+    }
+
+    button.reset-btn {
+      background: #ef4444;
+    }
+
+    ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    li {
+      background: #1f2937;
+      padding: 14px;
+      border-radius: 10px;
+      cursor: pointer;
+      touch-action: manipulation;
+      user-select: none;
+    }
+
+    li:active {
       transform: scale(0.98);
     }
 
-    .metaRow{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 10px;
-      margin: 10px 2px 14px;
-      color: var(--muted);
-      font-size: 13px;
+    button:active {
+      transform: scale(0.97);
     }
 
-    .pill{
-      display:inline-flex;
-      align-items:center;
-      gap: 8px;
-      padding: 8px 10px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.70);
-      border: 1px solid var(--line);
-      box-shadow: 0 6px 16px rgba(20, 33, 61, 0.06);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      white-space:nowrap;
-    }
-
-    .dot{
-      width: 10px;
-      height: 10px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      box-shadow: 0 0 0 4px rgba(91,140,255,0.10);
-      flex: 0 0 auto;
-    }
-
-    .list{
-      display:flex;
-      flex-direction:column;
-      gap: 10px;
-    }
-
-    .card{
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 14px 14px;
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap: 12px;
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      transition: transform .16s ease, box-shadow .16s ease;
-    }
-
-    .left{
-      display:flex;
-      flex-direction:column;
-      gap: 6px;
-      min-width: 0;
-      flex: 1;
-    }
-
-    .line1{
-      display:flex;
-      align-items:center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .when{
-      font-weight: 700;
-      letter-spacing:-0.01em;
-      color: var(--text);
-      display:inline-flex;
-      align-items:center;
-      gap: 8px;
-    }
-
-    .when .pin{
-      filter: saturate(1.1);
-    }
-
-    .place{
-      font-size: 16px;
-      font-weight: 750;
-      letter-spacing:-0.015em;
-      margin: 0;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-
-    .sub{
-      margin: 0;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.35;
-      display:flex;
-      align-items:center;
-      gap: 8px;
-      flex-wrap: wrap;
-    }
-
-    .tag{
-      display:inline-flex;
-      align-items:center;
-      gap: 6px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.75);
-      border: 1px solid var(--line);
-      color: var(--muted);
-      font-weight: 650;
-      font-size: 12px;
-    }
-
-    .emoji{
-      font-size: 18px;
-      line-height: 1;
-      flex: 0 0 auto;
-      padding-top: 2px;
-    }
-
-    .right{
-      display:flex;
-      align-items:center;
-      justify-content:flex-end;
-      gap: 8px;
-      flex: 0 0 auto;
-      padding-top: 2px;
-    }
-
-    .badge{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding: 8px 10px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: var(--cardSolid);
-      box-shadow: 0 6px 14px rgba(20, 33, 61, 0.06);
-      font-size: 12px;
-      color: var(--muted);
-      font-weight: 700;
-      white-space: nowrap;
-    }
-
-    .empty{
-      margin-top: 18px;
-      padding: 18px;
-      border-radius: var(--radius);
-      border: 1px dashed rgba(91,140,255,0.35);
-      background: rgba(255,255,255,0.55);
-      color: var(--muted);
-      box-shadow: 0 6px 18px rgba(20, 33, 61, 0.06);
-    }
-
-    footer{
-      margin-top: 18px;
-      color: var(--muted);
-      font-size: 12px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap: 10px;
-      padding: 0 2px;
-    }
-
-    .hint{
-      opacity: 0.9;
-    }
-
-    /* Small screens */
-    @media (max-width: 520px){
-      .app{ padding: 14px 12px 22px; }
-
-      /* FIX: prevent toggle truncation on iPhone */
-      header{
-        flex-direction: column;
-        align-items: stretch;
+    @media (hover: hover) and (pointer: fine) {
+      .tab-btn:hover {
+        background: #374151;
       }
-      .segmented{
+
+      button.add-btn:hover {
+        background: #059669;
+      }
+
+      button.reset-btn:hover {
+        background: #dc2626;
+      }
+
+      li:hover {
+        background: #374151;
+      }
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 22px;
+      }
+
+      .input-row {
+        flex-direction: column;
+      }
+
+      button.add-btn,
+      button.reset-btn {
         width: 100%;
       }
-      .segmented button{
-        flex: 1;
-        text-align: center;
-        padding: 10px 12px;
-      }
-
-      .card{ padding: 13px 12px; }
-      .place{ font-size: 15px; }
-      .badge{ display:none; }
     }
   </style>
 </head>
-
 <body>
-  <div class="app">
-    <header>
-      <div class="titleBlock">
-        <h1>My Places</h1>
-        <p class="subtitle">A simple, beautiful list of where you’ve been — and where you’re going next.</p>
-      </div>
 
-      <div class="segmented" role="group" aria-label="Toggle list">
-        <button id="btnBeen" type="button" aria-pressed="true">✅ Been</button>
-        <button id="btnWish" type="button" aria-pressed="false">✨ Wish</button>
-      </div>
-    </header>
+<div class="app">
+  <h1>Overwatch Thought Tracker</h1>
 
-    <div class="metaRow">
-      <div class="pill" id="summaryPill">
-        <span class="dot" aria-hidden="true"></span>
-        <span id="summaryText">0 places</span>
-      </div>
-
-      <div class="pill">
-        <span aria-hidden="true">🗺️</span>
-        <span id="secondaryText">Scroll for that achievement feeling</span>
-      </div>
-    </div>
-
-    <main>
-      <div class="list" id="list"></div>
-      <div class="empty" id="empty" style="display:none;"></div>
-    </main>
-
-    <footer>
-      <div class="hint">Tip: edit the arrays in <strong>script.js</strong> to add places.</div>
-      <div id="footerMode">Mode: Been</div>
-    </footer>
-
-    <!--
-      NOTE (re: “Force number pad on iPhone”):
-      This app doesn’t need any inputs, but if you ever add a number field later,
-      use: <input type="number" inputmode="numeric" pattern="[0-9]*">
-    -->
+  <div class="tabs">
+    <button class="tab-btn active" data-role="tank">🛡️ Tank</button>
+    <button class="tab-btn" data-role="damage">⚔️ Damage</button>
+    <button class="tab-btn" data-role="support">🩹 Support</button>
   </div>
 
-  <script src="script.js"></script>
+  <div id="tank" class="panel active">
+    <div class="input-row">
+      <input type="text" id="tankInput" placeholder="Add tank thought...">
+      <button class="add-btn" onclick="addThought('tank')">Add</button>
+      <button class="reset-btn" onclick="resetThoughts('tank')">Reset</button>
+    </div>
+    <ul id="tankList"></ul>
+  </div>
+
+  <div id="damage" class="panel">
+    <div class="input-row">
+      <input type="text" id="damageInput" placeholder="Add damage thought...">
+      <button class="add-btn" onclick="addThought('damage')">Add</button>
+      <button class="reset-btn" onclick="resetThoughts('damage')">Reset</button>
+    </div>
+    <ul id="damageList"></ul>
+  </div>
+
+  <div id="support" class="panel">
+    <div class="input-row">
+      <input type="text" id="supportInput" placeholder="Add support thought...">
+      <button class="add-btn" onclick="addThought('support')">Add</button>
+      <button class="reset-btn" onclick="resetThoughts('support')">Reset</button>
+    </div>
+    <ul id="supportList"></ul>
+  </div>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
