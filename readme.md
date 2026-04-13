@@ -29,3 +29,4 @@
 - **Game tips page** (Released: November 2025)
 - **Speedcubing alg trainer** (Released: November 2025)
 - **Golf club distances** (Released: January 2026)
+- **Your Overwatch Coach** (Released: April 2026)
