@@ -67,7 +67,7 @@
     .input-row {
       display: flex;
       gap: 10px;
-      margin-bottom: 20px;
+      margin-top: 20px;
     }
 
     input {
@@ -108,9 +108,13 @@
       background: #1f2937;
       padding: 14px;
       border-radius: 10px;
-      cursor: pointer;
+      cursor: grab;
       touch-action: manipulation;
       user-select: none;
+    }
+
+    li.dragging {
+      opacity: 0.5;
     }
 
     li:active {
@@ -161,36 +165,36 @@
   <h1>Overwatch Thought Tracker</h1>
 
   <div class="tabs">
-    <button class="tab-btn active" data-role="tank">🛡️ Tank</button>
-    <button class="tab-btn" data-role="damage">⚔️ Damage</button>
-    <button class="tab-btn" data-role="support">🩹 Support</button>
+    <button class="tab-btn active" data-role="tank">Tank</button>
+    <button class="tab-btn" data-role="damage">Damage</button>
+    <button class="tab-btn" data-role="support">Support</button>
   </div>
 
   <div id="tank" class="panel active">
+    <ul id="tankList"></ul>
     <div class="input-row">
       <input type="text" id="tankInput" placeholder="Add tank thought...">
       <button class="add-btn" onclick="addThought('tank')">Add</button>
       <button class="reset-btn" onclick="resetThoughts('tank')">Reset</button>
     </div>
-    <ul id="tankList"></ul>
   </div>
 
   <div id="damage" class="panel">
+    <ul id="damageList"></ul>
     <div class="input-row">
       <input type="text" id="damageInput" placeholder="Add damage thought...">
       <button class="add-btn" onclick="addThought('damage')">Add</button>
       <button class="reset-btn" onclick="resetThoughts('damage')">Reset</button>
     </div>
-    <ul id="damageList"></ul>
   </div>
 
   <div id="support" class="panel">
+    <ul id="supportList"></ul>
     <div class="input-row">
       <input type="text" id="supportInput" placeholder="Add support thought...">
       <button class="add-btn" onclick="addThought('support')">Add</button>
       <button class="reset-btn" onclick="resetThoughts('support')">Reset</button>
     </div>
-    <ul id="supportList"></ul>
   </div>
 </div>
 
