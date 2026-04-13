@@ -28,6 +28,8 @@ function renderList(role, items) {
   items.forEach((item, index) => {
     const li = document.createElement("li");
     li.textContent = item;
+    li.draggable = true;
+    li.dataset.index = index;
 
     li.addEventListener("click", () => {
       items.splice(index, 1);
@@ -35,8 +37,47 @@ function renderList(role, items) {
       renderList(role, items);
     });
 
+    li.addEventListener("dragstart", () => {
+      li.classList.add("dragging");
+    });
+
+    li.addEventListener("dragend", () => {
+      li.classList.remove("dragging");
+
+      const newOrder = [...list.children].map(child => child.textContent);
+      localStorage.setItem(role, JSON.stringify(newOrder));
+      renderList(role, newOrder);
+    });
+
     list.appendChild(li);
   });
+
+  list.addEventListener("dragover", (e) => {
+    e.preventDefault();
+    const dragging = document.querySelector(".dragging");
+    const afterElement = getDragAfterElement(list, e.clientY);
+
+    if (afterElement == null) {
+      list.appendChild(dragging);
+    } else {
+      list.insertBefore(dragging, afterElement);
+    }
+  });
+}
+
+function getDragAfterElement(container, y) {
+  const draggableElements = [...container.querySelectorAll("li:not(.dragging)")];
+
+  return draggableElements.reduce((closest, child) => {
+    const box = child.getBoundingClientRect();
+    const offset = y - box.top - box.height / 2;
+
+    if (offset < 0 && offset > closest.offset) {
+      return { offset, element: child };
+    } else {
+      return closest;
+    }
+  }, { offset: Number.NEGATIVE_INFINITY }).element;
 }
 
 function addThought(role) {
