@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Overwatch Thought Tracker</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background: #111827;
+      color: white;
+      padding: 20px;
+      min-height: 100vh;
+    }
+
+    .app {
+      max-width: 700px;
+      margin: auto;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 28px;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .tab-btn {
+      flex: 1;
+      padding: 14px;
+      border: none;
+      border-radius: 10px;
+      background: #1f2937;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      touch-action: manipulation;
+      transition: background 0.2s ease;
+    }
+
+    .tab-btn.active {
+      background: #2563eb;
+    }
+
+    .panel {
+      display: none;
+    }
+
+    .panel.active {
+      display: block;
+    }
+
+    .input-row {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    input {
+      flex: 1;
+      padding: 14px;
+      border-radius: 10px;
+      border: none;
+      font-size: 16px;
+    }
+
+    button.add-btn,
+    button.reset-btn {
+      padding: 14px 20px;
+      border: none;
+      border-radius: 10px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      touch-action: manipulation;
+    }
+
+    button.add-btn {
+      background: #10b981;
+    }
+
+    button.reset-btn {
+      background: #ef4444;
+    }
+
+    ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    li {
+      background: #1f2937;
+      padding: 14px;
+      border-radius: 10px;
+      cursor: pointer;
+      touch-action: manipulation;
+      user-select: none;
+    }
+
+    li:active {
+      transform: scale(0.98);
+    }
+
+    button:active {
+      transform: scale(0.97);
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      .tab-btn:hover {
+        background: #374151;
+      }
+
+      button.add-btn:hover {
+        background: #059669;
+      }
+
+      button.reset-btn:hover {
+        background: #dc2626;
+      }
+
+      li:hover {
+        background: #374151;
+      }
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 22px;
+      }
+
+      .input-row {
+        flex-direction: column;
+      }
+
+      button.add-btn,
+      button.reset-btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="app">
+  <h1>Overwatch Thought Tracker</h1>
+
+  <div class="tabs">
+    <button class="tab-btn active" data-role="tank">🛡️ Tank</button>
+    <button class="tab-btn" data-role="damage">⚔️ Damage</button>
+    <button class="tab-btn" data-role="support">🩹 Support</button>
+  </div>
+
+  <div id="tank" class="panel active">
+    <div class="input-row">
+      <input type="text" id="tankInput" placeholder="Add tank thought...">
+      <button class="add-btn" onclick="addThought('tank')">Add</button>
+      <button class="reset-btn" onclick="resetThoughts('tank')">Reset</button>
+    </div>
+    <ul id="tankList"></ul>
+  </div>
+
+  <div id="damage" class="panel">
+    <div class="input-row">
+      <input type="text" id="damageInput" placeholder="Add damage thought...">
+      <button class="add-btn" onclick="addThought('damage')">Add</button>
+      <button class="reset-btn" onclick="resetThoughts('damage')">Reset</button>
+    </div>
+    <ul id="damageList"></ul>
+  </div>
+
+  <div id="support" class="panel">
+    <div class="input-row">
+      <input type="text" id="supportInput" placeholder="Add support thought...">
+      <button class="add-btn" onclick="addThought('support')">Add</button>
+      <button class="reset-btn" onclick="resetThoughts('support')">Reset</button>
+    </div>
+    <ul id="supportList"></ul>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
