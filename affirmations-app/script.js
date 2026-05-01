@@ -4,11 +4,15 @@ const resetBtn = document.getElementById("resetBtn");
 
 const defaultData = {
     affirmations: [
-        "Everything is working in my favor",
-        "I attract peace, abundance, and clarity",
-        "I am aligned with my highest self",
-        "What I desire is already mine",
-        "I trust the process of my life"
+        "💫 I am looking good and feeling great",
+        "💫 Money comes to me easily and effortlessly",
+        "💫 I am happy, healthy, and wealthy",
+        "💫 I attract peace, abundance, and clarity",
+        "💫 What I desire is already mine",
+        "🙏 I am so blessed in my life:,
+        "🙏 I am authentic",
+        "🙏 I am grateful",
+        "🙏 Thank you"        
     ],
     verses: [
         {
