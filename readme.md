@@ -30,3 +30,4 @@
 - **Speedcubing alg trainer** (Released: November 2025)
 - **Golf club distances** (Released: January 2026)
 - **Your Overwatch Coach** (Released: April 2026)
+- **Affirmations app** (Released: May 2026)
