@@ -42,7 +42,19 @@ const defaultData = {
     ]
 };
 
-let data = JSON.parse(localStorage.getItem("appData")) || JSON.parse(JSON.stringify(defaultData));
+let stored = localStorage.getItem("appData");
+
+let data;
+try {
+    data = stored ? JSON.parse(stored) : null;
+} catch {
+    data = null;
+}
+
+if (!data || !data.affirmations || !data.verses) {
+    data = JSON.parse(JSON.stringify(defaultData));
+    localStorage.setItem("appData", JSON.stringify(data));
+}
 let currentTab = "affirmations";
 
 function save() {
