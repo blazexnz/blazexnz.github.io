@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Affirmations & Bible Verses</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    color: #2f2f4f;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    background: #eef2ff; /* fallback */
+}
+
+/* FIX: gradient moved to fixed layer */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(180deg, #eef2ff, #f8faff);
+    z-index: -1;
+}
+
+.container {
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+}
+
+.tabs {
+    display: flex;
+    margin-bottom: 15px;
+    gap: 8px;
+}
+
+.tab {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    background: #dfe7ff;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.tab.active {
+    background: #b8c6ff;
+    font-weight: bold;
+}
+
+.list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+}
+
+.list li {
+    background: white;
+    padding: 14px;
+    margin-bottom: 10px;
+    border-radius: 14px;
+    cursor: pointer;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: opacity 0.1s ease;
+    overflow: hidden;
+}
+
+.reset {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 14px;
+    background: #9aa8ff;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Hover only for desktop */
+@media (hover: hover) and (pointer: fine) {
+    .list li:hover {
+        opacity: 0.85;
+    }
+
+    .reset:hover {
+        opacity: 0.9;
+    }
+}
+
+/* Touch feedback */
+button:active,
+.list li:active {
+    opacity: 0.6;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+    <div class="tabs">
+        <button class="tab active" data-tab="affirmations">Affirmations</button>
+        <button class="tab" data-tab="verses">Bible Verses</button>
+    </div>
+
+    <ul id="list" class="list"></ul>
+
+    <button id="resetBtn" class="reset">Reset</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
