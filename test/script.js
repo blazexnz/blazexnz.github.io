@@ -1,86 +1,106 @@
-const defaultThoughts = {
-  tank: [
-    "Track enemy cooldowns",
-    "Hold corners properly",
-    "Watch healer LOS"
-  ],
-  damage: [
-    "Take off angles",
-    "Confirm kills",
-    "Track enemy ult economy"
-  ],
-  support: [
-    "Position safely",
-    "Watch flank routes",
-    "Save cooldowns for key moments"
-  ]
+const tabs = document.querySelectorAll(".tab");
+const listEl = document.getElementById("list");
+const resetBtn = document.getElementById("resetBtn");
+
+const defaultData = {
+    affirmations: [
+        "💫 I am looking good and feeling great",
+        "💫 Money comes to me easily and effortlessly",
+        "💫 I am happy, healthy, and wealthy",
+        "💫 I attract peace, abundance, and clarity",
+        "💫 What I desire is already mine",
+        "🙏 I am so blessed in my life",
+        "🙏 I am authentic",
+        "🙏 I am grateful",
+        "🙏 Thank you",
+    ],
+    verses: [
+        {
+            ref: "John 3:16",
+            text: "For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life."
+        },
+        {
+            ref: "Philippians 4:6–7",
+            text: "Do not be anxious about anything, but in every situation, by prayer and petition, with thanksgiving, present your requests to God. 7 And the peace of God, which transcends all understanding, will guard your hearts and your minds in Christ Jesus."
+        },
+        {
+            ref: "Mark 11:24",
+            text: "Whatever you ask for in prayer, believe that you have received it, and it will be yours."
+        },
+        {
+            ref: "Proverbs 23:7",
+            text: "As he thinks in his heart, so is he."
+        },
+        {
+            ref: "Matthew 7:7",
+            text: "Ask and it will be given to you; seek and you will find."
+        },
+        {
+            ref: "Job 22:28",
+            text: "You will decree a thing, and it will be established for you."
+        },
+    ]
 };
 
-function loadRole(role) {
-  const saved = JSON.parse(localStorage.getItem(role)) || [...defaultThoughts[role]];
-  renderList(role, saved);
+let data = JSON.parse(localStorage.getItem("appData")) || JSON.parse(JSON.stringify(defaultData));
+let currentTab = "affirmations";
+
+function save() {
+    localStorage.setItem("appData", JSON.stringify(data));
 }
 
-function renderList(role, items) {
-  const list = document.getElementById(`${role}List`);
-  list.innerHTML = "";
-
-  items.forEach((item, index) => {
+function createItem(item, index) {
     const li = document.createElement("li");
-    li.textContent = item;
+
+    if (currentTab === "verses") {
+        li.innerHTML = `<strong>${item.ref}</strong><br>${item.text}`;
+    } else {
+        li.textContent = item;
+    }
 
     li.addEventListener("click", () => {
-      items.splice(index, 1);
-      localStorage.setItem(role, JSON.stringify(items));
-      renderList(role, items);
+        li.style.height = li.offsetHeight + "px";
+
+        requestAnimationFrame(() => {
+            li.style.transition = "all 0.25s ease";
+            li.style.opacity = "0";
+            li.style.height = "0px";
+            li.style.margin = "0";
+            li.style.padding = "0";
+        });
+
+        setTimeout(() => {
+            data[currentTab].splice(index, 1);
+            save();
+            render();
+        }, 250);
     });
 
-    list.appendChild(li);
-  });
+    return li;
 }
 
-function addThought(role) {
-  const input = document.getElementById(`${role}Input`);
-  const value = input.value.trim();
+function render() {
+    listEl.innerHTML = "";
 
-  if (!value) return;
-
-  const items = JSON.parse(localStorage.getItem(role)) || [...defaultThoughts[role]];
-  items.push(value);
-
-  localStorage.setItem(role, JSON.stringify(items));
-  renderList(role, items);
-
-  input.value = "";
+    data[currentTab].forEach((item, index) => {
+        const li = createItem(item, index);
+        listEl.appendChild(li);
+    });
 }
 
-function resetThoughts(role) {
-  const resetList = [...defaultThoughts[role]];
-  localStorage.setItem(role, JSON.stringify(resetList));
-  renderList(role, resetList);
-}
-
-document.querySelectorAll(".tab-btn").forEach(btn => {
-  btn.addEventListener("click", () => {
-    document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
-    document.querySelectorAll(".panel").forEach(p => p.classList.remove("active"));
-
-    btn.classList.add("active");
-    document.getElementById(btn.dataset.role).classList.add("active");
-  });
+tabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+        tabs.forEach(t => t.classList.remove("active"));
+        tab.classList.add("active");
+        currentTab = tab.dataset.tab;
+        render();
+    });
 });
 
-["tank", "damage", "support"].forEach(role => {
-  const input = document.getElementById(`${role}Input`);
-
-  input.addEventListener("keydown", (e) => {
-    if (e.key === "Enter") {
-      e.preventDefault();
-      addThought(role);
-    }
-  });
+resetBtn.addEventListener("click", () => {
+    data = JSON.parse(JSON.stringify(defaultData));
+    save();
+    render();
 });
 
-loadRole("tank");
-loadRole("damage");
-loadRole("support");
+render();
