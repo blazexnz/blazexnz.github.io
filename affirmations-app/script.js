@@ -9,10 +9,10 @@ const defaultData = {
         "💫 I am happy, healthy, and wealthy",
         "💫 I attract peace, abundance, and clarity",
         "💫 What I desire is already mine",
-        "🙏 I am so blessed in my life:,
+        "🙏 I am so blessed in my life",
         "🙏 I am authentic",
         "🙏 I am grateful",
-        "🙏 Thank you"        
+        "🙏 Thank you"
     ],
     verses: [
         {
