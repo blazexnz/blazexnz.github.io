@@ -12,25 +12,29 @@ const defaultData = {
     ],
     verses: [
         {
-            ref: "Philippians 4:13",
-            text: "I can do all things through Christ who strengthens me."
+            ref: "John 3:16",
+            text: "For God so loved the world that he gave his one and only Son, that whoever believes in him shall not perish but have eternal life."
         },
         {
-            ref: "Jeremiah 29:11",
-            text: "For I know the plans I have for you, declares the Lord..."
+            ref: "Philippians 4:6–7",
+            text: "Do not be anxious about anything, but in every situation, by prayer and petition, with thanksgiving, present your requests to God. 7 And the peace of God, which transcends all understanding, will guard your hearts and your minds in Christ Jesus."
         },
         {
-            ref: "Proverbs 3:5-6",
-            text: "Trust in the Lord with all your heart..."
+            ref: "Mark 11:24",
+            text: "Whatever you ask for in prayer, believe that you have received it, and it will be yours."
         },
         {
-            ref: "Romans 8:28",
-            text: "And we know that in all things God works for the good..."
+            ref: "Proverbs 23:7",
+            text: "As he thinks in his heart, so is he."
         },
         {
-            ref: "Psalm 23:1",
-            text: "The Lord is my shepherd; I shall not want."
-        }
+            ref: "Matthew 7:7",
+            text: "Ask and it will be given to you; seek and you will find."
+        },
+        {
+            ref: "Job 22:28",
+            text: "You will decree a thing, and it will be established for you."
+        },
     ]
 };
 
