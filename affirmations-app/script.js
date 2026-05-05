@@ -10,6 +10,7 @@ const defaultData = {
         "💫 I attract peace, abundance, and clarity",
         "💫 What I desire is already mine",
         "🙏 I am so blessed in my life",
+        "🙏 Money does grow on trees",
         "🙏 I am authentic",
         "🙏 I am grateful",
         "🙏 Thank you",
