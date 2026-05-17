@@ -31,4 +31,4 @@
 - **Golf club distances** (Released: January 2026)
 - **Your Overwatch Coach** (Released: April 2026)
 - **Affirmations app** (Released: May 2026)
-- **World clock** (Released: May 2026)
+- **Mission control** (Released: May 2026)
