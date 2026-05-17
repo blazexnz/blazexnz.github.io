@@ -272,3 +272,8 @@ async function fetchFX() {
 
 fetchFX();
 setInterval(fetchFX, 60 * 1000);
+
+// ─── Converter toggle ──────────────────────────────────────────────────
+document.getElementById('converter-toggle').addEventListener('click', () => {
+  document.getElementById('converter').classList.toggle('collapsed');
+});
