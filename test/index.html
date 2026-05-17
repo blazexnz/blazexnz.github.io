@@ -197,7 +197,45 @@
       gap: 10px;
       padding: 14px 18px;
       border-bottom: 1px solid var(--border);
+      cursor: pointer;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+      transition: border-color 0.2s;
     }
+
+    .converter.collapsed .converter-header {
+      border-bottom-color: transparent;
+    }
+
+    .converter-toggle {
+      font-family: var(--mono);
+      font-size: 14px;
+      color: var(--text-dim);
+      line-height: 1;
+      transition: transform 0.25s ease;
+    }
+
+    .converter.collapsed .converter-toggle {
+      transform: rotate(-90deg);
+    }
+
+    .converter-body {
+      overflow: hidden;
+      max-height: 600px;
+      transition: max-height 0.3s ease;
+    }
+
+    .converter.collapsed .converter-body {
+      max-height: 0;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      .converter-header:hover .converter-label { color: var(--text-pri); }
+      .converter-header:hover .converter-toggle { color: var(--text-sec); }
+    }
+
+    .converter-header:active .converter-label { color: var(--text-pri); }
 
     .converter-label {
       font-family: var(--mono);
@@ -482,34 +520,6 @@
 
     <main class="grid" id="clock-grid"></main>
 
-    <!-- ── Converter ── -->
-    <section class="converter" aria-label="Time converter">
-      <div class="converter-header">
-        <span class="converter-label">Convert from NZ Time</span>
-      </div>
-      <div class="converter-inputs">
-        <div class="input-group">
-          <label for="conv-day">Day</label>
-          <div class="select-wrap">
-            <select id="conv-day" touch-action="manipulation">
-              <option value="0">Sunday</option>
-              <option value="1">Monday</option>
-              <option value="2">Tuesday</option>
-              <option value="3">Wednesday</option>
-              <option value="4">Thursday</option>
-              <option value="5">Friday</option>
-              <option value="6">Saturday</option>
-            </select>
-          </div>
-        </div>
-        <div class="input-group">
-          <label for="conv-time">NZ Time</label>
-          <input type="time" id="conv-time" value="16:00" inputmode="numeric" />
-        </div>
-      </div>
-      <div class="converter-results" id="conv-results"></div>
-    </section>
-
     <!-- ── FX Panel ── -->
     <section class="fx" aria-label="NZD to USD exchange">
       <div class="fx-header">
@@ -531,6 +541,37 @@
         </div>
       </div>
       <div class="fx-updated" id="fx-updated"></div>
+    </section>
+
+    <!-- ── Converter ── -->
+    <section class="converter collapsed" aria-label="Time converter" id="converter">
+      <div class="converter-header" id="converter-toggle">
+        <span class="converter-label">Convert from NZ Time</span>
+        <span class="converter-toggle">▾</span>
+      </div>
+      <div class="converter-body">
+        <div class="converter-inputs">
+          <div class="input-group">
+            <label for="conv-day">Day</label>
+            <div class="select-wrap">
+              <select id="conv-day" touch-action="manipulation">
+                <option value="0">Sunday</option>
+                <option value="1">Monday</option>
+                <option value="2">Tuesday</option>
+                <option value="3">Wednesday</option>
+                <option value="4">Thursday</option>
+                <option value="5">Friday</option>
+                <option value="6">Saturday</option>
+              </select>
+            </div>
+          </div>
+          <div class="input-group">
+            <label for="conv-time">NZ Time</label>
+            <input type="time" id="conv-time" value="16:00" inputmode="numeric" />
+          </div>
+        </div>
+        <div class="converter-results" id="conv-results"></div>
+      </div>
     </section>
 
     <footer class="footer">
