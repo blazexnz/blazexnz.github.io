@@ -1,125 +1,543 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="robots" content="noindex, nofollow">
-<title>Affirmations & Bible Verses</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>World Clock</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    /* ─── Reset & Base ─────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-<style>
-body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-    color: #2f2f4f;
-    display: flex;
-    justify-content: center;
-    position: relative;
-    background: #eef2ff; /* fallback */
-}
-
-/* FIX: gradient moved to fixed layer */
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background: linear-gradient(180deg, #eef2ff, #f8faff);
-    z-index: -1;
-    pointer-events: none; /* ← THIS FIX */
-}
-
-.container {
-    width: 100%;
-    max-width: 500px;
-    padding: 20px;
-}
-
-.tabs {
-    display: flex;
-    margin-bottom: 15px;
-    gap: 8px;
-}
-
-.tab {
-    flex: 1;
-    padding: 12px;
-    border: none;
-    background: #dfe7ff;
-    border-radius: 12px;
-    cursor: pointer;
-    font-size: 16px;
-    touch-action: manipulation;
-    -webkit-tap-highlight-color: transparent;
-}
-
-.tab.active {
-    background: #b8c6ff;
-    font-weight: bold;
-}
-
-.list {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 20px 0;
-}
-
-.list li {
-    background: white;
-    padding: 14px;
-    margin-bottom: 10px;
-    border-radius: 14px;
-    cursor: pointer;
-    touch-action: manipulation;
-    -webkit-tap-highlight-color: transparent;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    transition: opacity 0.1s ease;
-    overflow: hidden;
-    font-size: 25px;
-}
-
-.reset {
-    width: 100%;
-    padding: 14px;
-    border: none;
-    border-radius: 14px;
-    background: #9aa8ff;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    touch-action: manipulation;
-    -webkit-tap-highlight-color: transparent;
-}
-
-/* Hover only for desktop */
-@media (hover: hover) and (pointer: fine) {
-    .list li:hover {
-        opacity: 0.85;
+    :root {
+      --bg:          #0b0c0e;
+      --surface:     #111316;
+      --surface2:    #161820;
+      --border:      #1e2126;
+      --border-hi:   #2a2f38;
+      --text-pri:    #e8eaf0;
+      --text-sec:    #5a6070;
+      --text-dim:    #30343c;
+      --accent:      #4f9cf9;
+      --accent-lo:   rgba(79, 156, 249, 0.08);
+      --radius:      12px;
+      --mono: 'DM Mono', monospace;
+      --sans: 'DM Sans', sans-serif;
     }
 
-    .reset:hover {
-        opacity: 0.9;
-    }
-}
+    html { height: 100%; }
 
-/* Touch feedback */
-button:active,
-.list li:active {
-    opacity: 0.6;
-}
-</style>
+    body {
+      min-height: 100%;
+      background: var(--bg);
+      color: var(--text-pri);
+      font-family: var(--sans);
+      -webkit-font-smoothing: antialiased;
+      overscroll-behavior: none;
+    }
+
+    /* ─── Page ─────────────────────────────────────────────── */
+    .page {
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      padding: 24px 20px 20px;
+      gap: 24px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    /* ─── Header ───────────────────────────────────────────── */
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .header-label {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      color: var(--text-sec);
+    }
+
+    .header-date {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text-sec);
+      letter-spacing: 0.04em;
+    }
+
+    /* ─── Live Grid ────────────────────────────────────────── */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .card.us { grid-column: 1 / -1; }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 22px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.2s;
+      cursor: default;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: var(--accent-lo);
+      opacity: 0;
+      transition: opacity 0.2s;
+      pointer-events: none;
+    }
+
+    .card:active::before { opacity: 1; }
+    .card:active          { border-color: var(--border-hi); }
+
+    @media (hover: hover) and (pointer: fine) {
+      .card:hover         { border-color: var(--border-hi); }
+      .card:hover::before { opacity: 1; }
+    }
+
+    .card.us { border-color: var(--border-hi); }
+
+
+    .card-zone {
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      color: var(--text-sec);
+      text-transform: uppercase;
+    }
+
+    .card-city {
+      font-family: var(--sans);
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--text-pri);
+      letter-spacing: 0.01em;
+      margin-top: 2px;
+    }
+
+    .card.us .card-city { font-size: 17px; }
+
+    .card-time {
+      font-family: var(--mono);
+      font-size: 36px;
+      font-weight: 300;
+      color: var(--text-pri);
+      letter-spacing: -0.02em;
+      line-height: 1;
+      margin-top: 10px;
+    }
+
+    .card.us .card-time { font-size: 52px; }
+
+    .card-time .ampm {
+      font-size: 0.38em;
+      font-weight: 400;
+      color: var(--text-sec);
+      letter-spacing: 0.08em;
+      margin-left: 6px;
+      vertical-align: middle;
+      position: relative;
+      top: -0.1em;
+    }
+
+    .card-sub {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--text-sec);
+      margin-top: 6px;
+      letter-spacing: 0.04em;
+    }
+
+    .card.us .card-sub { font-size: 14px; }
+
+    .card-offset {
+      position: absolute;
+      top: 18px; right: 18px;
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--text-dim);
+      letter-spacing: 0.06em;
+    }
+
+    /* ─── Converter ────────────────────────────────────────── */
+    .converter {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .converter-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .converter-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      color: var(--text-sec);
+      text-transform: uppercase;
+      flex: 1;
+    }
+
+    .converter-inputs {
+      display: flex;
+      gap: 8px;
+      padding: 16px 18px;
+      flex-wrap: wrap;
+      border-bottom: 1px solid var(--border);
+      align-items: center;
+    }
+
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      flex: 1;
+      min-width: 100px;
+    }
+
+    .input-group label {
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: 0.14em;
+      color: var(--text-dim);
+      text-transform: uppercase;
+    }
+
+    .input-group select,
+    .input-group input[type="time"] {
+      background: var(--surface2);
+      border: 1px solid var(--border-hi);
+      border-radius: 6px;
+      color: var(--text-pri);
+      font-family: var(--mono);
+      font-size: 13px;
+      padding: 8px 10px;
+      outline: none;
+      width: 100%;
+      appearance: none;
+      -webkit-appearance: none;
+      touch-action: manipulation;
+    }
+
+    /* Force numeric keyboard on iPhone for time input */
+    .input-group input[type="time"] {
+      inputmode: numeric;
+    }
+
+    .input-group select:focus,
+    .input-group input[type="time"]:focus {
+      border-color: var(--accent);
+    }
+
+    /* Style select arrow */
+    .select-wrap {
+      position: relative;
+    }
+
+    .select-wrap::after {
+      content: '▾';
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-dim);
+      font-size: 11px;
+      pointer-events: none;
+    }
+
+    /* ─── Converter Results ─────────────────────────────────── */
+    .converter-results {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .result-row {
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--border);
+      border-right: 1px solid var(--border);
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .result-row:nth-child(even) { border-right: none; }
+    .result-row:last-child,
+    .result-row:nth-last-child(2):nth-child(odd) { border-bottom: none; }
+
+    /* full-width NZ source row */
+    .result-row.nz-row {
+      grid-column: 1 / -1;
+      background: var(--accent-lo);
+      border-right: none;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .result-zone {
+      font-family: var(--mono);
+      font-size: 9px;
+      letter-spacing: 0.14em;
+      color: var(--text-sec);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .result-city {
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 300;
+      color: var(--text-sec);
+      margin-bottom: 6px;
+    }
+
+    .result-time {
+      font-family: var(--mono);
+      font-size: 26px;
+      font-weight: 300;
+      color: var(--text-pri);
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+
+    .result-row.nz-row .result-time { font-size: 32px; color: var(--accent); }
+    .result-row.nz-row .result-city { color: var(--text-pri); }
+
+    .result-time .ampm {
+      font-size: 0.38em;
+      color: var(--text-sec);
+      letter-spacing: 0.08em;
+      margin-left: 4px;
+      vertical-align: middle;
+      position: relative;
+      top: -0.1em;
+    }
+
+    .result-day {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--text-sec);
+      margin-top: 5px;
+      letter-spacing: 0.04em;
+    }
+
+    /* ─── Footer ───────────────────────────────────────────── */
+    .footer {
+      border-top: 1px solid var(--border);
+      padding-top: 14px;
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--text-dim);
+      letter-spacing: 0.1em;
+      text-align: center;
+    }
+
+    /* ─── Desktop ──────────────────────────────────────────── */
+    @media (min-width: 600px) {
+      .page  { padding: 32px 32px 24px; gap: 28px; }
+      .grid  { grid-template-columns: repeat(4, 1fr); gap: 14px; }
+      .card.us { grid-column: 1 / -1; }
+      .card-time          { font-size: 38px; }
+      .card.us .card-time { font-size: 64px; }
+      .card-city          { font-size: 14px; }
+      .card.us .card-city { font-size: 18px; }
+
+      .converter-results  { grid-template-columns: repeat(4, 1fr); }
+      .result-row         { border-right: 1px solid var(--border); }
+      .result-row:nth-child(even)    { border-right: 1px solid var(--border); }
+      .result-row:nth-last-child(-n+4) { border-bottom: none; }
+      /* last in each desktop row has no right border */
+      .result-row:nth-child(4n)      { border-right: none; }
+
+      .converter-inputs   { flex-wrap: nowrap; }
+      .input-group        { min-width: auto; }
+    }
+
+    @media (min-width: 900px) {
+      .card-time { font-size: 42px; }
+    }
+
+    /* ─── FX Panel ─────────────────────────────────────────── */
+    .fx {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .fx-header {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .fx-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      color: var(--text-sec);
+      text-transform: uppercase;
+      flex: 1;
+    }
+
+    .fx-rate {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text-dim);
+      letter-spacing: 0.04em;
+    }
+
+    .fx-rate span {
+      color: var(--text-sec);
+    }
+
+    .fx-rows {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .fx-row {
+      padding: 16px 18px;
+      border-right: 1px solid var(--border);
+    }
+
+    .fx-row:last-child { border-right: none; }
+
+    .fx-nzd {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      color: var(--text-dim);
+      margin-bottom: 6px;
+      text-transform: uppercase;
+    }
+
+    .fx-usd {
+      font-family: var(--mono);
+      font-size: 26px;
+      font-weight: 300;
+      color: var(--text-pri);
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+
+    .fx-usd .fx-cents {
+      font-size: 0.55em;
+      color: var(--text-sec);
+      vertical-align: baseline;
+    }
+
+    .fx-updated {
+      font-family: var(--mono);
+      font-size: 9px;
+      color: var(--text-dim);
+      padding: 10px 18px;
+      border-top: 1px solid var(--border);
+      letter-spacing: 0.08em;
+    }
+
+    @media (min-width: 600px) {
+      .fx-usd { font-size: 32px; }
+    }
+  </style>
 </head>
-
 <body>
-<div class="container">
-    <div class="tabs">
-        <button class="tab active" data-tab="affirmations">🙏 Affirmations</button>
-        <button class="tab" data-tab="verses">📖 Bible Verses</button>
-    </div>
+  <div class="page">
 
-    <ul id="list" class="list"></ul>
+    <header class="header">
+      <span class="header-label">WORLD CLOCK</span>
+      <span class="header-date" id="utc-label"></span>
+    </header>
 
-    <button id="resetBtn" class="reset">Reset</button>
-</div>
+    <main class="grid" id="clock-grid"></main>
 
-<script src="script.js"></script>
+    <!-- ── Converter ── -->
+    <section class="converter" aria-label="Time converter">
+      <div class="converter-header">
+        <span class="converter-label">Convert from NZ Time</span>
+      </div>
+      <div class="converter-inputs">
+        <div class="input-group">
+          <label for="conv-day">Day</label>
+          <div class="select-wrap">
+            <select id="conv-day" touch-action="manipulation">
+              <option value="0">Sunday</option>
+              <option value="1">Monday</option>
+              <option value="2">Tuesday</option>
+              <option value="3">Wednesday</option>
+              <option value="4">Thursday</option>
+              <option value="5">Friday</option>
+              <option value="6">Saturday</option>
+            </select>
+          </div>
+        </div>
+        <div class="input-group">
+          <label for="conv-time">NZ Time</label>
+          <input type="time" id="conv-time" value="16:00" inputmode="numeric" />
+        </div>
+      </div>
+      <div class="converter-results" id="conv-results"></div>
+    </section>
+
+    <!-- ── FX Panel ── -->
+    <section class="fx" aria-label="NZD to USD exchange">
+      <div class="fx-header">
+        <span class="fx-label">NZD → USD</span>
+        <span class="fx-rate" id="fx-rate">—</span>
+      </div>
+      <div class="fx-rows" id="fx-rows">
+        <div class="fx-row">
+          <div class="fx-nzd">NZ $12.50</div>
+          <div class="fx-usd" id="fx-a">—</div>
+        </div>
+        <div class="fx-row">
+          <div class="fx-nzd">NZ $2.50</div>
+          <div class="fx-usd" id="fx-b">—</div>
+        </div>
+        <div class="fx-row">
+          <div class="fx-nzd">NZ $1.00</div>
+          <div class="fx-usd" id="fx-c">—</div>
+        </div>
+      </div>
+      <div class="fx-updated" id="fx-updated"></div>
+    </section>
+
+    <footer class="footer">
+      <span id="footer-utc"></span>
+    </footer>
+
+  </div>
+  <script src="script.js"></script>
 </body>
 </html>
