@@ -11,7 +11,7 @@ const defaultData = {
         "💫 What I desire is already mine",
         "💫 Money does grow on trees",
         "💫 I am the co-creator of my universe and I am the source of my manifeststions",
-        "💫 I allow possibilities that exist to materialise",
+        "💫 I allow possibilities that exist to actually materialise",
         "🙏 I am so blessed in my life",
         "🙏 I am authentic",
         "🙏 I am grateful",
