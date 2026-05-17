@@ -237,3 +237,72 @@ convTime.addEventListener('change', runConverter);
 
 // Run once on load
 runConverter();
+
+// ─── FX Rate ───────────────────────────────────────────────────────────
+const USD_AMOUNTS = [1.00, 2.50, 12.50];
+const FX_IDS      = ['fx-a', 'fx-b', 'fx-c'];
+
+function fmtUSD(amount) {
+  const str   = amount.toFixed(2);
+  const [d,c] = str.split('.');
+  return `$${d}<span class="fx-cents">.${c}</span>`;
+}
+
+let currentRate = null; // USD → NZD rate
+
+function fmtNZD(amount) {
+  const str   = amount.toFixed(2);
+  const [d,c] = str.split('.');
+  return `NZ$${d}<span class="fx-cents">.${c}</span>`;
+}
+
+function updateCustom() {
+  if (!currentRate) return;
+  const raw = parseFloat(document.getElementById('fx-custom-input').value);
+  const dir = document.getElementById('fx-custom-dir').value;
+  const result = document.getElementById('fx-custom-result');
+
+  if (isNaN(raw) || raw === 0) { result.innerHTML = '—'; return; }
+
+  if (dir === 'usd') {
+    result.innerHTML = fmtNZD(raw * currentRate);
+  } else {
+    result.innerHTML = fmtUSD(raw / currentRate);
+  }
+}
+
+async function fetchFX() {
+  try {
+    const res  = await fetch('https://api.frankfurter.dev/v1/latest?from=USD&to=NZD');
+    const data = await res.json();
+    const rate = data.rates.NZD;
+    currentRate = rate;
+
+    document.getElementById('fx-rate').innerHTML =
+      `1 USD = <span>NZ$${rate.toFixed(4)}</span>`;
+
+    USD_AMOUNTS.forEach((usd, i) => {
+      document.getElementById(FX_IDS[i]).innerHTML = fmtNZD(usd * rate);
+    });
+
+    const now = new Date();
+    document.getElementById('fx-updated').textContent =
+      `UPDATED  ${pad(now.getHours())}:${pad(now.getMinutes())}`;
+
+    updateCustom();
+
+  } catch (e) {
+    document.getElementById('fx-rate').textContent = 'unavailable';
+  }
+}
+
+fetchFX();
+setInterval(fetchFX, 60 * 1000);
+
+document.getElementById('fx-custom-input').addEventListener('input', updateCustom);
+document.getElementById('fx-custom-dir').addEventListener('change', updateCustom);
+
+// ─── Converter toggle ──────────────────────────────────────────────────
+document.getElementById('converter-toggle').addEventListener('click', () => {
+  document.getElementById('converter').classList.toggle('collapsed');
+});
