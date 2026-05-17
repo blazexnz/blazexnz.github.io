@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="robots" content="noindex, nofollow" />
-  <title>World Clock</title>
+  <title>Mission Control</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet" />
@@ -197,7 +197,45 @@
       gap: 10px;
       padding: 14px 18px;
       border-bottom: 1px solid var(--border);
+      cursor: pointer;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+      transition: border-color 0.2s;
     }
+
+    .converter.collapsed .converter-header {
+      border-bottom-color: transparent;
+    }
+
+    .converter-toggle {
+      font-family: var(--mono);
+      font-size: 14px;
+      color: var(--text-dim);
+      line-height: 1;
+      transition: transform 0.25s ease;
+    }
+
+    .converter.collapsed .converter-toggle {
+      transform: rotate(-90deg);
+    }
+
+    .converter-body {
+      overflow: hidden;
+      max-height: 600px;
+      transition: max-height 0.3s ease;
+    }
+
+    .converter.collapsed .converter-body {
+      max-height: 0;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      .converter-header:hover .converter-label { color: var(--text-pri); }
+      .converter-header:hover .converter-toggle { color: var(--text-sec); }
+    }
+
+    .converter-header:active .converter-label { color: var(--text-pri); }
 
     .converter-label {
       font-family: var(--mono);
@@ -384,44 +422,222 @@
     @media (min-width: 900px) {
       .card-time { font-size: 42px; }
     }
+
+    /* ─── FX Panel ─────────────────────────────────────────── */
+    .fx {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .fx-header {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .fx-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      color: var(--text-sec);
+      text-transform: uppercase;
+      flex: 1;
+    }
+
+    .fx-rate {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text-dim);
+      letter-spacing: 0.04em;
+    }
+
+    .fx-rate span {
+      color: var(--text-sec);
+    }
+
+    .fx-rows {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .fx-row {
+      padding: 16px 18px;
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .fx-row:nth-child(even) { border-right: none; }
+    .fx-row:nth-last-child(-n+2) { border-bottom: none; }
+
+    .fx-nzd {
+      font-family: var(--mono);
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      color: var(--text-dim);
+      margin-bottom: 6px;
+      text-transform: uppercase;
+    }
+
+    .fx-usd {
+      font-family: var(--mono);
+      font-size: 26px;
+      font-weight: 300;
+      color: var(--text-pri);
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+
+    .fx-usd .fx-cents {
+      font-size: 0.55em;
+      color: var(--text-sec);
+      vertical-align: baseline;
+    }
+
+    .fx-updated {
+      font-family: var(--mono);
+      font-size: 9px;
+      color: var(--text-dim);
+      padding: 10px 18px;
+      border-top: 1px solid var(--border);
+      letter-spacing: 0.08em;
+    }
+
+    /* Custom converter cell */
+    .fx-row.fx-custom .fx-nzd {
+      margin-bottom: 8px;
+    }
+
+    .fx-custom-inputs {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+
+    .fx-custom-inputs input {
+      background: var(--surface2);
+      border: 1px solid var(--border-hi);
+      border-radius: 6px;
+      color: var(--text-pri);
+      font-family: var(--mono);
+      font-size: 13px;
+      padding: 6px 8px;
+      outline: none;
+      width: 80px;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .fx-custom-inputs input:focus {
+      border-color: var(--accent);
+    }
+
+    .fx-custom-inputs select {
+      background: var(--surface2);
+      border: 1px solid var(--border-hi);
+      border-radius: 6px;
+      color: var(--text-pri);
+      font-family: var(--mono);
+      font-size: 11px;
+      padding: 6px 8px;
+      outline: none;
+      appearance: none;
+      -webkit-appearance: none;
+      touch-action: manipulation;
+      cursor: pointer;
+    }
+
+    .fx-custom-inputs select:focus {
+      border-color: var(--accent);
+    }
+
+    @media (min-width: 600px) {
+      .fx-rows { grid-template-columns: repeat(4, 1fr); }
+      .fx-row  { border-bottom: none; }
+      .fx-row:nth-child(even) { border-right: 1px solid var(--border); }
+      .fx-row:last-child      { border-right: none; }
+      .fx-usd { font-size: 32px; }
+    }
   </style>
 </head>
 <body>
   <div class="page">
 
     <header class="header">
-      <span class="header-label">WORLD CLOCK</span>
+      <span class="header-label">MISSION CONTROL</span>
       <span class="header-date" id="utc-label"></span>
     </header>
 
     <main class="grid" id="clock-grid"></main>
 
-    <!-- ── Converter ── -->
-    <section class="converter" aria-label="Time converter">
-      <div class="converter-header">
-        <span class="converter-label">Convert from NZ Time</span>
+    <!-- ── FX Panel ── -->
+    <section class="fx" aria-label="USD to NZD exchange">
+      <div class="fx-header">
+        <span class="fx-label">USD → NZD</span>
+        <span class="fx-rate" id="fx-rate">—</span>
       </div>
-      <div class="converter-inputs">
-        <div class="input-group">
-          <label for="conv-day">Day</label>
-          <div class="select-wrap">
-            <select id="conv-day" touch-action="manipulation">
-              <option value="0">Sunday</option>
-              <option value="1">Monday</option>
-              <option value="2">Tuesday</option>
-              <option value="3">Wednesday</option>
-              <option value="4">Thursday</option>
-              <option value="5">Friday</option>
-              <option value="6">Saturday</option>
+      <div class="fx-rows" id="fx-rows">
+        <div class="fx-row">
+          <div class="fx-nzd">US $1.00</div>
+          <div class="fx-usd" id="fx-a">—</div>
+        </div>
+        <div class="fx-row">
+          <div class="fx-nzd">US $2.50</div>
+          <div class="fx-usd" id="fx-b">—</div>
+        </div>
+        <div class="fx-row">
+          <div class="fx-nzd">US $12.50</div>
+          <div class="fx-usd" id="fx-c">—</div>
+        </div>
+        <div class="fx-row fx-custom">
+          <div class="fx-nzd">CUSTOM</div>
+          <div class="fx-custom-inputs">
+            <input type="number" id="fx-custom-input" inputmode="decimal" placeholder="0.00" min="0" step="0.01" />
+            <select id="fx-custom-dir">
+              <option value="usd">USD</option>
+              <option value="nzd">NZD</option>
             </select>
           </div>
-        </div>
-        <div class="input-group">
-          <label for="conv-time">NZ Time</label>
-          <input type="time" id="conv-time" value="16:00" inputmode="numeric" />
+          <div class="fx-usd" id="fx-custom-result">—</div>
         </div>
       </div>
-      <div class="converter-results" id="conv-results"></div>
+      <div class="fx-updated" id="fx-updated"></div>
+    </section>
+
+    <!-- ── Converter ── -->
+    <section class="converter collapsed" aria-label="Time converter" id="converter">
+      <div class="converter-header" id="converter-toggle">
+        <span class="converter-label">Convert from NZ Time</span>
+        <span class="converter-toggle">▾</span>
+      </div>
+      <div class="converter-body">
+        <div class="converter-inputs">
+          <div class="input-group">
+            <label for="conv-day">Day</label>
+            <div class="select-wrap">
+              <select id="conv-day" touch-action="manipulation">
+                <option value="0">Sunday</option>
+                <option value="1">Monday</option>
+                <option value="2">Tuesday</option>
+                <option value="3">Wednesday</option>
+                <option value="4">Thursday</option>
+                <option value="5">Friday</option>
+                <option value="6">Saturday</option>
+              </select>
+            </div>
+          </div>
+          <div class="input-group">
+            <label for="conv-time">NZ Time</label>
+            <input type="time" id="conv-time" value="16:00" inputmode="numeric" />
+          </div>
+        </div>
+        <div class="converter-results" id="conv-results"></div>
+      </div>
     </section>
 
     <footer class="footer">
