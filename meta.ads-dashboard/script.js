@@ -480,15 +480,6 @@ function buildPlainText(phase) {
   lines.push(`  ${d}`);
   lines.push("═══════════════════════════════════════");
   lines.push(`  Phase ${phase.num} — ${phase.name.toUpperCase()}`);
-  lines.push(`  ${phase.description}`);
-  lines.push("");
-  lines.push("OBJECTIVES");
-  lines.push("───────────────────────────────────────");
-  phase.objectives.forEach(o => lines.push(`  › ${o}`));
-  lines.push("");
-  lines.push("DAILY ACTIONS");
-  lines.push("───────────────────────────────────────");
-  phase.actions.forEach(a => lines.push(`  › ${a}`));
   lines.push("");
   lines.push("KEY METRICS");
   lines.push("───────────────────────────────────────");
