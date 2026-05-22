@@ -2,21 +2,21 @@
 
 const PHASES = [
   {
-    id: "mockup",
+    id: "testing",
     num: "01",
-    name: "Mock Up Test",
-    description: "Find a winning mock up design.",
+    name: "Testing",
+    description: "Find emerging winners. Ignore sales - we are learning the market",
     objectives: [
-      "Find a mock up winner for your brand",
-      "Same colour t-shirt and design on all variations",
+      "Find emring winners",
       "Run test Thu–Sun at $21/day",
-      "Never stop making designs",
+      "Iterate on emering winners - never stop making designs",
+      "Get overall catalog CPC below $1.70",
     ],
     actions: [
-      "Create 10 static ad designs as mock ups",
-      "Choose best t -shirt design as a control",
-      "Run ads Thur-Fri",
-      "Select winner: 5+ link clicks & CPC below $1.70",
+      "Run catalogue ad Thu–Sun",
+      "Identify emerging winners each cycle: 3-5 link clicks, CPC below $1.70",
+      "Iterate designs on emering winners",
+      "Keep creating designs, 25 per week",
     ],
     metrics: [
       { key: "link_clicks", name: "Link Clicks", target: "≥ 5", operator: "gte", threshold: 5, higherIsBetter: true },
@@ -24,7 +24,7 @@ const PHASES = [
     ],
   },
   {
-    id: "testing",
+    id: "Scaling",
     num: "02",
     name: "Testing",
     description: "Entry: winning mock up. Launch catalogue ad using winning mock up and find emerging winners. Ignore sales - we are learning the market.",
@@ -46,9 +46,9 @@ const PHASES = [
     ],
   },
   {
-    id: "scaling",
+    id: "optimising",
     num: "03",
-    name: "Scaling",
+    name: "Optimising",
     description: "Entry criteria: proven winners from catalogue test. Double down on what's working and increase budgets.",
     objectives: [
       "Scale winning ad sets by 30–50% weekly",
@@ -72,9 +72,9 @@ const PHASES = [
     ],
   },
   {
-    id: "optimising",
+    id: "expansion",
     num: "04",
-    name: "Optimising",
+    name: "expansion",
     description: "Entry criteria: 2.0 ROAS. Traffic is coming in — now convert it. Focus on store performance, offers, and maximising revenue per visitor.",
     objectives: [
       "Improve product page conversion rate",
