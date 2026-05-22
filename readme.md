@@ -32,5 +32,5 @@
 - **Your Overwatch Coach** (Released: April 2026)
 - **Affirmations app** (Released: May 2026)
 - **Mission control** (Released: May 2026)
-- **Meta.ads dashboard** (Released: May 2026)
+- **Meta.ads review tool** (Released: May 2026)
 - **Prompt library** (Released: May 2026)
