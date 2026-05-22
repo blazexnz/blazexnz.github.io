@@ -7,23 +7,24 @@ A focused, phase-based dashboard for reviewing Meta ad performance at a glance �
 ## Features
 
 ### Phases
-- Phase 01 — Research 🔍
+- Phase 01 — Mock Up Test 🎨
 - Phase 02 — Testing 🧪
 - Phase 03 — Scaling 🚀
-- Phase 04 — Retention 🔁
+- Phase 04 — Optimising ⚙️
 - Each phase has its own metrics, targets, objectives, and daily actions
 
 ### Metrics
 - Enter your values and instantly see pass ✓ or fail ✗
 - Colour-coded cards (green / red) for at-a-glance review
 - Target badges show the goal on every card
+- Dollar fields use auto-decimal input — type `70` to get `$0.70`
 - Score bar summarises how many metrics are passing
 
 ### Export
 - **PNG** — screenshot of the full dashboard
 - **PDF** — printable document
 - **Plain Text** — download as `.txt`
-- **Copy to Clipboard** — paste into Slack, Notes, email
+- **Copy to Clipboard** — pastes phase name + metrics + score, ready for Slack, Notes, email
 
 ### Design
 - Night mode by default
@@ -50,9 +51,9 @@ Edit the `PHASES` array in `script.js`:
 ```javascript
 const PHASES = [
   {
-    id: "research",
+    id: "mockup",
     num: "01",
-    name: "Research",
+    name: "Mock Up Test",
     description: "Your phase description here.",
     objectives: [
       "Objective one",
@@ -66,10 +67,18 @@ const PHASES = [
       {
         key: "cpc",
         name: "Cost Per Click (CPC)",
-        target: "< $1.00",
+        target: "< $1.70",
         prefix: "$",
         operator: "lt",
-        threshold: 1.0,
+        threshold: 1.70,
+        decimal: true,   // auto-decimal input (type 170 → $1.70)
+      },
+      {
+        key: "link_clicks",
+        name: "Link Clicks",
+        target: "≥ 5",
+        operator: "gte",
+        threshold: 5,
       },
     ],
   },
@@ -85,12 +94,13 @@ const PHASES = [
 | `gt`     | Greater than     |
 | `gte`    | Greater or equal |
 
-### Prefix / Suffix
+### Prefix / Suffix / Decimal
 
-| Field    | Use for        | Example        |
-|----------|----------------|----------------|
-| `prefix` | Currency       | `"$"` → $1.20  |
-| `suffix` | Percentage, multiplier | `"%"` → 1.5% / `"×"` → 2.0× |
+| Field     | Use for                    | Example                      |
+|-----------|----------------------------|------------------------------|
+| `prefix`  | Currency symbol            | `"$"` → $1.70                |
+| `suffix`  | Percentage or multiplier   | `"%"` → 1.5% / `"×"` → 2.0× |
+| `decimal` | Auto-decimal on dollar fields | `true` → type `170` = $1.70 |
 
 ---
 
