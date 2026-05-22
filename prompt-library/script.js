@@ -388,6 +388,107 @@ function seed() {
   save();
 }
 
-// ─── INIT ────────────────────────────────────────────
+// ─── MENU (import / export) ──────────────────────────
+const btnMenu         = document.getElementById('btnMenu');
+const dropdown        = document.getElementById('dropdown');
+const btnExport       = document.getElementById('btnExport');
+const btnImportTrigger= document.getElementById('btnImportTrigger');
+const importFile      = document.getElementById('importFile');
+
+function closeMenu() { dropdown.classList.remove('open'); }
+
+btnMenu.addEventListener('click', e => {
+  e.stopPropagation();
+  dropdown.classList.toggle('open');
+});
+
+document.addEventListener('click', () => closeMenu());
+dropdown.addEventListener('click', e => e.stopPropagation());
+
+// ── Export ────────────────────────────────────────────
+btnExport.addEventListener('click', () => {
+  closeMenu();
+  // Sanitise before export — normalise line endings so JSON.stringify never
+  // produces literal newlines inside string values
+  const clean = prompts.map(p => ({
+    ...p,
+    prompt: p.prompt.replace(/\r\n/g, '\n').replace(/\r/g, '\n'),
+  }));
+  const json = JSON.stringify(clean, null, 2);
+  const blob = new Blob([json], { type: 'application/json' });
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement('a');
+  const date = new Date().toISOString().slice(0, 10);
+  a.href     = url;
+  a.download = `prompt-library-${date}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+  showToast(`Exported ${prompts.length} prompt${prompts.length === 1 ? '' : 's'}`);
+});
+
+// ── Import ────────────────────────────────────────────
+btnImportTrigger.addEventListener('click', () => {
+  closeMenu();
+  importFile.value = ''; // reset so same file can be re-imported
+  importFile.click();
+});
+
+importFile.addEventListener('change', () => {
+  const file = importFile.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = e => {
+    try {
+      // Repair literal newlines/carriage returns inside JSON string values.
+      // This happens when prompt text with real line breaks gets stored and
+      // re-exported without proper escaping.
+      const raw = e.target.result;
+      const repaired = raw.replace(/"(?:[^"\\]|\\.)*"/gs, match =>
+        match.replace(/\n/g, '\\n').replace(/\r/g, '\\r').replace(/\t/g, '\\t')
+      );
+      const incoming = JSON.parse(repaired);
+      if (!Array.isArray(incoming)) throw new Error('Not an array');
+
+      // Validate & normalise each entry
+      const valid = incoming.filter(p =>
+        p && typeof p.title === 'string' && typeof p.prompt === 'string'
+      ).map(p => ({
+        id:      p.id || uid(),
+        title:   p.title,
+        tags:    Array.isArray(p.tags) ? p.tags : (p.tag ? [p.tag] : []),
+        desc:    p.desc  || '',
+        prompt:  p.prompt,
+        created: p.created || Date.now(),
+      }));
+
+      if (valid.length === 0) throw new Error('No valid prompts found');
+
+      // Merge: skip prompts whose id already exists
+      const existingIds = new Set(prompts.map(p => p.id));
+      const fresh = valid.filter(p => !existingIds.has(p.id));
+      const dupes = valid.length - fresh.length;
+
+      if (fresh.length > 0) {
+        prompts = [...fresh, ...prompts];
+        save();
+        renderGrid();
+      }
+
+      let msg = fresh.length > 0
+        ? `Imported ${fresh.length} prompt${fresh.length === 1 ? '' : 's'}`
+        : 'Nothing new to import';
+      if (dupes > 0) msg += ` · ${dupes} duplicate${dupes === 1 ? '' : 's'} skipped`;
+      showToast(msg);
+
+    } catch (err) {
+      console.error('Import error:', err);
+      showToast('Import failed — invalid file');
+    }
+  };
+  reader.readAsText(file);
+});
+
+
 seed();
 renderGrid();
