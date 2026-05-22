@@ -16,7 +16,7 @@ const PHASES = [
       "Create 10 static ad designs as mock ups",
       "Choose best t -shirt design as a control",
       "Run ads Thur-Fri",
-      "Select winner: 5+ link clicks & CPC < $1.70",
+      "Select winner: 5+ link clicks & CPC below $1.70",
     ],
     metrics: [
       { key: "link_clicks", name: "Link Clicks", target: "≥ 5", operator: "gte", threshold: 5, higherIsBetter: true },
@@ -29,10 +29,8 @@ const PHASES = [
     name: "Testing",
     description: "Entry: winning mock up. Launch catalogue ad using winning mock up and find emerging winners. Ignore sales - we are learning the market.",
     objectives: [
-      "Find emerging winners, CPC below $1.70",
-      "Get overall catalogue CPC below $1.70",
-      "Apply winning mock up to Shopify product pages",
-      "Run catalogue ad Thu–Sun at $12.50 USD/day",
+      "Find emerging winners: 3-5 link clicks, CPC below $1.70",
+      "Run catalogue ad Thu–Sun at $21 day",
       "Iterate on emerging winners — never stop making designs",
       "Get overall catalogue CPC below $1.70",
     ],
