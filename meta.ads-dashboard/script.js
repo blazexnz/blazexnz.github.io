@@ -20,7 +20,7 @@ const PHASES = [
     ],
     metrics: [
       { key: "link_clicks", name: "Link Clicks", target: "≥ 5", operator: "gte", threshold: 5, higherIsBetter: true },
-      { key: "cpc", name: "Cost Per Click (CPC)", target: "< $1.70", prefix: "$", operator: "lt", threshold: 1.70, higherIsBetter: false },
+      { key: "cpc", name: "Cost Per Click (CPC)", target: "< $1.70", prefix: "$", operator: "lt", threshold: 1.70, higherIsBetter: false, decimal: true },
     ],
   },
   {
@@ -44,7 +44,7 @@ const PHASES = [
     ],
     metrics: [
       { key: "link_clicks", name: "Link Clicks", target: "3–5", operator: "gte", threshold: 3, higherIsBetter: true },
-      { key: "cpc", name: "Cost Per Click (CPC)", target: "< $1.70", prefix: "$", operator: "lt", threshold: 1.70, higherIsBetter: false },
+      { key: "cpc", name: "Cost Per Click (CPC)", target: "< $1.70", prefix: "$", operator: "lt", threshold: 1.70, higherIsBetter: false, decimal: true },
     ],
   },
   {
@@ -66,8 +66,8 @@ const PHASES = [
     ],
     metrics: [
       { key: "roas", name: "ROAS", target: "≥ 3.0×", suffix: "×", operator: "gte", threshold: 3.0, higherIsBetter: true },
-      { key: "cpa", name: "Cost Per Purchase (CPA)", target: "< $30", prefix: "$", operator: "lt", threshold: 30.0, higherIsBetter: false },
-      { key: "cpc", name: "Cost Per Click (CPC)", target: "< $0.70", prefix: "$", operator: "lt", threshold: 0.7, higherIsBetter: false },
+      { key: "cpa", name: "Cost Per Purchase (CPA)", target: "< $30", prefix: "$", operator: "lt", threshold: 30.0, higherIsBetter: false, decimal: true },
+      { key: "cpc", name: "Cost Per Click (CPC)", target: "< $0.70", prefix: "$", operator: "lt", threshold: 0.7, higherIsBetter: false, decimal: true },
       { key: "ctr", name: "CTR", target: "> 2.5%", suffix: "%", operator: "gt", threshold: 2.5, higherIsBetter: true },
       { key: "frequency", name: "Frequency", target: "< 4.0", operator: "lt", threshold: 4.0, higherIsBetter: false },
       { key: "link_clicks", name: "Link Clicks", target: "≥ 200", operator: "gte", threshold: 200, higherIsBetter: true },
@@ -93,9 +93,9 @@ const PHASES = [
     metrics: [
       { key: "conversion_rate", name: "Conversion Rate", target: "> 2.5%", suffix: "%", operator: "gt", threshold: 2.5, higherIsBetter: true },
       { key: "roas", name: "ROAS", target: "≥ 4.0×", suffix: "×", operator: "gte", threshold: 4.0, higherIsBetter: true },
-      { key: "aov", name: "Avg Order Value (AOV)", target: "> $50", prefix: "$", operator: "gt", threshold: 50.0, higherIsBetter: true },
-      { key: "cpa", name: "Cost Per Purchase (CPA)", target: "< $20", prefix: "$", operator: "lt", threshold: 20.0, higherIsBetter: false },
-      { key: "cpc", name: "Cost Per Click (CPC)", target: "< $0.60", prefix: "$", operator: "lt", threshold: 0.6, higherIsBetter: false },
+      { key: "aov", name: "Avg Order Value (AOV)", target: "> $50", prefix: "$", operator: "gt", threshold: 50.0, higherIsBetter: true, decimal: true },
+      { key: "cpa", name: "Cost Per Purchase (CPA)", target: "< $20", prefix: "$", operator: "lt", threshold: 20.0, higherIsBetter: false, decimal: true },
+      { key: "cpc", name: "Cost Per Click (CPC)", target: "< $0.60", prefix: "$", operator: "lt", threshold: 0.6, higherIsBetter: false, decimal: true },
     ],
   },
 ];
@@ -176,7 +176,7 @@ function renderPhase(index) {
     const prefix = m.prefix || "";
     const suffix = m.suffix || "";
 
-    const inputMode = "decimal";
+    const inputMode = m.decimal ? "numeric" : "decimal";
     const inputType = "text";
 
     return `
@@ -190,10 +190,11 @@ function renderPhase(index) {
               id="input_${storageKey}"
               type="${inputType}"
               inputmode="${inputMode}"
-              pattern="[0-9]*[.,]?[0-9]*"
+              pattern="[0-9]*"
               placeholder="—"
               value="${savedVal}"
               autocomplete="off"
+              data-decimal="${m.decimal ? "true" : "false"}"
               oninput="onValueChange('${storageKey}', '${PHASES[index].id}', ${index})"
             >${suffix ? `<span class="metric-prefix" style="font-size:13px;margin-left:2px;">${suffix}</span>` : ""}
           </div>
@@ -219,7 +220,27 @@ function renderPhase(index) {
 
 function onValueChange(storageKey, phaseId, phaseIndex) {
   const input = document.getElementById(`input_${storageKey}`);
-  values[storageKey] = input.value;
+  const isDecimal = input.dataset.decimal === "true";
+
+  if (isDecimal) {
+    // Strip everything except digits
+    const digits = input.value.replace(/\D/g, "");
+
+    if (digits === "") {
+      input.value = "";
+      values[storageKey] = "";
+    } else {
+      // Treat digits as cents: 70 → 0.70, 170 → 1.70, 1700 → 17.00
+      const cents = parseInt(digits, 10);
+      const amount = cents / 100;
+      const formatted = amount.toFixed(2);
+      input.value = formatted;
+      values[storageKey] = formatted;
+    }
+  } else {
+    values[storageKey] = input.value;
+  }
+
   evaluateMetric(storageKey, phaseId, phaseIndex);
   updateScore(phaseIndex);
   saveToStorage();
