@@ -498,6 +498,83 @@ h1 {
   letter-spacing: 0.04em;
 }
 
+/* ─── MENU (import/export) ─── */
+.menu-wrap { position: relative; }
+
+.btn-menu {
+  touch-action: manipulation;
+  height: 38px;
+  width: 38px;
+  background: transparent;
+  color: var(--ink-mid);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition), color var(--transition);
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  flex-shrink: 0;
+}
+.btn-menu:active { background: var(--paper-warm); color: var(--ink); }
+@media (hover: hover) and (pointer: fine) {
+  .btn-menu:hover { background: var(--paper-warm); color: var(--ink); }
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  background: var(--cream);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  min-width: 170px;
+  z-index: 150;
+  animation: dropIn 150ms ease both;
+}
+.dropdown.open { display: block; }
+@keyframes dropIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.dropdown-item {
+  touch-action: manipulation;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  height: 44px;
+  padding: 0 16px;
+  background: transparent;
+  border: none;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--ink-mid);
+  cursor: pointer;
+  text-align: left;
+  transition: background var(--transition), color var(--transition);
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+.dropdown-item + .dropdown-item { border-top: 1px solid var(--rule); }
+.dropdown-item:active { background: var(--paper-warm); color: var(--ink); }
+@media (hover: hover) and (pointer: fine) {
+  .dropdown-item:hover { background: var(--paper-warm); color: var(--ink); }
+}
+.dropdown-item .item-icon { font-size: 15px; width: 18px; text-align: center; }
+
+/* Hidden file input for import */
+#importFile { display: none; }
+
 /* ─── ANIMATIONS ─── */
 @keyframes shake {
   0%,100% { transform: translateX(0); }
@@ -517,9 +594,23 @@ h1 {
         <span class="header-icon">⌘</span>
         <h1>Prompt Library</h1>
       </div>
-      <button class="btn-add" id="btnAdd" touch-action="manipulation">
-        <span>+</span> New Prompt
-      </button>
+      <div style="display:flex;gap:8px;align-items:center;">
+        <div class="menu-wrap">
+          <button class="btn-menu" id="btnMenu" touch-action="manipulation" aria-label="Menu">⋯</button>
+          <div class="dropdown" id="dropdown">
+            <button class="dropdown-item" id="btnExport" touch-action="manipulation">
+              <span class="item-icon">↓</span> Export JSON
+            </button>
+            <button class="dropdown-item" id="btnImportTrigger" touch-action="manipulation">
+              <span class="item-icon">↑</span> Import JSON
+            </button>
+          </div>
+          <input type="file" id="importFile" accept=".json,application/json" />
+        </div>
+        <button class="btn-add" id="btnAdd" touch-action="manipulation">
+          <span>+</span> New Prompt
+        </button>
+      </div>
     </div>
     <div class="toolbar">
       <div class="search-wrap">
