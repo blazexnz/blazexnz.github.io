@@ -427,9 +427,72 @@ btnExport.addEventListener('click', () => {
 });
 
 // ── Import ────────────────────────────────────────────
+const conflictDialog  = document.getElementById('conflictDialog');
+const conflictTitle   = document.getElementById('conflictTitle');
+const conflictBody    = document.getElementById('conflictBody');
+const btnConflictReplace = document.getElementById('btnConflictReplace');
+const btnConflictSkip    = document.getElementById('btnConflictSkip');
+const btnConflictCancel  = document.getElementById('btnConflictCancel');
+
+function parseImportFile(raw) {
+  // Repair literal newlines inside JSON string values (from broken exports)
+  const repaired = raw.replace(/"(?:[^"\\]|\\.)*"/gs, match =>
+    match.replace(/\n/g, '\\n').replace(/\r/g, '\\r').replace(/\t/g, '\\t')
+  );
+  const incoming = JSON.parse(repaired);
+  if (!Array.isArray(incoming)) throw new Error('Not an array');
+  return incoming.filter(p =>
+    p && typeof p.title === 'string' && typeof p.prompt === 'string'
+  ).map(p => ({
+    id:      p.id || uid(),
+    title:   p.title,
+    tags:    Array.isArray(p.tags) ? p.tags : (p.tag ? [p.tag] : []),
+    desc:    p.desc  || '',
+    prompt:  p.prompt,
+    created: p.created || Date.now(),
+  }));
+}
+
+// Compare two prompts — true if content is identical (ignores created timestamp)
+function promptsAreIdentical(a, b) {
+  return a.title  === b.title  &&
+         a.prompt === b.prompt &&
+         a.desc   === b.desc   &&
+         JSON.stringify(a.tags) === JSON.stringify(b.tags);
+}
+
+function applyImport(brandNew, modified, replaceModified) {
+  let added    = 0;
+  let replaced = 0;
+
+  // Add brand new prompts
+  if (brandNew.length > 0) {
+    prompts = [...brandNew, ...prompts];
+    added = brandNew.length;
+  }
+
+  // Replace modified prompts if user chose to
+  if (replaceModified && modified.length > 0) {
+    modified.forEach(incoming => {
+      const idx = prompts.findIndex(p => p.id === incoming.id);
+      if (idx !== -1) { prompts[idx] = incoming; replaced++; }
+    });
+  }
+
+  save();
+  renderGrid();
+
+  const parts = [];
+  if (added    > 0) parts.push(`${added} new`);
+  if (replaced > 0) parts.push(`${replaced} restored`);
+  const skipped = modified.length - replaced;
+  if (skipped  > 0) parts.push(`${skipped} kept`);
+  showToast(parts.length ? parts.join(' · ') + ' prompt' + (added + replaced + skipped === 1 ? '' : 's') : 'Already up to date');
+}
+
 btnImportTrigger.addEventListener('click', () => {
   closeMenu();
-  importFile.value = ''; // reset so same file can be re-imported
+  importFile.value = '';
   importFile.click();
 });
 
@@ -440,46 +503,58 @@ importFile.addEventListener('change', () => {
   const reader = new FileReader();
   reader.onload = e => {
     try {
-      // Repair literal newlines/carriage returns inside JSON string values.
-      // This happens when prompt text with real line breaks gets stored and
-      // re-exported without proper escaping.
-      const raw = e.target.result;
-      const repaired = raw.replace(/"(?:[^"\\]|\\.)*"/gs, match =>
-        match.replace(/\n/g, '\\n').replace(/\r/g, '\\r').replace(/\t/g, '\\t')
-      );
-      const incoming = JSON.parse(repaired);
-      if (!Array.isArray(incoming)) throw new Error('Not an array');
-
-      // Validate & normalise each entry
-      const valid = incoming.filter(p =>
-        p && typeof p.title === 'string' && typeof p.prompt === 'string'
-      ).map(p => ({
-        id:      p.id || uid(),
-        title:   p.title,
-        tags:    Array.isArray(p.tags) ? p.tags : (p.tag ? [p.tag] : []),
-        desc:    p.desc  || '',
-        prompt:  p.prompt,
-        created: p.created || Date.now(),
-      }));
-
+      const valid = parseImportFile(e.target.result);
       if (valid.length === 0) throw new Error('No valid prompts found');
 
-      // Merge: skip prompts whose id already exists
-      const existingIds = new Set(prompts.map(p => p.id));
-      const fresh = valid.filter(p => !existingIds.has(p.id));
-      const dupes = valid.length - fresh.length;
+      const existingMap = new Map(prompts.map(p => [p.id, p]));
 
-      if (fresh.length > 0) {
-        prompts = [...fresh, ...prompts];
-        save();
-        renderGrid();
+      const brandNew  = [];  // ID not in library → auto-import
+      const identical = [];  // same ID + same content → silently skip
+      const modified  = [];  // same ID + different content → show dialog
+
+      valid.forEach(incoming => {
+        if (!existingMap.has(incoming.id)) {
+          brandNew.push(incoming);
+        } else if (promptsAreIdentical(existingMap.get(incoming.id), incoming)) {
+          identical.push(incoming);
+        } else {
+          modified.push(incoming);
+        }
+      });
+
+      // No dialog needed — silently apply
+      if (modified.length === 0) {
+        applyImport(brandNew, [], false);
+        if (brandNew.length === 0) showToast('Already up to date');
+        return;
       }
 
-      let msg = fresh.length > 0
-        ? `Imported ${fresh.length} prompt${fresh.length === 1 ? '' : 's'}`
-        : 'Nothing new to import';
-      if (dupes > 0) msg += ` · ${dupes} duplicate${dupes === 1 ? '' : 's'} skipped`;
-      showToast(msg);
+      // Show conflict dialog only for genuinely modified prompts
+      const parts = [];
+      if (modified.length > 0) parts.push(`<strong>${modified.length} modified</strong>`);
+      if (brandNew.length  > 0) parts.push(`<strong>${brandNew.length} new</strong> will be added automatically`);
+      if (identical.length > 0) parts.push(`<strong>${identical.length} identical</strong> will be skipped`);
+
+      conflictTitle.textContent = `${modified.length} conflict${modified.length === 1 ? '' : 's'} found`;
+      conflictBody.innerHTML = parts.join(' · ') + `.<br><br>The modified prompt${modified.length === 1 ? ' has' : 's have'} changed since this backup. Keep your current version or restore from backup?`;
+
+      conflictDialog.classList.add('visible');
+      backdrop.classList.add('visible');
+
+      const cleanup = () => {
+        conflictDialog.classList.remove('visible');
+        backdrop.classList.remove('visible');
+        btnConflictReplace.removeEventListener('click', onReplace);
+        btnConflictSkip.removeEventListener('click', onSkip);
+        btnConflictCancel.removeEventListener('click', onCancel);
+      };
+      const onReplace = () => { cleanup(); applyImport(brandNew, modified, true);  };
+      const onSkip    = () => { cleanup(); applyImport(brandNew, modified, false); };
+      const onCancel  = () => { cleanup(); showToast('Import cancelled'); };
+
+      btnConflictReplace.addEventListener('click', onReplace, { once: true });
+      btnConflictSkip.addEventListener('click', onSkip, { once: true });
+      btnConflictCancel.addEventListener('click', onCancel, { once: true });
 
     } catch (err) {
       console.error('Import error:', err);
