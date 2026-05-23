@@ -575,6 +575,93 @@ h1 {
 /* Hidden file input for import */
 #importFile { display: none; }
 
+/* ─── IMPORT CONFLICT DIALOG ─── */
+.conflict-dialog {
+  display: none;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--cream);
+  border-radius: 14px 14px 0 0;
+  z-index: 202;
+  box-shadow: var(--shadow-lg);
+  padding: 24px 20px;
+  padding-bottom: max(24px, env(safe-area-inset-bottom));
+}
+.conflict-dialog.visible { display: block; }
+@media (min-width: 600px) {
+  .conflict-dialog {
+    left: 50%;
+    right: auto;
+    bottom: auto;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 420px;
+    border-radius: 10px;
+  }
+}
+.conflict-title {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 6px;
+  letter-spacing: -0.01em;
+}
+.conflict-body {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--ink-mid);
+  line-height: 1.5;
+  font-weight: 300;
+  margin-bottom: 18px;
+}
+.conflict-body strong { font-weight: 500; color: var(--ink); }
+.conflict-actions { display: flex; flex-direction: column; gap: 8px; }
+.btn-conflict {
+  touch-action: manipulation;
+  width: 100%;
+  height: 46px;
+  border-radius: var(--radius);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition);
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.btn-conflict-replace {
+  background: var(--ink);
+  color: var(--cream);
+  border: 1px solid var(--ink);
+}
+.btn-conflict-replace:active { background: var(--accent); border-color: var(--accent); }
+.btn-conflict-skip {
+  background: transparent;
+  color: var(--ink-mid);
+  border: 1px solid var(--rule);
+}
+.btn-conflict-skip:active { background: var(--paper-warm); }
+.btn-conflict-cancel {
+  background: transparent;
+  color: var(--ink-light);
+  border: none;
+  font-size: 11px;
+}
+.btn-conflict-cancel:active { color: var(--ink); }
+@media (hover: hover) and (pointer: fine) {
+  .btn-conflict-replace:hover { background: var(--accent); border-color: var(--accent); }
+  .btn-conflict-skip:hover { background: var(--paper-warm); color: var(--ink); }
+  .btn-conflict-cancel:hover { color: var(--ink); }
+}
+
 /* ─── ANIMATIONS ─── */
 @keyframes shake {
   0%,100% { transform: translateX(0); }
@@ -669,6 +756,23 @@ h1 {
     <div class="modal-footer">
       <button class="btn-ghost" id="btnCancel" touch-action="manipulation">Cancel</button>
       <button class="btn-primary" id="btnSave" touch-action="manipulation">Save Prompt</button>
+    </div>
+  </div>
+
+  <!-- IMPORT CONFLICT DIALOG -->
+  <div class="conflict-dialog" id="conflictDialog">
+    <div class="conflict-title" id="conflictTitle"></div>
+    <div class="conflict-body" id="conflictBody"></div>
+    <div class="conflict-actions">
+      <button class="btn-conflict btn-conflict-replace" id="btnConflictReplace" touch-action="manipulation">
+        ↺ Replace with backup version
+      </button>
+      <button class="btn-conflict btn-conflict-skip" id="btnConflictSkip" touch-action="manipulation">
+        → Keep current version
+      </button>
+      <button class="btn-conflict btn-conflict-cancel" id="btnConflictCancel" touch-action="manipulation">
+        Cancel import
+      </button>
     </div>
   </div>
 
