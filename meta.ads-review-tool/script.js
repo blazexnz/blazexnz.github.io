@@ -19,7 +19,7 @@ const PHASES = [
       "Keep creating designs, 25 per week",
     ],
     metrics: [
-      { key: "link_clicks", name: "Link Clicks", target: "≥ 5", operator: "gte", threshold: 5, higherIsBetter: true },
+      { key: "link_clicks", name: "Link Clicks", target: "≥ 3", operator: "gte", threshold: 3, higherIsBetter: true },
       { key: "cpc", name: "Cost Per Click (CPC)", target: "< $1.70", prefix: "$", operator: "lt", threshold: 1.70, higherIsBetter: false, decimal: true },
       { key: "designs_pw", name: "No. Designs", target: "25", operator: "gte", threshold: 25, higherIsBetter: true },
     ],
