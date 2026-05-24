@@ -7,9 +7,9 @@ const PHASES = [
     name: "Testing",
     description: "Launch new concepts quickly and gather market feedback.",
     objectives: [
-      "Find emerging winners through link clicks and CPC",
+      "Identify high-interest concepts for iteration through link clicks and CPC",
       "Learn what resonates with the audience and iterate",
-      "Run test Thu–Sun at $21/day",
+      "Run catalogue tests Thu–Sun at $21/day",
       "Overall objective is to get catalogue CPC below $1.70",
     ],
     actions: [
