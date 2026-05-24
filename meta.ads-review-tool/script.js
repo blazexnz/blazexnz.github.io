@@ -28,7 +28,7 @@ const PHASES = [
     id: "scaling",
     num: "02",
     name: "Scaling",
-    description: "Scale proven concepts, expand winning products, and compound customer demand through consistent iteration.",
+    description: "Scale profitable concepts while maintaining stable ROAS, CPA, and creative performance.",
     objectives: [
       "Scale profitable purcahse-generating ads",
       "Maintain stable ROAS while increasing spend",
