@@ -219,7 +219,7 @@ function renderGrid() {
       <div class="card-preview">${escHtml(p.prompt)}</div>
       <div class="card-actions">
         <button class="card-btn copy-btn" data-id="${p.id}" touch-action="manipulation">
-          <span class="copy-icon">⎘</span> Copy
+          <span class="copy-icon">⎘</span><span class="copy-label"> Copy</span>
         </button>
         <button class="card-btn edit-btn" data-id="${p.id}" touch-action="manipulation">
           ✎ Edit
@@ -314,11 +314,11 @@ grid.addEventListener('click', e => {
     copyText(p.prompt);
     copyBtn.classList.add('copied');
     copyBtn.querySelector('.copy-icon').textContent = '✓';
-    copyBtn.childNodes[1].textContent = ' Copied!';
+    copyBtn.querySelector('.copy-label').textContent = ' Copied!';
     setTimeout(() => {
       copyBtn.classList.remove('copied');
       copyBtn.querySelector('.copy-icon').textContent = '⎘';
-      copyBtn.childNodes[1].textContent = ' Copy';
+      copyBtn.querySelector('.copy-label').textContent = ' Copy';
     }, 2000);
     showToast('Copied to clipboard');
   }
