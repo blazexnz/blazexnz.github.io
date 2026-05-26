@@ -9,7 +9,7 @@ const PHASES = [
     objectives: [
       "Identify high-interest concepts for iteration through link clicks and CPC",
       "Learn what resonates with the audience and iterate",
-      "Run catalogue tests Thu–Sun at $21/day",
+      "Run catalogue ad Thu–Sun (Thu 12AM-Mon 6PM NZ time)",
       "Overall objective is to get catalogue CPC below $1.70",
       "Move catalogue ad to 24/7 once ROAS is 2.0x, and gradually increase daily ad budget",
     ],
