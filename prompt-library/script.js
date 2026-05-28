@@ -218,14 +218,14 @@ function renderGrid() {
       </div>
       <div class="card-preview">${escHtml(p.prompt)}</div>
       <div class="card-actions">
-        <button class="card-btn copy-btn" data-id="${p.id}" touch-action="manipulation">
-          <span class="copy-icon">⎘</span><span class="copy-label"> Copy</span>
+        <button class="card-btn del-btn" data-id="${p.id}" touch-action="manipulation">
+          ✕ Delete
         </button>
         <button class="card-btn edit-btn" data-id="${p.id}" touch-action="manipulation">
           ✎ Edit
         </button>
-        <button class="card-btn del-btn" data-id="${p.id}" touch-action="manipulation">
-          ✕ Delete
+        <button class="card-btn copy-btn" data-id="${p.id}" touch-action="manipulation">
+          <span class="copy-icon">⎘</span><span class="copy-label"> Copy</span>
         </button>
       </div>
     `;
