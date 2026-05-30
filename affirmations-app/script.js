@@ -12,6 +12,7 @@ const defaultData = {
         "💫 Money does grow on trees",
         "💫 I am the co-creator of my universe and I am the source of my manifeststions",
         "💫 I allow possibilities that exist to actually materialise",
+        "💫 Be the person you want to be",
         "🙏 I am so blessed in my life",
         "🙏 I am authentic",
         "🙏 I am grateful",
